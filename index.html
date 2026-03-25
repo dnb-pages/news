@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارشات اخبار ایران</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+        }
+        .latest {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--accent);
+        }
+        .latest h2 {
+            margin: 0 0 15px 0;
+            color: var(--primary);
+        }
+        .latest a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .latest a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .archive h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .archive ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .archive li {
+            background: var(--card-bg);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .archive a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .archive a:hover {
+            background: #edf2f7;
+        }
+        .archive a::before {
+            content: "📰 ";
+        }
+    </style>
+</head>
+<body>
+    <h1>گزارشات اخبار ایران</h1>
+    <p class="subtitle">Iran News Reports</p>
+
+    <div class="latest">
+        <h2>آخرین گزارش</h2>
+        <a href="output/news/news_2026-03-25_12-22.html">مشاهده آخرین گزارش</a>
+    </div>
+
+    <div class="archive">
+        <h2>آرشیو</h2>
+        <ul>
+        <li>
+            <a href="news/news_2026-03-25_12-22.html">2026-03-25 12:22</a>
+        </li>
+
+        </ul>
+    </div>
+</body>
+</html>
