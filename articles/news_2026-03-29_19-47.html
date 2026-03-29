@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-03-29 19:47</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-03-29 19:47</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>تسلط دلار با تجارت جهانی نفت تقویت می شود، اما جنگ ایران می تواند با تضعیف سپر امنیتی ایالات متحده، «پترویوان» را به وجود آورد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 19:37</strong></span>
+                </div>
+                <p class='summary'>دویچه بانک گفت: «جهان تا حد زیادی با دلار پس انداز می کند زیرا به دلار پرداخت می کند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/dollar-dominance-dedollarization-global-oil-trade-iran-war-petroyuan-us-security-shield/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>اوکراین به دنبال اهرم کمک خود به کشورهای عربی خلیج فارس است که در مقابل پهپادهای ایرانی در ازای رهگیرها علیه موشک های روسی می جنگند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 17:48</strong></span>
+                </div>
+                <p class='summary'>ولودیمیر زلنسکی، رئیس جمهور اوکراین روز شنبه از امارات متحده عربی و قطر بازدید کرد.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/ukraine-zelenskyy-arab-gulf-iranian-drones-interceptors-russian-missiles/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>حوثی های مورد حمایت ایران با رسیدن نیروهای بیشتر آمریکا به خاورمیانه به جنگ می پیوندند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 17:44</strong></span>
+                </div>
+                <p class='summary'>شبه‌نظامیان حوثی صبح روز شنبه موشک‌های بالستیک را به سمت اسرائیل پرتاب کردند که نشانه ورود آن‌ها به جنگ یک ماهه ایران بود که در حال حاضر باعث هرج‌ومرج در بازارهای انرژی و کشته شدن هزاران نفر شده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-backed-houthis-join-war-as-more-us-troops-reach-middle-east' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>حمله ایران به پایگاه سعودی دست‌کم 15 سرباز آمریکایی را مجروح کرد و 2500 تفنگدار دریایی در آستانه ضرب‌الاجل جدید هرمز ترامپ وارد خاورمیانه شدند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 17:13</strong></span>
+                </div>
+                <p class='summary'>فرماندهی مرکزی روز جمعه گفت که بیش از 300 نظامی در این جنگ زخمی شده اند. اکثر آنها به وظیفه بازگشته اند، در حالی که 30 نفر از میدان خارج شده اند و 10 نفر به شدت مجروح شده اند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/iran-war-attack-saudi-base-us-troops-marines-mideast-trump-hormuz-deadline/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>بدهی ایالات متحده به طور ناگهانی تقاضای ضعیف تری را به خود جلب می کند زیرا امسال باید 10 تریلیون دلار در بحبوحه جنگ ایران کاهش یابد. "بازار اوراق قرضه شکست ناپذیر است"</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 16:57</strong></span>
+                </div>
+                <p class='summary'>«نیاز به هزینه‌های اضافی برای تأمین مالی جنگ، بدهی ایالات متحده را افزایش می‌دهد و جرقه فروش اوراق قرضه را به دنبال دارد، زیرا سرمایه‌گذاران برای پوشش ضررهای احتمالی به غرامت بیشتری نیاز دارند».</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/us-debt-auctions-weak-demand-treasury-yields-10-trillion-refinance-iran-war-bond-market/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>مقامات می گویند روسیه پهپادهای ارتقا یافته مورد استفاده در جنگ اوکراین را به ایران می فرستد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 16:43</strong></span>
+                </div>
+                <p class='summary'>مسکو و تهران در سال 2022 قرارداد 1.7 میلیارد دلاری پهپاد را با تولید در کارخانه آلابوگا روسیه امضا کردند.</p>
+                <div class='link'><a href='https://apnews.com/article/russia-iran-drones-shahed-war-israel-ukraine-840b4f885d99714bdb7813c0d56213cf' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>هند می گوید که جنگ ایران می تواند به رشد و افزایش کسری مالی ضربه بزند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 16:38</strong></span>
+                </div>
+                <p class='summary'>هند می‌بیند که جنگ ایران بر رشد و احتمالاً افزایش کسری مالی آن تأثیر می‌گذارد، زیرا کمبود انرژی و کشتیرانی در بخش‌ها موج می‌زند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/india-says-iran-war-could-hit-growth-widen-fiscal-deficit' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ترامپ به سعودی ها فشار می آورد که اسرائیل را به رسمیت بشناسند زیرا او از جنگ ایران دفاع می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 16:02</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا در یک سخنرانی در یک مجمع سرمایه‌گذاری مرتبط با صندوق سرمایه‌گذاری مستقل پادشاهی، از عربستان سعودی درخواست کرد تا به توافق‌نامه آبراهام در پس‌زمینه درگیری آمریکا و اسرائیل با ایران بپیوندد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-presses-saudis-to-recognize-israel-as-he-defends-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>برترین سازنده آلومینیوم خاورمیانه می گوید کارخانه ذوب اصلی آسیب دیده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 15:37</strong></span>
+                </div>
+                <p class='summary'>بزرگترین کارخانه تولید فلز امارات گلوبال آلومینیوم طی حمله موشکی و پهپادی ایران در روز شنبه، ضربه دیگری به صنعت کالای منطقه از جنگ خاورمیانه وارد شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/middle-easts-top-aluminum-maker-says-main-smelter-damaged' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>زینت ها، اغراق ها، دروغ ها...</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 15:04</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس جمهور آمریکا، جنگ با ایران را موفقیت آمیز توصیف می کند، حتی در شرایطی که پیام او درباره این درگیری مدام در حال تغییر است. ترامپ می گوید که ایالات متحده در حال پیروز شدن است، حتی اگر او نیروهای بیشتری به خاورمیانه می فرستد. او کشورهای دیگر را به خاطر کمک نکردن به عامر سرزنش می کند…</p>
+                <div class='link'><a href='https://apnews.com/article/trump-iran-war-conflicting-messages-f9269cc4fe1cee914501b68ec5b6c217' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>با افزایش قیمت سوخت در جنگ ایران، برخی از قانونگذاران برای تعلیق مالیات گاز فدرال که برای بزرگراه ها و برنامه های حمل و نقل عمومی می پردازد، تلاش می کنند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 14:32</strong></span>
+                </div>
+                <p class='summary'>مالیات گاز فدرال در حال حاضر 18.4 سنت در هر گالن برای بنزین و 24.4 سنت در هر گالن برای سوخت دیزل تعیین شده است. این شامل مالیات های ایالتی نمی شود که اغلب بالاتر هستند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/fuel-prices-iran-war-federal-gas-tax-holiday-highway-public-transit-programs/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>حمله موشکی حوثی ها به اسرائیل</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 14:17</strong></span>
+                </div>
+                <p class='summary'>جنبش حوثی یمن مورد حمایت ایران برای اولین بار از زمان آغاز جنگ به اسرائیل حمله موشکی کرد.
+
+این گروه می‌گوید که رگبار موشک‌های بالستیک را «به منظور هدف قرار دادن سایت‌های نظامی حساس اسرائیل» شلیک کرده است، پس از اینکه اسرائیل اعلام کرد یک موشک را رهگیری کرده است.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w172zssn5g076vg' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>حوثی‌های مورد حمایت ایران ادعا می‌کنند اولین موشک به اسرائیل شلیک شده است و این نگرانی را ایجاد می‌کند که آنها به کشتی‌ها در دریای سرخ حمله کرده و ترافیک کانال سوئز را مختل کنند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 14:10</strong></span>
+                </div>
+                <p class='summary'>حدود 10 درصد تجارت جهانی دریایی - از جمله 40 درصد از ترافیک کشتی های کانتینری - هر ساله از این کانال عبور می کند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/iran-backed-houthis-first-missile-launch-israel-ships-red-sea-traffic-suez-canal/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>افزایش نفت باعث محبت شدید متحدان آمریکای لاتین ترامپ می شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 12:49</strong></span>
+                </div>
+                <p class='summary'>دولت‌های آمریکای لاتین از پاناما تا شیلی که از نظر سیاسی با دونالد ترامپ همسو بودند، اکنون ضربه‌ای از افزایش قیمت جهانی نفت ناشی از جنگ متحد آمریکا علیه ایران را جذب می‌کنند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-surge-elicits-tough-love-from-trumps-latin-american-allies' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>سقوط سهام ایالات متحده; Nasdaq 100 و Dow Industrials Enter Correction</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 10:53</strong></span>
+                </div>
+                <p class='summary'>در حالی که معامله گران از ترس اینکه افزایش قیمت نفت ناشی از تشدید جنگ ایران، اقتصاد جهانی را فلج خواهد کرد، از بازار سهام فرار کردند، فروش سهام آمریکا شتاب گرفت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-stocks-sink-nasdaq-100-and-dow-industrials-enter-correction' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>جنگ، نخبگان جهانی را مجبور می کند تا به ورطه شوک های دائمی خیره شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 10:36</strong></span>
+                </div>
+                <p class='summary'>جنگ ایران در نخبگان اقتصادی جهانی به جستجوی روح در مورد چگونگی واکنش به یک سری شوک‌هایی که هیچ نشانه‌ای از کاهش نشان نمی‌دهند، وادار می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/war-forces-global-elite-to-stare-into-abyss-of-perpetual-shocks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>ترسیم اقتصاد جهانی: تلفات رشد گسترده از جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 09:24</strong></span>
+                </div>
+                <p class='summary'>در ماه اول جنگ ایران، با افزایش بدبینانه نظرسنجی‌های تجاری نسبت به رشد اقتصادی، با افزایش قیمت نفت، احساسات در میان ارائه‌دهندگان و تولیدکنندگان خدمات جهان به طور همزمان گام برداشت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/charting-the-global-economy-extensive-growth-toll-from-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>حوثی ها در حالی وارد جنگ می شوند که ایران به خاطر حملات به سایت های هسته ای تلافی می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 09:12</strong></span>
+                </div>
+                <p class='summary'>حوثی‌ها صبح روز شنبه موشک‌های بالستیک را به سمت اسرائیل پرتاب کردند و این نشانه ورود آنها به جنگ یک ماهه ایران بود که قبلاً باعث هرج‌ومرج در بازارهای انرژی و کشته شدن هزاران نفر شده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/houthis-enter-war-as-iran-retaliates-over-nuclear-site-attacks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>باجه عوارض هرمز ایران به فلات قیمت L شکل اشاره دارد، نه اینکه معامله گران بهبود V شکل می خواهند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-28 09:05</strong></span>
+                </div>
+                <p class='summary'>شفافیت واقعی بازار تنها زمانی نمایان می‌شود که تمرکز خود را از واکنش‌های مالی زودگذر به واقعیت‌های مهندسی فیزیکی که جهان را قدرت می‌دهند تغییر دهیم.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/28/iran-hormuz-oil-price-l-shaped-plateau-not-v-recovery/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۸ مارس ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در این مقاله، به وضعیت جنگ ایران و تأثیرات آن بر جهان می‌پردازیم. این جنگ نه تنها بر ایران و کشورهای اطراف影响 گذاشته، بلکه بر اقتصاد جهانی و قیمت نفت نیز تأثیرات جدی داشته است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>جنگ ایران باعث شده که قیمت نفت افزایش پیدا کند و این افزایش قیمت به اقتصاد کشورهای مختلف影响 بگذارد. همچنین، این جنگ导致 شده که برخی از کشورها مثل اوکراین و عربستان به جنگ بپیوندند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>به نظر می‌رسد که این جنگ ادامه پیدا کند و导致 شود که قیمت نفت بیشتر افزایش پیدا کند. همچنین، ممکن است که این جنگ导致 شود که برخی از کشورها به جنگ بپیوندند و این导致 شود که جنگ بیشتر گسترش پیدا کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>از تاریخ ۲۸ مارس ۲۰۲۶، جنگ ایران شروع شده و导致 شده که قیمت نفت افزایش پیدا کند. در همین تاریخ، اوکراین و عربستان به جنگ پیوستند و导致 شد که جنگ بیشتر گسترش پیدا کند. در tarihهای بعد، قیمت نفت بیشتر افزایش پیدا کرد و导致 شد که اقتصاد کشورهای مختلف تحت تأثیر قرار گیرد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">۷۰% - به دلیل این که جنگ ایران و کشورهای اطراف ادامه پیدا کرده و导致 شده که قیمت نفت افزایش پیدا کند، احتمال دارد که جنگ ادامه پیدا کند و导致 شود که قیمت نفت بیشتر افزایش پیدا کند.</span></p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این جنگ نه تنها بر ایران و کشورهای اطراف تأثیر گذاشته، بلکه بر اقتصاد جهانی و قیمت نفت نیز تأثیرات جدی داشته است. این导致 شده که اقتصاد کشورهای مختلف تحت تأثیر قرار گیرد و导致 شود که قیمت نفت افزایش پیدا کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>کشورهای مختلفی مثل اوکراین، عربستان، روسیه و آمریکا به این جنگ پیوستند و导致 شده که جنگ بیشتر گسترش پیدا کند. هر یک از این کشورها به دلایل مختلفی به جنگ پیوستند، از جمله حمایت از ایران یا مخالفت با آن.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت به دلیل این جنگ افزایش پیدا کرده و导致 شده که اقتصاد کشورهای مختلف تحت تأثیر قرار گیرد. این افزایش قیمت导致 شده که مردم países مختلف تحت تأثیر قرار گیرند و导致 شود که اقتصاد آنها تحت تأثیر قرار گیرد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>از دیگر puntos مهمی که باید توجه کرد، این است که این جنگ导致 شده که برخی از کشورها به جنگ بپیوندند و این导致 شود که جنگ بیشتر گسترش پیدا کند. همچنین، این جنگ导致 شده که قیمت نفت افزایش پیدا کند و导致 شود که اقتصاد کشورهای مختلف تحت تأثیر قرار گیرد. بنابراین، باید منتظر بود و دید که این جنگ به کجا می‌انجامد.</p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
