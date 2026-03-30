@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-03-30 20:05</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-03-30 20:05</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>جنگ ایران و اوکراین با همپوشانی فزاینده جنگجویان در حال نزدیک شدن است، اما "ما هنوز در یک جنگ جهانی واقعی نیستیم"</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 19:27</strong></span>
+                </div>
+                <p class='summary'>با اعزام رئیس جمهور دونالد ترامپ به خاورمیانه برای حمله زمینی پیش بینی شده برای بازگشایی تنگه هرمز، مخاطرات بیشتر شده است.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/iran-ukraine-wars-combatants-overlap-us-israel-russia-uae-saudi-arabia/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>JPMorgan، Pimco می گویند که بازار اوراق قرضه ریسک کاهش سرعت را دست کم می گیرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 19:23</strong></span>
+                </div>
+                <p class='summary'>برخی از بزرگ‌ترین مدیران صندوق‌های اوراق قرضه وال استریت می‌گویند که بازارهای مالی خطر این را که جنگ ایالات متحده در ایران باعث کندی شدید اقتصاد در حال حاضر پراکنده شود، دست کم می‌گیرند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/jpmorgan-pimco-say-bond-market-is-underestimating-slowdown-risk' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>«حملات بسیار بیشتری در حال وقوع هستند که گزارش نمی‌شوند»: واکنش سایبری ایران در سراسر جهان خزیده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 15:57</strong></span>
+                </div>
+                <p class='summary'>در حالی که حجم بالایی از حملات سایبری مرتبط با جنگ دارد، در مورد آسیب به شبکه های اقتصادی یا نظامی، نسبتاً جزئی بوده است.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/iran-cyber-attacks-response-to-war-hacking/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>اقتصاد جهانی از جنگ در ایران ضربه می زند و هر چه بیشتر ادامه یابد هیچ کس دست نخورده نیست</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 15:51</strong></span>
+                </div>
+                <p class='summary'>جنگ همچنین خاطره اقتصادی بدی را از شوک های نفتی دهه 1970 از بین برده است: رکود تورمی.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/global-economy-impact-iran-war-gas-price/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>جنگ ایران سهام مگ 7 را به طعمه خرید تبدیل کرد. اما با وجود اینکه وال استریت انتظار دارد فناوری ایالات متحده عملکرد بهتری داشته باشد، هنوز هیچکس وارد عمل نشده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 15:09</strong></span>
+                </div>
+                <p class='summary'>مایکروسافت تنها در پنج ماه 32 درصد فروخته است.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/iran-war-mag-7-meta-microsoft-apple-google-stocks-price-president-trump/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>پالایشگاه فیلیپینی پترون نفت خام روسیه را می خرد، اگر جنگ ایران ادامه پیدا کند بیشتر به چشم می آید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 14:42</strong></span>
+                </div>
+                <p class='summary'>شرکت پترون، تنها پالایشگاه فیلیپین، 2.48 میلیون بشکه نفت خام از روسیه تهیه کرده است، زیرا این کشور آسیای جنوب شرقی در حال جست و جوی جهانی برای تامین کنندگان جایگزین برای حمایت از نیازهای انرژی داخلی با جنگ در ایران است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/philippine-refiner-petron-buys-russian-crude-eyes-more-if-iran-war-persists' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ایران گفت‌وگوهای دیپلماتیک را رد می‌کند و می‌گوید نیروهای آمریکایی به محض ورود «آتش می‌گیرند»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 14:34</strong></span>
+                </div>
+                <p class='summary'>پاکستان گفت وزرای خارجه عربستان سعودی، ترکیه و مصر بدون مشارکت آمریکا یا اسرائیل در اسلام آباد گفتگو می کنند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/iran-dismisses-diplomatic-talks-pakistan-ceasefire-us-troops/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>مذاکرات در پاکستان برای پایان دادن به جنگ خاورمیانه در جریان است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 13:16</strong></span>
+                </div>
+                <p class='summary'>با مذاکراتی که در اسلام آباد برای پایان دادن به جنگ در خاورمیانه در جریان است، از سفیر سابق پاکستان در ایالات متحده خواهیم شنید.
+
+همچنین در این برنامه: ما از میانمار می شنویم که در آن بحران جهانی انرژی باعث ایجاد صف های طولانی در پمپ بنزین ها شده است. و دارم…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w172zssn5g0b00f' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>زغال‌سنگ بازگشته و هسته‌ای بعدی است: جنگ ایران آینده انرژی آسیا را از نو می‌سازد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 09:00</strong></span>
+                </div>
+                <p class='summary'>تنگه بسته هرمز آسیا را وادار می کند که به طور همزمان به عقب - به زغال سنگ - و به جلو - به انرژی هسته ای و وسایل نقلیه الکتریکی نگاه کند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/iran-war-hormuz-asia-energy-crisis-coal-nuclear/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>عید فصح و عید پاک در اورشلیم با شدت گرفتن جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 08:28</strong></span>
+                </div>
+                <p class='summary'>اماکن مقدس اصلی اورشلیم بسته شده اند و حال و هوای پیش از عید فصح و عید پاک در حالی که جنگ ایران در پنجمین هفته خود ادامه دارد، فروکش کرده است. کرکره‌های فلزی تقریباً در تمام فروشگاه‌های شهر قدیمی کشیده شده‌اند و تنها ردپایی پراکنده روی سنگ‌های متروکه طنین‌انداز می‌کند…</p>
+                <div class='link'><a href='https://apnews.com/article/israel-iran-war-easter-passover-jerusalem-83dd39fc7f931970230542339cd1b827' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۹ marzo ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در حال حاضر جنگ در ایران و اوکراین در حال همپوشانی است و طرفین درگیر در هر دو جنگ با یکدیگر در حال رویارویی هستند. ایالات متحده نیز هزاران سرباز به خاورمیانه گسیل کرده است تا تنگه هرمز را بازگشایی کند. این وضعیت به افزایش قیمت نفت و کاهش اقتصادی در جهان منجر شده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>جنگ در ایران و اوکراین باعث شده است که بسیاری از کشورها به این درگیری‌ها وارد شوند. ایالات متحده، اسرائیل، روسیه، امارات متحده عربی و عربستان سعودی از جمله کشورهایی هستند که در این جنگ‌ها درگیر شده‌اند. این جنگ‌ها به افزایش قیمت نفت و کاهش اقتصادی در جهان منجر شده است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>به احتمال زیاد این جنگ‌ها ادامه خواهند داشت و ممکن است به یک جنگ جهانی تبدیل شوند. اما هنوز نمی‌توان گفت که این جنگ‌ها به کجا خواهد کشید. ممکن است که کشورهایی مانند چین و هند نیز به این درگیری‌ها وارد شوند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>جنگ در اوکراین از سال ۲۰۲۲ آغاز شد و جنگ در ایران نیز از سال ۲۰۲۶ 开始 شد. در ماه‌های اخیر، این جنگ‌ها به افزایش قیمت نفت و کاهش اقتصادی در جهان منجر شده است. در ۲۹ مارس ۲۰۲۶، هزاران سرباز آمریکایی به خاورمیانه گسیل شدند تا تنگه هرمز را بازگشایی کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">۶۰٪ - به دلیل درگیری‌های متعدد و افزایش قیمت نفت، احتمال جنگ جهانی افزایش یافته است. اما هنوز نمی‌توان گفت که این جنگ‌ها به یک جنگ جهانی تبدیل خواهند شد.</span></p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این جنگ‌ها به افزایش قیمت نفت و کاهش اقتصادی در جهان منجر شده است. این ситуации به افزایش بدهی کشورها و کاهش ارزش پول ملی منجر شده است. همچنین، این جنگ‌ها به کاهش تولید و افزایش بیکاری در جهان منجر شده است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>کشورهای许多ی در این جنگ‌ها درگیر شده‌اند. ایالات متحده، اسرائیل، روسیه، امارات متحده عربی و عربستان سعودی از جمله کشورهایی هستند که در این جنگ‌ها درگیر شده‌اند. همچنین، کشورهایی مانند چین و هند نیز ممکن است به این درگیری‌ها وارد شوند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت به دلیل این جنگ‌ها افزایش یافته است. این افزایش قیمت نفت به افزایش هزینه‌های تولید و کاهش مصرف در جهان منجر شده است. همچنین، این افزایش قیمت نفت به افزایش بدهی کشورها و کاهش ارزش پول ملی منجر شده است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>جنگ در ایران و اوکراین به افزایش نگرانی‌های امنیتی در جهان منجر شده است. همچنین، این جنگ‌ها به افزایش مهاجرت و کاهش جمعیت در کشورهای درگیر منجر شده است. باید توجه کرد که این جنگ‌ها به افزایش هزینه‌های انسانی و کاهش کیفیت زندگی در جهان منجر شده است.</p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
