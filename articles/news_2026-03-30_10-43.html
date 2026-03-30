@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-03-30 10:43</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-03-30 10:43</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>زغال‌سنگ بازگشته و هسته‌ای بعدی است: جنگ ایران آینده انرژی آسیا را از نو می‌سازد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 09:00</strong></span>
+                </div>
+                <p class='summary'>تنگه بسته هرمز آسیا را وادار می کند که به طور همزمان به عقب - به زغال سنگ - و به جلو - به انرژی هسته ای و وسایل نقلیه الکتریکی نگاه کند.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/29/iran-war-hormuz-asia-energy-crisis-coal-nuclear/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>عید فصح و عید پاک در اورشلیم با شدت گرفتن جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 08:28</strong></span>
+                </div>
+                <p class='summary'>اماکن مقدس اصلی اورشلیم بسته شده اند و حال و هوای پیش از عید فصح و عید پاک در حالی که جنگ ایران در پنجمین هفته خود ادامه دارد، فروکش کرده است. کرکره‌های فلزی تقریباً در تمام فروشگاه‌های شهر قدیمی کشیده شده‌اند و تنها ردپایی پراکنده روی سنگ‌های متروکه طنین‌انداز می‌کند…</p>
+                <div class='link'><a href='https://apnews.com/article/israel-iran-war-easter-passover-jerusalem-83dd39fc7f931970230542339cd1b827' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>جنگ با ایران ممکن است آغازگر عصر جدید هسته ای باشد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 07:04</strong></span>
+                </div>
+                <p class='summary'>تمایل دونالد ترامپ برای حمله به دشمنان در حالی که متحدان را به هم می زند، تهدیدی برای سوق دادن جهان به عصر جدید هسته ای است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/the-war-with-iran-may-be-ushering-in-a-new-nuclear-age' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>جنگ خاورمیانه با اولین حملات حوثی ها تشدید می شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 05:15</strong></span>
+                </div>
+                <p class='summary'>همزمان با دیدار دیپلمات‌های منطقه‌ای در پاکستان برای پایان دادن به جنگ، یک مقام عالی‌رتبه ایرانی به آمریکا درباره هرگونه تهاجم زمینی هشدار داد. وزرای خارجه عربستان سعودی، ترکیه و مصر قرار است روز دوشنبه بار دیگر در اسلام آباد دیدار کنند. در همین حال، رئیس اسرائیل…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-march-29-2026-26caaef651be1cb4d482b29adaa2d600' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>خوش بینی اقتصادی جهانی با طولانی شدن جنگ ایران کمرنگ می شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-03-29 04:05</strong></span>
+                </div>
+                <p class='summary'>حملات آمریکا و اسرائیل به ایران چشم انداز اقتصاد جهانی را تیره کرده است. این درگیری قیمت نفت، گاز طبیعی و کودهای شیمیایی را افزایش داده و بازارهای سهام جهانی را به لرزه انداخته است. کشورهای در حال توسعه مجبور به سهمیه بندی سوخت و یارانه دادن به انرژی شده اند.</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-war-global-economy-oil-1bcb0c616c5ca2e1b6a903c2cd64a4e4' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۹ اسفند</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در چند هفته گذشته، جنگ ایران و ایالات متحده آمریکا باعث ایجاد نگرانی‌های زیادی در جهان شده است. این جنگ نه تنها بر ایران و آمریکا تأثیر گذاشته، بلکه کشورهای دیگر را نیز تحت تأثیر قرار داده است. در این analiz، سعی می‌کنیم تا شما را در مورد آخرین اخبار و تحولات این جنگ و تأثیرات آن بر جهان آگاه کنیم.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>جنگ ایران و ایالات متحده آمریکا باعث بسته شدن تنگه هرمز شده است. این تنگه یکی از مهم‌ترین مسیرهای انتقال نفت در جهان است. به همین دلیل، کشورهای آسیایی مجبور شده‌اند به منابع انرژی دیگر مانند زغال‌سنگ و انرژی هسته‌ای روی بیاورند. همچنین، این جنگ باعث شده است که کشورهای دیگر در منطقه مانند اسرائیل و عربستان سعودی نیز وارد این جنگ شوند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>به احتمال زیاد، این جنگ در آینده نزدیک به سمت یک درگیری بزرگ‌تر بین کشورهای منطقه سوق پیدا کند. کشورهای دیگر مانند روسیه و چین نیز ممکن است وارد این جنگ شوند. البته، هنوز هم امید به صلح و گفتگو بین کشورهای درگیر وجود دارد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>از تاریخ ۲۹ اسفند، جنگ ایران و ایالات متحده آمریکا وارد هفته پنجم خود شده است. در این期间، چندین حمله هوایی و موشکی به ایران انجام شده است. همچنین، کشورهای دیگر در منطقه مانند اسرائیل و عربستان سعودی نیز وارد این جنگ شده‌اند. از طرف دیگر، کشورهای دیگر مانند روسیه و چین سعی می‌کنند تا از طریق دیپلماسی، این جنگ را خاتمه دهند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">۷۰٪ - به دلیل اینکه جنگ ایران و ایالات متحده آمریکا هنوز ادامه دارد و کشورهای دیگر نیز وارد این جنگ شده‌اند، احتمال درگیری بیشتر و جنگی بزرگ‌تر وجود دارد.</span></p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این جنگ نه تنها بر ایران و آمریکا تأثیر گذاشته، بلکه کشورهای دیگر را نیز تحت تأثیر قرار داده است. این جنگ باعث افزایش قیمت نفت و سایر منابع انرژی شده است و ممکن است به یک بحران اقتصادی در جهان تبدیل شود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>کشورهای دیگری مانند اسرائیل، عربستان سعودی، روسیه و چین نیز در این جنگ دخیل هستند. اسرائیل و عربستان سعودی از آمریکا حمایت می‌کنند، در حالی که روسیه و چین سعی می‌کنند تا از طریق دیپلماسی، این جنگ را خاتمه دهند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت به دلیل این جنگ افزایش یافته است. این افزایش قیمت نفت可能 به یک بحران اقتصادی در جهان تبدیل شود. به همین دلیل، کشورهای دیگر باید به منابع انرژی دیگر مانند انرژی هسته‌ای و انرژی‌های تجدیدپذیر روی بیاورند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>جنگ ایران و ایالات متحده آمریکا همچنین به یک بحران انسانی تبدیل شده است. بسیاری از مردم ایران و سایر کشورهای درگیر تحت تأثیر این جنگ قرار گرفته‌اند. به همین دلیل، سازمان‌های بین‌المللی باید به این افراد کمک کنند تا از این بحران خارج شوند.</p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
