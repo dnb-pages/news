@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-02 09:46</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-02 09:46</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>اوراق قرضه ایالات متحده با امید خروج ایران به شرط بندی های کاهش نرخ توسط فدرال رزرو افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 09:04</strong></span>
+                </div>
+                <p class='summary'>وزارت خزانه داری ایالات متحده با این گمانه زنی بالا رفت که پایان قریب الوقوع جنگ در ایران ممکن است راه را برای فدرال رزرو برای شروع مجدد کاهش نرخ بهره باز کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-bonds-gain-as-iran-withdrawal-hopes-fuel-fed-rate-cut-bets' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>با امید به پایان جنگ ایران، سهام آسیایی بیشترین رشد را در یک سال گرفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 09:04</strong></span>
+                </div>
+                <p class='summary'>سهام‌های آسیایی بیشترین جهش را در نزدیک به یک سال گذشته داشتند و رشد وال استریت را در خوش‌بینی نسبت به پایان جنگ در ایران در آینده نزدیک دنبال کردند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/asian-stocks-rally-most-in-a-year-on-hopes-iran-war-may-end' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>نفتکش حامل نفت خام ایران، هند را پس از 7 سال شکاف وارداتی سیگنال می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 08:59</strong></span>
+                </div>
+                <p class='summary'>یک کشتی تحت تحریم ایالات متحده که نفت خام ایران را از اعماق خلیج فارس حمل می کند، اکنون نشان می دهد که عازم هند است، که می تواند اولین واردات از این نوع در نزدیک به هفت سال باشد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/tanker-carrying-iran-crude-signals-india-after-7-year-import-gap' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>خریدار برتر روغن پخت و پز هند واردات را کاهش می دهد زیرا جنگ به تقاضا می رسد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 08:43</strong></span>
+                </div>
+                <p class='summary'>هند، بزرگ‌ترین خریدار روغن‌های گیاهی در جهان، واردات خود را کاهش می‌دهد، زیرا جنگ در ایران قیمت‌ها را بالا می‌برد و جرقه‌های کمبود سوخت را برمی‌انگیزد که تقاضا را در سراسر صنعت گسترده خدمات غذایی این کشور خفه می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/top-cooking-oil-buyer-india-slashes-imports-as-war-hits-demand' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>مشاوران می گویند پیش بینی رشد آلمان در جنگ ایران به نصف کاهش می یابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 08:23</strong></span>
+                </div>
+                <p class='summary'>به گفته مؤسسات تحقیقاتی برجسته این کشور، اقتصاد آلمان کمتر از نیمی از سرعتی که چند ماه پیش پیش بینی می شد به دلیل درگیری در خاورمیانه رشد خواهد کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/german-growth-forecast-cut-in-half-on-iran-war-advisers-say' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>جنگ ایران برنامه های هسته ای جنوب شرقی آسیا را تسریع می کند. کارشناسان می گویند آسان نخواهد بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 08:08</strong></span>
+                </div>
+                <p class='summary'>تنها نیروگاه هسته ای جنوب شرقی آسیا پس از اتهامات فساد هرگز مورد استفاده قرار نگرفت. 50 سال بعد، در بحبوحه یک شوک نفتی جدید، منطقه دوباره در حال تلاش است.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/01/southeast-asia-iran-war-nuclear-energy/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>گیلت ها و اوراق قرضه اروپایی با کاهش قیمت نفت بر خوش بینی جنگ ایران افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:57</strong></span>
+                </div>
+                <p class='summary'>اوراق قرضه دولتی بریتانیا و اروپا افزایش یافت و باعث شد بازدهی کاهش یابد، زیرا قیمت نفت به دلیل امید به پایان جنگ ایران در چند هفته آینده کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/gilts-and-european-bonds-surge-as-oil-drops-on-iran-war-optimism' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>کاهش قیمت نفت به زیر 100 دلار به دلیل خوش بینی نسبت به حل و فصل جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:52</strong></span>
+                </div>
+                <p class='summary'>نفت پس از آن که دونالد ترامپ، رئیس‌جمهور آمریکا بار دیگر پایان احتمالی جنگ ایران را نشان داد، سقوط کرد، حتی در شرایطی که تنگه هرمز تا حد زیادی بسته است و نیروهای آمریکایی بیشتری به منطقه می‌روند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-slides-below-100-on-optimism-over-iran-war-resolution' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>ترامپ درباره پایان جنگ ایران صحبت می کند، حتی با ادامه حملات در سراسر منطقه</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:47</strong></span>
+                </div>
+                <p class='summary'>حملات موشکی و هواپیماهای بدون سرنشین در سراسر خاورمیانه ادامه یافت، حتی پس از اینکه دونالد ترامپ، رئیس جمهور ایالات متحده، هشدار داد که جنگ می تواند به زودی پایان یابد و سهام آسیایی را بالا ببرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-talks-iran-war-end-even-as-attacks-continue-across-region' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Starmer's Touts Cost of Life به کاهش فشار ایران کمک می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:42</strong></span>
+                </div>
+                <p class='summary'>کیر استارمر، نخست‌وزیر بریتانیا، تلاش کرد تا توجه را به این موضوع جلب کند که دولتش چگونه به بریتانیایی‌ها در زمینه افزایش هزینه‌های زندگی کمک می‌کند، حتی در شرایطی که او با فشار فزاینده‌ای برای اعلام حمایت بیشتر به دلیل اثرات اقتصادی بحران ایران مواجه است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uks-starmer-touts-cost-of-living-help-to-ease-iran-pressure' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>ایران با نفتکش در سواحل قطر، فرودگاه کویت برخورد کرد و اسرائیل در حمله بیروت 5 نفر را کشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:38</strong></span>
+                </div>
+                <p class='summary'>ایران با یک نفتکش در سواحل قطر و فرودگاه بین المللی کویت برخورد کرد زیرا تهران برای اولین بار اذعان کرد که واشنگتن در مورد آتش بس احتمالی در تماس مستقیم بوده است. اسرائیل در روز چهارشنبه نسبت به شلیک آتش از سوی یمن و ایران هشدار داد.</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-1-2026-19cf516c2d2c614eb182dbad7a6592ef' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>ترامپ خروج از ایران را ظرف دو تا سه هفته پیش بینی می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:37</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا گفت که پایان جنگ با ایران را ظرف دو تا سه هفته پیش‌بینی کرده است و نشان می‌دهد که ایالات متحده تا حد زیادی به اهداف نظامی خود دست یافته است و حل و فصل مسائل مربوط به تنگه هرمز را به دیگر کشورها واگذار خواهد کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-envisions-withdrawal-from-iran-within-two-to-three-weeks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>افزایش خوش بینی سهام اروپا برای نتیجه گیری جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:27</strong></span>
+                </div>
+                <p class='summary'>پس از اینکه دونالد ترامپ، رئیس جمهور آمریکا گفت که پایان جنگ با ایران را ظرف دو تا سه هفته پیش بینی کرده است، سهام اروپا برای سومین روز افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-stocks-surge-on-optimism-for-iran-war-conclusion' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>بیت کوین پس از پایان دوره پنج ماهه شکست، سودهای اندکی حفظ می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:17</strong></span>
+                </div>
+                <p class='summary'>بیت کوین روز چهارشنبه پس از شکست یک زنجیره باخت 5 ماهه در ماه مارس، رشد خود را حفظ کرد، که همراه با سایر دارایی های ریسک به دلیل قصد دونالد ترامپ، رئیس جمهور ایالات متحده برای پایان دادن به جنگ با ایران در عرض چند هفته، تقویت شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bitcoin-holds-modest-gains-after-five-month-losing-streak-ends' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>هند برای گرم کردن تابستان آماده است زیرا جنگ ایران منابع انرژی را تحت فشار قرار داده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Bloomberg</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:10</strong></span>
+                </div>
+                <p class='summary'>در حالی که دما تا ماه آوریل نسبتاً ملایم خواهد بود، در چندین بخش از کشور احتمالاً روزهای موج گرما در ماه مه و ژوئن افزایش خواهد یافت.</p>
+                <div class='link'><a href='https://www.bloomberg.com/news/articles/2026-03-31/india-set-for-searing-summer-as-iran-war-strains-energy-supplies' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>ابرهای شوک انرژی 800 میلیارد دلار تامین مالی مرکز داده آسیایی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 07:06</strong></span>
+                </div>
+                <p class='summary'>شوک انرژی ناشی از جنگ ایران به طور فزاینده ای در گفتگوها در مورد معاملات مراکز داده برای بانکداران آسیایی که به تامین مالی میلیاردها دلار زیرساخت هوش مصنوعی در سراسر منطقه کمک کرده اند، ظاهر می شود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/energy-shock-clouds-800-billion-of-asian-data-center-financing' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>روسیه و اوکراین با توجه به تمرکز جهانی بر ایران، جنگ را تشدید می کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 06:36</strong></span>
+                </div>
+                <p class='summary'>ولادیمیر پوتین از موفقیت روسیه در به دست گرفتن کنترل کوپیانسک در شرق اوکراین در اواخر سال گذشته بسیار مهم بود، حتی در شرایطی که ولودیمیر زلنسکی بلافاصله با ارائه یک آدرس ویدیویی از این شهر این ادعا را به چالش کشید.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/russia-and-ukraine-set-to-intensify-war-as-world-focuses-on-iran' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>روپیه به 100 یک «قطعیت مجازی» برای برخی با وجود RBI کاهش یابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 06:05</strong></span>
+                </div>
+                <p class='summary'>در صورت طولانی شدن جنگ ایران، روپیه هند ممکن است به رکورد 100 دلار در هر دلار یا بیشتر از آن تضعیف شود، استراتژیست ها هشدار می دهند که تلاش مقامات برای کاهش 10 درصدی کاهش آن در سال گذشته ممکن است تنها تسکین موقتی باشد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/rupee-slide-to-100-a-virtual-certainty-for-some-despite-rbi' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>تولیدات آسیایی پابرجاست اما ترک ها به عنوان جنگ قیمت ها را افزایش می دهند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 06:05</strong></span>
+                </div>
+                <p class='summary'>تولید در بیشتر مناطق آسیا در ماه مارس گسترش یافت و فعالیت در کره جنوبی، مالزی و تایلند بهبود یافت، حتی در شرایطی که سایر اقتصادها شاهد تأثیر اختلالات عرضه انرژی ناشی از جنگ آمریکا و اسرائیل بر ایران بودند که قیمت نفت را بالاتر برد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/asia-manufacturing-holds-up-but-cracks-show-as-war-lifts-prices' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>سامسونگ و SK Hynix بیش از 11 درصد به بازار کره صعود کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 06:00</strong></span>
+                </div>
+                <p class='summary'>تراشه‌سازان باعث بازگشت سهام کره‌جنوبی شدند، زیرا امیدواری‌ها مبنی بر اینکه جنگ ایران ممکن است به پایان خود نزدیک شود، اشتهای ریسک را احیا کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/samsung-sk-hynix-jump-more-than-11-to-lift-korean-market' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>هند سوخت جت را برای چند ساعت دو برابر می کند و سپس معکوس می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 05:24</strong></span>
+                </div>
+                <p class='summary'>هند طی چند ساعت پس از رسیدن به رکورد، افزایش شدید قیمت سوخت جت برای پروازهای محلی را پس گرفت و تلاطم تازه‌ای را برای صنعتی به ارمغان آورد که تحت تأثیر جنگ در خاورمیانه قرار گرفته است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/india-doubles-jet-fuel-for-a-couple-of-hours-then-reverses' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>افزایش سه روزه طلا پس از اعلام ترامپ برای پایان جنگ با ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 05:20</strong></span>
+                </div>
+                <p class='summary'>طلا با توجه به سیگنال‌هایی که نشان می‌دهد جنگ در خاورمیانه ممکن است در حال نزدیک شدن به حل شدن باشد، رشد سه روزه خود را تمدید کرد و معامله‌گران تمرکز خود را از افزایش نرخ بهره به ریسک بلندمدت رکود اقتصادی تغییر دادند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/gold-extends-three-day-gain-after-trump-signals-end-to-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>فعالیت کارخانه چینی کاهش می یابد زیرا جنگ هزینه های صادرکنندگان را افزایش می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 04:54</strong></span>
+                </div>
+                <p class='summary'>بر اساس یک نظرسنجی خصوصی، فعالیت کارخانه‌های چین در ماه مارس برای شرکت‌های صادرات‌محور کاهش یافت، زیرا هزینه‌های آن‌ها افزایش یافت و این در تضاد با معیار رسمی بود که نشان می‌داد تولید علی‌رغم جنگ ایران رو به بهبود است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinese-factory-activity-slips-as-war-lifts-exporters-costs' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>در حالی که معامله گران می اندیشند که جنگ تماس ترامپ ممکن است طی هفته ها به پایان برسد، نفت بالا می رود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 04:48</strong></span>
+                </div>
+                <p class='summary'>قیمت نفت افزایش یافت زیرا معامله گران به درخواست دونالد ترامپ رئیس جمهور آمریکا مبنی بر اینکه جنگ ایران می تواند در عرض چند هفته در برابر ورود نیروهای آمریکایی بیشتر به منطقه و ادامه نزدیک به بسته شدن تنگه هرمز پایان یابد، افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-climbs-as-traders-weigh-trumps-call-war-could-end-in-weeks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>B50 Pivot اندونزی نشان می دهد که جنگ در حال افزایش تقاضای جهانی سوخت زیستی است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 04:33</strong></span>
+                </div>
+                <p class='summary'>چرخش ناگهانی اندونزی برای گسترش مأموریت بیودیزل خود آخرین نشانه ای است از اینکه چگونه جنگ در ایران در حال تغییر سیاست انرژی است و با ورود بیشتر به سوخت، عرضه جهانی روغن نباتی را محدود می کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/indonesias-b50-pivot-shows-war-is-stoking-global-biofuel-demand' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>واردات ال ان جی آسیا از سال 2022 تاکنون با کاهش عرضه در جنگ ایران بیشترین کاهش را داشته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 04:23</strong></span>
+                </div>
+                <p class='summary'>واردات گاز طبیعی مایع آسیایی در ماه گذشته بیشترین کاهش را در بیش از سه سال گذشته داشته است زیرا درگیری در خاورمیانه باعث کاهش عرضه و افزایش قیمت ها شده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/asia-lng-imports-drop-most-since-2022-as-iran-war-upends-supply' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>ارزان‌تر شدن کالاهای چینی تاثیر ایران بر تورم بریتانیا را کاهش می‌دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 04:23</strong></span>
+                </div>
+                <p class='summary'>پیامدهای اقتصادی جنگ دونالد ترامپ علیه ایران با توجه به نظارت بانک مرکزی انگلیس بر فشارهای قیمتی، بیشتر از سایر اقتصادهای بزرگ، انگلیس را تهدید می کند. با این حال یکی از سیاست های شاخص دیگر رئیس جمهور ایالات متحده – تعرفه های بالا – ج…</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/cheaper-chinese-goods-set-to-ease-iran-effect-on-uk-inflation' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>28</span>
+                <span class='title'>سهام و اوراق قرضه با خوش بینی افزایش یافتند: جنگ ایران به پایان می رسد: بازارها بسته می شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 04:19</strong></span>
+                </div>
+                <p class='summary'>سهام و اوراق قرضه با خوش‌بینی افزایش یافته است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/stocks-bonds-rise-on-optimism-iran-war-nears-end-markets-wrap' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>29</span>
+                <span class='title'>پس از افزایش امیدهای وال استریت به پایان جنگ ایران، سهام آسیایی جهش کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 03:11</strong></span>
+                </div>
+                <p class='summary'>پس از اینکه سهام آمریکا به بهترین روز خود در تقریبا یک سال اخیر رسید، سهام آسیایی به شدت افزایش یافته است، زیرا امیدواری‌ها مبنی بر اینکه جنگ ایران به زودی پایان خواهد یافت. Kospi کره جنوبی 6.4% و Nikkei 225 توکیو 4% در اوایل معاملات چهارشنبه افزایش یافتند. قیمت نفت ثابت است…</p>
+                <div class='link'><a href='https://apnews.com/article/stock-markets-war-oil-trump-iran-80a8391c0729872ae2a486526dbc8abd' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>30</span>
+                <span class='title'>آخرین جنگ ایران: ترامپ می گوید در حال بررسی خروج از ناتو است زیرا استارمر می گوید انگلیس میزبان مذاکرات درباره تنگه هرمز خواهد بود.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 00:56</strong></span>
+                </div>
+                <p class='summary'>پس از اینکه ترامپ در روز سه‌شنبه به کشورها گفت «نفت خود را بگیرید»، بریتانیا میزبان نشستی با ده‌ها کشور برای بازگشایی تنگه خواهد بود.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/live/c36r5p1l7w3t' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>31</span>
+                <span class='title'>ترامپ هزارتوی گزینه های بد در تنگه هرمز دارد. به همین دلیل است که برخی هشدار می‌دهند که دور شدن می‌تواند فراتر از «شکست ما در ویتنام» باشد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-03-31 22:07</strong></span>
+                </div>
+                <p class='summary'>به گفته منتقدان، واگذاری کنترل تنگه هرمز به منزله شکستی بدتر از ویتنام برای ایالات متحده است.</p>
+                <div class='link'><a href='https://fortune.com/2026/03/31/controlling-strait-hormuz-top-priority-iran-trump-abandon/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - آوریل 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش و جنگ زیادی در ایران وجود دارد که بر بسیاری از کشورها و اقتصاد جهانی تأثیر گذاشته است. اما این امید وجود دارد که جنگ به زودی پایان یابد و این امر بازارها و مردم را کمی خوشبین تر می کند. بیایید آن را تجزیه کنیم و بفهمیم چه اتفاقی دارد می افتد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>جنگ در ایران ادامه دارد و برای بسیاری از کشورها مشکلاتی ایجاد کرده است. گرفتن نفت را سخت‌تر می‌کند که برای بسیاری از چیزها مانند اتومبیل، هواپیما و گرم کردن خانه‌ها مهم است. این نیز بر قیمت چیزهایی مانند غذا و سایر کالاها تأثیر می گذارد. اخیراً نشانه هایی مبنی بر پایان جنگ به زودی دیده شده است، مانند رئیس جمهور ترامپ که گفت فکر می کند ممکن است ظرف چند هفته تمام شود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>اگر جنگ تمام شود، می تواند به این معنی باشد که قیمت نفت کاهش می یابد و این برای بسیاری از مردم خوب است. همچنین می تواند به این معنی باشد که کشورها دوباره تجارت با یکدیگر را آغاز کنند که به اقتصاد کمک می کند. اما اگر جنگ به پایان نرسد، می تواند به معنای مشکلات بیشتری برای جهان باشد، مانند قیمت های بالاتر و مواد غذایی کمتر. در حال حاضر همه چیز کمی نامشخص است، اما این امید وجود دارد که اوضاع به زودی بهتر شود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>جنگ در ایران چندی پیش آغاز شد و از آن زمان تا کنون فراز و نشیب های زیادی داشته است. اخیراً حملاتی به تانکرها و جاهای دیگر صورت گرفته است که اوضاع را بدتر کرده است. اما در چند روز اخیر، نشانه هایی از پایان جنگ، مانند اظهارات پرزیدنت ترامپ، دیده شده است. به سختی می توان گفت دقیقاً چه اتفاقی می افتد، اما به احتمال زیاد در هفته های آینده شاهد تحولات بیشتری خواهیم بود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>جنگ در ایران بر بسیاری از کشورها و اقتصاد جهانی تأثیر گذاشته است. به دست آوردن روغن را سخت‌تر می‌کند که برای خیلی چیزها مهم است. همچنین برای غذا و سایر کالاها مشکل ایجاد می کند. اگر جنگ تمام شود، می تواند به این معنی باشد که همه چیز به حالت عادی باز می گردد و این برای بسیاری از مردم خوب خواهد بود. اما اگر به پایان نرسد، می تواند به معنای مشکلات بیشتری برای جهان باشد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>کشورهای زیادی از جمله آمریکا، ایران و سایر کشورهای خاورمیانه درگیر جنگ در ایران هستند. برخی از کشورها مانند هند نیز تحت تأثیر جنگ قرار گرفته اند زیرا به نفت منطقه متکی هستند. بریتانیا و سایر کشورهای اروپایی نیز در این امر دخیل هستند و تلاش می کنند راه حلی برای این مشکل پیدا کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>جنگ در ایران بر قیمت نفت تأثیر می گذارد که برای بسیاری از مردم مهم است. اگر جنگ تمام شود، می تواند به این معنی باشد که قیمت نفت کاهش می یابد و این برای بسیاری از مردم خوب است. اما اگر جنگ تمام نشود، می تواند به این معنی باشد که قیمت نفت بالا می ماند و این برای بسیاری از مردم بد خواهد بود. همچنین بر قیمت غذا و سایر کالاها تأثیر می گذارد، بنابراین نکته مهمی است که باید مراقب آن بود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>چند نکته دیگر را باید در نظر داشت. یکی این که جنگ در ایران بر محیط زیست نیز تأثیر می گذارد، زیرا دستیابی به نفت و سایر منابع را سخت می کند. مورد دیگر این است که برای مردمی که در منطقه زندگی می کنند و برای تهیه غذا و سایر مایحتاج اولیه دچار مشکل هستند، مشکل ایجاد می کند. در پایان، شایان ذکر است که جنگ در ایران سایر نقاط جهان مانند آسیا و اروپا را نیز تحت تأثیر قرار داده است، بنابراین این یک مشکل جهانی است که نیازمند راه حل جهانی است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">60 درصد - جنگ در ایران همچنان ادامه دارد، اما نشانه هایی وجود دارد که ممکن است به زودی پایان یابد. پرزیدنت ترامپ گفته است که فکر می‌کند ظرف چند هفته آینده تمام می‌شود و این باعث می‌شود بازارها و مردم کمی خوشبین‌تر شوند. اما به سختی می توان به طور قطعی گفت، و هنوز چیزهای زیادی وجود دارد که ممکن است اشتباه پیش برود.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
