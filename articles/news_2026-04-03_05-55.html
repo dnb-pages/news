@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-03 05:55</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-03 05:55</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>با تکرار تهدید ترامپ برای حمله به نیروگاه های ایران، فلزات سقوط کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 05:49</strong></span>
+                </div>
+                <p class='summary'>پس از آنکه دونالد ترامپ، رئیس جمهور آمریکا تهدید کرد در صورت شکست مذاکرات برای پایان دادن به جنگ یک ماهه، تهدید به حمله به زیرساخت های غیرنظامی ایران را تکرار کرد، مس با سایر فلزات صنعتی سقوط کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/metals-fall-as-trump-repeats-threat-to-attack-iran-power-plants' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>کانادا کشور را به عنوان شریک انرژی «قابل اعتماد» به عنوان Oil Soars می‌پذیرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 05:28</strong></span>
+                </div>
+                <p class='summary'>مقام ارشد تجاری کانادا، کشورش را به عنوان یک تامین کننده انرژی باثبات و قابل اعتماد در بحبوحه آخرین جهش قیمت نفت متصل کرد، زیرا رئیس جمهور دونالد ترامپ گفت که عملیات نظامی علیه ایران ممکن است تشدید شود و به طور بالقوه اختلالات در جریان نفت از طریق ایران را طولانی تر کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/canada-plugs-nation-as-reliable-energy-partner-as-oil-soars' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>فروش ضعیف اوراق قرضه ژاپن پس از سخنرانی ترامپ، فروش جهانی را افزایش داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 05:08</strong></span>
+                </div>
+                <p class='summary'>فروش ضعیف اوراق قرضه معیار در ژاپن پس از اینکه دونالد ترامپ، رئیس جمهور آمریکا گفت که طی دو تا سه هفته آینده "بسیار سخت" به ایران ضربه خواهد زد، به فروش در بازارهای جهانی دامن زد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/japans-poor-bond-sale-stokes-global-selloff-after-trump-address' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>در حالی که ترامپ سیگنال‌های حمله شدیدتر به ایران را می‌دهد، بیت کوین با سهام سقوط کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 04:59</strong></span>
+                </div>
+                <p class='summary'>بیت کوین روز پنجشنبه پس از آنکه دونالد ترامپ، رئیس جمهور آمریکا اعلام کرد در هفته های آینده حملات سخت تری علیه ایران خواهد داشت، در آسیا سقوط کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bitcoin-tumbles-with-stocks-as-trump-signals-harder-iran-strikes' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>با تهدید ترامپ به تشدید جنگ در هفته های آینده، نفت جهش کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 04:37</strong></span>
+                </div>
+                <p class='summary'>پس از آن که دونالد ترامپ، رئیس جمهور آمریکا وعده تشدید جنگ در ایران در هفته های آتی را داد، نفت افزایش یافت و امیدها برای یک راه حل سریع را کاهش داد و اختلال در جریان انرژی از طریق تنگه حیاتی هرمز را طولانی کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-jumps-as-trump-threatens-war-escalation-over-coming-weeks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>کاهش فروش سهام خصوصی به دلیل هوش مصنوعی، جنگ شکست‌های استرس جدیدی را به ارمغان می‌آورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 04:22</strong></span>
+                </div>
+                <p class='summary'>فروش سهام خصوصی در سال جاری بیش از یک سوم کاهش یافته است، زیرا تحولات هوش مصنوعی و جنگ در ایران فشار زیادی را بر بازار خروج ضعیف وارد کرده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/private-equity-sales-slump-as-ai-war-bring-new-stress-fractures' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ترامپ بازار، اضطراب سیاسی را با جدول زمانی مبهم برای ایران تحریک می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 04:17</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس جمهور آمریکا در نهایت تلاش کرد تا به مردم آمریکا در مورد جنگ خود با ایران بفروشد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-stirs-market-political-angst-with-vague-timeline-for-iran' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>بریتانیا کشورها را برای بحث درباره بازگشایی تنگه هرمز گرد هم می‌آورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 04:14</strong></span>
+                </div>
+                <p class='summary'>سی و پنج کشور قرار است روز پنجشنبه برای بررسی راه‌های بازگشایی تنگه هرمز با یکدیگر دیدار کنند. این مسیر حیاتی کشتیرانی به دلیل درگیری ایالات متحده و اسرائیل با ایران به روی بیشتر ترافیک بسته شده است. کایر استارمر، نخست وزیر بریتانیا می گوید که این نشست مجازی…</p>
+                <div class='link'><a href='https://apnews.com/article/hormuz-strait-shipping-summit-uk-iran-ca2c6af551df98c81a39f2137e417856' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>پس از سخنرانی ترامپ، نفت افزایش یافت و سهام کاهش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 03:13</strong></span>
+                </div>
+                <p class='summary'>با بازگشت نوسانات به وال استریت پس از دو روز افزایش شدید، سهام بیشتر ضررهای قبلی خود را جبران کردند. S&P 500 0.1% سقوط کرد، Dow 142 واحد و Nasdaq 0.2% سقوط کرد. قیمت نفت همچنان بالا بود، اگرچه نسبت به بالاترین سطح قبلی کاهش داشت. غیره…</p>
+                <div class='link'><a href='https://apnews.com/article/stock-markets-war-oil-trump-iran-6fc90a2e50b1252cde130fc3e0ce0da3' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>تمرکز بر واقعیت: ادعاهای نادرست ترامپ در خطاب به ملت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 02:50</strong></span>
+                </div>
+                <p class='summary'>سخنرانی دونالد ترامپ، رئیس جمهور آمریکا به ملت در مورد جنگ ایران، همیشه به واقعیت ها وابسته نبود. ترامپ در اظهارات چهارشنبه شب خود اعلام کرد که وارث یک "کشور مرده و فلج" است و اقتصاد "بدون تورم" را تحویل داده است. اما در سال 2024، آخرین…</p>
+                <div class='link'><a href='https://apnews.com/article/trump-iran-fact-focus-gas-prices-inflation-821374c3c249ad0abf471843ce8e9557' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>ترامپ روز چهارشنبه در مورد جنگ ایران با ملت سخنرانی خواهد کرد - در اینجا انتظار می رود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 20:23</strong></span>
+                </div>
+                <p class='summary'>تحلیلگران نفت هشدار می‌دهند که آوریل بی‌رحمانه‌ترین ماه تاکنون برای قیمت‌های انرژی خواهد بود و سخنرانی رئیس‌جمهور ممکن است برای تغییر آن کافی نباشد.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/01/trump-address-nation-wednesday-iran-war-expectations/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>افزایش هزینه های جت بلو در جنگ در ایران به 9 دلار رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 19:31</strong></span>
+                </div>
+                <p class='summary'>"در حالی که ما می دانیم که افزایش هزینه ها هرگز ایده آل نیست، ما به دقت در نظر می گیریم تا اطمینان حاصل کنیم که این تغییرات فقط در صورت لزوم اجرا می شوند."</p>
+                <div class='link'><a href='https://fortune.com/2026/04/01/jetblue-hikes-checked-bag-fees-as-much-as-9-on-war-in-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>خرده فروشی در ماه فوریه قبل از جنگ ایران و افزایش قیمت گاز، 0.6 درصد افزایش یافته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-01 19:09</strong></span>
+                </div>
+                <p class='summary'>برخی از خرده فروشان در حال حاضر در مورد تأثیر افزایش قیمت بنزین بر مشتریان خود هشدار می دهند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/01/retail-sales-tick-up-0-6-in-february-before-iran-war-gas-price-spike/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 2026-04-02</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>وضعیت ایران در حال جدی‌تر شدن است و بر بسیاری از موارد مانند قیمت نفت، بازارهای سهام و حتی قیمت کالاهایی که می‌خریم تأثیر می‌گذارد. پرزیدنت ترامپ ایران را تهدید به حمله کرده است و این موضوع بسیاری از کشورها و بازارها را بسیار عصبی کرده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>رئیس جمهور ترامپ گفته است که ممکن است به ایران حمله کند و این همه را بسیار نگران کرده است. ایران و آمریکا مدت‌هاست که با مشکلاتی روبرو بوده‌اند و اکنون به نظر می‌رسد اوضاع حتی بدتر هم می‌شود. آمریکا تلاش می‌کند ایران را با برخی موارد موافقت کند، اما ایران از خواسته‌های آمریکا راضی نیست.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که وضعیت در چند هفته آینده جدی تر شود. رئیس جمهور ترامپ گفته است که با ایران کاری انجام خواهد داد، اما دقیقاً نگفته است که چه چیزی. این عدم اطمینان بسیاری از کشورها و بازارها را بسیار عصبی کرده است و این امکان وجود دارد که به زودی شاهد تغییرات بزرگی در جهان باشیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>در طول یک ماه گذشته، آمریکا و ایران مشکلات بیشتری داشته اند. آمریکا تلاش می‌کند ایران را با برخی موارد موافقت کند، اما ایران از خواسته‌های آمریکا راضی نیست. رئیس جمهور ترامپ گفته است که ممکن است به ایران حمله کند و این همه را بسیار نگران کرده است. در چند روز گذشته شاهد افزایش قیمت نفت، کاهش بازارهای سهام و بسیاری از کشورها درگیر این وضعیت بودیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این وضعیت برای تمام دنیا بسیار مهم است. اگر آمریکا و ایران وارد جنگ شوند، می‌تواند روی بسیاری از موارد مانند قیمت نفت، قیمت مواد غذایی و حتی امنیت بسیاری از کشورها تأثیر بگذارد. همچنین بسیاری از کشورها و بازارها را بسیار عصبی کرده است و این امکان وجود دارد که به زودی شاهد تغییرات بزرگی در جهان باشیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها از جمله آمریکا، ایران، کانادا، ژاپن و انگلیس درگیر این وضعیت هستند. برخی از کشورها، مانند کانادا، سعی می کنند از درگیری دور بمانند و فقط بر فروش نفت و سایر کالاهای خود تمرکز کنند. کشورهای دیگر مانند ژاپن در تلاش هستند تا به آرام شدن اوضاع و یافتن راه حل مسالمت آمیز کمک کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت به دلیل شرایط ایران بسیار بالا رفته است. این بدان معناست که ممکن است هزینه بیشتری برای پر کردن ماشین‌هایمان، گرم کردن خانه‌هایمان و خرید بسیاری از چیزهای دیگر هزینه شود. همچنین بسیاری از کشورها و بازارها را بسیار عصبی کرده است و این امکان وجود دارد که به زودی شاهد تغییرات بزرگی در جهان باشیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>موارد دیگری که باید در نظر داشت این است که وضعیت ایران فقط مربوط به قیمت نفت و جنگ نیست. این همچنین در مورد ایمنی بسیاری از کشورها و ثبات کل جهان است. همچنین بسیاری از مردم را در مورد شغل، خانه و خانواده خود بسیار نگران کرده است. همه ما باید سعی کنیم آگاه باشیم و برای هر تغییری که ممکن است رخ دهد آماده باشیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">60 درصد - وضعیت بسیار جدی است و به نظر می رسد رئیس جمهور ترامپ در حال آماده شدن برای انجام کاری با ایران است. با این حال، هنوز دقیقاً مشخص نیست که چه اتفاقی خواهد افتاد و بسیاری از کشورها و سازمان‌ها تلاش می‌کنند اوضاع را آرام کنند.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
