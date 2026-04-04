@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-04 08:04</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-04 08:04</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>کاهش تورم ترکیه از جنگ ایران در ماه مارس آسیبی ندیده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 08:01</strong></span>
+                </div>
+                <p class='summary'>با وجود فشارهای اقتصادی ناشی از جنگ ایران، تورم سالانه ترکیه در ماه مارس بیش از آنچه که اقتصاددانان انتظار داشتند کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/turkish-disinflation-unscathed-by-iran-war-in-march' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>رهبران فرانسه و کره جنوبی می گویند در تنگه هرمز با یکدیگر همکاری خواهند کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 07:31</strong></span>
+                </div>
+                <p class='summary'>امانوئل ماکرون، رئیس‌جمهور فرانسه و لی جائه میونگ، همتای کره‌جنوبی‌اش می‌گویند که توافق کرده‌اند برای کمک به بازگشایی تنگه هرمز با یکدیگر همکاری کنند. رهبران دو کشور در جلسه توجیهی مشترک خود در روز جمعه به سؤالات خود نپرداختند و توضیحی در مورد چگونگی ...</p>
+                <div class='link'><a href='https://apnews.com/article/south-korea-france-lee-macron-trump-iran-3b0c39d11cdc7e23b98dc0f8dbe0f491' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>معامله گران اوراق قرضه برای داده های شغلی با تمرکز اصلی جنگ ایران تنظیم می کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 06:35</strong></span>
+                </div>
+                <p class='summary'>معامله‌گران اوراق قرضه که بین نگرانی‌های رشد و تورم سرگردان شده‌اند، در حال آماده‌سازی برای مطالعه کلیدی در بازار کار ایالات متحده هستند، حتی در حالی که تداوم خصومت‌ها در خاورمیانه همچنان در مرکز توجه است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bond-traders-set-up-for-jobs-data-with-iran-war-still-main-focus' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>مکرون می گوید فرانسه و کره جنوبی می توانند برای ثبات هرمز تلاش کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 05:28</strong></span>
+                </div>
+                <p class='summary'>امانوئل ماکرون، رئیس‌جمهور فرانسه، زمینه را برای همکاری با کره جنوبی برای تثبیت وضعیت در تنگه هرمز می‌بیند، به شرطی که درگیری بین آمریکا و ایران کاهش یابد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/macron-says-france-south-korea-can-work-toward-hormuz-stability' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>هزینه‌های یوان برای کشتی‌هایی که از هرمز عبور می‌کنند، سهام پرداخت چینی را افزایش می‌دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 05:13</strong></span>
+                </div>
+                <p class='summary'>پس از اینکه وزارت بازرگانی اشاره کرد که یوان برای پرداخت عوارض عبور از تنگه هرمز استفاده می شود، سهام شرکت های چینی که پرداخت های فرامرزی ارائه می دهند، افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/yuan-fees-for-ships-to-pass-hormuz-boost-chinese-payment-stocks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>جنگ ایران با درگیری هر دو طرف و افزایش قیمت نفت به هفته پنجم نزدیک می شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 05:01</strong></span>
+                </div>
+                <p class='summary'>یک کانال وابسته به تلویزیون دولتی ایران مدعی شده است که یک خلبان جنگنده آمریکایی از هواپیمای خود بر فراز جنوب غرب ایران خارج شده است. مشخص نیست چه اتفاقی ممکن است برای این هواپیما افتاده باشد، از جمله اینکه آیا ایران مدعی سرنگون شدن آن بوده است یا…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-3-2026-a6365c6123cc8a696474f576d4ce7668' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>پالایشگاه نفت کویت مورد حمله پهپادی قرار گرفت در حالی که ترامپ تهدید به حمله به پل ها و نیروگاه های ایران کرد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 04:22</strong></span>
+                </div>
+                <p class='summary'>ایران یک شبه حملات جدیدی را به اسرائیل و کشورهای حاشیه خلیج فارس انجام داد و آتش سوزی در پالایشگاه نفت منا الاحمدی کویت گزارش شد.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/live/cgj0gn36px8t' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ترامپ بودجه سال 2027 را با افزایش عمده هزینه های پنتاگون رونمایی می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 04:01</strong></span>
+                </div>
+                <p class='summary'>کاخ سفید جزئیات بودجه سال 2027 رئیس جمهور دونالد ترامپ، از جمله درخواست 1.5 تریلیون دلاری برای هزینه های دفاعی را منتشر می کند. این بزرگترین در نوع خود در چند دهه اخیر است. رئیس جمهور جمهوری خواه حتی قبل از جنگ علیه ایران گفته بود که می خواهد…</p>
+                <div class='link'><a href='https://apnews.com/article/trump-2027-annual-budget-congress-defense-f95715d838be17afd9799208cd3182e3' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>ترامپ هیچ طرح B در ایران ندارد. او هرگز برنامه A زیادی نداشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> The Globe And Mail</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 22:56</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده به دلیل چیزی بیش از ناسزاگویی در مورد نارضایتی‌های قدیمی و دستاوردهای فرضی به روی آنتن رفت.</p>
+                <div class='link'><a href='https://www.theglobeandmail.com/business/commentary/article-donald-trump-iran-war-address-plan-b/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>ایروینگ کانادایی به نیوفاندلند برای نفت در مورد اختلال در ایران روی می آورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-02 21:07</strong></span>
+                </div>
+                <p class='summary'>بزرگترین پالایشگاه کانادا برای اولین بار از سال 2020 برای نفت خام به نیوفاندلند روی می‌آورد زیرا جنگ باعث قطع عرضه خلیج فارس می‌شود. ادامه مطلب</p>
+                <div class='link'><a href='https://financialpost.com/commodities/energy/oil-gas/irving-turns-to-newfoundland-for-oil' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 3 آوریل 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در حال حاضر اتفاقات زیادی با ایران در جریان است و بسیاری از کشورهای جهان را تحت تاثیر قرار داده است. ایالات متحده و ایران با هم درگیر هستند و باعث ایجاد مشکلاتی در قیمت نفت و تجارت می شود. بسیاری از کشورها مانند فرانسه و کره جنوبی در تلاش هستند تا به آرام کردن اوضاع کمک کنند. این کمی شبیه یک پازل بزرگ است، با قطعات زیادی که باید در کنار هم قرار گیرند تا همه چیز خوب پیش برود.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>آمریکا و ایران با هم درگیر هستند و حدود یک ماه است که ادامه دارد. ایران به برخی از کشورهای خاورمیانه حمله می کند و ایالات متحده در تلاش برای محافظت از آنها بوده است. این موضوع قیمت نفت را با مشکلات زیادی مواجه کرده است، زیرا ایران تولیدکننده بزرگ نفت است. برخی کشورها مانند ترکیه سعی می کنند از درگیری دور بمانند، اما همچنان بر اقتصاد آنها تأثیر می گذارد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که درگیری برای مدتی ادامه یابد، اما بسیاری از کشورها در تلاش هستند تا به یافتن راه حلی مسالمت آمیز کمک کنند. به عنوان مثال، فرانسه و کره جنوبی در تلاش برای بازگشایی تنگه هرمز، که یک آبراه مهم برای نفتکش ها است، با یکدیگر همکاری می کنند. ایالات متحده نیز در تلاش است تا راهی برای پایان دادن به درگیری بیابد، اما مشخص نیست در آینده چه اتفاقی خواهد افتاد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>این درگیری حدود یک ماه پیش، زمانی که آمریکا و ایران شروع به درگیری کردند، آغاز شد. از آن زمان تاکنون کشورهای زیادی درگیر شده اند و حملات و ضدحمله های زیادی صورت گرفته است. وضعیت هنوز بسیار نامشخص است و پیش بینی اینکه در آینده چه اتفاقی خواهد افتاد دشوار است. برخی از تاریخ‌های مهمی که باید به خاطر داشت، زمانی است که ایالات متحده و ایران برای اولین بار جنگ را آغاز کردند، و زمانی که فرانسه و کره جنوبی اعلام کردند که با هم همکاری خواهند کرد تا اوضاع را آرام کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این درگیری بسیاری از کشورهای جهان را تحت تأثیر قرار داده است و فقط مربوط به آمریکا و ایران نیست. این در مورد اقتصاد جهانی است، و اینکه چگونه همه ما برای تجارت و منابع به یکدیگر متکی هستیم. این همچنین در مورد ایمنی و امنیت بسیاری از کشورهای خاورمیانه است و اینکه چگونه می توانیم با یکدیگر برای جلوگیری از درگیری های بیشتر در آینده کار کنیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها از جمله آمریکا، ایران، فرانسه، کره جنوبی و بسیاری دیگر درگیر این درگیری هستند. برخی کشورها مانند ترکیه سعی می کنند از درگیری دور بمانند، در حالی که برخی دیگر مانند کانادا به دنبال منابع جدید نفت هستند زیرا درگیری تجارت را مختل می کند. جامعه بین‌المللی در تلاش است تا برای یافتن راه‌حلی مسالمت‌آمیز گرد هم آیند، اما همیشه به راحتی نمی‌توان در مورد آنچه که باید انجام داد به توافق رسید.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>درگیری باعث افزایش قیمت نفت می شود، زیرا ایران یک تولید کننده بزرگ نفت است و درگیری تجارت را مختل می کند. این بدان معناست که بسیاری از مردم باید برای بنزین و سایر محصولات متکی به نفت هزینه بیشتری بپردازند. همچنین بر اقتصاد تأثیر می گذارد، زیرا قیمت های بالاتر نفت می تواند تجارت و تجارت کشورها را با یکدیگر گران تر کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>یک چیز جالب این است که برخی کشورها مانند چین از مناقشه به عنوان فرصتی برای افزایش نفوذ خود در منطقه استفاده می کنند. چین از واحد پولی خود، یوان، برای پرداخت هزینه حمل و نقل نفت استفاده می کند که می تواند به تقویت اقتصاد این کشور کمک کند. همچنین مهم است که به یاد داشته باشیم که درگیری فقط در مورد نفت و تجارت نیست، بلکه در مورد ایمنی و امنیت بسیاری از مردم در خاورمیانه است. بسیاری از کشورها برای یافتن راه حلی مسالمت آمیز با یکدیگر همکاری می کنند و این امکان وجود دارد که مناقشه بدون درگیری بیشتر حل شود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">60% - وضعیت هنوز بسیار متشنج است و این احتمال وجود دارد که درگیری به یک جنگ تمام عیار تبدیل شود. با این حال، بسیاری از کشورها در تلاش برای یافتن راه حل مسالمت آمیز هستند و این امکان وجود دارد که مناقشه بدون درگیری بیشتر حل شود.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
