@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-05 05:59</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-05 05:59</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Search for missing US airman continues as Trump threatens 'hell' if Iran does not reach deal - follow live</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-04 00:17</strong></span>
+                </div>
+                <p class='summary'>In a post on Truth Social, the US president says Iran has 48 hours to make a deal or reopen the Strait of Hormuz, or "all hell will [rain] down on them".</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/live/cm29zmpdj3vt' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Checking a bag on United Airlines now costs $10 more as Iran war sends jet fuel costs up nearly 100% in major hubs</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 22:28</strong></span>
+                </div>
+                <p class='summary'>The average price for a gallon of jet fuel in Chicago, Houston, Los Angeles and New York reached $4.88 on Thursday, up from $2.50 before the conflict began on Feb. 28.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/03/checked-bag-fees-united-airlines-10-dollars-iran-war-jet-fuel-costs-oil-prices/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>At least one crew member still missing after Iran shoots down 2 U.S. aircraft while Trump says ‘it’s war’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 22:19</strong></span>
+                </div>
+                <p class='summary'>The Pentagon notified the House Armed Services Committee that the status of a second service member from the fighter jet was not known.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/03/iran-war-us-crew-member-missing-f15-shot-down-search-and-rescue-a10/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Inside President's Search for Way Out of Iran War...</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Time</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 21:34</strong></span>
+                </div>
+                <p class='summary'>Inside President's Search for Way Out of Iran War...
+
+ 
+ 
+ 
+ (First column, 1st story, link)
+
+ 
+
+ 
+
+ 
+ Related stories:Tehran Beefs Up Defenses, Recruits Children as It Preps for Ground War...
+Maintains significant missile launching capability...
+Surviv…</p>
+                <div class='link'><a href='https://time.com/article/2026/04/02/trump-iran-off-ramp/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>US fighter plane comes down in southern Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 21:18</strong></span>
+                </div>
+                <p class='summary'>The US pilot reportedly ejected and has been rescued, despite an Iranian bounty offered for his capture. Another crew member may still be missing in Iran. We hear the latest, and discuss the perils of rescue missions in hostile territory with former US Marine…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmxxvs02rm' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Bank of Italy Cuts Growth Forecast to 0.5% This Year and Next</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-03 18:12</strong></span>
+                </div>
+                <p class='summary'>The Bank of Italy lowered the country’s economic growth forecast for this year and next due to the impact of the US war on Iran.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bank-of-italy-cuts-growth-forecast-to-0-5-this-year-and-next' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-05</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>There's a lot of tension between the US and Iran right now, and it's affecting many things, including oil prices and air travel. The US and Iran have been having a disagreement, and it's gotten to the point where some US planes have been shot down. The US is trying to figure out what to do next, and other countries are getting involved too.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>The US and Iran have been having a disagreement, and it's gotten pretty serious. The US sent some planes to Iran, but Iran shot them down. Now, the US is trying to find a missing airman and figure out what to do next. The US president has given Iran an ultimatum, saying they need to make a deal or things will get worse.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It's hard to say for sure what will happen next, but it's likely that the US and Iran will keep talking and trying to find a way out of this situation. The US might try to put more pressure on Iran, and other countries might get involved to help calm things down.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>Here's what's happened so far: on February 28, the conflict between the US and Iran started. Since then, there have been several incidents, including US planes being shot down and a US airman going missing. The US president has been making statements and giving Iran ultimatums, and other countries have been getting involved.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This situation is important because it affects not just the US and Iran, but the whole world. If there's a war, it could affect oil prices, air travel, and even the economy. It's also a big deal because it's a conflict between two powerful countries, and it could have big consequences.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are getting involved in this situation, including European countries, China, and Russia. They're trying to help calm things down and find a way out of this situation. Some countries are also affected by the conflict, such as Italy, which has had to lower its economic growth forecast.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The conflict is affecting oil prices, which is a big deal because it affects how much we pay for gas and other things. The price of jet fuel has gone up nearly 100%, which is why some airlines are raising their fees. This is something to care about because it can affect our daily lives and the economy.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>One thing to keep in mind is that Iran is recruiting children to help with its defenses, which is very concerning. Also, the US is trying to find a way out of this situation, but it's not easy. The president is under a lot of pressure to do something, and it's not clear what the best solution is. Lastly, this situation is affecting not just the US and Iran, but also other countries and the global economy.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">60% - The situation is very tense, and it's possible that things could escalate into a full-blown war. However, both the US and Iran are trying to find a way out of this situation, so it's not a certainty.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
