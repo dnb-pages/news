@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-08 16:43</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-08 16:43</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ویدئوهای رسانه های اجتماعی نشان می دهد که ایرانی ها قبل از موعد مقرر ترامپ شروع به تشکیل زنجیره های انسانی در اطراف نیروگاه ها می کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 16:02</strong></span>
+                </div>
+                <p class='summary'>پس از اینکه ترامپ گفت یک تمدن تمام خواهد شد، تهران از شهروندان خواست تا از زیرساخت های حیاتی محافظت کنند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/iranian-human-chains-power-plants-trump-nuclear-weapon-civilization-will-die/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>سقوط خزانه‌ها قبل از حراج در حالی که جنگ ایران به افزایش قیمت نفت منجر می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 15:52</strong></span>
+                </div>
+                <p class='summary'>اوراق خزانه‌داری در بحبوحه افزایش قیمت نفت در آستانه ضرب‌الاجل اواخر سه‌شنبه دونالد ترامپ، رئیس‌جمهور آمریکا برای موافقت ایران با شرایط پایان دادن به حملات آمریکا، کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/treasuries-fall-ahead-of-auction-as-iran-war-stokes-oil-gains' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>همزمان با نزدیک شدن اولتیماتوم ترامپ به ایران، بیت کوین با دارایی های ریسک سقوط می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 15:45</strong></span>
+                </div>
+                <p class='summary'>این کاهش سود روز قبل را از بین برد، زمانی که بیت کوین برای اولین بار از ماه مارس برای مدت کوتاهی به بالای 70000 دلار رسید.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/bitcoin-slides-with-risk-assets-as-trumps-iran-ultimatum-looms/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>با نزدیک شدن به اولتیماتوم ترامپ، ایران از یک جنگ چندجانبه طولانی خبر می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 15:42</strong></span>
+                </div>
+                <p class='summary'>با نزدیک شدن به آخرین اولتیماتوم دونالد ترامپ، رئیس جمهور آمریکا به ایران برای موافقت با توافق آتش بس، تندروهایی که اکنون در تهران مسئول هستند، از ایده تشدید تنش و درگیری در سطح منطقه لذت می برند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-signals-long-multi-front-war-as-trump-ultimatum-nears' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>کارشناسان می گویند حمله به رآکتور اتمی ایران تشعشعات خلیج فارس را به خطر می اندازد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 15:16</strong></span>
+                </div>
+                <p class='summary'>با بازتاب ساعت حملات ایالات متحده علیه نیروگاه های ایران، مقامات هسته ای زنگ خطر را نسبت به یک رویداد رادیولوژیکی در سطح منطقه در صورتی که نیروهای اسرائیلی یا آمریکایی نیروگاه هسته ای بوشهر این کشور خلیج فارس را هدف قرار دهند، به صدا در می آورند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/striking-iran-atomic-reactor-risks-gulf-radiation-experts-say' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>هشدار هولناک ترامپ به ایران: تمدن کامل امشب خواهد مرد و دیگر برنخواهد گشت.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 14:22</strong></span>
+                </div>
+                <p class='summary'>ایران و آمریکا کمتر از 12 ساعت فرصت دارند تا توافق کنند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/trumps-warns-iran-a-whole-civilization-will-die-tonight-update-brent-crude-wti-crude-markets/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>حمله آمریکا به جزیره خارگ در حالی که ترامپ می‌گوید ایران می‌تواند «امشب بمیرد»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 14:04</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده به اهداف نظامی در سراسر جزیره خارگ ایران حمله کرد، در حالی که دونالد ترامپ، رئیس جمهور آمریکا تهدید خود را برای راه اندازی یک کمپین بمباران گسترده جدید در صورتی که تهران به توافقی برای پایان دادن به جنگ شش هفته ای دست یابد، تکرار کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-strikes-kharg-island-as-trump-says-iran-could-die-tonight' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ویلیامز فدرال رزرو انتظار تغییر کمی در تورم زمینه ای دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 13:54</strong></span>
+                </div>
+                <p class='summary'>جان ویلیامز، رئیس بانک فدرال رزرو نیویورک گفت که چشم انداز او از فشارهای قیمتی اساسی در ایالات متحده علیرغم انتظار او مبنی بر افزایش هزینه های انرژی ناشی از جنگ در ایران، تورم کلی را افزایش خواهد داد، تا حد زیادی تغییری نکرده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/feds-williams-expects-little-change-to-underlying-inflation' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>سفارشات کالاهای سرمایه اصلی ایالات متحده در آستانه جنگ خاورمیانه افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 13:44</strong></span>
+                </div>
+                <p class='summary'>سفارشات ایالات متحده برای تجهیزات تجاری در ماه فوریه افزایش یافت که نشان می دهد شرکت ها در حال پیشبرد برنامه های سرمایه گذاری قبل از جنگ ایران بودند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-core-capital-goods-orders-rose-ahead-of-middle-east-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>آقای رئیس جمهور دوست دارم آن را مخفی نگه دارم: افتخارات ترامپ درباره نجات ایران از مشاوران ارشد فلومکس</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 12:37</strong></span>
+                </div>
+                <p class='summary'>به گفته ترامپ، این هوانورد از مناطق کوهستانی بالا رفت و با استفاده از «یک دستگاه بسیار پیشرفته نوع بیپر» درخواست کمک کرد.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/trump-fighter-rescue-cia-secrets-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>رئیس‌جمهور ایران می‌گوید 14 میلیون نفر پیشنهاد داده‌اند که فقط برای مقابله با ترامپ جان خود را به خطر بیندازند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 12:31</strong></span>
+                </div>
+                <p class='summary'>ترامپ گفت: فردا شب تا ساعت 12 همه پل های ایران تخریب می شود. نیروگاه‌ها می‌سوزند، منفجر می‌شوند و دیگر هرگز مورد استفاده قرار نخواهند گرفت.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/irans-president-says-14-million-have-offered-to-risk-their-lives-just-to-stand-up-to-trump/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>انگلیس اعلام کرد که اجازه نمی دهد آمریکا از پایگاه های خود برای حمله به انرژی ایران استفاده کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 12:22</strong></span>
+                </div>
+                <p class='summary'>پس از تهدید دونالد ترامپ رئیس جمهور آمریکا به تشدید عملیات علیه تهران، دولت بریتانیا اعلام کرد که به آمریکا اجازه استفاده از پایگاه های نظامی بریتانیا برای حمله به زیرساخت های انرژی یا غیرنظامی ایران را نخواهد داد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-signals-it-wont-let-us-use-bases-for-strikes-on-iran-energy' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>کسب‌وکارهای کوچک «خوب کار می‌کنند.» این یک مشکل برای اتاق بازرگانی ایالات متحده است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 12:00</strong></span>
+                </div>
+                <p class='summary'>صاحبان مشاغل کوچک نسبت به جنگ ایران احساس ناراحتی می کنند. آنها به خوبی کار می کنند، اما با توجه به همه مشوق های مالیاتی ایجاد شده برای کمک به آنها در انجام کارهای بهتر، خوب نیست.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/small-business-iran-war-impact-drop-chamber-commerce-report/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>با افزایش ناامیدی، معامله گران برای ضرب الاجل ترامپ برای ایران آماده می شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 11:52</strong></span>
+                </div>
+                <p class='summary'>آخرین ضرب الاجل دونالد ترامپ، رئیس جمهور آمریکا برای موافقت ایران با یک توافق، چند ساعت دیگر باقی مانده است و سرمایه گذاران بار دیگر مجبورند خود را برای طیف وسیعی از نتایج احتمالی آماده کنند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/traders-brace-for-trumps-iran-deadline-as-frustration-grows' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>پاکستان و مصر با نزدیک شدن به مهلت ترامپ برای ایران، دیپلماسی را تقویت می کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 10:25</strong></span>
+                </div>
+                <p class='summary'>پاکستان و مصر با انبوهی از تماس ها در 24 ساعت گذشته قبل از پایان ضرب الاجل دونالد ترامپ، رئیس جمهور آمریکا برای تشدید درگیری، تلاش های دیپلماتیک خود را برای پایان دادن به جنگ ایران افزایش دادند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/pakistan-egypt-step-up-diplomacy-as-trumps-iran-deadline-looms' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>مورگان استنلی می گوید نفت برنت تحت فشار جنگ قرار گرفته، شکسته نشده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 10:14</strong></span>
+                </div>
+                <p class='summary'>به گفته مورگان استنلی، استرس فزاینده در بازار نفت که ناشی از جنگ خاورمیانه است، در قیمت‌های هنگفتی برای بشکه‌های سریع در دنیای واقعی ظاهر می‌شود، و به گفته مورگان استنلی، مجتمع گسترده‌تر برنت همانطور که باید کار می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/brent-oil-is-stressed-not-broken-by-war-morgan-stanley-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>با نزدیک شدن اولتیماتوم ترامپ به ایران، بیت کوین با دارایی های پرخطر سقوط می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 10:09</strong></span>
+                </div>
+                <p class='summary'>بیت‌کوین روز سه‌شنبه سقوط کرد، زیرا ارزهای دیجیتال در نوسانات بازار گسترده‌تر پیش از ضرب‌الاجل دونالد ترامپ، رئیس‌جمهور آمریکا برای ایران، گرفتار شده بودند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bitcoin-slides-with-risk-assets-as-trumps-iran-ultimatum-looms' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>ویلیام واتسون: بزرگراه را باز کن، ای نیوبرانزویکرهای دیوانه!</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 10:00</strong></span>
+                </div>
+                <p class='summary'>تصمیم برای گرفتن عوارض در بزرگراه ترانس کانادا در مرز نوا اسکوشیا مانند این است که ایران از تنگه هرمز عوارض بگیرد. ادامه مطلب را اینجا بخوانید</p>
+                <div class='link'><a href='https://financialpost.com/opinion/william-watson-open-the-highway-you-crazy-new-brunswickers' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>در ماه مارس با افزایش ترس از رکود تورمی، بخش خصوصی بریتانیا یکنواخت شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 08:53</strong></span>
+                </div>
+                <p class='summary'>بر اساس نظرسنجی که به کاهش ناگهانی شتاب و تهدید «رکود تورمی» اشاره کرد، رشد بخش خصوصی بریتانیا در ماه اول جنگ ایران متوقف شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-private-sector-flatlines-in-march-as-stagflation-fears-rise' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>Elderson از ECB، پس از افزایش انرژی، بر روی انتقال سبز تاکید می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 08:33</strong></span>
+                </div>
+                <p class='summary'>یکی از مقامات ارشد بانک مرکزی اروپا در مقاله ای که توسط فایننشال تایمز منتشر شد، نوشت: افزایش هزینه های انرژی به دلیل جنگ در خاورمیانه، آخرین یادآوری برای اروپا برای کاهش فوری اتکای خود به سوخت های فسیلی است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/ecbs-elderson-presses-green-transition-pitch-after-energy-surge' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>با افزایش خطرات خاورمیانه، ژاپن به انتقال نفت فراساحلی متکی است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 07:10</strong></span>
+                </div>
+                <p class='summary'>ژاپن به انتقال نفت از یک کشتی به کشتی به دور از خاورمیانه متکی است تا از عرضه نفت خام مطمئن شود و در عین حال نفتکش های خود را از منطقه درگیری که برای خدمه و کشتی ها بسیار خطرناک شده است، دور نگه می دارد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/japan-relies-on-offshore-oil-transfers-as-middle-east-risks-rise' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>هند به خرید نفت خام ونزوئلا بازگشت تا کاهش عرضه را کاهش دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Bloomberg</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 07:08</strong></span>
+                </div>
+                <p class='summary'>این کشور آسیای جنوبی که حدود 90 درصد نفت خام خود را وارد می کند، پس از جنگ با ایران که جریان های تنگه هرمز را مختل کرد، به دنبال جایگزین هایی است که معمولاً تقریباً 40 درصد نفت این کشور را ترانزیت می کند.</p>
+                <div class='link'><a href='https://www.bloomberg.com/news/articles/2026-04-07/india-returns-to-buying-venezuelan-crude-to-ease-supply-crunch' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>Dangote می گوید عرضه نفت خام نیجریه به پالایشگاه در ماه مارس دو برابر شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 07:05</strong></span>
+                </div>
+                <p class='summary'>نیجریه در ماه مارس عرضه نفت خام به پالایشگاه دانگوته را دوبرابر کرد زیرا بزرگترین تولیدکننده نفت آفریقا پس از جنگ با ایران که محموله‌های نفتی خاورمیانه را مختل کرد، برای تامین سوخت در دسترس قرار گرفت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/dangote-says-nigerian-crude-supply-to-refinery-doubled-in-march' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>با تهدید ترامپ به تشدید جنگ ایران، گاز اروپا افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 06:55</strong></span>
+                </div>
+                <p class='summary'>قیمت گاز طبیعی اروپا پس از تشدید تهدیدات دونالد ترامپ رئیس جمهور آمریکا برای از بین بردن زیرساخت های کلیدی ایران در صورتی که شرایط او برای توافق برای پایان دادن به مناقشه قبل از ضرب الاجل روز سه شنبه برآورده نشود، افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-gas-ticks-higher-as-trump-threatens-iran-war-escalation' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>سنگاپور به دنبال رشد اقتصادی و تورم بالاتر از جنگ ایران است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 06:09</strong></span>
+                </div>
+                <p class='summary'>سنگاپور انتظار دارد که رشد اقتصادی احتمالاً در اواخر سال آسیب ببیند، زیرا دولت شهرها برای افزایش تورم و قیمت برق از مناقشه خاورمیانه آماده می شوند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/singapore-braces-for-growth-hit-higher-inflation-from-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>با نزدیک شدن به مهلت ترامپ، ایران به سمت عربستان سعودی و اسرائیل شلیک می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 06:04</strong></span>
+                </div>
+                <p class='summary'>عربستان سعودی تنها جاده ای را که این کشور را به بحرین متصل می کند، پس از شلیک موشک های ایران به استان شرقی نفت خیز این کشور بسته است. آخرین اعتصاب‌های تهران در روز سه‌شنبه زمانی رخ داد که مقامات ایرانی از جوانان خواستند تا برای محافظت از نیروگاه‌ها زنجیره‌های انسانی در اطراف نیروگاه‌ها تشکیل دهند.</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-7-2026-421ee64fdc9a5c26460df8119c7d1b3f' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>تنظیم RBI برای حفظ نرخ ها در هنگام مواجهه با روپیه ضعیف: راهنمای سیاست</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 05:13</strong></span>
+                </div>
+                <p class='summary'>بانک مرکزی هند احتمالاً در روز چهارشنبه در اولین تصمیم سیاستی خود پس از جنگ ایران، نرخ بهره را حفظ خواهد کرد، زیرا با کاهش شدید روپیه دست و پنجه نرم می کند و در عین حال تلاش می کند از رشد اقتصادی حمایت کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/rbi-set-to-hold-rates-while-confronting-weak-rupee-policy-guide' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 7 آوریل 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>وضعیت بین آمریکا و ایران در حال حاضر بسیار متشنج است. رئیس جمهور آمریکا، دونالد ترامپ، به ایران اولتیماتوم داده است که با توافق موافقت کند و اگر این کار را نکنند، ممکن است درگیری بزرگی به وجود بیاید. این موضوع باعث نگرانی بسیاری از مردم شده و بر قیمت نفت و سایر موارد تأثیر می گذارد. ایران با تشکیل زنجیره‌های انسانی در اطراف مکان‌های مهمی مانند نیروگاه‌ها برای حمله احتمالی آماده می‌شود و کشورهای دیگر نیز تلاش می‌کنند به آرام کردن اوضاع کمک کنند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>ایالات متحده و ایران اختلافات زیادی داشته اند و اوضاع زمانی بدتر شد که رئیس جمهور ایالات متحده گفت که اگر ایران با توافق موافقت نکند، کل کشور ممکن است دچار مشکل بزرگی شود. ایران عقب نشینی نمی کند و آنها برای دفاع از خود آماده می شوند. آنها حتی از شهروندان خود می خواهند که زنجیره های انسانی را در اطراف مکان های مهم مانند نیروگاه ها تشکیل دهند تا از آنها در برابر حملات احتمالی محافظت کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که اوضاع قبل از بهتر شدن بدتر شود. اگر ایران با شروط آمریکا موافقت نکند، ممکن است درگیری بزرگی به وجود بیاید که نه تنها آمریکا و ایران، بلکه کل جهان را تحت تأثیر قرار خواهد داد. کشورهای دیگر در تلاش برای کمک به آرام کردن اوضاع هستند، اما معلوم نیست که آیا آنها موفق خواهند شد یا خیر.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>در چند هفته گذشته، آمریکا و ایران در حال تبادل تهدید و هشدار بوده اند. رئیس جمهور آمریکا به ایران اولتیماتوم داد تا با توافق موافقت کند و ضرب الاجل در حال نزدیک شدن است. ایران در حال آماده شدن برای حمله احتمالی است و کشورهای دیگر در تلاش هستند تا اوضاع را آرام کند. شرایط بسیار متشنج است و پیش بینی اینکه در آینده چه اتفاقی خواهد افتاد سخت است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این درگیری می تواند عواقب بزرگی برای کل جهان داشته باشد. می تواند بر قیمت نفت و سایر موارد مهم تأثیر بگذارد و حتی می تواند به جنگ بزرگتری منجر شود. این فقط در مورد ایالات متحده و ایران نیست. کشورهای دیگر نیز می توانند درگیر شوند و این می تواند بر ثبات جهانی تأثیر بگذارد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها درگیر این وضعیت هستند و همه آنها در تلاشند تا بفهمند چه کاری باید انجام دهند. برخی کشورها مانند انگلیس می گویند که اجازه نمی دهند آمریکا از پایگاه های آنها برای حمله به ایران استفاده کند. کشورهای دیگر مانند پاکستان و مصر در تلاش هستند تا با دیپلماسی به آرام شدن اوضاع کمک کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>این درگیری در حال حاضر بر قیمت نفت تأثیر می گذارد و در صورت تشدید اوضاع ممکن است بدتر شود. این بدان معناست که قیمت بنزین و سایر چیزهایی که متکی به نفت هستند ممکن است بالا برود که بر مردم سراسر جهان تأثیر می گذارد. مثل زمانی که یک طوفان بزرگ می آید و قیمت غذا و سایر چیزهای مهم بالا می رود - برای هیچکس خوب نیست.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>همچنین مهم است که توجه داشته باشیم که این درگیری فقط مربوط به ایالات متحده و ایران نیست. این همچنین در مورد سایر کشورهای منطقه مانند عربستان سعودی و اسرائیل است. همه آنها درگیر این وضعیت هستند و ممکن است تحت تأثیر اتفاقات بعدی قرار بگیرند. علاوه بر این، درگیری در حال حاضر بر اقتصاد جهانی تأثیر می گذارد و در صورت تشدید اوضاع می تواند بدتر شود. وضعیت بسیار پیچیده ای است و پیش بینی اینکه در آینده چه اتفاقی خواهد افتاد دشوار است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">70% - اوضاع بسیار متشنج است و به نظر می رسد هر دو طرف آماده درگیری هستند. رئیس جمهور ایالات متحده به صراحت گفته است که اگر ایران با توافق موافقت نکند، حاضر است اقدامی انجام دهد و ایران عقب نشینی نمی کند.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
