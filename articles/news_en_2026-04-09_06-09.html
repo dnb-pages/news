@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-09 06:09</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-09 06:09</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Frank Gardner on why Iran-US ceasefire is 'not the whole story'</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:01</strong></span>
+                </div>
+                <p class='summary'>Our security correspondent offers his analysis on the two-week ceasefire.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/sounds/play/p0nc4jzp' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Oil Surge May Drive Airlines to Buy New Jets, Airbus Says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:01</strong></span>
+                </div>
+                <p class='summary'>As the war with Iran continues to push oil prices higher, airlines could look to accelerate the retirement of older aircraft, potentially benefiting planemakers Airbus SE and rival Boeing Co.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-surge-may-drive-airlines-to-buy-new-jets-airbus-says' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Korean Stocks, Won Surge After Iran Ceasefire Brings Relief</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:56</strong></span>
+                </div>
+                <p class='summary'>South Korean assets surged after a last-minute temporary truce in the six-week old in the war in Iran raised hopes of easing energy supply disruptions, lifting risk appetite.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/korean-stocks-won-surge-after-iran-ceasefire-brings-relief' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>US and Iran Agree to Ceasefire Hours Before Trump Deadline</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:30</strong></span>
+                </div>
+                <p class='summary'>The US and Iran agreed to a two-week ceasefire expected to halt the American-Israeli military campaign, in exchange for Tehran reopening the Strait of Hormuz, portending a temporary de-escalation while broader tensions may remain unresolved.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-and-iran-agree-to-ceasefire-hours-before-trump-deadline' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Gold Climbs After Trump Agrees to a Two-Week Ceasefire in Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:15</strong></span>
+                </div>
+                <p class='summary'>Gold rose after US President Donald Trump and Iran agreed to a two-week ceasefire to finalize talks on ending the war that’s upended global markets.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/gold-climbs-after-trump-agrees-to-a-two-week-ceasefire-in-iran' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Shipowners Eye Hormuz Truce With 800 Vessels Still Trapped</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:55</strong></span>
+                </div>
+                <p class='summary'>Shipowners are rushing to understand the fine print of a US-Iran ceasefire that could temporarily unblock the Strait of Hormuz and open an exit for more than 800 vessels trapped in the Persian Gulf.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/shipowners-eye-hormuz-truce-with-800-vessels-still-trapped' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Japan’s Chiyoda Considers Resuming Work on Qatar LNG Project</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:44</strong></span>
+                </div>
+                <p class='summary'>Japan’s Chiyoda Corp. says it is considering resuming construction work on a giant liquefied natural gas export plant in Qatar, in a sign of cautious optimism hours after the US and Iran agreed a ceasefire.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/japans-chiyoda-considers-resuming-work-on-qatar-lng-project' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Putin Secures Another Strategic Ally as Trump Focuses on Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:19</strong></span>
+                </div>
+                <p class='summary'>Russia is providing aid to the military leadership in Madagascar as it tries to broaden its footprint in Africa.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/putin-secures-another-strategic-ally-as-trump-focuses-on-iran' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>US, Israel and Iran agree to a 2-week ceasefire but much remains unclear</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:14</strong></span>
+                </div>
+                <p class='summary'>Iran, the United States and Israel have agreed to a two-week ceasefire. The 11th-hour deal headed off U.S. President Donald Trump’s threat to unleash a bombing campaign that would destroy Iranian civilization. But hours after the announcement, Iran and Gulf A…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-8-2026-38d75d5e4f1c7339a1456fc99415bb2a' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Soybean Oil Tumbles After US, Iran Agree to Two-Week Ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:03</strong></span>
+                </div>
+                <p class='summary'>Soybean oil fell the most in three weeks after a temporary ceasefire between the US and Iran pushed crude prices lower, denting the appeal of crop-based biofuels. Palm oil also declined.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/soybean-oil-tumbles-after-us-iran-agree-to-two-week-ceasefire' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Asian shares soar after oil price decline in response to the Iran ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 03:23</strong></span>
+                </div>
+                <p class='summary'>Asian shares are surging as oil prices plunged after the U.S. and Iran agreed to a two-week ceasefire that includes the reopening of the Strait of Hormuz. Benchmarks rose in Wednesday trading in Japan, Australia, South Korea and China. Oil prices plunged belo…</p>
+                <div class='link'><a href='https://apnews.com/article/stock-markets-trump-iran-ceasefire-oil-2fc5ac7823bea71984b3578ec36aacee' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>US, Iran say they have agreed to a two-week ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 00:16</strong></span>
+                </div>
+                <p class='summary'>Iran says it has accepted a two-week ceasefire in the war, and will negotiate with the United States in Islamabad beginning Friday. President Donald Trump said Tuesday he’s pulling back on his threats to widen attacks.</p>
+                <div class='link'><a href='https://apnews.com/live/iran-war-israel-trump-04-07-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Oil prices plunge and shares jump on US-Iran ceasefire plan</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 23:40</strong></span>
+                </div>
+                <p class='summary'>Crude prices tumbled by as much as 15% on the conditional pause but is higher than before the war.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c8r40y3rv75o' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Trump agrees 2-week ceasefire, says Iran has proposed a ‘workable’ 10-point peace plan</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 23:19</strong></span>
+                </div>
+                <p class='summary'>Since the war began on Feb. 28, Trump has repeatedly backed off of deadlines just before they expire.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/trump-agrees-2-week-ceasefire-says-iran-has-proposed-a-workable-10-point-peace-plan/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>Oil Slumps After Pakistan Seeks Last-Minute Iran Extension</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 22:41</strong></span>
+                </div>
+                <p class='summary'>Oil slumped after US President Donald Trump pushed back a crucial deadline as negotiations advance to secure a ceasefire that would reopen Strait of Hormuz.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-slumps-after-pakistan-seeks-last-minute-iran-extension' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>Stocks soar in global relief rally as oil plunges on U.S.-Iran ceasefire deal</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 22:36</strong></span>
+                </div>
+                <p class='summary'>A wave of optimism swept through global markets after the U.S. and Iran reached a temporary ceasefire deal. Keep reading here.</p>
+                <div class='link'><a href='https://financialpost.com/investing/stocks-soar-oil-falls-iran-relief-rally' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>Oil Falls, US Stock Futures Gain on Ceasefire Bets: Markets Wrap</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 22:36</strong></span>
+                </div>
+                <p class='summary'>Oil slumped and US stock futures gained on optimism over a potential diplomatic resolution to the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-falls-us-stock-futures-gain-on-ceasefire-bets-markets-wrap' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>Fed’s Jefferson Says Rates Well Positioned Amid Uncertainty</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 22:16</strong></span>
+                </div>
+                <p class='summary'>Federal Reserve Vice Chair Philip Jefferson said the Iran war will stoke uncertainty and push US inflation higher in the near term, though the central bank’s policy setting remains appropriate.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/feds-jefferson-says-rates-well-positioned-amid-uncertainty' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>Trump's threat to end Iranian civilisation</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 21:15</strong></span>
+                </div>
+                <p class='summary'>The White House says Donald Trump is the only person who knows his plans for Iran, after his threat that a ‘whole civilisation will die’ if Tehran doesn't do a deal to end the war. The President's latest deadline for Iran to reopen the Strait of Hormuz or fac…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmy942hjn5' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>Markets cheer as Trump says he’s in ‘heated negotiations’ over a new Pakistani two-week ceasefire plan</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 21:12</strong></span>
+                </div>
+                <p class='summary'>Markets soared on the news, betting that he’ll accept.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/trump-reviewing-pakistani-ceasefireplan-strait-hormuz-markets-brent-crude-oil-price/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>Bond Investors Brace for Selloff as Trump’s Iran Deadline Nears</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 20:59</strong></span>
+                </div>
+                <p class='summary'>Bond investors who’ve seen losses on US Treasuries mount amid the unfolding war in the Middle East are positioning for even more declines as President Donald Trump’s deadline looms for Iran to agree a ceasefire deal.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bond-investors-brace-for-selloff-as-trumps-iran-deadline-nears' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>Goldman, JPMorgan Traders Map Stock Outcomes as War Risks Rise</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 20:54</strong></span>
+                </div>
+                <p class='summary'>Some of Wall Street’s largest trading desks are mapping an array of market outcomes tied to the Iran conflict, as investors grapple with uncertainty over the prospects for a ceasefire.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/goldman-jpmorgan-traders-map-stock-outcomes-as-war-risks-rise' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>Oil Slides on Signs US and Iran Still Negotiating End to War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 20:38</strong></span>
+                </div>
+                <p class='summary'>Oil prices fell in post-settlement trading as signs emerged that the US and Iran are still working through a possible ceasefire deal.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-slides-on-signs-us-and-iran-still-negotiating-end-to-war' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>2 years ago, Saudi Arabia quietly canceled the ‘petrodollar’ deal with America that wired the world economy for 50 years. Then war broke out in Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 20:28</strong></span>
+                </div>
+                <p class='summary'>China’s “petroyuan” system is a player in a way that it wasn’t before.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/what-is-petrodollar-petroyuan-saudi-china-dollar-strength/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>Brent Oil Hits Record $144 a Barrel in Key Physical Market</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 19:52</strong></span>
+                </div>
+                <p class='summary'>The world’s most important price for real-world oil barrels soared to a record, the latest evidence of global crude markets that are pricing increasingly scarce supply in the wake of the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/brent-oil-hits-record-144-a-barrel-in-key-physical-market' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>IMF Chief Warns World Is Ill-Equipped to Counter Iran War Risks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 19:07</strong></span>
+                </div>
+                <p class='summary'>The International Monetary Fund is poised to cut its forecasts for global growth as a result of the war in Iran, and sees danger in a world economy that’s ill-equipped to respond to shocks, the Fund’s chief said in an interview Tuesday.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/imf-chief-warns-world-is-ill-equipped-to-counter-iran-war-risks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>US Emergency Oil Moves to Distant Peru as Crude Market Convulses</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 18:15</strong></span>
+                </div>
+                <p class='summary'>Oil from the US emergency reserve is heading to unlikely destinations as the biggest crude-market disruption in history upends decades-old global energy flows.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-emergency-oil-moves-to-distant-peru-as-crude-market-convulses' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>28</span>
+                <span class='title'>US Stocks Decline as Trump’s Hormuz Deadline Approaches</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 18:10</strong></span>
+                </div>
+                <p class='summary'>US stocks dropped as investors weighed the odds of a protracted war in Iran as US President Donald Trump’s latest ultimatum to agree to a ceasefire deal looms.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-stocks-decline-as-trumps-hormuz-deadline-approaches' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 8, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The US and Iran have agreed to a two-week ceasefire, which is a temporary pause in the conflict. This means that fighting will stop for a little while, and the two sides will try to talk and find a way to resolve their differences. This is good news for now, but it's not a permanent solution, and we'll have to wait and see what happens next.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>The US and Iran were in a conflict, and things were getting worse. But then, they decided to stop fighting for a little while, and that's called a ceasefire. This happened because the US and Iran agreed to talk and try to find a way to resolve their differences. It's like when you and your friend have a disagreement, and you decide to take a break and talk about it later.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>Now that there's a ceasefire, the US and Iran will try to talk and find a way to resolve their differences. This might take some time, and it's hard to say what will happen next. But for now, it's good that the fighting has stopped, and we can hope that they'll find a way to get along. It's like when you're trying to solve a puzzle, and you need to take your time and think carefully.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>Here's what happened: the US and Iran were in a conflict, and then they agreed to a ceasefire. Before that, there were some scary moments, like when the US said it might attack Iran, and Iran said it would defend itself. But now, things are a little calmer, and we can hope that the ceasefire will last. The timeline is like a story, and it helps us understand what happened and why.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>The conflict between the US and Iran is important because it affects the whole world. When there's a war, it can make it harder for people to get the things they need, like food and oil. And it can also make people feel scared and unsure about the future. So, it's good that the US and Iran are trying to talk and find a way to resolve their differences. It's like when you're part of a big team, and you need to work together to achieve a common goal.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved in this conflict, like the US, Iran, and Israel. They all have different interests and goals, and it's hard to say who will do what next. It's like when you're playing a game with your friends, and you need to work together, but you also have your own goals and strategies.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The conflict between the US and Iran has affected the price of oil, which is like the juice that makes cars and trucks go. When there's a war, it can make it harder to get oil, and that can make the price go up. But now that there's a ceasefire, the price of oil might go down, which is good for people who need to buy gas for their cars. It's like when you're shopping for groceries, and you want to find the best price for the things you need.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>It's also important to know that the US and Iran have been enemies for a long time, and it's hard to say if they'll ever be friends. But for now, the ceasefire is a good thing, and we can hope that it will last. It's like when you're trying to make a new friend, and you need to take things slowly and be patient. Additionally, the conflict has affected many other countries, like Saudi Arabia and China, and it's hard to say how they will be involved in the future. It's like when you're part of a big community, and you need to work together to achieve common goals.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">I would say the probability of war is 30% right now. This is because the ceasefire is a good thing, but it's not a permanent solution. The US and Iran still have differences, and it's hard to say if they'll be able to resolve them. It's like when you're trying to fix a broken toy, and you're not sure if you have all the right pieces.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
