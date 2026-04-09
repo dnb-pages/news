@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-09 10:42</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-09 10:42</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>توافق آمریکا و ایران با آتش بس، کاهش ترس از بحران انرژی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 10:32</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده و ایران با یک آتش بس دو هفته ای موافقت کردند و تهران متعهد شد که تنگه هرمز را بازگشایی کند، آخرین توافقی که باعث شد دونالد ترامپ، رئیس جمهور آمریکا از تهدیدات برای تشدید جنگ عقب نشینی کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-and-iran-agree-to-ceasefire-easing-fears-of-energy-crisis' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آتش‌بس ترامپ کنترل تنگه هرمز را به ایران می‌دهد و مجتبی خامنه‌ای زنده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 10:09</strong></span>
+                </div>
+                <p class='summary'>هر آنچه که باید قبل از رسیدن به دفتر امروز صبح بدانید.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/08/trump-ceasefire-iran-control-strait-of-hormuz-mojtaba-khamenei-alive/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>جنگ ترامپ با ایران، آمریکا را در مقابل دشمنان ضعیف جلوه می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 10:06</strong></span>
+                </div>
+                <p class='summary'>آتش بس در ایران این دیدگاه را در بین دشمنان و ائتلاف ناتو تقویت کرده است که کارزار رئیس جمهور دونالد ترامپ علیه رژیم تهران نشان دهنده یک شکست استراتژیک است که چین و روسیه را تقویت می کند و در عین حال قدرت های آمریکا را هدر می دهد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trumps-iran-war-leaves-the-us-looking-weakened-to-adversaries' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>نشان می دهد PMI توسط سازندگان بریتانیا در تورم هزینه رکورد زده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 09:21</strong></span>
+                </div>
+                <p class='summary'>سازندگان بریتانیایی در ماه مارس با افزایش شدید قیمت سوخت و مواد خام در ایران، در حداقل سه دهه اخیر، شدیدترین شتاب را در فشار هزینه‌ها متحمل شدند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-builders-hit-by-record-pickup-in-cost-inflation-pmi-shows' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>جهش اوراق قرضه اروپا با کاهش قیمت انرژی در اثر آتش بس ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 09:10</strong></span>
+                </div>
+                <p class='summary'>اوراق قرضه آلمان و بریتانیا پس از سقوط قیمت انرژی در پی آتش بس بین ایالات متحده و ایران افزایش یافت و معامله گران را بر آن داشت تا در سال جاری شرط بندی برای افزایش نرخ بهره را کاهش دهند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-bonds-jump-as-energy-prices-drop-on-iran-ceasefire' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>سرمایه‌های کلان در خزانه‌ها انباشته می‌شوند، سهام هوش مصنوعی با محو شدن خطرات جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 09:10</strong></span>
+                </div>
+                <p class='summary'>برخی از بزرگ‌ترین شرکت‌های سرمایه‌گذاری جهان در حالی که دلار را می‌فروشند، اوراق قرضه و سهام هوش مصنوعی می‌خرند و شرط می‌بندند که عدم اطمینان ناشی از جنگ پس از آتش‌بس آمریکا و ایران از اوج خود گذشته است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/big-funds-pile-into-treasuries-ai-stocks-as-iran-war-risks-fade' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>پس از آتش‌بس ایران، سهام بازارهای نوظهور بیشترین رشد را از سال 2022 داشته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 09:00</strong></span>
+                </div>
+                <p class='summary'>بازگشت در دارایی‌های بازارهای نوظهور روز چهارشنبه شتاب گرفت و سهام به بهترین روز خود از سال 2022 رسید و ارزها پس از آتش‌بس بین ایالات متحده و ایران که قیمت نفت را کاهش داد، زیان‌های سال تا به امروز را پاک کردند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/emerging-market-stocks-surge-most-since-2022-after-iran-truce' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>سهام ویتنام پس از ارتقاء FTSE، آتش بس ایران و ایالات متحده افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 08:29</strong></span>
+                </div>
+                <p class='summary'>پس از آن که FTSE Russell ورود این کشور به بازارهای نوظهور را در اواخر سال جاری تایید کرد، سهام ویتنام افزایش یافت و این احساسات نیز از آتش بس دو هفته ای بین ایالات متحده و ایران تقویت شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/vietnam-stocks-rally-after-ftse-upgrade-nod-us-iran-ceasefire' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>جرمی بوون: آتش بس فضا می دهد اما راه حل نیست</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 08:25</strong></span>
+                </div>
+                <p class='summary'>جرمی بوون سردبیر بین المللی درباره آتش بس ایران و آمریکا صحبت می کند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/sounds/play/p0nc4ty7' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>چین به پالایشگاه‌های قوری اجازه می‌دهد نفت خام بیشتری برای مقابله با بحران ایران داشته باشند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 08:09</strong></span>
+                </div>
+                <p class='summary'>چین به پالایشگاه‌های مستقل سهمیه‌های واردات نفت خام بیشتری اعطا کرده است تا به آنها اجازه دهد به تولید سوخت در سطوح رسمی اجباری ادامه دهند و به پکن برای مقابله با اثرات مختل شدن عرضه از خلیج فارس کمک کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/china-allows-teapot-refiners-more-crude-to-cope-with-iran-crunch' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>دلار به پایین ترین حد خود در چهار هفته گذشته رسید زیرا آتش بس ریسک ریسک را افزایش می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 08:04</strong></span>
+                </div>
+                <p class='summary'>پس از توافق آمریکا و ایران با یک آتش‌بس دو هفته‌ای، دلار در برابر تمام همتایان اصلی خود کاهش یافت و با کاهش قیمت نفت، تقاضا برای یکی از مهم‌ترین تجارت‌های بهشت ​​جنگ را تضعیف کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/dollar-hits-four-week-low-as-ceasefire-boosts-risk-appetite' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>قیمت LNG آسیا پس از توافق برای بازگشایی هرمز به شدت کاهش می یابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 07:28</strong></span>
+                </div>
+                <p class='summary'>به گفته بازرگانان، پس از توافق آمریکا و ایران با آتش‌بس دو هفته‌ای که می‌تواند موقتاً تنگه هرمز را باز کند، قیمت گاز طبیعی مایع در آسیا تقریباً 17 درصد کاهش می‌یابد و به حدود 15 دلار در هر میلیون واحد حرارتی بریتانیا می‌رسد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/asia-lng-prices-set-to-fall-sharply-after-deal-to-reopen-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>با آتش‌بس ایران و آمریکا، سهام اروپا بیشترین افزایش را در یک سال اخیر داشته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 07:28</strong></span>
+                </div>
+                <p class='summary'>در پی توافق آمریکا و ایران با آتش‌بس دو هفته‌ای در ازای بازگشایی تنگه هرمز توسط تهران، سهام‌های اروپایی بیشترین افزایش را در یک سال گذشته داشتند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-stocks-soar-most-in-a-year-on-us-iran-ceasefire' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>جهش معاملات آتی سهام نسبت به توافق دو هفته ای آمریکا و ایران برای آتش بس</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 07:28</strong></span>
+                </div>
+                <p class='summary'>پس از اعلام آتش‌بس دو هفته‌ای دونالد ترامپ، رئیس‌جمهور آمریکا در جنگ با ایران، قیمت‌های آتی شاخص سهام آمریکا افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/stock-futures-jump-on-us-iran-agreement-for-two-week-ceasefire' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>یوان چین با افزایش آتش بس در ایران به بالاترین حد سه ساله رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 07:12</strong></span>
+                </div>
+                <p class='summary'>با کاهش تنش‌های ژئوپلیتیکی، یوان چین به بالاترین حد خود در سه سال اخیر رسید.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinas-yuan-climbs-to-three-year-high-on-iran-ceasefire-boost' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>قراردادهای آتی گاز اروپا بر سر توافق آتش بس ایران و آمریکا سقوط کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 07:02</strong></span>
+                </div>
+                <p class='summary'>گاز طبیعی اروپا پس از توافق آمریکا و ایران با آتش بس دو هفته ای که می تواند به طور موقت تنگه حیاتی هرمز را بازگشایی کند و بازارهای متشنج جهانی انرژی را کاهش دهد، سقوط کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-gas-futures-tumble-on-us-iran-ceasefire-agreement' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>تقاضای LNG چین از آشفتگی خاورمیانه بازنمی گردد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 07:02</strong></span>
+                </div>
+                <p class='summary'>با وجود آتش بس که در خاورمیانه اعلام شده است، امیدها برای بازگشت قوی تقاضای چین برای گاز طبیعی مایع در حال محو شدن است، زیرا تحلیلگران نسبت به خطرات طولانی عرضه و قیمت های بالاتر هشدار می دهند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinas-lng-demand-wont-bounce-back-from-middle-east-turmoil' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>شل می گوید که سود تجارت نفت با ایجاد هرج و مرج در ایران افزایش یافته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:57</strong></span>
+                </div>
+                <p class='summary'>شل اعلام کرد که نتایج سه ماهه اول این شرکت با عملیات تجارت نفت افزایش یافته است، حتی در شرایطی که دارایی های این شرکت در خاورمیانه به دلیل درگیری با ایران آسیب دیده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/shell-says-oil-trade-profit-surged-as-iran-war-caused-chaos' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>سفارش‌های کارخانه‌های آلمانی قبل از جنگ ایران، بازگشتی کوچک نشان دادند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:32</strong></span>
+                </div>
+                <p class='summary'>سفارش‌های کارخانه‌های آلمان در ماه فوریه، قبل از شروع جنگ با ایران، کمتر از آنچه انتظار می‌رفت، بازگشتند که خطر از بین بردن احیای بزرگ‌ترین اقتصاد اروپا را به دنبال دارد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/german-factory-orders-showed-small-rebound-ahead-of-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>ذخایر خارجی تایوان از سال 2011 به دلیل مداخله بیشترین کاهش را داشته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:32</strong></span>
+                </div>
+                <p class='summary'>ذخایر خارجی تایوان در ماه مارس شاهد شدیدترین کاهش ماهانه خود در نزدیک به 15 سال گذشته بود، زیرا بانک مرکزی دلار آمریکا را برای تثبیت ارز محلی در برابر خروج سرمایه ناشی از جنگ ایران فروخت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/taiwans-foreign-reserves-drop-most-since-2011-on-intervention' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>سهام آسیایی پس از آتش‌بس در ایران توسط ترامپ و باز شدن «فوری» هرمز افزایش یافت - حتی با وجود اینکه مشخص نیست این تنگه واقعاً چقدر باز است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:31</strong></span>
+                </div>
+                <p class='summary'>بازارهای آسیایی با این احتمال افزایش یافتند که نفت، گاز و کالاهای مورد نیاز دوباره بتوانند از طریق تنگه هرمز عبور کنند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/08/asian-markets-rally-us-iran-ceasefire-strait-of-hormuz-oil-uncertainty/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>دستکش ساز مالزیایی WRP به دلیل اختلالات جنگ در ایران تعطیل می شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:26</strong></span>
+                </div>
+                <p class='summary'>تولید کننده دستکش لاستیکی مالزیایی WRP Asia Pacific Sdn. با استناد به "اختلال شدید در زنجیره تامین انرژی و پتروشیمی جهانی" ناشی از مناقشه خاورمیانه، عملیات تجاری خود را در ماه جاری متوقف خواهد کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/malaysian-glove-maker-wrp-to-shut-down-over-iran-war-disruptions' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>استراتژیست ها می گویند که رالی امدادی آسیا به هرمز و نفت بستگی دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:16</strong></span>
+                </div>
+                <p class='summary'>به گفته استراتژیست ها، اعلامیه دونالد ترامپ مبنی بر آتش بس دو هفته ای بین ایالات متحده و ایران، در کوتاه مدت باعث آرامش بازارهای آسیایی می شود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/asias-relief-rally-hinges-on-hormuz-and-oil-strategists-say' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>فرانک گاردنر درباره چرایی آتش بس ایران و آمریکا «تمام ماجرا نیست»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:01</strong></span>
+                </div>
+                <p class='summary'>خبرنگار امنیتی ما تحلیل خود را در مورد آتش بس دو هفته ای ارائه می دهد.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/sounds/play/p0nc4jzp' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>ایرباس می گوید که افزایش نفت ممکن است خطوط هوایی را به سمت خرید جت های جدید سوق دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 06:01</strong></span>
+                </div>
+                <p class='summary'>از آنجایی که جنگ با ایران به افزایش قیمت نفت ادامه می‌دهد، شرکت‌های هواپیمایی می‌توانند به دنبال تسریع در بازنشستگی هواپیماهای قدیمی‌تر باشند که به طور بالقوه به نفع هواپیماسازان ایرباس اس ای و شرکت رقیب بوئینگ خواهد بود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-surge-may-drive-airlines-to-buy-new-jets-airbus-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>بورس های کره ای، پس از تسکین آتش بس ایران، افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:56</strong></span>
+                </div>
+                <p class='summary'>دارایی‌های کره جنوبی پس از یک آتش‌بس موقت در آخرین لحظه در جنگ شش هفته‌ای در ایران افزایش یافت و امیدها برای کاهش اختلالات عرضه انرژی و افزایش ریسک‌پذیری افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/korean-stocks-won-surge-after-iran-ceasefire-brings-relief' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>آمریکا و ایران ساعاتی قبل از ضرب‌الاجل ترامپ بر سر آتش‌بس توافق کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:30</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده و ایران با آتش بس دو هفته‌ای موافقت کردند که انتظار می‌رود عملیات نظامی آمریکا و اسرائیل را متوقف کند و در ازای بازگشایی تنگه هرمز توسط تهران، کاهش تنش موقتی را نشان دهد در حالی که تنش‌های گسترده‌تر ممکن است حل نشده باقی بماند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-and-iran-agree-to-ceasefire-hours-before-trump-deadline' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>28</span>
+                <span class='title'>پس از موافقت ترامپ با آتش بس دو هفته ای در ایران، طلا افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:15</strong></span>
+                </div>
+                <p class='summary'>پس از آن که دونالد ترامپ، رئیس جمهور آمریکا و ایران با آتش بس دو هفته ای برای نهایی کردن مذاکرات درباره پایان دادن به جنگی که بازارهای جهانی را به هم ریخته است، توافق کردند، قیمت طلا افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/gold-climbs-after-trump-agrees-to-a-two-week-ceasefire-in-iran' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>29</span>
+                <span class='title'>پس از اینکه ایران اعلام کرد توافق آتش‌بس با آمریکا نقض شده است، طلا افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 05:15</strong></span>
+                </div>
+                <p class='summary'>در حالی که رئیس مجلس ایران اعلام کرد توافق آتش بس موقت با آمریکا نقض شده است، قیمت طلا را کاهش داد. اکنون اینجا را بخوانید</p>
+                <div class='link'><a href='https://financialpost.com/commodities/gold-pares-gains-risk' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>30</span>
+                <span class='title'>نگاه مالکان کشتی به آتش بس هرمز با 800 کشتی هنوز به دام افتاده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:55</strong></span>
+                </div>
+                <p class='summary'>مالکان کشتی عجله دارند تا نشانه های آتش بس ایران و آمریکا را درک کنند که می تواند به طور موقت تنگه هرمز را باز کند و راه خروجی را برای بیش از 800 کشتی محبوس شده در خلیج فارس باز کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/shipowners-eye-hormuz-truce-with-800-vessels-still-trapped' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>31</span>
+                <span class='title'>Chiyoda ژاپن در نظر دارد کار پروژه LNG قطر را از سر بگیرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:44</strong></span>
+                </div>
+                <p class='summary'>شرکت چیودا ژاپن می گوید در حال بررسی از سرگیری کار ساخت و ساز کارخانه عظیم صادرات گاز طبیعی مایع در قطر است که این نشانه خوش بینی محتاطانه ساعاتی پس از توافق آمریکا و ایران برای آتش بس است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/japans-chiyoda-considers-resuming-work-on-qatar-lng-project' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>32</span>
+                <span class='title'>پوتین متحد استراتژیک دیگری را با تمرکز ترامپ بر ایران تضمین می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:19</strong></span>
+                </div>
+                <p class='summary'>روسیه به رهبری نظامی در ماداگاسکار کمک می کند زیرا تلاش می کند ردپای خود را در آفریقا گسترش دهد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/putin-secures-another-strategic-ally-as-trump-focuses-on-iran' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>33</span>
+                <span class='title'>ایالات متحده، اسرائیل و ایران بر سر آتش بس 2 هفته ای توافق کردند، اما هنوز خیلی چیزها نامشخص است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:14</strong></span>
+                </div>
+                <p class='summary'>ایران، آمریکا و اسرائیل بر سر آتش بس دو هفته ای توافق کردند. توافق ساعت 11 به تهدید دونالد ترامپ رئیس جمهور ایالات متحده مبنی بر راه اندازی کمپین بمب گذاری که تمدن ایران را نابود می کند، منتهی شد. اما ساعاتی پس از اعلام، ایران و خلیج الف…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-8-2026-38d75d5e4f1c7339a1456fc99415bb2a' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>34</span>
+                <span class='title'>نفت سویا پس از آمریکا سقوط کرد و ایران با آتش بس دو هفته ای موافقت کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 04:03</strong></span>
+                </div>
+                <p class='summary'>پس از آتش‌بس موقت بین ایالات متحده و ایران که باعث کاهش قیمت‌های نفت شد و جذابیت سوخت‌های زیستی مبتنی بر محصولات زراعی را کاهش داد، روغن سویا بیشترین کاهش را در سه هفته اخیر داشت. روغن پالم نیز کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/soybean-oil-tumbles-after-us-iran-agree-to-two-week-ceasefire' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>35</span>
+                <span class='title'>پس از کاهش قیمت نفت در واکنش به آتش بس ایران، سهام آسیایی افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 03:23</strong></span>
+                </div>
+                <p class='summary'>با کاهش قیمت نفت پس از توافق آمریکا و ایران با آتش بس دو هفته ای که شامل بازگشایی تنگه هرمز می شود، سهام آسیا در حال افزایش است. شاخص ها در معاملات چهارشنبه در ژاپن، استرالیا، کره جنوبی و چین افزایش یافت. قیمت نفت کاهش یافت…</p>
+                <div class='link'><a href='https://apnews.com/article/stock-markets-trump-iran-ceasefire-oil-2fc5ac7823bea71984b3578ec36aacee' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>36</span>
+                <span class='title'>آمریکا و ایران می گویند با آتش بس دو هفته ای موافقت کرده اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-08 00:16</strong></span>
+                </div>
+                <p class='summary'>ایران می گوید که آتش بس دو هفته ای در جنگ را پذیرفته است و از روز جمعه در اسلام آباد با ایالات متحده مذاکره خواهد کرد. دونالد ترامپ، رئیس‌جمهور آمریکا روز سه‌شنبه گفت که از تهدیدات خود برای گسترش حملات عقب‌نشینی می‌کند.</p>
+                <div class='link'><a href='https://apnews.com/live/iran-war-israel-trump-04-07-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>37</span>
+                <span class='title'>کاهش قیمت نفت و جهش سهام به دلیل طرح آتش بس ایران و آمریکا</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 23:40</strong></span>
+                </div>
+                <p class='summary'>قیمت نفت خام با توقف مشروط تا 15 درصد کاهش یافت اما نسبت به قبل از جنگ بیشتر شد.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c8r40y3rv75o' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>38</span>
+                <span class='title'>ترامپ با آتش‌بس 2 هفته‌ای موافقت کرد، می‌گوید ایران یک طرح صلح 10 ماده‌ای «قابل اجرا» را پیشنهاد کرده است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 23:19</strong></span>
+                </div>
+                <p class='summary'>از زمان آغاز جنگ در 28 فوریه، ترامپ بارها از ضرب الاجل ها درست قبل از پایان آنها عقب نشینی کرده است.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/07/trump-agrees-2-week-ceasefire-says-iran-has-proposed-a-workable-10-point-peace-plan/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>39</span>
+                <span class='title'>پس از اینکه پاکستان به دنبال توسعه ایران در آخرین لحظه است، نفت سقوط کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-07 22:41</strong></span>
+                </div>
+                <p class='summary'>پس از آن که دونالد ترامپ، رئیس‌جمهور آمریکا، با پیشروی مذاکرات برای تضمین آتش‌بسی که تنگه هرمز را بازگشایی می‌کند، یک ضرب‌الاجل حیاتی را به عقب انداخت، قیمت نفت کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-slumps-after-pakistan-seeks-last-minute-iran-extension' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 2026-04-08</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا و ایران با آتش بس دو هفته ای موافقت کرده اند که ترس از بحران انرژی را کاهش داده و به کاهش قیمت نفت منجر شده است. این پیشرفت به بازارهای جهانی آرامش بخشیده است، اما مشخص نیست که آینده چه خواهد بود. بیایید آنچه را که در حال رخ دادن است و معنای آن برای جهان است، تجزیه کنیم.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>ایالات متحده و ایران درگیری داشتند که بازار جهانی انرژی را تحت تأثیر قرار داد. ایالات متحده تهدید کرده بود که جنگ را تشدید می کند، اما در آخرین لحظه توافقی برای آتش بس دو هفته ای حاصل شد. به عنوان بخشی از این توافق، ایران با بازگشایی تنگه هرمز که یک آبراه حیاتی برای حمل و نقل نفت است، موافقت کرده است. این امر به کاهش ترس از بحران انرژی کمک کرده و به کاهش قیمت نفت منجر شده است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>در کوتاه مدت، آتش بس احتمالا پابرجا خواهد ماند و قیمت نفت احتمالا به کاهش خود ادامه خواهد داد. با این حال، مشخص نیست که پس از پایان دوره دو هفته ای چه اتفاقی خواهد افتاد. ایالات متحده و ایران هنوز اختلافات زیادی دارند و این احتمال وجود دارد که این درگیری در آینده دوباره تشدید شود. جامعه بین‌المللی به دقت زیر نظر خواهد داشت تا ببیند اوضاع چگونه پیش می‌رود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>درگیری بین آمریکا و ایران از چند هفته پیش آغاز شد و هر دو طرف به تبادل تهدید و حملات پرداختند. با افزایش قیمت نفت و نوسان بازارهای جهانی، وضعیت به سرعت تشدید شد. همانطور که به نظر می رسید اوضاع بدتر می شود، ایالات متحده و ایران با یک آتش بس دو هفته ای موافقت کردند. آتش بس در حال حاضر اجرا می شود و جهان منتظر است ببیند در آینده چه اتفاقی خواهد افتاد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>درگیری بین ایالات متحده و ایران بخشی از یک مبارزه ژئوپلیتیکی بزرگتر برای نفوذ در خاورمیانه است. این منطقه برای تامین انرژی جهانی حیاتی است و هرگونه بی ثباتی در آنجا می تواند عواقب گسترده ای داشته باشد. ایالات متحده، ایران و سایر کشورها همگی برای قدرت و نفوذ در حال رقابت هستند که می تواند منجر به تنش و درگیری شود. آتش بس فعلی یک تحول مثبت است، اما تنها بخشی از یک پازل بسیار بزرگتر و پیچیده تر است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها به طور مستقیم یا غیرمستقیم درگیر مناقشه آمریکا و ایران هستند. آمریکا از حمایت برخی از متحدان خود مانند اسرائیل و عربستان سعودی برخوردار است، در حالی که ایران از حمایت کشورهای دیگر مانند روسیه و چین برخوردار است. جامعه بین المللی اوضاع را از نزدیک زیر نظر دارد و بسیاری از کشورها خواستار حل و فصل مسالمت آمیز درگیری هستند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>درگیری بین آمریکا و ایران تاثیر قابل توجهی بر قیمت نفت داشته است. هنگامی که درگیری ها تشدید شد، قیمت نفت به شدت افزایش یافت که می تواند اثرات منفی بر اقتصاد جهانی داشته باشد. با این حال، با آتش بس، قیمت نفت کاهش یافته است که می تواند به تحریک رشد اقتصادی کمک کند. به عنوان یک مصرف کننده، ممکن است متوجه شوید که قیمت بنزین یا سایر فرآورده های نفتی کاهش یافته است که می تواند تسکین خوبی باشد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>شایان ذکر است که وضعیت خاورمیانه پیچیده و چندوجهی است. کشورها و بازیگران مختلفی درگیر هستند و هر کدام علایق و انگیزه های خاص خود را دارند. ایالات متحده و ایران تنها دو نفر از بازیگران این درام بزرگتر هستند. علاوه بر این، درگیری تأثیر انسانی قابل توجهی داشته است، به طوری که بسیاری از مردم آواره یا تحت تأثیر جنگ قرار گرفته اند. با پیشرفت شرایط، آگاه ماندن و در نظر گرفتن پیامدهای احتمالی هر اقدام یا تصمیمی ضروری است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">40 درصد - آتش بس احتمال وقوع جنگ را در کوتاه مدت کاهش داده است، اما هنوز ابهامات و نقاط اشتعال بالقوه زیادی وجود دارد. ایالات متحده و ایران دارای سابقه درگیری طولانی هستند و این امکان وجود دارد که آتش بس در هر زمانی به هم بخورد.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
