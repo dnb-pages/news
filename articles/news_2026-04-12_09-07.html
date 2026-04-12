@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-12 09:07</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-12 09:07</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ریلاینس به دنبال تایید دولت برای خرید نفت خام ایران است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Bloomberg</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 07:11</strong></span>
+                </div>
+                <p class='summary'>پس از اعطای معافیت های دولت ترامپ که قرار است در ماه جاری منقضی شود، پالایشگاه های هندی خرید نفت روسیه را افزایش دادند.</p>
+                <div class='link'><a href='https://www.bloomberg.com/news/articles/2026-04-10/reliance-seeks-india-government-approval-to-buy-iranian-crude' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ونس همزمان با آغاز مذاکرات صلح ایران و آمریکا وارد پاکستان شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 06:48</strong></span>
+                </div>
+                <p class='summary'>معاون رئیس جمهور ایالات متحده، جی دی ونس، روز شنبه وارد پاکستان شد تا با ایران گفت و گوهایی با هدف تثبیت راه حلی پایدار برای یک درگیری شش هفته ای پس از آتش بس شکننده ای که چند روز پیش برقرار شد، انجام دهد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/vance-arrives-in-pakistan-as-us-iran-peace-talks-set-to-kick-off' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>به آتش بس «شکننده» در خاورمیانه امیدواریم</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 00:30</strong></span>
+                </div>
+                <p class='summary'>این هفته با تهدید دونالد ترامپ رئیس جمهور ایالات متحده مبنی بر اینکه یک تمدن تمام خواهد مرد آغاز شد و با مذاکرات صلح به پایان رسید. ما افرادی را از سراسر خاورمیانه گرد هم می آوریم تا تجربیات خود را در چند روز گذشته به اشتراک بگذارند. از ایرانیان می شنویم در…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/p0ncrxt5' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>تحلیلگر می گوید که این شرکت نفتی TSX می تواند تا 20 درصد در جنگ ایران و بحران تنگه هرمز جهش کند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-10 21:44</strong></span>
+                </div>
+                <p class='summary'>هفته سهام: RBC 30 ایده برتر جهانی، مورد عجیب کاهش ارزش گذاری ها و افزایش چشم انداز درآمد و موارد دیگر را به روز می کند. ادامه مطلب</p>
+                <div class='link'><a href='https://financialpost.com/investing/tsx-oilsands-major-jump-20-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>ایران می‌گوید تا زمانی که لبنان آتش‌بس نشود، مذاکره نمی‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-10 21:16</strong></span>
+                </div>
+                <p class='summary'>ایران پیش شرط هایی را برای آغاز مذاکرات با آمریکا از جمله آتش بس در لبنان تعیین کرده است. پرزیدنت ترامپ اصرار داشت که ایران تنها یک کارت برای بازی در مذاکرات دارد و آن هم مهار تنگه هرمز است. همچنین در این برنامه:…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmy942s7cg' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 12 آوریل 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در حال حاضر چیزهای زیادی در مورد ایران در جریان است، اما نگران نباشید، من اینجا هستم تا آن را برای شما تجزیه کنم. ایران و آمریکا پس از یک درگیری بزرگ در تلاش برای برقراری صلح هستند و کشورهای دیگری مانند هند نیز درگیر آن هستند. همه چیز در مورد نفت، ایمنی، و اینکه چه کسی مسئول است. بیایید نگاهی دقیق‌تر بیندازیم و ببینیم چه معنایی برای جهان دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>بنابراین، آنچه اتفاق می‌افتد این است که ایران و آمریکا درگیر جنگ بزرگی بودند، اما اکنون تلاش می‌کنند تا مسائل را به هم بزنند. معاون رئیس جمهور آمریکا، جی. در همین حال، هند به خرید نفت از ایران فکر می کند، که یک معامله بزرگ است، زیرا می تواند بر قیمت نفت و کنترل دریاها تأثیر بگذارد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>در مرحله بعد، می‌توان انتظار گفت‌وگوهای بیشتر بین ایران و آمریکا را داشت و امیدواریم که آنها بتوانند در مورد برخی چیزها به توافق برسند. اما ایران می‌گوید تا زمانی که در لبنان آتش‌بس برقرار نشود، مذاکره نخواهند کرد. همه چیز کمی پیچیده است، اما اساساً، همه سعی می کنند بفهمند چگونه با هم کنار بیایند و نفت را به اشتراک بگذارند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>این چیزی است که تاکنون اتفاق افتاده است: یک درگیری بزرگ بین ایران و آمریکا، سپس آتش‌بس، و اکنون آنها در مورد برقراری صلح صحبت می‌کنند. هند شروع به خرید نفت بیشتر از روسیه کرد، اما اکنون ممکن است به جای آن از ایران شروع به خرید کند. معاون رئیس جمهور آمریکا به تازگی برای دیدار با ایران وارد پاکستان شده است و ما منتظر هستیم تا ببینیم چه اتفاقی می افتد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>بنابراین، همه اینها چه معنایی برای جهان دارد؟ خب، این یک معامله بزرگ است، زیرا ایران و ایالات متحده دو کشور بسیار مهم هستند و کاری که انجام می دهند بر دیگران تأثیر می گذارد. اگر آنها بتوانند صلح برقرار کنند، می تواند برای کل جهان خوب باشد، زیرا به معنای جنگ کمتر و ثبات بیشتر است. اما اگر آنها نتوانند به توافق برسند، می تواند منجر به مشکلات بیشتر و حتی افزایش قیمت نفت شود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>کشورهای زیادی از جمله هند، روسیه و پاکستان در این امر دخیل هستند. هند می خواهد از ایران نفت بخرد، روسیه به هند نفت می فروشد و پاکستان میزبان مذاکرات ایران و آمریکا است. همه چیز به هم مرتبط است و هرکسی در تلاش است تا به دنبال منافع خود باشد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت یک معامله بزرگ است زیرا روی قیمت تمام شده چیزها مانند بنزین برای ماشین شما تأثیر می گذارد. اگر ایران و آمریکا نتوانند به توافق برسند، می تواند به معنای افزایش قیمت نفت باشد که برای همه بد خواهد بود. اما اگر آنها بتوانند صلح کنند، می تواند به معنای ثبات بیشتر قیمت نفت باشد که برای اقتصاد خوب است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>نکته دیگری که باید در نظر داشت این است که همه اینها بسیار پیچیده است و نظرات و علایق مختلفی در آن دخیل هستند. این فقط در مورد ایران و ایالات متحده نیست. این در مورد کل منطقه و نحوه تعامل همه کشورهای مختلف است. اما نگران نباشید، ما آن را زیر نظر خواهیم داشت و سعی می کنیم همه آن را معنا کنیم.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">من می گویم احتمال جنگ حدود 30 درصد است. این به این دلیل است که با وجود اینکه همه صحبت می کنند، هنوز اختلافات و چیزهای زیادی وجود دارد که ممکن است اشتباه پیش برود. اما این امکان نیز وجود دارد که آنها بتوانند مسائل را حل کنند و از درگیری بیشتر اجتناب کنند.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
