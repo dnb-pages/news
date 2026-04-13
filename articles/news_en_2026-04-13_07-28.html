@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-13 07:28</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-13 07:28</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Two Supertankers U-Turn in Hormuz as US-Iran Talks Break Down</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:22</strong></span>
+                </div>
+                <p class='summary'>Two empty supertankers attempted to make their way through the Strait of Hormuz and into the Persian Gulf on Sunday, only to make a last-minute U-turn just as peace negotiations between the US and Iran broke down, threatening a fragile ceasefire.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/two-supertankers-u-turn-in-hormuz-as-us-iran-talks-break-down' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Global Funds Flee Indian Stocks at Record Pace on Growth Fears</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:17</strong></span>
+                </div>
+                <p class='summary'>Global funds are dumping Indian equities at a record clip as an energy shock from the US-Iran war threatens to derail the outlook of the world’s fastest-growing major economy.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/global-funds-flee-indian-stocks-at-record-pace-on-growth-fears' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>US, Iran Fail to Reach Peace Agreement After Marathon Talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 03:24</strong></span>
+                </div>
+                <p class='summary'>The US and Iran failed to reach an agreement after marathon talks in Pakistan on the weekend, a major setback to finding a lasting resolution to the six-week war in the Middle East.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-iran-fail-to-reach-peace-agreement-after-marathon-talks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>JD Vance leaves Pakistan after marathon talks with Iran end without a deal as Tehran refuses U.S. demand not to develop nuclear weapons</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 03:05</strong></span>
+                </div>
+                <p class='summary'>The latest bargaining lasted 21 hours, Vance said, with the vice president in constant communication with U.S. President Donald Trump and others in the administration.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/jd-vance-pakistan-iran-talks-end-us-demand-nuclear-weapons-development/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Australia Acts to Secure Urea Amid Supply Risk From Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 01:47</strong></span>
+                </div>
+                <p class='summary'>Australia set up a government working group with the fertilizer industry to safeguard urea supplies at risk from disruptions linked to the war in Iran, Agriculture Minister Julie Collins said.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/australia-acts-to-secure-urea-amid-supply-risk-from-iran-war' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Trump downplays talks for ceasefire deal with Iran, claiming military victory. ‘It doesn’t matter. From the standpoint of America, we win’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 23:15</strong></span>
+                </div>
+                <p class='summary'>“Let’s see what happens – maybe they make a deal maybe they don’t,” the president said.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/trump-iran-war-ceasefire-talks-deal-military-victory-jd-vance/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Iran war: We spoke to the man making Lego-style AI videos that experts say are powerful propaganda</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 23:13</strong></span>
+                </div>
+                <p class='summary'>"Slopaganda" is too weak a term to capture how powerful this "highly sophisticated" content is, one expert says.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cjd8jrd1vnyo' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>‘This is the last warning.’ Iran threatens U.S. warships after they throw down the gauntlet for winner-take-all Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 22:39</strong></span>
+                </div>
+                <p class='summary'>"One of the things that commercial ships were waiting to see was whether or not this strait was clear, and sailing two destroyers in is a big one."</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/iran-war-us-warships-strait-of-hormuz-transit-irgc-ceasefir-talks/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Iran-US peace talks continue into the night</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 21:09</strong></span>
+                </div>
+                <p class='summary'>US and Iranian officials are continuing with their direct talks with Pakistan in Islamabad on bringing an end to conflict in the Middle East. The US Central Command says two American navy ships have sailed through the Strait of Hormuz, in the first such move …</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmy942w48k' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>World Finance Chiefs Head to IMF With a Sense of Déjà Vu</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 20:21</strong></span>
+                </div>
+                <p class='summary'>Economic policymakers are about to gather in Washington to assess the damage President Donald Trump’s war on Iran has caused to growth in the Middle East and beyond.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/world-finance-chiefs-head-to-imf-with-a-sense-of-deja-vu' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>The petrodollar faces increased risk, but a petroyuan is ‘far-fetched’ as fears of U.S. losing superpower status are overhyped, strategist says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 19:36</strong></span>
+                </div>
+                <p class='summary'>"Lastly, even Iran's proposals for yuan or crypto-denominated Strait tolls are not meaningfully dollar-bearish; most stablecoins are effectively dollar-denominated instruments."</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/petrodollar-petroyuan-dedollarization-us-superpower-status-currency-dominance-oil-trade-iran-hormuz/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-12</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The US and Iran are having trouble agreeing on a peace deal, which is causing problems for the whole world, especially when it comes to oil and trade. This is making a lot of countries, including Australia and India, worried about their economies and how they'll get the things they need.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>The US and Iran were trying to make a peace deal, but it didn't work out. This made two big oil ships turn around and not go through the Strait of Hormuz, which is an important place for oil to travel through. The US and Iran are still talking, but it's not going well, and the US is even sending warships to the area.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It's likely that things will get worse before they get better. The US and Iran might keep talking, but if they can't agree, it could lead to more fighting and problems for the world. Other countries, like Australia, are trying to prepare for the worst by making sure they have enough of the things they need, like a special kind of fertilizer called urea.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>First, the US and Iran started fighting about six weeks ago. Then, they tried to make a peace deal, but it didn't work out. Now, the US is sending warships to the Strait of Hormuz, and other countries are getting worried about how this will affect their economies. Over the next few weeks, we'll probably see more talking between the US and Iran, but it's hard to say if they'll be able to agree on anything.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This situation is important for the whole world because it affects the price of oil, which is something that many countries rely on. If the US and Iran can't agree on a peace deal, it could lead to higher oil prices, which would make a lot of things more expensive for people all over the world. It could also make it harder for some countries to get the things they need, like food and medicine.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved in this situation, including the US, Iran, Australia, India, and Pakistan. The US and Iran are the main countries involved, but other countries are affected by what's happening because they rely on oil and trade with these countries. Australia, for example, is worried about getting enough urea, a kind of fertilizer, because the war in Iran might disrupt the supply.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The price of oil is likely to go up if the US and Iran can't agree on a peace deal. This is because the Strait of Hormuz is an important place for oil to travel through, and if it's not safe, it could make it harder for oil to get to the countries that need it. Higher oil prices would make a lot of things more expensive for people all over the world, like gasoline, food, and other everyday things.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>One thing that's interesting is that Iran is trying to use a different kind of money, called the yuan, to pay for oil. This could be a problem for the US because it uses the dollar to pay for oil. It's also worth noting that there are people making videos that are like propaganda, trying to influence how people think about the war in Iran. These videos are very convincing and could make it harder for the US and Iran to agree on a peace deal.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">60% - The situation is very tense, and it seems like the US and Iran are not close to agreeing on a peace deal. This makes it more likely that there will be more fighting, but it's still possible that they'll find a way to resolve their differences.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

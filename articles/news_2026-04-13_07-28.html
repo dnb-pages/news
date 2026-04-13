@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-13 07:29</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-13 07:29</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>دو سوپرتانکر در هرمز در حالی که مذاکرات ایران و آمریکا شکست می خورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:22</strong></span>
+                </div>
+                <p class='summary'>دو ابر نفتکش خالی روز یکشنبه تلاش کردند از تنگه هرمز عبور کرده و به خلیج فارس بروند، اما در آخرین لحظه درست زمانی که مذاکرات صلح بین ایالات متحده و ایران شکست خورد و تهدید به آتش‌بس شکننده شد، یک چرخش را انجام دادند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/two-supertankers-u-turn-in-hormuz-as-us-iran-talks-break-down' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>صندوق های جهانی از سهام هندی ها با سرعت بی سابقه ای از ترس رشد فرار می کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:17</strong></span>
+                </div>
+                <p class='summary'>در حالی که شوک انرژی ناشی از جنگ آمریکا و ایران چشم‌انداز سریع‌ترین رشد اقتصاد بزرگ جهان را تهدید می‌کند، صندوق‌های جهانی سهام هند را با رکوردی بی‌سابقه کنار می‌گذارند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/global-funds-flee-indian-stocks-at-record-pace-on-growth-fears' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>آمریکا و ایران پس از مذاکرات ماراتن به توافق صلح دست پیدا نکردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 03:24</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده و ایران پس از گفتگوهای ماراتن آخر هفته در پاکستان، نتوانستند به توافق برسند، که یک شکست بزرگ برای یافتن راه حلی پایدار برای جنگ شش هفته‌ای در خاورمیانه بود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-iran-fail-to-reach-peace-agreement-after-marathon-talks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>جی دی ونس پس از پایان مذاکرات ماراتن با ایران بدون توافق، پاکستان را ترک می کند زیرا تهران درخواست آمریکا برای تولید سلاح هسته ای را رد می کند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 03:05</strong></span>
+                </div>
+                <p class='summary'>ونس گفت که آخرین چانه زنی 21 ساعت به طول انجامید و معاون رئیس جمهور در ارتباط مستمر با دونالد ترامپ رئیس جمهور ایالات متحده و سایر افراد در دولت بود.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/jd-vance-pakistan-iran-talks-end-us-demand-nuclear-weapons-development/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>استرالیا برای ایمن سازی اوره در میان خطر عرضه ناشی از جنگ ایران اقدام می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 01:47</strong></span>
+                </div>
+                <p class='summary'>جولی کالینز، وزیر کشاورزی استرالیا گفت که استرالیا یک گروه کاری دولتی با صنعت کود برای محافظت از ذخایر اوره در معرض خطر از اختلالات مرتبط با جنگ در ایران تشکیل داده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/australia-acts-to-secure-urea-amid-supply-risk-from-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ترامپ مذاکرات برای توافق آتش بس با ایران را کم اهمیت می داند و مدعی پیروزی نظامی است. 'مهم نیست. از دیدگاه آمریکا، ما پیروز هستیم</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 23:15</strong></span>
+                </div>
+                <p class='summary'>رئیس جمهور گفت: «بیایید ببینیم چه اتفاقی می افتد - شاید آنها توافقی انجام دهند یا نه.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/trump-iran-war-ceasefire-talks-deal-military-victory-jd-vance/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>جنگ ایران: ما با مردی صحبت کردیم که ویدیوهای هوش مصنوعی به سبک لگو را ساخت که به گفته کارشناسان تبلیغات قدرتمندی است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 23:13</strong></span>
+                </div>
+                <p class='summary'>یک کارشناس می‌گوید "Slopaganda" اصطلاحی بسیار ضعیف است که نمی‌توان این محتوای "بسیار پیچیده" را درک کرد.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cjd8jrd1vnyo' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>«این آخرین هشدار است.» ایران کشتی‌های جنگی آمریکا را تهدید می‌کند پس از آن که آنها دستکش تنگه هرمز را برنده می‌کنند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 22:39</strong></span>
+                </div>
+                <p class='summary'>یکی از چیزهایی که کشتی‌های تجاری منتظر دیدن آن بودند این بود که آیا این تنگه صاف است یا نه، و حرکت دو ناوشکن در آن کار بزرگی است.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/iran-war-us-warships-strait-of-hormuz-transit-irgc-ceasefir-talks/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>مذاکرات صلح ایران و آمریکا تا شب ادامه دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 21:09</strong></span>
+                </div>
+                <p class='summary'>مقامات آمریکایی و ایرانی به گفتگوهای مستقیم خود با پاکستان در اسلام آباد برای پایان دادن به درگیری ها در خاورمیانه ادامه می دهند. فرماندهی مرکزی آمریکا می‌گوید دو ناو نیروی دریایی آمریکا در اولین اقدام از طریق تنگه هرمز عبور کرده‌اند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmy942w48k' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>روسای دارایی جهان با احساس دژاوو به صندوق بین المللی پول می روند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 20:21</strong></span>
+                </div>
+                <p class='summary'>سیاستگذاران اقتصادی در آستانه گردهمایی در واشنگتن هستند تا آسیبی را که جنگ دونالد ترامپ رئیس جمهور آمریکا علیه ایران به رشد در خاورمیانه و فراتر از آن وارد کرده است، ارزیابی کنند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/world-finance-chiefs-head-to-imf-with-a-sense-of-deja-vu' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>استراتژیست می گوید که دلار نفتی با خطر بیشتری روبرو است، اما پترویوان «دورآمیز» است زیرا ترس از دست دادن موقعیت ابرقدرت ایالات متحده بیش از حد مطرح شده است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-11 19:36</strong></span>
+                </div>
+                <p class='summary'>در نهایت، حتی پیشنهادات ایران برای عوارض تنگه یوان یا کریپتو به‌طور معنی‌داری نزولی نیست؛ بیشتر استیبل‌کوین‌ها در واقع ابزارهای دلاری هستند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/11/petrodollar-petroyuan-dedollarization-us-superpower-status-currency-dominance-oil-trade-iran-hormuz/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 2026-04-12</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران در توافق بر سر یک توافق صلح با مشکل مواجه هستند که برای کل جهان مشکلاتی ایجاد می کند، به ویژه در مورد نفت و تجارت. این موضوع باعث شده بسیاری از کشورها از جمله استرالیا و هند نگران اقتصاد خود و چگونگی دستیابی به چیزهای مورد نیاز خود باشند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>ایالات متحده و ایران در تلاش برای دستیابی به یک توافق صلح بودند، اما نتیجه نداد. این امر باعث شد دو کشتی بزرگ نفتی به دور خود بچرخند و از تنگه هرمز که مکان مهمی برای عبور نفت است نگذرند. آمریکا و ایران هنوز در حال گفت‌وگو هستند، اما خوب پیش نمی‌رود و آمریکا حتی کشتی‌های جنگی را به منطقه می‌فرستد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که اوضاع قبل از بهتر شدن بدتر شود. ایالات متحده و ایران ممکن است به گفتگو ادامه دهند، اما اگر نتوانند به توافق برسند، می تواند منجر به جنگ و مشکلات بیشتر برای جهان شود. کشورهای دیگر، مانند استرالیا، سعی می کنند با اطمینان از داشتن مقدار کافی از چیزهای مورد نیاز، مانند نوع خاصی از کود به نام اوره، برای بدترین شرایط آماده شوند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>ابتدا، آمریکا و ایران از حدود شش هفته پیش شروع به جنگ کردند. سپس، آنها سعی کردند یک توافق صلح انجام دهند، اما نتیجه ای نداشت. اکنون ایالات متحده کشتی های جنگی خود را به تنگه هرمز می فرستد و کشورهای دیگر نگران این هستند که چگونه این امر بر اقتصاد آنها تأثیر می گذارد. طی چند هفته آینده، احتمالاً شاهد گفتگوهای بیشتری بین ایالات متحده و ایران خواهیم بود، اما گفتن اینکه آیا آنها قادر به توافق بر سر چیزی خواهند بود یا خیر، دشوار است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این وضعیت برای کل جهان مهم است زیرا بر قیمت نفت تأثیر می گذارد، چیزی که بسیاری از کشورها به آن تکیه می کنند. اگر آمریکا و ایران نتوانند بر سر یک توافق صلح به توافق برسند، می‌تواند به قیمت‌های بالاتر نفت منجر شود که بسیاری از چیزها را برای مردم در سراسر جهان گران‌تر می‌کند. این امر همچنین می‌تواند دریافت چیزهای مورد نیاز مانند غذا و دارو را برای برخی کشورها دشوارتر کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها از جمله آمریکا، ایران، استرالیا، هند و پاکستان درگیر این وضعیت هستند. ایالات متحده و ایران کشورهای اصلی درگیر هستند، اما کشورهای دیگر تحت تأثیر اتفاقاتی هستند که در حال رخ دادن هستند، زیرا آنها به نفت و تجارت با این کشورها متکی هستند. به عنوان مثال، استرالیا نگران دریافت اوره کافی، نوعی کود است، زیرا جنگ در ایران ممکن است عرضه را مختل کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>اگر آمریکا و ایران نتوانند بر سر یک توافق صلح به توافق برسند، قیمت نفت احتمالاً افزایش خواهد یافت. این به این دلیل است که تنگه هرمز مکان مهمی برای عبور و مرور نفت است و اگر ایمن نباشد، می‌تواند رسیدن نفت به کشورهایی را که به آن نیاز دارند دشوارتر کند. قیمت های بالاتر نفت بسیاری از چیزها را برای مردم در سراسر جهان گران تر می کند، مانند بنزین، غذا و سایر چیزهای روزمره.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>یک چیز جالب این است که ایران تلاش می کند از نوع دیگری از پول به نام یوان برای پرداخت نفت استفاده کند. این می تواند برای ایالات متحده مشکل ساز باشد زیرا از دلار برای پرداخت نفت استفاده می کند. همچنین شایان ذکر است که افرادی هستند که ویدیوهایی شبیه تبلیغات می سازند و سعی می کنند بر نحوه تفکر مردم در مورد جنگ در ایران تأثیر بگذارند. این ویدئوها بسیار قانع کننده هستند و می توانند توافق آمریکا و ایران را برای توافق صلح دشوارتر کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">60 درصد - اوضاع بسیار متشنج است و به نظر می رسد آمریکا و ایران به توافق بر سر یک توافق صلح نزدیک نیستند. این باعث می‌شود که احتمال درگیری‌های بیشتری وجود داشته باشد، اما هنوز این امکان وجود دارد که آنها راهی برای حل اختلافات خود پیدا کنند.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
