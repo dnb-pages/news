@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-13 16:45</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-13 16:45</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>در اینجا آنچه از زمان جنگ ایران در هرمز گذشته است آمده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 16:18</strong></span>
+                </div>
+                <p class='summary'>طرح دونالد ترامپ، رئیس جمهور آمریکا برای محاصره تنگه هرمز، نزدیک به 2 میلیون بشکه در روز نفت ایران را که از این آبراه عبور می کند، متوقف می کند، عرضه جهانی را بیشتر فشرده می کند و یک راه حیاتی برای جمهوری اسلامی را قطع می کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/heres-what-has-been-getting-through-hormuz-since-the-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>همزمان با شکست مذاکرات ایران و آمریکا، نفتکش‌ها در هرمز چرخش کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 15:04</strong></span>
+                </div>
+                <p class='summary'>دو نفتکش خالی نفت خام روز یکشنبه تلاش کردند از تنگه هرمز عبور کرده و به خلیج فارس بروند، اما در آخرین لحظه به دور برگردانند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/oil-tankers-u-turn-strait-of-hormuz-us-iran-talks-ceasefire/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترامپ پس از شکست مذاکرات صلح ایران و آمریکا وعده محاصره هرمز را داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:50</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا گفت که ایالات متحده محاصره کامل دریایی تنگه استراتژیک هرمز را آغاز خواهد کرد و تهدید کرد که در صورت مقاومت ایران، مقابله به مثل می‌کند و بن‌بستی را تشدید می‌کند که همین حالا آبراه را تقریباً متوقف کرده و مختل کرده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-promises-hormuz-blockade-after-us-iran-peace-talks-fail' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ترامپ می گوید آمریکا تنگه هرمز را می بندد و خط حیاتی ایران را قطع می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:45</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا گفت که ایالات متحده تنگه هرمز را در پی شکست مذاکرات صلح با ایران در اسلام‌آباد در آخر هفته جاری محاصره خواهد کرد، اقدامی که احتمالاً کمبود نفت و سوخت را در جهان تشدید خواهد کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-says-us-to-seal-hormuz-strait-severing-key-iran-lifeline' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>ترامپ می گوید پس از پایان مذاکرات آتش بس ایران بدون توافق، نیروی دریایی آمریکا هرمز را محاصره خواهد کرد. هیچکس که عوارض غیرقانونی پرداخت کند، عبور و مرور امن نخواهد داشت.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:37</strong></span>
+                </div>
+                <p class='summary'>ترامپ تأکید کرد که جاه‌طلبی‌های هسته‌ای تهران هسته اصلی شکست در پایان دادن به جنگ بود و ایالات متحده آماده است تا ایران را در «لحظه‌ی مناسب به پایان برساند».</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/trump-us-navy-blockade-strait-of-hormuz-iran-ceasefire-talks-oil/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>شکست مذاکرات ایران و آمریکا - بعد چه اتفاقی می افتد؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:20</strong></span>
+                </div>
+                <p class='summary'>و چه چیزی باعث توقف توافق شد؟</p>
+                <div class='link'><a href='https://www.bbc.co.uk/sounds/play/p0nbywjx?at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>چگونه مذاکرات ایران و آمریکا در اسلام آباد بدون توافق پایان یافت؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:04</strong></span>
+                </div>
+                <p class='summary'>معاون رئیس جمهور جی.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/how-the-us-iran-talks-in-islamabad-ended-without-a-deal' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>تهران می گوید آمریکا نتوانست اعتماد ایران را در جریان مذاکرات جلب کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 13:48</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده و ایران یکدیگر را به خاطر پایان مذاکرات صلح آنها در پاکستان بدون توافق سرزنش می کنند. رهبر تیم مذاکره کننده ایران گفته است که آمریکا در نهایت نتوانست اعتماد هیئت ایرانی را جلب کند. معاون روابط عمومی آمریکا…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmy942y26m' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>در حالی که مذاکرات صلح ایران با شکست مواجه می شود، ترامپ و جو روگان شاهد پیروزی یک جنگنده در یک مسابقه بی رحمانه در قفس هستند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 13:08</strong></span>
+                </div>
+                <p class='summary'>در حالی که آهنگ کید راک از بلندگوها پخش می شد، ترامپ به سمت صندلی خود، جایی که مارکو روبیو منتظر بود، رفت.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/trump-ufc-joe-rogan-carlos-ulberg/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>در حالی که جنگ ایران 200000 نفر را به وضعیت اضطراری غذایی حاد می برد، هائیتی از گرسنگی چشم پوشی می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 13:03</strong></span>
+                </div>
+                <p class='summary'>به گفته سازمان ملل، حتی قبل از جنگ، حدود نیمی از جمعیت 12 میلیونی هائیتی در وضعیت اضطراری غذایی قرار داشتند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/haiti-starvation-risk-iran-war-inflation-food-emergency-insecurity/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>بدون معامله</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 10:37</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده و ایران به گفتگوهای رو در رو بدون توافق برای پایان جنگ پایان دادند و آتش بس شکننده دو هفته ای را در هاله ای از ابهام قرار دادند. مقامات آمریکایی می گویند که مذاکرات به دلیل امتناع ایران از ترک برنامه هسته ای خود شکست خورده است. مقامات ایرانی bl…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-12-2026-a8a0d22918fc3fb30bc3abf1cd5c5a13' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>شکست مذاکرات ایران و آمریکا قرار است روز دوشنبه بر دارایی های پرخطر تاثیر بگذارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 09:42</strong></span>
+                </div>
+                <p class='summary'>به گفته تحلیلگران، شکست آمریکا و ایران در دستیابی به یک توافق صلح در آخر هفته قرار است بر احساسات بازار تاثیر بگذارد و تقاضا برای دارایی های امن را در روز دوشنبه افزایش دهد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/failure-of-us-iran-talks-set-to-weigh-on-risk-assets-monday' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>دو سوپرتانکر در هرمز در حالی که مذاکرات ایران و آمریکا شکست می خورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:22</strong></span>
+                </div>
+                <p class='summary'>دو ابر نفتکش خالی روز یکشنبه تلاش کردند از تنگه هرمز عبور کرده و به خلیج فارس بروند، اما در آخرین لحظه درست زمانی که مذاکرات صلح بین ایالات متحده و ایران شکست خورد و تهدید به آتش‌بس شکننده شد، یک چرخش را انجام دادند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/two-supertankers-u-turn-in-hormuz-as-us-iran-talks-break-down' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>صندوق های جهانی از سهام هندی ها با سرعت بی سابقه ای از ترس رشد فرار می کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:17</strong></span>
+                </div>
+                <p class='summary'>در حالی که شوک انرژی ناشی از جنگ آمریکا و ایران چشم‌انداز سریع‌ترین رشد اقتصاد بزرگ جهان را تهدید می‌کند، صندوق‌های جهانی سهام هند را با رکوردی بی‌سابقه کنار می‌گذارند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/global-funds-flee-indian-stocks-at-record-pace-on-growth-fears' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 2026-04-12</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا و ایران مذاکرات صلح داشتند اما به توافق نرسیدند. اکنون آمریکا قصد دارد تنگه هرمز را که آبراه بسیار مهمی برای کشتی‌های نفتی است، مسدود کند. این می تواند فروش نفت خود را برای ایران دشوارتر کند و حتی ممکن است منجر به درگیری بیشتر شود. کمی شبیه یک ترافیک بزرگ است، اما با نفتکش ها و کشتی های جنگی.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>آمریکا و ایران برای پایان دادن به جنگ خود گفتگوهای رو در رو داشتند، اما در مورد چیزی به توافق نرسیدند. دلیل اصلی این بود که ایران نمی خواست برنامه هسته ای خود را کنار بگذارد. پس از شکست مذاکرات، ایالات متحده گفت که تنگه هرمز را که یک آبراه باریک است که بسیاری از نفتکش ها برای رسیدن به خلیج فارس از آن استفاده می کنند، مسدود خواهد کرد. این می تواند به اقتصاد ایران آسیب برساند و فروش نفت خود را برای آنها دشوارتر کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که شرایط متشنج تر شود و حتی ممکن است منجر به درگیری بیشتر شود. ایالات متحده و ایران ممکن است محاصره دریایی را آغاز کنند، به این معنی که آنها تلاش خواهند کرد کشتی های یکدیگر را از عبور از تنگه هرمز جلوگیری کنند. این می تواند منجر به درگیری بزرگتر شود و سایر کشورها نیز ممکن است درگیر شوند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>اتفاقی که در چند روز گذشته افتاد این است: آمریکا و ایران مذاکرات صلح داشتند، اما نتوانستند به توافق برسند. پس از آن، آمریکا اعلام کرد که تنگه هرمز را مسدود خواهد کرد. تانکرهای نفتی شروع به دور زدن و دوری از منطقه کردند. آمریکا و ایران یکدیگر را مقصر شکست مذاکرات می‌دانند و معلوم نیست در آینده چه اتفاقی می‌افتد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این وضعیت برای کل جهان مهم است زیرا بر قیمت نفت تأثیر می گذارد. اگر تنگه هرمز مسدود شود، می تواند منجر به کمبود نفت شود که باعث افزایش قیمت ها می شود. این خبر بدی برای بسیاری از کشورها خواهد بود، به ویژه کشورهایی که به شدت به نفت متکی هستند. این مانند یک اثر موج دار بزرگ است که می تواند به کیف پول بسیاری از افراد آسیب برساند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها از جمله آمریکا، ایران و سایر کشورهای خاورمیانه درگیر این وضعیت هستند. حتی کشورهایی مانند هند نیز تحت تأثیر قرار گرفته اند زیرا نگران تأثیر آن بر اقتصاد خود هستند. ایالات متحده به این دلیل درگیر است که تلاش می کند برنامه هسته ای ایران را متوقف کند، و ایران درگیر است زیرا می خواهد از اقتصاد و حاکمیت خود محافظت کند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت به دلیل مسدود شدن تنگه هرمز احتمالاً افزایش خواهد یافت. این بدان معناست که مردم ممکن است مجبور شوند برای بنزین، نفت گرمایشی و سایر چیزهایی که به نفت متکی هستند، هزینه بیشتری بپردازند. این مانند یک افزایش قیمت بزرگ است که می تواند زندگی روزمره بسیاری از مردم را تحت تاثیر قرار دهد. مادربزرگ، شما باید مراقب باشید زیرا ممکن است بر بودجه و سبک زندگی شما تأثیر بگذارد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>چیزهای مهم دیگری که باید بدانید این است که وضعیت بسیار ناپایدار است و می تواند به سرعت تغییر کند. آمریکا و ایران هر دو کشورهای قدرتمندی هستند که منافع خود را دارند و معلوم نیست در آینده چه اتفاقی خواهد افتاد. همچنین مهم است که به یاد داشته باشید که افراد بی گناه زیادی در این وسط گرفتار شده اند، از جمله افرادی در ایران و سایر کشورها که تحت تأثیر درگیری قرار گرفته اند. همه ما باید به یک راه حل مسالمت آمیز امیدوار باشیم، اما پیش بینی اینکه چه اتفاقی خواهد افتاد دشوار است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">من می گویم احتمال جنگ حدود 60 درصد است. دلیل آن این است که ایالات متحده و ایران در حال حاضر در یک درگیری هستند و مذاکرات صلح شکست خورده احتمال تشدید اوضاع را بیشتر می کند. محاصره دریایی و این واقعیت که سایر کشورها در حال درگیر شدن هستند نیز شانس درگیری بیشتر را افزایش می دهد.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

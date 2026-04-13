@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-13 16:44</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-13 16:44</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Here’s What Has Been Getting Through Hormuz Since the Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 16:18</strong></span>
+                </div>
+                <p class='summary'>President Donald Trump’s plan to blockade the Strait of Hormuz would halt the nearly 2 million barrels a day of Iranian oil that’s been passing through the waterway, further squeezing global supply and cutting off a vital lifeline for the Islamic Republic.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/heres-what-has-been-getting-through-hormuz-since-the-iran-war' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Oil tankers U-turn in Hormuz as U.S.-Iran talks break down</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 15:04</strong></span>
+                </div>
+                <p class='summary'>Two empty crude tankers attempted to make their way through the Strait of Hormuz and into the Persian Gulf on Sunday, only to make last-minute U-turns.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/oil-tankers-u-turn-strait-of-hormuz-us-iran-talks-ceasefire/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Trump Promises Hormuz Blockade After US-Iran Peace Talks Fail</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:50</strong></span>
+                </div>
+                <p class='summary'>President Donald Trump said the US will begin a full naval blockade of the strategic Strait of Hormuz and threatened to retaliate in the event of Iranian resistance, escalating a standoff that has already brought the waterway to a near standstill and disrupte…</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-promises-hormuz-blockade-after-us-iran-peace-talks-fail' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Trump Says US to Seal Hormuz Strait, Severing Key Iran Lifeline</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:45</strong></span>
+                </div>
+                <p class='summary'>President Donald Trump said the US will blockade the Strait of Hormuz following the failure of peace talks with Iran in Islamabad this weekend, a move that will likely exacerbate oil and fuel shortages globally.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-says-us-to-seal-hormuz-strait-severing-key-iran-lifeline' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Trump says U.S. Navy to impose Hormuz blockade after Iran ceasefire talks end with no deal. ‘No one who pays an illegal toll will have safe passage’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:37</strong></span>
+                </div>
+                <p class='summary'>Trump stressed that Tehran’s nuclear ambitions were at the core of the failure to end the war, and the U.S. was ready to “finish up” Iran at the “appropriate moment."</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/trump-us-navy-blockade-strait-of-hormuz-iran-ceasefire-talks-oil/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>US-Iran Talks Fail - What Happens Next?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:20</strong></span>
+                </div>
+                <p class='summary'>And what stopped an agreement?</p>
+                <div class='link'><a href='https://www.bbc.co.uk/sounds/play/p0nbywjx?at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>How the US-Iran Talks in Islamabad Ended Without a Deal</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 14:04</strong></span>
+                </div>
+                <p class='summary'>Vice President JD Vance landed in Islamabad on Saturday tasked with ending six weeks of war and overcoming 47 years of enmity — 21 hours later, he flew home without a deal.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/how-the-us-iran-talks-in-islamabad-ended-without-a-deal' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Tehran says US failed to gain Iran's trust during talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 13:48</strong></span>
+                </div>
+                <p class='summary'>The United States and Iran are blaming each other for their peace talks in Pakistan ending without agreement. The leader of Iran's negotiating team has said that the United States 'ultimately failed' to gain the trust of the Iranian delegation. The US vice-pr…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmy942y26m' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>As Iran peace talks fail, Trump and Joe Rogan watch a hobbled fighter triumph in a brutal cage match</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 13:08</strong></span>
+                </div>
+                <p class='summary'>As a Kid Rock song blasted from the speakers, Trump walked to his seat, where Marco Rubio was waiting.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/trump-ufc-joe-rogan-carlos-ulberg/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Haiti stares down starvation as Iran War drives 200,000 into acute food emergency status</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 13:03</strong></span>
+                </div>
+                <p class='summary'>Even before the war, about half of Haiti's 12 million people were in a state of food emergency, according to the UN.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/12/haiti-starvation-risk-iran-war-inflation-food-emergency-insecurity/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>NO DEAL</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 10:37</strong></span>
+                </div>
+                <p class='summary'>The United States and Iran have ended face-to-face talks without an agreement to end the war, leaving a fragile two-week ceasefire in doubt. U.S. officials say the negotiations collapsed over Iran’s refusal to abandon its nuclear program. Iranian officials bl…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-us-israel-trump-lebanon-april-12-2026-a8a0d22918fc3fb30bc3abf1cd5c5a13' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Failure of US-Iran Talks Set to Weigh on Risk Assets Monday</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 09:42</strong></span>
+                </div>
+                <p class='summary'>The US and Iran’s failure to strike a peace deal over the weekend is set to weigh on market sentiment and lift demand for safe haven assets on Monday, according to analysts.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/failure-of-us-iran-talks-set-to-weigh-on-risk-assets-monday' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Two Supertankers U-Turn in Hormuz as US-Iran Talks Break Down</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:22</strong></span>
+                </div>
+                <p class='summary'>Two empty supertankers attempted to make their way through the Strait of Hormuz and into the Persian Gulf on Sunday, only to make a last-minute U-turn just as peace negotiations between the US and Iran broke down, threatening a fragile ceasefire.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/two-supertankers-u-turn-in-hormuz-as-us-iran-talks-break-down' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Global Funds Flee Indian Stocks at Record Pace on Growth Fears</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-12 05:17</strong></span>
+                </div>
+                <p class='summary'>Global funds are dumping Indian equities at a record clip as an energy shock from the US-Iran war threatens to derail the outlook of the world’s fastest-growing major economy.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/global-funds-flee-indian-stocks-at-record-pace-on-growth-fears' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-12</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The US and Iran had peace talks, but they didn't reach an agreement. Now, the US is planning to block the Strait of Hormuz, which is a very important waterway for oil ships. This could make it harder for Iran to sell its oil and might even lead to more conflict. It's a bit like a big traffic jam, but with oil tankers and warships.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>The US and Iran had face-to-face talks to try to end their war, but they didn't agree on anything. The main reason was that Iran didn't want to give up its nuclear program. After the talks failed, the US said it would block the Strait of Hormuz, which is a narrow waterway that many oil tankers use to get to the Persian Gulf. This could hurt Iran's economy and make it harder for them to sell their oil.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It's likely that the situation will get more tense and maybe even lead to more fighting. The US and Iran might start a naval blockade, which means they'll try to stop each other's ships from passing through the Strait of Hormuz. This could lead to a bigger conflict, and other countries might get involved too.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>Here's what happened in the last few days: the US and Iran had peace talks, but they failed to reach an agreement. After that, the US said it would block the Strait of Hormuz. Oil tankers started making U-turns and avoiding the area. The US and Iran are blaming each other for the failed talks, and it's not clear what will happen next.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This situation is important for the whole world because it affects the price of oil. If the Strait of Hormuz is blocked, it could lead to a shortage of oil, which would make prices go up. This would be bad news for many countries, especially those that rely heavily on oil. It's like a big ripple effect that could hurt many people's wallets.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved in this situation, including the US, Iran, and other countries in the Middle East. Even countries like India are affected because they're worried about the impact on their economy. The US is involved because it's trying to stop Iran's nuclear program, and Iran is involved because it wants to protect its economy and sovereignty.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The price of oil is likely to go up because of the blocked Strait of Hormuz. This means that people might have to pay more for gasoline, heating oil, and other things that rely on oil. It's like a big price hike that could affect many people's daily lives. Grandma, you should care because it might affect your budget and your lifestyle.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>Other important things to know are that the situation is very unstable and could change quickly. The US and Iran are both strong countries with their own interests, and it's not clear what will happen next. It's also important to remember that there are many innocent people caught in the middle, including people in Iran and other countries who are affected by the conflict. We should all hope for a peaceful resolution, but it's hard to predict what will happen.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">I'd say the probability of war is around 60%. The reason is that the US and Iran are already in a conflict, and the failed peace talks make it more likely that things will escalate. The naval blockade and the fact that other countries are getting involved also increase the chances of more fighting.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
