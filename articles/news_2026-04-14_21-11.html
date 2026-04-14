@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-14 21:12</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-14 21:12</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>با محاصره تنگه هرمز توسط ایالات متحده، تمرکز بر این است که چه کسی جرات عبور از آن را دارد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 20:55</strong></span>
+                </div>
+                <p class='summary'>ائتلافی از متحدان ایالات متحده اکنون در حال کار بر روی طرحی برای ایمن سازی تنگه هرمز هستند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/with-the-u-s-now-blockading-the-strait-of-hormuz-the-focus-is-on-who-has-the-guts-to-go-through-first/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ترامپ از سال 1980 می خواهد ایران را تحقیر کند. او ممکن است در عوض امپراتوری آمریکا را تحقیر کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 20:19</strong></span>
+                </div>
+                <p class='summary'>مورخان آن را "لحظه سوئز" می نامند - زمانی که یک امپراتوری در حال محو شدن به جنگ می رود تا ثابت کند هنوز یکی است و در عوض خلاف آن را ثابت می کند.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/trump-iran-war-interview-1980-bibi-netanyahu-israel-suez-canal-crisis-hegemony/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>S&P 500 با شروع فصل درآمد، ضررهای ناشی از جنگ ایران را پاک می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 20:14</strong></span>
+                </div>
+                <p class='summary'>شاخص S&P 500 افزایش یافت تا تمام زیان های خود را از زمان شروع جنگ ایران پاک کند، زیرا معامله گران از زمان اعلام توافق آتش بس موقت و با شروع فصل درآمدهای ایالات متحده به افزایش قیمت سهام ادامه می دهند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/sp-500-erases-iran-war-driven-losses-as-earnings-season-begins' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>زامبیا 100 میلیون دلار برای مقابله با شوک سوختی جنگ ایران وارد می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 19:44</strong></span>
+                </div>
+                <p class='summary'>وزیر دارایی سیتومبکو موسوکوتوان گفت که زامبیا پس از تعلیق مالیات بر سوخت به مدت سه ماه برای محافظت از مصرف کنندگان در برابر افزایش قیمت نفت ناشی از جنگ در ایران، حدود 100 میلیون دلار از درآمد خود را از دست خواهد داد و فشارها را بر بودجه ای که در حال حاضر تحت فشارهای پیشین بود، تشدید می کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/zambia-to-take-100-million-hit-to-counter-iran-war-fuel-shock' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>بازگشت بلک راک به سهام ایالات متحده با "کنترل" جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 19:39</strong></span>
+                </div>
+                <p class='summary'>استراتژیست های بلک راک به دیدگاه اضافه وزن در مورد سهام ایالات متحده بازگشته اند زیرا آنها می بینند که آسیب به رشد اقتصاد جهانی ناشی از درگیری خاورمیانه "احتمالاً مهار شده است".</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/blackrock-pivots-back-to-us-stocks-with-iran-war-contained' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Americanswers... در 5 Live! دونالد ترامپ در مقابل پاپ لئو درباره ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 19:10</strong></span>
+                </div>
+                <p class='summary'>رئیس جمهور آمریکا به پاپ توهین می کند و خود را عیسی معرفی می کند</p>
+                <div class='link'><a href='https://www.bbc.co.uk/sounds/play/p0nd6swy?at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ملونی ایتالیایی سخنان ترامپ درباره پاپ را "غیرقابل قبول" خواند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 18:06</strong></span>
+                </div>
+                <p class='summary'>جورجیا ملونی، نخست وزیر ایتالیا، جنجال دونالد ترامپ علیه پاپ لئو چهاردهم را "غیرقابل قبول" خواند و شکاف فزاینده با رهبر ایالات متحده در مورد جنگ او با ایران را افشا کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/italys-meloni-calls-trump-words-on-pope-unacceptable' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>موج 15 میلیارد دلاری IPOهای ایالات متحده با سر در راه فاز جدید جنگ است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 17:36</strong></span>
+                </div>
+                <p class='summary'>بانکداران سرمایه گذاری در راه جذب بیش از 15 میلیارد دلار از عرضه های اولیه عمومی در هفته های آینده هستند و با نگرانی به نوسانات بازار چشم دوخته اند زیرا بن بست با ایران آتش بس شکننده را تهدید می کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/wave-of-15-billion-us-ipos-runs-headlong-into-wars-new-phase' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>سهام ایالات متحده از سرگیری سود، نزدیک به پاک کردن زیان های ناشی از جنگ ایران است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 17:30</strong></span>
+                </div>
+                <p class='summary'>در حالی که سرمایه گذاران محاصره تنگه هرمز توسط نیروی دریایی ایالات متحده را ارزیابی کردند که از دوشنبه اعمال شد و از طریق اعلامیه های درآمد در داخل تجزیه و تحلیل شد، سهام ایالات متحده برای هشتمین بار در 9 جلسه افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-stocks-resume-gains-close-to-erasing-iran-war-driven-losses' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>ترامپ با آغاز محاصره «سلام مریم» تهدید کرد که آخرین کشتی‌های ایران را «با استفاده از سیستم کشتار» مانند قایق‌های مواد مخدر منفجر خواهد کرد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 16:04</strong></span>
+                </div>
+                <p class='summary'>مذاکره کننده اصلی ایران در X نوشت: «با به اصطلاح «محاصره»، به زودی برای گاز 4 تا 5 دلاری نوستالژیک خواهید شد.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/trump-hail-mary-blockade-iran-ports-strait-of-hormuz-bagher-ghalibaf-pakistan/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>تحلیلگر می گوید محاصره دریایی ایالات متحده علیه ایران باعث مارپیچ کاهش ارزش پول و تورم شدید خواهد شد و به طور بالقوه به جنگ سریعتر پایان می دهد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 15:37</strong></span>
+                </div>
+                <p class='summary'>"تکیه بر این ماشین پول، اقتصاد را به رکود می کشاند و به آخوندها انگیزه لازم برای مذاکره جدی می دهد."</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/us-naval-blockade-iran-economy-currency-devaluation-spiral-hyperinflation-oil-revenue/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Citadel Securities رشد بازار را به عنوان خطرات افراطی جنگ می بیند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 15:33</strong></span>
+                </div>
+                <p class='summary'>به گفته سیتادل سکیوریتیز، خطر تشدید بدترین حالت در مناقشه ایران در حال کاهش است و زمینه را برای افزایش سهام و اوراق قرضه فراهم می کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/citadel-securities-sees-market-rally-as-extreme-risks-of-war-ebb' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>یانچیک می‌گوید در صورت محدود شدن فال‌آوت ایران، نرخ‌های لهستان متوقف می‌شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 15:28</strong></span>
+                </div>
+                <p class='summary'>به گفته ویسلاو یانچیک، سیاست گذار، لهستان احتمالاً در سه ماهه آینده نرخ های بهره را بدون تغییر نگه می دارد زیرا تورم قرار است با وجود فشارهای ناشی از جنگ ایران در محدوده تحمل بانک مرکزی باقی بماند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/polish-rates-seen-on-hold-if-iran-fallout-capped-janczyk-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>افزایش دلار در حالی که محاصره هرمز باعث افزایش قیمت نفت، حالت ریسک خاموش می شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 15:28</strong></span>
+                </div>
+                <p class='summary'>پس از آن که دونالد ترامپ، رئیس جمهور آمریکا دستور محاصره تنگه هرمز را پس از بن بست آخر هفته در مذاکرات صلح آمریکا و ایران که قیمت نفت را بالا برد، دلار افزایش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/dollar-gains-as-hormuz-blockade-sparks-oil-rally-risk-off-mode' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>تکرار حرکت ونزوئلا-محاصره، شرط بسیار خطرناک‌تر در هرمز است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 15:27</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا با استناد به کتاب بازی ونزوئلا، وعده محاصره کشتی‌های ایرانی را داده است. اما ایران تدارکات پیچیده‌تر، خطرات بیشتری برای سربازان آمریکایی و دشمن انعطاف‌پذیرتری دارد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/repeating-venezuela-blockade-move-is-far-riskier-bet-in-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>ترامپ متعهد شد که با اعمال محاصره هرمز به کشتی های ایران ضربه بزند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 15:07</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا گفت که ایالات متحده به هر کشتی ایرانی که به کشتی‌های آمریکایی در تنگه هرمز نزدیک شود، حمله خواهد کرد، زیرا محاصره دریایی او از این آبراه حیاتی روز دوشنبه اعمال شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-vows-to-hit-irans-ships-as-hormuz-blockade-takes-effect' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>ایالات متحده می گوید کشتی هایی را که از ایران خارج می شوند، رهگیری، منحرف یا تسخیر خواهد کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 14:01</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده طرح های محاصره بنادر ایران را انجام داد و با انتشار اطلاعیه ای اعلام کرد که می تواند کشتی هایی را که با این تدابیر مغایرت دارند، دستگیر کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-says-it-will-intercept-divert-or-capture-ships-leaving-iran' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>جنگ آینده انرژی جهان را به سمت چین متمایل می کند...</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 13:00</strong></span>
+                </div>
+                <p class='summary'>جنگ در ایران مزیت چین را در ارتقای آینده انرژی های تجدیدپذیر تشدید می کند، زیرا اختلالات نفتی شکنندگی سیستم های سوخت فسیلی را آشکار می کند. افزایش قیمت سوخت باعث افزایش علاقه به خودروهای الکتریکی و سایر فناوری های پاک در سراسر آسیا شده است.</p>
+                <div class='link'><a href='https://apnews.com/article/iran-middle-east-war-energy-asia-china-05d198d6e8dc99d0209dddfff26ae52a' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>"هیچ بندری در منطقه امن نخواهد بود": ایران به محاصره ترامپ با تهدیدی در سراسر خلیج فارس پاسخ می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 12:46</strong></span>
+                </div>
+                <p class='summary'>صدا و سیمای جمهوری اسلامی ایران روز دوشنبه گزارش داد: امنیت در خلیج فارس و دریای عمان یا برای همه است یا برای هیچکس.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/iran-threatens-ports-gulf-after-trump-blockade/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>سرمایه گذاران در حال رد هر گونه حرکت از سوی فدرال رزرو در این ماه هستند - مذاکرات شکست خورده در ایران این معامله را امضا کرده است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 11:10</strong></span>
+                </div>
+                <p class='summary'>پل دونووان از UBS هشدار داد: «برای شناسایی اثرات دور دوم احتمالی در تورم یا بازارهای کار خیلی زود است.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/investors-write-off-fed-rate-cut-iran-inflation/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>با افزایش هزینه های انرژی در جنگ ایران، تورم هند رو به افزایش است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 11:06</strong></span>
+                </div>
+                <p class='summary'>تورم هند در ماه مارس افزایش یافت زیرا جنگ در خاورمیانه باعث افزایش قیمت نفت خام و کاهش عرضه گاز برای صنایع کلیدی شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/indias-inflation-picks-up-as-iran-war-lifts-energy-costs' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>پس از تهدید آمریکا برای مسدود کردن هرمز، ایران درباره بنادر خلیج فارس هشدار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 10:51</strong></span>
+                </div>
+                <p class='summary'>ایران اعلام کرد در صورت تهدید قطب های کشتیرانی خود، تمامی بنادر داخل و نزدیک خلیج فارس را هدف قرار خواهد داد و پس از اعلام برنامه های آمریکا برای محاصره کشتی های مرتبط با تهران، بن بست بر سر تنگه هرمز را تشدید کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-sends-warning-on-gulf-ports-after-us-threat-to-block-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>در حالی که نیروی دریایی ایالات متحده امروز تلاش می کند تا کنترل تنگه هرمز را به دست گیرد، ترامپ از پاپ می خواهد که دهان خود را ببندد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 10:15</strong></span>
+                </div>
+                <p class='summary'>هر آنچه که باید قبل از رسیدن به دفتر امروز صبح بدانید.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/13/us-navy-blockade-strait-of-hormuz-trump-pope/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>مورگان استنلی می گوید Earnings Shield S&P 500 از جنگ ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 10:10</strong></span>
+                </div>
+                <p class='summary'>به گفته استراتژیست‌های مورگان استنلی، افزایش درآمد از S&P 500 در برابر ضررهای عمیق‌تر محافظت می‌کند و عقب‌نشینی گسترده‌تر در سهام ایالات متحده را پنهان می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/morgan-stanley-says-earnings-shield-sp-500-from-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>درخواست آسه‌آن برای گذرگاه امن در هرمز همزمان با محاصره چشمان ترامپ</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-13 10:00</strong></span>
+                </div>
+                <p class='summary'>در حالی که دونالد ترامپ، رئیس جمهور آمریکا تهدید کرد که این آبراه را پس از شکست مذاکرات صلح با ایران مسدود خواهد کرد، کشورهای جنوب شرق آسیا خواستار عبور بدون مانع کشتی ها در تنگه هرمز شدند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/asean-urges-safe-passage-in-hormuz-as-trump-eyes-blockade' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 2026-04-13</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا تنگه هرمز را محاصره کرده است و در حال حاضر تنش زیادی بین آمریکا و ایران وجود دارد. این بر قیمت نفت و اقتصاد جهانی تأثیر می گذارد، اما برخی کشورها و سرمایه گذاران را نیز کمی عصبی می کند. نگران نباشید، من آن را به زبان ساده برای شما شرح می دهم.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>آمریکا محاصره تنگه هرمز را که آبراه بسیار مهمی برای حمل و نقل نفت است، آغاز کرده است. این بدان معناست که نیروی دریایی آمریکا کشتی هایی را که در حال رفت و آمد به ایران هستند متوقف و بررسی خواهد کرد. ایران از این موضوع خوشحال نیست و تهدید کرده است که در صورت تهدید مراکز کشتیرانی خود، بنادر این منطقه را هدف قرار خواهد داد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که وضعیت برای مدتی متشنج باقی بماند و ممکن است بین ایالات متحده و ایران بیشتر رفت و آمد شود. اما برخی کارشناسان بر این باورند که محاصره آمریکا در واقع می تواند به آوردن ایران به پای میز مذاکره کمک کند، زیرا به اقتصاد آنها آسیب می رساند. فقط باید منتظر بمانیم و ببینیم در ادامه چه اتفاقی می افتد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>این چیزی است که تاکنون اتفاق افتاده است: ایالات متحده و ایران در تلاش برای مذاکره درباره یک توافق صلح بودند، اما از هم پاشید. سپس آمریکا اعلام کرد که تنگه هرمز را محاصره خواهد کرد و ایران تهدید به مقابله به مثل کرد. از آن زمان تاکنون هشدارها و تهدیدهای زیادی از سوی هر دو طرف صورت گرفته است، اما هنوز هیچ حمله بزرگی صورت نگرفته است. ایالات متحده همچنین با متحدان خود در تلاش برای ایمن سازی تنگه هرمز بوده است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این وضعیت برای کل جهان مهم است، زیرا بر قیمت نفت و اقتصاد جهانی تأثیر می گذارد. اگر درگیری ها تشدید شود، می تواند منجر به افزایش قیمت نفت شود که برای بسیاری از کشورها خبر بدی خواهد بود. اما این همچنین یادآور این است که جهان مکانی پیچیده و به هم پیوسته است و آنچه در یک منطقه اتفاق می افتد می تواند عواقب گسترده ای داشته باشد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها چه به طور مستقیم یا غیر مستقیم درگیر این وضعیت هستند. ایالات متحده به وضوح یک بازیگر کلیدی است، اما همسایگان ایران و سایر کشورهای منطقه نیز تحت تأثیر قرار گرفته اند. برخی کشورها، مانند چین، سعی می کنند از آن دور بمانند، در حالی که برخی دیگر، مانند متحدان آمریکا در اروپا، تلاش می کنند از ایالات متحده حمایت کنند و در عین حال از تشدید تنش اجتناب کنند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت در این شرایط بسیار مهم است، زیرا ایران یک تولیدکننده بزرگ نفت است و تنگه هرمز یک مسیر حیاتی کشتیرانی است. اگر درگیری تشدید شود، می‌تواند عرضه نفت را مختل کند و قیمت‌ها را افزایش دهد که خبر بدی برای مصرف‌کنندگان و اقتصاد جهانی خواهد بود. اما برخی از کشورها، مانند ایالات متحده، در تلاش هستند تا راه‌هایی برای کاهش اتکای خود به نفت و توسعه منابع انرژی جایگزین بیابند، بنابراین در برابر شوک‌های قیمتی آسیب‌پذیر نیستند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>نکته‌ای که باید در نظر داشت این است که دونالد ترامپ، رئیس‌جمهور ایالات متحده، در مورد این وضعیت توییت‌های زیادی منتشر کرده است و برخی از نظرات او بسیار تحریک‌آمیز بوده است. همچنین شایان ذکر است که پاپ وارد این ماجرا شده و خواستار آرامش و دیپلماسی شده است. علاوه بر این، برخی از سرمایه گذاران از این وضعیت عصبی می شوند و پول خود را از بازار سهام بیرون می کشند یا در دارایی های امن مانند طلا سرمایه گذاری می کنند. اما به طور کلی، این یک وضعیت پیچیده و به سرعت در حال تغییر است، و ما فقط باید منتظر بمانیم و ببینیم که همه چیز چگونه انجام می شود.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">من می گویم احتمال جنگ حدود 40 درصد است. شرایط بسیار متشنج است و عوامل زیادی وجود دارد که می تواند همه چیز را به حاشیه براند. اما در عین حال، هم ایالات متحده و هم ایران از یک جنگ تمام عیار چیزهای زیادی برای از دست دادن دارند، بنابراین ممکن است سعی کنند راهی برای حل مسالمت آمیز مسائل پیدا کنند.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
