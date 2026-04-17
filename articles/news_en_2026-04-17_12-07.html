@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-17 12:07</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-17 12:07</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Indian Officials See Iran War Shock as Disruptive as Covid</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 10:57</strong></span>
+                </div>
+                <p class='summary'>Indian officials say the Iran war could be as disruptive to the country as the Covid pandemic was six years ago and the damage could linger for years to come, threatening to knock the world’s fastest-growing major economy off its path.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/indian-officials-see-iran-war-shock-as-disruptive-as-covid' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Iran war impact: Europe may see flight cancellations soon, IEA warns</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 10:51</strong></span>
+                </div>
+                <p class='summary'>The head of the International Energy Agency warns Europe has about six weeks of jet fuel left. In an interview Thursday, Fatih Birol expressed concerns about possible flight cancellations if oil supplies remain blocked by the Iran war. He described the situat…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-war-europe-jet-fuel-flight-cancellations-birol-6e67fafd493861b3858de5548aa77703' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Euro-Zone Inflation Was Faster Than Thought in March at 2.6%</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 10:05</strong></span>
+                </div>
+                <p class='summary'>Euro-zone inflation was faster than initially reported in March, suggesting stronger upward pressure on prices from the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/euro-zone-inflation-was-faster-than-thought-in-march-at-2-6' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Peace talks are back on while the U.S. plays cat-and-mouse with rogue ships in the Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 09:51</strong></span>
+                </div>
+                <p class='summary'>Everything you need to know before you reach the office this morning.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/iran-peace-talks-us-rogue-ships-strait-of-hormuz/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Dubai Gives Hedge Funds Flexibility to Navigate Iran War Fallout</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 09:35</strong></span>
+                </div>
+                <p class='summary'>Dubai has drawn the world’s biggest hedge funds in recent years, transforming itself into a hub for the sector. Authorities are now moving quickly to shield that status, offering firms greater flexibility to navigate disruptions from the regional conflict.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/dubai-gives-hedge-funds-flexibility-to-navigate-iran-war-fallout' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Tesco Says Iran War Is Clouding Outlook for UK Shoppers</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 09:14</strong></span>
+                </div>
+                <p class='summary'>Tesco Plc said the war in the Middle East is creating uncertainty for shoppers that risks weighing on Britain’s biggest supermarket as the ripple effects of the conflict play out.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/tesco-says-iran-war-is-clouding-outlook-for-uk-shoppers' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Stocks lose ground as traders await Iran war truce update</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 08:54</strong></span>
+                </div>
+                <p class='summary'>U.S. stocks pulled back from record highs as investors looked for progress toward a longer-term peace deal in the Middle East. Read more.</p>
+                <div class='link'><a href='https://financialpost.com/investing/stocks-extend-high-tsmc-tech-optimism' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Stocks Extend Highs as TSMC Bolsters Tech Optimism: Markets Wrap</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 08:54</strong></span>
+                </div>
+                <p class='summary'>Stocks set new highs as an upbeat forecast from Taiwan Semiconductor Manufacturing Co. added fuel to technology shares amid rising optimism that the US and Iran are seeking to extend a two-week truce.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/stocks-extend-highs-as-tsmc-bolsters-tech-optimism-markets-wrap' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Pakistan Boosts Mediation Efforts as US, Iran Weigh Longer Truce</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 08:54</strong></span>
+                </div>
+                <p class='summary'>Pakistan stepped up efforts to ensure the US and Iran prolong a ceasefire that’s set to end next week, allowing more time for the warring sides to negotiate a lasting peace deal.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/pakistan-boosts-mediation-efforts-as-us-iran-weigh-longer-truce' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Taiwan Market Cap Tops $4 Trillion on AI Boom, Overtaking UK</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 08:49</strong></span>
+                </div>
+                <p class='summary'>Taiwan overtook the UK in stock market value as the island’s tech firms regained favor amid hopes for further de-escalation in the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/taiwan-market-cap-tops-4-trillion-on-ai-boom-overtaking-uk' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Pakistan Faces Extensive Blackouts as Gas Shortfall Worsens</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 08:03</strong></span>
+                </div>
+                <p class='summary'>Pakistan is expecting a streak of power outages as the war in the Middle East chokes its supplies of liquefied natural gas, just as it prepares to host the next round of peace talks between Iran and the US.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/pakistan-faces-extensive-blackouts-as-gas-shortfall-worsens' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>The Iran war’s fertilizer shock is hammering American farmers and 70% can’t afford what they need for this year’s growing season</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 08:01</strong></span>
+                </div>
+                <p class='summary'>Prices for the three main fertilizers used by farmers are all up double digits since the Iran war started.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/iran-war-fertilizer-prices-skyrocketing-economy-agriculture-american-farmers-donald-trump/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>ECB Officials Are Leaning Toward April Rate Hold</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:58</strong></span>
+                </div>
+                <p class='summary'>Policymakers at the European Central Bank are leaning toward keeping interest rates unchanged this month, postponing their verdict on whether the fallout of the Iran war warrants a response, according to people familiar with the debate.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/ecb-officials-are-leaning-toward-april-rate-hold' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Korean Air Up on Earnings Surprise Despite Fuel Fears</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:53</strong></span>
+                </div>
+                <p class='summary'>Korean Air Lines Co. shares climbed after South Korea’s largest flag carrier delivered a first-quarter earnings surprise, defying mounting concerns about jet fuel shortages and surging costs amid the Middle East crisis.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/korean-air-up-on-earnings-surprise-despite-fuel-fears' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>UK preparing for food shortages in worst case Iran scenario</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:33</strong></span>
+                </div>
+                <p class='summary'>The UK could face some food shortages by the summer under a worst case scenario drawn up by officials.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cpvxp4xnrwdo' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>Meet the Americans refusing to pay their taxes in protest of the Trump administration</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:25</strong></span>
+                </div>
+                <p class='summary'>From a Brooklyn freelancer who hasn't paid federal taxes since the Vietnam War to a new mom horrified by the Iran war, tax resisters say they'd rather face IRS consequences than fund policies they oppose.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/americans-refusing-to-pay-taxes-protest-trump-tax-day/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>Oil prices may be falling, but for the wrong reason: a ‘demand destruction’ throttling global consumption, report finds</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:07</strong></span>
+                </div>
+                <p class='summary'>The International Energy Agency said oil demand is projected to contract by 80,000 barrels per day in 2026.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/oil-prices-demand-destruction-iran-war-renewable-energy-push/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>Why no nation is truly ‘energy independent’ while the Strait of Hormuz remains closed</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:03</strong></span>
+                </div>
+                <p class='summary'>The U.S. blockade is working, but a potential global recession still looms.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/no-nation-energy-independent-iran-war-strait-hormuz-closure/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>Kganyago Cites Zulu War to Signal Preemptive Inflation Move</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 07:02</strong></span>
+                </div>
+                <p class='summary'>South Africa’s central bank governor referenced an 1879 battle in the Anglo-Zulu war in his views on how to tackle the coming wave on inflation from the Iran war shocks, implying a preference to raise interest rates sooner rather than later.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/kganyago-cites-zulu-war-to-signal-preemptive-inflation-move' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>TotalEnergies Flags Strong Quarter as War Rattles Energy Market</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 06:56</strong></span>
+                </div>
+                <p class='summary'>TotalEnergies SE signaled a strong first quarter as surging energy prices and rising production outside the Middle East helped offset the impact of the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/totalenergies-flags-strong-quarter-as-war-rattles-energy-market' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>UK Economy in Surprise GDP Jump Before Hit From Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 06:51</strong></span>
+                </div>
+                <p class='summary'>The UK economy was expanding quickly in the weeks leading up to the outbreak of war in Iran, revealing the extent to which conflict in the Middle East has changed British fortunes.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-economy-in-surprise-gdp-jump-before-hit-from-iran-war' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>Pakistan’s Army Chief Visits Tehran for US-Iran Mediation Talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 06:41</strong></span>
+                </div>
+                <p class='summary'>Pakistan’s army chief landed in Tehran to a warm welcome from officials as he tries to help renew talks between the US and Iran after the two sides failed to clinch a peace agreement in Islamabad over the weekend.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/pakistans-army-chief-visits-tehran-for-us-iran-mediation-talks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>Anwar Says Mideast States Are Using Malaysia to Engage Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 06:31</strong></span>
+                </div>
+                <p class='summary'>Prime Minister Anwar Ibrahim signaled that Malaysia could play a role in ending the conflict in the Middle East, saying leaders from Gulf states have used his country as a channel to Iran’s leadership.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/anwar-says-mideast-states-are-using-malaysia-to-engage-iran' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>Foreign Investors Keep Selling Chinese Bonds Despite Resilience</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 06:26</strong></span>
+                </div>
+                <p class='summary'>Foreign investors have pulled about $180 billion from Chinese bonds over the past year, underscoring how hard it is to retain overseas capital, even as the market held up better than most during the US-Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/foreign-investors-keep-selling-chinese-bonds-despite-resilience' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>Iran-Linked Ships Take New Path To Trickle Into the Persian Gulf</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 05:50</strong></span>
+                </div>
+                <p class='summary'>At least two US-sanctioned, Iran-linked vessels made their way through the Strait of Hormuz and into the Persian Gulf on Thursday, taking what may be a new route from the United Arab Emirates even as a US blockade enters its third day.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-linked-ships-take-new-path-to-trickle-into-the-persian-gulf' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>China’s $51 Trillion Savings Help Bonds Outperform Global Peers</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 05:20</strong></span>
+                </div>
+                <p class='summary'>China’s $51 trillion savings glut has fueled demand for its debt, entrenching its role as a haven as the Iran war drives global volatility.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinas-51-trillion-savings-help-bonds-outperform-global-peers' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>Oil Steady on Signs US, Iran Working Toward Ceasefire Extension</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 05:20</strong></span>
+                </div>
+                <p class='summary'>Oil steadied on signs the US and Iran may extend a ceasefire and restart talks to end the war that’s rocked energy markets.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-steady-on-signs-us-iran-working-toward-ceasefire-extension' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>28</span>
+                <span class='title'>Australian Fuel Supply to Get Even Tighter After Refinery Fire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 05:04</strong></span>
+                </div>
+                <p class='summary'>A major fire at one of Australia’s only two oil refineries is set to curtail fuel production, raising additional concerns about supply in a market already strained by the war in the Middle East.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/australian-fuel-supply-to-get-even-tighter-after-refinery-fire' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>29</span>
+                <span class='title'>China’s Economy Revs Up Despite War as Growth Tops Forecasts</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 05:04</strong></span>
+                </div>
+                <p class='summary'>China’s economic growth rebounded more than expected in the first quarter of 2026, suggesting limited spillovers so far from the war in Iran but revealing few signs of turnaround in weak consumer spending.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinas-economy-revs-up-despite-war-as-growth-tops-forecasts' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>30</span>
+                <span class='title'>Goldman Favors North Asia’s Tech-Heavy Stock Markets Over South</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 04:44</strong></span>
+                </div>
+                <p class='summary'>North Asia’s tech-heavy equity markets offer better risk-reward than their South and Southeast Asian peers that are relatively more vulnerable to the oil shock triggered by the Iran war, according to Goldman Sachs Group Inc.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/goldman-favors-north-asias-tech-heavy-stock-markets-over-south' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>31</span>
+                <span class='title'>A Top Bond Fund Manager Says India Inflation Risk is Overpriced</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 04:33</strong></span>
+                </div>
+                <p class='summary'>For one of India’s biggest bond fund managers, markets are overpricing the inflation risk from the Iran war and that is creating a buying opportunity.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/a-top-bond-fund-manager-says-india-inflation-risk-is-overpriced' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>32</span>
+                <span class='title'>Thailand Rushes to Secure Oil, Fertilizer as Hormuz Remains Shut</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 04:12</strong></span>
+                </div>
+                <p class='summary'>Thailand is racing to secure new shipments of oil and fertilizer as an intensifying standoff over the Strait of Hormuz drains its reserves.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/thailand-rushes-to-secure-oil-fertilizer-as-hormuz-remains-shut' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>33</span>
+                <span class='title'>US, Iran Weigh Truce Extension With Hormuz Still Shuttered</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 04:07</strong></span>
+                </div>
+                <p class='summary'>The US and Iran are considering a two-week ceasefire extension to allow more time to negotiate a peace deal, according to a person familiar with the matter, reducing the risk of renewed fighting despite an intensifying standoff over the Strait of Hormuz.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-iran-weigh-truce-extension-with-hormuz-still-shuttered' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>34</span>
+                <span class='title'>China's economy grows at 5% in first quarter</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 02:33</strong></span>
+                </div>
+                <p class='summary'>China’s economy accelerated in the first quarter of this year, expanding 5% from a year earlier as it largely shrugged off impacts from the Iran war so far. The January-March data released by the government on Thursday, covering a period during which the Iran…</p>
+                <div class='link'><a href='https://apnews.com/article/china-economy-data-growth-e1dbb6d542c6c1b17f99671f4dcc7d81' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-16</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The situation in Iran is causing concerns around the world, with a potential war disrupting economies, oil supplies, and daily life. Indian officials are comparing the impact to the Covid pandemic, while Europe is worried about flight cancellations due to jet fuel shortages. The US and Iran are considering a ceasefire extension, but the situation remains uncertain.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>There's been a conflict in Iran, and it's affecting many countries. The US and Iran are not seeing eye-to-eye, and this is causing problems with oil supplies, food prices, and even air travel. Some countries, like India, are preparing for the worst, while others, like Pakistan, are trying to help find a peaceful solution.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It's likely that the situation will continue to be uncertain, with the US and Iran trying to negotiate a peace deal. If they can't come to an agreement, things might get worse, and we could see more disruptions to oil supplies, food prices, and air travel. But if they can find a way to talk things through, we might see things start to get back to normal.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>The conflict in Iran started recently, and since then, we've seen a lot of activity. The US and Iran have been talking, but they haven't been able to agree on everything. Pakistan has been trying to help mediate, and other countries, like China and India, are watching closely. Over the next few weeks, we'll likely see more negotiations and possibly some developments that could change the course of things.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This situation is important because it affects not just the countries directly involved, but also the global economy. If oil supplies are disrupted, it could lead to higher prices for food, transportation, and other essential goods. It's a complex issue, but basically, it's about how countries are working together to try to find a peaceful solution to a difficult problem.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved, including the US, Iran, Pakistan, China, and India. Each of these countries has its own interests and concerns, and they're all trying to navigate the situation in a way that works for them. Some countries, like Pakistan, are trying to help mediate, while others, like the US, are taking a more direct approach.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The conflict in Iran is affecting oil prices, which means it could impact how much you pay for gas, food, and other things. If oil supplies are disrupted, prices could go up, which would be felt by people all around the world. But if the situation is resolved peacefully, we might see oil prices stabilize, which would be a relief for many people.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>Some other things to keep in mind are that food prices might be affected, air travel could be disrupted, and some countries might face shortages of certain goods. It's also worth noting that the situation is changing quickly, so it's a good idea to stay informed and up-to-date on the latest developments.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">40% - The situation is still uncertain, and while there are efforts to negotiate a peace deal, there's still a risk that things could escalate into a larger conflict.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
