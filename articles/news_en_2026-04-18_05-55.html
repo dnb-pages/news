@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-18 05:55</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-18 05:55</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>First War, Then Fire: Australia’s Fuel Crisis Set to Hit Harder</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 05:52</strong></span>
+                </div>
+                <p class='summary'>A cut in production at one of Australia’s two refineries has dealt a fresh blow to government efforts to contain a fuel crisis triggered by the Iranian war, just as previous measures were beginning to ease shortages and bring down gasoline prices.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/first-war-then-fire-australias-fuel-crisis-set-to-hit-harder' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Trump optimistic about Iran war as Lebanon truce takes effect</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 05:51</strong></span>
+                </div>
+                <p class='summary'>U.S. President Donald Trump and Iran’s foreign minister say the Strait of Hormuz is now fully open to commercial vessels. In a social media post Friday, Trump said Iran announced that the strait is open and “ready for full passage.” Minutes earlier, Iranian F…</p>
+                <div class='link'><a href='https://apnews.com/article/us-iran-war-lebanon-israel-talks-pakistan-hormuz-17-april-2026-4bd5a29af608ecbd72356559b3c55d67' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Wheat Rallies on Weather Woes and Iran-Linked Fertilizer Crunch</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 05:22</strong></span>
+                </div>
+                <p class='summary'>Wheat was set for its biggest weekly gain in almost two months, as persistent weather concerns and tighter fertilizer supplies linked to the Iran war stoked worries over the crop’s supply outlook.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/wheat-rallies-on-weather-woes-and-iran-linked-fertilizer-crunch' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Asian stocks lower and oil falls on ceasefire hopes</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 05:05</strong></span>
+                </div>
+                <p class='summary'>Oil prices fell by 13%, and the Dow Jones Industrial Average soared more than 1,000 points after Iran said the Strait of Hormuz is fully open. The price for a barrel of Brent crude fell toward $86 after Iran said Friday it would allow oil tankers to exit the …</p>
+                <div class='link'><a href='https://apnews.com/article/stock-markets-trump-oil-iran-war-50e10bf2aa9b0b658c51e17db3eb3b13' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>China Moves to Slow Yuan Rally by Cooling Fixing Volatility</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 04:36</strong></span>
+                </div>
+                <p class='summary'>China’s central bank is using its daily reference rate to temper the yuan’s rally as the currency’s outperformance during the Iran war fuels further bullish sentiment.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/china-moves-to-slow-yuan-rally-by-cooling-fixing-volatility' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ECB to Hike Rates in June as 2026 Inflation Jumps, Survey Shows</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 04:36</strong></span>
+                </div>
+                <p class='summary'>The European Central Bank will raise interest rates in June as the Iran war drives inflation higher this year, a Bloomberg survey showed.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/ecb-to-hike-rates-in-june-as-2026-inflation-jumps-survey-shows' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Macron and Starmer hold summit on Hormuz shipping</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 04:26</strong></span>
+                </div>
+                <p class='summary'>The leaders of France and the U.K. are holding an international summit to push forward efforts to reopen the Strait of Hormuz, a vital oil route affected by the U.S.-Israeli war with Iran. The coalition, excluding the U.S., aims to provide security for shippi…</p>
+                <div class='link'><a href='https://apnews.com/article/hormuz-strait-iran-blockade-britain-france-10518e69aecbb986c9118ff42ab0ca02' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Oil Drops as Trump Strikes Upbeat Tone With War Near 50-Day Mark</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 04:06</strong></span>
+                </div>
+                <p class='summary'>Oil dropped as President Donald Trump struck an optimistic tone on prospects for a permanent ceasefire between the US and Iran.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-drops-as-trump-strikes-upbeat-tone-with-war-near-50-day-mark' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Europe Looks to Contain Trump’s Fury as It Hosts Hormuz Summit</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 04:00</strong></span>
+                </div>
+                <p class='summary'>The UK and France will host a summit to discuss setting up a naval force that would ensure freedom of navigation in the Strait of Hormuz, as Europe seeks to rebut US claims that it’s not doing enough to secure the waterway.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/europe-looks-to-contain-trumps-fury-as-it-hosts-hormuz-summit' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Strait of Hormuz open to commercial ships for remainder of ceasefire, Iran says - follow live</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 00:28</strong></span>
+                </div>
+                <p class='summary'>Reacting on social media, President Trump says the US blockade of Iranian ports will remain in place until a permanent peace deal is agreed.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/live/cqxdg17yr2wt' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Iran will ‘for sure’ play in World Cup, FIFA chief Infantino says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 20:13</strong></span>
+                </div>
+                <p class='summary'>"We hope that by then, of course, the situation will be a peaceful situation. As I said, that would definitely help."</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/iran-will-for-sure-play-in-world-cup-fifa-chief-infantino-says/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Trump: Israel and Lebanon agree to cease-fire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 18:26</strong></span>
+                </div>
+                <p class='summary'>Trump says $4 a gallon gas is "not very high" given the importance of stopping Iran from getting a nuclear weapon.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/trump-israel-and-lebanon-agree-to-cease-fire/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Americans have never been this gloomy about the economy. Wall Street has never cashed in harder</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-16 18:20</strong></span>
+                </div>
+                <p class='summary'>“Stock markets respond to risks shifting around,” top economist Claudia Sahm told Fortune. “Households respond to reality.”</p>
+                <div class='link'><a href='https://fortune.com/2026/04/16/americans-gloomy-economy-wall-street-k-shape-market-manipulation-iran-war/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-17</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>There's been a lot of news about Iran and its effects on the world. Iran and the US have been in a conflict, which has caused problems with oil and food prices. But it seems like things might be getting better, with Iran saying it will let oil tankers pass through the Strait of Hormuz. This is a big deal because it could help lower oil prices and make it easier for countries to get the oil they need.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>Iran and the US have been in a conflict, which has caused problems with oil and food prices. Iran has been blocking the Strait of Hormuz, a very important waterway for oil tankers. This has made it hard for countries to get the oil they need, and has driven up prices. There have also been worries about food, because Iran is a big producer of fertilizer, which is used to grow crops.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It looks like things might be getting better. Iran has said it will let oil tankers pass through the Strait of Hormuz, which could help lower oil prices. The US and Iran are also talking about a ceasefire, which could help end the conflict. But it's hard to say for sure what will happen next, because these things can be unpredictable.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>The conflict between Iran and the US started a few months ago. Since then, there have been a lot of ups and downs. Oil prices have gone up and down, and there have been worries about food prices. Recently, Iran said it would let oil tankers pass through the Strait of Hormuz, which is a big deal. The US and Iran are also talking about a ceasefire, which could help end the conflict.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This conflict is a big deal for the whole world. It's not just about Iran and the US - it's about how the whole world gets the oil and food it needs. If the conflict continues, it could cause big problems for many countries. But if it can be resolved, it could help make the world a more stable and peaceful place.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved in this conflict, including the US, Iran, and countries in Europe and Asia. Some countries, like France and the UK, are trying to help find a peaceful solution. Others, like China, are watching the situation closely to see how it will affect their own interests.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The conflict has driven up oil prices, which is a big deal for many people. When oil prices go up, it can make it more expensive to drive a car, heat a home, or buy food. But if the conflict can be resolved, it's possible that oil prices could go back down, which would be a big relief for many people.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>There are many other things to consider in this situation. For example, the conflict has also affected the price of wheat and other foods, which could have a big impact on people who are already struggling to get by. Additionally, the conflict has caused a lot of uncertainty and worry, which can be hard on people's mental health. It's also worth noting that FIFA, the organization that runs the World Cup, is still planning for Iran to play in the tournament, which could be a positive sign for the country's future.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">40% - The situation is still uncertain, but it seems like both sides are trying to find a way to end the conflict. However, there are still many things that could go wrong, and it's possible that the conflict could escalate again.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
