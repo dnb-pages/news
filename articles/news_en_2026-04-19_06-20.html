@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-19 06:20</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-19 06:20</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Greek, Indian Tankers U-Turn Before Hormuz Amid Reopening Doubt</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-18 06:14</strong></span>
+                </div>
+                <p class='summary'>Several oil tankers have u-turned in the Persian Gulf after appearing to try to transit the Strait of Hormuz, as shipowners and oil traders remain in a state of disarray as they try to figure out whether Iran would stick to its promise to keep the chokepoint …</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/greek-indian-tankers-u-turn-before-hormuz-amid-reopening-doubt' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>China Clean Tech Exports Jump Amid Global Energy Disruption</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-18 04:48</strong></span>
+                </div>
+                <p class='summary'>China’s exports of clean technology climbed in March, reinforcing signs that manufacturers are benefiting from rising global demand for alternative energy sources as traditional supplies are roiled by the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/china-clean-tech-exports-jump-amid-global-energy-disruption' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran: Strait of Hormuz open during ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 21:52</strong></span>
+                </div>
+                <p class='summary'>President Trump and Iranian officials have said the Strait of Hormuz is open to all commercial vessels, although shipping firms say they're remaining cautious. Iran's foreign minister, Abbas Araghchi, said the vital waterway would be navigable while the Leban…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmynddkcz9' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Something is different about Trump’s $1 trillion war on Iran and its stress on the national debt, Harvard Kennedy scholar says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 20:01</strong></span>
+                </div>
+                <p class='summary'>During the wars in Iraq and Afghanistan, debt held by the public was around $4 trillion. Now, it's $31 trillion, and 15% of the budget pays down interest.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/17/what-is-different-about-trump-1-trillion-war-on-national-debt/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Half of Iran’s workforce faces unemployment risk as the U.S.-Israel war’s ‘hidden target’ was the labor market, economist says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 19:39</strong></span>
+                </div>
+                <p class='summary'>“Even if the cease-fire holds, Iran’s most vulnerable people will suffer the long-term consequences of this 40-day conflict.”</p>
+                <div class='link'><a href='https://fortune.com/2026/04/17/iran-economy-workforce-unemployment-risk-us-israel-war-hidden-target-labor-market/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>UK and France to lead defensive mission in Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-17 18:27</strong></span>
+                </div>
+                <p class='summary'>Sir Keir Starmer has said further details of the plan will come after a meeting in London next week.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c5yjz819vmgo' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-19</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>There's been a lot of tension around Iran and the Strait of Hormuz, a very important waterway for oil ships. Some oil tankers have even changed direction, unsure if it's safe to pass through. The good news is that there's a ceasefire, and countries like the UK and France are planning to help keep the area safe. However, Iran's economy and people are still facing big challenges, and the world is watching to see what happens next.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>Recently, some oil tankers from Greece and India turned around before reaching the Strait of Hormuz, because they weren't sure if it was safe to pass through. This is because there's been a lot of uncertainty about whether Iran would keep its promise to keep the strait open. Meanwhile, countries like China are seeing an increase in demand for clean energy technology, which could be a good thing for the environment.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>In the coming days and weeks, we can expect to see more countries getting involved in trying to keep the Strait of Hormuz safe. The UK and France are already planning a defensive mission, and other countries may join in. It's also likely that we'll see more talks between world leaders to try to find a lasting solution to the problems in the region.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>Over the past few weeks, there have been a lot of developments in the region. The US and Israel have been involved in a conflict with Iran, which has had a big impact on the country's economy and people. There was a ceasefire announced, but it's still unclear what will happen next. In the meantime, countries like China are taking advantage of the situation to increase their exports of clean energy technology.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>The situation in Iran and the Strait of Hormuz is important for the whole world, because it affects the price of oil and the global economy. It's also a reminder of the complexities and challenges of international relations, and the need for countries to work together to find peaceful solutions to conflicts.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved in the situation, including the US, Israel, Iran, the UK, France, and China. Each country has its own interests and motivations, but they all want to see a stable and peaceful region. The US and Israel are concerned about Iran's military activities, while the UK and France are focused on keeping the Strait of Hormuz safe. China is taking advantage of the situation to increase its exports of clean energy technology.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The situation in Iran and the Strait of Hormuz is having a big impact on the price of oil, which is why it matters to grandma. When the price of oil goes up, it can affect the cost of gasoline, heating oil, and other things that grandma uses every day. It's also important for the global economy, because many countries rely on oil to power their industries and transportation systems.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>It's also worth noting that the conflict in Iran has had a big impact on the country's economy and people. Half of the workforce is at risk of unemployment, and many people are suffering from the effects of the conflict. It's a reminder of the human cost of war and conflict, and the need for countries to work together to find peaceful solutions.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-high">40% - The situation is still very uncertain, and there are many factors that could lead to more conflict. However, there are also many countries and leaders working to try to find a peaceful solution, which is why the probability of war is not higher.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
