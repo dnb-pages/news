@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-21 21:09</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-21 21:09</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ توجه مهم:</div>
+        این محتوا به صورت خودکار از منابع خبری انتخاب شده جمع‌آوری شده و تحلیل نهایی نیز توسط ماشین تولید شده و هیچ‌گونه بررسی سیاسی یا تخصصی در آن صورت نگرفته است. همچنین برخی از منابع خبری با تأخیر دریافت می‌شوند، لذا همیشه زمان انتشار خبر اصلی را بررسی فرمایید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>تجمع بازار سهام برای ثبت پرچم های قرمز ماسک بالا</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 20:30</strong></span>
+                </div>
+                <p class='summary'>«بادهای مخالف پیش‌بینی نشده» برای بازار شامل پتانسیل اختلال در هوش مصنوعی و طول مدت جنگ ایران است. ادامه مطلب</p>
+                <div class='link'><a href='https://financialpost.com/investing/stock-markets-rally-to-record-high' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>سیتی قیمت نفت را 110 دلار می بیند اگر اختلال هرمز یک ماه دیگر ادامه یابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 19:29</strong></span>
+                </div>
+                <p class='summary'>بر اساس گزارش سیتی گروپ، اگر تردد در تنگه هرمز برای یک ماه دیگر مختل بماند، قیمت نفت ممکن است به 110 دلار در هر بشکه افزایش یابد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/citi-sees-oil-at-110-if-hormuz-disruption-lasts-another-month' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>لاگارد می‌گوید «عدم قطعیت مضاعف» جنگ نیازمند داده‌های بیشتر است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 17:37</strong></span>
+                </div>
+                <p class='summary'>کریستین لاگارد، رئیس بانک مرکزی اروپا، گفت که دو عامل اصلی در مورد جنگ ایران، تلاش‌ها برای ترسیم واکنش سیاست پولی را با مشکل مواجه می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/lagarde-says-wars-double-uncertainty-calls-for-more-data' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>کاهش سهام اروپا به دلیل نگرانی از تمدید آتش بس در ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 17:21</strong></span>
+                </div>
+                <p class='summary'>در حالی که امیدها برای پایان جنگ ایران با اظهارات دونالد ترامپ رئیس جمهور آمریکا مبنی بر اینکه تمدید آتش بس «بسیار بعید است» از بین رفت، سهام اروپا سقوط کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-stocks-drop-on-worries-over-iran-ceasefire-extension' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>بومرنگ 4 تریلیون دلاری Big Tech، SP 500 را به ارتفاعات جدیدی می رساند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 17:02</strong></span>
+                </div>
+                <p class='summary'>سرمایه‌گذاران اطمینان پیدا می‌کنند که آخرین رشد بازار سهام، حتی با وجود باقی ماندن خطرات ناشی از جنگ با ایران، فضا برای اجرا دارد. بیشتر بدانید</p>
+                <div class='link'><a href='https://financialpost.com/investing/big-techs-boomerang-powers-sp-500-new-heights' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>میزان محبوبیت دونالد ترامپ رئیس جمهور آمریکا چقدر است؟ آخرین نظرسنجی ها را ببینید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> USA Today</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 16:38</strong></span>
+                </div>
+                <p class='summary'>میزان محبوبیت پرزیدنت ترامپ مدت‌هاست که زیر آب بوده و برای جمهوری‌خواهان در میان دوره‌ای مشکل ایجاد کرده است. ایران، قیمت بالای گاز کمکی نمی کند.</p>
+                <div class='link'><a href='https://www.usatoday.com/story/news/politics/2026/04/20/trump-job-approval-poll/89697373007/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>کسری بودجه ایتالیا کمتر از 3 درصد تولید ناخالص داخلی است، حتی در حالی که جنگ ایران رشد را کند می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 16:35</strong></span>
+                </div>
+                <p class='summary'>به گفته منابع آگاه، دولت ایتالیا انتظار دارد کسری بودجه این کشور در سال جاری به کمتر از حد اتحادیه اروپا کاهش یابد، علیرغم تجدیدنظر نزولی در پیش‌بینی رشد اقتصادی این کشور به دلیل جنگ با ایران.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/italy-eyes-deficit-under-3-of-gdp-even-as-iran-war-slows-growth' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>اقتصاددان می گوید اگر ایران نبود، بانک مرکزی کانادا می توانست به دنبال کاهش نرخ بهره باشد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 16:34</strong></span>
+                </div>
+                <p class='summary'>در اینجا اقتصاددانان فکر می‌کنند که داده‌های تورم برای بانک کانادا در نظر دارد که نرخ بعدی خود را در 29 آوریل اعلام می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/news/economy/bank-of-canada-could-cut-rates' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>مقامات امارات متحده عربی بر اساس گزارش‌ها هشدار داده‌اند در صورت کاهش دلار در بحبوحه جنگ ایران، ممکن است مجبور شوند از یوان یا سایر ارزها استفاده کنند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:55</strong></span>
+                </div>
+                <p class='summary'>هر گونه دور شدن از دلار توسط یک تولیدکننده بزرگ نفت، تهدیدی بزرگ برای برتری این ارز است.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/20/uae-central-bank-dollar-lifeline-fed-treasury-currency-swap-chinese-yuan-iran-war/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>مقام ارشد: ایران هرگز هرمز را رها نمی کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:52</strong></span>
+                </div>
+                <p class='summary'>لیز دوست، خبرنگار بی‌بی‌سی با ابراهیم عزیزی، نماینده ارشد مجلس شورای اسلامی، رئیس کمیسیون امنیت ملی و سیاست خارجی مجلس ایران گفت‌وگو کرده است. او آمریکا را "بزرگترین دزد دریایی جهان" می نامد.
+
+همچنین در برنامه: تحقیق بی بی سی…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmz0npy2qv' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>بانک مرکزی کانادا می گوید جنگ ایران انتظارات تورمی را بالا می برد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:49</strong></span>
+                </div>
+                <p class='summary'>نظرسنجی بانک مرکزی کانادا نشان می دهد که بیش از 80 درصد از خانواده ها انتظار دارند که جنگ به اقتصاد کانادا آسیب برساند و تورم را افزایش دهد. ادامه مطلب</p>
+                <div class='link'><a href='https://financialpost.com/news/economy/bank-of-canada-surveys-show-war-hitting-inflation-expectations' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>نظرسنجی‌های بانک مرکزی کانادا نشان می‌دهد که جنگ به انتظارات تورمی ضربه می‌زند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:49</strong></span>
+                </div>
+                <p class='summary'>داده‌های نظرسنجی منتشر شده توسط بانک مرکزی کانادا نشان می‌دهد که جنگ در ایران انتظارات تورمی را بالا می‌برد، پس از اینکه احساسات قبل از جنگ بهبود یافته بود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bank-of-canada-surveys-show-war-hitting-inflation-expectations' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>ترامپ می گوید تمدید آتش بس ایران بعید است، هرمز بسته می ماند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:39</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور آمریکا گفت که «بسیار بعید» است که آتش‌بس دو هفته‌ای با ایران را در صورت عدم دستیابی به توافق قبل از پایان آن تمدید کند و گفت: تنگه هرمز تا زمانی که توافق نهایی نشود مسدود خواهد ماند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-says-iran-truce-extension-unlikely-hormuz-stays-shut' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>ترامپ می گوید تمدید آتش بس ایران «بسیار بعید» است، هرمز بسته می ماند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:39</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ گفت که «بسیار بعید» است که اگر آتش‌بس دو هفته‌ای با ایران به توافق نرسد، تمدید کند. ادامه مطلب</p>
+                <div class='link'><a href='https://financialpost.com/news/trump-says-iran-truce-extension-unlikely-hormuz-stays-shut' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>پریرا از بانک مرکزی اروپا می گوید که آسیب اقتصادی جنگ ایران هنوز نشان داده نشده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 14:33</strong></span>
+                </div>
+                <p class='summary'>به گفته آلوارو سانتوس پریرا، عضو شورای مرکزی بانک مرکزی اروپا، جنگ ایران هنوز برای درک تأثیر کامل آن بر اقتصاد منطقه یورو تازه است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/ecbs-pereira-says-economic-damage-of-iran-war-has-yet-to-show' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>با افزایش تنش‌های آتش‌بس، قیمت‌های نفت افزایش می‌یابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 14:33</strong></span>
+                </div>
+                <p class='summary'>با هشدار سرمایه گذاران اوراق قرضه برای کاتالیزورهای مرتبط با مذاکرات صلح برای پایان دادن به جنگ در خاورمیانه و نشستی برای تایید احتمالی کوین وارش به عنوان رئیس بعدی فدرال رزرو، بازار اوراق خزانه برای شروع هفته کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/treasuries-slip-as-renewed-ceasefire-tensions-lift-oil-prices' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>سهام ایالات متحده در بحبوحه محو شدن چشم انداز مذاکرات صلح بین ایران و آمریکا کاهش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 14:21</strong></span>
+                </div>
+                <p class='summary'>در حالی که تحولات آخر هفته در جنگ خاورمیانه چشم انداز مذاکرات صلح بین ایالات متحده و ایران را کم رنگ کرد، سهام ایالات متحده سقوط کرد. ادامه مطلب</p>
+                <div class='link'><a href='https://financialpost.com/investing/us-stocks-decline-fading-us-iran-peace-talk' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>تورم کانادا با افزایش قیمت گاز توسط جنگ به 2.4 درصد رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 13:26</strong></span>
+                </div>
+                <p class='summary'>نرخ تورم کانادا در ماه مارس به 2.4 درصد رسید، زیرا جنگ ایران باعث افزایش بی سابقه قیمت بنزین شد، هرچند که اندکی کمتر از انتظار اقتصاددانان بود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/canada-inflation-jumps-to-2-4-as-war-drives-up-gas-prices' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>تردیدها در مورد مذاکرات ایران و آمریکا پس از شعله ور شدن خشونت ها در تنگه هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:58</strong></span>
+                </div>
+                <p class='summary'>با وجود افزایش تنش ها در اطراف تنگه هرمز، پاکستان در حال آماده شدن برای مذاکرات جدید بین ایالات متحده و ایران است. ایالات متحده یک کشتی باری ایرانی را در آخر هفته توقیف کرد و آن را به فرار از محاصره متهم کرد. ارتش ایران متعهد شد…</p>
+                <div class='link'><a href='https://apnews.com/article/us-iran-war-israel-hormuz-20-april-2026-a3ddc59230ae7de719a9ff9e7595e375' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>کویت فورس ماژور حمل نفت در هرمز را متوقف کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:51</strong></span>
+                </div>
+                <p class='summary'>کویت در مورد محموله های نفت خام و فرآورده های پالایش شده فورس ماژور را اعلام کرد زیرا محاصره تنگه هرمز انجام تعهدات در قبال مشتریانی را که نمی توانند کشتی ها را به خلیج فارس بیاورند غیرممکن می کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/kuwait-declares-force-majeure-on-oil-shipments-on-hormuz-halt' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>هلند یک میلیارد یورو برای کاهش شوک های قیمتی ایران اختصاص می دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:25</strong></span>
+                </div>
+                <p class='summary'>هلند بیش از 950 میلیون یورو (1.1 میلیارد دلار) را برای کاهش اثرات اقتصادی جنگ ایران بر خانوارها و مشاغل هلندی اختصاص داده است، زیرا این کشور برای کمبود احتمالی سوخت آماده می شود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/netherlands-earmarks-e1-billion-to-mitigate-iran-price-shocks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>پیمانکاران نفت با موفقیت‌های سود ناشی از جنگ خاورمیانه مواجه می‌شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:20</strong></span>
+                </div>
+                <p class='summary'>ثروت بزرگ‌ترین پیمانکاران نفت جهان در حال کم‌رنگ شدن است، زیرا پیامدهای ابرهای جنگی ایران چشم‌انداز رونق حفاری و شکستن نفت در خاورمیانه را در پی دارد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-contractors-face-profit-hits-from-mideast-war-fallout' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>آخرین: توقیف کشتی ایرانی توسط نیروی دریایی آمریکا، مذاکرات جدید در پاکستان را با تردید مواجه کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:04</strong></span>
+                </div>
+                <p class='summary'>توقیف یک کشتی باری با پرچم ایران توسط نیروی دریایی آمریکا، اعلامیه دونالد ترامپ، رئیس جمهور آمریکا درباره مذاکرات آتی با ایران را با تردید مواجه کرده است. ترامپ گفت که مذاکره کنندگان آمریکایی روز دوشنبه به پاکستان می روند، اما وزارت خارجه ایران اعلام کرد که هیچ…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-israel-us-lebanon-latest-april-20-2026-9df061160b3b8f377996564fdc5baf05' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>بارکلیز می‌گوید خدمات انرژی پس از پایان جنگ ایران به نفع آن خواهد بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:00</strong></span>
+                </div>
+                <p class='summary'>به گفته تحلیلگران Barclays Plc، پس از کاهش تنش در مناقشه خاورمیانه به دلیل تلاشی که تولیدکنندگان نفت برای رفع اختلال باید انجام دهند، بخش خدمات انرژی اروپا با آینده روشن تری روبرو خواهد شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/energy-services-set-to-benefit-once-iran-war-ends-barclays-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>سکون هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 11:00</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده روز دوشنبه به یک کشتی باری با پرچم ایران حمله کرد و آن را توقیف کرد که می‌گفت سعی کرده از محاصره دریایی آن در نزدیکی تنگه هرمز فرار کند.</p>
+                <div class='link'><a href='https://apnews.com/live/iran-war-israel-trump-04-20-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>با امتناع ایران از "معامله" ترامپ و بسته ماندن تنگه، معاملات آتی سهام ایالات متحده سقوط کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 10:47</strong></span>
+                </div>
+                <p class='summary'>هر آنچه که باید قبل از رسیدن به دفتر امروز صبح بدانید.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/20/us-stock-futures-iran-deal-strait/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>جنگ ایران در کلمبیا روی تقاضای انرژی حساب باز می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 09:47</strong></span>
+                </div>
+                <p class='summary'>جنگ ایران باعث ایجاد تغییرات تکتونیکی در بازارهای جهانی انرژی می شود زیرا کشورهای وابسته به واردات تلاش می کنند تا خود را با قیمت های تندتر به ویژه گاز طبیعی مایع وفق دهند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-war-is-forcing-a-reckoning-in-colombia-on-energy-demand' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>28</span>
+                <span class='title'>جنگ ایران باعث تقویت قراردادهای انرژی های تجدیدپذیر آفریقا شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 09:31</strong></span>
+                </div>
+                <p class='summary'>سرمایه‌گذاری‌های خصوصی در زمینه انرژی‌های تجدیدپذیر در آفریقا با توجه به جنگ ایران که کشورها را وادار به تلاش برای کاهش وابستگی خود به نفت و گاز وارداتی می‌کند، تسریع می‌یابد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-war-seen-boosting-africas-renewable-energy-deals' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>29</span>
+                <span class='title'>با تشدید تنش ها پس از توقیف کشتی توسط آمریکا، ایران در مورد مذاکرات صلح تردید می کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع::</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 09:21</strong></span>
+                </div>
+                <p class='summary'>پس از اینکه آمریکا تنگه هرمز را محاصره کرد و کشتی ایرانی را توقیف کرد، ایران در مورد اعزام دیپلمات‌ها به پاکستان برای دور دوم مذاکرات صلح تردید داشت و امیدها برای دستیابی به موفقیت در تلاش‌ها برای پایان دادن به جنگ را کمرنگ کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-wavers-on-peace-talks-as-tensions-rise-after-us-seizes-ship' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 20 آوریل 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>وضعیت بزرگی با ایران در جریان است که بر بسیاری از کشورها و اقتصاد جهانی تأثیر می گذارد. ایالات متحده و ایران چشم در چشم نمی بینند و باعث ایجاد مشکلاتی در قیمت نفت و تجارت می شود. بسیاری از کشورها در تلاش هستند تا بفهمند چه کاری باید انجام دهند و برخی حتی در مورد استفاده از ارزهای مختلف به جای دلار آمریکا صحبت می کنند. این یک موقعیت پیچیده است، اما من آن را به زبان ساده برای شما شرح می دهم.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 چه اتفاقی افتاده؟</h3>
+            <p>آمریکا و ایران با هم اختلاف نظر داشته اند و به جنگ منجر شده است. ایالات متحده تنگه هرمز را که آبراه بسیار مهمی برای کشتی‌های نفتی است، مسدود کرده است. ایران از این موضوع خوشحال نیست و آنها می گویند که عقب نشینی نمی کنند. اوضاع متشنج است و بسیاری از کشورها نگران اتفاقات بعدی هستند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 اوضاع به کجا می‌رود؟</h3>
+            <p>این احتمال وجود دارد که وضعیت همچنان متشنج باشد و ممکن است درگیری های بیشتری بین ایالات متحده و ایران وجود داشته باشد. کشورهای دیگر ممکن است تلاش کنند وارد عمل شوند و به حل این موضوع کمک کنند، اما گفتن اینکه چه اتفاقی خواهد افتاد سخت است. با این حال، یک چیز مطمئن است - هر چه این وضعیت بیشتر ادامه یابد، بیشتر بر اقتصاد جهانی و قیمت نفت تأثیر خواهد گذاشت.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 خط زمانی رویدادها</h3>
+            <p>مشکلات بین آمریکا و ایران مدتی است که ادامه دارد، اما از چند هفته پیش اوضاع خیلی بد شد. آمریکا تنگه هرمز را مسدود کرد و ایران شروع به تلافی کرد. از آن زمان تاکنون، اقدامات متقابل زیادی بین دو کشور صورت گرفته است و پیگیری همه چیز دشوار است. آخرین خبر توقیف یک کشتی ایرانی توسط آمریکاست که اوضاع را بیشتر متشنج کرده است.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 تصویر بزرگ</h3>
+            <p>این وضعیت برای کل جهان مهم است زیرا بر اقتصاد جهانی و قیمت نفت تأثیر می گذارد. اگر جنگ ادامه پیدا کند، ممکن است به افزایش قیمت نفت منجر شود که بر بسیاری از کشورها و صنایع تأثیر خواهد گذاشت. این همچنین یک معامله بزرگ است زیرا درگیری بین دو کشور بزرگ است و می تواند پیامدهای بزرگی بر روابط بین المللی و ثبات جهانی داشته باشد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 نقش کشورها</h3>
+            <p>بسیاری از کشورها از جمله آمریکا، ایران و سایر کشورهای خاورمیانه درگیر این وضعیت هستند. برخی کشورها مانند پاکستان در تلاش هستند تا با میزبانی از مذاکرات صلح به حل این مشکل کمک کنند. کشورهای دیگر مانند هلند با کنار گذاشتن پول برای کمک به شهروندان خود برای اثرات اقتصادی جنگ آماده می شوند. بانک مرکزی اروپا نیز وضعیت را از نزدیک زیر نظر دارد و تلاش می کند تا چگونگی پاسخگویی به آن را بیابد.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ قیمت نفت</h3>
+            <p>قیمت نفت در این شرایط بسیار مهم است زیرا جنگ بر عرضه نفت تأثیر می گذارد. زمانی که ایالات متحده تنگه هرمز را مسدود کرد، عبور کشتی‌های نفتی را سخت‌تر کرد که منجر به افزایش قیمت نفت شد. اگر جنگ ادامه یابد، می‌تواند حتی به قیمت‌های بالاتر نفت منجر شود که بر بسیاری از مردم و صنایع تأثیر می‌گذارد. شما باید به این موضوع اهمیت دهید زیرا قیمت های بالاتر نفت می تواند به معنای افزایش قیمت گاز، غذا و سایر چیزهایی باشد که هر روز خریداری می کنید.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 نکات مهم دیگر</h3>
+            <p>چند نکته دیگر وجود دارد که باید در مورد این وضعیت بدانید. یکی اینکه برخی کشورها به جای دلار آمریکا از ارزهای مختلف استفاده می کنند. این می تواند یک معامله بزرگ باشد زیرا می تواند بر ارزش دلار و اقتصاد جهانی تأثیر بگذارد. نکته دیگر این است که جنگ بر بسیاری از صنایع از جمله انرژی و مالی تأثیر می گذارد. همچنین باعث می شود بسیاری از کشورها در استراتژی های انرژی خود تجدید نظر کنند و به دنبال منابع جایگزین انرژی باشند.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ احتمال جنگ</h3>
+            <p><span class="war-score war-low">من می گویم احتمال جنگ حدود 60 درصد است. اوضاع بسیار متشنج است و به نظر می رسد هر دو طرف در حال کند و کاو کردن هستند. با این حال، بسیاری از کشورها و سازمان‌ها نیز در تلاش برای کمک به حل این مشکل هستند، بنابراین ممکن است اوضاع به زودی آرام شود.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

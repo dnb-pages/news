@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-21 21:08</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-21 21:08</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Stock market's rally to record high masks red flags</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 20:30</strong></span>
+                </div>
+                <p class='summary'>'Unforeseen headwinds' for the market include the potential for artificial intelligence disruption and the duration of the Iran war. Read on</p>
+                <div class='link'><a href='https://financialpost.com/investing/stock-markets-rally-to-record-high' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Citi Sees Oil at $110 If Hormuz Disruption Lasts Another Month</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 19:29</strong></span>
+                </div>
+                <p class='summary'>Oil prices could rise to $110 per barrel if traffic in the Strait of Hormuz remains disrupted for another month, according to Citigroup.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/citi-sees-oil-at-110-if-hormuz-disruption-lasts-another-month' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Lagarde Says War’s ‘Double Uncertainty’ Calls for More Data</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 17:37</strong></span>
+                </div>
+                <p class='summary'>European Central Bank President Christine Lagarde said two main factors around the Iran war are hampering efforts to map out a monetary-policy response.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/lagarde-says-wars-double-uncertainty-calls-for-more-data' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>European Stocks Drop on Worries Over Iran Ceasefire Extension</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 17:21</strong></span>
+                </div>
+                <p class='summary'>European stocks fell as hopes for an end to the Iran war were dashed by President Donald Trump’s comments that a ceasefire extension was “highly unlikely.”</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/european-stocks-drop-on-worries-over-iran-ceasefire-extension' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Big Tech’s US$4 trillion boomerang powers SP 500 to new heights</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 17:02</strong></span>
+                </div>
+                <p class='summary'>Investors gain confidence the latest stock market rally has room to run even as the risks from the war with Iran remain. Find out more</p>
+                <div class='link'><a href='https://financialpost.com/investing/big-techs-boomerang-powers-sp-500-new-heights' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>What is President Donald Trump's approval rating? See latest polls</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> USA Today</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 16:38</strong></span>
+                </div>
+                <p class='summary'>President Trump's approval rating has long been underwater, spelling trouble for Republicans in the midterms. Iran, high gas prices aren't helping.</p>
+                <div class='link'><a href='https://www.usatoday.com/story/news/politics/2026/04/20/trump-job-approval-poll/89697373007/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Italy Eyes Deficit Under 3% of GDP Even as Iran War Slows Growth</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 16:35</strong></span>
+                </div>
+                <p class='summary'>Italy’s government expects the country’s budget deficit to fall below the European Union limit this year despite a downward revision of its growth forecast due to the Iran war, according to people familiar with the matter.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/italy-eyes-deficit-under-3-of-gdp-even-as-iran-war-slows-growth' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Bank of Canada could be looking at rate cuts if it weren't for Iran, says economist</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 16:34</strong></span>
+                </div>
+                <p class='summary'>Here's what economists think the inflation data means for the Bank of Canada as it considers its next rate announcement on April 29. Read on</p>
+                <div class='link'><a href='https://financialpost.com/news/economy/bank-of-canada-could-cut-rates' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>UAE officials reportedly warned they may be forced to use yuan or other currencies if they run low on dollars amid the Iran war</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:55</strong></span>
+                </div>
+                <p class='summary'>Any pivot away from the dollar by a top oil producer would represent a major threat to the currency's supremacy.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/20/uae-central-bank-dollar-lifeline-fed-treasury-currency-swap-chinese-yuan-iran-war/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Senior official: Iran will never give up Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:52</strong></span>
+                </div>
+                <p class='summary'>The BBC's Lyse Doucet has been speaking to the senior Iranian lawmaker Ebrahim Azizi, the Chairman of Iran's Parliament's National Security and Foreign Policy Committee. He calls America "the world's biggest pirate".
+
+Also in the programme: A BBC investigatio…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmz0npy2qv' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Bank of Canada says Iran war is pushing up inflation expectations</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:49</strong></span>
+                </div>
+                <p class='summary'>Bank of Canada survey finds more than 80% of households expect the war to harm the Canadian economy and raise inflation. Read on</p>
+                <div class='link'><a href='https://financialpost.com/news/economy/bank-of-canada-surveys-show-war-hitting-inflation-expectations' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Bank of Canada Surveys Show War Hitting Inflation Expectations</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:49</strong></span>
+                </div>
+                <p class='summary'>The war in Iran is pushing up inflation expectations, after sentiment had been improving prior to the conflict, survey data released Monday by the Bank of Canada shows.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bank-of-canada-surveys-show-war-hitting-inflation-expectations' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Trump Says Iran Truce Extension Unlikely, Hormuz Stays Shut</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:39</strong></span>
+                </div>
+                <p class='summary'>President Donald Trump said it’s “highly unlikely” he would extend the two-week ceasefire with Iran if a deal is not reached before it ends, and said the Strait of Hormuz would remain blocked until an agreement is finalized.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-says-iran-truce-extension-unlikely-hormuz-stays-shut' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Trump says Iran truce extension ‘highly unlikely,’ Hormuz stays shut</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 15:39</strong></span>
+                </div>
+                <p class='summary'>Donald Trump said it’s “highly unlikely” he would extend the two-week ceasefire with Iran if a deal is not reached before it ends. Read on.</p>
+                <div class='link'><a href='https://financialpost.com/news/trump-says-iran-truce-extension-unlikely-hormuz-stays-shut' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>ECB’s Pereira Says Economic Damage of Iran War Has Yet to Show</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 14:33</strong></span>
+                </div>
+                <p class='summary'>The Iran war is still too fresh to grasp its full impact on the euro-zone economy, according to European Central Bank Governing Council member Alvaro Santos Pereira.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/ecbs-pereira-says-economic-damage-of-iran-war-has-yet-to-show' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>Treasuries Slip as Renewed Ceasefire Tensions Lift Oil Prices</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 14:33</strong></span>
+                </div>
+                <p class='summary'>The Treasuries market slipped to kick off the week, with bond investors alert for catalysts tied to peace talks to end the war in the Middle East and a hearing to potentially confirm Kevin Warsh as the next chair of the Federal Reserve.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/treasuries-slip-as-renewed-ceasefire-tensions-lift-oil-prices' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>U.S. stocks decline amid fading U.S.-Iran peace talk prospects</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 14:21</strong></span>
+                </div>
+                <p class='summary'>U.S. stocks fell as weekend developments in the Middle East war dimmed prospects for peace talks between the U.S. and Iran. Read more.</p>
+                <div class='link'><a href='https://financialpost.com/investing/us-stocks-decline-fading-us-iran-peace-talk' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>Canada Inflation Jumps to 2.4% as War Drives Up Gas Prices</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 13:26</strong></span>
+                </div>
+                <p class='summary'>Canada’s inflation rate surged to 2.4% in March as the Iran war triggered a record increase in gasoline prices, though it came in slightly lower than economists expected.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/canada-inflation-jumps-to-2-4-as-war-drives-up-gas-prices' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>Doubts over talks between Iran and US after violence flares in Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:58</strong></span>
+                </div>
+                <p class='summary'>Pakistan is preparing for new talks between the U.S. and Iran, even as tensions rise around the Strait of Hormuz. The U.S. seized an Iranian cargo ship over the weekend, accusing it of evading a blockade. Iran's military has vowed…</p>
+                <div class='link'><a href='https://apnews.com/article/us-iran-war-israel-hormuz-20-april-2026-a3ddc59230ae7de719a9ff9e7595e375' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>Kuwait Declares Force Majeure on Oil Shipments on Hormuz Halt</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:51</strong></span>
+                </div>
+                <p class='summary'>Kuwait declared force majeure on shipments of crude oil and refined products as the blockade of the Strait of Hormuz makes it impossible to meet obligations to customers that can’t bring vessels into the Persian Gulf.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/kuwait-declares-force-majeure-on-oil-shipments-on-hormuz-halt' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>Netherlands Earmarks €1 Billion to Mitigate Iran Price Shocks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:25</strong></span>
+                </div>
+                <p class='summary'>The Netherlands has allocated more than €950 million ($1.1 billion) to blunt the Iran war’s economic effects on Dutch households and businesses, as it prepares for possible fuel shortages.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/netherlands-earmarks-e1-billion-to-mitigate-iran-price-shocks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>Oil Contractors Face Profit Hits From Mideast War Fallout</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:20</strong></span>
+                </div>
+                <p class='summary'>The fortunes of the world’s largest oil contractors are dimming as fallout from the Iran war clouds prospects for a Mideast drilling and fracking boom.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-contractors-face-profit-hits-from-mideast-war-fallout' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>23</span>
+                <span class='title'>The Latest: US Navy seizure of Iranian ship casts doubt on fresh talks in Pakistan</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:04</strong></span>
+                </div>
+                <p class='summary'>The U.S. Navy's seizure of an Iranian-flagged cargo ship has cast doubt on President Donald Trump's announcement of upcoming talks with Iran. Trump said U.S. negotiators would head to Pakistan on Monday, but Iran's Foreign Ministry stated it has no…</p>
+                <div class='link'><a href='https://apnews.com/article/iran-israel-us-lebanon-latest-april-20-2026-9df061160b3b8f377996564fdc5baf05' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>24</span>
+                <span class='title'>Energy Services Set to Benefit Once Iran War Ends, Barclays Says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 12:00</strong></span>
+                </div>
+                <p class='summary'>The European energy services sector faces a brighter future once the Middle East conflict de-escalates as a result of work that oil producers need to undertake to resolve disruption, according to Barclays Plc analysts.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/energy-services-set-to-benefit-once-iran-war-ends-barclays-says' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>25</span>
+                <span class='title'>HORMUZ STANDSTILL</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 11:00</strong></span>
+                </div>
+                <p class='summary'>The U.S. attacked and seized an Iranian-flagged cargo ship it said had tried to evade its naval blockade near the Strait of Hormuz on Monday.</p>
+                <div class='link'><a href='https://apnews.com/live/iran-war-israel-trump-04-20-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>26</span>
+                <span class='title'>U.S. stock futures tumble as Iran refuses Trump’s ‘deal’ and Strait stays shut</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 10:47</strong></span>
+                </div>
+                <p class='summary'>Everything you need to know before you reach the office this morning.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/20/us-stock-futures-iran-deal-strait/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>27</span>
+                <span class='title'>Iran War Is Forcing a Reckoning in Colombia on Energy Demand</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 09:47</strong></span>
+                </div>
+                <p class='summary'>The Iran war is causing tectonic shifts in global energy markets as import-dependent countries scramble to adapt to steeper prices, especially for liquefied natural gas.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-war-is-forcing-a-reckoning-in-colombia-on-energy-demand' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>28</span>
+                <span class='title'>Iran War Seen Boosting Africa’s Renewable Energy Deals</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 09:31</strong></span>
+                </div>
+                <p class='summary'>Private renewable-energy investments in Africa are set to accelerate as the Iran war drives nations to try and cut their dependence on imported oil and gas.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-war-seen-boosting-africas-renewable-energy-deals' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>29</span>
+                <span class='title'>Iran Wavers on Peace Talks as Tensions Rise After US Seizes Ship</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 09:21</strong></span>
+                </div>
+                <p class='summary'>Iran wavered on whether to send diplomats to Pakistan for a second round of peace talks after the US maintained a blockade of the Strait of Hormuz and seized an Iranian ship, dimming hopes of a breakthrough in efforts to end the war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-wavers-on-peace-talks-as-tensions-rise-after-us-seizes-ship' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 20, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>There's a big situation going on with Iran that's affecting many countries and the global economy. The US and Iran are not seeing eye to eye, and it's causing problems with oil prices and trade. Many countries are trying to figure out what to do, and some are even talking about using different currencies instead of the US dollar. It's a complex situation, but I'll break it down for you in simple terms.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>The US and Iran have been having disagreements, and it's led to a war. The US has been blocking the Strait of Hormuz, which is a very important waterway for oil ships. Iran is not happy about this, and they're saying they won't back down. The situation is tense, and many countries are worried about what might happen next.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It's likely that the situation will continue to be tense, and there might be more conflicts between the US and Iran. Other countries might try to step in and help resolve the issue, but it's hard to say what will happen. One thing is for sure, though - the longer this situation goes on, the more it will affect the global economy and oil prices.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>The problems between the US and Iran have been going on for a while, but things started to get really bad a few weeks ago. The US blocked the Strait of Hormuz, and Iran started to retaliate. Since then, there have been many back-and-forth actions between the two countries, and it's hard to keep track of everything. The latest news is that the US seized an Iranian ship, which has made things even more tense.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This situation is important for the whole world because it affects the global economy and oil prices. If the war continues, it could lead to higher oil prices, which would affect many countries and industries. It's also a big deal because it's a conflict between two major countries, and it could have big implications for international relations and global stability.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>Many countries are involved in this situation, including the US, Iran, and other countries in the Middle East. Some countries, like Pakistan, are trying to help resolve the issue by hosting peace talks. Other countries, like the Netherlands, are preparing for the economic effects of the war by setting aside money to help their citizens. The European Central Bank is also watching the situation closely and trying to figure out how to respond.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The oil price is a big deal in this situation because the war is affecting the supply of oil. When the US blocked the Strait of Hormuz, it made it harder for oil ships to get through, which led to higher oil prices. If the war continues, it could lead to even higher oil prices, which would affect many people and industries. You should care about this because higher oil prices could mean higher prices for gas, food, and other things you buy every day.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>There are a few other things you should know about this situation. One is that some countries are talking about using different currencies instead of the US dollar. This could be a big deal because it could affect the value of the dollar and the global economy. Another thing is that the war is affecting many industries, including energy and finance. It's also causing many countries to rethink their energy strategies and look for alternative sources of energy.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">I would say the probability of war is around 60%. The situation is very tense, and it seems like both sides are digging in their heels. However, there are also many countries and organizations trying to help resolve the issue, so it's possible that things might calm down soon.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
