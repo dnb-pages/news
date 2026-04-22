@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-22 06:26</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-22 06:26</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Indian debt funds cut hedges as oil risks inflate rate-hike bets</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Bloomberg</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 05:53</strong></span>
+                </div>
+                <p class='summary'>The two-year swap rate is still trading near 6%, about 40 basis points above levels before the Iran conflict, showing markets continue to price in higher-for-longer interest rates</p>
+                <div class='link'><a href='https://www.bloomberg.com/news/articles/2026-04-21/indian-debt-funds-cut-hedges-as-oil-risks-inflate-rate-hike-bets' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Gold Falls as Traders Weigh Next Round of US-Iran Peace Talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 04:46</strong></span>
+                </div>
+                <p class='summary'>Gold declined as traders weighed prospects for a negotiated settlement to the war in Iran that’s disrupted global energy supplies and heightened inflation risks.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/gold-falls-as-traders-weigh-next-round-of-us-iran-peace-talks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>AI Boom Propels Kospi to Record as Tech Giants Defy War Jitters</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 04:36</strong></span>
+                </div>
+                <p class='summary'>Investor optimism that the worst of the Iran war may be over was on full display Tuesday, when the return of the AI trade drove South Korean stocks to a record and spurred another rally in Taiwan.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/ai-boom-propels-kospi-to-record-as-tech-giants-defy-war-jitters' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Mercuria Seeks New Liquidity in Asia With $200 Million Financing</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 04:35</strong></span>
+                </div>
+                <p class='summary'>Mercuria Energy Group Ltd. plans to raise at least $200 million of financing in Asia, according to people familiar with the matter, as commodity traders seek alternative sources of funding at a time when the Iran war has raised the cost of buying cargoes.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/mercuria-seeks-new-liquidity-in-asia-with-200-million-financing' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Trump says he will extend Iran ceasefire until negotiations conclude</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 04:18</strong></span>
+                </div>
+                <p class='summary'>The move has come at the request of Pakistan, the US president says, adding that Washington will continue its blockade of Iranian ports.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/live/cx297218m9vt' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Trump insists there’s no pressure to end the war in Iran that he started, but ‘it will all happen, relatively quickly!’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 01:13</strong></span>
+                </div>
+                <p class='summary'>“I am under no pressure whatsoever,” Trump said on his Truth Social platform.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/20/trump-says-no-pressure-but-will-end-war-quickly/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Here’s what the stock market might have gotten wrong about the Iran war</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> The Washington Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 23:03</strong></span>
+                </div>
+                <p class='summary'>Washington Post: Disconnect between markets and reality is increasingly shaping economy.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/business/2026/04/18/iran-oil-stock-market-economy/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Oil Slips as Iran Set to Attend Negotiations With US in Pakistan</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 22:23</strong></span>
+                </div>
+                <p class='summary'>Oil slipped on signs that Iran will attend negotiations with the US in Islamabad before a ceasefire between the sides ends.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-slips-as-iran-set-to-attend-negotiations-with-us-in-pakistan' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>‘Tethered to a galaxy far, far away’: former diplomats doubt Trump’s Iran talks can deliver in final 48 hours</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 21:37</strong></span>
+                </div>
+                <p class='summary'>Oil is already climbing again after the ceasefire started withering this weekend.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/20/iran-war-trump-diplomats-worry48-hours-ceasefire/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Confusion over second round of Iran-US talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 21:10</strong></span>
+                </div>
+                <p class='summary'>Confusion surrounds the second round of talks scheduled in Pakistan between US and Iranian officials. Also in the programme: the immunotherapy that could save cancer patients; and comparisons between the King of Horror, Stephen King and Shakespeare.
+
+Photogra…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmz0npyxyr' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Stock market's rally to record high masks red flags</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 20:30</strong></span>
+                </div>
+                <p class='summary'>'Unforeseen headwinds' for the market include the potential for artificial intelligence disruption and the duration of the Iran war. Read on</p>
+                <div class='link'><a href='https://financialpost.com/investing/stock-markets-rally-to-record-high' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Citi Sees Oil at $110 If Hormuz Disruption Lasts Another Month</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-20 19:29</strong></span>
+                </div>
+                <p class='summary'>Oil prices could rise to $110 per barrel if traffic in the Strait of Hormuz remains disrupted for another month, according to Citigroup.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/citi-sees-oil-at-110-if-hormuz-disruption-lasts-another-month' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - 2026-04-21</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The situation in Iran is complex, with ongoing conflict and negotiations between the US and Iran. The conflict has affected global oil supplies, leading to increased prices and concerns about the economy. Despite this, there are signs that a ceasefire may be extended, and negotiations may lead to a resolution. However, the situation remains uncertain, and the impact on the global economy and oil prices is still being felt.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>There's been a conflict in Iran, which has affected the global oil supply. This has led to higher oil prices and concerns about the economy. The US and Iran have been in talks, and there's been a ceasefire in place. However, the situation is still uncertain, and it's not clear what will happen next.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It's likely that the US and Iran will continue to negotiate, and there may be a resolution to the conflict. However, it's also possible that the situation could escalate, and the conflict could continue. The next few days will be important in determining what happens next.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>The conflict in Iran started recently, and since then, there have been ongoing talks between the US and Iran. A ceasefire was put in place, and there are plans for further negotiations. The situation is still developing, and it's not clear what will happen in the coming days and weeks.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>The situation in Iran has significant implications for the global economy and oil prices. If the conflict continues, it could lead to higher oil prices and economic instability. However, if a resolution is reached, it could lead to increased stability and lower oil prices.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>The US, Iran, and other countries are involved in the conflict. The US is involved because of its interests in the region and its desire to maintain stability. Iran is involved because it's the country where the conflict is taking place. Other countries are involved because they're concerned about the impact on the global economy and oil prices.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The conflict in Iran has led to higher oil prices, which is a concern for many people. If the conflict continues, oil prices could continue to rise, which would affect not just the economy but also people's daily lives. However, if a resolution is reached, oil prices could decrease, which would be a relief for many.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>It's also worth noting that the situation in Iran is complex and involves many different factors. The conflict has affected not just the oil supply but also the lives of people in the region. It's a serious situation that requires careful consideration and attention from world leaders.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">40% - The situation is still uncertain, and while there are signs that a resolution may be reached, there's also a risk that the conflict could escalate.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
