@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-23 08:13</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-23 08:13</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Container Ship Comes Under Gunfire Near Hormuz, UK Navy Says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 07:00</strong></span>
+                </div>
+                <p class='summary'>The UK Navy said a container ship was fired at near the Strait of Hormuz after it was approached by an Iranian gunboat, the latest incident following shootings over the weekend that ratcheted tensions higher in the vital waterway and kept maritime traffic at …</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/container-ship-comes-under-gunfire-near-hormuz-uk-navy-says' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Iran War May Erase Most of Reeves’ Buffer, UK Study Says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 07:00</strong></span>
+                </div>
+                <p class='summary'>The war in Iran could wipe out most of Rachel Reeves’ fiscal buffer, according to new research pointing to a £16 billion ($22 billion) hit to Britain’s public finances.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-war-may-erase-most-of-reeves-buffer-uk-study-says' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Bitcoin rises on optimism over Trump’s extended Iran ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Bloomberg</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 06:46</strong></span>
+                </div>
+                <p class='summary'>Bitcoin rises 2.7% to $77,500 amid optimism from Trump's Iran ceasefire, boosting market confidence in cryptocurrencies.</p>
+                <div class='link'><a href='https://www.bloomberg.com/news/articles/2026-04-22/bitcoin-rises-on-optimism-over-trump-s-extended-iran-ceasefire' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>UK Inflation Hits 3.3% as Iran War Sends Petrol Costs Soaring</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 06:29</strong></span>
+                </div>
+                <p class='summary'>UK inflation accelerated in March, as a surge in energy costs triggered by the Iran war started to hit consumers in the pocket.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-inflation-hits-3-3-as-iran-war-sends-petrol-costs-soaring' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Gold Recovers After Two-Day Drop as Trump Extends Iran Ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 06:14</strong></span>
+                </div>
+                <p class='summary'>Gold regained some ground after a two-day decline, as US President Donald Trump extended a ceasefire with Iran and allowed more time to arrange fresh peace talks.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/gold-recovers-after-two-day-drop-as-trump-extends-iran-ceasefire' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Finland Jobless Rate Rises Again as War in Iran Slows Recovery</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 06:04</strong></span>
+                </div>
+                <p class='summary'>Finland’s unemployment rate rose to the highest level in more than a decade, just as the war in Iran adds to the gloom in the Nordic nation.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/finland-jobless-rate-rises-again-as-war-in-iran-slows-recovery' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Iran Tankers Go Dark to Sail Past US Blockade Laden With Oil</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 05:59</strong></span>
+                </div>
+                <p class='summary'>At least two fully laden Iranian tankers have sailed out of the Persian Gulf and past a US blockade this week, part of a flotilla that has made its way around the warships and ferried roughly 9 million barrels of oil to the market.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-tankers-go-dark-to-sail-past-us-blockade-laden-with-oil' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Iran fires on container ship in Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 05:39</strong></span>
+                </div>
+                <p class='summary'>Iran’s paramilitary Revolutionary Guard has opened fire on a container ship in the Strait of Hormuz, damaging the ship and further raising the stakes as planned ceasefire talks in Pakistan failed to materialize. The British military’s United Kingdom Maritime …</p>
+                <div class='link'><a href='https://apnews.com/article/us-iran-war-hormuz-israel-pakistan-ceasefire-april-22-2026-267230f7f32b436822484479313840f7' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Trump Extends Iran Ceasefire, Blockade as Peace Talks Stumble</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 05:33</strong></span>
+                </div>
+                <p class='summary'>US President Donald Trump indefinitely extended a ceasefire with Iran just before its expiration, while maintaining a naval blockade of the Strait of Hormuz after planned peace talks between the two sides fell apart.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-extends-iran-ceasefire-blockade-as-peace-talks-stumble' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Pricier condoms show war is impacting cost of nearly everything</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Bloomberg</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 04:48</strong></span>
+                </div>
+                <p class='summary'>The surge in condom costs underscores how the West Asia war, which has already upended energy markets and raised prices for food to fertilizers, is disrupting virtually every aspect of life for consumers</p>
+                <div class='link'><a href='https://www.bloomberg.com/news/articles/2026-04-21/iran-war-has-boosted-costs-of-energy-food-and-now-condoms' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Oil Holds Advance as Trump Extends Truce But Maintains Blockade</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 04:22</strong></span>
+                </div>
+                <p class='summary'>Oil held a two-day gain after US President Donald Trump extended a ceasefire with Iran, even as peace talks faltered and a blockade of the Strait of Hormuz kept flows locked up.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-holds-advance-as-trump-extends-truce-but-maintains-blockade' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Trump Extends Iran Ceasefire, Keeps Blockade as Talks Falter</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 04:17</strong></span>
+                </div>
+                <p class='summary'>President Donald Trump announced he was extending a ceasefire with Iran indefinitely a day before it was set to expire, even as plans for a fresh round of talks between the two countries fell apart.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-extends-iran-ceasefire-keeps-blockade-as-talks-falter' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>S&P 500 Futures Rise, Dollar Dips on Iran Truce: Markets Wrap</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 04:17</strong></span>
+                </div>
+                <p class='summary'>US equity-index futures climbed and the dollar edged lower after President Donald Trump said he would extend the ceasefire with Iran, spurring cautious optimism among investors.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/sp-500-futures-rise-dollar-dips-on-iran-truce-markets-wrap' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>'CEASEFIRE' EXTENDED</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Associated Press</span>
+                    <span class='meta-item'>📅 <strong>2026-04-22 00:04</strong></span>
+                </div>
+                <p class='summary'>'CEASEFIRE' EXTENDED
+
+ 
+ 
+ 
+ (Main headline, 6th story, link)
+
+ 
+
+ 
+
+ 
+ Related stories:TRUMP APPROVAL: 32%
+MATCHING CARTER LOWS
+IRAN WARNS 'NEW CARDS' ON BATTLEFIELD
+SCAMMERS IN STRAIT
+OIL SPILLS SEEN FROM SPACE</p>
+                <div class='link'><a href='https://apnews.com/live/iran-war-israel-trump-04-21-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>Trump says he will extend Iran ceasefire until negotiations conclude</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 21:11</strong></span>
+                </div>
+                <p class='summary'>There's still no sign that either the US or Iran are sending negotiating teams to Pakistan for a new round of negotiations. President Trump has announced an extension to the ceasefire with Iran until talks come to a conclusion. In a social media post, he said…</p>
+                <div class='link'><a href='https://www.bbc.co.uk/programmes/w1730bmz0nq1tvv' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>Trump extends Iran ceasefire after insisting he wouldn’t hours earlier, citing a ‘seriously fractured’ Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 21:08</strong></span>
+                </div>
+                <p class='summary'>The president promised a "great deal" before the opening bell and extended the ceasefire after the closing one.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/21/trump-extends-ceasefire-iran-war-markets-closing-bell-stocks/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>How the Iran energy crisis is supercharging Southeast Asia’s EV transition</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Fortune</span>
+                    <span class='meta-item'>📅 <strong>2026-04-21 21:00</strong></span>
+                </div>
+                <p class='summary'>Chinese EV giant BYD received the most orders of any automaker at the Bangkok Auto Show in early April, beating Toyota for the first time.</p>
+                <div class='link'><a href='https://fortune.com/2026/04/21/how-the-iran-energy-crisis-supercharged-southeast-asias-ev-transition/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 22, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The situation with Iran is getting more complicated, with ships being fired at, and a ceasefire being extended. This is affecting not just the countries involved, but also the global economy, including oil prices and even everyday items like condoms. It's a bit like a big puzzle, and we're trying to figure out what will happen next.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What happened?</h3>
+            <p>There have been some scary moments in the Strait of Hormuz, where Iran has fired at ships. This has made the countries involved, like the US and the UK, very alert. There was also a ceasefire, which is like a temporary agreement to stop fighting, and it has been extended. This means that the fighting has stopped for now, but it's not a permanent solution.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where is it heading?</h3>
+            <p>It seems like the situation is still very uncertain, and it's hard to predict what will happen next. The US and Iran are still talking, but they haven't been able to agree on a lot of things. The ceasefire is still in place, but it could end at any time. It's like we're all waiting to see what will happen next, and hoping that things will get better soon.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline of events</h3>
+            <p>Over the past few days, there have been several incidents in the Strait of Hormuz, including ships being fired at. The US and Iran have been talking, and there was a ceasefire in place. The ceasefire was extended, but it's not clear how long it will last. There have also been effects on the global economy, like oil prices going up and down.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big picture</h3>
+            <p>This situation with Iran is important for the whole world, because it affects the global economy and the price of oil. It's also a big deal for the countries involved, like the US and the UK, because it affects their relationships with other countries and their own security. It's like a big ripple effect, and we're all waiting to see how it will play out.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 Country involvement</h3>
+            <p>The US, the UK, and Iran are the main countries involved in this situation. Other countries, like China and Russia, are also watching closely, because they have their own interests in the region. The US and the UK are involved because they have ships and troops in the area, and they're trying to protect their own interests. Iran is involved because it's their country, and they're trying to defend themselves.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil price</h3>
+            <p>The price of oil has been going up and down because of the situation with Iran. This is because Iran is a big producer of oil, and when there's uncertainty in the region, it affects the global supply of oil. This means that the price of gasoline and other fuels might go up, which could affect our daily lives. It's like a big chain reaction, and we're all feeling the effects.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>💡 Other important points</h3>
+            <p>One thing that's interesting is that the situation with Iran is affecting not just big things like oil prices, but also everyday items like condoms. This is because the war in Iran is disrupting supply chains and making it harder for companies to get the materials they need. It's like a big puzzle, and we're all trying to figure out how the different pieces fit together.</p>
+        </div>
+        <div class="analysis-card">
+            <h3>⚠️ War Probability</h3>
+            <p><span class="war-score war-low">I would say the probability of war is around 40%. This is because the situation is still very tense, and there are a lot of factors that could make things worse. However, there are also some positive signs, like the ceasefire being extended, which suggests that both sides are trying to find a way out of this situation.</span></p>
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
