@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-27 19:54</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-27 19:54</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>رئیس‌جمهور عراقی نامزد ائتلاف شیعه، علی الزیدی، را به عنوان نخست‌وزیر برگزیده معرفی کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۷ ۲۳:۴۲</strong></span>
+                </div>
+                <p class='summary'>انتخاب 'الزaydi' بعد ماه‌ها بن‌بست و پس از آنکه ترامپ با انتصاب 'نوری مالکی' نخست‌وزیر سابق طرفدار ایران مخالفت کرد، صورت گرفت.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/iraqi-president-names-shia-bloc-candidate-ali-al-zaidi-as-pm-designate?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>کاخ سفید اعلام کرد ترامپ در حال گفتگو با دستیاران درباره پیشنهاد ایران است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۱۸:۵۴:۲۳Z</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور ایالات متحده، در جلسه‌ای که با مقامات امنیتی کشور در روز دوشنبه برگزار کرد، پیشنهاد مذکور را مورد بحث قرار داد.</p>
+                <div class='link'><a href='https://financialpost.com/news/white-house-trump-iran-proposal-aides' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>روبی پیشنهاد جدید ایران برای بازگشایی تنگه هرمز را رد می‌کند و آینده مذاکرات همچنان در هاله‌ای از ابهام باقی مانده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> زمان اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۱۷:۳۶:۰۹Z</strong></span>
+                </div>
+                <p class='summary'><p>«طرح ایران این است: ‘شما را منفجر و از ما طلبکار هم باشید»، می گوید دیپلمات ارشد ایالات متحده؛ تردد ناوهای نفتکش در تنگه پس از آنکه ایران اعلام کرد کنترل آن را در دست دارد، کاهش یافته است. مرکل: «ایران آمریکا را در گفتگوهای هسته ای تحقیر می کند.»</p>
+<p>پست <a href="https://www.timesofisrael.com/rubio-rejects-new-iranian-proposal-to-reopen-strait-of-hormuz-which-tehran-says-it-still-controls/">رئوس: طرح جدید ایران برای بازگشایی تنگه هرمز را رد کرد، آینده مذاکرات بلاتکلیف است</a> نخستین بار در <a href="https://www.timesofisrael.com">تایمز اسرائیل</a> منتشر شد.</p>
+<figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AFP__20260424__A8WE3VC__v1__HighRes__IranUsIsraelWar-1024x640.jpg" title="رئوس: طرح جدید ایران برای بازگشایی تنگه هرمز را رد کرد، آینده مذاکرات بلاتکلیف است" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/%D8%B1%D9%88%D8%A8%DB%8C%D9%88-%D9%BE%DB%8C%D8%B4%D9%86%DA%AF-%D8%AC%D8%AF%DB%8C%D8%AF-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%AF%D9%88%D8%A8%D8%A7%D8%B1%D9%87-%D8%A8%D8%B3%D8%AA%D9%88%D8%B1-%D9%88-%DB%8C%DA%A9-%D9%BE%DB%8C%D8%B4%D9%86%DA%AF-%D8%A7%D8%B2-%D8%B3%D9%88%DB%8C-%D9%88-%D8%AD%D8%B1%D8%AF-%DA%A9%D9%87-%D8%AA%D9%87%D8%B1%D8%A7%D9%86-%D8%A7%D8%B2-%D8%AF%D8%B1-%D9%88%D9%84%DB%8C-%D8%AF%D9%88%D8%AF%D8%A7%D8%B1%D8%AF/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>دختر دوستِ سربازِ کشته‌شده در مراسم خاکسپاری گفت که لحظاتی پیش از مرگ او را در زمان واقعی در لبنان دیده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸ ۱۶:۵۴:۰۴</strong></span>
+                </div>
+                <p class='summary'><p>ایدان فوکس، ۱۹ ساله که در حمله پهپادی حزب‌الله در روز یکشنبه کشته شد، به خاک سپرده شد. دخترِ دوستِ او که به عنوان سرباز دیده‌بان خدمت می‌کرد، در مراسم خاکسپاری گفت که مرگ او را در لبنان به صورت زنده دید. مادرش از "دل او پر از نیات خوب بود" یاد کرد.</p> <p>پست <a href="https://www.timesofisrael.com/slain-soldiers-girlfriend-says-at-his-funeral-that-she-saw-his-death-in-lebanon-in-real-time/">دخترِ دوستِ سرباز کشته‌شده در مراسم خاکسپاری گفت مرگ او را زنده در لبنان دید</a> نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/F260427TG013-1024x640.jpg" title="دخترِ دوستِ سرباز کشته‌شده در مراسم خاکسپاری گفت مرگ او را زنده در لبنان دید" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/سرپرست-دختر-محترم-سربازی-که-در-لبنان-کشته-شد-گفت-مرگ-او-را-به-صورت-زنده-دید-کردم/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>وزیر امور خارجه ایران در حالی با پوتین دیدار می‌کند که مذاکرات آمریکا و ایران در بن‌بست قرار گرفته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷ ساعت ۱۸:۴۹:۳۵</strong></span>
+                </div>
+                <p class='summary'>این مذاکرات در حالی صورت می‌گیرد که مذاکره‌کنندگان ایرانی پیشنهاد تازه‌ای مطرح کرده‌اند که بر اساس آن ایران تنگه هرمز را دوباره به روی کشتیرانی باز خواهد کرد، به شرط آن‌که ایالات متحده محاصره بنادر ایران را پایان دهد.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/04/27/iran-talks-putin-araghchi-trump-russia/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>آیروش از طرحی برای تمرکز بر تنگه هرمز و تأخیر در مذاکرات هسته‌ای خبر داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸ ۲۳:۲۹:۵۵</strong></span>
+                </div>
+                <p class='summary'>در آخرین پیشنهاد ارائه شده در روز یکشنبه، ایران پیشنهاد داد که آبراه کلیدی را برای ترافیک کشتیرانی باز کرده و تحریم ایالات متحده را لغو کند، در حالی که مسائل چالش‌برانگیزتر هسته‌ای را به تعویق بیندازد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/middleeast/iran-trump-talks-strait-of-hormuz-nuclear.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>حزب‌الله وعده می‌دهد تا سلاح‌های خود را حفظ کند در حالی که لبنان اعلام کرد حملات اسرائیل ۱۴ کشته بر جا گذاشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۷ آوریل ۲۰۲۶، ساعت ۱۷:۱۲:۵۶ UTC</strong></span>
+                </div>
+                <p class='summary'>علیرغم آتش‌بس، اسرائیل و حزب‌الله در حال تبادل حملات تقریباً هر روز هستند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/middleeast/hezbollah-weapons-lebanon-israel.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>وزیر خارجه ایران در روسیه برای مذاکرات با پوتین درباره جنگ خاورمیانه است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۸</strong></span>
+                </div>
+                <p class='summary'>عباس عراقچی، وزیر امور خارجه ایران، در مسکو با رئیس‌جمهور ولادیمیر وی. پوتین ملاقات کرد. روسیه تلاش کرده است تا از گرفتار شدن در درگیری‌ها خودداری کند و در عین حال به‌عنوان یک بازیگر کلیدی در منطقه باقی بماند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/europe/iran-foreign-minister-russia.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۸ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در حال حاضر، ایران در مرکز چندین رویارویی با stakes بالا قرار دارد که آمریکا، اسرائیل، عراق و گروه‌های نیابتی منطقه‌ای مانند حزب‌الله را درگیر کرده است. تنش‌ها شامل مذاکرات متوقف‌شده آمریکا و ایران درباره کنترل تنگه هرمز، مناقشات ongoing میان اسرائیل و حزب‌الله در لبنان و تحولات سیاسی در عراق است که منعکس‌کننده تنش‌ها میان جناح‌های طرفدار ایران و جناح‌های نزدیک به آمریکا می‌باشد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            در روزهای اخیر، ایران پیشنهاد بحث‌برانگیزی را مطرح کرده است که بر اساس آن تنگه استراتژیک هرمز در ازای لغو محاصره بنادر ایران توسط ایالات متحده باز می‌شود. این پیشنهاد با مخالفت شدید مقام‌های آمریکایی، از جمله سناتور روبیو، مواجه شد که آن را غیرواقعی و تحقیرآمیز خواندند. در همین حال، رئیس‌جمهور عراق نخست‌وزیری جدید از یک بلوک شیعه طرفدار ایالات متحده منصوب کرد و نخست‌وزیر سابق با پیوندهای قوی با ایران را کنار گذاشت. در لبنان، حزب‌الله و اسرائیل علی‌رغم آتش‌بس اسمی، همچنان به تبادل آتش روزانه ادامه می‌دهند، از جمله یک حمله در روزهای اخیر که به کشته شدن یک سرباز اسرائیلی منجر شد. وزیر خارجه ایران نیز در نشستی با پوتین از روسیه در مورد تشدید مناقشات منطقه‌ای گفتگو کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            آینده نزدیک احتمالاً شاهد ادامه بن‌بست در مذاکرات ایالات متحده و ایران درباره تنگه هرمز خواهد بود، به‌طوری‌که ایران شاید با استفاده از گشایش‌های political در لبنان یا عراق فشار را افزایش دهد. اگر ایالات متحده همچنان پیشنهادات ایران را رد کند، ایران ممکن است از روش‌های دیگر مانند افزایش حمایت از حزب‌الله یا اقدامات بیشتر در خلیج فارس برای کسب امتیازهای خود بهره ببرد. درگیری میان اسرائیل و حزب‌الله در لبنان به احتمال زیاد بدون تغییر اساسی در مذاکرات یا سازوکارهای اجرایی آتش‌بس، تعدیل نخواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ۲۴ تا ۲۷ آوریل ۲۰۲۶: ایران پیشنهاد کرد در ازای لغو محاصره بنادر، تنگه هرمز را دوباره باز کند، اما با رد ایالات متحده مواجه شد. ۲۶ آوریل ۲۰۲۶: رئیس‌جمهور عراق علی الزیادی را به عنوان نخست‌وزیر منصوب کرد، اقدامی که توسط جریانات طرفدار ایران مورد مخالفت قرار گرفت. ۲۷ آوریل ۲۰۲۶: سناتور آمریکایی رubio (روبیو) پیشنهاد ایران را رد کرد؛ یک سرباز اسرائیلی در حمله پهپادی حزب‌الله کشته شد؛ وزیر امور خارجه ایران در مسکو با پوتین دیدار کرد. درگیری‌های روزانه بین اسرائیل و حزب‌الله در لبنان ادامه داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم انداز راهبردی</h3>
+            به نظر می‌رسد ایران در حال اجرای استراتژی‌ای از خشونت‌های مقیاس‌پذیر است و به‌طور متناوب از طریق پیشنهادهای دیپلماتیک و نقاط فشار منطقه‌ای مانند تنگه هرمز و حزب‌الله عمل می‌کند. در صورتی که مذاکرات ناکام بمانند، ایران ممکن است تلاش کند تا نفوذ ایالات متحده در عراق را تضعیف کند و از نمایندگان منطقه‌ای خود برای کسب موقعیت استفاده کند. ایالات متحده تحت ریاست‌جمهوری ترامپ به نظر می‌رسد بر مقابله با نفوذ ایران متمرکز است، اما با تقسیمات داخلی در بهترین روش دست و پنجه نرم می‌کند. نقش روسیه همچنان محتاطانه اما استراتژیک است و خود را به عنوان یک میانجی بالقوه positioning می‌کند، در حالی که از دخالت مستقیم خودداری می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            شدت درگیری‌ها یکسان نیست: در لبنان، اسرائیل و حزب‌الله در حال درگیری‌های روزمره با سطح پایین ولی گاه با مو incidents تروری سربازان بالا هستند. تنش‌های دیپلماتیک بین آمریکا و ایران بیشتر جنبه نمایش قدرت و چانه زنی دارد تا جنگ مستقیم نظامی؛ ایران با استفاده از میانجی‌های منطقه‌ای و تهدیدات دریایی به عنوان ابزار چانه زنی عمل می‌کند. خشونت در عراق عمدتاً سیاسی است و گروه‌های شبه‌نظامی و جناح‌های سیاسی در حال رقابت برای نفوذ هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت بازتاب‌دهندهٔ مبارزه‌ای گسترده‌تر برای نفوذ در خاورمیانه است که در آن ایران، ایالات متحده، اسرائیل و روسیه هر یک منافع خود را از طریق ترکیبی از دیپلماسی و فشار نظامی دنبال می‌کنند. بحران تنگهٔ هرمز توانایی ایران در مختل کردن چرخهٔ تأمین نفت جهانی را برجسته می‌سازد که به‌طور بالقوه می‌تواند بر بازارهای انرژی در سراسر جهان تأثیر بگذارد. این بحران همچنین خطر آغاز جنگ منطقه‌ای گسترده‌تر در صورت عدم کاهش تنش‌ها را نیز برجسته می‌کند، به‌خصوص با توجه به مواضع ریشه‌دار اسرائیل و حزب‌الله.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده به طور مستقیم در رد پیشنهادهای ایران و حمایت از نخست‌وزیر جدید عراق مشارکت دارد که منعکس‌کننده موضع سرسختانه ترامپ در قبال ایران است. اسرائیل در حال جنگ نیابتی با حزب‌الله در لبنان است که از حمایت ایالات متحده برخوردار بوده اما همچنین با فشارهای داخلی ناشی از تلفات جانی مواجه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            اگر ایران به تهدیدهایش برای بستن یا مختل کردن تنگه هرمز ـ که حدود ۲۰ درصد از نفت جهان از آن عبور می‌کند ـ جامه عمل بپوشاند، ممکن است قیمت‌های جهانی نفت به شدت افزایش یابد. حتی ابهامات کنونی نیز احتمالاً سبب شده است که قیمت‌ها بالاتر از آنچه در غیر این صورت می‌بود، باشد. هر گونه اختلال واقعی بر شدت گرفتن نرخ تورم، فشار بر زنجیره تأمین جهانی و ایجاد واکنش‌های تلافی‌جویانه از سوی کشورهای عمده مصرف‌کننده نفت خواهد افزود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            پیشنهاد ایران برای بازگشایی تنگه هرمز در ازای لغو تحریم‌ها از سوی ایالات متحده رد شده است که سبب نگرانی از تشدید تنش‌ها یا اختلال اقتصادی شده است. کشته شدن یک سرباز اسرائیلی توسط حزب‌الله در لبنان، خطر مداوم گسترش درگیری در منطقه را نشان می‌دهد. تغییرات سیاسی در عراق به نفع جریان‌های همسو با آمریکا است و نشانه‌ای از پسرفت نفوذ منطقه‌ای ایران به شمار می‌آید.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            مردم ایالات متحده tingkat بالایی rejection از پیشنهادات ایران را نشان می‌دهد، از جمله عباراتی مانند «ما شما را منفجر می‌کنیم و از شما پول می‌گیریم»، که حاکی از سخت‌تر شدن مواضع است. انتصاب سریع یک نخست‌وزیر طرف‌دار ایالات متحده در عراق، و دور زدن یک نامزد طرف‌دار ایران، در contrast با موفقیت‌های اخیر منطقه‌ای ایران قرار دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پس‌زمینه‌ی اضافی</h3>
+            هیچ پیشرفت قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
