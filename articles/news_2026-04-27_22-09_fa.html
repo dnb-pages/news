@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-27 22:14</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-27 22:14</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>بحرین ۶۹ تن از شهروندان خود را به دلیل حمایت از ایران از تابعیت این کشور محروم کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۲۱:۵۱:۳۷Z</strong></span>
+                </div>
+                <p class='summary'>گروه‌های حقوق بشری این اقدام را به عنوان "سوءاستفاده آشکار از قدرت" توصیف کرده‌اند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/bahrain-strips-69-people-of-citizenship-over-iran-support?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>هنر معامله هسته ای</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویارک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۷ آوریل ۲۰۲۶ ساعت ۲۱:۰۲:۲۶ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ توافق‌نامه‌ای را که برای جلوگیری از ساخت بمب توسط ایران طراحی شده بود، پاره کرد. دستیابی به یک توافق بهتر اکنون ممکن است دشوار باشد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/nuclear-deal-iran-trump-assasination-charges.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>اقتصاد چین نشانه‌هایی از ترک برداشتن در پی جنگ با ایران را آغاز کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل - نیویورک تایمز (NYT)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸</strong></span>
+                </div>
+                <p class='summary'>ذخایر راهبردی چین از نفت و گاز طبیعی تا حدی آن را محافظت کرده است، اما اقتصاد مبتنی بر تولید این کشور در حال دچار شدن به ضعف و ناکارآمدی است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/business/china-economy-iran-war.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>چه کسی در مذاکرات ایران و آمریکا کارت‌ها را در دست دارد؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸  ساعت ۲۳:۳۰:۱۸ (به وقت ایران)</strong></span>
+                </div>
+                <p class='summary'>هر دو ایالات متحده و ایران ادعا می‌کنند در مذاکرات مربوط به جنگ، دست بالا را در اختیار دارند، اما چه کسی بر سر این موضوع دست برتر دارد؟</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/27/who-holds-the-cards-in-iran-us-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>وزیر امور خارجه ایران در روسیه اعلام کرد که آمریکا پیشنهاد دور جدید مذاکرات را ارائه کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۰۲/۰۹  ساعت ۲۰:۵۹:۵۶ (به وقت گرینویچ)</strong></span>
+                </div>
+                <p class='summary'>روسیه میزبان وزیر امور خارجه ایران، عباس عراقچی، در سن‌پترزبورگ برای مذاکرات درباره دور جدید احتمالی گفتگو‌ها است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/27/iran-fm-in-russia-says-us-has-offered-new-round-of-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>جنگ ایران اقتصاد جهانی را تکان داد، اما ایالات متحده بیش از همه در امان بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۲-۰۸T۲۰:۱۶:۲۰Z</strong></span>
+                </div>
+                <p class='summary'>در تنها هشت هفته بخش بزرگی از اقتصاد جهانی دچار اختلال شده است. Америка با این ماجرا mostly بی‌نصیب مانده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/business/economy/iran-war-global-growth.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>شاه چارلز و ملکه کاملیا برای دیدار رسمی سطح بالای ایالات متحده وارد شدند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۲۰:۰۹:۵۶Z</strong></span>
+                </div>
+                <p class='summary'>دیدار پادشاه بریتانیا از ایالات متحده حاکی از تاریخ مشترک در حالی است که روابط تیره و تنش بر سر درگیری‌های ایران وجود دارد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/king-charles-and-queen-camilla-arrive-for-high-profile-us-state-visit?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>حزب‌الله و اسرائیل با تهدید و حملات متقابل در مرز لبنان معامله می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۹ ۲۳:۲۸:۳۳</strong></span>
+                </div>
+                <p class='summary'>گروه پیوسته به ایران مقاومت خود را تکرار می‌کند؛ وزیر دفاع اسرائیل تهدید می‌کند که «تمام لبنان را به آتش می‌کشم»</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/hezbollah-and-israel-swap-threats-and-strikes-across-lebanons-border?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>نظر | برای اعلام شکست در ایران خیلی زود است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۲۱:۴۲:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>مخالفان ترامپ فکر می‌کنند او به‌طور مبرمی به دنبال یک راه خروج است. روی آن حساب نکنید.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/its-way-too-early-to-declare-defeat-in-iran-ff8ac396' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>نظر شما | مذاکره راه پایان دادن به تهدید هسته‌ای ایران نخواهد بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۱/۰۸ ساعت ۲۱:۴۱</strong></span>
+                </div>
+                <p class='summary'>ترامپ در حال تکرار یکی از اشتباهات اوباما است: تمرکز بر اورانیوم و نادیده گرفتن پلوتونیوم.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/negotiation-wont-end-irans-nuclear-threat-23b0a467' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>رئیس‌جمهور عراقi نامزد ائتلاف شیعیان، علی الزیدی، را به عنوان نخست‌وزیر منتخب تعیین کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۷ اردیبهشت ۱۴۰۵ ساعت ۲۳:۴۲:۴۱ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>انتخاب زعیمی مانند الزaydi پس از ماه‌ها بن‌بست رخ داد، آن هم در شرایطی که ترامپ با انتصاب محمدعلی حکیمی نخست‌وزیر سابق با گرایش‌های طرفدار ایران مخالفت کرده بود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/iraqi-president-names-shia-bloc-candidate-ali-al-zaidi-as-pm-designate?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>رئیس‌جمهور عراق از نخست‌وزیرِ تعیین‌شده علی‌الظاهر زعیدی خواست تا دولت تشکیل دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور عراق روز دوشنبه پس از آنکه توسط بلوک پارلمانی حاکمِ کشور به عنوان نخست‌وزیر معرفی شد، بازرگان علی الزیدي را مامور تشکیل دولت کرد. الزیدي یک چهره جدید در عرصه سیاست است و هرگز پیش از این سِمَت دولتی ای نداشته است.</p>
+                <div class='link'><a href='https://www.france24.com/fa/شرق-میانه/20260427-عراق-رئیس-جمهور-از-علی-الزیدی-نامزد-نخست-وزیری-خواهان-تشکیل-دولت-شد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>چگونه آسیا-اقیانوسیه در برابر شوک سوخت مبارزه می‌کند که ممکن است بدتر هم شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل - پست مالی</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۲۱:۱۸:۵۸Z</strong></span>
+                </div>
+                <p class='summary'>کشورهای آسیایی در معرض تهدید تداوم فشار بر عرضه انرژی حیاتی هستند، چرا که درگیری در خاورمیانه فراتر از دومین ماه خود پیش رفته و تنگه هرمز همچنان تا حد زیادی بسته به رویه‌های کشتیرانی مانده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/how-asia-pacific-is-fighting-a-fuel-shock-that-could-get-worse' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>وزیر امور خارجه ایران در دیدار با پوتین در حالی که مذاکرات آمریکا و ایران به شکست می‌انجامد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸ ساعت ۲۱:۴۷</strong></span>
+                </div>
+                <p class='summary'>این سفر در حالی انجام می‌شود که مذاکره‌کنندگان ایرانی در پی جداسازی مسیرهایی برای توافق درباره تنگه هرمز و مذاکرات گسترده‌تر peace، از جمله موضوع هسته‌ای هستند.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/04/27/iran-talks-putin-araghchi-trump-russia/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>دیدارState exceptional پادشاه چارلز فرصتی برای بهبود روابط با ترامپ در اختیار بریتانیا قرار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۲۱:۰۷:۵۶Z</strong></span>
+                </div>
+                <p class='summary'>این نمایش باشکوه در حالی آغاز شد که نگرانی‌های امنیتی افزایش یافته بود و اختلاف نظر در مورد جنگ با ایران رو به رشد بود. بریتانیا امیدوار است که علاقهٔ رئیس‌جمهور به تشریفات و چهرهٔ بدون احساس پادشاه بتواند به بهبود اتحاد آنها کمک کند.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/politics/2026/04/27/trump-king-charles-iran-tension/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>ایران طرحی برای تمرکز بر تنگه هرمز و تاخیر در مذاکرات هسته‌ای پیشنهاد داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸ ۲۰:۱۲:۵۵</strong></span>
+                </div>
+                <p class='summary'>در آخرین پیشنهاد ارائه شده در روز یکشنبه، ایران پیشنهاد کرد که گذرگاه آبی مهم را برای ترافیک کشتی‌ها باز کند و تحریم‌های ایالات متحده را لغو نماید، در حالی که مسأله پیچیده‌تر هسته‌ای را برای بعد به تعویق می‌انداخت.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/middleeast/iran-trump-talks-strait-of-hormuz-nuclear.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 27 فروردین 1405</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های مربوط به ایران در حال افزایش است و پیامدهایی از درگیری نظامی، بن‌بست دیپلماتیک بر سر مسائل هسته‌ای و پیامدهای اقتصادی شدید را به همراه دارد. تنگه هرمز همچنان کانون نگرانی است و قدرت‌های بین‌المللی همچون آمریکا، چین و روسیه به شدت درگیر ماجرا هستند. این وضعیت تأثیراتی از خاورمیانه تا آسیا و اروپا ایجاد کرده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران در کانون یک بحران ژئوپلیتیکی در حال گسترش قرار دارد که با تهدیدات renewed علیه آمریکا و اسرائیل، تبادل حملات میان نیروهای منطقه‌ای هم‌پیمان ایران مانند حزب‌الله باIsrael، و تلاش‌های ناموفق مذاکرات همراه است. بحرین ۶۹ نفر را از تابعیت این کشور محروم کرده است به‌دلیل حمایت از ایران، در حالی‌که عراق یک نخست‌وزیر جدید منصوب کرده تا بن‌بست ناشی از فشار ایالات متحده بر نامزدهای مورد حمایت ایران را بشک ND. اقتصاد جهانی تحت فشار ناشی از درگیری‌های طولانی خاورمیانه قرار گرفته است، به‌گونه‌ای که تأمین نفت دچار اختلال شده و اقتصاد چین نیز به دلیل کمبود انرژی دچار مشکل است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            این درگیری احتمالاً به تشدید خود ادامه خواهد داد و با خشونت‌های پراکنده و دیپلماسی بلندپروازانه همراه خواهد بود. گرچه به‌دلیل بازدارندگی متقابل از بروز یک جنگ تمام‌عیار جلوگیری می‌شود، اما خطر محاسبات غلط همچنان بالاست. فشارهای اقتصادی، به‌خصوص برای کشورهای نفت‌محور مانند چین، احتمالاً باعث گرایش بیشتر کشورها به سازش یا تشکیل اتحادهای جدید برای پایدار کردن عرضه انرژی و تجارت خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            {<br>  "text": ["اوایل ۲۰۲۶: آغاز دور فعلی تنش‌ها، که احتمالاً با خروج ترامپ از برجام (JCPOA) در ۲۰۲۵ آغاز شد.", "آوریل ۲۰۲۶: چندین رویداد از جمله درگیری‌های میان اسرائیل و حزب‌الله، تلاش‌های دیپلماتیک ایران برای برقراری ارتباط با روسیه، و بحران تنگه هرمز، وضعیت را به نقطه جوش رسانده است.", "۲۷ آوریل ۲۰۲۶: تحولات گوناگونی روی داد: مذاکرات درباره تنگه هرمز و مسائل هسته‌ای به شکست انجامید؛ عراق یک نخست‌وزیر جدید منصوب کرد؛ بحرین تعدادی از شهروندانش را سلب تابعیت کرد؛ وVisit King Charles از ایالات متحده برای بهبود روابط بریتانیا و آمریکا در بحبوحه تنش‌ها برگزار شد. اقتصاد چین نیز نشانه‌هایی از ترک‌خوردگی دارد."]<br>}
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            مسیر بلندمدت نشان‌دهنده خاورمیانه‌ای با انشقاق بیشتر است، جایی که ایران با وجود کم‌تر شدن انزوا، همچنان یک کشور منزوی تحت تحریم‌های گسترده به شمار می‌رود. ایالات متحده ممکن است به منظور آرام کردن فشارهای داخلی، به دنبال یک توافق هسته‌ای جدید باشد، اما با توانایی‌های رو به رشد هسته‌ای ایران مواجه خواهد شد. قدرت‌های منطقه‌ای مانند عربستان سعودی و اسرائیل محتمل است که روابط خود را تقویت کرده و برای مقابله با ایران همکاری کنند. در همین حال، چین و سایر کشورهای آسیایی اولویت خود را securing تأمین عرضه‌های انرژی قرار خواهند داد، و ممکن است برای تحقق این امر، نگرانی‌های حقوق بشری مرتبط با ایران را نادیده بگیرند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            درگیری کنونی شدید است اما عمدتاً غیرمستقیم می‌باشد. اگرچه جنگ گسترده‌ای رخ نداده، درگیری‌های نیابتی (حزب‌الله در مقابل اسرائیل) و جنگ اقتصادی (تحریم‌ها، محاصره‌های نفتی) در حال تشدید هستند. به نظر می‌رسد استراتژی ایران بر فشار - از طریق متحدان منطقه‌ای و پیشرفت هسته‌ای - برای وادار کردن ایالات متحده بهreturn به مذاکرات متمرکز باشد، در حالی که ایالات متحده همچنان بر دستیابی به توافقی تمرکز دارد که تأثیر منطقه‌ای گسترده‌تر ایران را موردAddress قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال تغییر دادن اتحادهای جهانی و اقتصاد جهان است. ایالات متحده، علیرغم تمرکز داخلی، همچنان بازیگری کلیدی به شمار می‌آید، در حالی که چین به طور فزاینده‌ای در حال balancing reliance خود بر نفت ایران با نیاز به تثبیت اقتصادش است. اروپا که میان فشار ایالات متحده و نیازهای انرژی خود گرفتار آمده، در تلاش است تا نفوذ خود را نشان دهد. این بحران، به هم پیوستگی امنیت و اقتصاد جهانی را برجسته می‌کند و درگیری ایران به عنوان یک آزمون فشار برای همکاری بین‌المللی عمل می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیکنان کلیدی عبارتند از: آمریکا (که تلاش می‌کند از طریق تحریم‌ها و دیپلماسی ایران را مهار کند), ایران (که در تلاش برای شکستن انزوا است), چین (با هدف‌گذاری تعادل میان نیازهای انرژی و ثبات اقتصادی), روسیه (حمایت دیپلماتیک از ایران), اسرائیل (درگیر در درگیری‌های مستقیم با حزب‌الله), و بازیگران منطقه‌ای مانند عراق (تعادل میان سیاست داخلی با فشارهای آمریکا و ایران), بحرین (سرکوب حامیان ظاهری ایران) و بریتانیا (تلاش برای میانجی‌گری میان آمریکا و شرکای بین‌المللی).
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل بحران تنگه هرمز ( که ۲۰ درصد از نفت جهانی از آن عبور می‌کند) بسیار ناپایدار باقی می‌مانند. مسدودسازی یا حملات مداوم به زیرساخت‌های نفتی می‌تواند به شدت قیمت‌ها را افزایش دهد و خطر رکود جهانی را تشدید کند. تلاش‌های چین برای انبار کردن نفت ممکن است به‌طور موقت آن را تخفیف دهد، اما اختلالات طولانی‌مدت به شدیدترین نحو بازارهای آسیا را تحت تأثیر قرار داده و هزینه‌های تولید و تجارت جهانی را افزایش خواهد داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            درگیری‌های ایران تشدید شده است، به طوری که رویارویی‌های نظامی مستقیم (مانند اسرائیل در برابر حزب‌الله) و جنگ اقتصادی (اختلال در عرضه نفت، تحریم‌ها) باعث بی‌ثباتی جهانی شده‌اند. تنگه هرمز همچنان یک نقطه اشتعال بحرانی است؛ هرگونه انسداد ممکن است باعث افزایش ناگهانی قیمت نفت و بی‌ثبات‌کردن اقتصادهایی شود که به انرژی خاورمیانه وابسته‌اند. شکست مذاکرات و اتحادهای در حال گسترش (مثلاً اتحاد روسیه-ایران-چین) نشان می‌دهد که یک مبارزه بلندمدت در پیش است و قدرت‌های منطقه‌ای برای محافظت از منافع خود به سناریونگاری‌های مختلف روی می‌آورند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            انتخاب نخست‌وزیر جدید عراق، علی الزیدی—a فرد سیاسی تازه‌کار—غیرمنتظره است، زیرا بن‌بست سیاسی عراق به‌عنوان یک جنگ نیابتی میان گروه‌های طرف‌دار آمریکا و طرف‌دار ایران تلقی می‌شد. انتخاب او ممکن است بازتابی از یک مصالحه شکننده یا تلاشی برای کاهش نفوذ ایران در عراق باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
