@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-27 17:00</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-27 17:00</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>IDF strikes Lebanon’s Beqaa Valley for first time in 3 weeks as towns in north cancel school</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 14:41</strong></span>
+                </div>
+                <p class='summary'><p>Raids deeper in country follow continued Hezbollah fire; Lebanese president pans terror group for waging war serving 'foreign interests'; Hezbollah reportedly threatens suicide bombings</p> <p>The post <a href="https://www.timesofisrael.com/idf-strikes-lebanons-beqaa-valley-for-first-time-in-3-weeks-amid-shaky-ceasefire/">IDF strikes Lebanon’s Beqaa Valley for first time in 3 weeks as towns in north cancel school</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AFP__20260427__A93N22V__v2__HighRes__TopshotIsraelLebanonIranUsWar-1024x640.jpg" title="IDF strikes Lebanon’s Beqaa Valley for first time in 3 weeks as towns in north cancel school" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/idf-strikes-lebanons-beqaa-valley-for-first-time-in-3-weeks-amid-shaky-ceasefire/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>US Stocks Retreat From Record High as Traders Brace for Earnings</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:40</strong></span>
+                </div>
+                <p class='summary'>US stocks hovered near record highs with small losses on Monday, as investors prepare for a swath of corporate earnings this week while monitorinng efforts to reopen the Strait of Hormuz amid stalled Iran peace talks. A gauge of chip stocks sold off after a historic run.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-stocks-retreat-from-record-high-as-traders-brace-for-earnings' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Will the Iran war push millions back into poverty?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 16:23</strong></span>
+                </div>
+                <p class='summary'>US-Israel war on Iran drives up fuel and food costs, putting 32.5 million people at risk of poverty worldwide.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/4/27/will-the-iran-war-push-millions-back-into-poverty?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>US teens place high in Israel’s annual Bible Quiz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 14:05</strong></span>
+                </div>
+                <p class='summary'><p>American participants who managed to arrive in the country during tenuous ceasefire with Iran drew extra praise from the judges this year for their fluency in Hebrew</p> <p>The post <a href="https://www.timesofisrael.com/us-teens-place-high-in-israels-annual-bible-quiz-in-strongest-showing-in-decade/">US teens place high in Israel’s annual Bible Quiz</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/akiva-1024x640.png" title="US teens place high in Israel’s annual Bible Quiz" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/us-teens-place-high-in-israels-annual-bible-quiz-in-strongest-showing-in-decade/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Hezbollah Vows to Keep Its Weapons as Lebanon Says Israeli Strikes Killed 14</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:52</strong></span>
+                </div>
+                <p class='summary'>Despite a cease-fire, Israel and Hezbollah have been trading attacks almost daily.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/middleeast/hezbollah-weapons-lebanon-israel.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Iran offers Hormuz deal without nuclear talks, as it seeks broader buy-in</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:50</strong></span>
+                </div>
+                <p class='summary'>Tehran widens diplomacy to regional and global players while indirect US talks remain uncertain.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/iran-offers-hormuz-deal-without-nuclear-talks-as-it-seeks-broader-buy-in?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Germany’s Merz says US has no strategy in Iran war</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:41</strong></span>
+                </div>
+                <p class='summary'>German Chancellor Friedrich Merz said the US has no clear exit strategy with their war on Iran.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/27/germanys-merz-says-us-has-no-strategy-in-iran-war?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Iran’s Foreign Minister Is in Russia for Talks With Putin on Middle East War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 16:39</strong></span>
+                </div>
+                <p class='summary'>Abbas Araghchi, Iran’s foreign minister, met with President Vladimir V. Putin. Moscow has tried to avoid entanglement in the conflict while remaining a key player in the region.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/europe/iran-foreign-minister-russia.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Lebanon Latest: Israel’s deadly attacks amid ceasefire breaches</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 14:48</strong></span>
+                </div>
+                <p class='summary'>Israeli airstrikes hit southern Lebanon as ceasefire falters, killing at least 14 and forcing new displacement.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/27/aje-onl-aje_onl_lebanon_wrap-270426?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>The War in Iran Has Upended the Global Economy. The U.S. Has Been Mostly Spared.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:03</strong></span>
+                </div>
+                <p class='summary'>In just eight weeks, much of the global economy has been knocked sideways. America has mostly been spared from the tumult.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/business/economy/iran-war-global-growth.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>NPT summit: Can nuclear pact survive US-Israel war on Iran?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 14:43</strong></span>
+                </div>
+                <p class='summary'>Analysts say a review conference is unlikely to halt nuclear powers from continuing to flout the treaty's rules.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/npt-summit-can-nuclear-pact-survive-us-israel-war-on-iran?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Iran blames US for failure of talks as FM meets with Putin</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:10</strong></span>
+                </div>
+                <p class='summary'>Iran's top Foreign Minister Abbas Araghchi blamed Washington on Monday for the failure of Middle East peace talks as he met with Russian President Vladimir Putin in St. Petersburg. Putin, meanwhile, promised Araghchi Moscow's support in bringing the war to a close.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260427-iran-blames-us-for-failure-of-talks-as-fm-meets-with-putin' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Deutsche, JPMorgan Favor Energy-Linked Currencies Amid Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:45</strong></span>
+                </div>
+                <p class='summary'>Investors are doubling down on bets that energy-linked currencies will keep rising as the US-Iran conflict reshapes global oil markets, with Deutsche Bank, JPMorgan Chase & Co. and Pioneer Investments urging clients to buy into the trade.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/deutsche-jpmorgan-favor-energy-linked-currencies-amid-iran-war' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Mideast Urea Output Slumps With Lack of Fertilizer Ships to Load</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 15:55</strong></span>
+                </div>
+                <p class='summary'>More than half of the Middle East’s urea output may have been lost since the start of the Iran conflict, which is continuing to disrupt fertilizer flows from the region and threatening global food inflation.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/mideast-urea-output-slumps-with-lack-of-fertilizer-ships-to-load' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>UK, EU 'push back strongly' on US foreign policy: Will Charles' visit 'soften' transatlantic divide?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-27 14:45</strong></span>
+                </div>
+                <p class='summary'>Annette Young is pleased to welcome Laurel Rapp, Director of the US and North America Programme at Chatham House. According to Ms. Rapp, the visit of King Charles to the US, planned prior to the outbreak of the US war on Iran, now unfolds with far higher stakes in the wake of an all-out diplomatic crisis. What was once regarded as a “special relationship”, the US and the UK are being increasingly tested, and shaped, by combative rhetoric amid an unprecedented divide on key strategic issues: Trade, NATO, Greenland, Iran, Ukraine, defence budget, and a host of other points of contention.</p>
+                <div class='link'><a href='https://www.france24.com/en/uk-eu-push-back-strongly-on-us-foreign-policy-will-charles-visit-soften-transatlantic-divide' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 27, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The conflict involving Israel, Iran, and their regional allies (including Hezbollah) has escalated, breaking a fragile ceasefire with renewed airstrikes and threats. The war is disrupting global oil and food supplies, straining economies worldwide, and drawing in major powers like the US, Russia, and Germany, while raising fears of economic instability and wider regional chaos.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Israel conducted airstrikes deeper into Lebanon’s Beqaa Valley for the first time in three weeks, following continued attacks by Hezbollah. The strikes killed 14 people, including civilians, and displaced locals. The fragile ceasefire between Israel and Hezbollah is collapsing, with daily exchanges of fire. Meanwhile, Iran is attempting to reset diplomatic efforts by proposing a deal to reopen the Strait of Hormuz, the critical oil shipping route, without tying it to nuclear talks. The US, Israel, and regional powers remain at an impasse, while global oil and food markets are reeling from the conflict’s economic fallout.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict appears to be escalating rather than de-escalating in the short term. Another round of failed diplomacy or a major miscalculation (like a direct Iranian-Israeli strike) could push the region into a more intense exchange. The US’s lack of a clear strategy, as noted by Germany, suggests the current approach is unsustainable. Regional powers like Russia and Lebanon are trying to mediate, but their influence is limited. The immediate danger is that small-scale skirmishes spiral into a wider war involving more actors.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            April 26-27, 2026: Israel conducts strikes in Lebanon’s Beqaa Valley and cancels school in northern towns. Hezbollah retaliates with threats of suicide bombings. Iran’s foreign minister meets Putin in Russia to discuss the war. Germany’s chancellor criticizes the US for lacking a strategy. Global markets react to rising oil prices and supply disruptions. April 2026 (ongoing): Washington and Tehran remain in indirect talks to reopen the Strait of Hormuz. Ceasefire breaches continue daily between Israel and Hezbollah. Early 2026: US-Israel launched strikes on Iran’s nuclear and military sites, triggering regional retaliation and economic disruptions.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            In the long term, the conflict risks drawing in more regional players (e.g., Syria, Yemen’s Houthis) and could destabilize Lebanon further. Iran may try to use its leverage in Iraq, Syria, and Yemen to pressure Israel and the US indirectly. A prolonged war could reshape global oil flows, pushing countries to diversify energy sources or increase domestic production. Diplomatically, a fractured NPT (Nuclear Non-Proliferation Treaty) review conference highlights the weakening global nuclear order. Economic instability could lead to political upheaval in vulnerable countries, especially in Africa and South Asia, where poverty rates are rising due to high fuel and food prices.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current fighting is characterized by a 'shadow war'—proxy conflicts, airstrikes, and limited ground operations. Israel and Hezbollah exchange daily rockets and airstrikes, with both sides avoiding full-scale war but unwilling to back down. Iran supports Hezbollah and proxies in Yemen and Iraq but is cautious about direct involvement to avoid triggering a wider conflagration. The US maintains a supporting role for Israel but has not intervened directly. The intensity is high locally but confined to regional hotspots; however, the risk of miscalculation leading to escalation remains a major concern.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This war is reshaping the Middle East’s geopolitical landscape. The US’s declining influence in the region (highlighted by Germany’s criticism) gives space for Russia, Iran, and regional actors like Turkey to fill the vacuum. The global economy is already feeling the pain—oil prices are volatile, food inflation is rising, and supply chains are stressed. If the conflict spreads or Iran’s proxies escalate attacks, the world could face a major economic downturn, especially in energy-importing countries. The war also undermines global nuclear non-proliferation efforts, sending a signal that nuclear deterrence is weakening as a tool for stability.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is Israel’s main ally, providing military support and strategic backing. Iran is backed by Russia, which is trying to mediate but also leveraging the crisis to weaken Western influence. Lebanon is caught in the middle, with the government powerless to control Hezbollah. Germany and the EU are increasingly critical of the US’s approach, reflecting a growing transatlantic divide. Regional actors like Saudi Arabia and the UAE are watching closely, likely hoping for a weakened Iran. China and India, as major oil importers, are navigating the crisis by seeking alternative suppliers and stocks.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are highly sensitive to the conflict. The Strait of Hormuz, through which 20% of the world’s oil passes, remains a critical chokepoint. Any disruption here (e.g., Iranian blockades or attacks) could send prices soaring. The war has already slashed Middle Eastern urea fertilizer output by over 50%, worsening global food inflation. Investors are betting on energy-linked currencies (e.g., Russian ruble) as a hedge against supply shocks. A sustained conflict could force oil-importing countries to dip into strategic reserves, accelerate alternative energy projects, or face recession.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The fragile ceasefire between Israel and Hezbollah is collapsing, with daily violence risking a larger regional war. The conflict is disrupting global oil and food supplies, pushing millions into poverty and straining economies worldwide. The U.S. lacks a clear strategy, while Iran is trying to reset diplomacy by resurrecting Hormuz trade talks—highlighting the war’s destabilizing effects on global order.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Iran’s decision to propose a Hormuz deal *without* nuclear talks is unexpected, suggesting Tehran is prioritizing economic stability and regional buy-in over its nuclear standoff with the West.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
