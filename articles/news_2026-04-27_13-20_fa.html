@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-27 13:24</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-27 13:24</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>وزیر امور خارجه تایلند: ایالات متحده برای پیامدهای جنگ ایران کمکی ارائه نمی‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل - واشنگتن پست</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸ ۱۳:۱۳:۴۲ UTC</strong></span>
+                </div>
+                <p class='summary'>«این جنگ نباید رخ می‌داد»، سیهاسک پوآنگکیتکیو در مصاحبه‌ای گفت و افزود که تایلند در میانه بحران اقتصادی خود به روسیه و چین نزدیک می‌شود.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/04/27/thailand-war-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>مروری بر protección (حفاظت) افغانی‌ها در ایران - ریسک‌های کلیدی حفاظتی، نیازها و اولویت‌ها در میان فشارهای اقتصادی و ناامنی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb ( انسان دوستانه )</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷ ساعت ۱۱:۰۳:۱۰</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور ها: ایران (جمهوری اسلامی)، افغانستان</div> <div class="tag source">منبع: کمیساریای عالی پناهندگان سازمان ملل متحد</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/db/15/db156636-2027-5331-a1e0-1d113fe88556.png" alt></p> <p>لطفاً به فایل پیوست مراجعه کنید.</p> <p><strong>خلاصه اجرایی</strong></p> <p>این تحلیل به بررسی خطرات حفاظتی پیش روی پناهندگان افغان و دیگر افغانانی می‌پردازد که در جمهوری اسلامی ایران به حمایت بین‌المللی نیاز دارند، در شرایطی که ناامنی و فشارهای اقتصادی در حال افزایش است. مشورت‌ها نشان می‌دهد که محیط حفاظتی تحت تأثیر فشارهای اقتصادی، افزایش ناراحتی‌های روانی-اجتماعی و تضعیف نهادهای اداری و حل اختلاف قرار گرفته است. نمایندگان جوامع در سراسر استان‌هایی که UNHCR فعالیت دارد، به طور یکسان بر افزایش اضطراب و نااطمینانی تأکید دارند. یکی از نقاط کانونی پناهندگان مشاهده کرد:</p> <p><em>جو کلی درون جامعه بسیار آشفته است و نگرانی‌ها و استرس‌های گسترده‌ای ناشی از افزایش تورم و از دست دادن معیشت در میان است.</em></p> <p>از اوایل سال ۲۰۲۶، به دلیل رکود اقتصادی و تشدید آن توسط درگیری‌هایی که از ۲۸ فوریه آغاز شد، خطرات حفاظتی به شدت افزایش یافته است. از دست دادن مشاغل غیررسمی و روزمزدی، همراه با افزایش هزینه‌های مواد غذایی، اجاره و مراقبت‌های بهداشتی، توانایی خانوارها برای تأمین نیازهای اساسی را به میزان قابل توجهی کاهش داده است. پناهندگان همواره این فشارها را با خطرات ثانویه‌ای همچون بدهی و تضعیف سلامت روانی مرتبط می‌دانند. همانطور که در consultations جمعیتی اشاره شد:</p> <p><em>بسیاری از خانواده‌ها به درآمدهای روزانه متکی هستند و از دست دادن شغل، تهیه غذا، پرداخت اجاره و هزینه‌های پزشکی را به شدت دشوار کرده است</em></p> <p>خانوارهای دارای افراد مسن، افراد دارای معلولیت و کسانی که نیاز به مراقبت‌های پزشکی دارند، به طور نامتناسبی تحت تأثیر قرار گرفته‌اند.</p> <p>در همین حال، تعطیلی‌های جزئی نهادهای مسئول صدور اسناد و انجام امور اداری، دیرکرد در روندهای قانونی را طولانی‌تر کرده است. اگرچه هیچ گزارش رسمی از افزایش گسترده بازداشت یا اخراج وجود ندارد، اما عدم اطمینان در مورد وضعیت مدارک و تأخیر در رسیدگی به پرونده‌ها – که به تعطیلی یا تخلیه نهادهای دولتی زیر نظر وزارت کشور مربوط می‌شود – ترس را افزایش داده و افراد را از مراجعه به خدمات دلسرد می‌کند. حضور heightened امنیتی و ایست‌های بازرسی در چندین استان، این تأثیر را تشدید می‌کند. در حال حاضر هیچ‌گونه محدودیتی در جابه‌جایی‌های رسمی اعمال نشده است. با این حال، بسیاری از افغان‌ها به دلیل ترس، تحرک خود را محدود کرده‌اند که به‌طور غیرمستقیم دسترسی به کار، خدمات بهداشتی و assistance حقوقی را تحت‌الشعاع قرار داده است.</p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/protection-overview-afghan-refugees-iran-key-protection-risks-needs-and-priorities-amid-economic-pressure-and-insecurity' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>آیا مذاکرات آمریکا و ایران شکست خورده است؟ عدم دستیابی به توافق هنوز به معنای مرده بودن دیپلماسی نیست</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۱۲:۴۷:۲۴Z</strong></span>
+                </div>
+                <p class='summary'>دیپلماسی ایالات متحده و ایران در بن‌بست قرار دارد، اما تحلیلگران می‌گویند هر دو طرف احتمالاً به رویارویی نظامی بازنمی‌گردند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/27/have-us-iran-talks-failed-why-no-deal-yet-doesnt-mean-diplomacy-is-dead?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>اقتصاد چین شروع به نشان دادن ترک‌هایی ناشی از جنگ در ایران کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۱۲:۲۴:۲۹Z</strong></span>
+                </div>
+                <p class='summary'>ذخایر استراتژیک نفت و گاز چین تا حدی این کشور را محافظت کرده است، اما اقتصاد مبتنی بر تولید در حال ضعیف شدن است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/business/china-economy-iran-war.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>وزیر امور خارجه ایران برای گفتگو با پوتین درباره جنگ خاورمیانه در روسیه است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۸ ساعت ۱۶:۴۷</strong></span>
+                </div>
+                <p class='summary'>عباس عراقچی، وزیر خارجه ایران، با رئیس‌جمهور ولادیمیر وی. پوتین دیدار خواهد کرد. اما مسکو، که متحد ایران است، تلاش کرده از گرفتار شدن بیش از حد در موضوع درگیری‌ها خودداری کند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/27/world/europe/iran-foreign-minister-russia.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>وزیر خارجه ایران در روسیه برای مذاکرات حاضر است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (مرکز)</span>
+                    <span class='meta-item'>📅 <strong>۲۷ فروردین ۱۴۰۵ ساعت ۱۳:۵۳:۵۵</strong></span>
+                </div>
+                <p class='summary'>وزیر خارجه ایران در روسیه برای مذاکراتی است</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/27/irans-foreign-minister-in-russia-for-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>اسرائیل و حزب‌الله به دلیل نقض آتش‌بس در لبنان به یکدیگر اتهام می‌زنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷T۱۰:۳۴:۲۴Z</strong></span>
+                </div>
+                <p class='summary'>وزارت بهداشت لبنان اعلام کرد که حملات اسرائیل به جنوب این کشور در روز یکشنبه منجر به کشته شدن ۱۴ نفر شد که مرگبارترین روزSinceده روز گذشته بوده است. این اتفاق در حالی رخ داد که اسرائیل و گروه حمایت‌شده از سوی ایران، اتهامات متقابلی را درباره نقض آتش‌بس ناپایدار مطرح کردند. بنیامین نتانیاهو، نخست‌وزیر اسرائیل گفت که ارتش این کشور به صورت «قاطعانه» حزب‌الله را هدف قرار داده است و این گروه نیز وعده داد که به «نقض‌ها» پاسخ دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/video/20260427-اسرائیل-مقاومت-لبنان-با-تخلیه-قوانین-مراعات-شد-라는-اتهامی-تجارت' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>فشار جنگ ایران بر کودهای شیمیایی ممکن است مشکلاتی را برای برداشت غلات سال آینده ایجاد کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۷ ۱۱:۱۳:۴۵ UTC</strong></span>
+                </div>
+                <p class='summary'><p>کودهای مبتنی بر نیتروژن باید هر فصل اعمال شوند؛ اما با پایین بودن قیمت محصولات اساسی، کشاورزان فاقد درآمد لازم برای پوشش هزینه‌های ناشی از بسته شدن تنگه هرمز هستند</p> <p>پست <a href="https://www.timesofisrael.com/iran-war-fertilizer-squeeze-could-spell-trouble-for-next-years-grain-harvests/">شوک کود در جنگ احتمالی ایران ممکن است مشکلاتی را برای برداشت غلات سال آینده ایجاد کند</a> برای اولین بار در <a href="https://www.timesofisrael.com">تلویزیون اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AP26115202329274-1024x640.jpg" title="شوک کود در جنگ احتمالی ایران ممکن است مشکلاتی را برای برداشت غلات سال آینده ایجاد کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/iran-war-fertilizer-squeeze-could-spell-trouble-for-next-years-grain-harvests/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۷ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران درگیر چندین بحران است: جنگ منطقه‌ای involving اسرائیل و حزب‌الله، فشار اقتصادی بر مهاجران افغان، روابط دیپلماتیک تحت فشار میان آمریکا و ایران، و درگیری رو به افزایش با روسیه و چین. پیامدهای این درگیری در حال گسترش در سطح جهانی است، از افزایش قیمت نفت گرفته تا کمبود مواد غذایی.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+             تا تاریخ ۲۷ آوریل ۲۰۲۶، ایران با فشارهای اقتصادی و انسان‌دوستانه شدید ناشی از جنگ منطقه‌ای‌ای مواجه است که از ۲۸ فوریه آغاز شده است. این جنگ شامل اسرائیل و گروه حزب‌الله لبنان تحت حمایت ایران می‌شود و علیرغم آتش‌بس شکننده، خشونت‌ها همچنان ادامه دارد. این درگیری تجارت را مختل کرده، فشار اقتصادی را بر پناهندگان افغان در ایران افزایش داده و روابط ایران با قدرت‌های جهانی را تحت فشار قرار داده است. از سوی دیگر، مذاکرات ایالات متحده و ایران به حالت توقف درآمده و ایران در جستجوی حمایت از روسیه و چین است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            این وضعیت احتمالاً در دو منطقه‌ی کلیدی تشدید خواهد شد: درگیری اسرائیل و حزب‌الله در مرز شمالی اسرائیل و crisis اقتصادی در ایران که می‌تواند باعث خروج بیشتر پناهجویان از این کشور شود. تلاش‌های دیپلماسی برای احیای مذاکرات آمریکا و ایران ادامه خواهد یافت، اما احتمالاً پیشرفت محدودی خواهد داشت. از سوی دیگر، متحدان ایران (روسیه و چین) تلاش خواهند کرد تا میان حمایت و اجتناب از دخالت مستقیم در جنگ تعادل برقرار کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>۲۸ فوریه ۲۰۲۶: گروه حزب‌الله لبنان که مورد حمایت ایران است، و اسرائیل درگیری تمام‌عیاری را آغاز می‌کنند.</li><li>اوایل ۲۰۲۶: به دلیل جنگ، رکود اقتصادی در ایران تسریع می‌شود و تأثیرات آن بر پناهندگان و کارگران روزمزد بیشتر می‌شود.</li><li>آوریل ۲۰۲۶: مذاکرات آمریکا و ایران متوقف می‌شود، در حالی‌که وزیر خارجهٔ ایران برای گفتگو با پوتین به روسیه سفر می‌کند.</li><li>۲۷ آوریل ۲۰۲۶: نقض آتش‌بس بین اسرائیل و حزب‌الله تشدید می‌شود و در بمباران‌های اسرائیل در لبنان ۱۴ نفر کشته می‌شوند.</li><li>۲۷ آوریل ۲۰۲۶: آمریکا هیچ کمکی به تایلند ارائه نمی‌دهد، در حالی‌که بحران اقتصادی تایلند به جنگ مرتبط است و این کشور مجبور می‌شود از روسیه و چین کمک بگیرد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            در بلندمدت، ایران با یک انتخاب مواجه است: گسترش دخالت‌های خود در درگیری‌های منطقه‌ای (با ریسک فشارهای اقتصادی و نظامی بیشتر) یا تمرکز بر ثبات‌بخشی به اقتصاد خود (با ریسک از دست دادن نفوذ بر متحدانی مانند حزب‌الله). از سوی دیگر، قدرت‌های جهانی مانند ایالات متحده، روسیه و چین به حفظ موازنه منافع خود ادامه خواهند داد و همزمان از نظر اقتصادی از ایران حمایت می‌کنند، اما از درگیری مستقیم خودداری می‌کنند. کمبود مواد غذایی و سوخت می‌تواند ناآرامی‌های گسترده‌تری در ایران و کشورهای همسایه را به دنبال داشته باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            <ul><li>۲. جنگ اقتصادی: اختلال در مسیرهای تجاری ایران (برای مثال، تنگه هرمز) و تحریم‌های جهانی که باعث تشدید تورم، کمبود مواد غذایی و بیکاری می‌شوند.</li><li>۳. بحران انسانی: پناهجویان افغان در ایران با مشکلات شدید فقر، بیکاری و بحران‌های سلامت روانی ناشی از افزایش هزینه‌های زندگی و دسترسی محدود به خدمات اساسی روبرو هستند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری یک جنگ نیابتی با پیامدهای جهانی است. تشدید آن می‌تواند عرضه نفت را مختل کند (در حالی که ایران و تنگه هرمز برای نفت جهان حیاتی هستند)، بحران پناهندگان بشردوستانه‌ای را ایجاد کند و قدرت‌های محلی و جهانی بیشتری را درگیر کند. برای مردم عادی، این می‌تواند به معنای افزایش قیمت سوخت، کمبود مواد غذایی و ناپایداری بیشتر اقتصادی باشد. وابستگی جهان به نفت از این منطقه باعث می‌شود که اهمیت آن فراتر از خود درگیری باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            <ul><li>۱. **ایالات متحده**: تحریم ایران در حالی که به دنبال دیپلماسی محدود برای پرهیز از یک جنگ گسترده است. هیچ گونه مداخله نظامی مستقیم یا کمک اقتصادی به متحدانی مانند تایلند ارائه نشده است.</li><li>۲. **اسرائیل-هیزب‌الله**: جنگجویان مستقیم در جنگ منطقه‌ای، به‌گونه‌ای که اسرائیل مواضع قوی هیزب‌الله را هدف قرار داده و هیزب‌الله با حملات موشکی پاسخ می‌دهد.</li><li>۳. **روسیه و چین**: از نظر اقتصادی از ایران حمایت می‌کنند اما از دخالت نظامی مستقیم خودداری می‌ورزند. روسیه در حال مذاکره با ایران است اما در مورد عمیق‌تر شدن در این вconflict تردید دارد.</li><li>۴. **پناهجویان افغانستانی**: تحت فشار آشفتگی اقتصادی و سیاسی در افغانستان، اکنون به دلیل فروپاشی اقتصادی ناشی از جنگ در ایران با مشکلات شدید مواجه هستند.</li><li>۵. **بازیکنان بی‌طرف**: تایلند در حال جستجوی کمک از روسیه و چین است زیرا اقتصاد آن به دلیل ناپایداری جهانی ناشی از جنگ رنج می‌برد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            جنگ تاکنون جریان‌های نفتی را از تنگه هرمز—که یک مسیر مهم و حیاتی برای نفت جهانی است— مختل کرده است. این موضوع به افزایش قیمت‌های جهانی نفت منجر شده است، قیمتی که در صورت تشدید درگیری یا مسدود شدن مسیرهای کشتیرانی، می‌تواند افزایش بیشتری پیدا کند. قیمت‌های بالاتر نفت به معنای هزینه‌های بالاتر برای سوخت، ترابری و مواد غذایی (به دلیل افزایش هزینه‌های کشاورزی و حمل و نقل) است. کشورهایی که وابستگی به واردات نفت دارند، مانند بسیاری از کشورهای اروپا و آسیا، با فشارهای اقتصادی مواجه خواهند شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            با وجود آتش‌بس نام Fragileی، درگیری بین اسرائیل و حزب‌الله شدت گرفته و احتمال گسترش جنگ منطقه‌ای را افزایش داده است که می‌تواند عرضه نفت را مختل کرده و بحران پناهجویان را تشدید کند. اقتصاد ایران در حال سقوط آزاد است، به پناهجویان افغان آسیب می‌رساند و ناپایداری در منطقه را افزایش می‌دهد—این امر ممکن است منجر به فرار بیشتر افراد به کشورهای دیگر شود. قدرت‌های جهانی (ایالات متحده، روسیه، چین) منافع خود را با دقت متعادل می‌کنند، از درگیری مستقیم خودداری می‌کنند، اما حمایت‌های محدودی را به ایران ارائه می‌دهند که این مسئله بحران را طولانی‌تر می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            بسته‌شدنِ نهادهای کلیدیِ اداری در ایران، شرایط را برای پناهجویان افغان بدتر کرده و دسترسی آنها را به اسناد قانونی و خدمات قطع کرده است. این یک بحران انسانی اغلب نادیده گرفته‌شده در میان جنگ بزرگ‌تر است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
