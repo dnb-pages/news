@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-28 08:44</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-28 08:44</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>یک ابر یخت روسی از تنگه هرمز عبور کرد/ می‌کند علیرغم محاصره</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۹ ۰۷:۱۷:۰۶</strong></span>
+                </div>
+                <p class='summary'>کشتی ۱۴۱ متری که با یک متحد نزدیک رئیس‌جمهور روسیه ولادیمیر پوتین مرتبط است، علی‌رغم محاصره در حال جریان، از مسیر آبی عبور کرد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cm2pn8zdxdjo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ترامپ پیشنهاد جمهوری اسلامی ایران برای بازگشایی تنگه هرمز را بررسی می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۲۸ آوریل ۲۰۲۶ - ساعت ۰۷:۵۵:۲۵</strong></span>
+                </div>
+                <p class='summary'>کاخ سفید تائید کرد که ترامپ روز دوشنبه با مشاوران امنیت ملی خود برای بحث در مورد طرح دیدار کرد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/28/trump-reviews-iranian-proposal-aimed-at-reopening-strait-of-hormuz?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>جنگ ایران: وضعیت در روز شصت پس چه زمانی است؟ سریع‌ترین رویدادها و دیپلماسی‌های در حال پیشرفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۰۹</strong></span>
+                </div>
+                <p class='summary'>تیم ترامپ طرح صلح با ایران جهت بازگشایی تنگه هرمز را بررسی کرده در حالی که مذاکرات هسته‌ای احتمالاً به تأخیری در مرحله بعد موکول می‌شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/28/iran-war-whats-happening-on-day-60-as-diplomacy-gathers-pace?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>بانک‌های منطقه یورو سخت‌گیری معیارهای اعتباری شرکت‌ها را از زمان ۲۰۲۳ بیشترین میزانSince 2023 بیشتر تشدید کرده‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل مالی پست</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶/۰۴/۲۸ ساعت ۰۸:۳۳:۲۲</strong></span>
+                </div>
+                <p class='summary'>در اوایل سال ۲۰۲۶، بانک‌های منطقه یورو سخت‌ترین استانداردهای اعتباری برای شرکت‌ها را از بیش از دو سال پیش وضع کردند، زیرا وقایع ژئوپلیتیکی از جمله جنگ ایران به روند موجود افزودند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/euro-zone-banks-tighten-firms-credit-standards-most-since-2023' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۸ آوریل ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های منطقه‌ای و مناقشات نزدیک تنگه مهم هرمز، یک مسیر حیاتی حمل و نقل نفت، در حال تشدید است؛ زیرا دیپلماسی و فعالیت‌های نظامی شدت می‌گیرند. یک یخت‌سپر روسی مرتبط با پوتین توانست از یک محاصره بگریزد در حالی که ایالات متحده و ایران در مورد بازگشایی تنگه گفتگو می‌کنند، در حالی که درگیری‌ها ادامه دارد. بانک‌های جهانی به دلیل ریسک‌های ژئوپلیتیکی در حال سخت‌گیری در اعطای اعتبار هستند که نشانه نگرانی‌های گسترده‌تر اقتصادی به شمار می‌آید.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            یک سوپریاخت ۱۴۱ متری روسی متعلق به یک هم‌پیمان نزدیک ولادیمیر پوتین، علی‌رغم محاصره مداوم درگیر با جمهوری اسلامی ایران و هم‌پیمانانش، از تنگه هرمز عبور کرد. در این میان، ایالات متحده در حال بررسی پیشنهاد ایران برای بازگشایی تنگه و کاهش تنش‌ها است. این درگیری اکنون به روز شصت رسیده و به نظر می‌رسد که علی‌رغم فشارهای نظامی مستمر، دیپلماسی در حال کسب حرکت است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            انتظار می‌رود که تلاش‌های دیپلماتیک بیشتری برای کاهش تنش‌ها صورت گیرد که ممکن است به آتش‌بس‌های موقت یا آتش‌بس‌های محلی منجر شود. با این حال، خطر تشدید مجدد درگیری‌ها همچنان بالا است، به ویژه اگر هر یک از طرفین احساس ضعف کنند یا به برتری استراتژیک دست یابند. احتمالاً نمایش‌های نظامی، مانند مانورهای دریایی یا حرکت‌های نمادین کشتی‌ها، ادامه خواهد یافت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            روز ۱ تا ۱۰: تشدید в конфликт میان ایران و نیروهای منطقه‌ای/هم‌پیمان با آمریکا منجر به مسدودسازی تنگه هرمز می‌شود. روز ۱۱ تا ۳۰: تنها درگیری‌های محدود و حملات سایبری رخ می‌دهند زیرا هر دو طرف از دفاع‌های خود آزمونی به عمل می‌آورند. روز ۳۱ تا ۶۰ (تازه): کانال‌های دیپلماتیک گشوده می‌شوند، درحالی‌که ایران پیشنهاد گشایش دوباره تنگه را مطرح می‌کند. ایالات متحده این طرح را بررسی می‌کند و حادثه ابر یختی روسی، سرکشی در برابر محاصره را برجسته می‌سازد. روز ۶۰+: نشانه‌های رو به افزایش مذاکرات مقدماتی به همراه حضور نظامی پایدار و فشارهای اقتصادی ادامه می‌یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این درگیری می‌تواند در یکی از سه مسیر زیر پیش برود: (۱) یک توافق صلح شکننده که در ازای لغو تحریم‌ها، تنگه دوباره بازگشایی شود؛ (۲) بن‌بست طولانی‌مدت همراه با درگیری‌های متناوب؛ یا (۳) تغییر به سوی جنگ منطقه‌ای گسترده‌تر که شامل دولت‌های همسو با آمریکا یا حتی رویارویی نظامی مستقیم آمریکا و ایران باشد. اهمیت استراتژیک تنگه، آن را نقطه حساسی می‌کند که می‌تواند عرضه جهانی نفت را بی‌ثبات نماید.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های منازعه</h3>
+            این درگیری در حال حاضر در سطحی پرتنش اما نه جنگی تمام‌عیار قرار دارد. هیچ نبردی در مقیاس وسیع وجود ندارد، اما تنش‌ها بالا هستند و امکان تشدید ناگهانی وجود دارد. محاصره‌های دریایی، تحریم‌های اقتصادی، حملات سایبری و درگیری‌های نیابتی (به‌عنوان مثال، حمایت از شبه‌نظامیان منطقه‌ای) اصلی‌ترین روش‌های رویارویی هستند. عبور از کنار یخت روسی نشان‌دهنده نادیده گرفتن تحریم‌ها است که بیانگر enforcement ضعیف آن است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            تنگه هرمز مهم‌ترین گلوگاه نفتی جهان است که تقریباً ۲۰ درصد از نفت جهانی از آن عبور می‌کند. هرگونه اختلال در این مسیر می‌تواند قیمت‌های نفت را به شدت افزایش دهد و باعث ایجاد بحران اقتصادی در سراسر جهان شود. فراتر از نفت، این درگیری اقتدار ایالات متحده در خاورمیانه و نقش روسیه به‌عنوان یک تعادل‌گر را به آزمون می‌گذارد. همچنین، احتمال کشیده‌شدن قدرت‌های منطقه‌ای دیگر مانند عربستان سعودی یا اسرائیل به این تعارض وجود دارد که می‌تواند یک درگیری محلی را به یک بحران گسترده‌تر تبدیل کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 شرکت بین‌المللی</h3>
+            ایالات متحده به طور مستقیم درگیر است و پیشنهادات ایران را بررسی می‌کند و حضور نظامی در منطقه را حفظ می‌نماید. متحدان ایران (به عنوان مثال، روسیه، نمایندگان منطقه‌ای) از آن حمایت می‌کنند؛ چه به صورت دیپلماتیک و چه از طریق اقدامات نظامی. بانک‌های اروپایی به دلیل نگرانی از پیامدهای اقتصادی، اعتبارات خود را برای کسب‌وکارها tighten می‌کنند که نشان‌دهنده نگرانی اروپا از پیامدهای اقتصادی است. چین نیز ممکن است به‌طور غیرمستقیم در این ماجرا دخیل باشد و احتمالاً نفت ارزان ایران را برای دور زدن تحریم‌ها خریداری کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت به دلیل احتمال بستن تنگه، بسیار نوسانی است. حادثه ابر یخچال روسی نشان می‌دهد که ممکن است محاصره ناکارآمد باشد، که می‌تواند به طور موقت قیمت‌ها را کاهش دهد. با این حال، در صورت شکست مذاکرات یا تشدید دوباره، قیمت نفت می‌تواند تا ۲۰ تا ۳۰ درصد افزایش یابد، به خصوص اگر عربستان سعودی یا سایر کشورهای خلیج فارس صادرات خود را کاهش دهند. این موضوع باعث افزایش قیمت بنزین در سطح جهان شده و در نهایت منجر به تورم و کندی اقتصادی خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            تنگه هرمز همچنان یک خاستگاه بحران است؛ هر گونه اختلال جدی می‌تواند به دلیل نقش آن در حمل‌ونقل نفت، موجب هرج و مرج اقتصادی جهانی شود. در حال انجام دیپلماسی است، اما این امر شکننده است—در حالی که مذاکرات ادامه دارد، احتمالاً طرفین به تهدیدهای نظامی خود ادامه خواهند داد. روسیه به طور فعال درگیر است و از این درگیری برای چالش‌طلبی با نفوذ ایالات متحده و تحکیم منافع خودش استفاده می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصری شگفت‌انگیز</h3>
+            عبور یک ابرخودروی روسی از محاصره نشان می‌دهد که ممکن است این بیشتر چالشی نمادین تا نقضی واقعی باشد و محدودیت‌های محاصره را آشکار می‌کند. این سرپیچی می‌تواند سایرین را تشویق به نادیده گرفتن محاصره کند و قدرت چانه‌زنی ایران را تضعیف سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋  زمینه اضافی</h3>
+            تغییرات قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
