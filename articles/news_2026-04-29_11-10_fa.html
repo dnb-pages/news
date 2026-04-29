@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-29 11:14</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-29 11:14</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>نقش فرانسه در مقابله با حملات پهپادی و موشکی ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۶/۰۷/۰۹ - ۰۹:۲۵:۴۲</strong></span>
+                </div>
+                <p class='summary'>خلبانان جنگنده فرانسوی مستقر در خاورمیانه در رهگیری پهپادها و موشک‌های ایرانی کمک‌رسانی کرده‌اند. فرمانده کوئنتین، کاپیتان لوئی و ستوان انزو در ابتدا برای انجام عملیات‌های مبارزه با تروریسم به این منطقه اعزام شدند. اما در ۲۸ فوریه، با تشدید درگیری‌ها، ماموریت آنان تغییری جدید یافت. اکنون که از ماموریت خود بازگشتند، برای نخستین بار به‌طور علنی درباره تجربیات خود صحبت می‌کنند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/video/20260429-inside-france-s-role-in-countering-iranian-drone-and-missile-attacks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>رئیس کمیسیون اروپا خواستار دیپلماسی برای پایان دادن به جنگ ایران شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۹ ۱۰:۲۰:۳۵</strong></span>
+                </div>
+                <p class='summary'>رئیس کمیسیون اروپا خواستار دیپلماسی برای پایان دادن به جنگ ایران شد</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/29/european-commission-president-calls-for-diplomacy-to-end-iran-war?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>خطوط هوایی اروپایی با بزرگترین بحران از زمان کرونا روبرو هستند زیرا جنگ ایران باعث افزایش هزینه‌های سوخت می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۹/۸/۱۰ ساعت ۱۱:۵۶</strong></span>
+                </div>
+                <p class='summary'><p>کارشناسان هوانوردی هشدار می‌دهند که شرکت‌های هواپیمایی اروپایی ممکن است در فصل تابستانی، عرضه سوخت جت را به دلیل افزایش تقریباً ۸۴ درصدی قیمت‌ها از آغاز جنگ، محدود کنند</p> <p>پست <a href="https://www.timesofisrael.com/european-airlines-face-biggest-crisis-since-covid-as-iran-war-drives-up-fuel-costs/">بحران بزرگ‌ترین خطوط هوایی اروپا از زمان کرونا؛ جنگ ایران هزینه سوخت را افزایش داد</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/plane-1024x640.jpg" title="بحران بزرگ‌ترین خطوط هوایی اروپا از زمان کرونا؛ جنگ ایران هزینه سوخت را افزایش داد" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/european-airlines-face-biggest-crisis-since-covid-as-iran-war-drives-up-fuel-costs/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>«به‌شدت در معرض آفت قرار گرفته»: چگونه جنگ ایران به بریتانیا ضربه می‌زند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۹T۰۸:۲۵:۳۳Z</strong></span>
+                </div>
+                <p class='summary'>با تداوم این درگیری، احتمال بروز مشکلات اقتصادی و ناآرامی‌ها افزایش می‌یابد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/29/how-the-iran-war-is-hitting-the-uk?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>قیمت بنزین در ایالات متحده به دلیل تداوم عواقب جنگ افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نيويورك تايمز</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۹T۱۰:۵۳:۳۸Z</strong></span>
+                </div>
+                <p class='summary'>قیمت میانگین ملی هر گالن بنزین پس از افزایش قیمت نفت به ۴٫۲۳ دلار رسید، چرا که تأمین عرضه از خاورمیانه همچنان مختل است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/29/business/oil-gas-prices-iran.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ایرانیان درد اقتصاد فروپاشیده خود را احساس می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وارد واتس‌جت (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۲۹T۱۰:۴۶:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>مشاغل در حال تعطیلی هستند، بیکاری در حال افزایش است و مواد غذایی به طور فزاینده‌ای غیرقابل تهیه هستند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iranians-feel-the-pain-as-their-economy-descends-into-a-death-spiral-47dba669' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>اطلاعات جهانی حاکی از لغو پروازها و افزایش کرایه‌ها توسط شرکت‌های هواپیمایی در سراسر جهان در پی درگیری‌های خاورمیانه</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۹ فروردین ۱۴۰۵ ساعت ۰۹:۳۵:۳۷ به وقت یوتی‌سی</strong></span>
+                </div>
+                <p class='summary'>هواپیمایی‌های همچون رایان‌ایر، ترانزاویا، ولوتیا و دیگر شرکت‌های هواپیمایی ارزان‌قیمت به دلیل احساس درد مالی از افزایش قیمت بالای سوخت جت - ناشی از جنگ خاورمیانه - در حال کاهش پروازهای خود هستند. بسته شدن تنگه هرمز باعث حذف بخش عظیمی از عرضه نفت از بازار شده و قیمت سوخت جت را به شدت افزایش داده است و این نگرانی را ایجاد کرده که کمبود ممکن است منجر به لغو پروازها توسط شرکت‌های هواپیمایی شود.</p>
+                <div class='link'><a href='https://www.france24.com/fa/video/20260429-چند-هواپیمایی-جهانی-پروازهای-خود-را-لغو-کردند-قیمت-بلیت‌ها-را-افزایش-دادند-در-پی-درگیری-های-خاورمیانه' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>پادشاه چارلز و ترامپ با وجود تنش‌های ایران به هم سلام کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۴/۲/۹ ساعت ۱۴:۰۴:۲۵</strong></span>
+                </div>
+                <p class='summary'>پادشاه بریتانیا چارلز و دونالد ترامپ در یک ضیافت رسمی در کاخ سفید روز سه‌شنبه روابط دیرینه دو کشور را ستایش کردند – علی‌رغم ادعای رئیس‌جمهور آمریکا مبنی بر موافقت پادشاه با او درباره سلاح‌های هسته‌ای ایران.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260429-king-charles-trump-toast-ties-despite-iran-tensions' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 29 آوریل 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>این درگیری که متضمن ایران است، به جنگ منطقه‌ای گسترده‌تری تبدیل شده و حملات با استفاده از پهپادهای ایرانی و موشک‌ها افزایش یافته است. کشورهای اروپایی همچون فرانسه و بریتانیا به طور مستقیم در مقابله با این تهدیدها دخالت دارند و در همین حال، قیمت نفت جهانی و هزینه‌های سفرهای هوایی به شدت افزایش می‌یابد. از سوی دیگر، اقتصاد ایران تحت فشار تحریم‌ها و هزینه‌های جنگ در حال فروپاشی است و مردم عادی ایران به سختی رنج می‌برند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است؟</h3>
+            ایران اکنون به طور آشکار در یک جنگ گسترده‌تر درگیر شده است و پهپاد و موشک‌هایی را به اهدافی در خاورمیانه پرتاب می‌کند که احتمالاً در واکنش به تنش‌های منطقه‌ای و حملات نظامی احتمالی علیه تاسیسات هسته‌ای یا نظامی خود بوده است. خلبانان جنگنده فرانسوی به طور فعال این حملات را رهگیری می‌کنند که نشانه‌ای از تغییر نقش از مبارزه با تروریسم به تهدیدات نظامی است. در همین حال، این درگیری باعث disruption زنجیره تامین نفت جهانی شده، هزینه سوخت را افزایش می‌دهد و خطوط هوایی را مجبور به لغو پروازها یا افزایش کرایه‌ها می‌کند. اقتصاد داخلی ایران نیز به دلیل تحریم‌ها، هزینه‌های جنگ و disruption تجارت در حال فروپاشی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سر تیتر</h3>
+            این درگیری به احتمال زیاد در کوتاه‌مدت تشدید خواهد شد و درگیری‌های نظامی مستقیم بیشتری میان ایران و بازیگران منطقه‌ای (احتمالاً اسرائیل یا کشورهای خلیج فارس) رخ خواهد داد. ممکن است کشورهای غربی حضور نظامی خود را برای محافظت از متحدان و زیرساخت‌های حیاتی افزایش دهند. دیپلماسی به دلیل بی‌اعتمادی عمیق همچنان دشوار خواهد بود. وضعیت تنها در صورت توافق بر آتش‌بس می‌تواند تثبیت شود، اما شرایط کنونی جنگ طولانی‌مدت را تداعی می‌کند. درد اقتصادی، هم در ایران و هم در سطح جهانی، پیش از هرگونه حل و فصل، بدتر خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. **اوایل سال ۲۰۲۶**: تشدید حملات پهپادی/ موشکی ایران به دشمنان منطقه‌ای (احتمالاً اسرائیل یا کشورهای حاشیه خلیج فارس)، که منجر به واکنش‌های نظامی می‌شود.</li><li>۲. **پایان فوریه ۲۰۲۶**: فرانسه خلبانان خود را از مبارزه با تروریسم به رهگیری فعالانه پهپادهای/ موشک‌های ایرانی مامور می‌کند.</li><li>۳. **آوریل ۲۰۲۶**: قیمت جهانی نفت ۸۴٪ افزایش یافت به دلیل درگیری خاورمیانه و خطرات احتمالی بسته شدن تنگه هرمز. شرکت‌های هوایی اروپا با کمبود سوخت مواجه شده و پروازهای خود را کاهش می‌دهند.</li><li>۴. **پایان آوریل ۲۰۲۶**: اقتصاد ایران وارد بحران عمیقی می‌شود و با بیکاری فزاینده، کمبود مواد غذایی و تعطیلی کسب‌وکارها روبروست. قیمت بنزین در ایالات متحده از ۴.۲۰ دلار در هر گالن فراتر می‌رود.</li><li>۵. **۲۹ آوریل ۲۰۲۶**: کمیسیون اروپا خواستار دیپلماسی می‌شود؛ در حالی که بریتانیا و ایالات متحده با فشار اقتصادی فزاینده‌ای مواجه هستند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            در بلند مدت، این درگیری риски دارد که بازیگران منطقه‌ای و جهانی بیشتری را درگیر کند و احتمالاً به یک جنگ تمام‌عیار منجر شود. اقتصاد ایران در شرایط فعلی غیرقابل تحمل است، اما رهبران آن ممکن است به جای تسلیم، تشدید تنش کنند. غرب هرچند از متحدان خود حمایت می‌کند، به احتمال زیاد وارد جنگ‌های زمینی مستقیم نخواهد شد. بزرگ‌ترین ریسک بلندمدت، تداوم جنگ‌های نیابتی است که منابع را ت verg تباه می‌کند و بازارهای انرژی جهانی را بی‌ثبات می‌سازد. تنها در صورتی breakthrough پیشرفت دیپلماتیک امکان‌پذیر است که تمامی طرف‌ها با هزینه‌های غیرقابل تحمل روبرو شوند، اما نشانه‌های فعلی نشان می‌دهند که چنین اراده‌ای وجود ندارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری هم‌اکنون ترکیبی از جنگ‌های واسطه‌ای و حملات مستقیم است. ایران از پهپادها و موشک‌ها استفاده می‌کند تا از رویارویی نظامی مستقیم اجتناب کند و در عین حال فشار خود را بر روی رقبا افزایش دهد. متحدان منطقه‌ای (ایالات متحده، اتحادیه اروپا، کشورهای حاشیه خلیج فارس) نیز با اقدامات دفاعی (رهگیری‌ها، تحریم‌ها) و حمایت غیرمستقیم پاسخ می‌دهند. شدت درگیری در حد متوسط تا بالا است، اما هنوز به جنگی تمام‌عیار تبدیل نشده است. تلفات محتمل است در مناطق هدف افزایش یابد، اما تأثیرات بر غیرنظامیان همچنان متمرکز بر ایران و کشورهای همسایه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این جنگ در حال تغییر موازنه قدرت در خاورمیانه است. ایران، که از نظر اقتصادی منزوی شده، ممکن است نفوذ خود را از دست بدهد مگر اینکه امتیازات بیشتری کسب کند. کشورهای غربی با افزایش هزینه‌های انرژی و فشارهای تورمی روبرو هستند، در حالی که خطوط هوایی و مصرف‌کنندگان در سراسر جهان متحمل سختی می‌شوند. این جنگ همچنین منجر به بی‌ثباتی گسترده‌تری می‌شود، چرا که آوارگان و فشارهای اقتصادی به اروپا تسری می‌یابد. مهم‌تر از همه، مسئله هسته‌ای در میان است: برنامه هسته‌ای ایران ممکن است در این شرایط آشفته تسریع شود و خطر رویارویی هسته‌ای را افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            فرانسه به طور مستقیم با رهگیری موشک‌ها و پهپادهای ایرانی در نقش نظامی دخالت دارد. آمریکا از نظر سیاسی و اقتصادی درگیر است و قیمت گاز و تحریم‌ها علیه ایران اعمال می‌شود. اتحادیه اروپا سعی در دیپلماسی دارد اما از نظر اقتصادی نیز تحت فشار است. کشورهای حاشیه خلیج فارس (احتمالاً عربستان سعودی و امارات) از جناح‌های ضد ایرانی حمایت می‌کنند. روسیه و چین ممکن است از طریق تجارت یا دیپلماسی حمایت غیرمستقیم از ایران داشته باشند، اما پشتیبانی نظامی ارائه نمی‌کنند. انگلیس و آمریکا علی‌رغم اختلافات علنی در سیاست ایران، اتحاد نزدیکی را حفظ کرده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت از آغاز جنگ تاکنون nearly ۸۴٪ افزایش یافته که عمدتاً به دلیل اختلال در عرضه‌ها از تنگه هرمز، یک مسیر حیاتی حمل و نقل نفت است. بسته شدن و حتی خطر تصور شده از بسته شدن باعث وحشت در بازارها می‌شود و منجر به افزایش قیمت‌ها می‌گردد. شرکت‌های هواپیمایی که به سوخت جت وابسته هستند، بیشترین ضربه را می‌خورند، به گونه‌ای که پروازها را کاهش داده و بهای بلیط‌ها را افزایش می‌دهند. قیمت‌های بالاتر نفت به تورم جهانی دامن می‌زند و مصرف‌کنندگان در سراسر جهان را تحت‌الشعاع قرار می‌دهد. در صورت تداوم تنش در تنگه هرمز، قیمت‌ها می‌توانند در سطوح بالای فعلی تثبیت شوند و بازارهای انرژی را برای سال‌ها دستخوش تغییر کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            کنش‌های نظامی مستقیم ایران و اقدامات متقابل غربی‌ها، جنگ را تشدید کرده است به گونه‌ای که پهپادها و موشک‌ها اکنون تهدیدی متداول در منطقه شده‌اند. جنگ باعث ایجاد آثار جهانی می‌شود: سفرهای هوایی مختل شده، قیمت نفت افزایش می‌یابد و مردم عادی در ایران و غرب بهای اقتصادی این جنگ را می‌پردازند. مذاکره دچار توقف شده و راه روشنی برای رسیدن به صلح وجود ندارد — بدین معنا که بحران به احتمال زیاد پیش از بهبود، بدتر خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر حیرت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            تنگه هرمز، که ۲۰ درصد از نفت جهان از آن عبور می‌کند، همچنان یک نقطه احتمالی مناقشه است. اگر ایران عبور و مرور کشتی‌ها را مسدود کند یا به شدت مختل نماید، قیمت نفت ممکن استさらに افزایش یابد و باعث اختلال اقتصادی جهانی شود. از سوی دیگر، اقتصاد ایران تحت فشار تحریم‌ها، هزینه‌های جنگ و فساد رو به فروپاشی است که خطر ناآرامی داخلی یا بحران احتمالی رهبری را افزایش می‌دهد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
