@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-29 04:07</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-29 04:07</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>World: April 2026 Commodity Markets Outlook [EN/AR/PT/RU/ZH]</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 01:39</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: World</div> <div class="tag source">Source: World Bank</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/5e/9d/5e9d981c-a7a0-444c-bccf-ca104f6a4152.png" alt></p> <p>Please refer to the attached files.</p> <p><strong>Middle East War to Spark Biggest Energy Price Surge in Four Years</strong></p> <p><em><strong>Commodity prices forecast to rise by 16% this year, fueling inflation and slowing growth</strong></em></p> <p><strong>WASHINGTON, April 28, 2026</strong>—Energy prices are projected to surge by 24% this year to their highest level since Russia’s invasion of Ukraine in 2022, as the war in the Middle East sends a severe shock through global commodity markets, according to the World Bank Group's latest <em>Commodity Markets Outlook</em>. Overall commodity prices are forecast to rise 16% in 2026, driven by soaring energy and fertilizer prices and record-high prices for several key metals.</p> <p>The shock will have serious implications for job creation and development, the analysis indicates.</p> <p>Attacks on energy infrastructure and shipping disruptions in the Strait of Hormuz, which handles about 35% of global seaborne crude oil trade, have triggered the largest oil supply shock on record, with an initial reduction in global oil supply of about 10 million barrels per day. Even after moderating from their recent peak, Brent oil prices remained more than 50% higher in mid-April than they were at the start of the year. Brent oil is forecast to average $86 a barrel in 2026, up sharply from $69 a barrel in 2025. These forecasts assume that the most acute disruptions end in May and that shipping through the Strait of Hormuz gradually returns to pre-war levels by late 2026.</p> <p>“The war is hitting the global economy in cumulative waves: first through higher energy prices, then higher food prices, and finally, higher inflation, which will push up interest rates and make debt even more expensive,” said <strong>Indermit Gill, the World Bank Group’s Chief Economist and Senior Vice President for Development Economics</strong>. “The poorest people, who spend the highest share of their income on food and fuels, will be hit the hardest, as will developing economies already struggling under heavy debt burdens. All of this is a reminder of a stark truth: war is development in reverse.”</p> <p><a rel="noreferrer noopener" target="_blank" href="https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release#">Fertilizer prices are projected to increase by 31% in 2026, driven by a 60% jump in urea prices. Fertilizer affordability will fall to its worst level since 2022, eroding farmers’ incomes and threatening future crop yields.</a> <a rel="noreferrer noopener" target="_blank" href="https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release#">If the conflict proves more prolonged, these pressures on food supply and affordability could push up to 45 million more people into acute food insecurity this year, according to the World Food Programme.</a></p> <p>Prices for base metals, including aluminum, copper, and tin, are also expected to reach all-time highs, reflecting strong demand related to industries including data centers, electric vehicles, and renewable energy. Precious metals continue to break price and volatility records, with average prices forecast to increase 42% in 2026, as geopolitical uncertainty fuels demand for safe-haven assets.</p> <p>Rising commodity prices caused by these shocks will increase inflation and dampen growth worldwide. In developing economies, inflation is now projected to average 5.1% in 2026 under the baseline assumptions—a full percentage point higher than was expected before the war and an increase from 4.7% last year. Growth in developing economies will also deteriorate as higher prices for essentials weigh on incomes and exports from the Middle East face sharp curbs. Developing economies are expected to grow by 3.6% in 2026, a downward revision of 0.4 percentage point since January. <a rel="noreferrer noopener" target="_blank" href="https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release#">Economies directly impacted by conflict will be hardest hit, and 70% of commodity importers and more than 60% of commodity exporters worldwide could see weaker growth than was projected in January.</a></p> <p><a rel="noreferrer noopener" target="_blank" href="https://www.worldbank.org/en/news/press-release/2026/04/28/commodity-markets-outlook-april-2026-press-release#">Commodity prices could rise even higher if hostilities escalate or supply disruptions from the war last longer than projected.</a> Brent oil prices could average as high as $115 a barrel in 2026 in a scenario where critical oil and gas facilities suffer more damage and export volumes are slow to recover. This in turn would have ripple effects on prices for fertilizer and alternative energy sources such as biofuels. Under this scenario, inflation in developing economies could rise to 5.8% this year, a level exceeded only in 2022 over the past decade.</p> <p>“The succession of shocks over the decade has sharply reduced the fiscal space available to respond to the current historic energy supply crisis,” said <strong>Ayhan Kose, the World Bank’s Deputy Chief Economist and Director of the Prospects Group</strong>. “Governments must resist the temptation of broad, untargeted fiscal support measures that could distort markets and erode fiscal buffers. Instead, they should focus on rapid, temporary support targeted to the most vulnerable households.”</p> <p>The report’s special focus finds that oil-price volatility during periods of rising geopolitical risk is roughly twice as high as during calmer periods, with a geopolitically driven 1% decline in oil production pushing prices up by an average of 11.5%. Critically, these effects spill over into other key commodity markets, with an impact roughly 50% larger than under normal market conditions. According to the report, a 10% oil price increase triggered by a geopolitical supply shock leads to natural gas price increases peaking at about 7% and fertilizer price increases peaking at over 5%. These peaks typically occur about a year after the initial oil price shock, with adverse consequences for food security and poverty reduction.</p> <p><strong>Download the report:</strong> <a rel="noreferrer noopener" target="_blank" href="https://bit.ly/CMO-April-2026">https://bit.ly/CMO-April-2026</a></p> <p><strong>Link to data and charts:</strong> <a rel="noreferrer noopener" target="_blank" href="https://bit.ly/CMO-April-2026-Data">https://bit.ly/CMO-April-2026-Data</a></p> <p><strong>PRESS RELEASE NO: 2026/041/DEC</strong></p> <h2><strong>Contacts</strong></h2> <p><strong>World Bank Media Relations:</strong></p> <p>+1 (202) 473 7660<br>press@worldbank.org</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/world/april-2026-commodity-markets-outlook-enarptruzh' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Iran: La presidenta del CICR llega a Irán para dialogar sobre preocupaciones humanitarias urgentes</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 01:33</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Iran (Islamic Republic of)</div> <div class="tag source">Source: International Committee of the Red Cross</div> <p><strong>Teherán (CICR) –</strong> La presidenta del Comité Internacional de la Cruz Roja (CICR), Mirjana Spoljaric, llegó a Irán en el marco de una visita oficial.</p> <p>Durante su estadía, se reunirá con altos funcionarios gubernamentales y con la Media Luna Roja de Irán para dialogar sobre las consecuencias humanitarias de las hostilidades en Irán y en gran parte de la región, y reafirmar la importancia del derecho internacional humanitario para la protección de la población civil y la infraestructura esencial durante el conflicto armado.</p> <p>Asimismo, conversará sobre acuerdos prácticos para que el CICR lleve más insumos para apoyar las iniciativas de socorro en las que también participa la Media Luna Roja de Irán, que ha estado en la línea de frente de la respuesta humanitaria.</p> <p>A principios de este mes, el CICR entregó más de 170 toneladas de artículos de primera necesidad para ayudar a las personas afectadas por el conflicto armado. Está previsto que se entreguen cargamentos adicionales de artículos médicos e insumos forenses en los próximos días.</p> <p>La visita de la presidenta del CICR a Irán forma parte de una serie de compromisos en la región, así como el diálogo permanente del CICR con las autoridades iraníes. Estos diálogos bilaterales reflejan la interacción directa de nuestra organización con todos los Estados para impulsar el respeto de las leyes de la guerra.</p> <p><strong>Acerca del CICR</strong></p> <p>El Comité Internacional de la Cruz Roja (CICR) es una organización neutral, imparcial e independiente con un cometido exclusivamente humanitario establecido en los Convenios de Ginebra de 1949. Ayuda a personas afectadas por conflictos armados y por otras situaciones de violencia en todo el mundo, haciendo lo posible por proteger su vida y su dignidad, y por aliviar su sufrimiento, a menudo junto con sus socios de la Cruz Roja y de la Media Luna Roja.</p> <p><strong>Contacto para los medios de comunicación:</strong></p> <p>Oficina de prensa, CICR, Ginebra, +41 22 730 34 43, <strong>press@icrc.org</strong></p></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/la-presidenta-del-cicr-llega-iran-para-dialogar-sobre-preocupaciones-humanitarias-urgentes' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>La présidente du CICR en Iran pour discuter de questions humanitaires urgentes</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 01:31</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Iran (Islamic Republic of)</div> <div class="tag source">Source: International Committee of the Red Cross</div> <p><strong>Téhéran (CICR)</strong> – La présidente du Comité international de la Croix-Rouge (CICR), Mirjana Spoljaric, vient d’arriver en Iran pour une visite officielle.</p> <p>Au cours de celle-ci, elle s’entretiendra avec de hauts responsables gouvernementaux ainsi que des représentants du Croissant-Rouge iranien sur les conséquences humanitaires des hostilités en cours en Iran et dans la région. Elle réaffirmera aussi l’importance que revêt le droit international humanitaire pour la protection des civils et des infrastructures essentielles en période de conflit.</p> <p>La présidente abordera également les mesures pratiques à mettre en place pour permettre au CICR d’acheminer davantage de secours afin de soutenir les activités d’assistance, notamment celles déployées par le Croissant-Rouge iranien, aux avant-postes de la réponse humanitaire.</p> <p>Le CICR a acheminé mi-avril plus de 170 tonnes d’articles de secours essentiels pour venir en aide aux personnes touchées par le conflit. De nouvelles cargaisons de fournitures médicales et de matériel médico-légal devraient arriver dans les prochains jours.</p> <p>La visite de Mme Spoljaric en Iran s’inscrit dans le cadre d’une série de rencontres organisées dans la région, ainsi que du dialogue constant poursuivi entre le CICR et les autorités iraniennes. Ces discussions bilatérales reflètent les contacts directs entretenus par le CICR avec tous les États en vue de renforcer le respect des règles de la guerre.</p> <p><strong>À propos du CICR</strong></p> <p>Le Comité international de la Croix-Rouge (CICR) est une organisation neutre, impartiale et indépendante dont le mandat strictement humanitaire découle des Conventions de Genève de 1949. Il porte assistance aux personnes touchées par un conflit armé ou d’autres situations de violence partout dans le monde, mettant tout en œuvre pour améliorer leur sort et protéger leur vie et leur dignité, souvent en collaboration avec ses partenaires de la Croix-Rouge et du Croissant-Rouge.</p> <p><strong>Informations complémentaires :</strong></p> <p>Service de presse, CICR Genève, +41 22 730 34 43, <strong>press@icrc.org</strong></p></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/la-presidente-du-cicr-en-iran-pour-discuter-de-questions-humanitaires-urgentes' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Middle East war live: Trump says Iran has been 'militarily defeated' at state dinner</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 02:27</strong></span>
+                </div>
+                <p class='summary'>US President Donald Trump told Britain's King Charles III and other guests at a state dinner Tuesday that Iran has been "militarily defeated", in his first public comments on the sensitive topic during the ongoing royal visit. Follow our liveblog for the latest developments.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260429-middle-east-war-live-trump-says-iran-has-been-militarily-defeated-at-state-dinner' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>After Iran talks barb, Trump says Germany’s Merz ‘doesn’t know what he’s talking about’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 02:35</strong></span>
+                </div>
+                <p class='summary'><p>US president accuses German chancellor, who said 'an entire nation is being humiliated' by Iranian negotiators, of 'thinking it’s OK for Iran to have a nuclear weapon'</p> <p>The post <a href="https://www.timesofisrael.com/after-iran-talks-barb-trump-says-germanys-merz-doesnt-know-what-hes-talking-about/">After Iran talks barb, Trump says Germany’s Merz ‘doesn’t know what he’s talking about’</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AP25286574912917-e1777428711379-1024x640.jpg" title="After Iran talks barb, Trump says Germany’s Merz ‘doesn’t know what he’s talking about’" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/after-iran-talks-barb-trump-says-germanys-merz-doesnt-know-what-hes-talking-about/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Iranians Feel the Pain as Their Economy Descends Into a Death Spiral</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 02:00</strong></span>
+                </div>
+                <p class='summary'>Businesses are closing, unemployment is soaring and food is increasingly unaffordable.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iranians-feel-the-pain-as-their-economy-descends-into-a-death-spiral-47dba669' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Trapped between unlawful attacks by the USA/Israel and internal deadly repression: People in Iran face dual atrocity risks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 03:03</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Iran (Islamic Republic of)</div> <div class="tag source">Source: Amnesty International</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/16/63/16636c4b-61f8-4e48-8422-dff6563fd862.png" alt></p> <p>Please refer to the attached file.</p> <p><strong>1. EXECUTIVE SUMMARY</strong></p> <p>People in Iran have been trapped between unlawful US and Israeli attacks and deadly domestic repression. Between 28 February 2026 and 7 April 2026, the USA and Israel launched an unlawful attack against Iran, in violation of the UN Charter’s prohibition on the use of force, and carried out tens of thousands of air strikes on targets in Iran causing grave civilian harm. These attacks began while people in Iran were still reeling from the unprecedented massacres of thousands of protesters and bystanders during the January 2026 uprising. In this context, the risks of atrocity crimes against people in Iran have multiplied, both from the authorities inside the country and from external attacks by US and Israeli forces.</p> <p>On the one hand, civilians have suffered grave harm amid relentless US and Israeli air strikes and remain at risk of further harm given the fragility of the ceasefire reached on 7 April 2026. The air strikes killed at least 2,362 civilians, including 383 children, and injured over 32,314 civilians, according to official figures. In one egregious incident, an unlawful US strike on a school in Minab, Hormozgan province, killed 156 people, including 120 children. Amnesty International’s investigation into the attack found that the school was directly hit with precision guided munitions and that US forces failed to take all feasible precautions to avoid civilian harm.</p> <p>US and Israeli attacks have also caused extensive destruction and damage to civilian infrastructure, including power plants, bridges, universities, schools, residential buildings, medical centres, steel factories, oil depots and petrochemical facilities, condemning the population to deepened economic hardship, harming the environment, and endangering the lives, health and livelihoods of millions of people. Just hours before the 7 April 2026 ceasefire was announced, US President Donald Trump issued apocalyptic threats of large‑scale civilian devastation, warning that “a whole civilization will die tonight,” amounting to a possible threat to commit genocide. On 23 April 2026, Israeli Defence Minister Israel Katz threatened to commit war crimes, saying “we are awaiting a green light from the United States … to return Iran to the Dark Age and the Stone Age by destroying key energy and electricity facilities and dismantling its national economic infrastructure.”</p> <p>On the other hand, people in Iran have been subjected to decades of brutal repression by the authorities of the Islamic Republic with impunity and are at further risk of atrocity crimes.</p> <p>Since February 2026, senior Iranian officials have openly boasted about their massacre of thousands of protesters in January 2026 and threatened to violently supress any further attempted protests, warning that security forces have received “orders to shoot” and remain ready “with their fingers on the trigger.” They have also threatened “a blow more severe than that on 8 January 2026,” the day security forces unlawfully killed thousands of protesters, including children. In addition, the authorities have escalated their use of the death penalty as a tool of political repression, arbitrarily executing at least 21 individuals for politically motivated reasons, including nine protesters, nine dissidents, and three other individuals accused of “armed rebellion” (baghi) or espionage for the USA and/or Israel since the armed conflict began on 28 February 2026.</p> <p>The Iranian authorities’ threats to carry out mass killings have been further made frighteningly real as armed security agents have intensified street patrols since the outbreak of hostilities, including through machine gun mounted pickup trucks. According to information gathered by Amnesty International, security forces have fatally shot, beaten, coercively interrogated or arbitrarily arrested individuals in cities across the country for engaging in any acts deemed critical of the Islamic Republic system.</p> <p>Risks to people in Iran have been further heightened by the deliberate prolonged internet shutdown imposed by the Iranian authorities since 28 February 2026. The internet blackout, coupled with the authorities’ persistent refusal to allow international human rights monitors, severely obstructs investigations into civilian harm caused by US and Israeli attacks as well as serious violations and crimes under international law committed by the Iranian authorities.</p> <p>Against this backdrop, Amnesty International urges all states, as well as regional and international bodies, including the UN Secretary General, the High Commissioner for Human Rights, the Human Rights Council’s expert mechanisms and relevant atrocity prevention mechanisms, to recognize that Iran’s human rights and impunity crisis, now compounded by armed conflict, requires a dual people-centred diplomatic approach.</p> <p>This requires urgently combining efforts to establish a durable ceasefire, protect civilians, ensure respect for international humanitarian law and deter war crimes by all parties to the conflict, with robust efforts to prevent further atrocity crimes by the Iranian authorities against the people of Iran. This must include addressing structural conditions and root causes of Iran’s human rights and impunity crisis, and supporting Iranian civil society-led calls for fundamental changes, including to the constitution, to ensure equality and respect for human rights including the right to take part in public affairs.</p> <p>The atrocity-prone environment also urgently merits the activation of global, regional, and national atrocity prevention tools and mechanisms, including early warning, rapid action, political engagement, and structural prevention measures, alongside a concerted global diplomatic effort toward a transformative solution, grounded in international law, that places the protection of the human rights of Iran’s people at its core.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/trapped-between-unlawful-attacks-usaisrael-and-internal-deadly-repression-people-iran-face-dual-atrocity-risks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Middle East: World leaders must centre protection of civilians and agree an enduring and sustainable ceasefire [EN/AR]</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 02:33</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Countries: World, Iran (Islamic Republic of), Lebanon, occupied Palestinian territory</div> <div class="tag source">Source: Amnesty International</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/31/bb/31bb04ab-86a8-46db-8280-67f43566e6dc.png" alt></p> <p>Please refer to the attached file.</p> <p>The fragile, temporary ceasefires, between the United States and Iran, and between Israel and Lebanon, must be replaced by an enduring, sustained, and comprehensive regional ceasefire that covers all countries affected by this conflict, to avoid further catastrophic civilian suffering and pave the way for justice, respect for international law and long-term human rights protection for all, Amnesty International said today.</p> <p>Despite a reduction in armed hostilities this remains a critical and deeply precarious moment for civilians across the Middle East. Both current ceasefire agreements are fragile, temporary and in danger of collapse at any moment, endangering the lives of millions of civilians once more. The USA and Iran are continuing to trade threats and carry out attacks and ship seizures in the Strait of Hormuz. In Lebanon, as has been the case since 2024, the latest ceasefire has led to a reduction but not an end in hostilities and the Israeli military has remained on Lebanese territory, ordering residents in dozens of villages in border areas not to return. Meanwhile, civilians in Iran face dual risks of atrocity crimes linked to a resumption in unlawful US/Israeli attacks as well as further deadly repression by the Iranian authorities.</p> <p>“The 28 February US-Israeli attacks on Iran were unlawful, violating the UN Charter’s prohibition on the use of force and they triggered unlawful acts by Iranian authorities in retaliation. Since then, more than 5,000 people have been killed and millions of civilians across the Middle East have had their lives upended as interrelated conflicts have escalated across the region and civilians and civilian infrastructure have come under attack. All parties including the USA, Israel, Iran and Hezbollah have launched unlawful attacks displaying a chilling disregard for human life, while the US President has issued brazen threats to commit war crimes and even genocide, threatening to wipe out ‘a whole civilization’ in Iran.</p> <p>“The international community must now draw a red line: there must be a durable and genuine ceasefire; this requires a full halt in armed hostilities by all parties, across all affected countries,” said Agnès Callamard**,** Amnesty International’s Secretary General.</p> <p>“The so-called ceasefire agreements reached in Gaza in 2025 and Lebanon in 2024 demonstrably failed to stop Israeli attacks on civilians, with as many as 765 Palestinians killed since then, and near daily air strikes and extensive destruction of civilian property in southern Lebanon.</p> <p>“In a region long scarred by conflict, amidst long-standing impunity for crimes under international law, and the constant threat of renewed violence, civilians cannot afford another partial, selective or short-lived pause that leaves them living in fear and bracing for a repetition of the atrocities they have suffered.”</p> <blockquote> <p><strong>The international community must now draw a red line: there must be a durable and genuine ceasefire; this requires a full halt in armed hostilities by all parties, across all affected countries</strong></p> <p><strong>Agnès Callamard, Secretary General</strong></p> </blockquote> <p>The armed conflicts quickly spread to 12 countries, endangering the lives and health of millions of civilians with attacks devastating civilian homes and critical infrastructure, harming the environment, and triggering economic shockwaves felt across the region and the globe.</p> <p>A sustainable, enduring ceasefire is the only credible path to protecting civilians and paving the way for longer-term security, human rights protection and justice for all in the region – including those in Iran, Lebanon, Israel, the Occupied Palestinian Territory, and in Gulf states.</p> <p>In Iran, by 7 April, US and Israeli attacks had resulted in at least 3,375 people killed and 25,000 injured, including hundreds of children, according to official figures. The US-Israeli attacks in Iran took place as the population was still reeling from unprecedented massacres of thousands of protesters and bystanders by Iranian authorities during the crackdown on January 2026 protests.</p> <p>In Lebanon, by the time the ceasefire was announced, 2,294 people had been killed, including 177 children, more than 7,500 wounded. Since the ceasefire, Israel and Hezbollah have continued to trade attacks, with continued reports of civilian casualties.</p> <p>At least 21 civilians have been killed in Israel where the population has endured attacks from both Iran and Hezbollah. Four people have been killed in the occupied West Bank. Between 28 February and 15 April 2026, at least 29 people have been killed in the Gulf including 13 in the United Arab Emirates, seven in Kuwait, three in Bahrain, three in Oman and three in Saudi Arabia. The figures exclude US military casualties.</p> <p>In <a rel="noreferrer noopener" target="_blank" href="https://www.amnesty.org/en/documents/mde13/0883/2026/en/"><strong>a briefing published today</strong></a>, Amnesty International details the ongoing dual risks faced by the people of Iran, who are trapped between armed conflict and deadly repression. The organization is highlighting the need for a dual, people-centred diplomatic approach that combines efforts to establish an enduring ceasefire with concrete steps to prevent atrocity crimes by the Iranian authorities.</p> <p>“A ceasefire that is not accompanied by long-term solutions that safeguard human rights and address root causes is little more than a temporary patch over a deep wound. This is particularly true in Iran, where the population remains at risk of further atrocities at the hands of the Islamic Republic authorities, and in Lebanon, where civilians face the prospect of renewed conflict, indefinite displacement of civilians and destruction of their homes,” said Agnès Callamard.</p> <p>“We are witnessing a continued dangerous erosion of the global international legal order and of respect for international humanitarian law. The international community must fully investigate the US and Israeli unlawful attacks on Iran in violation of the UN Charter and all crimes under international law, and ensure that states and individuals are held accountable.</p> <h2><strong>Civilian harm in Lebanon</strong></h2> <p>In <strong>Lebanon,</strong> where attacks by Israel have had a devastating impact on civilians and have continued in recent days, there is an urgent need for a durable ceasefire that applies to both Israel and Hezbollah – and ensures all civilians are protected in the longer term on both sides of the border. The Israeli military must immediately cease attacks stop razing civilian structures, withdraw from Lebanon. All those displaced from their homes must be allowed to return. Hezbollah must stop launching attacks into Israel.</p> <p>Israel had said it would refrain from offensive attacks during the ceasefire, but that it retained the right to take “all necessary measures for self-defence at any time against planned, imminent or ongoing attacks,” and that it would not withdraw from Lebanese territory. During both the current and previous ceasefire agreed in November 2024, Israel has continued to carry out near daily attacks and to destroy Lebanese civilian property along the border. For civilians, this led to prolonged displacement, devastated livelihoods, and the anguish of living in limbo, while accountability and reparations remained nowhere in sight.</p> <p>Hezbollah has also launched attacks, including into northern Israel, since the current 2026 ceasefire agreement.</p> <p>From 2 March 2026 onwards, the Israeli military carried out relentless air strikes across the country, killing and wounding civilians, healthcare workers and journalists. The Israeli military’s overly broad mass ‘evacuation’ orders covering huge swathes of southern Lebanon and the southern suburbs of Beirut displaced over a million people. Israeli forces have also carried out extensive destruction of residential areas and other civilian infrastructure across southern Lebanon and are continuing to demolish homes in border villages. On one of the worst days, on 8 April, the Israeli military boasted it had carried out 100 strikes within just 10 minutes in Lebanon – killing more than 350 people -including simultaneous attacks in crowded civilian areas of central Beirut without warning. The absolute impunity that Israel has enjoyed for its 2024 unlawful attacks in Lebanon has fuelled further violations in 2026.</p> <p>After repeated rounds of devastating conflict, which have been marked by international crimes, absolute impunity, and civilian lives upended again and again, plans for accountability must be drawn up and implemented. International crimes must be credibly investigated and alleged perpetrators prosecuted before national or international courts. The Lebanese government should facilitate accountability efforts, including by accepting the International Criminal Court’s jurisdiction. Civilians harmed by international humanitarian law violations should be provided prompt, adequate and effective reparations that recognizes the extent of the harm suffered.</p> <h3><strong>Iranians face dual atrocity risks</strong></h3> <p>In <strong>Iran</strong>, tens of thousands of air strikes by the USA and Israel between 28 February and 7 April have caused grave civilian harm. In one egregious incident, an unlawful US strike on a school in Minab killed 156 people, including 120 children. US and Israeli attacks also caused extensive destruction and damage to civilian infrastructure, including power plants, bridges, universities, schools, residential buildings, medical centres, steel factories and petrochemical facilities endangering the lives and livelihoods of millions and harming the environment.</p> <p>However, even a durable ceasefire alone cannot guarantee the protection of civilians or safeguard the human rights of people in Iran. Protesters, dissidents, and others advocating for fundamental political change remain at grave risk of further atrocities by Iranian authorities. Since the US-Israeli attacks, Iranian authorities have ramped up their crackdown on any actual or perceived opposition amid the longest state-imposed internet shutdown on record in Iran. Senior officials have made menacing statements in recent weeks equating any form of dissent with siding with the “enemy” and have openly threatened further mass killings of anyone expressing dissent or peacefully advocating for the downfall of the Islamic Republic system, publicly boasting about carrying out thousands of unlawful killings of protesters in January 2026. The authorities have also arbitrarily executed at least 19 people: eight protesters nine dissidents and two individuals accused of espionage for the USA and/or Israel. The authorities are also persisting with mass arbitrary detention, enforced disappearances and torture to wipe out dissent.</p> <p>The recurrence of atrocities in Iran is rooted in a constitutional structure that entrenches impunity and systemic discrimination and deprives people of access to justice and effective remedies.</p> <p>To ensure that people in Iran do not face risks of further massacres, a ceasefire must be accompanied by urgent diplomatic action from the international community to prevent atrocity crimes by the Iranian authorities, to support Iranian civil society-led calls for fundamental changes, including to the constitution to ensure equality and respect for human rights, including the right to life.</p> <p>“In a country reeling from the combined impact of devastating US and Israeli bombings and state-orchestrated massacres, the risks of atrocity crimes by the Iranian authorities against the people in Iran remain significant. They face the threat of renewed air strikes and mass killings if the truce collapses and the prospect of a deadly repression and another severe wave of killings by ‘trigger-ready’ security forces targeting protesters and dissidents they label as ‘enemies’,” said Agnès Callamard.</p> <p>“The international community must recognize that Iran’s human rights and impunity crisis, now compounded by the US/Israel unlawful attacks and vast suffering of civilians, requires a dual, people-centred diplomatic response. This means combining efforts to investigate the UN Charter violations, protect civilians and uphold international humanitarian law with action to prevent atrocity crimes by the Iranian authorities, and support Iranian civil society’s calls for a rights-respecting constitution. It also means establishing pathways for international justice, including the UN Security Council’s referral of Iran’s situation to the International Criminal Court.”</p> <h4><strong>Civilian harm across the region</strong></h4> <p>A sustainable enduring ceasefire is also the only means of ensuring the protection of civilians and a secure, just and sustainable future for people across the region.</p> <p>Civilians in <strong>Israel and the Occupied Palestinian Territory</strong> have come under fire from both Iranian missiles and Hezbollah rocket fire. In Israel, at least 34 people were killed – 21 civilians in Israel and 13 soldiers in combat operations in southern Lebanon in 2026. In one unlawful attack, Amnesty International found that a wildly inaccurate Iranian ballistic missile was used to carry out an attack that struck a synagogue in Beit Shemesh killing nine Israeli civilians. The Huthi armed group in Yemen has also repeatedly fired missiles at Israel, including in March 2026. Four Palestinian women were also killed in the occupied West Bank due to Iranian missile attacks. During the 2024 escalation, Amnesty International documented Hezbollah’s use of inherently inaccurate weapons to launch unlawful rocket attacks that killed and injured civilians in Israel in violation of international humanitarian law.</p> <p>Israeli authorities must refrain from carrying out unlawful attacks and commit publicly to full respect for international humanitarian law, particularly the prohibition of directing attacks at civilians and civilian objects. Without taking real and concrete steps to end violations of international law and tackle long-standing impunity the risk of repeating rounds of armed conflict is war crimes and other serious violations remains constant.</p> <p>Iranian strikes on <strong>the UAE, Qatar, Kuwait, Saudi Arabia, Bahrain and Oman</strong> have escalated risks to civilians, with attacks extending beyond US military bases and damaging energy infrastructure, airports, desalination plants and residential neighbourhoods. Iranian officials openly declared their intention to cause economic harm and attack US economic interests.</p> <p>“The latest regional escalation follows more than two and a half years of relentless conflict across the Middle East, from the Hamas-led attacks on civilians in southern Israel on 7 October 2023 to Israel’s genocide against Palestinians in the occupied Gaza Strip, and Israel’s 2024 attacks in Lebanon,” said Agnès Callamard.</p> <p>“As the threat of renewed atrocity crimes looms, global inaction undermines the mechanisms the international community relies on to prevent and respond to mass atrocities. World leaders must urgently come together to ensure a lasting, comprehensive ceasefire comes into effect immediately –to stop the normalization of mass civilian suffering, defend our shared humanity and help create conditions across the region for a future grounded in human rights, justice and lasting stability.”</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/world/middle-east-world-leaders-must-centre-protection-civilians-and-agree-enduring-and-sustainable-ceasefire-enar' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 29, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is currently embroiled in a devastating war with the U.S. and Israel, which has caused massive civilian casualties, economic collapse, and regional instability. Despite a fragile ceasefire, tensions remain high, and Iran's internal repression continues unabated, while global oil prices surge due to disrupted supply chains through the Strait of Hormuz.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Iran is in the midst of a severe conflict with the U.S. and Israel that escalated on February 28, 2026, following a series of unlawful airstrikes by the U.S. and Israel targeting Iranian infrastructure and military sites. These strikes killed over 3,375 civilians and injured 25,000, including hundreds of children. The conflict has caused massive destruction to civilian infrastructure, including schools, hospitals, and energy facilities. Despite a ceasefire announced on April 7, 2026, the situation remains precarious, with ongoing threats of resumed hostilities and continued human rights violations by both external and internal forces. Additionally, Iran’s economy has spiraled into crisis, with businesses closing, unemployment soaring, and food becoming unaffordable for many citizens.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to remain unstable in the short term. The fragile ceasefire between the U.S./Israel and Iran, as well as between Israel and Lebanon, is at risk of collapse due to ongoing threats, attacks, and political tensions. The international community faces pressure to enforce a durable and comprehensive ceasefire to prevent further civilian suffering. In Iran, internal repression by authorities is intensifying, raising fears of further atrocities against protesters and dissidents. Economically, the region and the world will continue to face high energy prices and inflation, which could slow global economic growth and deepen poverty, particularly in developing countries.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['January 2026: Iranian authorities massacre thousands of protesters during a crackdown on anti-government demonstrations, setting the stage for broader unrest.', 'February 28, 2026: The U.S. and Israel launch a series of unlawful airstrikes on Iran, targeting military and civilian infrastructure, killing over 2,362 civilians and injuring 32,314.', 'April 7, 2026: A fragile ceasefire is announced between the U.S./Israel and Iran, halting active hostilities but leaving tensions unresolved.', "April 23, 2026: Israeli Defense Minister threatens to 'return Iran to the Dark Age' by destroying critical infrastructure, indicating continued hostility.", 'April 28, 2026: The World Bank releases its Commodity Markets Outlook, warning of a 24% surge in energy prices and a 16% rise in overall commodity prices due to the conflict.', "April 29, 2026: The International Committee of the Red Cross (ICRC) President visits Iran to discuss humanitarian concerns and deliver aid. U.S. President Trump declares Iran 'militarily defeated,' while tensions with European leaders escalate over Iran’s nuclear ambitions.", 'Ongoing: Internal repression in Iran intensifies, with increased executions, arbitrary detentions, and internet blackouts, alongside continued economic collapse and civilian suffering.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term direction of the conflict suggests a prolonged period of instability in the Middle East. If the ceasefire collapses, the region could face even greater devastation, with potential for broader wars involving multiple countries. Iran’s internal repression is unlikely to ease, raising the risk of further atrocities against its own population. Economically, the world will continue to grapple with high oil prices, inflation, and disrupted supply chains, particularly if the Strait of Hormuz remains a flashpoint. The international community’s ability to enforce lasting peace and hold violators accountable will be critical in determining the region’s future.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is marked by extreme brutality on all sides, with airstrikes targeting both military and civilian infrastructure, leading to mass casualties and displacement. The intensity has been high but slightly reduced since the April 7 ceasefire. Internally, Iran’s crackdown on dissent has intensified, with reports of mass executions, enforced disappearances, and torture. The conflict also involves multiple actors, including non-state groups like Hezbollah and the Houthis, which have launched attacks against Israel and its allies. The nature of the fighting is asymmetric, with Iran using proxies and hybrid tactics, while the U.S. and Israel rely on advanced military technology.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This war is reshaping the geopolitical landscape of the Middle East and has global repercussions. The surge in oil prices is already affecting economies worldwide, driving inflation and slowing growth, particularly in developing nations. The humanitarian crisis is severe, with millions displaced and facing food insecurity. The conflict also risks escalating into a broader regional war, potentially involving Saudi Arabia, the UAE, and other Gulf states. The erosion of international law and norms is alarming, with governments making threats of genocide and committing war crimes with impunity. The situation underscores the fragility of global stability and the urgent need for diplomatic solutions.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Key international players include the U.S., which is leading the military campaign against Iran; Israel, which is a major participant in the strikes and post-war threats; and Iran, which is defending itself and suppressing internal dissent. European countries, particularly Germany, have criticized the U.S. and Israel’s actions and called for diplomatic solutions. The International Committee of the Red Cross (ICRC) is actively involved in delivering humanitarian aid and advocating for the protection of civilians. The United Nations has condemned the violations of international law but has so far failed to enforce meaningful accountability. Regional actors like Hezbollah in Lebanon and the Houthis in Yemen are also involved, carrying out attacks against Israel and its allies.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The conflict has caused a 24% surge in energy prices this year, with Brent oil prices averaging $86 per barrel, up from $69 in 2025. This is largely due to disruptions in the Strait of Hormuz, a critical chokepoint for global oil trade, handling 35% of seaborne crude oil. The price spike is driving inflation globally, particularly in developing economies, where inflation is projected to average 5.1%. If the conflict escalates or the Strait remains disrupted, oil prices could rise even further, potentially reaching $115 per barrel. This would exacerbate food insecurity, as higher oil prices increase the cost of fertilizers and transportation, pushing millions into poverty.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S. and Israel’s military campaign has caused catastrophic civilian harm in Iran, with over 3,375 killed and widespread destruction of infrastructure. A fragile ceasefire is in place but at risk of collapse, threatening further regional escalation and global economic instability. The war has triggered a surge in oil prices, driving global inflation and economic slowdown, particularly in developing countries.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The visit by the ICRC President to Iran during active conflict highlights the severity of the humanitarian crisis and the urgency of international engagement. Additionally, U.S. President Trump’s declaration of Iran’s 'military defeat' at a state dinner and subsequent public disagreements with European leaders underscore the geopolitical divisions and unpredictability driving the conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The conflict has triggered a dual crisis in Iran, with civilians facing threats from both external military attacks and internal state repression. The Iranian government’s crackdown on dissent, including mass executions and internet blackouts, has created a climate of fear. Meanwhile, the war has spread across the Middle East, involving Lebanon, Israel, the occupied Palestinian territories, and Gulf states, raising the risk of a broader regional war. The global response has been fragmented, with the international community struggling to enforce accountability and enforce lasting peace.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
