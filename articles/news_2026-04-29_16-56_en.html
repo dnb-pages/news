@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-29 16:57</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-29 16:57</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Oil price soars above $118 after reports of 'extended' Iran blockade</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 16:17</strong></span>
+                </div>
+                <p class='summary'>The price of crude oil has swung sharply as uncertainty over the war in the Middle East continues.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cj4pxr0gr02o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Lebanese soldier said killed in Israeli strike, Hezbollah fires 2 rockets at north amid truce</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 14:40</strong></span>
+                </div>
+                <p class='summary'><p>Fire on Galilee is latest ceasefire violation by Iran-backed terror group; Lebanese media reports dozens of strikes, home demolitions across south Lebanon; security cabinet meets at Kirya</p> <p>The post <a href="https://www.timesofisrael.com/lebanese-soldier-said-killed-in-israeli-strike-hezbollah-fires-2-rockets-at-north-amid-truce/">Lebanese soldier said killed in Israeli strike, Hezbollah fires 2 rockets at north amid truce</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AP26119383168190-1024x640.jpg" title="Lebanese soldier said killed in Israeli strike, Hezbollah fires 2 rockets at north amid truce" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/lebanese-soldier-said-killed-in-israeli-strike-hezbollah-fires-2-rockets-at-north-amid-truce/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Gallows Humor Provides Respite From Mideast Wars</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 16:17</strong></span>
+                </div>
+                <p class='summary'>Arab digital creators on social media are turning out edgy material to cope with the conflicts and bring levity to a pain that often feels too raw.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/29/world/middleeast/mideast-war-humor.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iran’s currency falls to new low as US blockade, sanctions impact trade</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 15:30</strong></span>
+                </div>
+                <p class='summary'>The war has affected trade with some of Iran's largest partners, including China and the UAE.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/29/irans-currency-falls-to-new-low-as-us-blockade-sanctions-impact-trade?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Trump’s Clash With Merz Shows It’s Hard to Stay Friends With the President</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 15:58</strong></span>
+                </div>
+                <p class='summary'>Throughout the war in Iran, Friedrich Merz, the German chancellor, did all he could to keep President Trump happy. This week, Mr. Merz appeared to lose patience.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/29/world/europe/trump-merz-iran.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Inside Tehran’s main airport as more flights take off during ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 14:30</strong></span>
+                </div>
+                <p class='summary'>Al Jazeera’s Tohid Asadi has been seeing more flights take off at the main airport in Iran’s capital.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/4/29/inside-tehrans-main-airport-as-more-flights-take-off-during-ceasefire?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>U.S. Gas Prices Climb Further as Effects of Iran War Reverberate</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 15:41</strong></span>
+                </div>
+                <p class='summary'>The national average price of a gallon of gasoline hit $4.23, following oil prices upward as supplies from the Middle East remain disrupted.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/29/business/oil-gas-prices-iran.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>How Iranian diplomats turned embassy accounts into viral meme machines</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 16:04</strong></span>
+                </div>
+                <p class='summary'>Memes, humour, and trolling of American politicians: This is how a handful of Iranian embassies have become superstars on “X”, attracting millions of views. But how did the old-fashioned and largely ignored accounts of Iran’s diplomats in South Africa, Thailand, and the United Kingdom suddenly turn into Gen Z-style viral feeds, with millions of views?</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260429-iran-embassy-memes-viral-propaganda-war-diplomats-hijack-x' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>REPLAY: US lawmakers grill Pentagon chief Hegseth over Iran war</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-29 15:20</strong></span>
+                </div>
+                <p class='summary'>Defense Secretary Pete Hegseth is facing questioning from lawmakers for the first time since US President Donald Trump launched the war against Iran, which Democrats have contested as a costly conflict of choice waged without congressional approval. Watch our replay.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260429-replay-us-lawmakers-grill-pentagon-chief-hegseth-over-iran-war' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 29, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Tensions between Iran, Israel, and Western powers are escalating, with a fragile ceasefire in Lebanon breaking down as new violence erupts. Oil prices have surged above $118 per barrel, fueling global economic concerns, while Iran's currency continues to plummet due to sanctions and trade disruptions.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Recent events show a mix of escalating violence and fragile diplomatic efforts. An Israeli strike killed a Lebanese soldier in southern Lebanon, prompting Hezbollah to retaliate with rocket fire, violating a tentative truce. Meanwhile, oil prices spiked above $118 per barrel due to fears of an extended blockade on Iranian oil exports. Iran's economy is suffering further under sanctions, with its currency hitting a new low and trade with major partners like China and the UAE disrupted.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to worsen in the short term before any potential stabilization. Another cycle of violence could erupt between Israel and Hezbollah, with Iran potentially increasing its support for proxy groups. Diplomatically, international efforts to broker a lasting ceasefire may intensify, but progress will be slow due to deep mistrust and competing interests. Oil prices will likely remain volatile, depending on the severity of disruptions to Iranian oil exports.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>Early 2026: Conflict escalates between Israel and Iran-backed groups like Hezbollah.</li><li>April 29, 2026: Israeli strike kills Lebanese soldier; Hezbollah fires rockets in retaliation.</li><li>April 29, 2026: Oil prices surge past $118 due to fears of an extended Iranian oil blockade.</li><li>April 29, 2026: Iran's currency hits a new low as sanctions and trade disruptions bite.</li><li>April 29, 2026: U.S. gas prices rise to $4.23 per gallon amid supply disruptions.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            In the long term, the conflict risks evolving into a prolonged proxy war, with Iran and its allies on one side and Israel, the U.S., and their partners on the other. Iran’s economy will continue to struggle if sanctions persist, potentially increasing internal instability. The region could see more fragmentation, with countries like Lebanon and Syria becoming battlegrounds for larger geopolitical struggles. A lasting peace seems unlikely without significant concessions or external pressure, which isn't currently visible.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is asymmetric, with Israel relying on precision airstrikes and Iran using proxy groups like Hezbollah to avoid direct confrontation. Ceasefires are fragile and frequently violated, suggesting both sides are preparing for further escalation. The nature of fighting includes rocket attacks, airstrikes, and cyber warfare, with civilians on both sides bearing the brunt of the violence. The intensity is high but not yet at the level of a full-blown regional war.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict is reshaping Middle Eastern geopolitics, with Iran seeking to expand its influence while Israel and its allies aim to contain it. The global economy is feeling the ripple effects, particularly through rising oil prices, which could slow growth and increase inflation. The humanitarian toll is mounting, with civilian casualties and displacement worsening in Lebanon, Syria, and Gaza. The risks of a wider regional war or accidental escalation into a direct U.S.-Iran conflict remain serious concerns.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is heavily involved, supporting Israel militarily and economically while imposing sanctions on Iran. European countries, like Germany, are struggling to balance their relationships with both the U.S. and Iran, with recent tensions between Trump and German Chancellor Merz highlighting these challenges. Russia and China are engaging diplomatically with Iran, likely to protect their economic interests and counter U.S. influence. Regional players like Saudi Arabia and the UAE are cautiously navigating the crisis, trying to avoid getting pulled into the conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices have surged to $118 per barrel due to fears of a blockade on Iranian oil exports, which are a major global supply. Iran is one of the world’s top oil exporters, so any disruption to its oil flow adds significant uncertainty to oil markets. Higher oil prices will hurt consumers globally, particularly in countries like the U.S., where gas prices have already hit $4.23 per gallon. If the blockade persists, prices could climb further, worsening inflation and slowing economic growth worldwide.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The ceasefire in Lebanon is collapsing, with fresh violence threatening to spread the conflict wider. Oil prices have spiked above $118 due to fears of an Iranian oil blockade, worsening global economic pressures. Iran’s economy is in crisis, with its currency plummeting and trade disrupted, adding to regional instability.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Iranian diplomats have unexpectedly gained viral fame on social media by using humor and memes to counter Western narratives, reaching millions of views. This is an unusual tactic for traditional diplomacy and shows Iran’s efforts to shape global perceptions in unconventional ways.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
