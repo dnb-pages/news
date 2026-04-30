@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-04-30 11:12</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-04-30 11:12</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Oil price hits highest since 2022 after report Trump to be briefed on new Iran options</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 10:50</strong></span>
+                </div>
+                <p class='summary'>Axios reported that US Central Command has prepared a plan for a wave of "short and powerful" strikes on Iran.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cx21m88rd14o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>CENTCOM chief to brief Trump on new plans for military action against Iran — report</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:17</strong></span>
+                </div>
+                <p class='summary'><p>Adm. Brad Cooper to present options for 'short and powerful' strikes, seizing parts of Strait of Hormuz, and special forces action to capture enriched uranium, Axios says</p> <p>The post <a href="https://www.timesofisrael.com/centcom-chief-to-brief-trump-on-new-plans-for-military-action-against-iran-report/">CENTCOM chief to brief Trump on new plans for military action against Iran — report</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AP26106496108834-1-1024x640.jpg" title="CENTCOM chief to brief Trump on new plans for military action against Iran — report" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/centcom-chief-to-brief-trump-on-new-plans-for-military-action-against-iran-report/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Civilians or Hezbollah: Who did Israel hit on Lebanon’s ‘Black Wednesday’?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:52</strong></span>
+                </div>
+                <p class='summary'>Israel says it targeted Hezbollah, but experts say the evidence proves otherwise.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/30/civilians-or-hezbollah-who-did-israel-hit-on-lebanons-black-wednesday?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iranians Live With Pain and Powerlessness, Beneath a Smooth Veneer</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:04</strong></span>
+                </div>
+                <p class='summary'>After months of upheaval, many are attempting to get on with their lives while quietly grappling with grief, economic stress and a loss of hope.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/30/world/middleeast/iranian-mood-after-war.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Pakistan opens up road trade routes into Iran amid Hormuz blockade</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 08:44</strong></span>
+                </div>
+                <p class='summary'>With shipping disrupted by US-Iran tensions, Islamabad activates overland corridor to move stranded cargo into Iran.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/4/30/pakistan-opens-up-road-trade-routes-into-iran-amid-hormuz-blockade?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>How the War in Iran is Affecting Africa’s Economy and Fuel Supply</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:04</strong></span>
+                </div>
+                <p class='summary'>Despite the fragile cease-fire in the Middle East, many Africans say they are bracing for tougher times ahead and making difficult decisions about the future.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/30/world/africa/iran-war-africa-economic-consequences.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>BOE Signals It May Raise Rates as Energy Prices Stay High</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 11:04</strong></span>
+                </div>
+                <p class='summary'>Global central banks have adopted a wait-and-see approach to the inflation jump caused by the war with Iran.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/central-banking/boe-signals-it-may-raise-rates-as-energy-prices-stay-high-02873fbd' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Eurozone Economy Slows in First Quarter on Energy Shock</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:30</strong></span>
+                </div>
+                <p class='summary'>The conflict in the Middle East is the latest blow to Europe’s hopes for a sustained revival in its economic fortunes, after Russia’s invasion of Ukraine in 2022 and President Trump’s tariff blitz last year.</p>
+                <div class='link'><a href='https://www.wsj.com/world/europe/frances-economy-stalled-in-first-quarter-1cb5de65' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Strait of Hormuz blockade: 'Who will blink first' ?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 11:01</strong></span>
+                </div>
+                <p class='summary'>Donald Trump has discussed with oil companies how to cushion the impact of a months-long US blockade of Iranian ports, as reports of potential new strikes pushed Brent crude to its highest level since March 2022. For FRANCE 24's international editor Angela Diffley, both sides are locked in a 'who will blink first' strategy, with Washington applying sustained pressure while Tehran resists concessions.</p>
+                <div class='link'><a href='https://www.france24.com/en/strait-of-hormuz-blockade-who-will-blink-first' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Military Use of NATO Pipeline in Europe Impacts Civilian Supply</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 11:04</strong></span>
+                </div>
+                <p class='summary'>Military operations have impacted sections of a sprawling European fuel pipeline network at a time of supply pressures caused by the Iran war, according to a German service provider for the system.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/military-use-of-nato-pipeline-in-europe-impacts-civilian-supply' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>US: Hegseth under fire in Congress over Iran war as diplomacy stalls</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 10:12</strong></span>
+                </div>
+                <p class='summary'>Pete Hegseth faced sharp criticism in Congress over launching the Iran conflict without approval, as Democrats condemned the war’s justification and its estimated $25 billion cost. Meanwhile, Donald Trump rejected Iran’s proposal on the Strait of Hormuz, leaving negotiations at an impasse while Tehran seeks international support.</p>
+                <div class='link'><a href='https://www.france24.com/en/us-hegseth-under-fire-in-congress-over-iran-war-as-diplomacy-stalls' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Crude oil prices hit four-year high as Iran war threatens to drag on</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:29</strong></span>
+                </div>
+                <p class='summary'>Brent crude has jumped to its highest level since the start of the Ukraine war after US President Donald Trump signalled that the American blockade on the Strait of Hormuz could last for months. Also in this edition: the US Federal Reserve prepares for a new chief as its board tries to maintain political independence, and French oil giant TotalEnergies faces calls for a windfall tax amid soaring profits.</p>
+                <div class='link'><a href='https://www.france24.com/en/tv-shows/business/20260430-crude-oil-prices-hit-four-year-high-as-iran-war-threatens-to-drag-on' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Strait of Hormuz: Iran-US standoff drags on</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:20</strong></span>
+                </div>
+                <p class='summary'>Donald Trump says a US naval blockade on Iran could last for months, as the standoff between Washington and Tehran continues. The crisis has disrupted oil flows through the Strait of Hormuz, sending prices to multi-year highs. FRANCE 24's correspondent in Tehran, Reza Sayah, has more.</p>
+                <div class='link'><a href='https://www.france24.com/en/strait-of-hormuz-iran-us-standoff-drags-on' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Middle East: Rising tensions on Israel’s border as Iran negotiations falter</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-04-30 09:16</strong></span>
+                </div>
+                <p class='summary'>Tensions between Hezbollah and Israel are escalating after a reported breach of the “yellow line,” with Israel threatening further strikes. Talks between Iran and the US remain stalled, complicating efforts to contain the situation. Meanwhile, Israel faces a growing scandal over alleged grain imports from Russia linked to Ukraine.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east-rising-tensions-on-israel-s-border-as-iran-negotiations-falter' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - April 30, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. is preparing military options against Iran, including potential strikes, a naval blockade of the Strait of Hormuz, and special forces operations, while Iran responds with economic resilience and regional allies. Global oil prices have surged to four-year highs, threatening economic instability worldwide, and tensions in Lebanon and Pakistan add to the crisis. Diplomacy appears stalled, with both sides digging in for a prolonged standoff.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. is considering military actions against Iran, including possible airstrikes, seizing parts of the Strait of Hormuz (a critical oil shipping route), and operations to capture Iranian enriched uranium facilities. Iran is under severe economic strain, with civilians struggling amid high living costs and grief over conflict. Israel's strikes in Lebanon are disputed, with civilians claiming they were targeted. Global oil prices have spiked due to disrupted shipping routes, and countries like Pakistan are finding alternative trade routes to bypass sanctions.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict is likely to escalate further, with both the U.S. and Iran prepared for a long standoff. Military actions could include limited strikes or a prolonged blockade of Iran's ports. Diplomacy is largely stalled, and economic impacts worldwide—especially on oil-dependent regions—are expected to worsen before any resolution.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['April 2026: U.S. Central Command (CENTCOM) prepares military plans for strikes on Iran.', "April 2026: CENTCOM chief briefs Donald Trump on options for 'short and powerful' strikes.", 'April 2026: Trump discusses cushioning the economic blow of a potential U.S. blockade of Iranian ports.', 'April 2026: Israel strikes targets in Lebanon, with disputes over whether civilians or Hezbollah were hit.', 'April 2026: Iran faces civilian unrest and economic hardship due to prolonged conflict.', 'April 2026: Pakistan opens land trade routes to Iran to bypass the Strait of Hormuz blockade.', 'April 2026: Global oil prices hit four-year highs as the Strait of Hormuz remains disrupted.', 'April 2026: The U.S. faces criticism for starting the conflict without congressional approval.', 'April 2026: Iran rejects U.S. proposals, and negotiations remain at an impasse.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict appears headed toward a prolonged stalemate, with neither side willing to back down. The U.S. is applying maximum pressure through military threats and economic sanctions, while Iran is resisting concessions and leaning on regional allies like Hezbollah. The economic fallout—especially for oil-dependent nations—could lead to deeper global instability, including inflation and slower economic growth in Europe and Africa.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current fighting involves military posturing and covert operations rather than large-scale battles. The U.S. is leveraging naval power to control the Strait of Hormuz, while Iran is using proxies (like Hezbollah) and asymmetric tactics (e.g., drone attacks, cyber operations) to retaliate. Civilian casualties in Lebanon underscore the human cost of misinformation and escalation. The conflict remains 'below full-scale war' but is intensifying in economic and diplomatic terms.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            The Iran crisis is reshaping global energy markets and geopolitical alliances. Oil prices are surging, threatening economic recovery in Europe and fueling inflation worldwide. The U.S. is trying to isolate Iran diplomatically and economically, while Iran is turning to allies like Pakistan and regional groups (e.g., Hezbollah) for support. Africa and Europe are particularly vulnerable, facing fuel shortages and economic slowdowns. The crisis also risks dragging NATO and other global powers into wider instability.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is the primary external player, leading military planning and sanctions, with Trump at the helm. Israel is actively engaged in strikes against Hezbollah in Lebanon. Pakistan is facilitating trade routes to bypass the Hormuz blockade. Europe is caught in the middle, dealing with energy shocks and pipeline disruptions. Asian markets (including China and India) are likely watching closely, but direct involvement is limited so far. No major global power has intervened militarily yet.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices have hit four-year highs due to the blockade of the Strait of Hormuz, a chokepoint for 20% of global oil shipments. The disruption is tightening supply, pushing prices up and risking further economic pain as energy costs rise. For consumers, this means higher fuel prices at the pump and increased costs for goods transported globally. For oil-dependent nations (like those in Africa or Europe), it could spark inflation and slower growth. The U.S. is exploring ways to soften the blow, but the crisis is still unfolding.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S. is seriously considering military strikes or a blockade of Iran, raising the risk of wider conflict. Oil prices are surging to four-year highs due to the Strait of Hormuz disruption, threatening global economic stability. Diplomacy is essentially deadlocked, with both sides dug in for a long standoff.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Pakistan unexpectedly opening land trade routes into Iran amid the Hormuz blockade is notable, as it suggests regional players are looking for ways to bypass the crisis. Additionally, the mixed reports about who Israel actually hit in Lebanon (civilians vs. Hezbollah) highlight the fog of war and potential misinformation. The civilian toll in Iran, described as 'pain and powerlessness,' also adds a human dimension not often emphasized in geopolitical analyses.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The broader context includes recent U.S. tariffs, the war in Ukraine, and economic fragility in Africa and Europe, all of which are being further strained by the Iran crisis. Additionally, the U.S. is facing domestic criticism over the war's justification and its $25 billion cost, which could influence Trump's decision-making. Meanwhile, Iran's population is suffering from economic hardship and grief, which could either fuel unrest or strengthen the regime's resolve.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
