@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-04-30 16:56</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-04-30 16:56</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>قیمت نفت پس از گزارش اینکه قرار است ترامپ در مورد گزینه‌های جدید ایران brief شود، به بالاترین سطح خود از سال ۲۰۲۲ رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> خبرگزاری بی‌بی‌سی (نسخه اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱  ساعت ۱۸:۵۹:۱۳</strong></span>
+                </div>
+                <p class='summary'>Axios گزارش داد که فرماندهی مرکزی ایالات متحده برنامه‌ای برای موجی از حملات «کوتاه و قدرتمند» به ایران تهیه دیده است.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cx21m88rd14o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>رهبر معظم ایران طرحی برای حفظ کنترل بر تنگه هرمز را اعلام کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ فروردین ۱۴۰۵ ۱۶:۴۱:۲۶ (به وقت گرینویچ)</strong></span>
+                </div>
+                <p class='summary'>آیت‌الله مکارم شیرازی در بیانیه‌ای اعلام کرد که ایران برای تنگه هرمز «چارچوب‌های قانونی جدیدی» را ایجاد خواهد کرد. او همچنین گفت کشورش توانایی‌های هسته‌ای خود را حفظ خواهد کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/30/world/middleeast/iran-war-supreme-leader-mojtaba-khamenei-strait-hormuz.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترامپ: ایالات متحده در حال مطالعه کاهش نیروهای خود در آلمان است، همزمان با تشدید اختلاف با مرز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> خبرهای بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱  ساعت ۱۸:۳۱</strong></span>
+                </div>
+                <p class='summary'>این اظهارات او پس از آن صورت گرفت که صدراعظم آلمان، رویکرد ایالات متحده در جنگ با ایران را مورد انتقاد قرار داد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/clyplg23l30o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>روزنامه‌نگار بازداشت‌شده در کویت می‌گوید او از تابعیت این کشور محروم شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل روزنامهٔ نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ساعت ۱۹:۵۸:۳۲</strong></span>
+                </div>
+                <p class='summary'>احمد شہاب الدین ایک کویتی نژاد امریکی تھے جنہیں ایران جنگ کے بارے میں پوسٹ کرنے کے بعد کئی ہفتوں تک حراست میں رکھا گیا تھا۔ کویت نے اپنی جانب سے ان کے مقدمے پر عوامی تبصرہ کرنے کا کوئی اشارہ نہیں دیا ہے۔</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/30/world/middleeast/ahmed-shihab-eldin-citizenship.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>چگونه محاصره ایران توسط ترامپ، یک سفر مهم به چین را پیچیده کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۳۰ فروردین ۱۴۰۵, ساعت ۱۹:۵۳:۲۷</strong></span>
+                </div>
+                <p class='summary'>اگر رئیس‌جمهور ترامپ طبق برنامه در ماه مه به چین سفر کند، موضوع اصلی به‌وضوح اثرات اقتصادی موج‌دار جنگی خواهد بود که پکن به روشنی آن را غیرضروری تلقی کرده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/30/us/politics/trump-china-iran.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ایران: سازمان جهانی بهداشت - تشدید درگیری‌ها در خاورمیانه، گزارش وضعیت جهانی #۶ - ۳۰ آوریل ۲۰۲۶</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (رویدادهای بشردوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۱۱ ۱۸:۳۰</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: ایران (جمهوری اسلامی)</div> <div class="tag source">منبع: سازمان بهداشت جهانی</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/c8/9d/c89d9476-ecf5-4c64-bbed-c3c2abbf3549.png" alt></p> <p>لطفاً به فایل ضمیمه مراجعه کنید.</p> <p>هرچند که توافقات آتش‌بس درگیرکننده ایران و لبنان همچنان برقرار هستند، اما اوضاع همچنان شکننده و با خطر دائمی تشدید تنش‌هایی است که می‌توانند بر غیرنظامیان و دسترسی به خدمات سلامت تأثیر بگذارد.</p> <p>سیستم‌های سلامت تحت تأثیر کمبود داروها و تجهیزات پزشکی قرار گرفته‌اند و تأثیرات этого کمبود در مناطقی فراتر از مناطق بحرانی در حال ظاهر شدن است. تعطیلی خدمات اساسی بهداشت مادر و کودک تأثیرات شدیدی بر سلامت زنان و کودکان دارد.</p> <p>اولویت‌های سازمان جهانی بهداشت همچنان بر به‌روز نگه‌داشتن نقشه‌های خطر و منابع، پیشرفت در راهنمایی‌های فنی برای حفاظت از جامعه و ارتباطات ریسک (RCCE)—شامل سناریوهای خطر مرتبط با سلامت محیطی—و حفظ هماهنگی با شرکا، به‌ویژه در زمینه آب، بهداشت و بهداشت (WASH) و اقدامات کنترل عفونت (IPC)، و همچنین سلامت روان، با تمرکز بر جمعیت‌های آواره، متمرکز است.</p> <p>ارزیابی‌های نیازهای اضطراری همچنان در حال انجام است، از جمله برای افرادی که با بیماری‌های مزمن زندگی می‌کنند. سازمان جهانی بهداشت الگوهای جابه‌جایی جمعیت را برای ارزیابی بهتر خطرات و تقویت برنامه‌ریزی عملیاتی نظارت می‌کند.</p> <p>سازمان جهانی بهداشت به طور مستمر حملات به مراقبت‌های بهداشتی را زیر نظر دارد و صحت آنها را تأیید می‌کند، به‌عنوان بخشی از مأموریت اصلی خود. این امر امکان تجزیه و تحلیل به موقع و پیش‌بینی‌کننده را فراهم می‌آورد تا مناطقی که سیستم‌های سلامت تحت فشار فزاینده هستند و نیاز به حمایت هدفمند با داروها، تجهیزات پزشکی و تروما و سایر محصولات ضروری سلامت دارند، شناسایی شوند.</p> <p>سازمان جهانی بهداشت ارزیابی تأثیرات بلندمدت این بحران بر سلامت را در سطح جهانی آغاز کرده است تا اقدامات کاهش‌دهنده‌ای را که از هم‌اکنون می‌توان اجرا کرد، شناسایی نماید.</p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/world-health-organization-middle-east-escalation-conflict-global-situation-report-6-30-april-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ایران، اعتراضات، حقوق بشر – همه آنچه باید درباره ی هفتاد و ششمین کنگره فیفا بدانید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱T ساعت ۱۹:۲۶:۳۶Z</strong></span>
+                </div>
+                <p class='summary'>کنگره پیش از جام جهانی تحت تأثیر تنش‌های geopolitical، نگرانی‌های حقوق بشری و مسائل لجستیکی خواهد بود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/fa/sports/2026/4/30/قطعنامه-حقوق-بشری-ایران-همه-چیزی-که-درمورد-فدراسیون-فوتبال-۷۶-باید-بدانید?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>نخست‌وزیرِ موقتِ عراق در گیرودارِ تقابل قدرت میان ایالات متحده و ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۱ ساعت ۱۶:۲۸:۲۶</strong></span>
+                </div>
+                <p class='summary'>علی الز い دي، چهره‌ای کاملا تازه در سیاست است، اکنونی وظیفهٔ تشکیل یک دولت ائتلافی جدید به او محول شده است. اکنون او باید با فشار فزایندهٔ ایالات متحده برای مقابله با نفوذ ایران بر عراق دست و پنجه نرم کند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/28/world/middleeast/iraq-ali-al-zaidi.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>این تصمیم شگفت‌انگیز امارات در اوپک نشان از نظمی تازه در خاورمیانه دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> WSJ (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ فروردین ۱۴۰۵ ساعت ۱۹:۵۰</strong></span>
+                </div>
+                <p class='summary'>پس از تحمل بار اصلی حملات متقابل ایران، قدرت مالی بزرگ روابط خود را با اسرائیل تقویت می‌کند و عربستان سعودی را به چالش می‌کشد.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/u-a-e-opec-new-middle-east-32ceda56' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>اقتصاد zona یورو در سه ماهه اول کند شد زیرا ضربه بحران انرژی را احساس کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ساعت ۱۹:۱۲:۰۰ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>اقتصاد منطقه یورو در początek سال شروع به ضعیف شدن کرد و به احتمال زیاد با افزایش قیمت‌های انرژی، که منجر به کاهش هزینه‌های مصرف‌کننده و به تأخیر انداختن بهبود صنایع می‌شود، با چالش‌های بیشتری روبرو خواهد بود.</p>
+                <div class='link'><a href='https://www.wsj.com/world/europe/frances-economy-stalled-in-first-quarter-1cb5de65' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>اقتصاد اروپا در روندی لنگان رو به سود بردن است زیرا جنگ باعث افزایش تورم شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۲/۱۲ ساعت ۱۴:۳۱</strong></span>
+                </div>
+                <p class='summary'>هم بانک مرکزی اروپا (ECB) و هم بانک انگلستان (BOE) با وجود ترکیب رشد ضعیف‌تر و تورم بالاتر، نرخ‌های بهره را بدون تغییر نگه داشتند.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/global/boe-signals-it-may-raise-rates-as-energy-prices-stay-high-02873fbd' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>تنگه هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ساعت ۱۸:۵۲</strong></span>
+                </div>
+                <p class='summary'>تنگه هرمز حدود ۲۰٪ از نفت خام جهان را حمل می‌کند و آن را به یک شاهراه تجاری حیاتی اما آسیب‌پذیر تبدیل می‌کند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/the-strait-of-hormuz-2e95e470' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>مقامات چینی درباره تایوان و تجارت با بسنت و روبیو گفتگو کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ۱۹:۴۴:۱۹</strong></span>
+                </div>
+                <p class='summary'>وزیر امور خارجه مارکو روبیو با همتای چینی خود وانگ یی در رابطه با جنگ ایران و اجلاسی آینده میان دونالد ترامپ و شی جین‌پینگ، رئیس‌جمهور چین صحبت کرد که خبرگزاری دولتی چين، شين‌هوا، روز پنج‌شنبه گزارش کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinese-officials-speak-to-bessent-rubio-about-taiwan-trade' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>«افزایش احساس در جامعه بین‌المللی» مبنی بر اینکه ترامپ استراتژی خروج از ایران ندارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ساعت ۱۸:۳۸:۲۰</strong></span>
+                </div>
+                <p class='summary'>در میان تنش‌های تازه над-اقیانوسی پیرامون ایران، ناتو و نیروهای ایالات متحده در آلمان، دلانو د‌سوزا از این بابت که دکتر کریستوفر فایستون، استادیار علوم سیاسی و روابط بین‌الملل در دانشگاه یورک را استقبال می‌کند، خوشحال است. دکتر فایستون، به گفته خود، ائتلافی تحت فشار را می‌بیند که میان عملکرد و فلج‌شدگی گرفتار شده است. او ترومن (ترامپ) را نه تنها ناپایدار بلکه به‌طور عمدی "تحریک‌گر" و "پیش‌بینی‌ناپذیر" توصیف می‌کند و استدلال می‌کند که "ازSideed اروپا، نگرانی درباره این حکومت ترامپی وجود دارد که چقدر او می‌تواند پیش‌بینی‌ناپذیر باشد: شما نمی‌خواهید نشانه‌ای از آمادگی برای مداخله بدهید، در حالی که نمی‌دانید این مداخله قرار است کجا به پایان برسد."</p>
+                <div class='link'><a href='https://www.france24.com/fa/درک فزاینده‌ای در جامعه بین‌الملل مبنی بر اینکه ترامپ استراتژی خروج از ایران ندارد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>آزردگی مصرف‌کنندگان آمریکایی در پمپ بنزين پس از تداوم جنگ ايران شدت می‌گيرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱  ساعت ۱۹:۲۹:۰۶ +۰۳:۳۰</strong></span>
+                </div>
+                <p class='summary'>پس از هفته‌ها افزایش قیمت سوخت در سراسر آسیا و اروپا، اکنون نرخ‌های بالاتر پمپ بنزین در ایالات متحده شروع به تشدید کرده‌اند، زیرا شوک‌های انرژی ناشی از جنگ، نشانه‌ای از کاهش به‌خصوصی از خود نشان نمی‌دهند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/pain-at-the-pump-is-intensifying-for-us-consumers-as-iran-war-drags-on' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>در پیامی مقتدرانه، مجتبی خامنه‌ای نشانه‌های آغاز «فصل جدیدی» برای کنترل ایران بر تنگه هرمز را اعلام کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ فروردین ۱۴۰۵ ساعت ۱۹:۴۰:۱۸</strong></span>
+                </div>
+                <p class='summary'><p>در آستانهٔ روز «خلیج فارس»، بیانیه‌ای نوشته‌شده از سوی رهبر جدید و هنوز ناشناخته اما قدر سرنوشت‌ساز می‌گوید ایران برنامه‌های موشکی و هسته‌ای خود را به‌عنوان «دارایی‌های ملی» محافظت خواهد کرد و تلاش ایالات متحده برای کاستن از آنها را نادیده می‌گیرد.</p><p>این پست <a href="https://www.timesofisrael.com/in-defiant-message-mojtaba-khamenei-signals-new-chapter-for-irans-control-of-hormuz/">در پیامی, «مجتبی خامنه‌ای» فصل تازه‌ای در کنترل ایران بر تنگه هرمز می‌گشاید"</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p><figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AP26119606769886-1024x640.jpg" title="در پیامی, «مجتبی خامنه‌ای» فصل تازه‌ای در کنترل ایران بر تنگه هرمز می‌گشاید" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/in-defiant-message-mojtaba-khamenei-signals-new-chapter-for-irans-control-of-hormuz/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>اقتصاد ایران تحت فشار آشکار است، اما آماده است تا در برابر محاصره آمریکا مقاومت کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۴-۳۰ ۱۶:۰۸:۴۳</strong></span>
+                </div>
+                <p class='summary'><p>ذخیره‌سازی جمهوری اسلامی برای واردات پیش از جنگ هنوز برداشت‌های بانکی را مهار نکرده یا ضروریات را سهم‌بندی نکرده است؛ با این حال، بیکاری فزاینده ممکن است ترس رژیم از اعتراض‌ها را تشدید کند.</p> <p>مقاله <a href="https://www.timesofisrael.com/irans-economy-under-palpable-stress-but-prepared-to-hold-out-amid-us-blockade/">اقتصاد ایران تحت فشار قابل توجه، اما آماده مقاومت در برابر محاصره آمریکا</a> برای نخستین بار در <a href="https://www.timesofisrael.com"> تایمز آو اسرائیل </a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AFP__20260429__A9B88LZ__v1__HighRes__IranUsIsraelWar-1024x640.jpg" title="اقتصاد ایران تحت فشار قابل توجه، اما آماده مقاومت در برابر محاصره آمریکا" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/irans-economy-under-palpable-stress-but-prepared-to-hold-out-amid-us-blockade/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>گروه هوایی لوفت‌هانسا تمدید لغو پروازهای به اسرائیل تا ژوئن را اعلام کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ساعت ۱۹:۳۷:۲۵</strong></span>
+                </div>
+                <p class='summary'><p>به گفته گروهی، برخی پروازها ممکن است از اوایل خرداد با توجه به وضعیت امنیتی مجددا آغاز شوند؛ این در حالی است که آژانس اتحادیه اروپا از خطرات پیش روی هواپیماها در بحبوحه ابهام درباره توافق با ایران خبر داده است.</p><p>مقاله <a href="https://www.timesofisrael.com/lufthansa-airline-group-extends-cancellation-of-israel-flights-through-june/">گروه هواپیمایی لوفت‌هانزا لغو پروازهای اسرائیل را تا پایان خرداد تمدید کرد</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p><figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/plane-e1777558770547-1024x640.jpg" title="گروه هواپیمایی لوفت‌هانزا لغو پروازهای اسرائیل را تا پایان خرداد تمدید کرد" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/lufthansa-airline-group-extends-cancellation-of-israel-flights-through-june/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 1 می 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>خاورمیانه در وضعیت آماده‌باش کامل قرار دارد زیرا تنش‌ها میان ایالات متحده و ایران به شدت افزایش یافته است. رهبر جدید جمهوری اسلامی ایران، مجتبی خامنه‌ای، مواضع سخت‌گیرانه‌ای اتخاذ کرده و به کنترل تنگه هرمز و حفظ توانایی‌های هسته‌ای سوگند خورده است، در حالی که ایالات متحده در حال بررسی حملات نظامی است. بهای نفت به بالاترین سطح خود از سال 2022 رسیده است و اقتصادهای جهانی تحت فشار ناشی از اختلال‌های پایدار انرژی قرار دارند. این درگیری، بحران‌های انسان‌دوستانه را در منطقه تشدید کرده و در عین حال، سیستم‌های سلامت در حال فروپاشی هستند و غیرنظامیان بیشترین هزینه ناپایداری و خشونت را متحمل می‌شوند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد؟</h3>
+            تنش‌های بین ایالات متحده و ایران در روزهای اخیر به طرز چشمگیری تشدید شده است. گزارش‌ها حاکی از آن است که فرماندهی مرکزی ایالات متحده (سنتکام) طرح‌هایی را برای انجام حملات نظامی محدود به ایران آماده کرده است. از سوی دیگر، رهبر جدید ایران سید محمدمهدی خامنه‌ای اعلام کرده که این کشور کنترل بیشتری بر تنگه هرمز، یک مسیر حیاتی حمل و نقل نفت، اعمال خواهد کرد و برنامه هسته‌ای خود را رها نخواهد ساخت. قیمت نفت به بالاترین سطح خود از سال ۲۰۲۲ رسیده است که ناشی از ترس از اختلال در عرضه است. بحران انسانی در ایران و کشورهای همسایه در حال وخیم‌تر شدن است، به طوری که کمبود دارو، غذا و خدمات اساسی، و همچنین آوارگی هزاران نفر در این کشورها تشدید یافته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سر فصل</h3>
+            توسعه‌های فوری محتمل‌ترین وضعیت، شامل посте‌های نظامی بیشتر ایالات متحده و ایران، از جمله احتمال حملات محدود، و تداوم سرپیچی ایران در تنگه هرمز است. تلاش‌های دیپلماتیک احتمالاً به دلیل بی‌اعتمادی متقابل و زمان‌بندی نشست‌های آتی involving ایالات متحده و چین، راکد خواهد ماند. این درگیری ممکن است ماه‌ها به طول انجامد و با تشدید پراکنده و بحران انسانی طولانی‌مدت بر غیرنظامیان تأثیر بگذارد. از نظر اقتصادی، شوک ناشی از انرژی احتمالاً ادامه خواهد داشت و باعث افزایش تورم و فشار بر رشد جهانی خواهد شد. در صورت وخیم‌تر شدن شرایط اقتصادی، اعتراضات در ایران نیز ممکن است تشدید شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            ['اوایل ۲۰۲۵: تنش‌های اولیه بین ایالات متحده و ایران بر سر نفوذ منطقه‌ای و محدودیت‌های برنامه هسته‌ای آغاز می‌شود.', 'پاییز ۲۰۲۵: ایران رزمایش‌های نظامی در نزدیکی تنگه هرمز برگزار می‌کند و آمادگی خود را برای مسدود کردن این آبراه نشان می‌دهد. ایالات متحده حضور نظامی خود در منطقه را افزایش می‌دهد.', 'فروردین ۱۴۰۵: مجموعه‌ای از درگیری‌های کوچک و اقدامات متقابل بین نیروهای ایالات متحده و ایران یا نیابتی‌های آنها رخ می‌دهد که موجب افزایش سطح هوشیاری می‌شود.', '۳۰ فروردین ۱۴۰۵: گزارش‌های متعددی از فرماندهی مرکزی ایالات متحده در حال برنامه‌ریزی برای حملات «کوتاه و قدرتمند» علیه ایران منتشر می‌شود. رهبر معظم ایران چارچوب‌های قانونی جدیدی برای کنترل تنگه هرمز وضع می‌کند و توان هسته‌ای ایران را حفظ می‌کند. قیمت‌های نفت به بالاترین حد خود از سال ۲۰۲۲ می‌رسد.', 'اوایل اردیبهشت ۱۴۰۵: ایالات متحده و ایران از طریق واسطه‌های ثالث وارد مذاکرات غیرمستقیم می‌شوند، اما انتظار پیشرفت چشمگیری نمی‌رود. بحران انسانی در ایران و کشورهای همسایه تشدید می‌شود و خدمات درمانی فرو می‌پاشد.', 'در جریان: به دنبال وخامت شرایط اقتصادی، تظاهرات و ناآرامی‌های مدنی در ایران افزایش می‌یابد که ممکن است به سرکوب‌های بیشتر رژیم یا بی‌ثباتی منجر شود.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            مسیر بلندمدت درگیری حاکی از بن‌بست طولانی‌مدت میان ایالات متحده و ایران با تشدید‌های دوره‌ای است. به نظر می‌رسد استراتژی ایران ترکیبی از سرپیچی—کنترل نقاط حساس کلیدی همچون تنگه هرمز—و تاب‌آوری اقتصادی از طریق ذخایر و تنظیمات داخلی باشد. با این حال، فشار اقتصادی طولانی‌مدت ممکن است منجر به ناآرامی‌های داخلی یا حتی تلاش برای مذاکره از موضع ضعف شود. ایالات متحده به نظر می‌رسد بر حفظ فشار متمرکز است، اما ممکن است به دلیل محدودیت‌های داخلی و بین‌المللی در انجام اقدامات نظامی مداوم با مشکل مواجه شود. اگر درگیری طولانی شود، ایران ممکن است به تقویت روابط خود با قدرت‌های غیرغربی مانند چین و روسیه برای کاهش فشار آمریکا روی بیاورد. از نظر اقتصادی، جهان احتمالاً شاهد گرایشی به سوی تنوع‌بخشی به زنجیره تأمین و کاهش وابستگی به خاورمیانه خواهد بود، هرچند این فرآیند کند و پرهزینه خواهد بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری کنونی با سطح بالایی از تنش مشخص می‌شود، اما هنوز به جنگ گسترده تبدیل نشده است. رویکرد ایران شامل درگیری‌های نیابتی (مانند حمایت از گروه‌ها در عراق، لبنان و یمن) و تاکتیک‌های نامتقارن مانند مین‌گذاری یا حملات پهپادی در تنگه هرمز است. ایالات متحده در حال آماده‌سازی برای حملات محدود احتمالی است، اما به نظر می‌رسد از تشدید به جنگ گسترده پرهیز دارد، احتمالاً به دلیل ترس از واکنش منطقه‌ای و پیامدهای غیرقابل کنترل. غیرنظامیان بیشترین آسیب را از این بحران متحمل می‌شوند و با فروپاشی سیستم‌های درمانی، کمبود مواد غذایی و آواره شدن مواجه هستند. شدت درگیری بالا است و بابت احتمالِ قطعاً وجودِ تلافی رزمی از سوی هر دو طرف افزایش یافته، اما عمدتاً به درگیری‌های نیابتی و جنگ اقتصادی محدود می‌شود تا درگیری مستقیم بین قدرت‌های عمده.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری پتانسیل دارد که نقشه ژئوپلیتیکی خاورمیانه را بازتعریف کند و بحران جدیدی در زمینه انرژی جهانی ایجاد نماید. اگر ایران موفق به تحکیم کنترل خود بر تنگه هرمز، حتی به صورت جزئی، شود، ممکن است باعث اختلال در عرضه جهانی نفت گردد و قیمت‌ها را به شدت افزایش دهد. این امر موجب تشدید تورم در اقتصادهای وابسته به انرژی، کاهش رشد و فشار بر بودجه‌های خانوارها در سرتاسر جهان خواهد شد. علاوه بر این، هزینه‌های انسانی در ایران و کشورهای همسایه شدید خواهد بود و پیامدهای درازمدتی برای ثبات منطقه‌ای به همراه خواهد داشت. این درگیری همچنین نشان‌دهنده فشار بر اتحادهای سنتی است، زیرا اروپا، چین و روسیه واکنش‌های متفاوتی نسبت به اقدامات ایالات متحده نشان می‌دهند. در نهایت، این بحران می‌تواند جهان را به سوی یک بازار انرژی چندقطبی سوق دهد، به طوری که کشورهای مختلف در تلاش برای تأمین منابع و مسیرهای جایگزین باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            چندین کشور و بازیگر در این بحران نقش‌های مهمی دارند. ایالات متحده تحت رهبری فشار روی ایران است که توسط برخی از کشورهای خلیج‌فارس مانند امارات و بحرین، که نگران نفوذ ایران هستند، حمایت می‌شود. با این حال، در مورد رویکرد آمریکا نسبت به ایران، با آلمان و سایر کشورهای اروپایی تنش وجود دارد و برخی از متحدان، غیرقابل‌پیش‌بینی بودن ترامپ را نقد می‌کنند. چین به طور فعال در حال تلاش برای میانجی‌گری و حفظ پیوندهای اقتصادی خود با ایران است، در عین حال با ایالات متحده نیز در تعامل است. نگرانی اصلی چین، جلوگیری از بروز درگیری گسترده‌ای است که می‌توانست مسیرهای تجاری یا عرضه جهانی نفت را مختل کند. روسیه احتمالاً از ایران به لحاظ دیپلماتیک و اقتصادی پشتیبانی می‌کند و روابط ایالات متحده و روسیه را بیشتر تحت فشار قرار می‌دهد. در منطقه، عراق بین فشار ایالات متحده برای کاهش نفوذ ایران و چالش‌های سیاسی داخلی خود گرفتار شده است. از سوی دیگر، کویت در مقابله با مخالفان رویکرد سخت‌گیرانه‌ای اتخاذ کرده و یک روزنامه‌نگار به دلیل بحث در مورد جنگ از تابعیت این کشور محروم شده است. امارات نیز در حال تقویت روابط با اسرائیل و چالش کشیدن سلطه عربستان در منطقه است که نشان‌دهنده احتمال realignmentN از پیوندها است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت به بالاترین سطوح خود از سال ۲۰۲۲ افزایش یافته است، به دلیل ترس از اختلالات عرضه ناشی از درگیری. تنگه هرمز، که ۲۰ درصد از نفت خام جهان از آن عبور می‌کند، یکی از مناطق حساس است. هرگونه اختلال در این منطقه می‌تواند میلیون‌ها بشکه نفت را از بازار جهانی خارج کند و باعث افزایش بیشتر قیمت‌ها شود. برای نمونه، اهمیت تنگه هرمز به حدی است که حتی تهدید بهBlockade می‌تواند باعث افزایش ناگهانی قیمت‌ها شود. قیمت‌های بالاتر نفت به معنای هزینه‌های سوخت بالاتر برای مصرف‌کنندگان و مشاغل در سراسر جهان است که تورم را افزایش داده و رشد اقتصادی را کاهش می‌دهد. کشورهای وابسته به واردات نفت، مانند آنهایی که در اروپا و آسیا قرار دارند، با فشار اقتصادی قابل توجهی مواجه خواهند شد. ایالات متحده، که تولیدکننده عمده نفت است، ممکن است در کوتاه مدت از قیمت‌های بالاتر نفت بهره‌مند شود، اما با واکنش منفی مصرف‌کنندگان و مشاغل مواجه خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده به‌طور جدی در حال بررسی حمله‌های نظامی به ایران است، اما به نظر نمی‌رسد هیچ یک از طرفین حاضر یا قادر به گسترش درگیری به جنگی تمام‌عیار باشند. ایران در حال تشدید کنترل خود بر تنگه هرمز و پایبندی به برنامه هسته‌ای خود است که منجر به افزایش حساسیت عرضه نفت در سطح جهانی می‌شود. بحران بشردوستانه در ایران به سرعت در حال تشدید است، به طوری که دارو، مواد غذایی و خدمات درمانی حیاتی دچار کمبود هستند و به میلیون‌ها غیرنظامی آسیب می‌رسانند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            ظهور ناگهانی رهبر جدید ایران، مجتبی خامنه‌ای، که بدون سابقه حضور علنی، پیام‌های تحدیدآمیز می‌فرستد، و همچنین محرومیت از تابعیت یک روزنامه‌نگار کویتی به دلیل بحث درباره جنگ، نشانگر تشدید سرکوب مخالفت‌ها در منطقه است. علاوه بر این، اقدام امارات برای تقویت روابط با اسرائیل و به چالش کشیدن رهبری عربستان در اوپک، حاکی از احتمال realignment (باز تنظیم) اتحادها در خاورمیانه است که می‌تواند سیاست‌های منطقه‌ای را دگرگون سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پیکربندی اضافی</h3>
+            توسعه معناداری در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
