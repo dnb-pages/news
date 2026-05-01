@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-05-01 10:47</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-05-01 10:47</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Billions of meals at risk due to Iran war, says fertiliser boss </span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 08:41</strong></span>
+                </div>
+                <p class='summary'>A shortage of fertiliser due to the Iran conflict could reduce crop yields and push prices higher, says the boss of Yara.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cpwp50v4ye7o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Once plagued by civil war, Syria now sells itself as a safe corridor amid Iran conflict</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:56</strong></span>
+                </div>
+                <p class='summary'><p>Damascus offers Baniyas port as an alternative to Hormuz oil route, as official says there's no interest in allying with either one of its 'strategic enemies,' Iran and Israel</p> <p>The post <a href="https://www.timesofisrael.com/once-plagued-by-civil-war-syria-now-sells-itself-as-a-safe-corridor-amid-iran-conflict/">Once plagued by civil war, Syria now sells itself as a safe corridor amid Iran conflict</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26063511281124-1024x640.jpg" title="Once plagued by civil war, Syria now sells itself as a safe corridor amid Iran conflict" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/once-plagued-by-civil-war-syria-now-sells-itself-as-a-safe-corridor-amid-iran-conflict/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Malignant non-disclosure: PM’s belated cancer revelation subverts public’s right to know</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:04</strong></span>
+                </div>
+                <p class='summary'><p>Vague details released by Netanyahu and doctors regarding prostate tumor raise more questions than answers, including possibility he was being treated for cancer during Iran war</p> <p>The post <a href="https://www.timesofisrael.com/malignant-non-disclosure-pms-belated-cancer-revelation-subverts-publics-right-to-know/">Malignant non-disclosure: PM’s belated cancer revelation subverts public’s right to know</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/F260219TA013-1024x640.jpg" title="Malignant non-disclosure: PM’s belated cancer revelation subverts public’s right to know" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/malignant-non-disclosure-pms-belated-cancer-revelation-subverts-publics-right-to-know/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Deadly Israeli strikes on southern Lebanon despite ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 08:12</strong></span>
+                </div>
+                <p class='summary'>Seventeen people - including two children - were killed, according to Lebanon's health ministry.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cq5pepj21g8o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Who profits big from the war on Iran?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 10:13</strong></span>
+                </div>
+                <p class='summary'>Who profits big from the war on Iran?</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/money-works/2026/5/1/who-profits-big-from-the-war-on-iran?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Oil prices rise again with little sign of war on Iran ending</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 10:11</strong></span>
+                </div>
+                <p class='summary'>Brent crude futures hit $126.41 on Thursday - a 5 percent rise for the week.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/1/oil-prices-rise-again-with-little-sign-of-war-on-iran-ending?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>As Iranians Face War, There’s Still Solace in a Cafe</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:07</strong></span>
+                </div>
+                <p class='summary'>Cafes and coffee shops give Iranians affordable places to talk about their hopes, fears and the cost of living as well as to seek company in uncertain times.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/01/world/middleeast/iran-war-cafes.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>As Israel Entrenches, Frustration With Hezbollah Turns to Support</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:13</strong></span>
+                </div>
+                <p class='summary'>With the cease-fire fraying and Israel demolishing villages in the south, many Hezbollah supporters in Lebanon are putting aside their annoyance with the group and turning to it for protection.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/01/world/middleeast/lebanon-hezbollah-ceasefire-israel.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>More than 40 Iranian seafarers killed during US-Israeli war: Union leader</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:49</strong></span>
+                </div>
+                <p class='summary'>The Iranian Merchant Mariners Syndicate blamed US and Israeli attacks on Iran's ports and commercial fleet for deaths.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/1/more-than-40-iranian-seafarers-killed-during-us-israeli-war-union?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Rallies under way as workers gather for International Labour Day</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:33</strong></span>
+                </div>
+                <p class='summary'>Labour Day marches are being held as Iran war and rising energy prices threaten the global economy.</p>
+                <div class='link'><a href='https://www.aljazeera.com/economy/2026/5/1/rallies-under-way-as-workers-gather-for-international-labour-day?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Commercial flights from Tehran’s main airport resume amid cautious normalcy</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 08:47</strong></span>
+                </div>
+                <p class='summary'>Flights are gradually back in the air, but uncertainty on the ground still lingers.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/1/commercial-flights-from-tehrans-main-airport-resume-amid-cautious-normalcy?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Chevron Profit Beats Estimates on War-Driven Surge in Oil Prices</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 10:36</strong></span>
+                </div>
+                <p class='summary'>Chevron Corp. exceeded profit expectations as higher oil and natural gas prices, as well as supplies from the acquisition of Hess Corp., outweighed production outages from the Iran war.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chevron-profit-beats-estimates-on-war-driven-surge-in-oil-prices' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>Bjorn Lomborg: Strait of Hormuz blockade shows how crucial fertilizers are</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 10:00</strong></span>
+                </div>
+                <p class='summary'>A quarter of the world's supply is at risk, which means increased food insecurity for tens of millions of the world's poorest people</p>
+                <div class='link'><a href='https://financialpost.com/opinion/strait-of-hormuz-blockade-how-crucial-fertilizers' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Is Iran's hybrid warfare behind anti-Semitic attacks in Europe?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:51</strong></span>
+                </div>
+                <p class='summary'>PRESS REVIEW – Friday, May 1: The British papers are still covering the anti-Semitic attack in London. Meanwhile, The New York Times investigates hybrid warfare methods against Jewish targets. Next, a British advertising company is greenwashing the US oil industry. Also, Banksy has made another appearance. Finally, a trainee bus driver has a bad day at the office south of Paris.</p>
+                <div class='link'><a href='https://www.france24.com/en/tv-shows/press-review/20260501-is-iran-s-hybrid-warfare-behind-anti-semitic-attacks-in-europe' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>US official says Iran war truce 'terminated' hostilities for war powers deadline</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:41</strong></span>
+                </div>
+                <p class='summary'>In the United States, lawmakers remain deadlocked over the War Powers Resolution, which requires Congress to approve continued military action or withdraw troops once hostilities reach the 60-day mark. With the deadline approaching and no agreement in sight, a decision remains out of reach, as Liza Kaminov reports with France 2.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260501-us-official-says-iran-war-truce-terminated-hostilities-for-war-powers-deadline-1' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>Trump faces Iran war Congress deadline</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 09:39</strong></span>
+                </div>
+                <p class='summary'>This Friday marks 60 days since Donald Trump formally notified Congress on March 2 of the start of hostilities against Iran, triggering the timeline set by the War Powers Resolution, which requires congressional approval to continue military action beyond that period. However, lawmakers and the Trump administration disagree on when the deadline actually falls. On Thursday, Pete Hegseth told Congress that the ceasefire with Iran effectively “pauses” the clock. France24 International Affairs Editor Kethevane Gorjestani shares further insights.</p>
+                <div class='link'><a href='https://www.france24.com/en/trump-faces-iran-war-congress-deadline' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>Countries mark May Day with mass street demonstrations</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 07:50</strong></span>
+                </div>
+                <p class='summary'>It is International Workers' Day, with activists around the world taking to the streets to demand higher wages, improved working conditions, and broader labor rights. In France, unions have called for demonstrations under the slogan “bread, peace and freedom,” connecting everyday worker concerns to ongoing conflicts in Ukraine and the Middle East. The day has also sparked a heated debate over whether employees should be permitted to work on one of the country’s most protected public holidays.</p>
+                <div class='link'><a href='https://www.france24.com/en/countries-mark-may-day-with-mass-street-demonstrations' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>US considers reducing troops in Germany</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-01 07:48</strong></span>
+                </div>
+                <p class='summary'>German Chancellor Friedrich Merz has maintained that the transatlantic partnership remains strong, despite escalating tensions with Donald Trump, who has criticized Merz since the chancellor remarked earlier this week that the US was being “humiliated” by Tehran. Trump has also threatened to withdraw American troops from Germany, a move that could have significant implications for NATO defense systems, as Camille Corcoran reports.</p>
+                <div class='link'><a href='https://www.france24.com/en/us-considers-reducing-troops-in-germany' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - May 1, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The ongoing conflict involving Iran has escalated tensions in the Middle East, causing disruptions to global oil supplies, food security, and regional stability. A fragile ceasefire is fraying as violence continues in Lebanon and Syria positions itself as an alternative trade route. The war is driving up oil and food prices, straining economies worldwide and forcing governments to grapple with public unrest and political fallout.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The conflict between Israel, the U.S., and Iran has intensified, leading to a blockade of the Strait of Hormuz, which is a critical chokepoint for global oil shipments. This has disrupted fertilizer production, pushing food prices higher and reducing crop yields. Meanwhile, Syria is attempting to market itself as a safe alternative trade route for oil and goods to avoid the congested Hormuz Strait. In Lebanon, violence continues despite a shaky ceasefire, and Israel has faced domestic political turmoil over delayed disclosures about the health of its prime minister.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The war is likely to continue in a protracted manner, with sporadic flare-ups and temporary ceasefires rather than a decisive end. Syria's attempt to position itself as a trade corridor could gain traction if the Strait of Hormuz remains a conflict zone. Oil prices will likely stay elevated due to the ongoing disruptions, and food insecurity will worsen in poorer nations dependent on fertilizer imports. Internally, Iran's leadership may face growing public unrest as economic conditions deteriorate.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ["March 2, 2026: The U.S. formally notified Congress of hostilities against Iran, triggering the War Powers Resolution's 60-day timeline for congressional approval.", 'April 2026: Violent clashes escalated in southern Lebanon despite ceasefire agreements, including deadly Israeli airstrikes on villages.', 'April 2026: Syria offered its ports, like Baniyas, as alternatives to the blocked Strait of Hormuz, positioning itself as a neutral trade corridor.', 'Early May 2026: Global oil prices rose to over $126 per barrel as the Strait of Hormuz blockade persists, and fertilizer shortages threaten food production.', "May 1, 2026: U.S. officials declared the Iran war truce 'terminated' for legislative purposes, making it unclear whether further military action requires congressional approval.", 'May 1, 2026: Protests erupted worldwide on May Day, linking economic struggles to rising energy and food prices amid the ongoing conflicts.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict is unlikely to resolve soon, given the deep mistrust between Iran, Israel, and the U.S. Syria may become a more significant player in regional trade if it can capitalize on the Strait of Hormuz blockade, but its stability remains uncertain. Economically, the war is entrenching global inflationary pressures, particularly for energy and food, which could lead to prolonged social unrest in vulnerable regions. Geopolitically, this conflict may further strain U.S.-European relations, especially if NATO allies like Germany face pressure from the U.S. over troop deployments or policies toward Iran.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The fighting is highly concentrated along Israel's borders with Lebanon and Syria, as well as in critical maritime chokepoints like the Strait of Hormuz. The intensity remains high but uneven, with periodic escalations followed by temporary lulls. Civilian casualties, including children, are rising, and communities on all sides are growing increasingly frustrated with the lack of progress toward peace. Propaganda and hybrid warfare tactics, such as cyberattacks and disinformation, are also being used by all parties to gain strategic advantages.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict is reshaping global trade routes, fueling inflation, and testing the resilience of international institutions. The blockade of the Strait of Hormuz serves as a stark reminder of how vulnerable global supply chains are to regional conflicts. It also highlights the growing divide between nations that benefit from high oil prices (like energy exporters and Western energy companies) and those that suffer, such as poorer nations dependent on food imports. The war could accelerate shifts in global alliances, with countries like Syria seeking to reposition themselves as neutral players.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. and Israel are leading the military campaign against Iran, while Iran’s proxies, such as Hezbollah in Lebanon, are engaged in ongoing skirmishes. Syria is attempting to remain neutral and capitalize on the situation by offering trade alternatives. European nations are watching nervously as rising energy prices threaten their economies, while China and Russia may see opportunities to expand influence in the region by offering alternative trade partnerships or security guarantees. Internally, the war has intensified political divisions in Israel over leadership and governance, as seen in the controversy surrounding Prime Minister Netanyahu's health disclosures.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices have surged to over $126 per barrel due to the disruption of roughly 25% of global oil shipments passing through the Strait of Hormuz. This is a 5% increase in just one week and reflects the war’s direct impact on global supply chains. Higher oil prices benefit oil-producing nations and companies like Chevron, which reported record profits, but disproportionately harm developing countries that rely on food imports. Fertilizer shortages, exacerbated by sanctions and disruptions, could reduce global crop yields by 10-20%, further tightening food supplies and driving prices even higher.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The Strait of Hormuz blockade is causing severe disruptions to global oil and food supplies, with ripple effects across the world economy. Syria is attempting to position itself as a neutral trade corridor, potentially reshaping regional trade dynamics amid the conflict. The war is entering a dangerous phase with ongoing violence, economic strain, and political instability threatening to escalate further.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Syria’s unexpected pivot to marketing itself as a 'safe corridor' amid its long history of civil war and international isolation. Additionally, the sudden surge in global energy prices benefiting Western oil companies like Chevron while worsening food insecurity for poorer nations.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
