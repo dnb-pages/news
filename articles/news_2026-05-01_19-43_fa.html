@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-01 19:48</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-01 19:48</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ به کنگره می‌گوید آتش‌بس به معنای آن است که او برای جنگ با ایران به تأیید آنها نیاز ندارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ - ساعت ۱۹:۲۹</strong></span>
+                </div>
+                <p class='summary'>رئیس جمهور اعلام کرده است که نبردها «خاتمه یافته‌اند» به دلیل آتش‌بس، و ادعا می‌کند که نیازی به مجوز کنگره ندارد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/c4g4xexy4w7o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>تحریم‌های آمریکا علیه مبادلات ایران و ترمینال چین در خصوص خریدهای نفتی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱ ساعت ۲۳:۲۷:۲۷</strong></span>
+                </div>
+                <p class='summary'>دولت ترامپ در روز جمعه سه صرافی ارزی ایرانی و یک ترمینال نفتی چینی را تحریم کرد. این اقدام ایالات متحده در جهت افزایش فشار بر تهران برای پایان دادن به جنگ و بازگشایی تنگه هرمز صورت گرفت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-sanctions-iranian-exchanges-china-terminal-on-oil-purchases' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترامپ می‌گوید ایران در آخرین پیشنهاد صلح بدنبال شرایطی است که او نمی‌تواند با آن موافقت کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (لُبّ)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ - ساعت ۲۳:۱۶</strong></span>
+                </div>
+                <p class='summary'>ترامپ می‌گوید پیشنهاد ایران که از طریق پاکستان ارسال شده شامل شرایطی است که او از آنها راضی نیست.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/1/us-president-trump-not-satisfied-with-irans-latest-peace-proposal?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>نظرسنجی حاکی از آن است که ۶۱ درصد از آمریکایی‌ها معتقدند که حمله به ایران اشتباه بوده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ ساعت ۱۷:۵۱:۵۴</strong></span>
+                </div>
+                <p class='summary'>نظرسنجی نشان می‌دهد که آمریکایی‌ها نگران تأثیر جنگ بر هزینه‌های زندگی هستند و موفقیت آن را تا کنون زیر سؤال می‌برند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/1/poll-finds-61-percent-of-americans-believe-attacking-iran-was-a-mistake?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>آمریکا به کشتی‌داران در مورد پرداخت عوارض و «هدایای» تنگه هرمز هشدار می‌دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲  ساعت ۲۱:۴۸ (به وقت UTC)</strong></span>
+                </div>
+                <p class='summary'>این هشدار تازه همزمان با گزارش رسانه‌های دولتی ایران مبنی بر ارائه پیشنهاد صلح جدیدی از سوی تهران به آمریکا ارائه می‌شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/1/us-warns-shippers-against-paying-strait-of-hormuz-tolls-donations?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ترامپ می‌گوید که او «احتمالاً» در اجلاس گروه ۷ در فرانسه شرکت خواهد کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اقتصاد پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۱T۱۷:۴۰:۴۹Z</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده دونالد ترامپ اعلام کرد که قصد دارد حتی با وجود اختلاف ایالات متحده با متحدان کلیدی درباره جنگ ایران و تجارت، در اجلاس سران گروه هفت در فرانسه در ماه ژوئن شرکت کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-says-he-will-probably-go-to-g-7-summit-in-france' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>«سلاح قدرتمندترین ایران»: نگاه اجمالی آسوشیتدپرس آдриان بلومفیلد از خط مقدم تنگه هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۱۲ ساعت ۲۲:۲۵:۳۶</strong></span>
+                </div>
+                <p class='summary'>Gavin Lee از Adrian Blomfield، خبرنگار ارشد امور خارجی در روزنامه تِلیگراف، استقبال می‌کند. گزارش‌های او از تنگه هرمز نگاهی نادر و صمیمی فراتر از تصاویر ماهواره‌ای و انتزاعات سیاستگذاری ارائه می‌دهد. «یکی از چیزهایی که وقتی در آب، تمام اقیانوسی که در آنجا هستید حس می‌کنید»، او باز می‌گوید، «این است که تصویر چقدر پیچیده‌تر از چیزی است که فکر می‌کنید.» این پیچیدگی نظری نیست. واقعی و پویاست، بر هم خورده توسط مه و شکل گرفته توسط «حدود ۳۰۰ قایق تندرو کوچک... که روی آب پرش می‌کنند» با سرعت بالا و اکوسیستمی دریایی انبوه و مبهم می‌سازند که در آن قاچاقچیان، غیرنظامیان و بازیگران نظامی در هم می‌آمیزند و به جریان یکدستی غیرقابل تمیز تبدیل می‌شوند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/برنامه‌های-تلویزیونی/چراغ-خبر/20260501-سلاح-قدرتمند-ایران-آدریان-بلومفیلد-از-تِلیگراف-نگاهی-دورنما-به-تنگه-هرمز' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>آمریکا به کشتیرانانی که برای عبور از تنگه هرمز به ایران بپردازند، هشدار می‌دهد که تحریم‌های احتمالی را به دنبال خواهد داشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Times of Israel (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ ساعت ۲۳:۳۹:۵۷ به وقت UTC</strong></span>
+                </div>
+                <p class='summary'><p>ایران برای عبور ایمن از تنگه استراتژیک (هرمز) که تحت محاصره است، خواستار پرداخت‌ها از جمله به شکل کمک‌های خیریه می‌شود. meanwhile، وزارت خزانه‌داری ایالات متحده اقدامات تنبیهی علیه کشتیرانانی که این درخواست ایران را بپذیرند، تهدید می‌کند.</p> <p>پست <a href="https://www.timesofisrael.com/us-warns-shippers-that-paying-iran-to-traverse-hormuz-may-incur-sanctions/">ایالات متحده به کشتیران‌ها هشدار داد: پرداخت به ایران برای عبور از تنگه هرمز ممکن است مشمول تحریم‌ها شود</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26121535011777-1024x640.jpg" title="US warns shippers that paying Iran to traverse Hormuz may incur sanctions" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/us-warns-shippers-that-paying-iran-to-traverse-hormuz-may-incur-sanctions/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>بزرگ‌ترین صرافی ارز دیجیتال ایران امکان جابه‌جایی میلیون‌ها دلار توسط سپاه پاسداران را فراهم کرد، علی‌رغم تحریم‌ها</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز آف اسرائیل (این کشور)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۱  ساعت ۲۳:۰۶:۴۲ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'><p>برادران بنیان‌گذار صرافی Nobitex در سال ٢٠١٨، پیوندهایی را به یک خانواده قدرتمند داشتند که اعضای آن با خانواده‌های خامنه‌ای و خمینی وصلت و مشورت کرده‌اند. این شرکت تأکید دارد که هیچ حمایت دولتی دریافت نکرده است.</p> <p>این مطلب برای اولین بار در <a href="https://www.timesofisrael.com/irans-largest-crypto-exchange-enables-irgc-to-move-millions-despite-sanctions/">اخبار اسرائیلروز</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AFP__20260311__A2T22TY__v3__HighRes__TopshotIranUsIsraelWar-e1777654916138-1024x640.jpg" title="اخبار اسرائیلروز: صرافی ارز دیجیتال بزرگ ایران با وجود تحریم‌های آمریکا، میلیون‌ها دلار را برای سپاه «حرس» منتقل کرد" border="0" width="160" alt="جواد نکونام مربی سابق تیم ملی فوتبال ایران" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/irans-largest-crypto-exchange-enables-irgc-to-move-millions-despite-sanctions/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>یک مقام رسمی IDF می‌گوید که در صورت عدم حذف اورانیوم غنی‌شده، جنگ با ایران «یک شکست بزرگ» خواهد بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ - ساعت ۱۷:۵۵:۰۶</strong></span>
+                </div>
+                <p class='summary'><p>یک مقام ارشد می‌گوید جمهوری اسلامی در صورت عدم نادیده گرفته شدن ذخایر اتمی در مذاکرات، می‌تواند با برنامه هسته‌ای خود 'ضربهHard manners' وارد کند و می‌گوید دست‌های ارتش اسرائیل در مقابله با تهدید پهپادی حزب‌الله به دلیل آتش‌بس 'بسته' است</p> <p>پست <a href="https://www.timesofisrael.com/idf-official-says-iran-war-will-be-one-big-failure-if-enriched-uranium-not-removed/">یک مقام ارتش اسرائیل می‌گوید جنگ با ایران 'یک شکست بزرگ' خواهد بود اگر اورانیوم غنی‌شده حذف نشود</a> ابتدا در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2025/06/d7dbf387-f4f7-47db-9e83-e2d02a49ddc5-1024x640.jpg" title="یک مقام ارتش اسرائیل می‌گوید جنگ با ایران 'یک شکست بزرگ' خواهد بود اگر اورانیوم غنی‌شده حذف نشود" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/idf-official-says-iran-war-will-be-one-big-failure-if-enriched-uranium-not-removed/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>ترامپ از پیشنهاد ایران برای پایان دادن به جنگ 'راضی نیست'</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ ۲۲:۵۵</strong></span>
+                </div>
+                <p class='summary'>جزئیات آخرین طرح نامشخص بودند و رئیس‌جمهور ترامپ ابهام‌های خود را مشخص نکرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/01/world/middleeast/iran-new-proposal-peace-talks.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>گفته می‌شود اسرائیل در جنگ با ایران برای دفاع از امارات با سیستم «گنبد آهنین» کمک کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۲  ۱۸:۳۰:۱۲</strong></span>
+                </div>
+                <p class='summary'>به نظر می‌رسید برای اولین بار بود که این سیستم دفاع موشکی به یک کشور عربی ارسال می‌شد. امارات متحده عربی بیشترین آسیب را از حملات تلافی‌جویانه ایران به کشورهای خلیج فارس در طول جنگ متحمل شد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/01/world/middleeast/israel-emirates-iron-dome.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>در کافه‌های شلوغ، ایرانیان آرزوی رهایی از ویرانی‌های جنگ را دارند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ ساعت ۲۳:۱۷:۲۳</strong></span>
+                </div>
+                <p class='summary'>کافه‌ها و کافی‌شاپ‌ها مکان‌های مقرون‌به‌صرفه‌ای برای ایرانیان هستند تا درباره آرزوها، ترس‌ها و هزینه‌های زندگی صحبت کنند و در زمان‌های نامشخص به دنبال معاشرت باشند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/01/world/middleeast/iran-war-cafes.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>ایران شرایط را برای ازسرگیری مذاکرات صلح با آمریکا تسهیل کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نشریه وال استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲  ساعت ۲۲:۴۰</strong></span>
+                </div>
+                <p class='summary'>پیشنهاد جدید ایران خواستار توقف فوری تحریم‌های ایالات متحده نیست، اما رئیس‌جمهور ترامپ هنوز راضی نیست.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-softens-conditions-for-resuming-peace-talks-with-the-u-s-450622fa' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱ مه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران پس از ماه‌ها درگیری در یک بن‌بست تنش‌آمیز به سر می‌برند. ایالات متحده تحریم‌های جدیدی را بر ایران اعمال کرده است و به کشتی‌ها هشدار می‌دهد که بهای امنیت خود در تنگه هرمز را به تهران نپردازند، جایی که ایران در حال دریافت 'عوارض' است. ایران ادعا می‌کند پیشنهاد صلح اخیر آن شرایط را تسهیل کرده است، اما ایالات متحده می‌گوید این پیشنهاد کافی نیست. در همین حال، ایران راه‌هایی برای دور زدن تحریم‌ها از طریق رمزارزها پیدا کرده و آمریکایی‌ها نیز از هزینه‌های جنگ خسته شده‌اند. involvement بین‌المللی سنگینی وجود دارد، به طوری که اسرائیل در حال کمک به امارات متحده عربی برای دفاع در برابر حملات ایران است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 اتفاق چه اتفاقی افتاده است</h3>
+            پس از اعلام دولت ایالات متحده مبنی بر آتش‌بس موقتی، درگیری‌ها میان این کشور و ایران به طور موقت متوقف شده است، اما تنش‌ها همچنان بالا است. ایالات متحده با تحریم مبادلات ارزی ایران و یک پایانه نفتی در چین، فشار اقتصادی خود را افزایش داده است. ایران از طریق پاکستان پیشنهاد صلح جدیدی ارسال کرده است، اما ایالات متحده آن را به عنوان پیشنهادی ناکافی رد کرده است. ایران همچنین از کشتی‌هایی که از تنگه هرمز، یک مسیر حیاتی برای کشتی‌های نفت‌کش، عبور می‌کنند، درخواست پرداخت هزینه دارد، در حالی که ایالات متحده تهدید به تحریم شرکت‌های کشتیرانی کرده است که این درخواست‌ها را بپذیرند. از سوی دیگر، شهروندان ایرانی با چالش‌های اقتصادی ناشی از جنگ دست و پنجه نرم می‌کنند و آمریکایی‌ها نیز به دلیل افزایش هزینه‌های زندگی، مخالفت فزاینده‌ای با جنگ دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا سربرگ</h3>
+            در صورت شکست مذاکرات صلح، درگیری ممکن است شدت بیشتری پیدا کند. آمریکا ممکن است تحریم‌ها یا فشار نظامی خود را افزایش دهد، در حالی که ایران می‌تواند کنترل خود بر تنگه هرمز را تقویت کند یا حملات بیشتری در منطقه انجام دهد. در صورت عدم حصول توافق، ممکن است قیمت نفت به طرز چشمگیری افزایش یابد و اقتصادهای جهانی را تحت تأثیر قرار دهد. آمریکا ممکن است سعی کند در اجلاس گروه هفت متحدانی گرد آورد، اما اختلافات بر سر جنگ ممکن است این تلاش‌ها را تضعیف کند. از سوی دیگر، احتمالاً استفاده ایران از ارزهای دیجیتال و گروه‌های وابسته به آن مانند حزب‌الله و سپاه قدس (نیروی نظامی نخبه ایران) همچنان به‌عنوان نقاط بحرانی باقی خواهند ماند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>۱. ۲۰۲۶-۰۵-۰۱: ایالات متحده اعلام آتش‌بس می‌کند، مدعی می‌شود خصومت‌ها 'پایان یافته' است و می‌گوید برای اقدام نظامی بیشتر نیازی به تایید کنگره ندارد.</li><li>۲. ۲۰۲۶-۰۵-۰۱: ایالات متحده تحریم‌هایی را علیه سه صرافی ارزی ایران و یک ترمینال نفتی چین تحمیل می‌کند.</li><li>۳. ۲۰۲۶-۰۵-۰۱: ایران از طریق پاکستان پیشنهاد صلح ارائه می‌دهد، اما ایالات متحده آن را رد می‌کند.</li><li>۴. ۲۰۲۶-۰۵-۰۱: ایالات متحده از کشتی‌رانان در برابر پرداخت 'عوارض' به ایران برای عبور از تنگه هرمز هشدار می‌دهد.</li><li>۵. اوایل ۲۰۲۶: گزارش‌ها حاکی از آن است که اسرائیل به امارات متحده عربی در دفاع در برابر حملات موشکی ایران به کمک سیستم دفاع موشکی گنبد آهنین کمک کرده است.</li><li>۶. نظرسنجی‌ها نشان می‌دهد ۶۱٪ از آمریکایی‌ها معتقدند جنگ یک اشتباه بود و به هزینه‌های اقتصادی آن اشاره می‌کنند.</li><li>۷. به گفته مقامات، بزرگ‌ترین صرافی ارز دیجیتال ایران توسط سپاه پاسداران برای دور زدن تحریم‌ها استفاده می‌شده است.</li><li>۸. یک مقام دفاعی اسرائیل هشدار می‌دهد که جنگ در صورت عدم خلع ید از ذخایر اورانیوم غنی‌شده ایران شکست خواهد خورد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در بلندمدت، این درگیری ممکن است به یک بن‌بست طولانی تبدیل شود، به طوری که هر دو طرف بر مواضع خود پافشاری کنند. ایالات متحده به احتمال زیاد تحریم‌ها را کاهش نخواهد داد مگر آنکه ایران concessions” = concessions اصلی مانند توقف غنی‌سازی هسته‌ای یا توقف حمایت از گروه‌های نیابتی همچون حزب‌الله و حوثی‌ها ارائه دهد. ایران، که با انزوای اقتصادی روبروست، ممکن است همچنان از تاکتیک‌های نامتقارن مانند دریافت پرداخت‌ها در تنگه هرمز، حملات سایبری یا حمایت از شبه‌نظامیان برای فشار به آمریکا و متحدانش استفاده کند. تنگه هرمز همچنان نقطه‌ای حساس خواهد ماند و در صورت اختلال در کشتیرانی، قیمت نفت ممکن است به شدت افزایش یافته و بهPain” = экономический ущерб جهانی منجر شود. از نظر دیپلماتیک، آمریکا ممکن است در حفظ اتحاد با متحدانش با مشکل مواجه شود، به‌خصوص آنکه فرانسه و دیگر کشورهای اتحادیه اروپا از همراهی با چین و روسیه—که روابط اقتصادی با ایران دارند—فشار برای کاهش تنش‌ها را افزایش دهند. در سطح داخلی، هر دو کشور با فشارهای عمومی مواجه‌اند—آمریکایی‌ها از بار مالی خسته شده‌اند و ایرانی‌ها با costs” = экономические последствия جنگ دست و پنجه نرم می‌کنند که می‌تواند منجر به ناآرامی‌ها شود
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            شدت درگیری یکسان نیست. ایالات متحده بیشتر از اقدامات نظامی مستقیم، از ابزارهای اقتصادی (تحریم‌ها، تهدیدهای مالی) استفاده می‌کند، در حالی که ایران با کنترل خود بر تنگه‌های vital و گروه‌های نیابتی، دست بالا را دارد. جبهه‌ی اصلی در تنگه‌ی هرمز به تنش‌زدایی گراییده است اما یک میدان جنگ سنتی نیست—مسئله بیشتر درباره توقیف‌ها، تهدیدها و درگیری‌های غیرمستقیم است. ناوگان تندرو ایران و درخواست‌هایش برای «عوارض» فضایی مبهم و پرمخاطره ایجاد می‌کند که اشتباهات به راحتی می‌تواند به یک درگیری آشکار منجر شود. در منطقه، ایران حملات خود را به متحدان آمریکا مانند امارات متحده عربی آغاز کرده است، در حالی که اسرائیل برای کمک به دفاع از آنها وارد عمل شده و نشان می‌دهد که جنگ فراتر از درگیری‌های مستقیم آمریکا و ایران گسترش یافته است. این درگیری بیشتر با خطرپذیری و نه جنگ تمام عیار مشخص می‌شود، اما اشتباه در محاسبات می‌تواند این وضعیت را تغییر دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری فقط مربوط به رقابت ایران در برابر آمریکا نیست بلکه در حال دگرگون کردن خاورمیانه و بازارهای جهانی نفت است. تنگه هرمز به عنوان یک شریان حیاتی برای نفت شناخته می‌شود و هر گونه اختلال در آن می‌تواند منجر به افزایش شدید قیمت‌ها گردد، به طوری که همه چیز از قیمت بنزین گرفته تا هزینه مواد غذایی در سراسر جهان را تحت تأثیر قرار دهد. این جنگ همچنین باعث فشار بر اتحادهای ایالات متحده می‌شود، زیرا کشورهایی مانند فرانسه و دیگران ممکن است در برابر موضع سختگیرانه آمریکا مقاومت نشان دهند. از سوی دیگر، ایران با استفاده از روش‌های نوآورانه (و بحث‌برانگیز) برای دور زدن تحریم‌ها، مانند استفاده از ارز دیجیتال، می‌تواند برای دیگر کشورهای تحت فشار آمریکا، الگویی ایجاد کند. برای مردم عادی، این به معنای هزینه‌های بیشتر انرژی، عدم قطعیت در تجارت جهانی و افزایش خطر یک جنگ منطقه‌ای گسترده‌تر با вdrawing в کشورهای بیشتری است. هزینه انسانی این درگیری از هم‌اکنون در مکان‌هایی مانند ایران و امارات متحده عربی قابل مشاهده است، جایی که غیرنظامیان با پیامدهای بی‌ثباتی اقتصادی و درگیری مواجه هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            <ul><li>۲. **ایران**: استفاده از نیروی دریایی، نیروهای نیابتی خود (مانند حزب‌الله و حوثی‌ها) و قدرت اقتصادی (عوارض تنگه هرمز) برای مقابله با خواسته‌های آمریکا.</li><li>۳. **چین**: به دلیل حمایت احتمالی از خریدهای نفتی ایران از طریق پایانه‌ای، تحریم شده و نقشی که در زنده نگه داشتن اقتصاد ایران ایفا می‌کند، روشن شده است.</li><li>۴. **اسرائیل**: به شکل فعال از متحدان آمریکا همچون امارات دفاع می‌کند و از سامانه‌های دفاع موشکی (گنبد آهنین) استفاده می‌کند که نشان‌دهنده تقویت روابط عمیق با کشورهای عربی در برابر ایران است.</li><li>۵. **کشورهای خلیج فارس (امارات، عربستان سعودی)**: قربانیان حملات ایران هستند؛ امارات از حمایت نظامی اسرائیل برخوردار شده است.</li><li>۶. **اروپا (فرانسه و سایر کشورهای اتحادیه اروپا)**: تقسیم‌شده‌اند—برخی از متحدان بر دیپلماسی اصرار دارند، در حالی که برخی دیگر با آمریکا همسو می‌شوند.</li><li>۷. **روسیه**: احتمالاً از ایران در حوزه دیپلماسی حمایت کرده است، چرا که هر دو در مقابل نفوذ آمریکا مخالف هستند. سازمان ملل در حاشیه قرار گرفته است، زیرا آمریکا به صورت یکجانبه عمل می‌کند و مذاکرات به دلیل بی اعتمادی متقابل متوقف شده‌اند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            کنترل ایران بر تنگه هرمز—که 20 درصد از نفت جهان از آن عبور می‌کند—به این معناست که تهدیدات این کشور مبنی بر دریافت هزینه از کشتی‌ها می‌تواند قیمت نفت را به طرز چشمگیری افزایش دهد. هشدارهای ایالات متحده به shipperها و تحریم‌های جدید عدم قطعیت ایجاد کرده و معامله‌گران را نگران ساخته است. اگر ایران تعرفه‌ها را اعمال کند یا تنگه را تا حدی مسدود کند، قیمت نفت ظرف چند روز می‌تواند 20 تا 30 درصد یا بیشتر افزایش یابد، همان‌طور که در بحران‌های گذشته شاهد بوده‌ایم. این مسئله باعث آسیب به اقتصادهای جهانی خواهد شد، هزینه‌های بنزین، حمل‌ونقل و تورم را افزایش می‌دهد. کشورهایی مانند چین و هند که به نفت خاورمیانه وابسته هستند، بیش از همه تحت تأثیر قرار خواهند گرفت. حتی اگر محاصره‌ای رخ ندهد، صرف احساس риск می‌تواند باعث افزایش قیمت‌ها شود. این موضوع اهمیت دارد زیرا نفت رگ حیاتی اقتصادهای مدرن است—قیمت‌های بالاتر به معنای گرانی کالاهای اساسی، پروازها و تولید است و بودجه خانواده‌ها در سراسر جهان را تحت فشار قرار می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            آمریکا و ایران در یک بن‌بست خطرناک به سر می‌برند که در آن فشارهای اقتصادی (تحریم‌ها، سرکوب ارزهای دیجیتال) و جنگ‌های غیرمستقیم (نیروهای نیابتی، 'عوارض' تنگه هرمز) جای درگیری نظامی مستقیم را گرفته‌اند—حداقل برای اکنون. قیمت‌های نفت بزرگترین ریسک جهانی هستند: هرگونه اختلال در تنگه هرمز می‌تواند باعث افزایش شدید قیمت‌ها شده و نه تنها رانندگان آمریکایی بلکه تولیدکنندگان آسیایی را تحت تأثیر قرار دهد. آمریکایی‌ها از هزینه‌های جنگ خسته شده‌اند و ایرانی‌ها تحت فشار اقتصادی قرار دارند، به این معنی که فشارهای داخلی می‌تواند هر دو طرف را مجبور کند تا به دنبال یک توافق باشند یا تشدید بیشتری صورت بگیرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            <ul><li>استفاده ابز creative از ارزهای دیجیتال توسط ایران برای دور زدن تحریم‌ها نوآورانه است اما خطرناک، چراکه نشان‌دهنده نحوه سازگاری کشورها با فشارهای مالی است.</li><li>همکاری تاریخی اسرائیل با امارات متحده عربی در زمینه فناوری نظامی (گنبد آهنین) نشانه‌ای از همکاری‌های فزاینده عرب و اسرائیل در برابر ایران است.</li><li>رد پیشنهاد صلح «تعدیل‌شده» ایران توسط ایالات متحده نشان می‌دهد که حتی کوچک‌ترین سازش‌های احتمالی ایران نیز برای دولت ترامپ کافی نیست، و این امر تردیدهایی درباره موفقیت دیپلماسی به وجود می‌آورد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            هیچ تغییر و تحولی مهمی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
