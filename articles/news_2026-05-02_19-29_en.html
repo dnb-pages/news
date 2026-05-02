@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-05-02 19:31</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-05-02 19:31</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Thirteen killed in Israeli strikes on southern Lebanon, health ministry says </span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 16:51</strong></span>
+                </div>
+                <p class='summary'>Four women and a child are among the dead, as fighting between Israel and Iran-backed Hezbollah continues despite a ceasefire.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cd7pn0zywggo?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Devastation of Southern Lebanon continues under ‘ceasefire’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 18:05</strong></span>
+                </div>
+                <p class='summary'>At least 41 people killed as Israel launches 50 airstrikes on southern Lebanon in 24 hours.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/2/devastation-of-southern-lebanon-continues-under?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Prices surge, jobs disappear as war strains Iran’s economy</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 16:58</strong></span>
+                </div>
+                <p class='summary'>New Supreme Leader Mojtaba Khamenei says the country must defeat its enemies in an economic and cultural struggle, as we</p>
+                <div class='link'><a href='https://www.aljazeera.com/economy/2026/5/2/prices-surge-jobs-disappear-as-war-strains-irans-economy?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>IDF admits damaging Catholic convent in southern Lebanon, denies site demolished</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 19:04</strong></span>
+                </div>
+                <p class='summary'><p>Army says Hezbollah fired rockets from compound 'multiple times' during war, publishes photo of intact building; Catholic Church in Lebanon denies compound was used by terror group</p> <p>The post <a href="https://www.timesofisrael.com/idf-admits-damaging-catholic-convent-in-southern-lebanon-denies-site-demolished/">IDF admits damaging Catholic convent in southern Lebanon, denies site demolished</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/HHUVQcUXEAA-k0J-e1777745471802-1024x640.jpg" title="IDF admits damaging Catholic convent in southern Lebanon, denies site demolished" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/idf-admits-damaging-catholic-convent-in-southern-lebanon-denies-site-demolished/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Hezbollah slams Lebanese TV for ‘Angry Birds’ clip mocking leader</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 17:28</strong></span>
+                </div>
+                <p class='summary'><p>Naim Qassem and his operatives depicted in video shared by LBCI channel as birds from popular video game as they fight IDF, whose members are portrayed as green pigs</p> <p>The post <a href="https://www.timesofisrael.com/hezbollah-slams-lebanese-tv-for-angry-birds-clip-mocking-leader/">Hezbollah slams Lebanese TV for ‘Angry Birds’ clip mocking leader</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/DUAL-3-1024x640.jpeg" title="Hezbollah slams Lebanese TV for ‘Angry Birds’ clip mocking leader" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/hezbollah-slams-lebanese-tv-for-angry-birds-clip-mocking-leader/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Senior Iranian officer warns war with US ‘likely’ after Trump rebuffs latest proposal</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 17:00</strong></span>
+                </div>
+                <p class='summary'><p>US president says Navy 'like pirates' carrying out blockade of Iranian ports, which the Pentagon reportedly estimates has cost Tehran $4.8 billion in oil revenues</p> <p>The post <a href="https://www.timesofisrael.com/senior-iranian-officer-warns-war-with-us-likely-after-trump-rebuffs-latest-proposal/">Senior Iranian officer warns war with US ‘likely’ after Trump rebuffs latest proposal</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26122373189543-e1777738202725-1024x640.jpg" title="Senior Iranian officer warns war with US ‘likely’ after Trump rebuffs latest proposal" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/senior-iranian-officer-warns-war-with-us-likely-after-trump-rebuffs-latest-proposal/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>What to Know About the Mideast Standoff</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-02 19:22</strong></span>
+                </div>
+                <p class='summary'>Negotiations to end the war are at an impasse over Iran’s nuclear program and the Strait of Hormuz, which remains mostly shut.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/04/26/world/middleeast/us-iran-peace-talks-pakistan.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - May 2, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Israel and Iran-backed Hezbollah are locked in escalating cross-border violence in southern Lebanon despite an unofficial ceasefire, while Iran faces severe economic strain. Diplomatic efforts to ease tensions are failing, risking a wider regional conflict involving the U.S.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Israel and Hezbollah have traded deadly strikes in southern Lebanon despite claims of a ceasefire, killing dozens, including civilians. Meanwhile, Iran's economy is collapsing under sanctions and war costs, and tensions with the U.S. are rising sharply after Iran's Supreme Leader warned of an existential struggle. The U.S. Navy's blockade of Iranian ports has cost Iran billions in oil revenues.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to worsen before it gets better. Ceasefire violations will continue as both sides harden their positions, raising the risk of a full-scale war between Israel and Hezbollah, or even between Iran and the U.S. Economic collapse in Iran could trigger internal unrest or desperate military actions, while failed U.S.-Iran negotiations leave little room for diplomatic breakthroughs.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['April 25, 2026: U.S. and Iran negotiations stall over Iran’s nuclear program and the Strait of Hormuz.', 'April 30, 2026: U.S. President Trump rejects Iran’s latest proposal; a senior Iranian officer warns war with the U.S. is ‘likely.’', 'May 1-2, 2026: U.S. Navy blockade of Iranian ports begins, estimated to cost Iran $4.8 billion in oil revenues. Israel launches airstrikes in southern Lebanon, killing 13, including 4 women and a child. Hezbollah retaliates with rocket fire.', 'May 2, 2026: Israel admits accidentally damaging a Catholic convent in southern Lebanon, claiming Hezbollah used it for military purposes. Hezbollah criticizes a Lebanese TV clip mocking its leader, calling it disrespectful. Iran’s Supreme Leader Mojtaba Khamenei declares a struggle against Iran’s enemies on cultural and economic fronts.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict is moving toward a dangerous escalation. Israel appears determined to weaken Hezbollah, while Iran is unlikely to back down due to domestic pressures and its proxy network. A broader war could draw in Lebanon, Syria, and regional powers like Saudi Arabia or Turkey. Economically, Iran faces collapse unless sanctions ease, increasing the risk of internal upheaval. The U.S. is unlikely to lift sanctions without concessions on Iran’s nuclear program or regional influence.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The fighting in southern Lebanon is intense and destructive, with airstrikes and rocket fire causing civilian casualties and infrastructure damage. Both sides are exchanging blows at a high tempo, despite ceasefire claims. The conflict is asymmetrical, with Israel’s superior air power facing Hezbollah’s guerrilla tactics. The human toll is rising, with hospitals overwhelmed and thousands displaced. The risk of accidental escalation is high.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This is a critical moment for the Middle East. A broader war could destabilize the entire region, disrupt global oil supplies, and draw in major powers. The failure of diplomacy suggests leaders on all sides are prioritizing hardline positions over compromise. Iran’s economic crisis could force it to take reckless actions, while Israel’s military campaigns risk entangling it in a quagmire. The humanitarian cost in Lebanon and Gaza is already severe, with no end in sight.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. supports Israel militarily and economically, enforcing a blockade on Iran. Russia and China may provide diplomatic cover for Iran through international forums like the UN. Regional actors like Saudi Arabia and Turkey are nervously observing, wary of both Iranian expansion and Israeli military actions. Hezbollah is backed by Iran, while Israel enjoys strong U.S. support. The international community’s ability to mediate is limited by deep divisions.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are rising sharply due to the crisis in the Strait of Hormuz and the shutdown of Iranian ports, a key oil export route. The U.S. Navy blockade is disrupting Iran’s ability to export oil, tightening global supply. Additionally, potential conflicts in Lebanon or Israel could damage oil infrastructure or shipping routes. Higher oil prices will increase inflation globally, straining economies still recovering from the pandemic. Countries like India and China, which rely on Iranian oil, may face shortages or higher costs.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            A fragile ceasefire in Lebanon is collapsing, risking a wider war between Israel and Hezbollah that could draw in regional powers. Iran’s economy is on the brink of collapse, increasing the chance of either internal unrest or desperate military actions. U.S.-Iran tensions are escalating toward the possibility of direct conflict, with global oil supplies and security at risk.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The cultural front's involvement, with Hezbollah protesting a satirical Lebanese TV clip, highlights the blending of modern pop culture with geopolitical tensions. The Catholic Church’s denial that Hezbollah used a convent for military purposes adds a layer of complexity to accountability.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
