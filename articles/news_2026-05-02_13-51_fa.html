@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-02 13:55</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-02 13:55</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>وزارت بهداشت لبنان اعلام کرد که در اثر حملات اسرائیل به جنوب این کشور، ۱۳ نفر کشته شدند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (هسته اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۲T۱۱:۰۳:۴۰Z</strong></span>
+                </div>
+                <p class='summary'>چهار زن و یک کودک در میان کشته شدگان هستند، چراکه درگیری بین اسرائیل و حزب‌الله لبنان وابسته به ایران علیرغم آتش‌بس ادامه می‌یابد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cd7pn0zywggo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>نگاشت اقتصاد جهانی: بانک مرکزی اروپا در حال گرایش به افزایش نرخ بهره است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل – فایننشیال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ – ساعت ۱۵:۴۲:۳۴ به وقت تهران</strong></span>
+                </div>
+                <p class='summary'>بانک مرکزی اروپا به نظر می‌رسد که در صورت عدم وجود تحولات مثبت در قیمت‌های انرژی و پایان جنگ ایران، از ماه آینده نرخ بهره را افزایش دهد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/charting-the-global-economy-ecb-is-leaning-toward-rate-hikes' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>حمله‌های هوایی اسرائیل ۱۰ نفر را در جنوب لبنان کشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۳T۱۲:۵۵:۳۴Z</strong></span>
+                </div>
+                <p class='summary'>در تا ۱۷ آوریل، موشک‌باران و حملات هوایی چند شهر را درگیر کرد، در حالی که 'آتش‌بس' برقرار شد و حزب‌الله لبنان قول ادامه حملات خود را داد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/2/israeli-air-strikes-kill-10-people-in-southern-lebanon?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ترامپ می‌گوید نیروی دریایی ایالات متحده برای اعمال محاصره ایران «مثل دزدان دریایی» رفتار می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۳ ساعت ۱۵:۰۴:۱۲</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده می‌گوید محاصره دریایی تنگه هرمز «یک تجارت بسیار سودآور است».</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/2/trump-says-us-navy-acting-like-pirates-to-enforce-iran-blockade?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>بحران دارویی در سودان تشدید می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۲-۱۲T۱۲:۲۲:۵۵Z</strong></span>
+                </div>
+                <p class='summary'>آخرین جنگ در خاورمیانه دارای پیامدهای گسترده‌ای است که فراتر از این منطقه نیز کشیده می‌شود، از جمله در کشورهایی که قبلاً بر اثر منازعات داخلی خود ویران شده‌اند. سودان نیز از جمله کشورهایی است که بیشترین آسیب را دیده است. سازمان‌های امدادی گزارش می‌دهند که درگیری مرتبط با ایران باعث disruption در مسیرهای کلیدی کشتیرانی شده و توانایی آنها در ارائه غذا و دارو به میلیون‌ها نفر نیازمند در سراسر جهان را به شدت محدود کرده است. امیلی بوyle گزارش می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/sudan-s-medicine-crisis-worsens' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ترامپ از پیشنهاد تهران «راضی نیست»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۲-۱۲T12:20:42Z</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ روز جمعه گفت که او از آخرین پیشنهاد ایران برای مذاکرات صلح راضی نیست. در همین حال، یک مقام ارشد ایرانی پس از آنکه واشنگتن پیشنهاد latest 될 مذاکرات را رد کرد، گفت که درگیری‌های تازه میان ایالات متحده و ایران «محتمل» است. این دو کشور همچنان در بن‌بست هستند زیرا آتش‌بس شکننده‌ای که هم‌اکنون سه هفته از آن می‌گذرد، همچنان برقرار است. شارلوت لام گزارش می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/ترامپ-از-پیشنهاد-تهران-راضی-نیست' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ایالات متحده قصد دارد ۵۰۰۰ سرباز خود را از آلمان خارج کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (محلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۳  ساعت ۱۶:۴۴:۳۳</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده در حال پیشبرد برنامه دونالد ترامپ برای کاهش حضور نظامی خود در آلمان است. وزارت دفاع ایالات متحده روز گذشته جمعه اعلام کرد که حدود 5 هزار سرباز آمریکایی - تقریباً 14 درصد از نیروهای فعال آمریکایی مستقر در آن کشور - ظرف یک سال آینده از این کشور عضو ناتو خارج خواهند شد. این اعلامیه پس از اظهارات صدراعظم آلمان مبنی بر اینکه ایران دارد ایالات متحده را «تحقیر» می‌کند، صورت می‌گیرد؛ اظهارنظرهایی که واکنشی تندی از سوی رئیس‌جمهور ایالات متحده را در پی داشت. دنیل کویینلان گزارش بیشتری ارائه می‌کند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/ایالات-متحده-5000-نفر-از-سربازان-خود-را-از-آلمان-برخواهد-گرداند-1' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ناتو در تلاش برای اظهارنظر است، زیرا ایالات متحده قصد دارد ۵۰۰۰ سرباز خود را از آلمان خارج کند؛ در حالی که تنش میان آمریکا و اروپا در حال افزایش است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمزِ اسرائیل (منطقه محلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۳ ۱۳:۲۵</strong></span>
+                </div>
+                <p class='summary'><p>ترامپ می‌گوید که در نظر دارد، به خاطر مخالفت آنان با جنگ علیه ایران، نیروهای آمریکایی مستقر در ایتالیا و اسپانیا را نیز عقب بکشد. ناتو می‌گوید این موضوع نشان‌دهنده نیاز اروپا به سرمایه‌گذاری در زمینه دفاع است</p> <p>این پست <a href="https://www.timesofisrael.com/nato-seeks-clarity-as-us-to-withdraw-5000-troops-from-germany-amid-rift-with-europe/">«ناتو به دنبال وضوح است، چون آمریکا ۵ هزار سرباز را از آلمان خارج می‌کند»</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تلخبار اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/03/AFP__20260303__99RZ228__v1__HighRes__GermanChancellorMerzVisits-1024x640.jpg" title="ناتو به دنبال وضوح است، چون آمریکا ۵ هزار سرباز را از آلمان خارج می‌کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/nato-seeks-clarity-as-us-to-withdraw-5000-troops-from-germany-amid-rift-with-europe/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>خطوط هواپیمایی اسپرایت، متعلق به ایالات متحده، با افزایش ناگهانی قیمت سوخت ناشی از جنگ ایران، اعلام ورشکستگی فوری کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Times of Israel (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ ساعت ۱۶:۴۰:۲۴</strong></span>
+                </div>
+                <p class='summary'><p>در حالی که از مسافران خواسته شد تا به فرودگاه نروند، شرکت هواپیمایی ارزان قیمت آمریکایی اعلام کرد که به دلیل "افزایش قیمت نفت و فشارهای دیگر" پس از ناکامی در securing کمک مالی پیشنهادی ترامپ، به طور ناگهانی فعالیت خود را متوقف می‌کند.</p> <p>این پست در <a href="https://www.timesofisrael.com/uss-spirit-airlines-goes-bankrupt-amid-iran-war-price-fuel-surge/">شرکت هواپیمایی آمریکایی Spirit Airlines تحت تأثیر افزایش قیمت سوخت ناشی از جنگ ایران اعلام ورشکستگی کرد</a> برای اولین بار در <a href="https://www.timesofisrael.com">The Times of Israel</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26121589164057-e1777705269820-1024x640.jpg" title="شرکت هواپیمایی آمریکایی Spirit Airlines تحت تأثیر افزایش قیمت سوخت ناشی از جنگ ایران اعلام ورشکستگی کرد" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/uss-spirit-airlines-goes-bankrupt-amid-iran-war-price-fuel-surge/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>چگونه آلمان ممکن است خشم ترامپ نسبت به ایران را دست کم گرفته باشد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل (نیویورک تایمز)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۲ ساعت ۱۷:۵۴:۲۵</strong></span>
+                </div>
+                <p class='summary'>آلمان به نظر می‌رسید به تهدیدهای رئیس‌جمهور ترامپ مبنی بر خارج کردن نیروهای این کشور از آلمان اعتقادی نداشت. اما پس از اعلام رسمی، برلین پاسخ سنجیده‌ای ارائه کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/02/world/europe/germany-trump-merz-troops-withdrawal.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>آلمان و اروپا مشکلات بزرگتری از خروج نیروهای آمریکایی در برابر ترامپ دارند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۳ ساعت ۱۷:۵۱</strong></span>
+                </div>
+                <p class='summary'>حاضر شدن ترامپ برای خارج کردن نیروهای آمریکایی از آلمان موجب بروز شکافی می‌شود که اقتصاد و امنیت اروپا را با خطر جدی مواجه خواهد کرد.</p>
+                <div class='link'><a href='https://www.wsj.com/world/europe/u-s-troop-withdrawal-expands-yawning-rift-between-u-s-and-europe-2f5c49cc' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>ایران در میان کاهش سهمیه‌ی نفت و فشار فزاینده‌ی ذخیره‌سازی، برای مقاومت در برابر محاصره‌ی آمریکا تلاش می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل مالي پست (Financial Post)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۳ ساعت ۱۷:۵۴:۳۱</strong></span>
+                </div>
+                <p class='summary'>با تشدید محاصره دریایی ایالات متحده در تنگه هرمز بر تجارت نفتی ایران، صادرات در هفته‌های اخیر به شدت کاهش یافته و ذخایر به سرعت در حال پر شدن است. به گفته یک مقام ارشد ایرانی، این کشور از همین حالا تولید نفت را محدود کرده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-juggles-oil-cuts-and-storage-strain-to-resist-us-blockade' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۲ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های میان اسرائیل، ایالات متحده و گروه‌های حامی ایران مانند حزب‌الله به رغم آتش‌بس شکننده، به درگیری‌های خشونت‌آمیز در لبنان تصاعد یافته است. ایالات متحده همچنان در حال تحکیم محاصره دریایی علیه ایران است که منجر به فشار بر عرضه جهانی نفت و پیامدهای اقتصادی گسترده شده است. در همین حال، روابط ایالات متحده و اروپا بر سر استقرار نظامی و واکنش‌ها به این درگیری روبه تجزیه است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            درگیری‌های مداوم بین اسرائیل و حزب‌الله لبنان مورد حمایت ایران در جنوب لبنان ادامه دارد، با وجود اعلام آتش‌بس در ۱۷ آوریل، حملات هوایی اسرائیل غیرنظامیان را کشته است. ایالات متحده در حال اجرای یک محاصره‌های دریایی علیه ایران است که باعث اختلال در تجارت نفت از طریق تنگه هرمز می‌شود. رئیس‌جمهور ترامپ متحدان آمریکا مانند آلمان و اسپانیا را به خاطر حمایت نکردن از جنگ علیه ایران مورد انتقاد قرار داده است که منجر به خروج نیروهای نظامی و افزایش تنش‌ها در داخل ناتو شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            با وجود možné همبستگی موقت، درگیری احتمالاً ادامه خواهد یافت و حتی ممکن است خشونت‌های پراکنده نیز رخ دهد. تلاش‌های دیپلماتیک در حالت توقف باقی مانده است؛ زیرا هم ایران و هم ایالات متحده پیشنهادهای صلح یکدیگر را رد می‌کنند. پیامدهای اقتصادی، از جمله افزایش قیمت سوخت و اختلالات زنجیره تأمین، به احتمال زیاد بدتر خواهد شد و بر بازارهای جهانی و مناطقی آسیب‌پذیر مانند سودان تأثیر خواهد گذاشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. ۱۷ آوریل ۲۰۲۶: آتش‌بس شکننده بین اسرائیل و حزب‌الله اعلام شد.</li><li>۲. اوایل مه ۲۰۲۶: جنگنده‌های اسرائیلی حداقل ۲۳ نفر از جمله غیرنظامیان را در جنوب لبنان، علی‌رغم آتش‌بس، کشته‌اند.</li><li>۳. ایالات متحده همچنان محاصره دریایی تنگه هرمز را برای محدود کردن صادرات نفتی ایران ادامه می‌دهد.</li><li>۴. ایران به دلیل محدودیت‌های ذخیره‌سازی، شروع به کاهش تولید نفت کرده است.</li><li>۵. ترامپ به متحدان ایالات متحدهCriticizes و منجر به برنامه‌ریزی برای خارج کردن ۵٬۰۰۰ نظامی از آلمان و بررسی ادامه برداشت نیرو از ایتالیا و اسپانیا می‌شود.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            مسیر بلندمدت نشان‌دهنده یک بن‌بست طولانی میان ایران، نیروهای نیابتی آن و ائتلاف ایالات متحده و اسرائیل است، به‌گونه‌ای که راه‌حل روشنی در کار نیست. چگونگی نظامی ایالات متحده در اروپا در حال تضعیف است که می‌تواند به کاهش نفوذ آن و افزایش آسیب‌پذیری متحدانش منجر شود. از نظر اقتصادی، این درگیری احتمالاً به افزایش هزینه‌های انرژی در سطح جهانی می‌انجامد که تأثیرات زنجیره‌ای آن بر تجارت و بحران‌های انسان‌دوستانه در مناطق آسیب‌پذیر قابل توجه خواهد بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            نبردها همچنان با شدت پایین اما مرگبار ادامه دارد، که شامل جنگ نامتقارن بین اسرائیل/آمریکا و حزب‌الله تحت حمایت ایران است. غیرنظامیان لبنان در حال افزایش تلفات هستند و آتش‌بس عملاً در صحنه نبرد نادیده گرفته می‌شود. محاصره فشار اقتصادی ایجاد می‌کند، اما توانایی ایران برای واکنش متقابل به دلیل صادرات نفت محدودش تحت تأثیر قرار گرفته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال دگرگون کردن بازارهای انرژی جهانی، فشار آوردن بر اتحادها و تشدید بحران‌های بشردوستانه است. رویارویی ایالات متحده و ایران، خطر گسترش یافتن به یک جنگ منطقه‌ای گسترده‌تر را به همراه دارد، در حالی که امنیت اروپا به دلیل اختلافات درون ناتو روز به روز در معرض خطر قرار می‌گیرد. اقتصادهای جهانی نیز تحت فشار قیمت‌های بالاتر سوخت و مختل شدن زنجیره‌های تأمین قرار دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            <ul><li>۱. ایالات متحده و اسرائیل: اعمال فعالانه محاصره و انجام حملات به حزب‌الله.</li><li>۲. ایران: حمایت از حزب‌الله و تلاش برای دور زدن تحریم‌ها.</li><li>۳. حزب‌الله: پرتاب موشک به سمت اسرائیل/لبنان در پاسخ.</li><li>۴. آلمان/اسپانیا/ایتالیا: انتقاد از اقدامات ایالات متحده و مواجهه با خروج نیروهای نظامی.</li><li>۵. سازمان‌های بشردوستانه مختلف: مواجهه با اختلال در تأمین کمک‌ها که مناطق سودان و سایر مناطق را تحت تأثیر قرار داده است.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت احتمالاً به دلیل تحریم‌های ایالات متحده که صادرات نفتی ایران را کاهش می‌دهد، ادامه خواهد داشت که ایران یکی از اصلی‌ترین تأمین‌کنندگان جهانی نفت است. تنگه هرمز حدود ۲۰٪ از عرضه نفت جهان را مدیریت می‌کند، بنابراین هرگونه اختلال در این منطقه باعث افزایش قیمت‌ها می‌شود. افزایش هزینه‌های سوخت می‌تواند رشد اقتصادی جهانی را کند کرده و تورم را تشدید کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            درگیری اسرائیل و حزب‌الله در لبنان، علیرغم آتش‌بس‌ها، در حال تشدید است و غیرنظامیان بهای آن را می‌پردازند. تحریم‌های تحت رهبری ایالات متحده علیه ایران، عرضه‌های نفتی جهانی را مختل کرده و منجر به افزایش قیمت سوخت و بی‌ثباتی اقتصادی شده‌است. اقدامات ایالات متحده در حال فشار آوردن به روابط آن با کشورهای اروپایی است، پیمان ناتو را تضعیف می‌کند و ریسک‌های امنیتی اروپا را افزایش می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            حجم کاهش نظامی ایالات متحده در اروپا غیرمنتظره بود، همان‌طور که انتقادهای عمومی ترامپ از متحدانی مانند آلمان نیز چنین بودند. پیامدهای سریع اقتصادی، از جمله ورشکستگی شرکت‌های هوایی، نشان می‌دهد که چگونه این درگیری به سرعت اثرات جهانی خود را تشدید می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            بحران بشردوستانه در سودان به دلیل مختل‌شدن مسیرهای حمل‌ونقل در حال وخیم‌تر شدن است که باعث محدودیت دسترسی به غذا و دارو می‌شود. این امر نشان می‌دهد که چگونه درگیری‌های مرتبط با ایران پیامدهایی فراتر از خاورمیانه دارد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
