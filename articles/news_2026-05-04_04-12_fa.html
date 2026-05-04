@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-04 04:16</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-04 04:16</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ اعلام کرد ایالات متحده آغازگرEscort  کردن کشتی‌ها در تنگه هرمز خواهد بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۴T۰۳:۴۷:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده دونالد ترامپ ماموریتی دریایی برای اسکورت کشتی‌های stranded در تنگه هرمز اعلام کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/4/trump-says-us-to-begin-escorting-ships-in-strait-of-hormuz?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>قیمت نفت تثبیت شد؛ طرح ترامپ برای تنگه هرمز نتوانست بازار را آرام کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلى)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۴ ۰۳:۳۷:۰۹</strong></span>
+                </div>
+                <p class='summary'>بهای نفت برنت در واکنش به اعلام «عملیات آزادی»، پروژه‌ای که دونالد ترامپ آن را معرفی کرده، چندان تغییری نداشته است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/fa/economy/2026/5/4/oil-prices-flat-as-trumps-plan-for-strait-of-hormuz-fails-to-move-markets?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>رهبران اروپا و کانادا در ارمنستان نشستی برگزار کردند در بحبوحه نوسانات سیاست‌های ایالات متحده</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۵ ساعت ۰۱:۵۳:۴۷</strong></span>
+                </div>
+                <p class='summary'>رهبران اروپایی و نخست‌وزیر کانادا، مارک کارنی، روز دوشنبه در ارمنستان برای حضور در اجلاس جامعه سیاسی اروپا که بر امنیت و تنش‌های ژئوپلیتیکی متمرکز است، گرد هم می‌آیند؛ در حالی‌که ابهام‌ها بر سر سیاست‌های ایالات متحده تحت ریاست‌جمهوری دونالد ترامپ افزایش یافته است. این مذاکرات که در ایروان برگزار می‌شوند، در شرایطی صورت می‌گیرند که تنش‌هایی در خصوص بحران ایران، جنگ در اوکراین و روابط فراترآتلانتیکی در حال تغییر وجود دارد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/اروپا/20260504-اروپا-کانادا-رهبران-در-ارمنستان-در-پی-ابهام-در-مورد-سیاست-آمریکا-ترامپ-روسیه-اوکراین-جنگ-ایران-ناتو' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>چگونه رئیس بازدارنده تحریم‌های ایران ازRow مرگ به کریپتو رفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۵ ساعت ۰۶:۳۰:۰۰</strong></span>
+                </div>
+                <p class='summary'>بابک زنجانی بعد از محکومیت به اعدام یک دهه پیش، در تلاش‌های ایران برای دور زدن تحریم‌ها در خط مقدم قرار گرفته است.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/how-irans-chief-sanctions-buster-went-from-death-row-to-crypto-51424fe7' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>سهام بازارهای نوظهور با افزایشی در بخش فناوری به بالاترین رکورد می‌رسد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فایننشال پست (آنالیز)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۱۴ ساعت ۰۷:۴۹:۱۰</strong></span>
+                </div>
+                <p class='summary'>دارایی‌های بازارهای نوظهور افزایش یافت و احساسات بازار با خبرِ سوددهی قویِ شرکت‌های فناوری و امید به ازسرگیری حمل و نقل از طریق تنگه هرمز تقویت شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/emerging-market-stocks-rise-to-record-high-on-tech-boost' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'> سودان: از هرمز تا خط مقدم گرسنگی؛ تأثیر اقتصادی درگیری‌های خاورمیانه بر شش زمینه آسیب‌پذیر</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/ فرودین/ 14</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشورها: سودان، اتیوپی، لبنان، میانمار، پاکستان، سومالی</div> <div class="tag source">منبع: کورپ Mercy Corps</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/03/60/036023d6-40c2-4fe8-865d-d836cec4c14c.png" alt></p> <p>لطفاً به فایل پیوست مراجعه کنید.</p> <p>دو ماه پس از وقوع درگیری‌ها در خاورمیانه و بسته شدن عملاً تنگهٔ هرمز، یکی از مسیرهای حیاتی جریان انرژی جهانی، شوکی در اقتصادهای سراسر جهان ایجاد شده است. تأثیرات بر کشورهای بزرگ واردکننده و صادرکننده سوخت به خوبی ثبت شده است. آنچه کمتر دیده می‌شود، آسیب‌پذیری کشورهای درگیر با بحران‌های اقتصادی و انسانی است و چگونگی تشدید این شوک‌ها به آسیب‌پذیری‌های موجود.</p> <p>در شش کشور مورد بررسی — سودان، سومالی، اتیوپی، پاکستان، میانمار و لبنان — تأثیرات بر آسیب‌پذیرترین گروه‌ها هم‌اکنون مشهود است و پیش‌بینی می‌شود با وجود هرگونه حل دیپلماتیک و تغییرات حاصل در بازارهای جهانی، این وضعیت عمیق‌تر شود. شوک‌های اقتصادی از طریق کانال‌های کلیدی انتقال — کود، خرده‌فروشی و سوخت مصرفی، حمل‌ونقل تجاری و بیمه، ارز و قدرت خرید، و حواله‌های ارزی — در حال گسترش است و در صورت تداوم درگیری، تهدیدهای بیشتری متوجه خانوارهایی خواهد شد که از جانب کارگران خارجی در کشورهای مجلس اقدام شوروی سابق (خلیج) پول دریافت می‌کنند.</p> <p>هر یک از این کشورها پیش از وقوع جنگ در خاورمیانه نیز با بحران‌های انسانی دست و پنجه نرم می‌کردند و بسیاری از آن‌ها توانایی جذب شوک‌های بیشتر را ندارند. حتی کشورهایی که از ذخایر مالی بیشتری برخوردارند، در صورت تداوم اختلالات، پایداری اقتصادی بلندمدت خود را از دست داده و دستاوردهای توسعه‌ای سخت خود را به خطر خواهند انداخت. این موضوع با کاهش تاریخی کمک‌های بشردوستانه همزمان شده است که تیم‌های کشورها را با هزینه‌های بالاتر تحویل و بودجهٔ ضعیف‌تری نسبت به سال‌های اخیر روبه‌رو کرده است.</p> <p>همزمانی این شوک‌ها به این معناست که ناامنی غذایی در این شش کشور در نیمه دوم سال ۲۰۲۶ و تا سال ۲۰۲۷ بدتر خواهد شد. سومالی، سودان، پاکستان و اتیوپی در حال ورود به فصل کاشت محصولات اصلی هستند که برای امنیت غذایی جمعیتشان حیاتی‌اند، اما تأمین سوخت مورد نیاز برای آبیاری، حمل‌ونقل و کود — که مستقیماً بر عملکرد و بازار دهی تأثیر می‌گذارند — دچار اختلال شده است. آثار منفی بر امنیت غذایی آینده از همین حالا در برداشت محصولات پیش رو مشهود است، چرا که کشاورزان در حال تصمیم‌گیری دشوار در خصوص کاهش مصرف کود، تغییر نوع محصول یا کاشت در زمین‌های کوچک‌تر هستند.</p> <p>اکنون زمان اقدام فرارسیده که هم تأثیرات شوک‌های منتقل شده و هم آنچه که هنوز قابل پیشگیری است، مدیریت شوند. این گزارش شواهدی از تأثیرات پیش‌رو بر شش کشور مورد بررسی، دورنمای ماه‌های آتی و اقداماتی ارائه می‌کند که بدون تأخیر در حل و فصل‌های دیپلماتیک، اجرای آن‌ها حیاتی هستند.</p>
+                <div class='link'><a href='https://reliefweb.int/fa/report/sudan/hormuz-frontlines-hunger-middle-east-conflicts-economic-reach-six-fragile-contexts' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۴ مه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنگه هرمز، یک مسیر حیاتی حمل و نقل نفت، به نقطه بحرانی در تنش‌های فزاینده میان ایران و قدرت‌های غربی تبدیل شده است. ایالات متحده با اعزام کشتی‌ها برای اسکورت کشتی‌های تجاری، involvement خود را تشدید می‌کند، در حالی که اقتصاد ایران به خاطر تحریم‌ها تحت فشار شدید قرار دارد. این درگیری، بی‌ثباتی بازارهای جهانی را تشدید کرده و امنیت غذایی کشورهای آسیب‌پذیر وابسته به واردات مواد غذایی از خاورمیانه را تهدید می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            ایالات متحده اعلام کرد که پس از اقدامات ایران که منجر به اختلال در حمل و نقل ماهیگیری در منطقه شد، آغاز به اسکورت کشتی‌های تجاری در تنگه هرمز خواهد کرد. ایران به دلیل تحریم‌ها تحت فشار اقتصادی شدیدی قرار گرفته است که آن را بر آن داشته است تا راه‌های خلاقانه‌ای برای دور زدن این محدودیت‌ها پیدا کند، از جمله استفاده از ارزهای دیجیتال و نوآوری‌های تکنولوژیک. در همین حال، تنش‌ها در سطح جهانی در حال افزایش است و بحران‌های انسانی در کشورهایی که به تجارت خاورمیانه وابسته هستند، در حال عمیق‌تر شدن است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سربرگ</h3>
+            تنش‌ها احتمالاً تشدید خواهد شد زیرا هم ایالات متحده و هم ایران بر مواضع خود سخت‌گیرانه‌تر می‌شوند. ایالات متحده به احتمال زیاد حضور دریایی خود را گسترش خواهد داد تا ایران را بازدارند، در حالی که ایران ممکن است به راهبردهای نامتقارن خود مانند سایبر‌حملات یا درگیری‌های نیابتی ادامه دهد. تلاش‌های دیپلماتیک ممکن است دچار توقف شود و منجر به ناپایداری طولانی‌مدت گردد. بازارهای نفت نیز ممکن است در حین تداوم بحران بی‌ثبات بمانند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. اوایل سال ۲۰۲۵: افزایش تنش‌ها بین ایالات متحده و ایران به دلیل برنامهٔ هسته‌ای و نفوذ منطقه‌ای ایران.</li><li>۲. اواخر سال ۲۰۲۵: ایران تلاش‌های خود را برای دور زدن تحریم‌ها از طریق رمزارزها و شبکه‌های تجاری مخفی بیشتر می‌کند.</li><li>۳. اوایل سال ۲۰۲۶: ایران با اشاره به تحریم‌ها و فشارهای غرب، تردد کشتیرانی در تنگهٔ هرمز را مختل می‌کند.</li><li>۴. ۴ مه ۲۰۲۶: ایالات متحده مأموریت حفاظت از کشتی‌های تجاری (پروژه آزادی) را اعلام می‌کند.</li><li>۵. افزایش قیمت نفت و ناپایداری اقتصادی در کشورهای آسیب‌پذیر آغاز به ظهور می‌گذارند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این درگیری احتمالاً وارد یک مرحله طولانی‌مدت بدون یک راه‌حل روشن خواهد شد. ایران به دنبال روش‌هایی برای دور زدن تحریم‌ها در عین حال اجتناب از رویارویی نظامی مستقیم خواهد بود. ایالات متحده احتمالاً حضور دریایی خود را برای securing shipping routes حفظ خواهد کرد که ممکن است منجر به درگیری‌های محدود شود. تلاش‌های دیپلماتیک به سختی خواهند توانست به پیشرفتی دست یابند و این امر منجر به تداوم عدم قطعیت اقتصادی جهانی خواهد شد. هرچه درگیری بیشتر ادامه یابد، خطر بی‌ثباتی گسترده‌تر منطقه‌ای بیشتر خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری در حال حاضر عمدتاً جنبه‌های اقتصادی و فیزیکی (یعنی دربرگیرنده اقدامات عملی) دارد. تاکتیک‌های ایران شامل مختل کردن حمل و نقل دریایی، حملات سایبری و حمایت از گروه‌های نیابتی در منطقه می‌باشد. پاسخ آمریکا نیز متمرکز بر تأمین امنیت lanes حمل و نقل دریایی و بازدارندگی از aggression بیشتر ایران است. اگرچه این درگیری هنوز به سطح یک جنگ تمام‌عیار نرسیده است، اما دارای پتانسیل بالای escalation در صورت وقوع اشتباهاتی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری، آسیب‌پذیری زنجیره‌های تأمین جهانی انرژی و مواد غذایی را آشکار می‌کند. تنگه هرمز برای حمل و نقل حدود ۲۰٪ از نفت جهان ضروری است، بنابراین هرگونه اختلال می‌تواند موج‌هایی از تلاطم را از طریق اقتصادها به حرکت درآورد. کشورهایی که از قبل با بحران‌های اقتصادی دست و پنجه نرم می‌کنند (مانند سودان، سومالی و پاکستان) بیشترین آسیب را می‌بینند و با بدتر شدن ناپایداری مواد غذایی روبرو هستند. این درگیری همچنین روابط ایالات متحده را با متحدان خود در اروپا و آسیا تحت فشار می‌گذارد، متحدانی که ممکن است احساس کنند در پشتیبانی از اقدامات آمریکا و اجتناب از تشدید تنش‌ها، گیر کرده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده در حال ایفای نقش محوری در securing کردن lanes‌های کشتیرانی است و احتمال دارد از حمایت متحدان خود نظیر بریتانیا، اسرائیل و کشورهای حوزۀ خلیج فارس برخوردار شود. اروپا و کانادا در حال برگزاری جلسات جداگانه برای بحث دربارۀ واکنش‌های سیاسی هستند اما در مورد شدت هم‌راستایی با ایالات متحده اختلاف نظر دارند. ایران نیز از حمایت محدود روسیه و چین برخوردار است که ممکن است از این وضعیت برای تضعیف نفوذ آمریکا در منطقه بهره‌برداری کنند. سایر کشورهای حوزۀ خلیج فارس (مانند عربستان سعودی) به دقت وضعیت را زیر نظر دارند و ممکن است استراتژی‌های امنیتی خود را تغییر دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت علیرغم اعلام اسکورت‌های دریایی ایالات متحده، پایدار مانده‌اند که نشان می‌دهد بازارها در حال در نظر گرفتن ریسک‌های موجود هستند. با این حال، هرگونه تشدید بیشتر در تنگه هرمز می‌تواند قیمت‌ها را به شدت افزایش داده و بر هزینه‌های سوخت جهانی تأثیر بگذارد. این مسئله اهمیت دارد زیرا افزایش قیمت نفت می‌تواند رشد اقتصادی را کند کرده، تورم را افزایش دهد و به طور نامتناسبی به کشورهای فقیرتر وابسته به واردات غذا و سوخت آسیب برساند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            آمریکا به‌طور مستقیم در حفاظت از کشتی‌رانی در تنگه هرمز درگیر است که این موضوع می‌تواند منجر به برخوردهای بیشتری با ایران شود. این درگیری‌ها، بحران‌های اقتصادی و انسانی در کشورهای آسیب‌پذیر، به‌ویژه در زمینه امنیت غذایی، را تشدید می‌کند. بازارهای جهانی نفت برای اکنون پایدار هستند اما به دلیل احتمال بروز اختلال در تنگه هرمز، در برابر نوسانات ناگهانی قیمت بسیار آسیب‌پذیر می‌باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            برتری و پایداری شبکه‌های دور زدن تحریم‌های ایران، از جمله استفاده از رمزارزها و نوآوری‌های فناورانه، عنصری شگفت‌انگیز است که به ایران امکان داده تا تا حدی از انزوای اقتصادی بگریزد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            این درگیری بخشی از یک مبارزه گسترده‌تر برای نفوذ در خاورمیانه است که در آن ایران، ایالات متحده و قدرت‌های منطقه‌ای همچون عربستان سعودی و Israel (اسرائیل) برای کسب قدرت تلاش می‌کنند. تأثیر humanitario (بشردوستانه) شدید است، به‌گونه‌ای که بی‌ثباتی غذایی و بی‌ثباتی اقتصادی در مناطق دور از خط مقدم درگیری در حال گسترش است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
