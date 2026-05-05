@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-05 22:20</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-05 22:20</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایالات متحده می‌گوید آتش‌بس با ایران برقرار است، علی‌رغم حملات</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ ساعت ۲۱:۲۶ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>وزیر دفاع پیت هگزث اعلام کرد، علیرغم اینکه شبکه دولتی ایران آن را یک شکست قلمداد کرد، تلاش آمریکا برای بازگشایی تنگه هرمز به روی کشتی‌های تجاری همچنان در حال پیگیری است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/05/world/middleeast/iran-us-ceasefire-attacks.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>فرماندهی مرکزی: «مسیر امن» عبور از تنگه هرمز اولویت ایالات متحده در «پروژه آزادی»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلي)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۵T۲۱:۰۷:۵۹Z</strong></span>
+                </div>
+                <p class='summary'>سخنگوی ستاد فرماندهی مرکزی ایالات متحده (سنتکام) تیم هاوکینز می‌گوید اولویت‌های اصلی در تنگه هرمز، securing safe routes & blockading Iran است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/5/centcom-safe-path-through-hormuz-is-us-priority-in-project?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران سامانه جدیدی برای ترافیک دریایی در تنگه هرمز اعلام کرد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ - ساعت ۲۱:۱۲:۱۳</strong></span>
+                </div>
+                <p class='summary'></p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/05/world/iran-war-trump-hormuz/iran-announces-a-new-system-for-traffic-in-the-strait-of-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>پیش از سفر به واتیکان، روبی از اظهارات ترامپ دربارهٔ پاپ لئو در مورد ایران دفاع کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ ساعت ۲۰:۵۳:۳۵</strong></span>
+                </div>
+                <p class='summary'>نظرات قبل از دیدار مارکو روبیو با پاپ لئوی چهاردهم در واتیکان، روز پنجشنبه ارائه خواهند شد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/5/before-vatican-trip-rubio-defends-trump-remarks-on-pope-leo-over-iran?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>آیا ترامپ می‌تواند به زور و تحمیل فشار، ایران را تحت کنترل بگیرد؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ ساعت ۲۱:۰۳:۱۳</strong></span>
+                </div>
+                <p class='summary'>به نظر می‌رسد رئیس‌جمهور در جستجوی راه حل جادویی برای خاتمه جنگ است. شاید چنین راه حلی وجود نداشته باشد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/05/world/trump-iran-cruise-ship-spain-met-gala.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ارتش ایالات متحده می‌گوید «پروژه آزادی» در تنگه هرمز محاصره‌شده تازه آغاز شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶/۰۵/۰۶ ساعت ۰۱:۱۲:۳۹ (به وقت جهانی)</strong></span>
+                </div>
+                <p class='summary'>یک سخنگوی فرماندهی مرکزی ایالات متحده می‌گوید ماموریت برای ایجاد یک گذرگاه امن برای کشتی‌ها در آب‌راه مسدودشده آغاز شده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/5/centcom-says-project-freedom-has-just-2?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>آیا شکست اوپک می‌تواند آغاز دورانی از نوسانات انرژی باشد؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره ( Core )</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۱۶ - ساعت ۲۳:۵۳</strong></span>
+                </div>
+                <p class='summary'>بازار جهانی نفت چقدر ناپایدار است؟</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/the-take-2/2026/5/5/aje-onl-tt_uae_opec_video_v1-050526?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>نظر| دفعِ ترامپ در خلیج فارس به کدام سو است؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۵T۲۱:۱۰:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور بیشتر از آن که بتواند figuring (سر درگم کردن) وقت را درست مصرف کند، در وقت خریدن مهارت دارد.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/where-is-trump-going-in-the-gulf-664610a5' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>اشتباه محاسباتی در تنگه هرمز ممکن است منجر به «جنگ تمام عیار» شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ – ۱۹:۴۵:۱۰</strong></span>
+                </div>
+                <p class='summary'>نه ایالات متحده و نه ایران مایل به سازش در مورد تنگه هرمز نیستند که احتمال محاسبات اشتباه را افزایش می‌دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/quotable/2026/5/5/miscalculation-over-strait-of-hormuz-could-bring-an-all-out?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>ترامپ تحت فشار است تا بتواند توافق هسته‌ای ایران بهتری نسبت به توافق اوباما به دست آورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۵T۱۹:۱۹:۰۷Z</strong></span>
+                </div>
+                <p class='summary'>مذاکرات برای پایان قطعی جنگ در ایران متوقف شده‌اند. دونالد ترامپ قبلاً هر طرحی را که شامل پایان برنامه هسته‌ای تهران نباشد رد کرده است، موضوعی که کارشناسان می‌گویند unlikely است ایران به آن رضایت دهد. خبرنگار FRANCE 24، Monte Francis، گزارش بیشتری دارد</p>
+                <div class='link'><a href='https://www.france24.com/fa/trump-fears-may-not-get-better-iran-nuclear-deal-than-obama-s' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>ترامپ بار دیگر از پاپ لئون انتقاد می‌کند، در حالی که رابو سفر خود به رم را آغاز می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ - ساعت ۲۱:۳۰</strong></span>
+                </div>
+                <p class='summary'>انتقاد از موضع پاپ در قبال ایران، آنچه مقامات واتیکان به عنوان پایین‌ترین سطح بی‌سابقه‌ای در روابط با ایالات متحده توصیف کرده‌اند را برجسته ساخت.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/05/trump-rubio-pope-leo-rift/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>ماموریت ایالات متحده برای بازگشایی موقت تنگه هرمز خواهد بود، طبق گفته هگزث</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۰۵T۲۰:۲۹:۳۸Z</strong></span>
+                </div>
+                <p class='summary'>وزیر دفاع اعلام کرد که آتش‌بس با وجود حملات ایران به نیروهای آمریکایی حفظ می‌شود. او گفت که ایالات متحده از متحدان خود درخواست خواهد کرد تا ماموریت باز کردن آبراه را بر عهده بگیرند.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/05/hegseth-briefing-iran-strait-hormuz-ceasefire/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>به‌روز‌رسانی‌های زنده جنگ ایران: رابِیو سعی کرد تمرکز جنگ را از میدان رزم به تنگه جنسیت بیندازد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶  ساعت ۲۲:۰۵:۱۱</strong></span>
+                </div>
+                <p class='summary'>وزیر امور خارجه اعلام کرد که عملیات‌های رزمی نظامی ایالات متحده در ایران به پایان رسیده و مأموریتی کاملاً جدید را ترسیم کرد که ارتباط اندکی با توجیه اولیه آغاز جنگ دارد.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/05/world/iran-war-trump-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>ترامپ به دنبال گلولهٔ نقره‌ای برای پایان جنگ با ایران است. ممکن است هیچ راه حلی پیدا نشود.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۶ – ۲۱:۴۲:۳۲</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور سعی دارد فشار اقتصادی بر تهران را افزایش دهد، اما به نظر نمی‌رسد دولت ایران بدون یک توافق بزرگ و شرافت‌آفرین به سازش دست بزند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/05/world/middleeast/trump-blockade-iran-war.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - می 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران در یک بن‌بست شدید در تنگه هرمز، که یک راه آبی حیاتی در سطح جهان است، گیر کرده‌اند. در حالی که ظاهرا آتش‌بس موقت در حال برقرار شدن است، ایران آن را بی‌معنی تلقی کرده و ایالات متحده نیز در حال اجرای پروژه‌ای به نام "آزادی" برای تأمین امنیت عبور کشتی‌ها است. این درگیری خطر گسترش یافتن به یک جنگ گسترده‌تر را دارد که برای عرضه جهانی نفت و ثبات منطقه‌ای اهمیت حیاتی دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده و ایران پس از ماه‌ها درگیری، در آتش‌بس شکننده‌ای به سر می‌برند، اما ایران این توافق را به عنوان یک شکست رد کرده است. اکنون ایالات متحده روی «پروژه آزادی» متمرکز شده است، ماموریتی برای بازگشایی تنگه هرمز—مسیر حیاتی حمل و نقل نفت جهانی—که ایران در اوایل امسال آن را مسدود کرده بود. با وجود آتش‌بس، حملات همچنان به صورت پراکنده ادامه دارند و ایالات متحده تلاش می‌کند جهت درگیری را به سمت securing تنگه تغییر دهد تا از درگیری مستقیم با ایران جلوگیری کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            وضعیت می‌تواند به دو جهت پیش برود: یا ایالات متحده موفق می‌شود تنگه را دوباره باز کند و تنش‌ها را کاهش دهد، یا حملهٔ دیگری منجر به آغاز یک جنگ تمام‌عیار می‌شود. به احتمال زیاد ایران کاملاً عقب‌نشینی نخواهد کرد، بنابراین ایالات متحده ممکن است برای پیشبرد امور مجبور به سازش در مورد تحریم‌ها شود. در همین حال، رویکرد سخت‌گیرانه ترامپ و انتقادهای او از پاپ نشان می‌دهد که وی تحت فشار است تا راه‌حلی سریع بیابد، اما کارشناسان هشدار می‌دهند که ممکن است راه آسان در کار نباشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['اوایل 2026: ایران شروع به مسدود کردن تنگه هرمز می‌کند که باعث اختلال در حمل و نقل جهانی نفت می‌شود.', 'آوریل 2026: آمریکا و ایران به یک آتش‌بس موقت دست می‌یابند، اما ایران آن را شکست می‌خواند.', "5 مه 2026: وزیر دفاع آمریکا پیت هگستث می‌گوید آتش‌بس علی‌رغم حملات در حال حفظ است، اما ایران efektiveniast آن را انکار می‌کند. آمریکا طرح «آزادی» را برای securing تنگه راه‌اندازی می‌کند، در حالی که ایران قوانین جدیدی برای تردد کشتی‌ها اعلام می‌کند.", 'آینده نزدیک: آمریکا قصد دارد این مأموریت را به متحدانش واگذار کند، در حالی که ایران هشداری می‌دهد که هرگونه محاسبه اشتباه می‌تواند منجر به جنگ همه‌جانبه شود.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            آمریکا در بلندمدت قصد دارد تا برای حفظ ثبات عرضه نفت جهانی و حمایت از متحدانش در منطقه، آزادی رفت و آمد در تنگه را احیا کند. با این حال، ایران این تنگه را به‌عنوان اهرمی برای لغو تحریم‌ها یا کسب امتیازاتی می‌شناسد. اگر آمریکا بیش از حد فشار بیاورد، ممکن است ایران اقدامات تشدیدکننده انجام دهد، در حالی‌که عقب‌نشینی می‌تواند آمریکا را ضعیف نشان دهد. بهترین سناریوی ممکن، دستیابی به توافقی است که طی آن ایران تنگه را باز کند و در مقابل، بخشی از تحریم‌ها لغو شود؛ با این حال، به نظر نمی‌رسد هیچ‌یک از طرفین حاضر به سازش کامل باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری از تبادل‌های نظامی مستقیم به بن‌بست هولناکی با حملات پراکنده تبدیل شده است. ایالات متحده بر فشارهای اقتصادی (مانند محاصره‌ها) به جای تهاجم زمینی تمرکز کرده است، در حالی که ایران به نیروهای نیابتی و حملات نامتقارن (مانند حملات پهپادی یا خرابکاری) متکی است تا از درگیری مستقیم اجتناب کند. این جنگ سنتی نیست، بلکه بازی خطرناکی از لبه پرتگاه است که یک حرکت اشتباه ممکن است منجر به جنگ گسترده‌تری شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            تنگه هرمز مهم‌ترین مسیر دریایی حمل نفت در جهان است که نزدیک به ۲۰ درصد از عرضه جهانی نفت از طریق آن صورت می‌گیرد. در صورتی که این تنگه مسدود شود، قیمت نفت می‌تواند به سرعت افزایش یابد و اقتصادهای جهانی را تحت تأثیر قرار دهد. همچنین، بروز یک جنگ تمام‌عیار می‌تواند عرضه‌ها را مختل کرده و بی‌ثباتی خاورمیانه را تشدید کند. تا کنون بازارهای جهانی محتاط به نظر می‌رسند، اما این وضعیت می‌تواند به‌سرعت تغییر کند، بویژه اگر اوضاع بدتر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده با اتکا به تحریم‌ها و حمایت متحدان خود مانند عربستان سعودی و اسرائیل، با کمترین درگیری مستقیم نظامی، رهبری «پروژه آزادی» را بر عهده دارد. ایران از گروه‌های منطقه‌ای مانند حزب‌الله و حوثی‌ها که اقدام به حمله علیه منافع ایالات متحده کرده‌اند، حمایت می‌شود. اروپا و چین در تلاش برای میانجیگری هستند، اما طرفین به نظر تمایلی به پذیرش پیشنهادهای سازنده ندارند. روسیه و چین نیز ممکن است از این هرج و مرج برای گسترش نفوذ خود در منطقه سوءاستفاده کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل محاصره تنگه (هرمز) قبلاً افزایش یافته و هرگونه تشدید (مانند جنگ مستقیم یا حملات گسترده‌تر به تأسیسات نفتی) می‌تواند قیمت‌ها را به بالای ۲۰۰ دلار در هر بشکه برساند. این امر باعث فشار هزینه بالای سوخت بر مصرف‌کنندگان شده و اقتصادی را که هنوز از تأثیرات شوک‌های گذشته در تأمین عرضه بهبود می‌یابد، تحت فشار قرار خواهد داد. ایالات متحده تلاش می‌کند با تأمین امنیت تنگه، قیمت‌ها را تثبیت کند، اما اگر موفق نشود، ممکن است شاهد یک بحران انرژی دیگر مانند دهه ۱۹۷۰ باشیم.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده و ایران در یک بن‌بست خطرناک بر سر تنگه هرمز، یکی از شریان‌های حیاتی نفت جهانی، به سر می‌برند و به نظر نمی‌رسد هیچ یک از طرفین حاضر به عقب‌نشینی باشد. یک اشتباه محاسباتی یا حمله جدید می‌تواند منجر به جنگی تمام‌عیار با پیامدهای فاجعه‌بار برای تأمین نفت و اقتصاد جهانی شود. رویکرد سخت‌گیرانه و تکنیک‌های فشار ترامپ احتمالاً بدون انجام دادن سازش‌های عمده از هر یک از طرفین، نمی‌تواند به یک توافق منجر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت انگیز</h3>
+            تنش غیرعادی میان ترامپ و پاپ در مورد ایران قابل توجه است، زیرا دین به ندرت نقش مستقیمی در درگیری‌های امروزی ایفا می‌کند. انتقادهای عمومی ترامپ از پاپ لئو چهاردهم ممکن است حاکی از شکاف‌های ایدئولوژیک عمیق‌تری باشد که بر سیاست خارجی ایالات متحده تأثیر می‌گذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 Additional Context</h3>
+            این درگیری از ماموریتی برای تغییر رژیم در داخل ایران به مبارزه ای برای کنترل مسیرهای کلیدی ترابری دریایی تغییر کرده است که نشان می‌دهد جنگ‌ها چگونه می‌توانند زمانی‌که طبق برنامه پیش نرفتند، تغییر جهت دهند. ایالات متحده تلاش می‌کند با اعمال فشار اقتصادی به جای روش‌های نظامی، از تکرار جنگ‌های همانند عراق جلوگیری کند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
