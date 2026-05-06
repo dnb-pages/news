@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-06 04:13</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-06 04:13</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ می‌گوید ایالات متحده عملیات هدایت کشتی‌ها از تنگه هرمز را متوقف خواهد کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> خبر بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۷ ۰۲:۱۸:۴۵</strong></span>
+                </div>
+                <p class='summary'>"آزادی پروژه" که از دوشنبه آغاز شده بود، به دلیل پیشرفت‌های حاصل شده به سوی توافق با ایران، متوقف می‌شود، اینگونه رئیس‌جمهور ایالات متحده اعلام کرد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/clypekl71gdo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>قیمت نفت کاهش می‌یابد زیرا ایالات متحده برای دستیابی به توافق با ایران، پروژه آزادی را متوقف کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۷ - ۰۷:۳۵:۱۶ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور دونالد ترامپ پس از روزها تشدید تنش، به امید دستیابی به توافق میان ایالات متحده و ایران موجد امیدواری شد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/c4g8zejyyr3o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>آمریکا برنامه هدایت کشتی‌ها از تنگه هرمز را به حالت تعلیق درآورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸T۰۰:۰۹:۲۸Z</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ گفته است که عمليات نظامي آمريکا كه از كشتي‌ها در تنگه هرمز هدايت مي‌كند، متوقف خواهد شد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/6/us-pauses-plan-to-guide-ships-through-the-strait-of-hormuz?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ترامپ دستور داد تا ارتش ایالات متحده تلاش را برای بازگشایی تنگه هرمز متوقف کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۷</strong></span>
+                </div>
+                <p class='summary'>دولت و پنتاگون روز سه‌شنبه از ماموریت جدید موسوم به 'پروژه آزادی' پرده‌برداری کردند، تا این‌که رئیس‌جمهور ناگهان آن را متوقف کرد.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/05/hegseth-briefing-iran-strait-hormuz-ceasefire/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>به‌روزرسانی‌های زنده جنگ ایران: ترامپ دوباره توجه آمریکا را به تنگه معطوف کرد و ماموریت یک روزه کشتی‌های همراه را متوقف ساخت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۷</strong></span>
+                </div>
+                <p class='summary'>رئیس جمهور این اعلامیه را چند ساعت پس از آنکه وزیر خارجه مارکو روبیو مأموریت تازه ایجادشده را تصدیق کرده بود، در یک پست رسانه اجتماعی منتشر کرد؛ مأموریتی که ارتباط اندکی با توجیه اولیه برای جنگ داشت.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/05/world/iran-war-trump-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ترUMP و روبیو اصرار دارند که جنگ ايران به پايان رسيده است، حتي در حالي که موشک‌ها در طول آتش‌بس در حال پرواز هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل تایمز نیویورک (NYT)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵-۰۲-۱۸T۰۱:۲۱:۴۷Z</strong></span>
+                </div>
+                <p class='summary'>کاخ سفید در حال متوسل شدن به پرش‌های بلاغی است، زیرا رئیس‌جمهور ترامپ تلاش می‌کند بزرگترین بحران سیاسی دوران ریاست‌جمهوری خود را پشت سر بگذارد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/05/us/politics/trump-iran-war-political-crisis-rhetoric.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ترامپ می‌گوید ایالات متحده تلاش‌هایش برای هدایت کشتی‌ها از تنگه مسدود شده توسط ایران را متوقف می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ۰۸:۳۴:۵۲</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ گفت که «تنگه هرمز» تحت محاصره کامل آمریکا «به‌طور کامل فعال خواهد ماند». این تغییر پس از اظهار نظر وزیر دفاع مبنی بر ادامه تلاش‌های ایالات متحده برای آزادی کشتی‌هایی که به دام افتاده بودند، صورت گرفت.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/05/world/middleeast/iran-us-ceasefire-attacks.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>چین علی‌رغم تحریم‌های ایالات متحده، همچنان به تأمین کارخانه‌های تولید پهپاد در ایران و روسیه ادامه می‌دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸ ساعت ۰۷:۴۹</strong></span>
+                </div>
+                <p class='summary'>شرکت‌های ناشناخته چینی به‌طور علنی کالاها و تجهیزات دو منظوره از جمله موتور و باتری صادر می‌کنند و با زیرپاگذاشتن کنترل‌های آمریکا مخالفت می‌ورزند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/china-is-still-supplying-drone-factories-in-iran-russia-despite-u-s-sanctions-1e6820ca' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>افغانستان: بررسی بازارهای سه‌ماهه - تمرکز بر اقتصادی بودن، دسترس‌پذیری و در دسترس بودن (فروردین ۱۴۰۵)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (امورد انسان‌دوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۷</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: افغانستان</div> <div class="tag source">منبع: ابتکار دسترسی (REACH Initiative)</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/cf/be/cfbe4806-8174-4067-8e66-d7ad2d529760.png" alt></p> <p>لطفاً به فایل پیوست شده مراجعه کنید.</p> <p><strong>زمینه وJustification</strong></p> <p>افغانستان همچنان با فشارهای فزاینده‌ای مواجه است که ناشی از چالش‌های داخلی ساختاری بلندمدت است و اکنون با تشدید اخیر درگیری‌های منطقه‌ای و اثرات جانبی آن تشدید شده است. کاهش شدید کمک‌های خارجی، افزایش تنش‌های منطقه‌ای و بلایای طبیعی مکرر (این کشور در معرض زمین‌لرزه، سیل، خشکسالی، رانش زمین و بهمن قرار دارد) آسیب‌پذیری‌های موجود را تشدید کرده‌اند. از سوی دیگر، جابه‌جایی‌های گسترده جمعیتی فشار بیشتری را تحمیل کرده و از سال ۲۰۲۵، نزدیک به ۲.۶۱ میلیون افغان از ایران و پاکستان به کشور بازگردانده شده‌اند.</p> <p>این تحولات فشار بیشتری را بر خدماتی که از پیش محدود بودند، فرصت‌های معیشتی و سامانه‌های محلی، به‌ویژه در مناطقی که میزان زیادی از بازگشت‌کنندگان را میزبانی می‌کنند، تحمیل کرده است. با وجود اینکه تأثیر کامل این تحولات هنوز در حال ظهور است، نشانه‌های اولیه حاکی از افزایش فشار بر توانایی خانوارها در برآورده کردن نیازهای اساسی در مناطق شهری و روستایی است.</p> <p>این گزارش بخش‌هایی از یک مجموعه فصلی است که به‌طور متناوب بر (۱) مقرون‌به‌صرفه بودن و دسترسی به کالاها و خدمات اساسی، و (۲) عملکرد بازار و انعطاف‌پذیری عرضه متمرکز است. در این گزارش به مقرون‌به‌صرفه بودن، دسترسی‌پذیری و در دسترس بودن کالاهای کلیدی، به‌ویژه هزینه سبد حداقل هزینه‌های زندگی (MEB) پرداخته شده است. بر اساس داده‌های شاخص قیمت مواد غذایی جامو (JMMI)، ارزیابی цело Afghanistan (WoAA) و نظارت بر وضعیت بشردوستانه (HSM) و با تلفیق اطلاعات منابع ثانویه، این گزارش توانایی خانوارها در دسترسی به بازارها و برآورده کردن نیازهای اساسی خود را در گروه‌های مختلف جمعیتی مورد بررسی قرار می‌دهد.</p>
+                <div class='link'><a href='https://reliefweb.int/report/afghanistan/afghanistan-quarterly-markets-overview-spotlight-affordability-accessibility-and-availability-april-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۶ مه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>به نظر می‌رسد ایالات متحده و ایران پس از روزهایی از تنش‌های فزاینده در حال پیشرفت به سوی آتش‌بس یا توافق دیپلماتیک هستند که باعث شده ایالات متحده عملیات نظامی خود را برای هدایت ایمن کشتی‌ها از تنگه هرمز، یکی از مهم‌ترین مسیرهای حمل نفت خام، متوقف کند. رئیس‌جمهور ترامپ توقف عملیات را اعلام کرد و اعلام داشت که این اقدام نشان‌دهندهEarly progress پیشرفت‌های اولیه در مذاکرات است، هرچند جزئیات هنوز نامشخص می‌باشد. در همین حال، قیمت‌های جهانی نفت در واکنش به این خبر کاهش یافته است. با وجود کاهش تنش‌های ظاهری، ایران همچنان با چالش‌های گسترده انسانی مواجه است، از جمله فشار اقتصادی و بازگشت تعداد زیادی از پناهجویان افغان.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            آمریکا اعلام کرد که 'پروژه آزادی' را - که ماموریتی تازه راه‌اندازی شده برای هدایت کشتی‌ها از تنگه هرمز است - به حالت تعلیق در خواهد آورد. این اقدام پس از پیشرفت‌هایی در جهت مذاکرات با ایران صورت گرفت، تغییری که مورد اشاره رئیس‌جمهور ترامپ قرار گرفت. این تصمیم در پی روزهای افزایش تنش‌ها با حملات موشکی و حملات به نفت‌کش‌ها صورت گرفت. آمریکا هدف ماموریت خود را بازگشایی تنگه‌ای عنوان کرده بود که ایران آن را تا حدودی مسدود ساخته بود. تنش‌ها در منطقه به شدت بالا گرفته بود، به طوری که طرفین به تبادل حملات پرداخته و آمریکا تحریم‌های جدیدی را اعمال کرده بود. با وجود تعلیق موقت، آمریکا تأکید کرد که محاصره اقتصادی گسترده خود علیه ایران را ادامه خواهد داد و ایران همچنان با بحران‌های شدید انسانی و اقتصادی، از جمله بازگشت گسترده پناهندگان افغان، دست و پنجه نرم می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            به نظر می‌رسد این وضعیت به سمت کاهش موقتی تنش یا آتش‌بس میان آمریکا و ایران در حرکت است که احتمالاً مذاکرات دوباره آغاز خواهند شد یا از سر گرفته می‌شوند. اما در عین حال، مناقشات ریشه‌ای و رقابت‌های منطقه‌ای—مانند حمایت ایران از گروه‌های نیابتی، تحریم‌های آمریکا، و رقابت با قدرت‌های منطقه‌ای همچون عربستان سعودی و اسرائیل—ظاهرا ناپدید نخواهند شد. تنگه هرمز همچنان احتمالاً کانون تنش خواهد بود و اگر مذاکرات شکست بخورند، نشت نفت می‌تواند دوباره به موضوعی جنجالی بدل شود. بحران‌های انسان‌دوستانه در افغانستان و ایران بدون حمایت پایدار بین‌المللی یا تسکین اقتصادی ادامه خواهند یافت و هر روز وخیم‌تر خواهند شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            پایان آپریل ۲۰۲۶: تنش‌های فزاینده بین ایالات متحده و ایران منجر به تبادل موشکی و حملات به زیرساخت‌های نفتی می‌شود. ۵ مه ۲۰۲۶: ایالات متحده پروژه «آزادی» را برای هدایت کشتی‌ها از تنگه هرمز راه‌اندازی می‌کند. ۵ مه ۲۰۲۶، اواخر شب: رئیس‌جمهور ترامپ به دلیل «پیشرفت» در مذاکرات با ایران، توقف «پروژه آزادی» را اعلام می‌کند. ۵–۶ مه ۲۰۲۶: قیمت‌های جهانی نفت به‌طور قابل توجهی کاهش می‌یابد، زیرا بازارها به نشانه‌های آشتی ایالات متحده و ایران واکنش نشان می‌دهند. ادامه دارد: ایران و متحدانش همچنان با فشار اقتصادی و بحران‌های انسانی دست و پنجه نرم می‌کنند، به طوری که میلیون‌ها افغان در حال بازگشت هستند و فشار بر منابع محلی را افزایش می‌دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در این لحظه، outlook فوری نشان می‌دهد که درگیری نظامی مستقیم آمریکا و ایران به طور موقت متوقف خواهد شد، اما به معنای حل و فصل درگیری‌های عمیق‌تر نیست. تنگه هرمز احتمالاً برای مدت کوتاهی شاهد کاهش تنش‌ها خواهد بود، اما در صورت شکست مذاکرات یا اگر ایران اقدام تلافی‌جویانه‌ای انجام دهد، خطر تشدید ناگهانی همچنان بالاست. آمریکا ممکن است از این فرصت برای ادعای پیروزی دیپلماتیک استفاده کند، اما نفوذ منطقه‌ای ایران و حمایت آن از گروه‌های نیابتی ادامه خواهد یافت. در بلندمدت، وضعیت می‌تواند در صورت دستیابی به توافق تثبیت شود یا با فروپاشی مذاکرات وخیم‌تر گردد. بحران‌های انسانی در ایران و افغانستان نیازمند توجه مستمر سازمان‌های امدادی و جامعه بین‌الملل خواهند بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            پس از افزایش تیز درگیری‌ها و حملاتی از جمله پرتاب موشک‌ها و توقیف کشتی‌های نفت‌کش، درگیری‌ها ناگهان به سمت کاهش تنش سوق یافته است. ماهیت درگیری‌ها از رویارویی مستقیم میان ایالات متحده و ایران به سمت یک توقف موقت تغییر یافته است، اما منطقه همچنان در حالت تنش‌آلود به سر می‌برد. اقدامات نظامی ایران و نیروهای نیابتی منطقه‌ای آن متوقف نشده‌اند و ایالات متحده نیز همچنان سیاست تحریم‌ها و محاصره قوی خود را حفظ کرده است. شدت کنونی درگیری‌ها کمتر از روزهای گذشته است، اما پویایی‌های اساسی درگیری—از جمله سرپیچی ایران از فشارهای آمریکا و تلاش ایالات متحده برای مهار نفوذ منطقه‌ای ایران—هنوز تغییر نکرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این داستان یادآوری است از اینکه چگونه بحران‌های ژئوپلیتیکی می‌توانند به سرعت تغییر کنند. در حالی که خطر فوری یک جنگ گسترده به نظر کاهش یافته است، تنش‌های ریشه‌دار بین ایالات متحده و ایران—س در مورد جاه‌طلبی‌های هسته‌ای، نفوذ منطقه‌ای و تحریم‌ها—هنوز پایان نیافته است. نقش تنگه هرمز به عنوان یک تنگه حیاتی جهانی برای نفت به این معنی است که هرگونه اختلال در این منطقه می‌تواند تأثیرات اقتصادی گسترده‌ای داشته باشد. برای جهان، مسائل کلیدی عبارتند از ثبات در بازارهای نفتی، پیشگیری از فاجعه‌های انسانی در ایران و افغانستان، و جلوگیری از درگیری‌های کوچک‌تر از تبدیل شدن به جنگ‌های منطقه‌ای گسترده‌تر.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            آمریکا و ایران بازیگران اصلی این درگیری هستند. آمریکا رهبری مذاکرات و تلاش‌های نظامی را برای فشار آوردن به ایران به منظور ورود به مذاکرات به عهده دارد و ایران نیز از طریق گروه‌های نیابتی و اقدامات مستقیم مقاومت می‌کند. متحدان منطقه‌ای مانند عربستان سعودی و اسرائیل نیز به صورت غیرمستقیم درگیر هستند، زیرا آن‌ها با نفوذ ایران مخالفند. چین نیز از نظر اقتصادی به شدت درگیر است و علی‌رغم تحریم‌های ایالات متحده، همچنان به تأمین کالاهای دو منظوره مانند موتورها و باتری‌های پهپادها برای ایران ادامه می‌دهد. به نظر می‌رسد چین از ایران به عنوان ابزاری برای مقابله با نفوذ آمریکا استفاده می‌کند. افغانستان نیز به دلیل بازگشت میلیون‌ها پناهنده، عمدتاً از ایران، نگرانی‌های انسانی ایجاد کرده است که منابع محلی را تحت فشار قرار می‌دهد. سایر کشورها مانند روسیه نیز ممکن است نقش‌هایی را ایفا کنند، شاید به عنوان تامین‌کنندگان تسلیحات برای ایران.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت تحت فشار ملایمی قرار دارند زیرا بازارها به خبر توقف موقت تنش‌ها بین آمریکا و ایران واکنش نشان می‌دهند. تنگه هرمز یکی از مهم‌ترین مسیرهای حمل و نقل نفت جهان است و هرگونهBlockade or blockade باعث افزایش شدید قیمت نفت در بازارهای جهانی خواهد شد. کاهش فعلی قیمت‌ها نشان می‌دهد که بازارها در حال حاضر خطر وقفه‌ی پایدار در عرضه را کمتر ارزیابی می‌کنند. با این حال، در صورت شکست مذاکرات یا تشدید دوباره تنش‌ها، قیمت‌های نفت به سرعت می‌توانند دوباره افزایش یافته و باعث افزایش قیمت بنزین در سراسر جهان شوند. این توقف موقت فرصتی موقتی است، اما ریسک‌های ساختاری همچنان باقی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات مهم</h3>
+            ایالات متحده و ایران عملیات نظامی خود در نزدیکی تنگه هرمز را به حالت تعلیق درآورده‌اند که حاکی از پیشرفت اولیه در مذاکرات است، گرچه جزئیات آن هنوز نامشخص است. قیمت‌های نفت به طور موقت کاهش یافته‌اند، اما تنگه هرمز همچنان یک گلوگاه نفتی جهانی است که موجب می‌شود تنش‌های منطقه‌ای به یک ریسک طولانی‌مدت برای بازارهای انرژی تبدیل شود. بحه‌های بشردوستانه در ایران و افغانستان به دلیل تحریم‌های اقتصادی و درگیری‌های منطقه‌ای در حال وخیم‌تر شدن است که فشار بیشتری بر سیستم‌های امدادی و منابع محلی وارد می‌سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            اعلام ناگهانی رئیس‌جمهور ترامپ برای توقف «پروژه آزادی» فقط چند ساعت پس از راه‌اندازی آن، با وجود تنش‌های روزهای پیش، تعجب‌آور بود. معکوس‌شدن سریع عملیات و framing آن به‌عنوان موفقیتی مبهم نیز قابل توجه است. علاوه بر این، تداوم عرضه کالاهای نظامی مرتبط توسط چین به ایران، علی‌رغم تحریم‌های ایالات متحده، نشان‌دهنده تمایل پکن برای مخالفت با واشنگتن به نفع تهران است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            اعلامیه دونالد ترامپ و وزیر امور خارجه مارکو روبیو مبنی بر اینکه «جنگ با ایران تمام شده است»، به نظر می‌رسد زودهنگام باشد یا تبلیغات اغراق‌آمیزی، زیرا حملات موشکی در طول آتش‌بس فرضی ادامه یافت. این موضوع نشان می‌دهد که با وجود تلاش طرفین برای کاهش درگیری مستقیم، خصومت‌های اساسی و درگیری‌های نیابتی همچنان فعال هستند. وضعیت انسانی در افغانستان، که با اخراج‌های شهروندان افغان از ایران تشدید شده است، بازتاب‌دهنده پیامدهای گسترده‌تر منطقه‌ای این تنش‌ها فراتر از درگیری‌های رسمی است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
