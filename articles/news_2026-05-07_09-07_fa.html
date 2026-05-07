@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-07 09:12</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-07 09:12</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>سفارشات کارخانه‌های آلمان در نخستین ماه از درگیری با ایران افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> WSJ (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۱۷ ساعت ۰۷:۳۰ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>در ماه مارس سفارش‌ها به شدت افزایش یافت که نشان می‌دهد مشاغل ممکن است سعی داشته باشند با انباشت کالا، از اختلالات در تأمین و افزایش قیمت‌ها جلوگیری کنند.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/german-factory-orders-jumped-in-first-month-of-iran-conflict-2068262d' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>وال latest oil giant قرار است تا سود خود را به دلیل تأثیر جنگ ایران افزایش دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۴۰/۰۲/۱۸، ساعت ۰۹:۰۴:۲۴</strong></span>
+                </div>
+                <p class='summary'>سود غول انرژی تقریباً یک چهارم افزایش یافت زیرا از نوسانات اخیر قیمت نفت بهره‌مند شد</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/ce3p0x54drwo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>بحرین ساخت‌وساز بریتانیا بدتر می‌شود؛ با افزایش فشارهای هزینه‌ای</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ساعت ۱۳:۳۰:۰۴ Iran Time</strong></span>
+                </div>
+                <p class='summary'>سازندگان بریتانیایی بزرگ‌ترین کاهش در تولید خود را از زمان نوامبر گزارش کردند زیرا جنگ با ایران منجر به افزایش قیمت‌های ورودی و کاهش فروش شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-construction-slump-gets-worse-as-cost-pressures-intensify' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>مذاکره با ایالات متحده و ایران برای دستیابی به توافق صلح، همچنان دور از دسترس است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ساعت ۱۳:۱۹:۵۳</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده منتظر پاسخ ایران به پیشنهاد خود برای بازگشایی تنگه هرمز و پایان یک جنگ است که هزاران نفر را کشته و باعث افزایش قیمت‌های انرژی شده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-iran-deliberate-peace-deal-with-nuclear-breakthrough-distant' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>قیمت مس با افزایشی روبرو شد زیرا معامله‌گران منتظر پاسخ ایران به پیشنهاد ایالات متحده هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸  ساعت ۰۸:۳۴:۳۳</strong></span>
+                </div>
+                <p class='summary'>مس قیمت برای چهارمین روز متوالی افزایش یافت و همزمان با سهام و سایر دارایی‌های پرریسک، به صعود خود ادامه داد. این اتفاق در حالی رخ داد که ایران در حال ارزیابی طرح جدیدی از سوی رئیس‌جمهور ایالات متحده، دونالد ترامپ، برای پایان دادن به ستیزی است که نزدیک به ۱۰ هفته به طول انجامیده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/copper-edges-higher-as-traders-await-iran-reply-to-us-proposal' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ناو جنگی فرانسه به سوی هرمز حرکت می‌کند تا مأموریتی احتمالی دفاعی انجام دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ساعت ۰۸:۳۶:۲۱ به وقت UTC</strong></span>
+                </div>
+                <p class='summary'>ایران می‌گوید در حال بررسی یک پیشنهاد ایالات متحده است که دونالد ترامپ گفته ممکن است بتواند جنگ را به پایان برساند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/fa/economy/2026/5/7/french-warship-moves-towards-hormuz-for-possible-defensive-mission?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>رشدهای مثبت سودی در اروپا چهره‌ی سخت‌تر آینده‌ی بورس‌ها را می‌پوشاند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل اختصاصی فایننشال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۱۸ ساعت ۰۸:۴۴:۲۶</strong></span>
+                </div>
+                <p class='summary'>فصل سودآوری پررونق در حال پنهان کردن دوران سخت‌تر پیش‌روی برای سهام اروپایی است، زیرا اثرات جنگ ایران باعث دشوارتر شدن تحقق انتظارات بلندپروازانه سود شرکت‌ها در فصل‌های آینده می‌شود.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/earnings-beats-in-europe-mask-tougher-times-ahead-for-stocks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>روز ۶۹ جنگ ایران: تهران «در حال بررسی» پیشنهادهای آمریکا؛ اسرائیل بئیروت را بمباران کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۳/۱۷T۰۸:۰۱:۰۷Z</strong></span>
+                </div>
+                <p class='summary'>ترامپ می‌گوید مذاکرات ایالات متحده و ایران در حال پیشرفت است زیرا تهران در حال بررسی پیشنهادی از جانب ایالات متحده است که از طریق پاکستان ارائه شده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/7/iran-war-day-69-tehran-reviewing-us-proposals-israel-bombs-beirut?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>مالزی نرخ کلیدی خود را در حالی که نسبت به ریسک‌های خاورمیانه هشدار می‌دهد، حفظ می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل فایننشال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸ ۰۷:۳۷:۴۵ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>مالزی نرخ بهره شاخص خود را برای پنجمین نشست متوالی بدون تغییر نگه داشت، با وجود افزایش ریسک‌ها در رشد اقتصادی ناشی از تداوم درگیری در خاورمیانه.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/malaysia-holds-rate-as-ringgit-tempers-inflation-pressure' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>جنگ آمریکا علیه ایران: 'بازی‌ای با ریسک بالا و پاداش عظیم' برای هم ترامپ و هم جمهوری اسلامی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸ ۰۷:۳۷:۴۰</strong></span>
+                </div>
+                <p class='summary'>مارک اوون از حضور بهنام بن طالبلو، مدیر ارشد برنامه ایران و پژوهشگر ارشد بنیاد دفاع از دموکراسی‌ها، ابراز خرسندی می‌کند. او تقابل فزاینده میان ایران و ایالات متحده را به عنوان رقابتی خطرناک و در حال تکامل با عنوان «انبوهی از خطر در برابر انبوهی از پاداش» توصیف می‌کند. وی استدلال می‌کند که تهران در حال آزمایش تحمل escalation واشنگتن است: «جمهوری اسلامی به دنبال این است که مرزها را همین حالا بشناسد تا ببیند دولت ترامپ تا چه اندازه از ریسک‌پذیری در برابر ریسک‌گریزی برخوردار است». بنا به روایت بن طالبلو، این درگیری تنها نظامی یا اقتصادی نیست، بلکه روانی و نمایشی است: رقابتی بر سر نفوذ، روایت‌ها و اراده‌ای که از سوی طرفین ادراک می‌شود.</p>
+                <div class='link'><a href='https://www.france24.com/fa/shows/spotlight/20260507-us-war-on-iran-a-game-of-high-risk-high-reward-for-both-trump-and-the-islamic-republic' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>گزارش شده است که ترامپ پس از آنکه عربستان سعودی استفاده از حریم هوایی خود را رد کرد، عملیات [هرمز] را متوقف کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ۰۷:۳۴:۱۷</strong></span>
+                </div>
+                <p class='summary'><p>مقامات آمریکایی می‌گویند که کشورهای حاشیه خلیج [فارس] از اعلام پروژه «آزادی» غافلگیر شدند، اقدامی که نگرانی از تشدید دوباره جنگ را برانگیخت؛ گزارش‌ها حاکی است ایران انتظار دارد روز پنجشنبه به پیشنهاد آمریکا پاسخ دهد</p> <p>مقاله <a href="https://www.timesofisrael.com/trump-reportedly-paused-hormuz-operation-after-saudi-arabia-denied-use-of-its-airspace/">«پای pause</a> شدن عملیات هرمز توسط ترامپ پس از مخالفت عربستان سعودی با استفاده از حریم هوایی خود گزارش شد</a> برای نخستین بار در <a href="https://www.timesofisrael.com">وب‌سایت تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26126696870282-e1778137063752-1024x640.jpg" title="Trump reportedly paused Hormuz operation after Saudi Arabia denied use of its airspace" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/trump-reportedly-paused-hormuz-operation-after-saudi-arabia-denied-use-of-its-airspace/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>بعد از توافقات هسته‌ای ایران، نشست بین ترامپ و شی قرار است برگزار شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نامه واشنگتن پست</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۷ ساعت ۰۹:۰۰:۴۸</strong></span>
+                </div>
+                <p class='summary'> دونالد ترامپ، رئیس‌جمهور ایالات متحده، خواستار پذیرایی مجلل و باشکوهی در پکن برای یک نشست با شی جینپینگ هفته آینده است. اما سایه‌ی جنگ در ایران بزرگ و تاثیرگذار است.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/05/07/trump-xi-us-china-summit-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>فروش غلات، حتی در حالی که اوکراین و اسرائیل علیه دشمنان مشترک خود می‌جنگند، شکافی عمیق‌تر میان این دو کشور ایجاد کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۷ - ساعت ۱۳:۳۰:۱۴</strong></span>
+                </div>
+                <p class='summary'>تنش‌های روابط پس از آن بدتر شد که اوکراین اسرائیل را به خرید غله‌ای متهم کرد که توسط روسیه در سرزمین اشغالی برداشت شده است. در این میان، روسیه و ایران به یکدیگر نزدیک‌تر شده‌اند.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/07/israel-ukraine-grain-russia-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>روبیو از رم دیدن می‌کند در حالی که برای ترمیم روابط کاخ سفید با پاپ لئو تلاش می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  واشنگتن پست (تحلیل) </span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۷</strong></span>
+                </div>
+                <p class='summary'>روابط بین ایالات متحده آمریکا و واتیکان به پایین‌ترین نقطه خود رسیده است، به دلیل حملاتی که رئیس‌جمهور ترامپ به پاپ لئوی پانزدهم داشته است؛ پاپی که یکی از منتقدان اصلی جنگ با ایران محسوب می‌شود.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/07/trump-pope-leo-rubio-rift/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>به‌روز‌رسانی‌های جنگ ایران: تهران و آمریکا در مورد وضعیت مذاکرات گزارش‌های متضادی ارائه می‌دهند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۱۷ ساعت ۱۳:۳۲:۲۹</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ گفت دولت او در 24 ساعت گذشته «مذاکرات بسیار خوبی» با تهران داشته‌است. یک مقام ایرانی گفت طرح آمریکایی برای پایان دادن به جنگ در دست بررسی است. اسرائیل اهدافی در نزدیکی بیروت را هدف قرار داد.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/06/world/iran-us-hormuz-oil' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>رهبران آلمان در تضاد با رؤسای سازمان‌های اطلاعاتی بر سر تهدید داخلی از سوی ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ساعت ۱۳:۳۰:۰۵</strong></span>
+                </div>
+                <p class='summary'>کارگزاران اطلاعات به‌طور خصوصی از پتانسیل حملات ترکیبی از سوی گروه‌های مرتبط با ایران هشدار داده‌اند. اما مقامات سیاسی، از جمله فرانتس-یوزف هولترمن،Jan-Christoph Oetjen./ ضرر از این خطر کاسته‌اند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/07/world/europe/germany-merz-iran-security-threat-spy.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۷ مه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>درگیری ایران و آمریکا در مرحله‌ای پرتنش به سر می‌برد، در حالی که گفتگوهای غیرمستقیم صلح در جریان است اما هنوز پیشرفتی حاصل نشده است. جنگ نزدیک به ۱۰ هفته به طول انجامیده و تجارت جهانی را مختل کرده، قیمت نفت را افزایش داده و باعث فشار اقتصادی در سراسر جهان شده است. هر دو طرف در حالی که مذاکرات ادامه دارد، از فشارهای نظامی و اقتصادی استفاده می‌کنند و ایران در حال بررسی پیشنهاد آمریکا برای بازگشایی تنگه هرمز و پایان دادن به درگیری است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋  چه اتفاقی افتاده است</h3>
+            درگیری میان ایالات متحده و ایران به چهل و نهمین روز خود وارد شده‌است، در حالی که هر دو طرف از طریق واسطه‌هایی مانند پاکستان در مذاکرات غیرمستقیم شرکت دارند. ایران در حال بررسی پیشنهاد ایالات متحده برای پایان دادن به جنگ است که شامل بازگشایی تنگه هرمز، یکی از مسیرهای حیاتی حمل و نقل نفت، نیز می‌شود. در همین حال، درگیری‌ها گسترش یافته و اسرائیل اهدافی را در بیروت بمباران کرده و گروه‌های وابسته به ایران تهدیدهای ترکیبی فزاینده‌ای در اروپا ایجاد کرده‌اند. تأثیرات اقتصادی به صورت جهانی احساس می‌شود، از جمله افزایش قیمت نفت، واکنش‌های متنوع صنعتی در اروپا و نوسانات بازارهای مالی.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سر heading</h3>
+            احتمال‌های کوتاه‌مدت نشان می‌دهد که بن‌بست همچنان ادامه خواهد یافت و گفت‌وگوهای صلح به پیشرفتی کلیدی دست نخواهد یافت، اما خطر تشدید بیشتر همچنان بالاست. ایران ممکن است برای دریافت امتیازهای بیشتر فشار بیاورد، در حالی که ایالات متحده تحت ریاست‌جمهوری ترامپ، فشار را با اقدامات نظامی محدود احتمالی متعادل می‌کند. اختلالات اقتصادی، به‌ویژه در بخش‌های نفت و تولید، احتمالاً ادامه خواهد داشت زیرا هر دو طرف از اهرم‌های اقتصادی به عنوان ابزاری در مذاکرات استفاده می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            مارس اواخر 2026: پس از مجموعه‌ای از درگیری‌های نظامی در تنگه هرمز و تنش‌های منطقه‌ای، تنش‌ها بین آمریکا و ایران به اوج می‌رسد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            جهت‌گیری بلندمدت حاکی از ادامه‌ی یک بن‌بست حساس بدون برنده‌ی آشکار است. ایران احتمالاً استراتژی «آزمایش تا مرز» خود را حفظ خواهد کرد، یعنی قدرت اراده‌ی آمریکا را آزمایش کند در حالی که از رویارویی کامل اجتناب می‌کند. ایالات متحده ممکن است بین لفاظی‌های نظامی و تلاش‌های دیپلماتیک در نوسان باشد، اما unlikely جنگ تمام‌عیار است مگر آنکه مذاکرات به کلی فرو بپاشد. این درگیری برای هر دو طرف در حال تبدیل شدن به آزمونی از استقامت روانی و تاب‌آوری اقتصادی است که پیامدهای جهانی نیز خواهد داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            این درگیری هنوز ترکیبی از درگیری‌های نظامی، جنگ اقتصادی و فشار روانی است. شدت آن نوسان داشته است و شامل دوره‌هایی از تشدید تنش (مانند بمباران اسرائیل بر بیروت، تهدیدات ترکیبی مرتبط با ایران در اروپا) و لحظاتی از دیپلماسی موقت بوده است. ماهیت جنگ نامتقارن است: ایران از واسطه‌ها و تاکتیک‌های ترکیبی استفاده می‌کند، در حالی که ایالات متحده به تهدیدات نظامی مستقیم و تحریم‌های اقتصادی متکی است. تلفات گزارش شده است، اما آمار آن مورد اختلاف است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال تغییر شکل تجارت جهانی، بازارهای انرژی و اتحادهای دیپلماتیک است. اختلال در تنگه هرمز باعث افزایش شدید قیمت‌های نفت شده و اقتصادهای جهان از کارخانه‌های اروپا تا مراکز تولیدی آسیا را تحت تأثیر قرار داده است. این وضعیت همچنین اتحادها را تحت فشار قرار داده، به گونه‌ای که عربستان سعودی در حمایت کامل از آمریکا تعلل می‌کند و کشورهای اروپایی در مورد موضع خود در قبال ایران بحث و جدل دارند. برای افراد عادی، این به معنای هزینه‌های بالاتر زندگی، عدم اطمینان اقتصادی و همیشه در معرض خطر بودن تشدید بیشتر اوضاع است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیکنان کلیدی عبارتند از ایالات متحده به رهبری رئیس‌جمهور ترامپ که در پی راه‌حلی دیپلماتیک اما قاطعانه است؛ ایران که در حال بررسی پیشنهادهای آمریکا و درگیر جنگ ترکیبی و درگیری‌های نیابتی است؛ و اسرائیل که در حال انجام حملات هوایی در لبنان است و ثبات منطقه را پیچیده‌تر می‌کند. کشورهای اروپایی تقسیم شده‌اند: آلمان و فرانسه با احتیاط در حال تعامل با ایران هستند و خود را برای پیامدهای اقتصادی آماده می‌کنند، در حالی که بریتانیا به دلیل فشارهای اقتصادی، دچار رکود اقتصادی است. نقش چین نیز حیاتی است؛ این کشور در تلاش است تا روابط خود را با آمریکا و منافع اقتصادی‌اش در ایران متعادل سازد. خودداری عربستان سعودی از اجازه استفاده از حریم هوایی خود به هواپیماهای آمریکا نیز مسئله‌ساز شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل درگیری‌های اخیر که تنگه هرمز، یک مسیر مهم ترانزیت نفت را مختل کرده است، به شدت افزایش یافته‌اند. خاورمیانه حدود یک سوم از نفت جهان را تأمین می‌کند، بنابراین هرگونه اختلال منجر به نگرانی از کمبود و افزایش ناگهانی قیمت‌ها می‌شود. شرکت‌هایی مانند شل از نوسانات بهره‌مند می‌شوند، اما برای مصرف‌کنندگان، این موضوع به معنای افزایش هزینه‌های سوخت و فشار بیشتر بر تورم است. اگر درگیری‌ها تشدید شود، قیمت نفت ممکن است به شدت افزایش یابد و تمامی جنبه‌های زندگی را از حمل و نقل تا قیمت مواد غذایی در سراسر جهان تحت تأثیر قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خلاصه نکات کلیدی</h3>
+            ایالات متحده و ایران در یک بازی دیپلماتیک پرمخاطره قرار دارند که هنوز پیشرفتی حاصل نشده است، اما پیامدهای اقتصادی و نظامی جنگ هم‌اکنون در سراسر جهان احساس می‌شود. 价格较高的原油正在全球范围内造成经济上的痛苦，从德国飙升的工厂成本到英国不断下降的建筑活动都未能幸免。 این مناقشه باعث جذب بازیگران منطقه‌ای مانند اسرائیل و لبنان شده است، در حالی که قدرت‌های جهانی مانند ایالات متحده، چین و کشورهای اروپایی تلاش می‌کنند تا پاسخ مناسبی به آن بدهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تصمیم غافلگیرکننده عربستان برای جلوگیری از استفاده ایالات متحده از فضای هوایی خود برای یک عملیات نظامی برنامه‌ریزی‌شده، بسیاری را غافلگیر کرده و لایه‌ای از غیرقابل‌پیش‌بینی بودن را به این درگیری افزوده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            دخالت ایران در تهدیدات ترکیبی از جمله حملات سایبری احتمالی یا خرابکاری در اروپا، نگرانی‌هایی را در میان سازمان‌های اطلاعاتی برانگیخته، ولی رهبران سیاسی آن را کم‌اهمیت جلوه داده‌اند. علاوه بر این، جنگ، اتحادها را پیچیده‌تر کرده است؛ به گونه‌ای که اوکراین و اسرائیل بر سر تجارت غلات در مناطق اشغالی توسط روسیه با هم درگیر هستند و روسیه و ایران با توجه به منافع مشترک اقتصادی و نظامی، به یکدیگر نزدیک‌تر می‌شوند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
