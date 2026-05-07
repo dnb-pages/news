@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-07 20:02</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-07 20:02</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>کشورهای خلیج فارس از اقدام سازمان ملل برای تامین امنیت تنگه هرمز خواستار شدند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>1385/02/18T19:32:23Z</strong></span>
+                </div>
+                <p class='summary'>قطعنامه پیش‌نویس خواستار توقف حملات، شناسایی مین‌ها و اطمینان از عبور کمک‌های بشردوستانه از تنگه شد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/7/gulf-states-urge-un-action-to-ensure-strait-of-hormuz-safety?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آیا چین می‌تواند بهEnd دادن جنگ ایران کمک کند؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ساعت ۲۳:۳۲:۱۷ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>وزیران خارجه چین و ایران در حالی یکدیگر را ملاقات می‌کنند که آتش‌بس پر تنشی برقرار است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/inside_story/2026/5/7/can-china-help-end-the-iran-war?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایالات متحده منتظر پاسخ ایران به آخرین پیشنهاد صلح برای پایان جنگ است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸ ساعت ۲۳:۴۷:۱۰</strong></span>
+                </div>
+                <p class='summary'>سخنگوی وزارت امور خارجه ایران، اسماعیل باقایی، دیشب گفت که دولت او در حال بررسی پاسخ آمریکا به یک طرح ۱۴ ماده‌ای ایران برای پایان جنگ است و پاسخ خود را به پاکستان، یکی از واسطه‌های کلیدی، خواهد داد.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/07/world/iran-trump-hormuz-peace-deal/iran-war-us-peace-plan-trump' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>کشورهای حاشیه خلیج فارس موانع را از سر راه «پروژه آزادی» در تنگه هرمز برداشتند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸  ساعت ۲۱:۵۵</strong></span>
+                </div>
+                <p class='summary'>تصمیم برای احیا دسترسی به پایگاه‌ها و حریم هوایی، مقدمه‌ای برای از سرگیری عملیات ایالات متحده جهت هدایت کشتی‌ها از طریق آبراه می‌شود.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/saudi-arabia-kuwait-lift-restrictions-on-u-s-military-access-to-bases-airspace-8504c830' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>نظرسنجی | دولت ترامپ نقطه کور پلوتونیوم دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸  ساعت ۲۳:۲۰</strong></span>
+                </div>
+                <p class='summary'>در ایران، غنی‌سازی اورانیوم تنها تهدید نیست.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/the-trump-administration-has-a-plutonium-blind-spot-0fb7defb' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>تحریم‌های ایالات متحده علیه وزیر عراقی متهم به معامله نفتی با ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (نسخه اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۱۸ ساعت ۲۳:۴۹</strong></span>
+                </div>
+                <p class='summary'>تحریم‌های ایالات متحده، معاون وزیر نفت عراق را به دلیل کمک به ایران در دور زدن تحریم‌های مربوط به صادرات نفت، هدف قرار داده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/7/us-sanctions-iraqi-minister-accused-of-aiding-iran-oil-sales?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>چرا ایالات متحده وزیر نفت معاون عراق را به دلیل حمایت از ایران تحریم کرده است؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلى)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸ ساعت ۱۷:۳۶:۰۵</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده علی معاریج البهذی را به دلیل کمک به ایران برای دور زدن تحریم‌ها و صادر کردن نفت آن از طریق عراق، متهم می‌کند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/7/why-has-the-us-sanctioned-iraqs-deputy-oil-minister-for-helping-iran?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>با آتش‌بس‌های سه جبهه، امیدهای جنگی به حالت تعلیق درآمده و در برزخی خطرناک قرار گرفته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۳/۱۸</strong></span>
+                </div>
+                <p class='summary'><p>در غزه، لبنان و ایران، دستاوردهای بسیاری حاصل شده است، اما به هیچ وجه اسرائیل تمامی اهداف خود را محقق نکرده است و همچنین اشتیاق ترامپ برای یک توافق به احتمال زیاد کمکی به بهبود اوضاع نخواهد کرد</p> <p>پست <a href="https://www.timesofisrael.com/with-ceasefires-on-three-fronts-hoped-for-war-gains-suspended-in-dangerous-limbo/">«آتش‌بس در سه جبهه و چشم‌اندازهای جنگ معلق در خطرناک‌ترین حالت»</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26126532753326-1-1024x640.jpg" title="With ceasefires on three fronts, hoped-for war gains suspended in dangerous limbo" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/with-ceasefires-on-three-fronts-hoped-for-war-gains-suspended-in-dangerous-limbo/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>۱۲ سناتور دموکرات ایالات متحده: تخلیه‌های جمعی اسرائیل در ایران و لبنان احتمالاً حقوق بین‌الملل را نقض می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۱۷ ساعت ۱۹:۴۲:۱۳</strong></span>
+                </div>
+                <p class='summary'><p>گروهی از سناتورهای ایالات متحده با نامه‌ای به فرماندهی مرکزی آمریکا (سنتکام) در مورد دخالت در دستورهای تخلیه اسرائیل فشار می‌آورند. ارتش دفاعی اسرائیل (IDF) می‌گوید این اقدام با هدف محافظت از غیرنظامیان است و با قوانین جنگ مطابقت دارد</p> <p>مقاله <a href="https://www.timesofisrael.com/12-us-senate-dems-idf-mass-evacuations-in-iran-lebanon-likely-violate-international-law/">۱۲ سناتور دموکرات ایالات متحده: تخلیه‌هایCollective ارتش دفاعی اسرائیل در ایران و لبنان احتمالاً قوانین بین‌المللی را نقض می‌کند</a> ابتدا در <a href="https://www.timesofisrael.com">تلخ اخبار اسرائیل</a> منتشر شده است.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26014739665676-1024x640.jpg" title="۱۲ سناتور دموکرات ایالات متحده: تخلیه‌هایCollective ارتش دفاعی اسرائیل در ایران و لبنان احتمالاً قوانین بین‌المللی را نقض می‌کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/12-us-senate-dems-idf-mass-evacuations-in-iran-lebanon-likely-violate-international-law/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>بروزرسانی‌های زنده جنگ بین ایران و آمریکا: ایالات متحده منتظر پاسخ تهران به پیشنهاد صلح</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۱۸  ساعت ۲۳:۴۷:۱۲ به وقت UTC</strong></span>
+                </div>
+                <p class='summary'>یک مقام ایرانی اعلام کرد که تهران پاسخ خود را از طریق پاکستان، یکی از میانجی‌های کلیدی، منتقل خواهد کرد. مقام دیگری در ایران نیز پیش از این پیشنهاد گزارش‌شده برای پایان جنگ را به عنوان «فهرستی از خواسته‌های آمریکایی» رد کرده بود.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/07/world/iran-trump-hormuz-peace-deal' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>اسرائیل می‌گوید رهبر حزب‌الله را در نزدیکی بیروت کشته است و این اقدام، آتش‌بس را به چالش می‌کشد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل – نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۸ ساعت ۱۹:۱۱</strong></span>
+                </div>
+                <p class='summary'>این اعتصاب نخستین مورد نزدیک به پایتخت لبنان پس از آتش‌بس بود که منجر به کاهش درگیری‌ها شده اما آن را متوقف نکرده است. واشنگتن در تلاش برای دستیابی به صلح پایدار است و امیدوار است که این مسئله زمینه‌ساز تسهیل دیپلماسی با ایران باشد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/07/world/middleeast/israel-hezbollah-commander-beirut-strike.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۷ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>خاورمیانه در آستانه‌ی خطر است زیرا چندین درگیری درگیر ایران—از جمله جنگ جاری، حملات به کشتی‌ها در تنگه هرمز و تنش‌ها با اسرائیل—حرکت‌های محتاطانه‌ای به سمت صلح دارند، اما خطر ازسرگیری خشونت‌ها همچنان بالا است. از سوی دیگر، ایالات متحده در تلاش است تا برای پایان دادن به جنگ با ایران به توافقی دست یابد، در حالی که کشورهای عربی حاشیه خلیج فارس و قدرت‌های جهانی در حال رقابت برای نفوذ در منطقه‌ای حیاتی برای عرضه نفت جهان هستند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            چندین رویداد مهم به طور همزمان در حال وقوع هستند. کشورهای خلیج‌فارس از سازمان ملل خواسته‌اند تا اقدامی برای محافظت تنگه هرمز، یک مسیر حیاتی حمل‌ونقل نفت که ایران به‌طور ادعایی با مین‌های دریایی ترافیک را مختل کرده است، انجام دهد. در همین حال، آتش‌بس شکننده میان ایران و مخالفانش به نظر می‌رسد که در حال تداوم است، هرچند به شدت ناپایدار است. ایالات متحده طرح صلح ۱۴ ماده‌ای را به ایران پیشنهاد کرده است که تهران در حال بررسی آن از طریق میانجی‌گری پاکستان است. در عراق، ایالات متحده معاون وزیر نفت عراق را به دلیل کمک به ایران در دور زدن تحریم‌ها تحریم کرده است. در این میان، اسرائیل با کشته کردن یک فرمانده حزب‌الله در نزدیکی بیروت، آتش‌بس با لبنان را آزمایش کرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            توسعه‌های محتمل در کوتاه‌مدت، تداوم آتش‌بس شکننده اما با خطر بالای فروپاشی است. تلاش‌های دیپلماتیک تحت رهبری ایالات متحده، چین و میانجی‌های منطقه‌ای (مانند پاکستان) ممکن است در صورتی که ایران با شروط کلیدی مانند پایان حملات به کشتی‌ها و اجازه عبور کمک‌های انسانی از تنگه هرمز موافقت کند، منجر به کاهش موقت تنش‌ها شود. با این حال، تندروها در هر دو طرف می‌توانند مانع پیشرفت شوند. ایالات متحده ممکن است همچنین فشار خود را بر عراق برای مقابله با قاچاق نفت ایران افزایش دهد، در حالی که اسرائیل نیز ممکن است در راستای حل کامل مناقشه با حزب‌الله اقدام کند یا در صورت احساس تهدید، به تشدید تنش‌ها بپردازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            <ul><li>۱. ۷ مه ۲۰۲۶: کشور های حاشیه خلیج فارس (عربستان سعودی، کویت) محدودیت های دسترسی نظامی آمریکا به پایگاه ها و حریم هوایی خود را لغو می‌کنند و امکان هدایت کشتی ها از تنگه هرمز توسط آمریکا را فراهم می‌آورند.</li><li>۲. ۷ مه: ایران در حال بررسی پیشنهاد صلح آمریکا است، اما آن را به عنوان "فهرستی از خواسته‌های آمریکایی ها" رد می‌کند.</li><li>۳. ۷ مه: ایالات متحده وزیر نفت معاون عراق را به اتهام کمک به دور زدن تحریم های نفتی ایران تحریم می‌کند.</li><li>۴. ۷ مه: اسرائیل فرمانده حزب‌الله را در نزدیکی بیروت به قتل می‌رساند و آتش‌بس شکننده با لبنان را آزمایش می‌کند.</li><li>۵. اواخر ۷ مه: کشور های حاشیه خلیج فارس از سازمان ملل می‌خواهند از امنیت تنگه هرمز اطمینان حاصل کنند و معدن‌گذاری‌های احتمالی ایران را متوقف کند.</li><li>۶. وزیران خارجه چین و ایران در جریان مذاکرات آتش‌بس دیدار می‌کنند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دیدگاه استراتژیک</h3>
+            در درازمدت، وضعیت به‌شدت نامطمین باقی خواهد ماند. اگر تلاش‌های دیپلماتیک کنونی ناکام بماند، منطقه ممکن است شاهد تجدید درگیری‌های گسترده‌ای با مشارکت ایران، اسرائیل و گروه‌های نیابتی همچون حزب‌الله باشد. برقراری صلح پایدار مستلزم رسیدگی به مسائل اساسی از جمله: جاه‌طلبی‌های هسته‌ای ایران، حمایت این کشور از نیابت‌های منطقه‌ای و نگرانی‌های امنیتی اسرائیل خواهد بود. involvement رو به رشد چین نشان می‌دهد شاید این کشور بخواهد خود را به‌عنوان یک میانجی کلیدی معرفی کند، احتمالاً برای تأمین منافع انرژی‌اش و مقابله با نفوذ ایالات متحده. ایالات متحده تحت دولت ترامپ به نظر می‌رسد مشتاق به بستن معامله‌ای است اما خطر نادیده گرفتن تهدیدات گسترده‌تری همچون احتمال تولید پلوتونیوم توسط ایران را دارد. از سوی دیگر، قدرت‌های جهانی به رقابت برای نفوذ در خلیج فارس، منطقه‌ای حیاتی برای نفت و تجارت، ادامه خواهند داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋  پویایی‌های درگیری </h3>
+            در حال حاضر مناقشه در یک بن‌بست تنش‌زا قرار دارد. آتش‌بس‌های چندگانه در مناطق مختلف (غزه، لبنان و ایران) fighting با شدت بزرگ را کاهش داده، اما خشونت در سطوح پایین‌تر ادامه دارد. حمله هدفمند اسرائیل نزدیک بیروت ممکن است سبب انتقام‌گیری حزب‌الله شود؛ در همین حال، ایران متهم شده است که به مختل کردن ترافیک دریایی در تنگه هرمز ادامه می‌دهد. ماهیت این درگیری‌ها به حملات کوچک‌تر و مخفیانه‌تر (مانند مین‌گذاری، ترور و دور زدن تحریم‌ها) تغییر یافته و دیگر مانند جنگ تمام‌عیار نیست. بازیگران بین‌المللی در تلاشند تا ثبات را تحمیل کنند، اما ممکن است جناح‌های محلی همکاری نکنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت نمونه‌ای کوچک از بحران گسترده‌تر خاورمیانه است، جایی که تنش‌های دیرینه ساله، جنگ‌های نیابتی و جاه‌طلبی‌های هسته‌ای با یکدیگر برخورد می‌کنند. درگیری گسترده‌تر ممکن است قدرت‌های جهانی را درگیر کند، عرضه جهانی نفت را مختل کند و اقتصادها را ناپایدار سازد. برای جهان، تنگه هرمز یک گلوگاه حیاتی است—روزانه حدود 20 درصد از نفت جهان از آن عبور می‌کند. هرگونه اختلال در این نقطه سبب می‌شود بازارهای انرژی لرزان شوند، قیمت‌ها افزایش یابد و اقتصادهایی که از قبل با تورم و ناپایداری‌های ژئوپلیتیکی دست به گریبان هستند، بیش از پیش تحت فشار قرار گیرند. فراتر از نفت، این بحران ممکن است اتحادهای جدیدی را ترسیم کند، به گونه‌ای که چین به‌عنوان یک میانجی اصلی در منطقه، احتمالاً جای ایالات متحده را بگیرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            <ul><li>ایران: تلاش برای لغو تحریم‌ها و influência منطقه‌ای در حالی که تحت فشار نظامی اسرائیل و دیگران قرار دارد.</li><li>کشورهای خلیج (عربستان سعودی، کویت): تلاش برای اقدام سازمان ملل برای محافظت از حمل و نقل دریایی و مقابله با تهدیدهای ایران.</li><li>چین: به طور فزاینده‌ای به عنوان میانجی وارد عمل شده است، احتمالاً برای تأمین منابع انرژی خود و مقابله با نفوذ ایالات متحده.</li><li>اسرائیل: آتش‌بس‌ها را آزمایش می‌کند اما مواضع سختگیرانه خود را در مورد حزب‌الله و ایران حفظ می‌کند.</li><li>عراق: به دام میانجی‌ها افتاده است، تحت فشار ایالات متحده قرار دارد اما از نظر اقتصادی به ایران وابسته است.</li><li>پاکستان: به عنوان میانجی بین ایالات متحده و ایران عمل می‌کند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تنگه هرمز مهم‌ترین مسیر دریایی حمل نفت در جهان است—حدود ۲۰٪ صادرات نفت جهان از طریق این تنگه جریان دارد. هرگونه اختلال در این منطقه، حتی موقت، می‌تواند باعث جهش شدید قیمت‌های نفت شود. تنش‌های کنونی (مانند مین‌گذاری، احتمال بسته‌شدن مسیر، یا تشدید نظامی) هم‌اکنون موجب نگرانی در بازارهای نفت شده‌اند و قیمت‌ها تا زمان تثبیت وضعیت، احتمالاً نوسانی خواهد ماند. اوپک و تولیدکنندگان بزرگ نفت در صورت تبدیل‌شدن تنگه به منطقه جنگی، تلاش خواهند کرد تا کمبودها را جبران کنند. برای مصرف‌کنندگان، این به معنای افزایش قیمت بنزین و کندی احتمالی اقتصاد، به ویژه در کشورهای وابسته به واردات خواهد بود. ایالات متحده و عربستان سعودی ممکن است اقدام به آزادسازی ذخایر استراتژیک خود کنند تا قیمت‌ها را تثبیت نمایند، اما ریسک‌ها همچنان بالا خواهند بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            تنگه هرمز همچنان کانون بحران است—اگر ایران دست به اختلال در کشتیرانی بزند یا اسرائیل تشنج‌ها را افزایش دهد، قیمت نفت می‌تواند به صورت جهانی به شدت افزایش یابد. تلاش‌های دیپلماتیک در جریان است اما به شدت شکننده بوده و هرگونه اشتباه یکجانبه (برای نمونه، حمله اسرائیل به حزب‌الله یا تحریم ایالات متحده) می‌تواند دوباره به رویارویی تمام‌عیار منجر شود. هر دو کشور آمریکا و چین برای نفوذ در منطقه رقابت می‌کنند و در همین حال نقش رو به رشد چین نشانه‌ای از تغییر احتمالی در دینامیک قدرت در خاورمیانه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            نقش میانجی‌گری فعال چین غیرمنتظره است و نشانه‌ای از بلندپروازی فزاینده این کشور برای جایگزینی ایالات متحده به عنوان اصلی‌ترین میانجی‌گر در منطقه به شمار می‌آید. علاوه بر این، تحریم ایالات متحده علیه معاون وزیر نفت عراق نشان‌دهنده آن است که چگونه این درگیری‌ها از تنش‌های مستقیم ایران و اسرائیل فراتر رفته و به نبردهای منطقه‌ای گسترده‌تر و از طریق پیمانکاران غیرمستقیم (پروکسی) کشیده شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات معناداری در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
