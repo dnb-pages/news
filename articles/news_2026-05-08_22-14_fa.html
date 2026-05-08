@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-08 22:18</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-08 22:18</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>درگیری نیروهای دریایی آمریکا و ایران در حالی که دولت ایالات متحده منتظر پاسخ تهران به آخرین پیشنهاد است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۹ ۲۱:۴۰:۴۴</strong></span>
+                </div>
+                <p class='summary'><p>فرماندهی مرکزی ایالات متحده (CENTCOM) به نفت‌کش‌های ایرانی حمله کرد؛ در همین حال، ایران یک کشتی حامل نفت متعلق به چین را توقیف کرده، موشک‌ها و پهپادهایی را به امارات پرتاب کرد و مایک پنس (Vance) نخست‌وزیر قطر را در نشستی در واشنگتن درباره مذاکرات با ایران دیدار کرد.</p> <p>پست اختصاصی تحت عنوان <a href="https://www.timesofisrael.com/us-iranian-naval-forces-clash-as-washington-awaits-tehrans-response-to-latest-proposal/">درگیری نیروهای دریایی آمریکا و ایران در حالی که واشنگتن منتظر پاسخ تهران به آخرین پیشنهاد است</a> برای اولین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26126592665556-1024x640.jpg" title="درگیری نیروهای دریایی آمریکا و ایران در حالی که واشنگتن منتظر پاسخ تهران به آخرین پیشنهاد است" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/us-iranian-naval-forces-clash-as-washington-awaits-tehrans-response-to-latest-proposal/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>گزارش: یکی از مشاوران نزدیک نتانیاهو هرزگو را به دلیل موضعش در مورد عفو نخست‌وزیر یک «بزدل» نامید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۱۹ ۲۳:۴۰:۲۳</strong></span>
+                </div>
+                <p class='summary'><p>در یک نشست مخفی، reportedly رئیس‌جمهور به یعقوب باردوگو گفت که نخست‌وزیر درخواست مناسبی ارائه نکرده است. خبرنگار جناح راست به هرزگو می‌گوید: «ترسو نباش، بترس نباش»</p> <p>پست <a href="https://www.timesofisrael.com/report-netanyahu-confidant-called-herzog-a-coward-over-stance-on-pardon-for-pm/">گزارش: مشاور نتانیاهو هرزگو را به دلیل موضعش در مورد عفو نخست‌وزیر «ترسو» خواند</a>، نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/03/AFP__20260316__A3HX8T9__v2__HighRes__IsraelIranUsWar-1024x640.jpg" title="گزارش: مشاور نتانیاهو هرزگو را به دلیل موضعش در مورد عفو نخست‌وزیر «ترسو» خواند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/گزارشی-مشاور-آشتی-نتانیاهو-هرتسوگ-را-به-اطراف-قو- بمعنى-وضعیت-عفو-نخست-وزیر' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>آمریکا در بحبوحه ادامه تنش‌ها و ترک مخاصمات، دو کشتی با پرچم ایران را مورد اصابت قرار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Washington Post (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۹/۱۸ ساعت ۱۹:۲۴:۵۱ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>دولت ترامپ که از مناقشهٔ گسترده در تنگهٔ هرمز شانه خالی کرد، اعلام نمود که در حال انتظار برای پاسخ تهران نسبت به آخرین شروط خود برای پایان دادن به جنگ است.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/05/08/us-iran-ceasefire-hormuz-attacks/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>به‌روزرسانی‌های زنده در مورد جنگ ایران: آمریکا با شلیک به تانکرها، تهران را به حملات 'بی‌احتیاطانه' متهم می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۱۸ ساعت ۲۲:۰۹:۲۰</strong></span>
+                </div>
+                <p class='summary'>وزیر امور خارجه ایران، واشنگتن را به تخریب دیپلماسی متهم کرد. مارکو روبیو، وزیر امور خارجه ایالات متحده گفت که آمریکا انتظار دارد تا جمعه از تهرانResponse: از جانب تهران پاسخ‌هایی دریافت کند.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/08/world/iran-strikes-trump-ceasefire-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>نظر | ایران توان و اراده ترامپ برای مبارزه را می‌آزماید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۹ ۲۱:۳۳</strong></span>
+                </div>
+                <p class='summary'>رژیم اقدام به شلیک به سوی ناوهای جنگی ایالات متحده در تنگه هرمز می‌کند، اما همچنان از آتش‌بس برخوردار است.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/cease-fire-iran-trump-strait-of-hormuz-97ad272e' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ترامپ در تلاش برای بازگشایی تنگه هرمز، پیچیده‌ترین چالش‌های ایران را کنار گذاشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۱۹ ۲۱:۲۹:۴۲</strong></span>
+                </div>
+                <p class='summary'>دونالد ترامپ، رئیس‌جمهور ایالات متحده، رویکرد خود را تغییر داده است، زیرا او تلاش می‌کند جنگ علیه ایران را پایان دهد: اولویت عمده او بازگشایی تنگه هرمز به هر قیمتی و به تعویق انداختن مذاکرات پیچیده در مورد برنامه‌های هسته‌ای و موشک‌های بالستیک تهران است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-punts-thorniest-iran-challenges-in-push-to-reopen-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۸ مه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌ها بین ایالات متحده و ایران با درگیری‌های دریایی در تنگه هرمز، حملات موشکی به امارات، و توقیف کشتی‌های نفت‌کش تشدید می‌شود. از سوی دیگر، تلاش‌های دیپلماتیک برای بازگشایی این آبراه حیاتی ادامه دارد، اما خشونت می‌تواند مذاکرات را متزلزل کند. این درگیری اکنون شامل بازیگران منطقه‌ای متعددی از جمله چین شده و خطر اختلال در عرضه جهانی نفت را در پی دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            آمریکا و ایران در تنگه هرمز، مسیری حیاتی برای حمل و نقل نفت، درگیر درگیری های نظامی هستند. آمریکا پس از آنکه ایران یک نفتکش متعلق به چین را توقیف کرد، دو کشتی ایرانی را مورد حمله قرار داد. ایران همچنین موشک‌ها و پهپادهایی را به امارات متحده عربی شلیک کرد و آنها را متهم به حمایت از آمریکا نمود. واشنگتن در انتظار پاسخ ایران به آخرین پیشنهاد ترک مخاصمه است، در حالی که دولت ترامپ به نظر می‌رسد اولویت‌بخشی به بازگشایی تنگه هرمز را بر حل و فصل مسائل عمیق‌تر مانند برنامه هسته‌ای ایران ترجیح می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            تنش‌ها به احتمال زیاد در کوتاه‌مدت بالا خواهد ماند، زیرا هر دو طرف به پستوی نظامی خود ادامه خواهند داد. با این حال، اگر مذاکرات برای بازگشایی تنگه هرمز با موفقیت انجام شود، ممکن است شاهد کاهش موقتی تنش‌ها باشیم. در صورت شکست مذاکرات، خطر درگیری گسترده‌تر—به ویژه درگیری ناشی از اسرائیل یا سایر بازیگران منطقه‌ای—به طور قابل‌توجهی افزایش می‌یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>**۸ مه ۲۰۲۶**: نیروهای مورد حمایت ایران یک نفت‌کش متعلق به چین را در تنگه هرمز تصرف می‌کنند. ایالات متحده با حمله به دو فروند کشتی با پرچم ایران واکنش نشان می‌دهد. ایران با شلیک موشک‌ها و پهپاد‌ها به اهداف امارات متحده عربی حمله می‌کند. واشنگتن منتظر پاسخ ایران به پیشنهاد آتش‌بس است.</li><li>**هفته‌های اخیر**: گفتگوهای بین ایالات متحده و ایران برای چند هفته اخیر به بن‌بست خورده و هر دو سوی درگیر تهدیدها و حملات محدود را تبادل نموده‌اند.</li><li>**پیش از ۲۰۲۶**: جنگ بین ایالات متحده و ایران از اواسط سال ۲۰۲۵ آغاز شده و حول کنترل تنگه هرمز و جاه‌طلبی‌های هسته‌ای ایران متمرکز بوده است.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            چشم‌انداز بلندمدت به این بستگی دارد که آیا دیپلماسی می‌تواند تنگه هرمز را دوباره باز کند یا خیر. در صورت موفقیت، تنش‌ها ممکن است به طور موقت کاهش یابند، اما مسائل حل‌نشده‌ای همچون برنامه هسته‌ای و توسعه موشک‌های ایران همچنان به قوت خود باقی خواهند ماند. در صورت شکست دیپلماسی، خطر وقوع جنگ منطقه‌ای گسترده‌تری که شامل اسرائیل، عربستان سعودی یا سایر کشورهای خلیج فارس می‌شود، افزایش می‌یابد. همچنین ایران ممکن است حملات نیابتی خود علیه متحدان ایالات متحده در منطقه را افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری کنونی با حملات فزاینده دریایی، پدافند موشکی و اقدامات علیه کشتی‌های تجاری مشخص شده است. درگیری‌های مستقیم آمریکا و ایران شدت یافته، گرچه هیچ‌کدام آمادگی جنگ تمام‌عیار ندارند. ایران از طریق بازیگران نیابتی مانند حزب‌الله و شورشیان حوثی تلاش می‌کند دامنه درگیری را گسترش دهد، در حالی که آمریکا به دنبال تضعیف توان نظامی ایران بدون ایجاد جنگ تمام‌عیار است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری در حال تغییر بازارهای جهانی نفت و ائتلاف‌های ژئوپلیتیکی است. تنگه هرمز یک گلوگاه برای یک‌سوم عرضه نفت جهان محسوب می‌شود. در صورت مسدود شدن، قیمت‌های نفت می‌تواند به شدت افزایش یابد و باعث بی‌ثباتی اقتصادی در سراسر جهان شود. این بحران همچنین ائتلاف‌های ایالات متحده در خاورمیانه، به ویژه با اسرائیل و کشورهای حاشیه خلیج فارس را آزمایش می‌کند، در حالی که دخالت چین تلاش‌های دیپلماتیک را پیچیده‌تر می‌سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیگران اصلی عبارتند از:<br>- **ایالات متحده آمریکا**: رهبری دیپلماسی و انجام حملات نظامی. تمرکز بر بازگشایی تنگه هرمز و مهار برنامه هسته‌ای ایران.<br>- **ایران**: تلاش برای حفظ کنترل بر تنگه، نپذیرفتن خواسته‌های آمریکا و استفاده از گروه‌های نیابتی برای فشار به متحدان.<br>- **چین**: صاحب تانکر توقیف‌شده و درگیر شدن به دلیل واردات نفت از ایران.<br>- **امارات متحده عربی**: هدف حملات ایران، احتمالاً دریافت حمایت آمریکا.<br>- **اسرائیل**: involvement غیرمستقیم، به دلیل احتمال از سرگیری حملات حزب‌الله متحد ایران.<br>- **اروپا/دیگر کشورهای خلیج فارس**: نظارت دقیق؛ منافع اقتصادی در معرض خطر به دلیل ریسک‌های تأمین نفت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تنگه هرمز یک مسیر مهم حمل نفت است. هر گونه اختلال در آن—مانند حمله به نفت‌کش‌ها یا محاصره کامل—قیمتشهر را به شدت بالا خواهد برد. این تنش‌ها تاکنون موجب افزایش قیمت نفت شده‌اند، زیرا بازارها در ترس از کمبود عرضه هستند. وقوع درگیری گسترده می‌تواند قیمت‌ها را دو یا سه برابر کند و باعث کندی اقتصادی جهانی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده و ایران درگیر یک رویارویی خطرناک دریایی و موشکی در تنگه هرمز هستند که عرضه جهانی نفت را تهدید می‌کند. تلاش‌های دیپلماتیک برای بازگشایی تنگه به‌شدت آسیب‌پذیر است و ممکن است فرو بریزد که منجر به تشدید درگیری‌ها خواهد شد. مداخله چین complexities بیشتری به مسئله می‌افزاید، زیرا این کشور در تلاش است تا منافع نفتی خود را در میانه این درگیری حفظ کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            بحرانی سیاسی داخلی اسرائیل — که در آن یکی از متحدان نتانیاهو رئیس‌جمهور را به‌طور علنی متهم به «بزدلی» کرد — ممکن است از مذاکرات هسته‌ای با ایران منحرف شده و تلاش‌های دیپلماتیک گسترده‌تر در منطقه را پیچیده سازد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

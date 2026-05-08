@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-05-08 22:15</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-05-08 22:15</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>US, Iranian naval forces clash as Washington awaits Tehran’s response to latest proposal</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-08 21:40</strong></span>
+                </div>
+                <p class='summary'><p>CENTCOM strikes Iranian tankers while Iran seizes Chinese-owned vessel carrying crude, fires missiles and drones at UAE; Vance meets with Qatari PM in DC to discuss Iran talks</p> <p>The post <a href="https://www.timesofisrael.com/us-iranian-naval-forces-clash-as-washington-awaits-tehrans-response-to-latest-proposal/">US, Iranian naval forces clash as Washington awaits Tehran’s response to latest proposal</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26126592665556-1024x640.jpg" title="US, Iranian naval forces clash as Washington awaits Tehran’s response to latest proposal" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/us-iranian-naval-forces-clash-as-washington-awaits-tehrans-response-to-latest-proposal/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Report: Netanyahu confidant called Herzog a ‘coward’ over stance on pardon for PM</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-08 20:40</strong></span>
+                </div>
+                <p class='summary'><p>At secret meeting president reportedly told Jacob Bardugo that PM had not submitted appropriate request; right-wing journalist tells Herzog to 'stop being a coward, stop being afraid'</p> <p>The post <a href="https://www.timesofisrael.com/report-netanyahu-confidant-called-herzog-a-coward-over-stance-on-pardon-for-pm/">Report: Netanyahu confidant called Herzog a ‘coward’ over stance on pardon for PM</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/03/AFP__20260316__A3HX8T9__v2__HighRes__IsraelIranUsWar-1024x640.jpg" title="Report: Netanyahu confidant called Herzog a ‘coward’ over stance on pardon for PM" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/report-netanyahu-confidant-called-herzog-a-coward-over-stance-on-pardon-for-pm/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>U.S. strikes two Iranian-flagged vessels as tensions continue amid ceasefire </span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Washington Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-08 21:54</strong></span>
+                </div>
+                <p class='summary'>The Trump administration, sidestepping a widening battle in the Strait of Hormuz, said it was anticipating a reply from Tehran on its latest terms for ending the war.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/05/08/us-iran-ceasefire-hormuz-attacks/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iran War Live Updates: U.S. Fires on Tankers as Tehran Accuses Washington of ‘Reckless’ Attacks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-08 22:09</strong></span>
+                </div>
+                <p class='summary'>Iran’s foreign minister accused Washington of undermining diplomacy. Secretary of State Marco Rubio said the U.S. expected to hear from Tehran on Friday.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/05/08/world/iran-strikes-trump-ceasefire-hormuz' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Opinion | Iran Tests Trump’s Will to Fight</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-08 21:33</strong></span>
+                </div>
+                <p class='summary'>The regime fires on U.S. warships in Hormuz but still enjoys a cease-fire.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/cease-fire-iran-trump-strait-of-hormuz-97ad272e' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Trump Punts Thorniest Iran Challenges in Push to Reopen Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-08 21:29</strong></span>
+                </div>
+                <p class='summary'>President Donald Trump has changed his approach as he tries to end the war against Iran: reopen the Strait of Hormuz at all costs and leave thorny negotiations on Tehran’s nuclear and ballistic missile programs until later.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-punts-thorniest-iran-challenges-in-push-to-reopen-hormuz' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - May 8, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Tensions between the U.S. and Iran escalate with naval clashes in the Strait of Hormuz, missile strikes on the UAE, and seizures of oil tankers. Meanwhile, diplomatic efforts to reopen the critical waterway continue, but violence threatens to derail negotiations. The conflict now involves multiple regional players, including China, and risks disrupting global oil supplies.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. and Iran are engaged in military clashes in the Strait of Hormuz, a critical oil shipping route. The U.S. struck two Iranian-flagged vessels after Iran seized a Chinese-owned tanker carrying crude oil. Iran also fired missiles and drones at the UAE, accusing them of supporting the U.S. Washington is awaiting Iran's response to a latest ceasefire proposal, while Trump’s administration appears to prioritize reopening the Strait of Hormuz over resolving deeper issues like Iran’s nuclear program.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            Tensions are likely to remain high in the short term, with continued military posturing by both sides. However, if negotiations to reopen the Strait of Hormuz succeed, we may see a temporary de-escalation. If talks fail, the risk of broader conflict—particularly involving Israel or other regional players—increases significantly.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>**May 8, 2026**: Iranian-backed forces seize a Chinese-owned oil tanker in the Strait of Hormuz. The U.S. responds by striking two Iranian-flagged vessels. Iran fires missiles and drones at UAE targets. Washington awaits Iran’s response to a ceasefire proposal.</li><li>**Recent weeks**: Ongoing talks between the U.S. and Iran have stalled, with both sides exchanging threats and limited strikes.</li><li>**Pre-2026**: The war between the U.S. and Iran has been ongoing since mid-2025, centered on control of the Strait of Hormuz and Iran’s nuclear ambitions.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term outlook depends on whether diplomacy can reopen the Strait of Hormuz. If successful, tensions may ease temporarily, but unresolved issues like Iran’s nuclear program and missile development will linger. If diplomacy fails, the risk of a broader regional war involving Israel, Saudi Arabia, or other Gulf states grows. Iran may also increase proxy attacks against U.S. allies in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current conflict is marked by escalating naval strikes, missile attacks, and attacks on commercial shipping. Direct U.S.-Iran clashes have intensified, though neither side appears ready for full-scale war. Iran is using proxies like Hezbollah and Houthi rebels to broaden the conflict, while the U.S. aims to degrade Iran’s military capabilities without triggering a full-scale war.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict is reshaping global oil markets and geopolitical alliances. The Strait of Hormuz is a chokepoint for one-third of the world’s oil supply. If blocked, oil prices could skyrocket, causing economic instability worldwide. The crisis also tests U.S. alliances in the Middle East, particularly with Israel and Gulf states, while China’s involvement complicates diplomatic efforts.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Key players include:<br>- **U.S.**: Leading diplomatic efforts while conducting military strikes. Focused on reopening the Strait of Hormuz and containing Iran’s nuclear program.<br>- **Iran**: Fighting to maintain control over the Strait, rejecting U.S. demands, and using proxies to pressure allies.<br>- **China**: Owns the seized tanker and is involved due to its oil imports from Iran.<br>- **UAE**: Target of Iranian strikes, likely receiving U.S. support.<br>- **Israel**: Indirectly involved, as Iran’s ally Hezbollah could renew attacks.<br>- **Europe/Other Gulf States**: Watching closely; economic interests at stake due to oil supply risks.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The Strait of Hormuz is a critical oil shipping route. Any disruption—such as attacks on tankers or blockades—would send oil prices sharply higher. Already, tensions have contributed to a spike in oil prices, as markets fear supply shortages. A full-scale conflict could double or triple prices, triggering a global economic slowdown.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S. and Iran are locked in a dangerous naval and missile conflict in the Strait of Hormuz, threatening global oil supplies. Diplomatic efforts to reopen the Strait are fragile and could collapse, leading to further escalation. China’s involvement adds another layer of complexity, as it seeks to protect its oil interests amid the conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            None
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            Israel’s internal political crisis—where a Netanyahu ally publicly accused the President of being a 'coward'—may distract from Iran negotiations, complicating broader diplomatic efforts in the region.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
