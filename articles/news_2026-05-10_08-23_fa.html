@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-10 08:26</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-10 08:26</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>نیروی دریایی سپاه پاسداران انقلاب اسلامی در صورت تحت آتش قرار گرفتن کشتی‌های نفت‌کش آن، تهدید به «حملهٔ شدید» علیه دارایی‌های آمریکا کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۰ ساعت ۰۸:۴۰</strong></span>
+                </div>
+                <p class='summary'><p>ارتش ایران اعلام کرد کشتی‌های کشورهای پایبند به تحریم‌های ایالات متحده برای عبور از تنگه هرمز با مشکلاتی مواجه خواهند شد. در این میان، یک فروند کشتی فله‌بر در نزدیکی دوحه هدف اصابت گلوله قرار گرفت، سازمان دریایی تأکید کرد تلفات جانی در این حادثه گزارش نشده است</p> <p>این پست در <a href="https://www.timesofisrael.com/irgc-navy-threatens-heavy-attack-on-us-assets-if-its-oil-tankers-come-under-fire/">نیروی دریایی سپاه تهدید به «حمله وسیع» به دارایی‌های آمریکا در صورت هدف گرفتن نفتکش‌هایش می‌کند</a> برای اولین بار در <a href="https://www.timesofisrael.com">هفته‌نامه تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/04/AFP__20260424__A8WE3VC__v1__HighRes__IranUsIsraelWar-e1777663603947-1024x640.jpg" title="نیروی دریایی سپاه تهدید به «حمله وسیع» به دارایی‌های آمریکا در صورت هدف گرفتن نفتکش‌هایش می‌کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/irgc-navy-threatens-heavy-attack-on-us-assets-if-its-oil-tankers-come-under-fire/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>پخش زنده: سپاه پاسداران در صورت حمله به نفتکش‌های ایران، تهدید به حمله به پایگاه‌های آمریکا در منطقه کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۱</strong></span>
+                </div>
+                <p class='summary'>به گزارش رسانه‌های ایرانی، روز شنبه مصادف با شنبه، سپاه پاسداران انقلاب اسلامی تهدید کرد در صورت زیر آتش قرار گرفتن تانکرهای خود در خاورمیانه، اهدافی در ایالات متحده را هدف قرار خواهد داد. meanwhile، واشنگتن همچنان منتظر پاسخ تهران به پیشنهاد تازه‌اش برای یک توافق صلح است. برای مشاهده آخرین به روزرسانی‌ها، وبلاگ زنده ما را دنبال کنید</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260510-زند-نگهبانان-ایران-آمریکا-را-در-منطقه-تهدید-می‌کنند-اگر-تانکرهای-آن-هدف-قرار-گیرند' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۰ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>نیروی قدس سپاه پاسداران انقلاب اسلامی ایران (IRGC) تهدید کرده است که در صورتTarget شدن کشتی‌های نفت‌کش آن‌ها توسط نیروهای آمریکایی یا متحدان آن‌ها، به دارایی‌های نظامی آمریکا در خاورمیانه حمله شدید انجام خواهند داد. این هشدار در بحبوحه تنش‌های ongoing در خلیج فارس پس از حادثه اخیر رخ می‌دهد که در آن یک کشتی تجاری در نزدیکی قطر مورد اصابت یک پروژه قرار گرفت و هیچ مصدومیتی گزارش نشده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            سرویس دریایی سپاه پاسداران ایران (نیروی دریایی سپاه) تهدیدی مستقیم مبنی بر تلافی علیه پایگاه‌های نظامی ایالات متحده در منطقه در صورت مواجهه کشتی‌های نفت‌کش ایران با هرگونه حمله یا دخالت، به ویژه از سوی نیروهای همسو با آمریکا که تحریم‌ها را اجرا می‌کنند، صادر کرد. این تهدید پس از واقعه اخیر رخ داد که یک کشتی باری (یک کشتی بزرگ حامل کالای خشک) توسط یک پروژه در نزدیکی دوحه، قطر مورد اصابت قرار گرفت، اگرچه کسی مجروح نشد. به نظر می‌رسد ایران در حال تشدید لحن خود است زیرا تنش‌های منطقه‌ای همچنان در اوج قرار دارد، بخشی از این تنش‌ها به تحریم‌ها و اختلافات بر سر فعالیت‌های هسته‌ای مربوط می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجاست سرتیتر</h3>
+            به نظر می‌رسد که اوضاع در کوتاه‌مدت احتمالاً وخیم‌تر شود و اگر ایران احساس کند به گوشه‌ای رانده شده، ممکن است برای اختلال در ترابری دریایی در تنگه هرمز از نیروهای نظامی خود استفاده کند. ایالات متحده ممکن است با نمایش نیرو یا حملات محدود پاسخ دهد تا از تهاجم پیشگیری کند، اما به نظر نمی‌رسد هیچ‌یک از طرفین آماده جنگ گسترده باشند. کانال‌های دیپلماتیک ممکن است از سر گرفته شوند زیرا هر دو کشور به ارزیابی ریسک‌ها می‌پردازند، اما تضمینی برای کاهش تنش وجود ندارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            <ul><li>۱. اوایل سال ۲۰۲۶: تشدید تنش‌ها به دلیل تحریم‌های آمریکا علیه ایران و توقف مذاکرات برنامه هسته‌ای ایران.</li><li>۲. ۱۰ مه ۲۰۲۶: سپاه پاسداران threat عمومی به دارایی‌های آمریکا در پاسخ به مدعای دخالت در نفتکش‌های ایرانی صادر کرد.</li><li>۳. قبل از ۱۰ مه: یک کشتی تجاری در نزدیکی قطر مورد اصابت گلوله قرار گرفت که بر شدت بحران افزود.</li><li>۴. در جریان: آمریکا منتظر پاسخ ایران به پیشنهاد اخیر صلح است که احتمالاً شامل شروطی پیرامون لغو تحریم‌هاست.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            استراتژی ایران به نظر متمرکز بر بازدارندگی از طریق تهدید به انتقام پرهزینه برای حفاظت از منابع حیاتی اقتصادی (صادرات نفت) است. به احتمال زیاد آمریکا فشار خود را از طریق تحریم‌ها ادامه خواهد داد در حالی که از درگیری مستقیم اجتناب می‌کند. با این حال، اشتباهات محاسباتی یا حوادث در تنگه هرمز می‌تواند منجر به تشدید سریع شود. در بلندمدت، ایران ممکن است به دنبال اتحادهای جدید (مانند همکاری با روسیه یا چین) برای دور زدن فشار غرب باشد. این منطقه همچنان در بن‌بست پرخطر به سر می‌برد و هیچ راه آشکاری برای دستیابی به صلح پایدار وجود ندارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            درگیری کنونی عمدتاً جنگی لفظی و عملکردهای نمایشی است تا جنگی واقعی و فعال، و ایران برای بازداشتن نیروهای قوی‌تر دریایی ایالات متحده به توانمندی‌های نامتقارن خود (قایق‌های کوچک، موشک‌ها و نیروهای نیابتی) متکی است. خطر تشدید ناخواسته بالا است، زیرا هر حمله‌ای به کشتی‌های ایرانی می‌تواند واکنش شدید را به دنبال داشته باشد. ماهیت درگیری همچنان غیرمستقیم باقی مانده و ایران به جای درگیری مستقیم، به هدف قرار دادن نفوذ ایالات متحده در منطقه می‌پردازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این تنش‌ها حال lبر instability امنیتی خاورمیانه را به نمایش می‌گذارند، جایی که یک خطای استراتژیک در خلیج فارس می‌تواند عرضه جهانی نفت را مختل کرده و منجر به بروز یک درگیری گسترده‌تر شود. اقدامات ایران بازتابی است از تلاش این کشور برای حفظ ثبات اقتصادی و نفوذ سیاسی در شرایطی که تحریم‌ها اعمال می‌شوند. برای جهان، این موضوع می‌تواند به معنای افزایش قیمت‌های نفت، اختلال در مسیرهای حمل‌ونقل دریایی و تشدید بی‌ثباتی در منطقه‌ای باشد که از پیش ناپایدار است. ثبات بلندمدت به این بستگی دارد که آیا دیپلماسی می‌تواند خصومت‌ها را مهار کند یا اینکه ایران برای مقاومت در برابر فشارهای ایالات متحده اقدامات شدیدتری انجام دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            از نگاه ایران، ایالات متحده به عنوان دشمن اصلی به دلیل تحریم‌ها و حضور نظامی در منطقه محسوب می‌شود. کشورهای حاشیه خلیج فارس مانند قطر و عربستان سعودی با نگرانی به ماجرا نگاه می‌کنند، زیرا به مسیرهای امن حمل و نقل متکی هستند. کشورهای اروپایی ممکن است واسطه‌گری کنند، اما نفوذ آن‌ها محدود است. روسیه و چین می‌توانند با ارائه حمایت اقتصادی یا دیپلماتیک به ایران نقش پررنگ‌تری بازی کنند، هرچند هنوز مداخله مستقیمی نداشته‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تهدیدها و وقایع اخیر، خطر اختلال در عرضه در تنگه هرمز را افزایش می‌دهد، مسیری حیاتی برای نفت جهانی. در صورت تشدید درگیری‌ها، قیمت نفت ممکن است به شدت افزایش یابد و اقتصادهای جهان را تحت تأثیر قرار دهد. حتی تهدید به اختلال نیز می‌تواند منجر به نوسانات قیمتی شود، زیرا بازارها به عدم قطعیت واکنش نشان می‌دهند. این موضوع اهمیت دارد زیرا نفت شریان حیاتی اقتصادهای مدرن است و افزایش ناگهانی قیمتها می‌تواند منجر به تورم، کاهش رشد و فشار بر بودجه خانوارها شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران تهدید کرده است که در صورت آسیب دیدن نفت‌کش‌های خود، به پایگاه‌های نظامی ایالات متحده حمله خواهد کرد و این موضوع تنش‌ها در خلیج فارس را تشدید کرده است. خطر تشدید ناخواسته در تنگه هرمز می‌تواند عرضه جهانی نفت خام را دچار اختلال کند و باعث افزایش قیمت‌ها شود. تلاش‌های دیپلماتیک در حال انجام است اما شکننده است؛ یک اشتباه کوچک می‌تواند منطقه را به سمت یک بحران خطرناک سوق دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصری شگفت‌انگیز</h3>
+            طبیعت نسبتاً سریع و گسترده تهدید ایران در مقایسه با استفاده قبلی این کشور از نیروهایی مانند شبه‌نظامیان در عراق یا یمن به منظور پرهیز از درگیری مستقیم با ایالات متحده قرار دارد. این امر نشان می‌دهد که ایران ممکن است رویکردی تهاجمی‌تر در پیش گرفته باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه‌های مهمی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
