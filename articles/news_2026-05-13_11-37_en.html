@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-05-13 11:38</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-05-13 11:38</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>War overshadows BRICS forum bringing together Iran and UAE in India</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 08:37</strong></span>
+                </div>
+                <p class='summary'><p>Tehran urges hosts to use platform to build consensus condemning US-Israeli strikes, but its attacks on Emirates and reports that Gulf countries struck back may ratchet up tensions</p> <p>The post <a href="https://www.timesofisrael.com/war-overshadows-brics-forum-bringing-together-iran-and-uae-in-india/">War overshadows BRICS forum bringing together Iran and UAE in India</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/iranbrics-1024x640.jpg" title="War overshadows BRICS forum bringing together Iran and UAE in India" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/war-overshadows-brics-forum-bringing-together-iran-and-uae-in-india/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>As the Kremlin throttles internet access, Russians find scrappy work-arounds</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Washington Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 09:00</strong></span>
+                </div>
+                <p class='summary'>As Putin imposes Iran-style controls, citing security concerns, many Russian fear losing their connection to the global internet.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/13/kremlin-is-throttling-internet-access-russians-are-finding-workarounds/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Hezbollah’s unjammable drones pose new threat to Israel</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Washington Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 09:00</strong></span>
+                </div>
+                <p class='summary'>The cheap weapons have helped the militants rearm despite the loss of a sponsor in Syria and the U.S.-Israeli war on Iran.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/05/13/hezbollahs-unjammable-drones-pose-new-threat-israel/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Gulf Countries Arrest Shiite ‘Traitors’ Amid War With Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 08:55</strong></span>
+                </div>
+                <p class='summary'>Dozens of Gulf citizens have been accused of belonging to Iran-linked terrorism cells as the war accelerates a shift toward deeper authoritarianism in the region.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/13/world/middleeast/gulf-countries-arrest-shiite.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Series of tremors near Tehran renews concerns over major quake risk</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 09:35</strong></span>
+                </div>
+                <p class='summary'>The tremors have been felt in an area close to the Mosha fault, one of Iran’s most active seismic zones.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/13/series-of-tremors-near-tehran-renews-concerns-over-major-quake-risk?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>UN resolution calls for freedom of navigation in the Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 09:33</strong></span>
+                </div>
+                <p class='summary'>UN resolution calls for freedom of navigation in the Strait of Hormuz</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/13/un-resolution-calls-for-freedom-of-navigation-in-the-strait-of-hormuz?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Trump Tower Deal in Australia Falls Apart And a Blame Game Begins</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 08:53</strong></span>
+                </div>
+                <p class='summary'>The property developer says the war in Iran and Trump’s “unpopularity” contributed to the collapse of a plan for a 91-story building on the Gold Coast.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/13/world/australia/australia-trump-tower-gold-coast.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Trump set to meet with Xi in Beijing as war and inflation weigh on his presidency</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-13 09:43</strong></span>
+                </div>
+                <p class='summary'>US President Donald Trump is set to arrive in Beijing on Wednesday for his highly anticipated summit with Chinese leader Xi Jinping at a restless moment for a world worried about war, trade and artificial intelligence. While Trump likes to project a sense of strength, the visit occurs at a delicate moment for his presidency as his popularity at home has been weighed down by the US and Israel's war with Iran and rising inflation as a consequence of that conflict. FRANCE 24's International Affairs Commentator Douglas Herbert tells us more.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260513-trump-set-to-meet-with-xi-in-beijing-as-war-and-inflation-weigh-on-his-presidency' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Analysis Unavailable</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>```json
+{
+    "title": "Iran Situation Analysis - May 13, 2026",
+    "summary": "The Middle East is caught in a growing conflict involving Iran, Israel, the U.S., and Gulf states, with rising tensions threatening to spread across the region. Meanwhile, global powers like China and Russia are navigating their roles amid the chaos, and the world is bracing for economic and security consequences.",
+    "full_analysis": {
+        "what_happened": "A widening war involving Iran and its allies (like H</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            No significant developments in this area. No significant developments in this area. No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
