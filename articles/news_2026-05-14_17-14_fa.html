@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-14 17:18</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-14 17:18</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>چرا عربستان سعودی و امارات متحده عربی متهم هستند که حملات بمب‌گذاری پنهانی علیه ایران انجام داده‌اند؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۵  ساعت ۱۴:۲۲:۲۵</strong></span>
+                </div>
+                <p class='summary'>وزارت امور خارجه گفت که بر اساس گزارش‌های تازه وال‌استریت جورنال و رویترز، امارات متحده عربی و عربستان سعودی در ماه آوریل به ‌طور محرمانه حملات هوایی متعددی را علیه ایران در طی جنگ ایالات متحده و اسرائیل علیه تهران انجام داده‌اند. تحلیلگران می‌گویند این حملات هوایی – که هیچ‌کدام از دو کشور آن‌ها را تأیید نکرده‌اند – احتمالاً اقدامات متقابل پنهانی در پاسخ به حملات پهپادی و موشکی تهران علیه زیرساخت‌های کشورهای حوزه خلیج فارس بوده است.</p>
+                <div class='link'><a href='https://www.france24.com/fa/خاورمیانه/20260514-چرا-عربستان-سعوی-و-امارات-به-اتهام- انجام-پیش-گرم-های-بمب-افکن-رازتی-بر-ضد-ایران' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ساکن تیرا متهم به جاسوسی برای ایران، خودداری از دریافت پول و urging missiles بر شهر خود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۵  ساعت ۱۹:۲۹</strong></span>
+                </div>
+                <p class='summary'><p>دادستان‌ها ادعا دارند که احمد داعس از تنفر عمیقی نسبت به کشور ابراز داشته و اطلاعاتی درباره: پایگاه نظامی، بندر اشدود، نیروگاه، و حتا شهرداری تیرا به عاملی ایرانی ارسال کرده است</p> <p>مطلب <a href="https://www.timesofisrael.com/tira-resident-accused-of-spying-for-iran-refusing-payment-urging-missiles-on-hometown/">«اقامت‌کننده در تیرا متهم به جاسوسی برای ایران، امتناع از دریافت مابه‌ازاء، و urging موشک‌ها به سمت زادگاه خود»</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تلکسی اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/F250609YS20-1024x640.jpg" title="اقامت‌کننده در تیرا متهم به جاسوسی برای ایران، امتناع از دریافت مابه‌ازاء، و urging موشک‌ها به سمت زادگاه خود" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/tira-resident-accused-of-spying-for-iran-refusing-payment-urging-missiles-on-hometown/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>کشتی‌ای گفته می‌شود که توقیف و به سمت ایران هدایت شده و دیگری غرق شده است؛ آخرین اقدامات در تنگه هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> زمان اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۲/۲۵ ۱۸:۴۷:۳۶</strong></span>
+                </div>
+                <p class='summary'><p>یک ناظر دریایی Британ مستقر در نیروی دریایی می‌گوید شناوری که در سواحل امارات متحده عربی لنگر انداخته بود، توقیف شده است. هند غرق شدن یک کشتی باری حامل دام در آب‌های عمان را محکوم کرد که ۱۱۴ خدمه آن نجات یافتند</p> <p>این مطلب در پیوند نخست با <a href="https://www.timesofisrael.com/ship-said-seized-diverted-to-iran-another-sunk-in-latest-strait-of-hormuz-actions/">کشتی توقیف‌شده به سوی ایران هدایت شد، دیگری غرق گشت، در تازه‌ترین رویدادها در تنگه هرمز</a> در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26121530908957-1024x640.jpg" title="کشتی توقیف‌شده به سوی ایران هدایت شد، دیگری غرق گشت، در تازه‌ترین رویدادها در تنگه هرمز" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/ship-said-seized-diverted-to-iran-another-sunk-in-latest-strait-of-hormuz-actions/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>مقامات آمریکایی می‌گویند عربستان سعودی و امارات متحده عربی حملاتی مخفیانه در ایران انجام داده‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل (نیویورک تایمز)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۵ الساعة ۱۴:۴۱:۲۹</strong></span>
+                </div>
+                <p class='summary'>کشورهای عرب حوزه خلیج فارس پس از جنگ، محدودیت تضمین‌های امنیتی آمریکا را مشخص دیدند و اکنون در حال تلاش برای مقابله با ایران هستند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/14/world/middleeast/saudi-arabia-uae-iran-attacks.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>ترامپ و شی درباره تنگه هرمز مذاکره کردند در حالی که کشتی‌های چینی مشغول عبور از این آبراه استراتژیک بودند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۵ ساعت ۱۸:۵۳:۳۱</strong></span>
+                </div>
+                <p class='summary'>کاخ سفید اعلام می‌کند که دو رهبر بر این عقیده‌اند که تنگه 'باید برای حمایت از جریان آزاد انرژی باز بماند'.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/14/trump-xi-discuss-strait-of-hormuz-as-chinese-vessels-transit-key-waterway?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>کسب و کارهای کوچک ایران زیر فشار جنگ، تورم و قطعی اینترنتWayne</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> France24 (منطقه ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۲۴ ۱۶:۴۴:۴۸</strong></span>
+                </div>
+                <p class='summary'>قیمت برخی کالاها در طی چند ماه سه یا چهار برابر شده است. دست‌کم دو میلیون نفر شغل خود را از دست داده‌اند، ارزش ارز ۶۰ درصد کاهش یافته، اینترنت بین‌المللی بیش از ۷۵ روز قطع بوده و به نظر نمی‌رسد وضعیتی به بهبود خواهد گرایید. این واقعیت اقتصاد ایران پس از دو و نیم ماه جنگ، آتش‌بس و محاصره است. ما با مالک یک فروشگاه اینترنتی، یک کسبۀ خرد و یک استارتاپ بزرگ فناوری گفتگو کردیم تا دریابیم زندگی امروز ایرانیان چگونه است.</p>
+                <div class='link'><a href='https://www.france24.com/fa/خاورمیانه/20260514-بحران-اقتصادی-ایران-قطع-اینترنت-مشاغل-کوچک-جنگ-تورم' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۴ مه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>عربستان سعودی و امارات در آوریل طی в escalating یک в в درگیری منطقه‌ای، به‌صورت مخفیانه به ایران حمله هوایی کردند. این حمله درresponse به حملات پهپادی و موشکی ایران به زیرساخت‌های آنها صورت گرفت.Meanwhile، ایران با فروپاشی شدید اقتصادی، اتهام‌های جاسوسی جدید و اقدامات تهاجمی در تنگه هرمز مواجه است که خطرات جدی برای عرضه جهانی نفت ایجاد کرده و کشورهای چین و ایالات متحده را به درخواست برای کاهش تنش‌ها سوق داده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            در آوریل، عربستان سعودی و امارات متحده عربی علیه ایران حملات هوایی غافلگیرانه‌ای را انجام دادند که در واکنش به حملات اخیر آنان با استفاده از پهپاد و موشک به زیرساخت‌های حیاتی این کشورها (مانند بنادر و نیروگاه‌ها) صورت گرفت. این حملات بخشی از جنگ پنهانی میان کشورهای خلیج فارس و ایران بود که به دلیل ترس از تشدید درگیری‌ها، پنهان نگه داشته می‌شد. علاوه بر این، اقتصاد ایران تحت فشار جنگ، تحریم‌ها و قطعی‌های اینترنتی در حال فروپاشی است، در حالی که تنش‌ها در تنگه هرمز—یک مسیر کلیدی حمل و نقل نفت—افزایش یافته و ایران چندین کشتی از جمله یکی حاوی دام را توقیف یا غرق کرده است که در این حادثه ۱۱۴ سرنشین نجات یافتند. همچنین، یک مرد فلسطینی-اسرائیلی در اسرائیل به جاسوسی برای ایران متهم شد که allegedly اطلاعات نظامی و زیرساختی را در اختیار آنان قرار می‌داد، بدون آنکه پولی دریافت کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سربرگ</h3>
+            این درگیری به احتمال زیاد در آینده نزدیک به‌طور بیشتری تشدید خواهد شد و شامل حملات پنهان‌تر، توقیف کشتی‌ها و واکنش احتمالی ایران به کشورهای خلیج فارس یا اسرائیل خواهد بود. با این حال، در صورتی که قدرت‌های جهانی همچون آمریکا یا چین برای کاهش تنش‌ها—به‌ویژه در مسیرهای حمل نفت—مداخله کنند، درگیری‌ها ممکن است به‌طور موقت متوقف شود. بحران اقتصادی ایران ممکن است دولت آن را به کاهش تنش‌ها ترغیب کند، اما تندروهای این کشور ممکن است برعکس، بر مواضع خود اصرار بیشتری ورزند. تنگه هرمز همچنان آتشی زیر خاکستر است و هر گونه اختلال عمده در آن می‌تواند منجر به یک بحران انرژی جهانی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['پایان 2025: پس از سال‌ها تنش‌های فزاینده از جمله حملات پهپادی/موشکی، اسرائیل و آمریکا جنگی را علیه ایران آغاز کردند.', 'اوایل 2026: ایران در پاسخ، زیرساخت‌های عربستان و امارات را هدف قرار داد و بندرگاه‌ها و نیروگاه‌ها را تخریب کرد.', 'آوریل 2026: عربستان и امارات به صورت پنهانی ایران را بمباران کردند، اقدامی نادر از سوی کشورهای حاشیه خلیج فارس در خاک ایران.', '۱۴ مه ۲۰۲۶: اقتصاد ایران بهiril نخست، با کاهش ۶۰ درصدی ارزش واحد پول، خاموشی اینترنت، و از دست رفتن ۲ میلیون شغل مواجه شد. در عین حال، اتهامات جاسوسی جدیدی مطرح گردید و ایران چند کشتی را در تنگه هرمز توقیف یا منحرف کرد (یکی غرق شد و کشتی حمل دام نیز هدف قرار گرفت). آمریکا و چین درباره باز نگه داشتن تنگه هرمز مذاکره کردند.', 'در جریان: فشارهای دیپلماتیک افزایش یافت، اما اقدامات نظامی (چه مخفی و چه آشکار) همچنان ادامه دارد.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            این درگیری وارد مرحله‌ای خطرناک و جدید شده است که در آن کشورهای خلیج فارس دیگر صرفاً برای محافظت در برابر ایران به ایالات متحده متکی نیستند. در عوض، آن‌ها اقدامات مستقیم خود را آغاز کرده‌اند که خطر تشدید بی‌Control را افزایش می‌دهد. رژیم ایران ضعیف‌شده اما در وضعیت ناامیدی به سر می‌برد، به این معنی که ممکن است به صورت غیرقابل‌پیش‌بینی اقدام کند. تنگه هرمز اکنون به نقطه‌ای بحرانی تبدیل شده که می‌تواند قدرت‌های جهانی را نیز به این درگیری بکشاند. در بلندمدت، این وضعیت ممکن است منجر به آتش‌بس آسیب‌پذیر mediated توسط چین/ایالات متحده یا جنگ منطقه‌ای گسترده‌تر در صورت بروز اشتباهات استراتژیک شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های تعارض</h3>
+            نبرد از درگیری میان ایالات متحده و اسرائیل در مقابل ایران به درگیری‌ای تغییر کرده که involvement مستقیم کشورهای خلیج (عربستان و امارات) در مقابل ایران را دربرمی‌گیرد. خشونت عمدتاً پنهانی است (حملات مخفی، جاسوسی، توقیف کشتی‌ها) اما در تنگه هرمز به شکل وحشیانه‌ای مستقیم بروز کرده است. ایران از تاکتیک‌های نامتقارن (پهپاد، خرابکاری، نیروهای نیابتی) استفاده می‌کند، در حالی‌که کشورهای خلیج به صورت نامتقارن پاسخ می‌دهند (حملات هوایی مخفی، هدف قرار دادن متحدان ایران). غیرنظامیان—به‌خصوص در ایران—به دلیل فروپاشی اقتصادی و قطع اینترنت بیشترین آسیب را از این بحران می‌بینند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال بازتعریف موازنه قدرت در خاورمیانه است. کشورهای خلیج فارس نشان می‌دهند که دیگر برای محافظت از خود بهWait بردن آمریکا اهمیت نمی‌دهند، در حالی که ایران از لحاظ اقتصادی و نظامی در موقعیت کور قرار گرفته است. تنگه هرمز هم‌اکنون کانون هراس از امنیت نفتی جهان است—هرگونه اختلال در آنجا می‌تواند باعث افزایش بی‌سابقه قیمت نفت شده و اقتصادهای جهانی را به شدت تحت تأثیر قرار دهد. هم چین و هم ایالات متحده به جریان پایدار نفت وابسته هستند، بنابراین دخالت آن‌ها می‌تواند هم تنش‌ها را کاهش دهد و هم آن‌ها را در درگیری‌های منطقه‌ای بیشتر گرفتار سازد. خاموشی‌های اینترنتی در ایران و پرونده‌های جاسوسی نشان می‌دهند که چگونه فناوری و جاسوسی به خطوط مقدم درگیری‌های مدرن تبدیل شده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده به طور غیرمستقیم از طریق حمایت از اسرائیل و کشورهای حاشیه خلیج فارس درگیر است، اما به نظر می‌رسد از تشدید بیشتر خودداری می‌کند. چین به طور فعال با هر دو طرف (حتی به گفت‌وگو با ترامپ درباره تنگه هرمز) در تعامل است تا مسیرهای تأمین نفت خود را حفظ کند—آن کشور کشتی‌های ترابری در آنجا دارد و به شدت به انرژی خاورمیانه وابسته است. سایر بازیگران منطقه‌ای (ترکیه، قطر، عراق) در تلاش برای میانجی‌گری هستند، اما نفوذ آن‌ها محدود است. روسیه همچنان کارت ناشناخته‌ای است که احتمالاً از ایران حمایت می‌کند، ضمن این‌که تلاش دارد از درگیری گسترده‌تری بپرهیزد که می‌تواند آن را درگیر کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تقریباً حتمی است که قیمت نفت به علت اختلال در تنگه هرمز، بحران اقتصادی ایران و کاهش صادرات نفت این کشور، و نگرانی‌ها از درگیری‌های بیشتر، افزایش یابد. این تنگه حدود 20 درصد از نفت روزانه جهان را مدیریت می‌کند—حتی مسدودسازی موقت آن می‌تواند باعث افزایش شدید قیمت‌ها شود. اهمیت این موضوع در این است که افزایش قیمت نفت، تورم جهانی را تقویت می‌کند، برای مصرف‌کنندگان و صنایع مضر است، و ممکن است باعث رکود اقتصادی شود. کشورهایی همچون ایالات متحده و چین احتمالاً ذخایر استراتژیک نفت خود را آزاد کنند یا برای کاهش تنش‌ها تلاش کنند تا از بحران انرژی جلوگیری شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            پس از حملات ایران به زیرساخت‌های آنان، عربستان سعودی و امارات متحده عربی به‌طور مستقیم اقدام به حمله به ایران کردند و بدین ترتیب، از تکیه صرف بر ایالات متحده به اقدام مستقل روی آوردند. اقتصاد ایران به سرعت در حال فروپاشی است (ارزش پول ملی 60٪ کاهش یافته، قطعی‌های اینترنت، 2 میلیون از دست دادن شغل)، و رژیم آن حتی ممکن است هرچه بی‌پرواتر و غیرقابل‌پیش‌بینی‌تر شود. تنگه هرمز به کانون خطر جدید جهانی تبدیل شده است—اگر ایران آن را مسدود کند، قیمت نفت به صورت جهانی افزایش خواهد یافت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ یک از رویدادهای اخیر با الگوی در حال تشدید درگیری‌های پنهان و آشکار در منطقه هماهنگی ندارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            زمانبندی این رویدادها نشان می‌دهد که ایران در تلاش است ثبات داخلی خود را حفظ کند در حالی که فشارهای خارجی در حال افزایش است. این واقعیت که دولت‌های حاشیه خلیج فارس بدون تایید پیشین آمریکا به ایران حمله کردند، نشان‌دهنده یک تغییر عمده در پویایی قدرت خاورمیانه است. از سوی دیگر، استفاده ایران از غیرنظامیان (فروپاشی اقتصادی، قطع اینترنت) به‌عنوان بخشی از استراتژی خود، ویژگی غم‌انگیز و فزاینده‌ای در منازعات مدرن است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
