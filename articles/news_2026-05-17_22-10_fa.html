@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-17 22:13</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-17 22:13</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>«دیگر چیزی باقی نمی‌ماند»: ترامپ در میانه مذاکرات نافرجام، تهدیدی به ایران صادر کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۸ ۲۳:۴۶:۳۵</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده ایران را تحت فشار قرار داده تا به درخواست‌ها از جمله برچیدن برنامه هسته‌ای و ذخایر موشکی تن در دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/17/wont-be-anything-left-trump-issues-threat-to-iran-amid-stalled-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>حمله پهپادی باعث آتش‌سوزی در حاشیه تاسیسات هسته‌ای امارات متحده عربی شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۴، خرداد ۱۴۰۵T20:46:52Z</strong></span>
+                </div>
+                <p class='summary'>مقامات گفتند روز یکشنبه یک حمله با پهپاد در نزدیکی نیروگاه هسته‌ای باراکه در امارات متحده عربی موجب آتش‌سوزی شد. ابوظبی این حمله را تهدیدی برای امنیت منطقه‌ای توصیف کرد. این حمله این احتمال را برجسته کرد که در میانه آتش‌بس شکننده میان ایالات متحده و ایران، جنگ دوباره شعله‌ور شود.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260517-حملهٔ-پهپادی-سبب-برافروختن-آتش-در-حاشیه-تأسیسات-هسته‌ای-امارات-شد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>سهام در کانون توجه قرار گرفتند پس از آنکه اوراق قرضه زنگ خطر تورم را به صدا درآوردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (آنالیز)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۸ ساعت ۲۳:۵۲</strong></span>
+                </div>
+                <p class='summary'>با وجود اینکه پایان مشخصی برای جنگ ایران در دیدرس نیست، سرمایه‌گذاران هفته جدیدی را تحت تأثیر اصلی‌ترین پیامد اقتصادی آن آغاز می‌کنند: افزایش نرخ بهره جهانی و تهدید تورمی که این نرخ‌ها به همراه دارند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/stocks-in-focus-after-bonds-send-inflation-alarm' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۷ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌ها بین ایالات متحده و ایران در حال تشدید است، به دلیل بن‌بست مذاکرات هسته‌ای، تهدیدهای اقدام نظامی، حملات نزدیک یک تاسیسات هسته‌ای امارات و پیامدهای اقتصادی فزاینده جهانی، که باعث بروز نگرانی‌هایی نسبت به گسترش درگیری‌ها و افزایش قیمت نفت شده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده و ایران در بن‌بست خطرناکی درگیر مذاکرات هسته‌ای هستند و مذاکرات متوقف شده است. رئیس‌جمهور سابق ترامپ ایران را تهدید کرده و در صورت عدم برچیدن برنامه هسته‌ای و انبارهای موشکی خود،WARNING از عواقب شدید به آن هشدار داده است. از سوی دیگر، یک حمله پهپادی نزدیک به یک نیروگاه هسته‌ای امارات متحده عربی، موجب آتش‌سوزی شده و نگرانی‌هایی درباره امنیت منطقه ایجاد کرده است. بازارهای جهانی نیز به دلیل ترس از افزایش تورم ناشی از تنش‌های ongoing واکنش‌های نگران‌کننده‌ای نشان می‌دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سر فصل ها</h3>
+            به احتمال زیاد اوضاع بدتر خواهد شد پیش از آنکه بهبود یابد. اگر ایالات متحده و ایران نتوانند به زودی مذاکرات را احیا کنند، ممکن است شاهد تشدید نظامی، از جمله حملات به دارایی‌ها یا نمایندگان یکدیگر باشیم. حمله پهپادی به کارخانه امارات ممکن است منجر به اتحادهای قوی‌تر منطقه‌ای علیه ایران شود و احتمالاً واکنش‌های نظامی مستقیم را در پی داشته باشد. از نظر اقتصادی نیز، قیمت نفت و نرخ‌های بهره در صورت تداوم این ابهام‌هاExpected to keep rising.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱) ۱۷ مه ۲۰۲۶: ترامپ با تأخیر در مذاکرات، ایران را تهدید می‌کند.</li><li>۲) همان روز: حمله پهپادی نزدیک تاسیسات هسته‌ای باراکه امارات، موجب آتش‌سوزی می‌شود.</li><li>۳) سرمایه‌گذاران به نگرانی‌های مربوط به تورم فزاینده ناشی از تنش‌های ایران واکنش نشان می‌دهند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            چشم‌انداز بسیار ناپایداری است. اگر دیپلماسی ناکام بماند، این اختلاف می‌تواند به درگیری‌های نظامی مستقیم منجر شده و بازیگران منطقه‌ای همچون اسرائیل، عربستان سعودی، و حتی شاید چین یا روسیه را وارد این منازعه کند. ایران ممکن است تلاش‌های خود را برای تکمیل برنامه هسته‌ای خود افزایش دهد در حالی که ایالات متحده می‌تواند فشارها را با تحریم‌ها یا اقدامات نظامی تشدید کند. ثبات منطقه در معرض خطر است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های تعارض</h3>
+            این درگیری کنونی با جنگ‌های نیابتی غیرمستقیم، حملات سایبری و حملات با پهپاد مشخص می‌شود تا نبردهای گسترده مقیاس. با این حال، ادبیات دو طرف فزاینده تهاجمی است که خطر محاسبات اشتباه یا تشدید تصادفی را افزایش می‌دهد. حادثه امارات نشان می‌دهد که چگونه تنش‌ها می‌توانند به سرعت به حوزه‌های جدیدی مانند زیرساخت‌های هسته‌ای تسری پیدا کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این بحران ثبات جهانی را تهدید می‌کند. جنگ گسترده‌تر می‌تواند عرضه نفت را مختل کند، قیمت انرژی را به شدت افزایش دهد و اقتصادهای جهانی را تحت فشار قرار دهد. همچنین احتمال ورود قدرت‌های هسته‌ای به آن وجود دارد یا باعث بی‌ثباتی در اتحادهای منطقه‌ای آسیب‌پذیر می‌شود. برای فرد عادی، این به معنای افزایش هزینه‌های سوخت و احتمال اختلال در کالاهای روزمره است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده و ایران در کانون توجه هستند، با این حال سایر بازیگران نیز اهمیت دارند. امارات متحده عربی به عنوان هدف حمله پهپادی، ممکن است به دنبال حمایت قوی‌تری از متحدانی همچون ایالات متحده یا عربستان سعودی باشد. اسرائیل در صورت احساس تهدید می‌تواند اقدامات پیش‌دستانه انجام دهد. چین و روسیه ممکن است سعی در میانجی‌گری داشته باشند، اما در عین حال اگر ایالات متحده مشغول باشد، از این وضعیت بهره خواهند برد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت احتمالاً افزایش می‌یابد زیرا تنش‌ها پابرجاست؛ زیرا ایران و خلیج فارس از تولیدکنندگان کلیدی نفت به‌شمار می‌روند. هرگونه اختلال در تنگه هرمز یا حملات به زیرساخت‌های نفتی باعث اوج‌گیری شدید قیمت‌ها خواهد شد. افزایش قیمت نفت به معنای گران‌تر شدن بنزین، پروازها و حتی مواد غذایی است، چرا که هزینه‌های حمل و نقل و تولید افزایش می‌یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            مذاکرات هسته‌ای آمریکا و ایران در بن‌بست قرار گرفته است و هر دو طرف اقدامات شدید را تهدید می‌کنند که خطر جنگ را افزایش می‌دهد. یک حمله با پهپاد در نزدیکی یک نیروگاه هسته‌ای امارات متحده عربی نشان می‌دهد که چگونه تنش‌ها در حال گسترش فراتر از میدان‌های سنتی جنگی بوده و امنیت جهانی را تهدید می‌کند. قیمت نفت جهانی و نرخ تورم هم‌اکنون در حال افزایش هستند و این بحران می‌تواند وضعیت را برای افراد عادی بسیار وخیم‌تر کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            حملۀ پهپادی به یک تأسیسات هسته‌ای امارات بسیاری را غافلگیر کرد، زیرا مستقیماً زیرساخت‌های حیاتی را هدف قرار داد و می‌تواند سطح جدیدی از تهاجم را در درگیری‌ها نشان دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            هیچ‌گونه تحولات قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
