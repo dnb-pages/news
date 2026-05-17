@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-17 14:03</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-17 14:03</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>حمله پهپادی موجب آتش‌سوزی در نزدیکی نیروگاه هسته‌ای امارات متحده عربی شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۲۸ ۱۷:۱۲</strong></span>
+                </div>
+                <p class='summary'>این کشور حاشیه خلیج فارس مهاجم را مشخص نکرد. این حمله، خطرات جنگ با ایران را برجسته ساخت.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/drone-strike-sparks-fire-near-u-a-e-nuclear-plant-b061ab0d' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایالات متحده و ایران بسیار دور از دستیابی به توافق در مورد تنگه هرمز هستند؛ چرا که پهپادی به یک نیروگاه قدرتی در امارات متحده عربی اصابت کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۰۲/۲۸ ۱۷:۵۴:۵۵</strong></span>
+                </div>
+                <p class='summary'>روز یکشنبه، ایالات متحده و ایران در دستیابی به توافق برای پایان دادن به هفته‌ها جنگ و بازگشایی crucial تنگه هرمز همچنان فاصله داشتند، در حالی که یک حمله پهپادی موجب آتش‌سوزی در یک نیروگاه هسته‌ای امارات متحده عربی شد و ریسک‌های مربوط به آتش‌بس شکننده را آشکار کرد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-and-iran-far-from-hormuz-deal-as-drone-hits-uae-power-plant' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>بازگشت تجارت حمل و نقل نوظهور با ارز واقعی و رند از گزینه‌های مورد علاقه</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل - مجله فایننشال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۷ مه ۲۰۲۶ - ساعت ۱۲:۲۳:۳۶ UTC</strong></span>
+                </div>
+                <p class='summary'>سوداگرانه‌ترین معاملات بازار نوظهور پس از ضررهای جنگ ایران خود را باز یافته‌اند، چرا که افزایش شدید قیمت‌های نفت خام، انتظارها از ثابت ماندن نرخ‌های بهره را تقویت کرده و ارزهای کشورهای صادرکننده کالا را حمایت می‌کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/emerging-carry-trade-rebounds-with-real-rand-among-favorites' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۴۰۵/۰۲/۲۸</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>یک حمله پهپادی نزدیک به یک نیروگاه هسته‌ای امارات در خلیج فارس، تنش‌ها را در مناقشه ایران و امارات بالا برده و آتش‌بس شکننده و همچنین عرضه جهانی نفت را تهدید می‌کند. این incident مذاکرات آمریکا و ایران برای بازگشایی تنگه هرمز را نیز پیچیده‌تر ساخته است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            حمله یک پهپاد باعث آتش‌سوزی در نزدیکی یک نیروگاه هسته‌ای در امارات متحده عربی (UAE) شد، حادثه‌ای که امارات آن را به هیچ گروهی نسبت نداده است. این حمله پس از هفته‌ها درگیری میان ایران و کشورهای همسایه رخ داد و نگرانی از جنگ گسترده‌تر را افزایش داد.Meanwhile, the US and Iran remain far apart in negotiations to reopen the Strait of Hormuz, a critical oil shipping route, with a temporary ceasefire already fragile.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا هدینگ</h3>
+            وضعیت به احتمال زیاد در کوتاه‌مدت بدتر خواهد شد، با افزایش حملات و تنش‌های heightened. مذاکرات آمریکا و ایران ممکن است شکست بخورد و منجر به تشدید نظامیگری بیشتر یا حتی جنگ منطقه‌ای گسترده‌تری شامل کشورهای حاشیه خلیج فارس شود. آتش‌سوزی در نزدیکی نیروگاه هسته‌ای امارات ممکن است امارات را به تلافی یا tighten اقدامات امنیتی سوق دهد و به طور بالقوه سایر کشورها را نیز درگیر کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تایم لاین</h3>
+            <ul><li>۱. اوایل سال ۲۰۲۶: پس از تهدید ایران برای بستن تنگه هرمز، هفته‌ها جنگ بین ایران و کشورهای حاشیه خلیج فارس تشدید می‌شود.</li><li>۲. ۱۷ مه ۲۰۲۶: حمله پهپادی در نزدیکی نیروگاه هسته‌ای براکه امارات باعث آتش‌سوزی می‌شود.</li><li>۳. ۱۷ مه ۲۰۲۶: مذاکرات آمریکا و ایران برای بازگشایی تنگه هرمز متوقف می‌شود و هر دو طرف یکدیگر را مقصر می‌دانند.</li><li>۴. پیامدهای فوری: امارات درحال ارزیابی خسارات است، در حالی که ایران حمله را محکوم می‌کند اما مسئولیت آن را بر عهده نمی‌گیرد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            مسیر بلندمدت به شدت به این بستگی دارد که آیا آمریکا، کشورهای حوزه خلیج فارس و ایران می‌توانند به توافقی برای پایان دادن به خصومت‌ها دست یابند یا خیر. در صورت شکست مذاکرات، منطقه ممکن است شاهد درگیری‌های پایدار باشد که طی آن ایران از گروه‌های نیابتی برای حمله به اهداف در کشورهای حوزه خلیج فارس یا اسرائیل استفاده کند. بسته شدن تنگه هرمز باعث مختل شدن عرضه جهانی نفت خواهد شد و پیامدهای اقتصادی جهانی در پی خواهد داشت. حادثه نیروگاه هسته‌ای امارات ممکن است دول منطقه را مجبور کند تا به دنبال حمایت نظامی قوی‌تر آمریکا باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            شدت درگیری‌ها در حد متوسط است اما در حال تشدید است. حملات متمرکز بر زیرساخت‌های حیاتی (نیروگاه‌ها و تأسیسات نفتی) بوده است. درگیری‌ها نامتقارن هستند و به نظر می‌رسد ایران بیشتر از پهپادها و گروه‌های نیابتی استفاده می‌کند تا رویارویی نظامی مستقیم. کشورهای حاشیه خلیج فارس با انجام حملات متقابل پاسخ می‌دهند، اما از اقداماتی که ممکن است منجر به جنگ تمام عیار شود، اجتناب می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری تهدیدی جدی برای ثبات جهانی است، زیرا ممکن است عرضه نفت را مختل کند (تنگه هرمز ~20٪ از نفت جهان را کنترل می‌کند)، بازارهای مالی را بی‌ثبات سازد و قدرت‌های جهانی همچون ایالات متحده، چین و روسیه را وارد میدان کند. یک جنگ طولانی‌مدت همچنین ممکن است نگرانی‌های مربوط به اشاعه هسته‌ای را افزایش دهد، به‌ویژه با وجود نیروگاه هسته‌ای امارات و برنامه هسته‌ای ایران.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده به‌عنوان میانجی و تضمین‌کننده امنیت برای کشورهای خلیج فارس دخالت دارد، در حالی که ایران اصلی‌ترین دشمن این کشورهاست. کشورهای خلیج فارس (امارات، عربستان سعودی) اهداف مستقیم و واکنش‌گرا هستند. چین و روسیه ممکن است بسته به عرضه نفت و منافع اقتصادی، طرفی را بگیرند، در حالی که سازمان ملل و اتحادیه اروپا در تلاشند تا آتش‌بس را مذاکره کنند. اسرائیل نیز در صورت افزایش تنش‌ها در منطقه می‌تواند وارد معرکه شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت به دلیل درگیری و خطر بسته شدن تنگه هرمز در حال افزایش است. این مسئله اهمیت دارد زیرا افزایش قیمت نفت موجب افزایش هزینه‌های سوخت در سطح جهان می‌شود که می‌تواند به تورم، کندی رشد اقتصادی و ناآرامی‌های سیاسی در کشورهایی که واردکننده نفت هستند منجر شود. کشورهایی که نفت تولید می‌کنند (به‌عنوان مثال: امارات متحده عربی و عربستان سعودی) از نظر اقتصادی بهره‌مند می‌شوند، در حالیکه کشورهایی که وابسته به واردات هستند دچار ضرر می‌شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            یک حمله پهپادی نزدیک یک نیروگاه هسته‌ای امارات متحده عربی تنش‌ها را تشدید کرده و آتش‌بس ناپایدار را تهدید می‌کند و خطر گسترش جنگ در منطقه خلیج فارس را به دنبال دارد. مذاکرات رهبری‌شده توسط ایالات متحده برای بازگشایی تنگه هرمز به بن‌بست خورده است، در شرایطی که ایران و آمریکا یکدیگر را مقصر می‌دانند و بحران را تشدید می‌کنند. گرانی نفت ناشی از درگیری می‌تواند اقتصاد جهانی را مختل کند و برEverything ازهزینه سوخت گرفته تا تورم تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            حملات پهپادی در نزدیکی یک نیروگاه هسته‌ای نگران‌کننده است، چرا که خطر یک فاجعه هسته‌ای را ایجاد می‌کند و قوانین درگیری در این مناقشه را تغییر می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            کشورهای حاشیه خلیج فارس مانند امارات متحده عربی و عربستان سعودی به شدت به صادرات نفت وابسته هستند و در پی تضمین‌های امنیتی قوی‌تر ایالات متحده در مواجهه با aggression ایران بوده‌اند. از سوی دیگر، برنامه هسته‌ای ایران همچنان یک نقطه‌درگیری است، زیرا غنی‌سازی اورانیوم علیرغم نگرانی‌های بین‌المللی ادامه دارد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
