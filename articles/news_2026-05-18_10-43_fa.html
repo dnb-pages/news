@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-18 10:49</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-18 10:49</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ با توقف پیشرفت صلح نسبت به ایران هشدار داد: «ساعت به اندازه کافی کار می‌کند»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ اردیبهشت ۱۴۰۵ ساعت ۱۳:۲۸:۳۵</strong></span>
+                </div>
+                <p class='summary'>روز دوشنبه ایران اعلام کرد که به آخرین پیشنهاد ایالات متحده پاسخ داده است و مذاکرات با واشنگتن ادامه دارد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cd0p4y9y48xo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>جنگ علیه ایران هر روز بيش از پيش در بین مردم آمریکا منفورتر می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ مه ۲۰۲۶ ساعت ۰۹:۵۳:۵۳ UTC</strong></span>
+                </div>
+                <p class='summary'>يك حمله پهپادي نزديك به يك نيروگاه هسته‌اي امارات عربستان نگراني‌هايي را در مورد احتمال تشديد درگيري‌ها ايجاد كرد. در حالي كه مذاكرات روند كندي داشته است، انتظار مي‌رود ترامپ در ۱۹ مي با مشاوران امنيت ملي خود ديدار كرده و در مورد اقدامات نظامي گفتگو كند و از واكنش به ايران هشدار داد، اما در داخل كشور، رئيس‌جمهور آمريكا با جنگي روبرو است كه طبق گفته كته‌وان گورجه‌ستاني از شبكه FRANCE 24، هر روز محبوبيت خود را از دست مي‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/%D8%AC%D9%86%DA%AF-%D8%AF%D8%B1-%D8%A8%D8%B1-%D8%B9%D9%82%D8%A8%D8%AF-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D9%87%D8%B1-%D8%B1%D9%88%D8%B2-%D9%85%DB%8C-%DA%AF%D8%B1%D8%AF-%D8%A8%D9%87-%D8%B1%D8%A7-%D9%86%DA%AF%D8%B1%D8%A7%D9%86-%D8%A8%D8%A7-%D9%86%D9%81%D8%B1%D8%AF' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>وزیران دارایی گروه هفت در پاریس دیدار می‌کنند در حالی که موانع در برابر اقتصاد جهانی رو به افزایش است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ خرداد ۱۴۰۵، ساعت ۰۹:۵۲:۰۶ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>وزيران دارايي و بانکداران مرکزي از بزرگ‌ترين اقتصادهاي جهان در پاريس گرد هم مي‌آيند در حالي که جنگ آمريکا عليه ايران تهديدي براي نظام مالي جهاني به شمار مي‌رود. از سوي ديگر، تورم ناشي از جنگ، بازار اوراق قرضه را به شدت نزولي مي‌کند و بزرگ‌ترين سامانه حمل و نقل ريلي آمريکا به دليل اختلافPending labor dispute نيز تعطيل مي‌شود.</p>
+                <div class='link'><a href='https://www.france24.com/fa/برنامه‌ها/اقتصاد/2026/05/18/وحدت-وزیران-دارایی-جی-7-در-پاریس-همزمان-با-افزایش-چالش‌های-اقتصاد-جهانی' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ویدیو: ایالات متحده فرا خواندG7 برای تحریم های تحت رهبری آمریکا علیه ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ مه ۲۰۲۶ ساعت ۰۹:۴۶</strong></span>
+                </div>
+                <p class='summary'>وزیر خزانه‌داری ایالات متحده گفت که او جهان را دعوت می‌کند تا به ایالات متحده در تحریم کردن ایران بپیوندد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/18/video-us-calls-on-g7-to-impose-us-led-sanctions-on-iran?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>چگونه ترامپ و ایران از شبکه‌های صنایع یکسان برای گسترش امپراتوری‌های رمزنگاری خود استفاده می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ giờ ۴۹ دقیقه ۹ ثانیه ۱۸ مه ۲۰۲۶</strong></span>
+                </div>
+                <p class='summary'><p>داده‌ها نشان می‌دهد که صرافی رمزارز ایران حداقل ۲.۳ میلیارد دلار روی همان دو بلاکچین که خانواده ترامپ از آنها برای پشتیبانی از دنیای لیبرتی مالی نوپای خود استفاده کردند، پردازش کرده است</p><p>این پست با عنوان <a href="https://www.timesofisrael.com/how-trump-and-iran-use-the-same-industry-networks-for-their-growing-crypto-empires/">«ترامپ و ایران چگونه از همان شبکه‌های صنعتی برای گسترش امپراتوری‌های رمزارزی خود استفاده می‌کنند»</a> ابتدا در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p><figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AFP__20250813__69FZ7G6__v1__HighRes__UsEconomyBusinessFinanceCryptoNasdaq-1024x640.jpg" title="چگونه ترامپ و ایران از همان شبکه‌های صنعتی برای گسترش امپراتوری‌های رمزارزی خود استفاده می‌کنند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/how-trump-and-iran-use-the-same-industry-networks-for-their-growing-crypto-empires/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>اسرائیل پیش از جنگ با ایران، دو پایگاه نظامی در عراق ساخته بود: نیویورک تایمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> العربیة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ مه ۲۰۲۶ ۰۸:۵۷:۴۸</strong></span>
+                </div>
+                <p class='summary'>به گفته روزنامه آمریکایی، از اواخر سال 2024 میلادی، نیروهای اسرائیلی در حال آماده‌سازی این سایت‌های موقت در غرب عراق بوده‌اند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/18/israel-built-two-military-bases-in-iraq-before-war-on-iran-nyt?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>الجزیره از جزیره هرمز گزارش می‌دهد، هنگامی که ایران می‌گوید تنگه را کنترل می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۹ ساعت ۰۸:۲۸ (به وقت گرینویچ)</strong></span>
+                </div>
+                <p class='summary'>آل جازیرا به صورت انحصاری به جزیره هرمز ایران دسترسی پیدا کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/18/al-jazeera-reports-from-hormuz-island-as-iran-says-it-controls-the-strait?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>فاجعه در آسیب‌پذیرترین نقاط جهان در حال ظهور است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل</span>
+                    <span class='meta-item'>📅 <strong>۱۸ مه ۲۰۲۶، ساعت ۰۹:۵۳:۳۵ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>سامانه امدادرسانی بشردوستانه که بر اثر کاهش بودجه به شدت آسیب دیده‌است، با جنگ در خاورمیانه و افزایش بی‌سابقه هزینه‌های غذا، سوخت و کود شیمیایی، با چالشی جدی روبروست.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/18/business/iran-war-somalia-usaid.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>اقتصاد چین به طور غیرمنتظره‌ای ضعیف شد؛ درگیری‌های ناشی از جنگ ایران تشدید می‌یابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  وال‌استریت جورنال (تحلیل) </span>
+                    <span class='meta-item'>📅 <strong>۱۳ خرداد ۱۴۰۵، ساعت ۱۴:۳۵</strong></span>
+                </div>
+                <p class='summary'>ماشین صادراتیِ این کشور هنوز کار می‌کند، اما رشد اقتصادی آن به‌طور فزاینده‌ای نامتوازن شده است.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/chinas-april-activity-data-weakens-despite-export-strength-d6e12d09' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>بسنт از کشورهای جی-۷ و سایر کشورها خواست تا تحریم‌های ایران را تشدید کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> Financial Post (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۹ ۱۴:۰۷:۳۶</strong></span>
+                </div>
+                <p class='summary'>وزیر خزانه‌داری ایالات متحده، اسکات بسنت، از کشورهای گروه هفت و سایر نقاط جهان خواست تا تحریم‌های خود علیه ایران را که درگیری مداوم آن بخش بزرگی از تجارت جهانی انرژی را مختل کرده است، تشدید کنند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/bessent-calls-on-g-7-nations-others-to-increase-iran-sanctions' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>افزایش مجازات‌های مرگ و اعدام در سراسر جهان</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> France 24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳:۵۴:۵۰ ۱۳ اردیبهشت ۱۴۰۵</strong></span>
+                </div>
+                <p class='summary'>افزایش بی‌سابقه‌ای در تعداد احکام اعدام و اجراهای آن در سال ۲۰۲۵ در سراسر جهان رخ داده است. این گزارش تازه‌ترین گزارش سالانه سازمان عفو بین‌الملل است. همان‌طور که همواره بوده، چین بیشترین تعداد احکام اعدام را به خود اختصاص داده و تصور می‌رود که بزرگ‌ترین کشور مجری این مجازات در جهان باشد. اما این سازمان بشردوستانه همچنین این آمار را به دلیل افزایش اعدام‌ها در ایران که نسبت به سال ۲۰۲۴ تقریباً دو برابر شده است، می‌داند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/اعدام-و-مجازات-قرن-در-سراسر-جهان-افزایش-دارد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>راکتور هسته‌ای امارات متحده عربی هدف حمله‌ای احتمالی از سوی ایران قرار گرفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسهٔ ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ اردیبهشت ۱۴۰۵ ساعت ۱۰:۰۶:۵۵</strong></span>
+                </div>
+                <p class='summary'>امارات متحده عربی اعلام می‌کند که یک حمله با پهپاد باعث آتش‌سوزی در نزدیکی یک نیروگاه هسته‌ای در ابوظبی شده است. گزارشی مبنی بر تلفات جانی یا انتشار مواد رادیواکتیو در اثر حمله منتشر نشده است، اما منشأ آن نامشخص است و همه به سوی ایران چشم دوخته‌اند. پس از این حمله، گزارش شده است که رئیس‌جمهور ایالات متحده دونالد ترامپ قرار است در ۱۸ مه با مشاوران ارشد امنیت ملی خود دیدار کرده و گزینه‌های نظامی را مورد بحث قرار دهد.</p>
+                <div class='link'><a href='https://www.france24.com/en/uae-nuclear-power-plant-targeted-in-likely-iranian-attack' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 18 اردیبهشت 1405</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های میان ایالات متحده و ایران به سرعت در حال تشدید است. مذاکرات هسته‌ای به بن‌بست خورده، تهدیدات نظامی فزونی گرفته و تأثیرات اقتصادی در سطح جهانی احساس می‌شود. حملات پهپادی در نزدیکی نیروگاه‌های هسته‌ای امارات متحده عربی، حضور اسرائیل در عراق و افزایش بررسی‌های نظامی ایالات متحده، مرحله‌ای خطرناک را رقم می‌زند. در همین حال، تحریم‌ها، بحران‌های اقتصادی (شامل چین و بازارهای جهانی) و بحران‌های بشردوستانه، ناپایداری در خاورمیانه و فراتر از آن را تشدید می‌کنند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده و ایران در یک بن‌بست پرتنش قرار دارند. مذاکرات صلح متوقف شده و ایران به پیشنهادهای ایالات متحده پاسخ داده، اما پیشرفتی در کار نیست. با حمله‌های اخیر پهپادی نزدیک به یک نیروگاه هسته‌ای امارات که به ایران نسبت داده می‌شود، نگرانی‌ها از تشدید تنش بیشتر شده است. ایالات متحده به رهبری دونالد ترامپ، گزینه‌های نظامی را در نظر گرفته و ایران را متهم می‌کند که دیپلماسی را به تعویق انداخته و در عین حال خواستار تحریم‌های جهانی سخت‌گیرانه‌تر است. از سوی دیگر، ایران تنگه هرمز، یک گلوگاه کلیدی برای حمل و نقل نفت، را کنترل می‌کند و به نقض حقوق بشر با افزایش اعدام‌ها متهم شده است. ناآرامی اقتصادی در چین و بازارهای مالی جهانی نیز به دلیل این درگیری تشدید شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیترها</h3>
+            این درگیری به طور فزاینده‌ای به سمت ناپایداری بیشتر پیش می‌رود. احتمال اقدام نظامی ایالات متحده وجود دارد، به‌ویژه اگر تلاش‌های دیپلماتیک کاملاً شکست بخورد. تحریم‌های علیه ایران احتمالاً به صورت جهانی گسترش خواهند یافت و اقتصاد ایران را بیشتر آسیب‌زا خواهند کرد. بحران بشردوستانه در مناطق آسیب‌پذیر به دلیل افزایش هزینه‌های اقلام اساسی مانند غذا و سوخت بدتر خواهد شد. اقتصادهای جهان، به‌خصوص در اروپا و آسیا، ممکن است با آشفتگی‌های طولانی‌مدت مواجه شوند. ایران ممکن است همچنان کنترل خود را بر تنگه هرمز حفظ کند یا در برابر تحریکات احتمالی وارد عمل تلافی‌جویانه شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            پاییز 2024: اسرائیل پایگاه‌های نظامی در عراق احداث می‌کند. نیمه اول 2025: گزارش‌هایی از دو برابر شدن اعدام‌ها در ایران و reliance بیشتر آن به رمزارزها منتشر می‌شود. اوایل 2026: مذاکرات آمریکا و ایران متوقف می‌شود. ۱۸ مه ۲۰۲۶: حملهٔ پهپادی نزدیک نیروگاه هسته‌ای امارات متحده عربی؛ آمریکا از 'ت countingdown' برای ایران هشدار می‌دهد؛ ترامپ با مشاورانش برای بررسی گزینه‌های نظامی دیدار می‌کند؛ وزیران اقتصاد جی۷ در پاریس نشست می‌گذارند. همان روز: ایران کنترل تنگهٔ هرمز را اعلام می‌کند؛ آمریکا خواستار گسترش تحریم‌ها می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            جهت‌گیری بلندمدت حاکی از بن‌بست طولانی مدت دارد که با تشدیدهای دوره‌ای اما بدون راه حل روشن همراه خواهد بود. به احتمال زیاد ایران همچنان با ناآرامی‌های داخلی و فشارهای اقتصادی مواجه خواهد شد و ممکن است برای مقابله با نفوذ ایالات متحده به تاکتیک‌های نامتقارن (مثلاً حملات نیابتی، جنگ سایبری) متوسل شود. ایالات متحده ممکن است برای تضعیف ایران از طریق تحریم‌ها و بازدارندگی نظامی تلاش کند، اما با مخالفت‌های داخلی در قبال درگیری‌های طولانی مدت دست و پنجه نرم کند. بازارهای انرژی جهانی همچنان ناپایدار خواهند بود و کندی اقتصادی چین ممکن است ثبات بین‌المللی را بیشتر به مخاطره اندازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های враждебных مواجهه</h3>
+            در حال حاضر، درگیری در یک مرحله دیپلماتیک-نظامی با شدت بالا به صورت بن‌بست رسیده است. نبردهای گسترده و مستقیم رخ نمی‌دهد، اما خطر تشدید درگیری قابل توجه است. ایران از موضع‌گیری‌های استراتژیک خود (مانند تنگه هرمز) عقب‌نشینی نمی‌کند و از طریق نیروهای نیابتی در حال گسترش نفوذ خود است. ایالات متحده در حال متعادل‌سازی میان فشار دیپلماتیک و تهدید به استفاده از زور است و با نارضایتی‌های داخلی در مورد هزینه‌ها و تلفات ناشی از جنگ مواجه است. حملات سایبری، حملات پهپادی و جنگ اقتصادی به ابزارهای رایج تبدیل شده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال تغییر موازنه‌های قدرت جهانی است. برای آمریکا، این یک آزمون بازدارندگی و نفوذ در خاورمیانه محسوب می‌شود. برای ایران، این نبردی برای بقا در میان انزوای اقتصادی و مبارزات داخلی است. برای جهان، افزایش هزینه‌های انرژی و ناپایداری اقتصادی می‌تواند روند بهبودی از بحران‌های اخیر مانند همه‌گیری را تیره کند. هزینه انسانی این بحران شدید است و کشورهایی را تحت تأثیر قرار می‌دهد که از قبل آسیب‌پذیر بوده و با کمبود مواد غذایی و سوخت مواجه هستند. این درگیری همچنین نشان می‌دهد که چگونه نزاع‌های مدرن جنگ، اقتصاد و جنگ سایبری را درهم می‌آمیزند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده رهبری تلاش‌ها برای منزوی و تحت فشار قرار دادن ایران را به عهده دارد و از حمایت متحدانی مانند امارات و اسرائیل (که در عراق و نزدیک مرز ایران پایگاه دارد) برخوردار است. اروپا دچار اختلاف است؛ فرانسه تهدیدهای نظامی آمریکا را محکوم می‌کند، اما در عین حال عدم محبوبیت داخلی جنگ را هم به رسمیت می‌شناسد. چین در نتیجه این درگیری از نظر اقتصادی تحت فشار قرار دارد و روسیه ممکن است سعی کند از این بحران برای گسترش نفوذ خود بهره‌برداری کند. گروه هفت در حال بحث درباره تحریم‌ها به عنوان یک جبهه متحد است. امارات، به عنوان یکی از کلیدی‌ترین متحدان آمریکاست و مستقیماً هدف قرار گرفته است، در حالی که بسیاری از کشورهای جهان با پیامدهای اقتصادی این جنگ، به ویژه در حوزه تجارت و انرژی، مواجه هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت بهlikely است به دلیل ناپایداری در تنگه هرمز، یک تنگه راهبردی و حیاتی برای نفت، افزایش یابد. هرگونه اختلال در این منطقه به شدت عرضه جهانی نفت را محدود کرده و باعث رشد شدید قیمت‌ها می‌شود. تحریم‌ها علیه ایران نیز عرضه جهانی را کاهش خواهند داد، زیرا ایران یکی از بزرگترین صادرکنندگان نفت به شمار می‌رود. این موضوع اهمیت دارد زیرا افزایش قیمت نفت تأثیرات گسترده‌ای بر اقتصادها دارد—هزینه‌های حمل و نقل، مواد غذایی و تولید را افزایش می‌دهد و به نوبه خود باعث تشدید تورم و کند شدن رشد اقتصادی در مناطقی می‌شود که از قبل با مشکلاتی دست و پنجه نرم می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            مذاکرات بین آمریکا و ایران متوقف شده است و گزینه‌های نظامی محتمل‌تر به نظر می‌رسد که این موضوع خطر تشدید درگیری‌ها را افزایش می‌دهد. این درگیری اقتصادهای جهانی را، به ویژه بازارهای انرژی، تحت فشار قرار داده و بحران‌های بشردوستانه را در کشورهایی که آسیب‌پذیرند، تشدید می‌کند. ایران با استفاده از روش‌های نامتعارف—رمزارزها، نیروهای نیابتی و کنترل تنگه هرمز—در برابر فشار ایالات متحده مقاومت می‌کند، در حالی که ایالات متحده تلاش دارد از طریق تحریم‌ها و تهدیدها، ایران را منزوی کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تشکیل پایگاه‌های نظامی اسرائیل در عراق چند ماه پیش از تشدید بحران کنونی غیرمنتظره است و نشان‌دهنده آمادگی‌های بلندمدت برای درگیری احتمالی با ایران می‌باشد. علاوه بر این، استفاده مشترک از شبکه‌های ارز دیجیتال میان سرمایه‌گذاری‌های ترامپ و ایران، نقش فزاینده امور مالی دیجیتال را در مناقشات ژئوپلیتیکی برجسته می‌سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 {'text': ' context بیشتر'}</h3>
+            هیچ تحولی معناداری در این زمینه صورت نگرفته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
