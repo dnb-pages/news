@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-18 22:20</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-18 22:20</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ می‌گوید به درخواست کشورهای خلیج فارس حمله جدید به ایران را لغو کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۱۸T۲۲:۱۳:۰۸Z</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده می‌گوید که از حمله‌ای که برای سه‌شنبه برنامه‌ریزی شده بود، خودداری کرده است، زیرا «مذاکرات جدی در حال انجام است».</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/c7079e55zjro?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>تظاهرات سراسری در کنیا در واکنش به افزایش چشمگیر قیمت سوخت آغاز شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (استانی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۲/۲۹ ۲۱:۱۶:۰۴</strong></span>
+                </div>
+                <p class='summary'>در کنیا، تظاهرات مرگبار قیمت سوخت دست کم چهار کشته به جا گذاشته و صدها معترض دستگیر شده‌اند، زیرا تظاهرکنندگان، نحوه رسیدگی دولت به پیامدهای بسته شدن تنگه هرمز توسط ایران را مورد انتقاد قرار داده‌اند. در شرق جمهوری دموکراتیک کنگو، یک نوع نادر ویروس ابولا جان بیش از ۱۰۰ نفر را گرفته و نزدیک به ۴۰۰ مورد مشکوک این بیماری نگرانی کشورهای همسایه را تشدید کرده و منجر به اعلام وضعیت اضطراری بهداشتی بین‌المللی توسط سازمان بهداشت جهانی (WHO) شده است. از سوی دیگر، در سیرالئون، زنان بیشتری در حال ورود به کسب‌وکار رانندگی ریکشا، که traditionally male-dominated است، بوده و فرصت‌های اقتصادی جدیدی را به دست آورده و نقش جنسیتی را تغییر داده‌اند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/برنامه‌های-تلویزیونی/چشم‌انداز-آفریقا/2026/05/18اعتراضات-سراسری-در-کنیا-در-پی-افزایش-قیمت-سوخت-شعله‌ور-شد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایلون ماسک در یک دادخواست علیه اوپن‌ایآی و سم آلتمن شکست خورد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ٢٤ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۳-۲۹ ۲۱:۰۳:۲۰</strong></span>
+                </div>
+                <p class='summary'>مرد میلیاردر بخش فناوری، ایلان ماسک، در یک دادگاه فدرال در کالیفرنیا پرونده ۱۶۰ میلیارد دلاری خود علیه شرکت اوپن‌ای‌آی و سم آلتمن، مدیر ارشد آن، را باخته است. پس از ۱۱ روز شهادت و استدلال، هیأت منصفهٔ ۹ نفره کمتر از دو ساعت برای اعلام رأی یکسان بحث و بررسی کرده و اعلام نمود که ماسک پرونده خود را بیش از موعد، پس از گذشت مدت قانونی، ثبت کرده است. همچنین در این برنامه، تحقیقاتی نشان می‌دهد که رانندگان آمریکایی از زمان آغاز جنگ ایران بیش از ۴۰ میلیارد دلار در هزینه‌های سوخت اضافی پرداخته‌اند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/tv-shows/بازرگانی/2026/05/18/ایلون-ماسک-در-دعوای-علیه-اوپن‌ای‌آی-و-سام-آلتمن-پیروز-نشد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>به گزارش نیویورک تایمز، اسرائیل دو پایگاه نظامی محرمانه در عراق ساخته است تا جنگ علیه ایران را تسهیل کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۳/۲۹T19:38:21Z</strong></span>
+                </div>
+                <p class='summary'>یک گزارش جدید از سوی نیویورک تایمز مدعی می‌شود که اسرائیل در بیابان‌های غربی عراق، دومین پایگاه نظامی مخفی خود را برای حمایت از حملات خود به ایران ساخته است و ایالات متحده از وجود آن آگاه بوده است. به نقل از یک مقام عراقی و یک قانون‌گذار، نیویورک تایمز گزارش داده است که وجود این پایگاه‌ها ممکن است به مرگ چوپان بدوی‌ای منجر شده باشد که نخستین بار زنگ خطر را به صدا درآورد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/اسرائيل-دو-پایگاه-نظامی-مخفی-در-عراق-برای-کمک-به-جنگ-معارضان-ایران-تاسیس-کرد-به-گزارش-نیویورک-تایمز' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>ترامپ پس از میانجی‌گری خلیج فارس، حمله ممکن به ایران را متوقف کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳:۴۱:۱۸ - ۱۸ اردیبهشت ۱۴۰۵</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده دونالد ترامپ اعلام کرده است که حمله برنامه‌ریزی‌شده به ایران را به تعویق انداخته است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/18/trump-pauses-possible-iran-strike-after-gulf-intervention?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ترامپ گفته است که دستور بمباران‌های جدید علیه ایران را صادر کرده، اما اکنون تصمیم گرفته است که موقتاً از آن صرف‌نظر کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۳-۲۹T۲۱:۰۰:۴۸Z</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ بارها به اقدام نظامی جدید علیه ایران تهدید کرده است، اما هر بار از از سرگیری جنگ‌های گسترده - در منازعه‌ای ناخوشایند و پرهزینه - عقب‌نشینی کرده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/18/us/politics/trump-iran-strikes.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ترامپ حمله «برنامه‌ریزی‌شده» به ایران را به تأخیر انداخت و گفت این به خاطر «مذاکرات جدی» است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> آل جازیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ اردیبهشت ۱۴۰۵ ساعت ۲۰:۱۲:۴۵ UTC</strong></span>
+                </div>
+                <p class='summary'>کشورهاى خلیجى از دونالد ترامپ مى خواهند تا از هرگونه تشدید در جنگ آمریکا و اسرائیل با ایران اجتناب کند، که این امر موجب حملات منطقه اى شد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/18/trump-delays-scheduled-attack-on-iran-crediting-serious-negotiations?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ترامپ می‌گوید که حمله برنامه‌ریزی‌شده به ایران پس از درخواست رهبران خلیج فارس متوقف شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ مه ۲۰۲۶ ساعت ۲۱:۳۰ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور اعلام کرد که رهبران خلیج [فارس] خواستار شدند تا او برنامه‌های خود برای حملات را که قرار بود برای روز سه‌شنبه اجرا شوند، متوقف کند تا فضای مذاکره با تهران برای رسیدن به توافق احتمالی جهت پایان دادن به جنگ فراهم شود.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/trump-says-he-will-hold-off-on-iran-attack-as-serious-negotiations-are-under-way-7ff01a96' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>آیا جنگ ایران می‌تواند باعث سقوط بعدی بدهی‌ها شود؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ اردیبهشت ۱۴۰۵ ساعت ۱۹:۱۷:۰۰ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>اوراق قرضه دولتی تحت فشار هستند و به زودی خانوارها ممکن است تأثیر آن را احساس کنند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/5/18/could-the-iran-war-trigger-the-next-debt-shock?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>ایران از تشکیل نهاد جدیدی برای مدیریت تنگه هرمز خبر می‌دهد درحالی‌که مذاکرات صلح متوقف شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس 24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۲/۲۹  ساعت ۲۱:۳۷:۳۳</strong></span>
+                </div>
+                <p class='summary'>ایران در روز دوشنبه، یک نهاد جدید برای نظارت بر تنگه هرمز اعلام کرد و بر کنترل تنگه راهبردی پس از ماه‌ها اختلال مرتبط با جنگ خود با ایالات متحده و اسرائیل تأکید کرد. تهران اعلام کرده است که این مقام وظیفه مدیریت ترافیک دریایی و ارائه به‌روزرسانی‌ها را بر عهده خواهد داشت، در حالی که عوارض و محدودیت‌ها، حمل‌ونقل جهانی را دگرگون می‌کنند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260518-iran-announces-new-body-to-manage-strait-of-hormuz-as-peace-talks-stall' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۹ می ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا و ایران در یک وضعیت پرتنش به سر می‌برند زیرا مذاکرات صلح به بن‌بست خورده، ایران کنترل خود بر تنگه هرمز را tightens کرده و ناآرامی‌های منطقه‌ای با اعتراضات سوخت در کنیا و عملیات آمریکا و اسرائیل در عراق افزایش یافته است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            رئیس‌جمهور ایالات متحده ترامپ پس از آنکه کشورهای خلیج فارس خواستار خویشتن‌داری شدند، یک حمله نظامی برنامه‌ریزی‌شده به ایران را متوقف کرد و به مذاکرات در جریان استناد کرد. در همین حال، ایران نهاد جدیدی را برای مدیریت تنگه هرمز اعلام کرد که کنترل خود را بر یکی از مهم‌ترین مسیرهای کشتیرانی جهانی تشدید می‌کند. تنش‌های منطقه‌ای نیز در حالی افزایش یافت که اعتراضات مرتبط با افزایش قیمت سوخت در کنیا به راه افتاد و اسرائیل به ساخت پایگاه‌های نظامی سری در عراق به منظور هدف‌گیری ایران reportedly اقدام کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جایی کهHeading</h3>
+            اگر مذاکرات موفقیت‌آمیز باشد، درگیری ممکن است کاهش یابد، اما تنش‌ها همچنان بالا است. اگر مذاکرات ناکام بماند، ایالات متحده و اسرائیل ممکن است بمباران‌ها را از سر بگیرند، در حالی که ایران ممکن است حمل‌ونقل نفت را بیشتر مختل کند. اعتراضات منطقه‌ای و بحران‌های سلامت ممکن است ناامنی را تشدید کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱۸ مه ۲۰۲۶: ترامپ حمله برنامه‌ریزی‌شده به ایران را لغو کرد.</li><li>۱۸ مه ۲۰۲۶: ایران اعلام کرد بدنۀ جدید مدیریت تنگه هرمز را راه‌اندازی می‌کند.</li><li>۱۸ مه ۲۰۲۶: اعتراضات در کنیا علیه گران‌شدن قیمت سوخت آغاز شد.</li><li>۱۸ مه ۲۰۲۶: نیویورک تایمز گزارش داد اسرائيل پایگاه‌های نظامی پنهانی در عراق ساخته است.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            اگر مذاکرات ادامه داشته باشد، جنگ ممکن است وارد مرحله‌ای گذرا و پرتلاطم شود، اما خطر ازسرگیری خشونت همچنان برقرار است. کنترل ایران بر تنگه هرمز و درگیری‌های نیابتی منطقه‌ای می‌تواند عرضه نفت جهانی را مختل کند. پیامدهای اقتصادی از جمله شوک‌های بدهی و افزایش قیمت سوخت ممکن است ناپایداری در آفریقا و خاورمیانه را تشدید کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            در حال حاضر شدت درگیری‌ها به دلیل اولویت پیدا کردن مذاکرات دیپلماتیک اندک است، اما عملیات‌های پنهانی (مثل پایگاه‌های اسرائیل در عراق) و تظاهرات‌های منطقه‌ای نشان از تنش‌های پایدار دارد. تنگه هرمز همچنان کانونی برای احتمال تشدید درگیری‌ها باقی مانده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            پیامدهای جنگ احتمالی بین ایران، ایالات متحده و اسرائیل از بازارهای جهانی نفت تا اقتصادهای آفریقایی گسترده می‌شود. در صورت عدم حل، این جنگ منجر به هرج و مرج منطقه‌ای طولانی مدت، ناپایداری اقتصادی و آوارگی بیشتر مردم خواهد شد. بسته شدن تنگه هرمز می‌تواند قیمت‌های نفت را به شدت افزایش دهد و بر همه تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده، اسرائیل، کشورهای خلیج فارس و ایران بازیگران اصلی هستند. کشورهای خلیج فارس در حال میانجی‌گری برای جلوگیری از بروز درگیری بیشتر هستند، در حالی که اسرائیل عملیات‌های مخفیانه‌ای را انجام می‌دهد. کشورهای آفریقایی با اعتراض‌ها و وضعیت‌های اضطراری بهداشتی مواجه‌اند که بر اثر پیامدهای ناخوشایند تشدید شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل تنش‌های تنگه هرمز نوسانات زیادی دارند. در صورتی که ایران حمل‌ونقل دریایی را بیش از این مختل کند یا اعتصاب‌ها از سرگرفته شوند، قیمت‌ها ممکن است به شدت افزایش یابند. در حال حاضر، هزینه‌های بیشتر سوخت از زمان آغاز جنگ، بیش از ۴۰ میلیارد دلار برای رانندگان آمریکایی هزینه داشته و زنجیره‌های تأمین جهانی همچنان آسیب‌پذیر هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ترامپ پس از مداخله کشورهای خلیج فارس یک حمله برنامه‌ریزی‌شده به ایران را متوقف کرد، اما تنش‌ها همچنان بالاست و مذاکرات ناپایدارند. تنگه هرمز یک کانون بحرانی است که در آن ایران کنترل خود را تشدید می‌کند و خطر disruption در عرضه جهانی نفت را افزایش می‌دهد. ناپایداری منطقه‌ای با اعتراض‌های سوخت در کنیا و عملیات‌های پنهانی نظامی اسرائیل در عراق تشدید می‌یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
