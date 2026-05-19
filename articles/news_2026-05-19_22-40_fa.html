@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-19 22:44</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-19 22:44</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>«نامتناسبی بزرگ» میان انتظارات ایران، آمریکا و کشورهای خلیج [فارس]، تحلیلگری می‌گوید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ خرداد ۱۴۰۵ ساعت ۲۵:۴۴</strong></span>
+                </div>
+                <p class='summary'>در گفت‌گوی اختصاصی با شارون گافنی خبرنگار شبکهٔ فرانسه 24، دکتر ح. الف. هلاییر پژوهشگر ارشد انجمن سلطنتی مطالعات دفاعی و امنیتی در لندن می‌گوید: جریان و شکافی بسیار بزرگ وجود دارد، نه فقط بین انتظارات مردم ایران و آمریکایی‌ها، بلکه در بین کشورهای عربی حوزهٔ خلیج فارس هم که باید با هر آشوب و تلاشی که پس از این از خود به جای می‌گذارند، کنار بیایند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/برنامه‌های-تلویزیونی/درباره/20260519-ناهمخوانی-عظیم-میان-انتظارات-ایران-و-کشورهای-خلیج-با-آمریکا-به‌گفتۀ-تحلیل‌گر' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>دیدگاه | اقتصاد پیروزی در اوکراین و شکست در ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۴/۰۳/۲۹ - ساعت ۲۳:۳۹</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده از اینترسپرهای پاتریوت به ارزش ۴ میلیون دلار برای نابودی پهپادهایی استفاده می‌کند که ساخت آنها ۲۰ تا ۵۰ هزار دلار هزینه دارد.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/the-economics-of-victory-in-ukraine-and-defeat-in-iran-3d2403e1' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ویدئویی از نشت نفت در جزیره ایرانی پس از حمله به پالایشگاه هفته گذشته منتشر شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۳/۳۰</strong></span>
+                </div>
+                <p class='summary'>مقیاس آثار آلودگی نفتی ناشی از حمله به پالایشگاه لاوان ایران در ماه گذشته مشخص شده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/19/video-shows-oil-spill-on-iranian-island-after-refinery-attack-last-month?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>فرمانده نیروی دریایی از اظهارات «نامناسب» یک قانون‌گذار در جریان جلسه استماع جنگ ایران انتقاد کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  واشنگتن پست (تجزیه و تحلیل) </span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۰۲/۳۰ ۱۴:۳۹:۲۹</strong></span>
+                </div>
+                <p class='summary'>فرماندهی مرکزی ایالات متحده (سنت‌کام)، دریاسالار برد کوپر، در واکنش به پرسش‌های دموکرات‌های مجلس نمایندگان که او را تحت فشار قرار دادند تا درباره طیف گسترده‌ای از مسائل مربوط به این درگیری پاسخ دهد، ناامید به نظر می‌رسید.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/05/19/adm-brad-cooper-accuses-moulton-inappropriate-remark-iran-war-exchange/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 19 مه 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌ها بین ایران، ایالات متحده و کشورهای خلیج فارس همچنان بالاست؛ چراکه انتظارات ناهمگون دیپلماسی را پیچیده کرده است. حملات اخیر به زیرساخت‌های نفتی ایران، فشارهای اقتصادی ناشی از هزینه‌های نظامی و درگیری‌های سیاسی در واشنگتن، منطقه را به سوی بی‌ثباتی عمیق‌تر سوق می‌دهد. با تشدید تنش‌ها، عرضه نفت و بازارهای انرژی جهانی به طور فزاینده‌ای در معرض خطر قرار دارند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            در ماه گذشته، پالایشگاه نفت لاوان در ایران مورد حمله قرار گرفت که منجر به نشت نفت در جزیره‌ای نزدیک به این تأسیسات شد. در همین حال، تنش‌های ایالات متحده و ایران تشدید شده و با تبادل‌های نظامی پرهزینه‌ای، مانند هزینه کردن میلیون‌ها دلار از سوی ایالات متحده برای ساقط کردن پهپادهای ارزان قیمت ایرانی، مشکلات اقتصادی ایران را وخیم‌تر کرده است. در واشنگتن، یک ارشد نظامی ایالات متحده با قانون‌گذاران بر سر نحوه رسیدگی به این درگیری به اختلاف خورد و تحلیلگران هشدار می‌دهند که کشورهای حاشیه خلیج فارس که در میانه این تنش‌ها گرفتار شده‌اند، با بی‌ثباتی فزاینده‌ای روبرو هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان کجاست</h3>
+            وضعیت احتمالاً قبل از بهبود یافتن بدتر خواهد شد. ناهماهنگی دیپلماتیک میان ایران، ایالات متحده و متحدان خلیجی حاکی از آن است که هیچ راه‌حل سریع و فوری وجود ندارد. ایران ممکن است به فشارهای اقتصادی و نظامی با اقدامات بیشتر یا تلافی‌جویی پاسخ دهد، در حالی که ایالات متحده و شرکایش ممکن است تحریم‌ها را تشدید کنند یا اقدامات نظامی خود را افزایش دهند. کشورهای حاشیه خلیج فارس، که نگران گسترش خشونت هستند، ممکن است برای کاهش تنش‌ها فشار بیاورند یا دفاعیات خود را تقویت کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. **۲۰۲۶-۴-مهر**: حمله به پالایشگاه لاوان ایران منجر به ریزش نفت می‌شود.</li><li>۲. **۲۰۲۶-۲۹-اردیبهشت**: تحلیلگر بر «ناهنجاری شدید» در انتظارات آمریکا، ایران و کشورهای حوزه خلیج فارس تأکید می‌کند.</li><li>۳. **۲۰۲۶-۲۹-اردیبهشت**: دریابد ارشد آمریکا قانون‌گذاران را برای پرسش‌های «نامناسب» درDurante una audiencia sobre el conflicto con Irán، critica a los legisladores por preguntas "inapropiadas".</li><li>۴. **در جریان**: تنش نظامی آمریکا و ایران ادامه یافته و درگیری‌های پرهزینه/پهپادی باعث تشدید بحران اقتصادی در ایران می‌شود.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این درگیری احتمالاً تبدیل به یک بن‌بست طولانی‌مدت خواهد شد. ایران که با فشارهای اقتصادی و چالش‌های داخلی مواجه است، ممکن است به صورت غیرمستقیم (مانند حملات نیابتی، عملیات سایبری یا حملات به زیرساخت‌های نفت) تشدید کند. ایالات متحده و کشورهای خلیج فارس به احتمال زیاد سیاست‌های مهاری خود را تشدید خواهند کرد که خطر یک چرخهٔ تلافی جویانه را در پی دارد. تلاش‌های دیپلماتیک به دلیل بی‌اعتمادی عمیق و تضاد منافع متوقف مانده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            نبرد عمدتاً غیرمستقیم و نامتقارن است: حملات سایبری، حملات پهپادی و جنگ اقتصادی. رویارویی نظامی مستقیم هنوز غالب نیست، اما ریسک تشدید آن در حال افزایش است. ایران از تاکتیک‌های کم‌هزینه با تأثیر بالا استفاده می‌کند، در حالی که ایالات متحده و متحدانشان به اقدامات دفاعی و تلافی‌جویانه پرهزینه متکی هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری عرضه جهانی نفت را تهدید می‌کند، به‌ویژه اگر ایران دسترسی دریایی در تنگه هرمز را مختل سازد. این مسئله همچنین باعث فشار بر اتحادهای ایالات متحده-خلیج می‌شود، زیرا کشورهای خلیج فارس با نگرانی نسبت به بی‌ثباتی perceived ایالات متحده دچار نگرانی‌ می‌شوند. برای افراد عادی، بزرگ‌ترین risks، افزایش قیمت سوخت و احتمال اختلال در عرضه انرژی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده آمریکا مستقیماً از نظر نظامی و دیپلماتیک درگیر است، در حالی که کشورهای خلیج (عربستان سعودی، امارات متحده عربی و غیره) از طریق همکاری‌های امنیتی و فشارهای اقتصادی از تلاش‌های آمریکا حمایت می‌کنند. متحدان ایران (مثلاً عوامل غیرمستقیم در یمن، عراق و سوریه) ممکن است حملات غیرمستقیم را افزایش دهند. چین و روسیه با دقت در حال نظارت هستند اما هنوز طرف چندانی را نگرفته‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در صورت تشدید بیشتر این درگیری، به خصوص اگر ایران صادرات نفت را مختل کند یا تنگه هرمز را ببندد، قیمت‌های نفت احتمالاً افزایش خواهند یافت. این موضوع اهمیت دارد زیرا افزایش قیمت نفت می‌تواند موجب ایجاد تورم و کندی اقتصادی در سراسر جهان شود. حمله اخیر به پالایشگاه لاوان نیز نشان‌دهنده آسیب‌پذیری زیرساخت‌های نفتی ایران است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            انتظار‌های عمیقاً متفاوتی میان ایران و ایالات متحده وجود دارد که دیپلماسی را بسیار دشوار می‌کند. هزینه‌های بالای جنگ برای ایران (از نظر اقتصادی و نظامی) آن را به سوی واکنش‌های پرمخاطره سوق می‌دهد. کشورهای حاشیه خلیج فارس که در میانه قرار گرفته‌اند، چه از آمریکا حمایت کنند و چه بی‌طرف بمانند، با بی‌ثباتی مواجه خواهند شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            درگیری公開 وسیع میان یک مقام بلندپایه نیروی دریایی آمریکا و قانون‌گذاران نشان‌دهنده نارضایتی فزاینده و احتمالاً اختلافات داخلی در نحوه مدیریت این درگیری است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تناقض در انتظارات به باوری اشاره دارد که ایران نسبت به این مسئله دارد، مبنی بر اینکه سرانجام ایالات متحده در زمینه تحریم‌ها یا نفوذ منطقه‌ای مصالحه خواهد کرد، در حالی که ایالات متحده، حرکت‌های تهاجمی ایران (مانند حملات پهپادی) را غیرقابل قبول می‌داند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
