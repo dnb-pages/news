@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-05-21 20:15</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-05-21 20:15</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Trump shifts between diplomacy and threats in Iran standoff</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-21 19:11</strong></span>
+                </div>
+                <p class='summary'>Supporters say unpredictable Trump approach deal-making strength, others see reflection of strategic dilemma.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/21/trump-shifts-between-diplomacy-and-threats-in-iran-standoff?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Iran’s World Cup hopes hit US visa hurdles</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-21 18:19</strong></span>
+                </div>
+                <p class='summary'>Players from Iran’s national football team are in Turkey applying for US visas for the 2026 World Cup.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/21/irans-world-cup-hopes-hit-us-visa-hurdles?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Tipping point? The scramble to contain global energy crisis</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-21 19:49</strong></span>
+                </div>
+                <p class='summary'>It’s easy to lecture world leaders about how fuel subsidies ruin the environment and bleed state coffers dry, but try telling that to beleaguered Bolivians and cornered Kenyans… two of the many nations where the energy crisis has reached breaking point with citizens unable to keep up with prices at the pump. It’s not just in the Americas, Africa and Asia where the Iran war’s destroying livelihoods and derailing fiscal roadmaps.</p>
+                <div class='link'><a href='https://www.france24.com/en/tv-shows/the-debate/20260521-tipping-point' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>U.S. bears brunt of Israel’s missile defense, Pentagon assessments show</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Washington Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-21 17:52</strong></span>
+                </div>
+                <p class='summary'>Amid hostilities with Iran, the American military expended far more advanced interceptors to protect Israel than Israeli forces did, according to Defense Department data.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/05/21/us-bears-brunt-israels-missile-defense-pentagon-assessments-show/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Germany Indicts Two Men for Plotting to Kill Jewish Leaders on Iran’s Behalf</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-21 17:19</strong></span>
+                </div>
+                <p class='summary'>European authorities have grown concerned about a rise in Iranian intelligence activity in Europe in the wake of the U.S.-Israeli war in Iran.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/21/world/europe/germany-murder-plot-iran.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - May 21, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The world is closely watching tensions between Iran and a U.S.-led coalition, which are escalating in unpredictable ways—from direct military clashes to covert operations like cyberattacks and assassination plots. Meanwhile, the conflict is disrupting global energy markets, affecting everything from daily commutes to the World Cup, and drawing in nations beyond the Middle East.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. and Iran are locked in a tense standoff involving military confrontations, covert operations, and economic pressures. Iran’s national football team is struggling to get U.S. visas to compete in the 2026 World Cup. The Pentagon reports that the U.S. is spending far more on missile defense for Israel than Israel itself. Germany has indicted two men for allegedly plotting to kill Jewish leaders on Iran’s behalf. All of this is happening against the backdrop of a worsening global energy crisis, with Iran’s conflict exacerbating fuel price spikes in countries like Bolivia and Kenya.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The standoff between the U.S. and Iran is likely to intensify in the short term, with more military clashes or covert operations, such as cyberattacks or targeted assassinations. The energy crisis will continue to worsen, putting pressure on governments to stabilize fuel prices. If diplomacy fails, we may see a full-blown regional war involving Israel, Iran, and their allies.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['May 21, 2026: Trump’s administration swings between threats and diplomacy toward Iran.', 'May 21, 2026: Iran’s football team faces visa issues for the 2026 World Cup.', 'May 21, 2026: Pentagon reveals the U.S. bears the brunt of missile defense costs for Israel.', 'May 21, 2026: Germany indicts two men for suspected plots to kill Jewish leaders on Iran’s behalf.', 'May 21, 2026: Analysis highlights the global energy crisis worsening due to the Iran conflict.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term direction depends on whether diplomacy can de-escalate tensions or if the conflict spirals into a broader regional war. If the U.S. and Iran can’t find a way to negotiate, we may see more sanctions, military strikes, or even a full-scale war involving Israel and its neighbors. The energy crisis could deepen if the conflict disrupts oil supply chains, leading to higher fuel prices worldwide.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is currently a mix of direct and indirect clashes. The U.S. and Iran are exchanging threats and military actions, including missile strikes and covert operations. Meanwhile, Israel is heavily relying on U.S. missile defenses, showing how much it depends on American support. The conflict is also playing out in courts, with Iran accused of plotting assassinations in Europe.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This isn’t just about Iran and the U.S.—it’s a global issue. The energy crisis is straining economies worldwide, and the World Cup visa issue shows how even sports are affected. If the conflict worsens, it could destabilize the Middle East, disrupt global oil supplies, and create a refugee crisis. It’s a reminder that regional conflicts don’t stay local for long.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is the most directly involved, supporting Israel and applying pressure on Iran through military and economic means. Israel is a key player, relying heavily on U.S. defense against Iranian attacks. Europe, particularly Germany, is concerned about Iranian covert operations on its soil. Countries like Bolivia and Kenya are feeling the ripple effects of the energy crisis caused by the conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The conflict is pushing oil prices higher because Iran is a major oil producer, and any disruption in its supply can cause global prices to spike. Higher oil prices mean more expensive fuel for cars, planes, and ships, which affects transportation costs, food prices, and overall inflation. This is already hurting countries like Bolivia and Kenya, where people can’t afford basic necessities.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S.-Iran standoff is escalating with military actions, covert operations, and economic pressures, affecting the entire world. The conflict is worsening a global energy crisis, making fuel prices unaffordable for many countries, from Bolivia to Kenya. Israel is relying heavily on the U.S. for missile defense, showing how deep the U.S. involvement is in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The energy crisis is not just a result of the Iran conflict but is also driven by other factors like the war in Ukraine and climate change policies reducing fossil fuel investments. The World Cup visa issue for Iran’s team highlights how geopolitical tensions can affect even cultural and sporting events.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

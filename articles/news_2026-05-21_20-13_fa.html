@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-21 20:17</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-21 20:17</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ در بن‌بست ایران между دیپلماسی و تهدیدات در رفت و برگشت است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۰۱ ساعت ۲۳:۴۱:۱۷</strong></span>
+                </div>
+                <p class='summary'>حامیان می‌گویند رویکرد غیرقابل پیش‌بینی ترامپ قدرت چانه‌زنی معاملات را افزایش می‌دهد، در حالی که دیگران آن را بازتابی از دوگانگی استراتژیک او می‌دانند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/21/trump-shifts-between-diplomacy-and-threats-in-iran-standoff?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>موانع ویزای ایالات متحده، امیدهای جام جهانی ایران را تحت تأثیر قرار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱ ۲۲:۴۹</strong></span>
+                </div>
+                <p class='summary'>بازیکنان تیم ملی فوتبال ایران در ترکیه در حال درخواست ویزاهای ایالات متحده برای جام جهانی ۲۰۲۶ هستند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/5/21/irans-world-cup-hopes-hit-us-visa-hurdles?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>نقطهٔ عطف؟ تلاش‌ها برای مهار بحران جهانی انرژی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> France24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱ ساعت ۲۳:۴۹:۳۴</strong></span>
+                </div>
+                <p class='summary'>آسان است که به رهبران جهان درس بدهیم که چگونه یارانه‌های سوخت باعث نابودی محیط زیست و خالی شدن خزانه دولت‌ها می‌شود، اما سعی کنید این را به بولیویایی‌های درمانده و کنیایی‌های گرفتار بگویید… یکی از بسیاری از کشورهایی که بحران انرژی به نقطه انفجار رسیده و شهروندان قادر به پرداخت قیمت‌های بالای بنزین نیستند. این مشکل تنها در قاره‌های آمریکا، آفریقا و آسیا نیست؛ جایی که جنگ ایران معیشت‌ها را نابود کرده و مسیرهای مالی را از جایش کج می‌کند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/برنامه-های-تلویزیونی/بحث/۲۰۲۶/۰۵/۲۱/نقطه-عطف' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>بررسی‌های پنتاگون نشان می‌دهد که آمریکا متحمل اصلی‌ترین سهم در دفاع موشکی اسرائیل است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۲۱T۱۷:۵۲:۴۷Z</strong></span>
+                </div>
+                <p class='summary'>بر اساس داده‌های وزارت دفاع، در خلال خصومت‌ها با ایران، نیروهای نظامی آمریکا تعداد برخوردار از پیشرفته‌ترین سامانه‌های پدافند موشکی برای محافظت از اسرائیل به مراتب بیشتر از نیروهای اسرائیلی مصرف کرد.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/05/21/us-bears-brunt-israels-missile-defense-pentagon-assessments-show/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>آلمان دو مرد را به دلیل توطئه جهت ترور رهبران یهودی به نمایندگی از ایران تحت پیگرد قانونی قرار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۲۱T۱۷:۱۹:۳۵Z</strong></span>
+                </div>
+                <p class='summary'>مقامات اروپایی نگران رشد فعالیت‌های اطلاعاتی ایران در اروپا پس از جنگ ایالات متحده و اسرائیل با ایران شده‌اند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/21/world/europe/germany-murder-plot-iran.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۳۱ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>جهان به دقت، تشدید تنش‌ها میان ایران و ائتلاف تحت رهبری آمریکا را که به شیوه‌های غیرقابل پیش‌بینی—از درگیری‌های نظامی مستقیم گرفته تا عملیات‌های پنهانی همچون حملات سایبری و طرح‌های ترور—در حال گسترش است، زیر نظر دارد. از سوی دیگر، این درگیری بازارهای انرژی جهانی را آشفته ساخته و تأثیرات خود را بر مواردی از رفت‌وآمدهای روزمره تا جام جهانی گذاشته و موجب ورود کشورهای فراتر از خاورمیانه به این منازعه است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            ایالات متحده و ایران درگیر یک تقابل تنش‌زا هستند که شامل رویارویی‌های نظامی، عملیات‌های پنهانی و فشارهای اقتصادی است. تیم ملی فوتبال ایران برای حضور در جام جهانی ۲۰۲۶ با مشکل دریافت ویزای ایالات متحده روبه‌رو شده است. پنتاگون گزارش می‌دهد که ایالات متحده هزینه دفاع موشکی از اسرائیل را بیش از هزینه‌های خود اسرائیل پرداخت می‌کند. آلمان نیز دو مرد را به دلیل تلاش برای ترور رهبران یهودی به نمایندگی از ایران، تحت تعقیب قانونی قرار داده است. تمام این رویدادها در پس‌زمینه تشدید بحران انرژی جهانی در حال وقوع است، جایی که درگیری‌های ایران منجر به افزایش قیمت سوخت در کشورهایی مانند بولیوی و کنیا شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا عنوان است</h3>
+            تنش میان ایالات متحده و ایران احتمالاً در کوتاه مدت تشدید خواهد شد و با برخوردهای نظامی بیشتر یا اقدامات زیرزمینی مانند حملات سایبری یا ترورهای هدفمند همراه باشد. بحران انرژی نیز به وخامت خود ادامه می‌دهد و فشار بر دولت‌ها را برای ثبات‌بخشی به قیمت سوخت افزایش خواهد داد. در صورت شکست دیپلماسی، ممکن است شاهد وقوع جنگ تمام‌عیاری در منطقه باشیم که اسرائیل، ایران و متحدان آنان را در بر بگیرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط‌کش زمانی</h3>
+            ['۲۱ مه ۲۰۲۶: دولت ترامپ بین تهدیدات و دیپلماسی در قبال ایران در نوسان است.', '۲۱ مه ۲۰۲۶: تیم فوتبال ایران با مسائل ویزا برای جام جهانی ۲۰۲۶ روبرو است.', '۲۱ مه ۲۰۲۶: پنتاگون فاش می‌کند که ایالات متحده بزرگترین سهم از هزینه‌های دفاع موشکی اسرائیل را متحمل می‌شود.', '۲۱ مه ۲۰۲۶: آلمان دو مرد را به دلیل طرح‌های احتمالی ترور رهبران یهودی به نمایندگی از سوی ایران مورد تعقیب قرار می‌دهد.', '۲۱ مه ۲۰۲۶: تجزیه و تحلیل نشان می‌دهد که بحران انرژی جهانی به دلیل درگیری با ایران در حال تشدید است.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            نیروی محرک درازمدت، به این بستگی دارد که آیا دیپلماسی قادر است تنش‌ها را کاهش دهد یا درگیری‌ها به جنگ منطقه‌ای گسترده‌تری سرایت کند. اگر ایالات متحده و ایران نتوانند راهی برای مذاکره پیدا کنند، ممکن است شاهد تحریم‌های بیشتر، حملات نظامی، و حتی جنگی تمام‌عیار شامل اسرائیل و همسایگان آن باشیم. اگر این درگیری زنجیره تأمین نفت را مختل کند، بحران انرژی تشدید شده و در سراسر جهان شاهد افزایش بهای سوخت خواهیم بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های منازعه</h3>
+            این درگیری هم اکنون ترکیبی از درگیری‌های مستقیم و غیرمستقیم است. ایالات متحده و ایران در حال تبادل تهدیدات و اقدامات نظامی، از جمله حملات موشکی و عملیات‌های مخفی هستند. در همین حال، اسرائیل به شدت به دفاع موشکی ایالات متحده وابسته است که میزان وابستگی آن به حمایت آمریکا را نشان می‌دهد. درگیری همچنین در محاکم قضایی نیز ادامه دارد و ایران به برنامه‌ریزی برای ترور در اروپا متهم شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            ماجرا فقط به ایران و آمریکا ختم نمی‌شود—این یک مسئله‌ی جهانی است. بحران انرژی در حال ت straining کردن اقتصادها در سراسر جهان است و مسئله‌ی ویزای جام جهانی نشان می‌دهد که حتی ورزش‌ها نیز تحت تأثیر قرار گرفته‌اند. اگر درگیری‌ها تشدید شود، ممکن است خاورمیانه را بی‌ثبات کند، عرضه‌ی جهانی نفت را مختل سازد و باعث بحران پناهندگان شود. این یک یادآوری است که درگیری‌های منطقه‌ای به این زودی‌ها محلی باقی نمی‌مانند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده بیش از همه درگیر است و از اسرائیل حمایت می‌کند و از طریق اقدامات نظامی و اقتصادی فشار بر ایران را اعمال می‌کند. اسرائیل یکی از بازیگران کلیدی است و به شدت به دفاع ایالات متحده در برابر حملات احتمالی ایران وابسته است. اروپا، به ویژه آلمان، نگران عملیات‌های پنهانی ایران در خاک خود است. کشورهایی مانند بولیوی و کنیا، پس‌لرزه‌های بحران انرژی ناشی از این درگیری را احساس می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            این درگیری باعث افزایش قیمت نفت می‌شود، زیرا ایران یکی از تولیدکنندگان بزرگ نفت است و هرگونه اختلال در عرضه آن می‌تواند باعث افزایش قیمت‌های جهانی شود. افزایش قیمت نفت به معنای گران‌تر شدن سوخت برای خودروها، هواپیماها و کشتی‌ها است که منجر به افزایش هزینه‌های حمل‌ونقل، قیمت مواد غذایی و در نهایت تورم کلی می‌شود. این مسئله در حال حاضر کشورهایی مانند بولیوی و کنیا را تحت تأثیر قرار داده است، جایی که مردم قادر به تأمین نیازهای اساسی خود نیستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            بحرانی میان آمریکا و ایران در حال تشدید است و با اقدامات نظامی، عملیات مخفیانه و فشارهای اقتصادی، کل جهان را تحت تأثیر قرار داده است. این درگیری بحران انرژی جهانی را تشدید کرده و قیمت سوخت را برای بسیاری از کشورها، از بولیوی گرفته تا کنیا، غیرقابل پرداخت ساخته است. اسرائیل به شدت به ایالات متحده برای دفاع موشکی متکی است، که نشان‌دهنده عمق دخالت ایالات متحده در منطقه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            توسعه قابل توجهی در این زمینه رخ نداده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            بحران انرژی تنها نتیجه درگیری‌های ایران نیست بلکه توسط عواملی همچون جنگ در اوکراین و سیاست‌های تغییرات اقلیمی که سرمایه‌گذاری در سوخت‌های فسیلی را کاهش می‌دهند، تشدید می‌شود. مسئله ویزای جام جهانی برای تیم ایران نشان می‌دهد چگونه تنش‌های ژئوپلیتیکی حتی می‌توانند بر رویدادهای فرهنگی و ورزشی نیز تأثیر بگذارند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
