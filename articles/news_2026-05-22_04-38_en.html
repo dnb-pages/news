@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-05-22 04:40</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-05-22 04:40</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Middle East live: NATO allies to sound out US top diplomat after Trump Iran ire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-22 02:49</strong></span>
+                </div>
+                <p class='summary'>NATO's European members will look to sound out US Secretary of State Marco Rubio on troop cuts by Washington Friday, as they seek to smooth over President Donald Trump's ire ahead of a July summit. The meeting of alliance foreign ministers in the Swedish city of Helsingborg comes after the US leader lashed out at Europe over its response to his war on Iran. Follow our liveblog for the latest developments.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260522-middle-east-live-nato-allies-to-sound-out-us-top-diplomat-after-trump-iran-ire' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Republicans delay US House vote to halt Iran war that was on verge of passing</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-22 03:07</strong></span>
+                </div>
+                <p class='summary'><p>GOP postpones vote on Trump's war powers to June as they struggle to muster support to defeat resolution; House Democratic leader calls Republicans 'cowardly' for pulling bill</p> <p>The post <a href="https://www.timesofisrael.com/republicans-delay-us-house-vote-to-halt-iran-war-that-was-on-verge-of-passing/">Republicans delay US House vote to halt Iran war that was on verge of passing</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26140599931295-e1779406971112-1024x640.jpg" title="Republicans delay US House vote to halt Iran war that was on verge of passing" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/republicans-delay-us-house-vote-to-halt-iran-war-that-was-on-verge-of-passing/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>US pausing $14bn arms sale to Taiwan due to Iran war, navy chief says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-22 03:45</strong></span>
+                </div>
+                <p class='summary'>Acting Navy Secretary Hung Cao's remarks come as US President Donald Trump gives mixed signals on the sale.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/22/us-pausing-14bn-arms-sale-to-taiwan-due-to-iran-war-navy-chief-says?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iran and Oman in Talks Over Strait of Hormuz Ship Payment System</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-05-22 01:52</strong></span>
+                </div>
+                <p class='summary'>The discussions suggest that the United States and the Iranian government may not be close to reaching a deal to end a war that has badly damaged the global economy.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/21/world/middleeast/iran-strait-of-hormuz-tolls.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - May 22, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Tensions between the U.S. and Iran have escalated into an active war, causing political and economic ripple effects globally. NATO allies are trying to negotiate with the U.S. amid concerns over troop reductions, while the conflict disrupts oil trade and impacts international diplomacy, including a delay in a major U.S. arms deal to Taiwan.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. is engaged in a war with Iran, which has drawn sharp criticism from NATO allies in Europe. The Trump administration's actions against Iran have caused friction, with Republicans in the U.S. House delaying a vote on ending the war despite initial momentum. Meanwhile, the war is disrupting global oil supplies—specifically at the Strait of Hormuz, a critical oil chokepoint. The U.S. has also paused a $14 billion arms deal to Taiwan due to the strain of the Iran conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict is likely to continue, with the U.S. and Iran in no immediate rush to negotiate a ceasefire. Europe is attempting to mediate but faces internal divisions. The war will likely prolong disruptions in oil supplies and global trade, while U.S. military focus remains split between Iran and other priorities like Taiwan.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['May 21, 2026: Iran and Oman discuss a new payment system for ships passing through the Strait of Hormuz, signaling a lack of progress in U.S.-Iran peace talks.', 'May 22, 2026: NATO allies meet to discuss U.S. troop cuts and smooth over tensions with the Trump administration before a July summit.', "May 22, 2026: Republicans delay a U.S. House vote to stop the Iran war, despite initial support—criticized as 'cowardly' by Democrats.", 'May 22, 2026: The U.S. pauses a $14 billion arms sale to Taiwan, citing the strain of the Iran war.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The war between the U.S. and Iran is likely to drag on, with no clear path to negotiation. The conflict risks turning into a prolonged proxy or direct war, draining U.S. resources and destabilizing the Middle East further. Europe is trying to broker peace but lacks leverage, while China and Russia may exploit the situation to expand influence in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict appears to be escalating, with the U.S. maintaining military pressure and Iran retaliating through regional allies or direct strikes. The Strait of Hormuz is a flashpoint—if disrupted, it would severely impact global oil supplies. The war is also straining U.S. diplomatic and military resources, potentially weakening its stance elsewhere, like Asia.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This war is reshaping global oil markets, increasing energy prices and economic uncertainty. It’s also testing U.S. alliances, as Europe tries to mediate while the U.S. remains focused on confrontation. The conflict risks further destabilizing the Middle East and could draw in more regional actors, like Saudi Arabia or Israel. Globally, countries reliant on Middle Eastern oil face rising costs.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Key players include the U.S. (leading military action against Iran), NATO allies (trying to mediate but divided), Oman (facilitating Iran-related talks), and China/Russia (potentially benefiting from U.S. distraction). Regional actors like Saudi Arabia or Israel may become more involved if the conflict escalates.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are likely to rise due to the war disrupting key shipping routes at the Strait of Hormuz—a critical chokepoint for global oil trade. If this disruption continues, gas prices worldwide could increase, adding economic strain. The U.S. pausing arms sales to Taiwan also signals a shift in military priorities, which could affect global defense spending.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S.-Iran war is escalating with no clear end in sight, damaging global oil supplies and economic stability. NATO allies are struggling to mediate, and U.S. domestic politics are delaying a vote to end the conflict. The war is straining U.S. resources, forcing it to pause arms deals and focus on the Middle East over other global priorities.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            None
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The U.S. is facing criticism for its aggressive stance on Iran, with even allies questioning the strategy. The delay in the Taiwan arms deal suggests the U.S. is prioritizing the Iran conflict over other geopolitical hotspots.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

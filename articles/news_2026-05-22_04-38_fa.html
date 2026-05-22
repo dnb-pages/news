@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-22 04:42</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-22 04:42</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>اخبار خاورمیانه: متحدان ناتو پس از عصبانیت ترامپ از ایران، به گفت‌وگو با مقام ارشد آمریکایی می‌پردازند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسه24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۲ ۶:۴۹ ق.ظ</strong></span>
+                </div>
+                <p class='summary'>اعضای اروپایی ناتو در تلاشند تا روز جمعه در دیداری با وزیر امور خارجه ایالات متحده آمریکا مارکو روبیو در مورد کاهش نیروها از سوی واشنگتن صحبت کنند، زیرا آن‌ها تلاش دارند تا پیش از اجلاس ژوئیه، خشم رئیس‌جمهور دونالد ترامپ را تسکین بخشند. نشست وزرای خارجه این ائتلاف در شهر سوئدی هلسینگبورگ برگزار می‌شود و پس از آن است که رهبر ایالات متحده آمریکا به نحوه واکنش اروپا به جنگ وی با ایران، معترض شده است. برای آخرین تحولات، پایNews جمهوری اسلامی</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260522-middle-east-live-nato-allies-to-sound-out-us-top-diplomat-after-trump-iran-ire' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>جمهوری‌خواهان رای‌گیری مجلس نمایندگان آمریکا برای توقف جنگ با ایران را که در آستانه تصویب بود، به تأخیر انداختند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز آو اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۰۲  ساعت ۰۷:۰۷</strong></span>
+                </div>
+                <p class='summary'><p>جمهوری‌خواهان رأی‌گیری در مجلس نمایندگان آمریکا درباره محدود کردن اختیارات جنگی ترامپ را بهJune موکول کردند. آنها در تلاشند تا حمایت لازم را برای شکست اعلامیهٔ مورد نظر جلب کنند. رهبر دموکرات‌ها مجلس آمریکا این اقدام جمهوری‌خواهان را «بزدلانه» نامیده و لایحه را پس گرفتند.</p> <p>این مطلب <a href="https://www.timesofisrael.com/republicans-delay-us-house-vote-to-halt-iran-war-that-was-on-verge-of-passing/">اول بار در</a> <a href="https://www.timesofisrael.com">نشریهٔ تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AP26140599931295-e1779406971112-1024x640.jpg" title="جمهوری‌خواهان رأی‌گیری در مجلس نمایندگان آمریکا درباره محدود کردن اختیارات جنگی ترامپ را بهJune موکول کردند که در شرف تصویب بود" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/جمهوریان-تصویب-را-به-تاخیر-انداختند-تا-از-اعلان-جنگ-ایران-به-که-در-آستانه-تصویب-بود-جلوگیری-کنند/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>آمریکا به دلیل جنگ ایران، فروش ۱۴ میلیارد دلاری سلاح به تایوان را متوقف می‌کند، گفته‌های فرمانده نیروی دریایی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۵-۲۲T۰۳:۴۵:۲۲Z</strong></span>
+                </div>
+                <p class='summary'>اظهارات دریادارHung Cao که به عنوان وزیر موقت نیروی دریایی فعالیت می‌کند، در شرایطی مطرح می‌شوند که رئیس‌جمهور ایالات متحده دونالد ترامپ سیگنال‌های متناقضی درباره‌ی این فروش ارائه می‌دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/5/22/us-pausing-14bn-arms-sale-to-taiwan-due-to-iran-war-navy-chief-says?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ایران و عمان در حال مذاکره بر سر سامانه پرداخت کشتی‌ها در تنگه هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۲/۳۱ ساعت ۰۶:۵۲:۵۶</strong></span>
+                </div>
+                <p class='summary'>مذاکرات نشان می‌دهد که ایالات متحده و حکومت ایران ممکن است هنوز به توافق برای پایان دادن به جنگی نرسیده باشند که خسارات شدیدی به اقتصاد جهانی وارد کرده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/21/world/middleeast/iran-strait-of-hormuz-tolls.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۲ اردیبهشت ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش های بین ایالات متحده و ایران به درگیری فعال جنگی تبدیل شده اند که تأثیرات سیاسی و اقتصادی قابل توجهی در سراسر جهان ایجاد کرده است. متحدان ناتو سعی دارند در حالی که نگرانی هایی درباره کاهش نیروهای نظامی وجود دارد، با ایالات متحده وارد مذاکره شوند. این درگیری تجارت نفت را مختل کرده و برDiplomasi بین المللی تأثیر می گذارد، از جمله تاخیر در یک معامله عمده فروش تسلیحات ایالات متحده به تایوان.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده درگیر جنگی با ایران است که انتقاد شدید کشورهای عضو ناتو در اروپا را به دنبال داشته است. اقدامات دولت ترامپ علیه ایران باعث ایجاد تنش شده و پس از یک روند اولیه، جمهوریخواهان در مجلس آمریکا از برگزاری رأی برای پایان دادن به جنگ علی‌رغم حمایت‌های اولیه، خودداری کردند. در همین حال، این جنگ عرضه جهانی نفت را - به ویژه در تنگه هرمز، نقطه حیاتی عبور نفت - مختل کرده است. ایالات متحده همچنین به دلیل فشار ناشی از منازعات ایران، معامله ۱۴ میلیارد دلاری تسلیحات به تایوان را متوقف کرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            این درگیری احتمالاً ادامه خواهد یافت و ایالات متحده و ایران رسانه‌ای جدی برای مذاکره در مورد آتش‌بس ندارند. اروپا در تلاش است تا میانجی‌گری کند، اما با تقسیمات داخلی داخلی مواجه است. این جنگ احتمالاً اختلالات در عرضه نفت و تجارت جهانی را طولانی‌تر خواهد کرد، در حالی که تمرکز نظامی ایالات متحده بین ایران و اولویت‌های دیگر مانند تایوان تقسیم شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ‛۲۱ مه ۲۰۲۶: ایران و عمان درباره یک سیستم پرداخت جدید برای کشتی‌هایی که از تنگه هرمز عبور می‌کنند گفتگو می‌کنند، که نشانه‌ای از عدم پیشرفت در مذاکرات صلح ایالات متحده و ایران است.‘, ‚۲۲ مه ۲۰۲۶: متحدان ناتو برای بحث درباره کاهش نیروهای آمریکایی و تسکین تنش‌ها با دولت ترامپ پیش از نشست ژوئیه گرد هم می‌آیند.‘, ‚۲۲ مه ۲۰۲۶: جمهوری‌خواهان رأی‌گیری مجلس نمایندگان ایالات متحده برای جلوگیری از جنگ با ایران را به تأخیر می‌اندازند، علی‌رغم حمایت اولیه—که توسط دموکرات‌ها به‌عنوان ‹ترسو› انتقاد می‌شود.‘, ‚۲۲ مه ۲۰۲۶: ایالات متحده فروش ۱۴ میلیارد دلاری تسلیحات به تایوان را متوقف می‌کند و دلیل آن را فشار جنگ با ایران عنوان می‌کند.‘
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            جنگ میان ایالات متحده و ایران احتمالاً ادامه خواهد یافت، بدون این‌که مسیری روشن برای مذاکره وجود داشته باشد. درگیری‌ها ممکن است به جنگ نیابتی یا مستقیم طولانی تبدیل شوند، منابع ایالات متحده را تخلیه کند و بی‌ثباتی خاورمیانه را تشدید نماید. اروپا سعی دارد صلح برقرار کند، اما اهرم فشار کافی ندارد، در حالی که چین و روسیه ممکن است از این شرایط برای گسترش نفوذ خود در منطقه بهره‌برداری کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            به نظر می‌رسد این درگیری در حال تشدید است، به طوری که ایالات متحده فشار نظامی خود را حفظ کرده و ایران از طریق متحدانش در منطقه یا حملات مستقیم پاسخ می‌دهد. تنگه هرمز یک نقطه بحرانی است—اگر مختل شود، تأثیر شدیدی بر عرضه جهانی نفت خواهد گذاشت. این جنگ همچنین منابع دیپلماتیک و نظامی ایالات متحده را تحت فشار قرار داده و ممکن است جایگاه آن را در مناطق دیگر، مانند آسیا، تضعیف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این جنگ در حال بازتعریف بازارهای جهانی نفت است و باعث افزایش قیمت انرژی و نگرانی‌های اقتصادی شده است. همچنین، این جنگ اتحادهای ایالات متحده را به آزمون می‌گذارد، زیرا اروپا تلاش می‌کند میانجی‌گری کند در حالی که ایالات متحده بر روی رویارویی متمرکز مانده است. این درگیری ممکن است خاورمیانه را بیشتر بی‌ثبات کند و بازیگران منطقه‌ای بیشتری مانند عربستان سعودی یا اسرائیل را به همراه داشته باشد. در سطح جهانی، کشورهایی که به نفت خاورمیانه وابسته‌اند، با افزایش هزینه‌ها مواجه خواهند شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیگران اصلی شامل ایالات متحده (رهبر اقدامات نظامی علیه ایران)، متحدان ناتو (که سعی در میانجیگری دارند اما دچار اختلاف هستند)، عمان (میزبان مذاکرات مربوط به ایران) و چین و روسیه (که potentially می‌توانند از حواس‌پرتی ایالات متحده بهره‌برداری کنند) می‌شوند. بازیگران منطقه‌ای همچون عربستان سعودی یا اسرائیل در صورت تشدید درگیری احتمالاً بیشتر взаимодействовать خواهند شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            این احتمال وجود دارد که قیمت‌های نفت به دلیل جنگ و تحت تأثیر قرار گرفتن مسیرهای کلیدی کشتیرانی در تنگه هرمز - یک گلوگاه حیاتی در تجارت جهانی نفت - افزایش یابد. در صورت ادامه این اختلال، قیمت بنزین در سطح جهان ممکن است افزایش یابد و فشار اقتصادی بیشتری ایجاد کند. توقف ایالات متحده در فروش تسلیحات به تایوان نیز نشانه‌ای از تغییر در اولویت‌های نظامی است که می‌تواند بر هزینه‌های دفاعی جهانی تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            جنگ ایالات متحده و ایران تشدید می‌شود و هیچ پایان روشنی برای آن مشخص نیست. این جنگ به عرضه جهانی نفت و ثبات اقتصادی آسیب می‌رساند.  союзники ناتو تلاش می‌کنند تا میانجیگری کنند و سیاست‌های داخلی ایالات متحده منجر به تأخیر در رای‌گیری برای پایان دادن به درگیری شده است. جنگ در حال فشار آوردن به منابع ایالات متحده است و آن را مجبور می‌کند تا قراردادهای تسلیحاتی را به حالت تعلیق درآورد و بر خاورمیانه به جای سایر اولویت‌های جهانی متمرکز شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 متن اضافی</h3>
+            ایالات متحده به دلیل موضع تهاجمی خود در قبال ایران مورد انتقاد واقع شده است و حتی متحدان نیز به این استراتژی شک و تردید دارند. تأخیر در معامله تسلیحاتی تایوان نشان می‌دهد که ایالات متحده در اولویت قرار دادن درگیری ایران، سایر مناطق پر تنش ژئوپلیتیکی را در نظر نمی‌گیرد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
