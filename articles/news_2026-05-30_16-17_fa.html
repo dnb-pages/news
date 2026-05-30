@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-05-30 16:20</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-05-30 16:20</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>همچنان که ترامپ در حال بررسی تصمیم درباره توافق هسته‌ای با ایران است، خاورمیانه‌ای بی‌قرار در انتظار شنیدن اخبار است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ مه ۲۰۲۶ ساعت ۱۵:۴۵:۳۹ UTC</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور در مورد این‌که آیا پیش از این توافق با ایران برای پایان جنگ اقدام کند، دچار تردید شده است. او روز جمعه سوگند خورد که «تصمیم نهایی» خود را به‌زودی اعلام خواهد کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/05/30/world/middleeast/trump-deal-middle-east-iran.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آمریکا می‌گوید قَدرتِ از سرگیری جنگ دارد، در حالی که توافق صلح دور از دسترس باقی مانده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۰  ساعت ۱۸:۵۵:۲۲</strong></span>
+                </div>
+                <p class='summary'>Pete Hegseth، رئیس پنتاگون، گفته است که واشنگتن می‌تواند در هر زمان که بخواهد جنگ با ایران را از سر بگیرد. سخنان او پس از روزها مذاکره و یک جلسه دو ساعته در اتاق وضعیت کاخ سفید ایراد شد که هنوز منجر به توافق بین ایالات متحده و ایران نشده است. تجزیه و تحلیل توسط سردبیر امور بین‌الملل FRANCE 24، شیری استیون.</p>
+                <div class='link'><a href='https://www.france24.com/fa/آمریکا:ما بیش از آنچه برای از سرگیری جنگ نیاز داریم قادر و مجهز هستیم-درحالی‌که توافق صلح همچنان دور از دسترس است' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ژوئن 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده در آستانه تصمیم‌گیری مهمی در رابطه با احتمال توافق صلح با ایران است و انتظار می‌رود رئیس‌جمهور ترامپ به‌زودی تصمیم نهایی را اعلام کند. در همین حال، ایران همچنان ناپایدار است و تنش‌ها ادامه دارد، در حالی که احتمال از سرگیری جنگ چرخش می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده در حال بررسی این موضوع است که آیا می‌تواند توافق صلحی نهایی با ایران منعقد کند تا به درگیری‌های موجود پایان دهد، اما تصمیم نهایی همچنان نامشخص است. انتظار می‌رود ترامپ به زودی تصمیم نهایی را اعلام کند، در حالی که مقامات پنتاگون بر آمادگی نظامی آمریکا برای از سرگیری جنگ در صورت شکست مذاکرات تأکید دارند. مذاکرات اخیر میان ایالات متحده و ایران به هیچ توافقی منجر نشده و دو طرف در بن‌بست تنش‌آمیزی به سر می‌برند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان کجا</h3>
+            اگر ایالات متحده تصمیم بگیرد جنگ را از سر بگیرد، ممکن است درگیری‌ها در خاورمیانه به سرعت تشدید شده و کشورهای بیشتری را درگیر کند. در صورت توافق صلح، مذاکرات احتمالاً بر برنامه هسته‌ای ایران، توانمندی‌های موشکی و نفوذ منطقه‌ای آن متمرکز خواهد شد. نتیجه این روند، ثبات خاورمیانه را برای سال‌های آینده تعیین خواهد کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['اوایل ۲۰۲۶: مذاکرات دیپلماتیک پرشدت بین ایالات متحده و ایران آغاز می‌شود.', '۲۸ مه ۲۰۲۶: ترامپ تصمیم نهایی در مورد توافق صلح را به تعویق می‌اندازد.', '۲۹ مه ۲۰۲۶: رئیس پنتاگون پیت هگزث اعلام می‌کند که ایالات متحده در هر زمانی می‌تواند جنگ با ایران را از سر بگیرد.', '۳۰ مه ۲۰۲۶: مذاکرات در اتاق وضعیت کاخ سفید ادامه می‌یابد اما به توافق منجر نمی‌شود.', 'هفته پیش رو: انتظار می‌رود ترامپ تصمیم نهایی خود در مورد توافق صلح را اعلام کند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            جهت بلندمدت به این بستگی دارد که آیا توافقنامه‌ای حاصل می‌شود یا خیر. یک توافقنامه می‌تواند منطقه را تثبیت کند اما ممکن است با مخالفت تندروها در هر دو کشور مواجه شود. اگر توافقی حاصل نشود، خاورمیانه ممکن است شاهد افزایش اقدامات نظامی، تحریم‌ها و جنگ‌های نیابتی منطقه‌ای باشد. متحدان ایران، از جمله حزب‌الله و گروه‌های مسلح در عراق، ممکن است حملات علیه منافع ایالات متحده را تشدید کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری همچنان در وضعیت کشمکش تنش‌آمیز اما بدون فعال شدن کامل جنگ است. هر دو طرف از مذاکرات دیپلماتیک به عنوان راهی برای فشار بر یکدیگر استفاده می‌کنند در حالی که از в نبردهای گسترده مستقیم اجتناب می‌ورزند. با این حال، خطر از سرگیری درگیری‌ها بالا است، به طوری که گروه‌های مورد حمایت ایران گاه به گاه نیروهای آمریکایی یا متحدان آنها را در منطقه هدف قرار می‌دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت می‌تواند آینده خاورمیانه را تغییر دهد. یک توافق صلح میان آمریکا و ایران می‌تواند تنش‌ها را کاهش داده و امکان بهبود اقتصادی در ایران را فراهم آورد و همچنین نگرانی‌های مربوط به عرضه جهانی نفت را نیز تسکین دهد. اگر جنگ از سر گرفته شود، ایران ممکن است با پیامدهای شدید اقتصادی و نظامی مواجه شود و منطقه نیز شاهد ناپایداری بیشتری باشد. موضع آمریکا در قبال ایران، روابط این کشور با متحدان اروپایی، روسیه و چین را نیز تحت تأثیر قرار می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده، ایران و بازیگران منطقه‌ای مانند اسرائیل، عربستان سعودی و کشورهای حاشیه خلیج فارس به دقت در حال رصد اوضاع هستند. اسرائیل و عربستان سعودی به شدت با هرگونه توافق‌نامه‌ای که موقعیت ایران را تقویت کند، مخالفت می‌کنند. اتحادیه اروپا در تلاش برای میانجی‌گری است، در حالی که روسیه و چین ممکن است برای افزایش نفوذ خود در منطقه، از هرگونه تنش میان ایالات متحده و ایران بهره‌برداری کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در صورت تشدید تنش‌ها، احتمال دارد قیمت‌های نفت افزایش یابد، زیرا ایران می‌تواند با ایجاد اختلال در کشتی‌رانی از طریق تنگه هرمز—مسیر حیاتی حمل و نقل نفت—باعث نوسانات بازار شود. اگر معامله‌ای به دست آید، قیمت‌های نفت ممکن است تثبیت شده یا حتی کمی کاهش یابد، زیرا تحریم‌های اعمال‌شده بر ایران لغو شده و از بروز اختلال در عرضه جلوگیری خواهد شد. در حال حاضر، قیمت‌های نفت به دلیل عدم اطمینان نوسانات شدیدی را تجربه می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده در نقطه شکست با ایران قرار دارد: یک توافق می‌تواند تنش‌ها را کاهش دهد، در حالی که امتناع از مذاکره خطر شروع جنگ‌های تازه را در پی دارد. اقدامات ایران در منطقه، از جمله حمایت از گروه‌های شبه‌نظامی، در صورت شکست مذاکرات ممکن است تشدید شود. قیمت نفت و بازارهای جهانی انرژی نسبت به این وضعیت بسیار حساس هستند و دارای پیامدهای اقتصادی قابل توجهی می‌باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تذکری عمومی و غیرمعمول پنتاگون از آمادگی نظامی ایالات متحده قابل توجه است، زیرا این اقدام نشان‌دهنده اعتماد به نفس است، اما ممکن است به عنوان یک تاکتیک برای اعمال فشار بر ایران در طول مذاکرات نیز به کار گرفته شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
