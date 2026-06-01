@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-01 18:23</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-01 18:23</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایران: حملات اسرائیل در لبنان، آتش‌بس با آمریکا را تهدید می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (هسته‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۱ ۱۶:۵۶</strong></span>
+                </div>
+                <p class='summary'>قبلاً، نخست‌وزیر اسرائیل دستور حملات هوایی به حومه جنوبی بیروت را در واکنش به حملات راکتی و پهپادی حزب‌الله به شمال اسرائیل صادر کرد.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/c202rxp1z15o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>قیمت نفت کاهش یافت زیرا ترامپ اعلام کرد اسرائیل و حزب‌الله به حملات خود خاتمه خواهند داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پی‌شوندِ وال‌استریت (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ ژوئن ۲۰۲۶ ۱۸:۰۱</strong></span>
+                </div>
+                <p class='summary'>آینده‌های نفت با عقب‌نشینی از بالاترین سطح‌ها مواجه شدند زیرا رئیس‌جمهور ترامپ اعلام کرد که اسرائیل و حزب‌الله جناح ایران موافقت کرده‌اند که جنگیدن را متوقف کنند و اسرائیل نیز هیچ نیروهای خود را به بیروت اعزام نخواهد کرد.</p>
+                <div class='link'><a href='https://www.wsj.com/fa-news/commodities-futures/روغن با نشانه‌های اندکی از بازگشایی تنگه هرمز افزایش یافت-0f19dc9a' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران، حملات اسرائیل در لبنان و غزه را تهدیدی برای مذاکرات آتش‌بس با آمریکا می‌داند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۰۱T۱۶:۱۵:۲۸Z</strong></span>
+                </div>
+                <p class='summary'>مقامات ایرانی خواستار "آتش‌بس در همه جبهه‌ها" شدند در حالی که اسرائیل تهاجم خود به لبنان را عمیق‌تر کرد و تهدید کرد که بیروت را بمباران خواهد کرد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/6/1/iran-warns-israeli-attacks-in-lebanon-and-gaza-threaten-us-ceasefire-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>قیمت نفت به دلیل گزارش احتمال توقف تبادلات ایران با آمریکا افزایش یافت: خلاصه بازار</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (آنالیز)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۲ ۲۱:۵۹:۲۲</strong></span>
+                </div>
+                <p class='summary'>یک رالی تجدیدشده در قیمت‌های نفت، باعث کاهش اوراق قرضه شد، در حالی که سهام نوسان داشت، زیرا گزارش‌هایی حاکی از آن بود که ایران مذاکرات با ایالات متحده را متوقف خواهد کرد و ابهامات ناشی از آن، تجدید آتش‌بس را تحت تاثیر قرار داد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-jumps-on-report-iran-to-halt-exchanges-with-us-markets-wrap-5' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>قیمت بنزین در آفریقای جنوبی با لغو طرح‌های حمایت از مصرف‌کننده به رکورد جدیدی رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۱ ساعت ۲۱:۴۴:۱۲</strong></span>
+                </div>
+                <p class='summary'>قیمت بنزین در آفریقای جنوبی قرار است قله‌ای جدید را در این ماه ثبت کند، چراکه دولت برخی از اقدامات موقت کاهش‌دهنده فشار به مردم در برابر افزایش هزینه‌های سوخت ناشی از جنگ ایران را لغو کرده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/south-africa-gasoline-prices-hit-record-with-relief-rollback' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ایران مذاکرات با آمریکا را متوقف کرد و تهدید به بسته شدن کامل تنگه هرمز نمود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نقد و بررسی فایننشال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۱  ساعت ۲۱:۳۳ (به وقت تهران)</strong></span>
+                </div>
+                <p class='summary'>ایران اعلام کرد در اعتراض به حمله اسرائیل به لبنان مذاکرات خود را با ایالات متحده متوقف خواهد کرد و تنش‌ها را در زمانی تشدید کرد که واشنگتن و تهران در حال مذاکره بر سر توافق آتش‌بس موقتی بودند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-halts-talks-with-us-and-threatens-full-hormuz-closure' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>۱ نفر از هر ۳ اسراییلی در پی تشدید تنش‌های مالی ناشی از جنگ با ایران با کاهش درآمد مواجه می‌شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۱ ساعت ۲۱:۱۶</strong></span>
+                </div>
+                <p class='summary'><p>پس از بیش از دو سال و نیم جنگ، طبق نظرسنجی، بیش از 50 درصد از کارگران در شمال اعلام کرده‌اند که دچار ضرر در درآمد شده و با کاهش مشابهی در حیطهٔ اشتغال مواجه هستند.</p> <p>پست <a href="https://www.timesofisrael.com/1-in-3-israelis-faces-lower-income-as-iran-war-deepens-financial-strain/">33 درصد از اسرائیلی‌ها با کاهش درآمد مواجه‌اند؛ جنگ ایران فشارهای اقتصادی را تشدید می‌کند</a>، ابتدا در وب‌سایت <a href="https://www.timesofisrael.com">The Times of Israel</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/03/AP26086415520967-1024x640.jpg" title="33 درصد از اسرائیلی‌ها با کاهش درآمد مواجه‌اند؛ جنگ ایران فشارهای اقتصادی را تشدید می‌کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/1-in-3-israelis-faces-lower-income-as-iran-war-deepens-financial-strain/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ایران اعلام می‌کند پس از حملات ایالات متحده و اسرائیل به مذاکرات برای پایان جنگ خاتمه می‌دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۱ - ساعت ۱۶:۴۳:۰۲</strong></span>
+                </div>
+                <p class='summary'>مذاکرات به دلیل تشدید حملات نظامی اسرائیل در لبنان و حملات آمریکا متوقف شد، به گفته یک مقام ایرانی به روزنامه پست.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/06/01/iran-us-trade-strikes-deal-end-war-remains-elusive/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>به‌روزرسانی‌های زنده جنگ: اسرائیل و ایران تهدید به اقدام نظامی جدید کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز (NYT)</span>
+                    <span class='meta-item'>📅 <strong>1405/03/12 22:46:26</strong></span>
+                </div>
+                <p class='summary'>اسرائیل اعلام کرد که حومه جنوبی بیروت از منطقه خارج شود، پایگاه مهم حزب‌الله لبنان که با حمایت ایران فعالیت می‌کند. همچنین ارتش ایران هشدار داد که امکان انجام حملات تلافی‌جویانه وجود دارد.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/01/world/iran-war-us-trump-israel-lebanon' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱ خرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و متحدش، حزب‌الله لبنان، در حال تشدید تنش‌ها با اسرائیل هستند، از جمله تهدید به بستن تنگه هرمز—یک مسیر کلیدی کشتیرانی نفت—در حالی که مذاکرات با ایالات متحده برای کاهش جنگ به شکست انجامیده است. نگرانی از اختلال در عرضه نفت باعث افزایش قیمت‌ها شد، اگرچه پس از فشار آمریکا، اسرائیل و حزب‌الله حملات را به طور موقت متوقف کردند. اوضاع شکننده است؛ هزاران نفر آواره شده‌اند و بازارهای جهانی نسبت به این عدم اطمینان واکنش شدیدی نشان داده‌اند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            اسرائیل پس از پرتاب موشک‌ها و پهپادهای حزب‌الله به شمال اسرائیل، حملاتی را علیه پایگاه‌های حزب‌الله در حومه جنوبی بیروت انجام داد. ایران نیز با توقف مذاکرات صلح با ایالات متحده، تهدید به بستن تنگه هرمز — یک lane مهم حمل و نقل نفت — و هشدار در مورد اینکه حملات اسرائیل مذاکرات آتش‌بس را تضعیف می‌کند، واکنش نشان داد. ایالات متحده ادعا کرد که اسرائیل و حزب‌الله توافق کرده‌اند که به‌طور موقت حملات را متوقف کنند، اما اقدام ایران موجب تردید در تحقق یک توافق پایدار شده است. در همین حال، با ترس بازارها از احتمال اختلال در عرضه جهانی نفت بر اثر این درگیری، قیمت نفت افزایش یافت و آفریقای جنوبی نیز به دلیل تأثیر جنگ prolonged بر هزینه سوخت، شاهد بالاترین رکورد قیمت بنزین در تاریخ خود بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            خطر فوری درگیری گسترده‌تر در خاورمیانه به‌طور موقت کاهش یافته است، اما وضعیت همچنان بسیار ناپایدار باقی مانده است. اگر ایران تهدید خود برای بستن تنگه هرمز را عملی کند، قیمت‌های نفت ممکن است به‌شدت افزایش یابد و ایالات متحده یا کشورهای دیگر ممکن است به‌طور مستقیم‌تری مداخله کنند. در حال حاضر، هر دو طرف به‌نظر می‌رسد در حال بازتنظیم استراتژی خود هستند، اما یک اشتباه—مانند حمله ناخواسته به زیرساخت‌های حیاتی یا یک حمله موشکی جدید—ممکن است آتش درگیری‌های گسترده را دوباره شعله‌ور کند. ایالات متحده احتمالاً فشار برای مذاکرات تازه را افزایش خواهد داد، در حالی که اسرائیل و حزب‌الله ممکن است از این وقفه برای بازسازی و تجدید سلاح‌های خود استفاده کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. **۲۹ و ۳۰ اردیبهشت ۱۴۰۵**: حزب‌الله لبنان با پرتاب موشک و پهپاد به شمال اسرائیل پاسخ می‌دهد که پس از حملات قبلی اسرائیل رخ می‌دهد. اسرائیل با بمباراندن حومه جنوبی بیروت تلافی می‌کند.</li><li>۲. **۱ خرداد ۱۴۰۵ (صبح)**: رهبر و مقام‌های نظامی ایران تهدید می‌کنند که حملات اسرائیل به مذاکرات آتش‌بس میانجی‌گری‌شده از سوی آمریکا را به خطر می‌اندازد و خواستار آتش‌بس کامل در تمام جبهه‌ها، از جمله غزه، می‌شوند.</li><li>۳. **۱ خرداد ۱۴۰۵ (ظهر)**: رئیس‌جمهور آمریکا، ترامپ، اعلام می‌کند که اسرائیل و حزب‌الله موافقت کرده‌اند تا حملات خود را متوقف کنند و اضافه می‌کند که اسرائیل نیروهای خود را به بیروت اعزام نخواهد کرد. قیمت نفت اندکی از رکوردهای قبلی خود عقب‌نشینی می‌کند.</li><li>۴. **۱ خرداد ۱۴۰۵ (بعد از ظهر)**: ایران تمامی مذاکرات با آمریکا را به‌عنوان اعتراض متوقف می‌کند، تهدید می‌کند که تنگه هرمز را به‌طور کامل ببندد و گروه‌های وابسته به ایران در عراق و یمن تهدید به انجام حملات جدید می‌کنند. اسرائیل دستور تخلیه بخش‌هایی از جنوب بیروت را صادر می‌کند.</li><li>۵. **۱ خرداد ۱۴۰۵ (عصر/شب)**: گزارش‌هایی مبنی بر ضررهای شدید درآمدی و اخراج شاغلان در شمال اسرائیل به دلیل جنگ طولانی منتشر می‌شود، در حالی که آفریقای جنوبی با پایان یافتن یارانه‌های موقت سوخت، رکورد بالایی در قیمت بنزین ثبت می‌کند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            در کوتاه‌مدت (چند هفته‌ی آینده)، به احتمال زیاد مناقشه به جای شعله‌ور شدن، به صورت سطحی باقی خواهد ماند. هر دو طرف اسرائیل و حزب‌الله دلایل کافی برای اجتناب از یک جنگ تمام عیار دارند، اما خطر تشدید درگیری همچنان بالا است، زیرا محاسبات غلط یا بروز یک حادثه‌ی منزوی می‌تواند به سرعت از کنترل خارج شود. توقف مذاکرات ایران با ایالات متحده نشانه‌ای از رویکرد سخت‌گیرانه‌ی این کشور است، اما اقتصاد ایران تحت فشار تحریم‌ها و هزینه‌های جنگ قرار گرفته است که ممکن است در نهایت آن را دوباره به میز مذاکره بازگرداند. در بلندمدت، وضعیت به این بستگی دارد که آیا آتش‌بس قابل تصوری حاصل شود یا خیر. اگر چنین نشود، ایران ممکن است مختل‌کنندگی بیشتری در جریان نفت ایجاد کرده و بازارهای انرژی جهانی را به بحران بکشاند. ایالات متحده با دو راهی مواجه است: حمایت از اسرائیل ممکن است منجر به درگیری گسترده‌تر شود، در حالی که کاهش давیت بر ایران می‌تواند آن را در جای دیگری جسورتر کند. برای اسرائیل، جنگ فشار مالی عمیقی در داخل کشور ایجاد کرده است که توانایی آن را برای ادامه‌ی عملیات نظامی طولانی مدت محدود می‌سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            این درگیری‌ها در حال حاضر با حملات هدفمند به جای تهاجم سراسری یا تبادل آتش گسترده مشخص می‌شوند. اسرائیل بر حملات دقیق علیه حزب‌الله و گروه‌های تحت حمایت ایران تمرکز دارد، در حالی که حزب‌الله از طریق حملات موشکی و پهپادی فشار خود را حفظ می‌کند بدون اینکه موجب آغاز یک حمله زمینی ویرانگر اسرائیل شود. شدت حملات در هفته‌های اخیر افزایش یافته است و با وجود تلاش‌های دو طرف برای اجتناب از اقداماتی که واکنش مستقیم آمریکا یا ایران را به دنبال داشته باشد. غیرنظامیان، به‌ویژه در جنوب لبنان و شمال اسرائیل، بیشترین آسیب را از این درگیری متحمل می‌شوند و هزاران نفر آواره شده و زیرساخت‌ها آسیب دیده‌اند. خطر افزایش تلفات غیرنظامی و تشدید تنش‌ها همچنان دغدغه اصلی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری یکی از خطرناک‌ترین نقاط اختلاف کنونی در جهان است که می‌تواند به بی‌ثباتی بازارهای جهانی انرژی منجر شود و ایالات متحده و متحدانش را به جنگی گسترده‌تر وارد کند. تنگه‌ی هرمز که حدود ۲۰٪ از نفت جهان از آن عبور می‌کند، یک تنگه‌ی راهبردی حیاتی است. اگر ایران تهدید خود برای بستن این تنگه را عملی کند، قیمت نفت ممکن است به شدت افزایش یابد و در نتیجه باعث درد اقتصادی گسترده‌ای در سطح جهان شود؛ از رکورد بالای قیمت بنزین در کشورهای در حال توسعه مانند آفریقای جنوبی گرفته تا بحران‌های اقتصادی در کشورهای واردکننده‌ی نفت. برای خاورمیانه، این جنگ خطر تکه‌تکه‌تر شدن بیشتر منطقه را دارد، زیرا گروه‌های مورد حمایت ایران نفوذ بیشتری پیدا می‌کنند و اسرائیل، علی‌رغم حمایت ایالات متحده، به نظر می‌رسد روزبه‌روز منزوی‌تر می‌شود. بهای انسانی این بحران، شدید است؛ میلیون‌ها نفر آواره شده‌اند یا تحت تهدید دائمی خشونت زندگی می‌کنند. این بحران همچنین ناکامی چندین سال تلاش‌های دیپلماتیک برای حل اختلافات عمیق میان اسرائیل، ایران و نیابتهایشان را برجسته می‌سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده به طور عمیقی درگیر است و به عنوان اصلی‌ترین حامی و میانجی اسرائیل عمل می‌کند. اعلام رئیس‌جمهور ترامپ مبنی بر توافق اسرائیل و حزب‌الله برای متوقف کردن حملات، حاکی از فشار مستقیم آمریکا برای کاهش تنش است، اگرچه اقدامات ایران این تلاش را تضعیف کرده است. کشورهای اروپایی نیز نگران اختلال در عرضه نفت هستند و احتمالاً برای ثبات تلاش می‌کنند. بازیگران منطقه‌ای همچون عربستان و امارات متحده عربی، علی‌رغم تنش‌های گذشته با ایران، ممکن است به طور غیررسمی خواستار خودداری شوند تا از شوک‌های بیشتر نفتی جلوگیری کنند. روسیه و چین، که هر دو در دیپلماسی خاورمیانه دخیل هستند، هنوز موضع قاطعی اتخاذ نکرده‌اند و احتمالاً در حال انتظار برای مشاهده چگونگی وقایع هستند. سازمان ملل و سازمان‌های بشردوستانه در مورد بحران فزاینده پناهندگان هشدار داده و خواستار آتش‌بس‌های فوری شده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در روزهای اخیر قیمت‌های نفت nearly 10% افزایش یافته است و این امر ناشی از نگرانی‌هایی است که مبادا درگیری‌ها، عرضه نفت از طریق تنگه هرمز را مختل سازد. اگر ایران به تهدید خود برای بستن این تنگه عمل کند، قیمت‌های نفت می‌تواند به سطوح بی‌سابقه‌ای، به‌ویژه بیش از ۱۲۰ دلار در هر بشکه (در مقایسه با قیمت فعلی حدود ۱۱۰ دلار) برسد. این مسئله مهم است زیرا افزایش قیمت نفت، هزینه سوخت مصرف‌کنندگان در سراسر جهان را افزایش می‌دهد، رشد اقتصادی را کند می‌سازد و می‌تواند موجب تورم شود. کشورهایی مانند هند و چین، که به شدت به نفت خاورمیانه وابسته‌اند، بیشترین ضربه را می‌بینند، در حالی که کشورهای تولیدکننده نفت مانند عربستان سعودی می‌توانند سودهای کلانی کسب کنند. آمریکا، به‌عنوان یکی از بزرگ‌ترین تولیدکنندگان نفت، از قیمت‌های بالا بهره‌مند خواهد شد، اما اقتصادهای اروپایی و آسیایی ممکن است با فشار شدیدی مواجه شوند. این موضوع هم‌اکنون تأثیرات خود را نشان داده است؛ به‌عنوان مثال، در آفریقای جنوبی قیمت بنزین به رکوردی جدید رسیده و سایر کشورها در حال کاهش یارانه‌های سوخت هستند که باعث خشم عمومی می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            ایران مذاکرات صلح با ایالات متحده را متوقف کرده و تهدید کرده است که در صورت پیگیری، تنگهٔ هرمز، یک مسیر حیاتی حملِ نفت را مسدود خواهد کرد که می‌تواند منجر به یک بحران انرژی جهانی شود. پس از فشار آمریکا، اسرائیل و حزب‌الله حملاتی را به‌طور موقت متوقف کرده‌اند، اما آتش‌بس شکننده است و در صورت اشتباه یا تلافی از سوی هر کدام، ممکن است فروپاشد. جنگ باعث تشدید درد اقتصادی در سراسر جهان شده است—از بالاترین رکوردهای قیمت نفت گرفته تا بیکاری در اسرائیل و بحران سوخت در کشورهای فقیرتری مثل آفریقای جنوبی.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            اظهار رئیس‌جمهور ترامپ مبنی بر اینکه اسرائیل و حزب‌الله به توقف حملات توافق کرده بودند بعداً توسط اعلام ایران مبنی بر تعلیق مذاکرات با ایالات متحده، که سبب ایجاد سردرگمی درباره وضعیت واقعی تلاش‌ها برای آتش‌بس شد، رد گردید. علاوه بر این، تهدید ایران مبنی بر بسته کامل تنگه هرمز — گامی افراطی که احتمالاً واکنش نظامی ایالات متحده را به دنبال خواهد داشت — در حالی اعلام شد که گزارش‌ها از توقف مذاکرات حکایت داشت، استراتژی پرریسک برای فشار آوردن به ایالات متحده و اسرائیل را تداعی می‌کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            این درگیری بخشی از یک جنگ نیابتی طولانی‌تر و گسترده‌تر میان اسرائیل و ایران است و ایران گروه‌هایی مانند حزب‌الله در لبنان، حماس در غزه و شبه‌نظامیان در عراق و یمن را حمایت می‌کند. تشدید کنونی پس از سال‌ها تنش آغاز شد، از جمله حملات اسرائیل به سایت‌های هسته‌ای ایران، ترور دانشمندان ایرانی و حملات به نیروهای نیابتی ایران. خروج ایالات متحده از توافق هسته‌ای با ایران در سال ۲۰۱۸ و همچنین توافق‌های عادی‌سازی روابط اسرائیل با کشورهای عربی مانند امارات و عربستان سعودیا تلاش‌های صلح را بیش از پیش پیچیده ساخته است. در داخل ایران، معترضان به دلیل مشکلات اقتصادی به خیابان‌ها آمده‌اند، در حالی که دولت اسرائیل تحت فشار است تا با وجود هزینه‌های مالی و اجتماعی، به حملات موشکی واکنش شدید نشان دهد. وضعیت انسانی در لبنان و غزه وخیم است، به طوری که سازمان‌های ملل متحد از قحطی و کمبود مراقبت‌های پزشکی به دلیل محاصره‌ها و حملات هشدار می‌دهند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
