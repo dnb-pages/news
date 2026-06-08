@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-08 16:37</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-08 16:37</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایران اعلام کرده است که پس از اولین تبادل آتش از زمان آتش‌بس، حملات به اسرائیل را متوقف کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (نسخه اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۸ ساعت ۱۹:۴۲:۵۹</strong></span>
+                </div>
+                <p class='summary'>پس از حمله‌ای در لبنان، ایران حدود ۳۰ موشک به سوی اسرائیل شلیک کرد، در حالی که اسرائیل نیز دو موج حملات هوایی به انجام رساند.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cj6ge150z5go?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>نگرانی‌های بازار سهام با ترس از فناوری و حملات تازه خاورمیانه همچنان ادامه دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> خبرگزاری بی‌بی‌سی</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۹  ساعت ۱۸:۴۴:۱۱</strong></span>
+                </div>
+                <p class='summary'>بازارها در آسیا تحت تأثیر فروش سهام در بخش فناوری قرار گرفته‌اند و قیمت نفت بی‌ثبات است زیرا ایران و اسرائیل به یکدیگر حمله کردند.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/c78yd5g9qx0o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>«دکترین استراتژیک»: ایران پس از پاسخ به حمله بیروت تغییر نظامی خود را ستایش می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹ ساعت ۱۹:۳۶:۴۷</strong></span>
+                </div>
+                <p class='summary'>مردم ایران حملات به اسرائیل را بخشی از رویکرد نظامی به عنوان «پیشگیری و قدرت تهاجمی» توصیف می‌کنند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/6/8/strategic-doctrine-iran-hails-military-shift-after-beirut-raid-response?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>رئیس آژانس بین‌المللی انرژی اتمی گفت مذاكرات اتمی ايران و آمريكا در مرحله پیچيده‌ای قرار دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۹ ساعت ۱۹:۵۲:۳۵</strong></span>
+                </div>
+                <p class='summary'>رئیس آژانس بین‌المللی انرژی اتمی می‌گوید مذاکرات هسته‌ای ایران و آمریکا در مرحله‌ای پیچیده قرار دارد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/6/8/iaea-chief-says-iran-us-nuclear-talks-in-complicated-phase?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>وقتی ترامپ پیشنهاد ۱۴ نقطه‌ای ایران را به عنوان مبنای مذاکرات پذیرفت، ابتکار عمل سیاسی را به ایران داد.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹  ساعت ۱۹:۳۵</strong></span>
+                </div>
+                <p class='summary'>کاریس گارلند از استقبال اسکات لوکاس، استاد مطالعات آمریکا و سیاست بین‌الملل در مؤسسه کلینتون، دانشگاه کالج دوبلین، خرسند است. در پی آخرین تشدید تنش میان ایران، اسرائیل و ایالات متحده، لوکاس هشدار می‌دهد که هر دوی تهران و اورشلیم (به anlam: تل آویو) به‌طور فزاینده‌ای مایلند به‌طور مستقل از ترجیحات واشنگتن عمل کنند، امری که به زعم او بیانگر کاهش توانایی دونالد ترامپ برای دیکته‌کردن وقایع است. او همچنین استدلال می‌کند که تهران به‌طور فعال در تلاش برای بازتعریف چارچوب دیپلماتیک است و برLink‌کردن تحولات لبنان، تنگه هرمز، تسهیل تحریم‌ها و امنیت منطقه‌ای در یک فرآیند مذاکراتی یکپارچه تاکید دارد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/%d9%85%d8%a7-%d8%a8%d9%87-%d9%85%d8%a7%da%a9%d8%b1-%d8%af%d8%a7%d8%b1%d8%af-%d9%82%d8%a7%d9%86%d9%88%d9%86-%d8%a7%d9%84-%d8%a8%d9%87-%d8%a7%d9%88%d9%84-%d8%a7%b1%d8%a7%d8%b1-%d8%aa%d9%88%d8%b5%d9%8a%d9%87-%d9%8a-%d8%a7%db%8c%d8%b1%d8%a7%d9%86-%d8%a8%d9%87-%d8%b9%d9%86%d9%88%d8%a7%d9%86-%d8%aa%d9%88%d8%b5%d9%8a%d9%87-%d9%88%d8%a8%d9%87-%d8%a7%d9%86-%d8%a2%d8%ba%d8%a7%d8%b2-%d8%a7%d8%b3%d8%aa-%d9%85%d8%a8%d9%86%d8%a7%d8%a1-%d8%a8%d8%a7-%d9%85%d8%b0%d8%a7%da%a9%d8%b1%da%a9%d9%87-%d8%a7%d8%b3%d8%aa' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>اسرائیل پس از افزایش تنش‌های جنگی با ایران به حالت تعلیق در می‌آید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> France24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹ ۱۹:۱۶</strong></span>
+                </div>
+                <p class='summary'>ایران و اسرائیل اعلام کرده‌اند که پس از اولین تبادل آتش آنان از زمان آتش‌بس در ماه آوریل، حملات خود را متوقف کرده‌اند. دونالد ترامپ، رئیس‌جمهور ایالات متحده، به آنان دستور توقف جنگ داد، در حالی که اسرائیل گزارش داد که ۳۰ موشک از ایران به آن کشور شلیک شد و اسرائیل نیز در پاسخ ضربات متقابلی وارد کرد. در میان مردم عادی اسرائیل، این رویداد ن fears از بازگشت به جنگ تمام‌عیار را برافروخت.</p>
+                <div class='link'><a href='https://www.france24.com/fa/اسرائیل-پس-از-بروز-درگیری‌های-جدید-با-ایران-موقتاً-تعطیل-شد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ایران حمله به اسرائیل را متوقف می‌کند، نخست‌وزیر در تنگنای میان ترامپ و وزیران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسه24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۹ ساعت ۱۴:۴۱</strong></span>
+                </div>
+                <p class='summary'>فرماندهی نظامی ایران در ۸ خرداد اعلام کرد که عملیات خود علیه اسرائیل را متوقف کرده است. این در حالی است که دو طرف برای نخستین بار از زمان برقراری آتش‌بس در هشتم اردیبهشت، به تبادل آتش پرداخته‌اند. با این وجود، از سر زدن موشک‌های حزب‌الله به اسرائیل، گزارش‌های نگاها تارناپلوسکی از فرانسه ۲۴ از اورشلیم ادامه دارد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/ایران-حملات-به-اسرائیل-را- متوقف-می‌کند-نتانیاهو-بین-ترامپ-و-وزیران-گرفتار-شده‌است' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>علیرغم تنش‌ها در پی بروز جنگ، اختلاف میان ترامپ و نتانیاهو بعید به نظر می‌رسد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۴/۱۸ ساعت ۱۸:۳۴:۰۴</strong></span>
+                </div>
+                <p class='summary'>اسرائیل و ایران برای اولین بار از آغاز آتش‌بس در ۷ ژوئن، با وجود مکررا آقای دونالد ترامپ، رئیس‌جمهور ایالات متحده، در برابر بنیامین نتانیاهو، نخست‌وزیر اسرائیل، در مورد حمله به ایران هشدار داده بود، به تبادل آتش پرداختند. آیا ممکن است این نشانه‌ای از بروز اختلاف بین دو رهبر باشد؟ آنجلا دیفلی، خبرنگار FRANCE 24، توضیحات بیشتری ارائه می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/با-وجود-تنش-بر-سر-تشدید-جنگ-احتمال-اختلاف-جدی-بین- trump-و-نتانیاهو-کم-است' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>چرا تهدید حوثی‌ها علیه کشتیرانی در دریای سرخ این بار می‌تواند برای بازار نفت بدتر باشد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۰۸ ۱۶:۱۴:۳۷</strong></span>
+                </div>
+                <p class='summary'><p>این گروه تروریستی مورد حمایت ایران پس از تاریخ 7 اکتبر، هم به اسرائیل و هم به حمل و نقل دریایی در منطقه دریای سرخ حمله کرد. اکنون این گروه ممنوعیت کشتی‌های مرتبط با اسرائیل را اعلام کرد و بار دیگر موشک‌هایی را به سوی اسرائیل شلیک نمود.</p> <p>پست <a href="https://www.timesofisrael.com/why-the-houthis-threatening-red-sea-shipping-could-be-worse-for-the-oil-market-this-time/">چرا تهدیدهای حوثی‌ها برای حمل و نقل دریای سرخ این بار می‌تواند برای بازار نفت وخیم‌تر باشد</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> پدیدار شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26155452529496-1024x640.jpg" title="چرا تهدیدهای حوثی‌ها برای حمل و نقل دریای سرخ این بار می‌تواند برای بازار نفت وخیم‌تر باشد" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/why-the-houthis-threatening-red-sea-shipping-could-be-worse-for-the-oil-market-this-time/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>کنسرت‌ها به تعویق افتاد، استادیوم‌های ورزشی خالی از تماشاگر پس از تشدید 다시 تنش‌ها با ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۹ ساعت ۱۴:۳۷:۳۱</strong></span>
+                </div>
+                <p class='summary'><p>رژه آرش در تلاویو، روز جمعه، برای دومین سال پیاپی لغو شد. بازیکنان بسکتبال از تصمیم به برگزار کردن بازی‌ها معترض شدند. همچنین جشنواره کتاب و جوایز تئاتر هم به تعویق افتادند</p> <p>مقاله‌ی <a href="https://www.timesofisrael.com/concerts-postponed-sports-stadiums-left-empty-following-renewed-conflict-with-iran/">برنامه‌های موسیقی لغو شدند، استادیوم‌های ورزشی خالی ماندند؛ پی‌آمد درگیری دوباره با ایران</a> نخستین بار در <a href="https://www.timesofisrael.com">دنیای اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2025/02/WhatsApp-Image-2025-02-20-at-19.15.39-1024x640.jpeg" title="برنامه‌های موسیقی لغو شدند، استادیوم‌های ورزشی خالی ماندند؛ پی‌آمد درگیری دوباره با ایران" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/concerts-postponed-sports-stadiums-left-empty-following-renewed-conflict-with-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>اسرائیل و ایران اعلام کردند پس از فشار ترامپ، حملات خود علیه یکدیگر را متوقف خواهند کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹  ساعت ۱۸:۳۷:۴۳</strong></span>
+                </div>
+                <p class='summary'><p>یک مقام اسرائیلی اعلام کرد «احساس این است که این دور از درگیری‌ها به پایان رسیده است» و بر ادامه عملیات‌های ارتش اسرائیل (IDF) علیه حزب‌الله تأکید کرد؛ نخست‌وزیر امشب جلسه کابینه امنیت کامل برگزار خواهد کرد</p> <p>این پست <a href="https://www.timesofisrael.com/israel-and-iran-say-theyre-halting-attacks-on-each-other-after-trump-pressure/">اسرائیل و ایران پس از فشار ترامپ اعلام کردند حملات به یکدیگر را متوقف می‌کنند</a> برای اولین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AFP__20260608__B6BX3DD__v3__HighRes__TopshotIsraelIranUsWar-1024x640.jpg" title="اسرائیل و ایران پس از فشار ترامپ اعلام کردند حملات به یکدیگر را متوقف می‌کنند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/israel-and-iran-say-theyre-halting-attacks-on-each-other-after-trump-pressure/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>برگزاری رویدادهای فرهنگی پس از حملات موشکی ایران لغو شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  Israel Times (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۹ ۱۳:۴۸:۰۱</strong></span>
+                </div>
+                <p class='summary'><p>برگزاری هفته کتاب و مراسم افتتاحیه جایزه تئاتر به تعویق افتاد، بسیاری از موزه‌ها درهایشان را می‌بندند</p> <p>پست <a href="https://www.timesofisrael.com/culture-events-called-off-in-wake-of-iranian-missile-attacks/">رویدادهای فرهنگی به دلیل حملات موشکی ایران لغو شد</a> برای اولین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/719900106_1010398988401968_1798949671803146245_n-e1780922403660-1024x640.jpg" title="رویدادهای فرهنگی به دلیل حملات موشکی ایران لغو شد" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/culture-events-called-off-in-wake-of-iranian-missile-attacks/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>به‌روزرسانی‌های زنده: ایران و اسرائیل پس از تبادل حملات عقب‌نشینی کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹ ساعت ۱۹:۵۵</strong></span>
+                </div>
+                <p class='summary'>ایران اعلام کرد که آخرین حملات خود به اسرائیل را به پایان رسانده است. نخست‌وزیر بنیامین نتانیاهو به دلیل فشارهای دونالد ترامپ، رئیس‌جمهور آمریکا، از انجام حملات بیشتر خودداری کرد. این موضوع توسط یک مقام آمریکایی و دو مقام اسرائیلی تائید شد.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/08/world/iran-israel-lebanon-attacks' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>نبرد ۱۵ ساعته با ایران آشکار کرد که اسرائیل در چه تنگناهایی گرفتار است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹  ساعت ۱۹:۴۵:۲۶</strong></span>
+                </div>
+                <p class='summary'>با توجه به آماده شدن برای یک توافق صلح احتمالی بین آمریکا و ایران، اسرائیل اکنون می‌داند که اگر در واکنش به حملات حزب‌اللهForcefully  اقدام کند، ایران ممکن است اقدام به حمله موشکی به اسرائیل نماید.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/08/world/middleeast/israel-netanyahu-iran-trump-lebanon.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>15</span>
+                <span class='title'>آیا ایالات متحده و اسرائیل در خاورمیانه همسو هستند؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۰۸T۱۵:۵۱:۵۷Z</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ نارضایتی خود را از نخست‌وزیر بنیامین نتانیاهو اسرائیل ابراز کرده است، اما مشخص نیست که او چقدر قادر است اقدامات نظامی اسرائیل را کنترل کند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/08/world/middleeast/netanyahu-trump-split-iran-lebanon.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>16</span>
+                <span class='title'>حوثی‌ها تهدید کردند که با مسدود کردن حمل‌ونقل دریایی اسرائیلی در دریای سرخ، جنگ با ایران را گسترده‌تر کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل روزنامه نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹  ساعت ۱۹:۴۶:۲۲ به وقت تهران</strong></span>
+                </div>
+                <p class='summary'>گروه شبه‌نظامی یمن که مورد حمایت ایران است، اعلام کرد که یک محاصره جزئی را در این مسیر آبی اعمال خواهد کرد؛ اقدامی که باعث تشدید محدودیت در مسیرهای تأمین و افزایش تنش‌ها در خاورمیانه خواهد شد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/08/world/middleeast/houthis-yemen-red-sea-israel-shipping.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>17</span>
+                <span class='title'>چرا ایران ریسک حمله به اسرائیل را پذیرفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۱۹ ساعت ۱۹:۳۸</strong></span>
+                </div>
+                <p class='summary'>برای تهران، تلافی‌جویی در برابر حملات به حزب‌الله در لبنان نشان می‌دهد که این کشور از متحدان منطقه‌ای خود حمایت خواهد کرد و تلاش‌ها برای تغییر موازنه قدرت در منطقه را خنثی خواهد کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/08/world/middleeast/israel-iran-strikes-regional-gains.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>18</span>
+                <span class='title'>تهران آرامش ندارد، séquence مقررات جنگ ایران و اسرائیل از سر گرفته می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۰۳/۱۹ ۱۳:۵۴:۲۹</strong></span>
+                </div>
+                <p class='summary'>هنگامی که انفجارهایی در پایتخت ایران شنیده می‌شد، مردم به‌سرعت گوشی‌ها و رسانه‌های اجتماعی خود را چک می‌کردند تا بدانند که آیا دوباره مورد حمله قرار گرفته‌اند یا خیر.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/08/world/middleeast/iran-tehran-israel-attacks.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>19</span>
+                <span class='title'>ایران و اسرائیل تبادل آتش را متوقف کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹ ساعت ۱۸:۴۰:۰۰</strong></span>
+                </div>
+                <p class='summary'>در بحبوحهٔ ازسرگیری آشفته و خشونت‌بار، ایران چندین موج از حملات را شلیک کرد، در حالی که اهداف اسرائیل شامل یک مرکز مهم پتروشیمی ایران بود.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-fires-missiles-at-israel-after-israeli-airstrike-on-beirut-a93b4da7' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>20</span>
+                <span class='title'>شکاف بین ترامپ و نتانیاهو بر سر لبنان در حال عمیق‌تر شدن است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۸/۳/۱۸T13:51:00Z</strong></span>
+                </div>
+                <p class='summary'> تبادل آتش بین اسرائیل و ایران، urgency جدیدی به یک اختلاف در حال جوشیدن بخشیده است.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/trump-and-netanyahus-rift-over-lebanon-is-deepening-df16b6c9' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>21</span>
+                <span class='title'>سهم‌های نفت پس از اعلام ایران مبنی بر پایان یافتن حملات به اسرائیل افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال استریت ژورنال (آنالیز)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۰۸T۱۴:۱۴:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>قیمت‌های نفت پس از آن‌که ایران اعلام کرد عملیات نظامی علیه اسرائیل را به پایان رسانده است، و نگرانی‌ها درباره این‌که آخرین تبادل آتش می‌توانست تلاش‌های منطقه‌ای برای پایان جنگ و بازگشایی تنگه هرمز را خدشه‌دار کند، کاهش یافت.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/oil-climbs-as-israel-iran-clashes-stoke-middle-east-escalation-fears-24dc8c59' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>22</span>
+                <span class='title'>ایران و اسرائیل تبادل آتش را متوقف کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۱۹ ساعت ۱۴:۱۰</strong></span>
+                </div>
+                <p class='summary'>در ادامه ای turmoil خیز درگیری‌ها، ایران چندین نوبت حمله انجام داد و اهداف اسرائیل نیز شامل یک تأسیسات مهم پتروشیمی ایران بود.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-fires-missiles-at-israel-after-israeli-airstrike-on-beirut-a93b4da7' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۸ خرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و اسرائیل پس از آتش‌بسِ آوریل، برای نخستین بار پس از آن، به‌طور مستقیم به یکدیگر حمله کردند. ایران موشک‌هایی به اسرائیل شلیک کرد و اسرائیل نیز در پاسخ با حمله هوایی به اهداف ایرانی، اقدام کرد. اکنون هر دو طرف حملات خود را متوقف کرده‌اند، هرچند تنش‌ها همچنان بالا است. این درگیری‌ها بخشی از یک مبارزه منطقه‌ای گسترده‌تر است که لبنان، یمن و involvement آمریکا را نیز شامل می‌شود، با پیامدهای اقتصادی قابل توجهی مانند نوسانات قیمت نفت و برگزاری نشست‌های عمومی مختل‌شده در اسرائیل.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            اسرائیل و ایران در طول آخر هفته با یکدیگر درگیری موشکی داشتند و این مهم‌ترین برخورد مستقیم دو کشور از زمان آتش‌بس شکننده‌ای بود که در آوریل توافق شده بود. عامل اصلی بروز این درگیری، حمله هوایی اسرائیل به لبنان بود که منجر به کشته شدن چهره‌های ارشد حزب‌الله و نظامیان ایرانی شد. ایران در پاسخ با شلیک حدود ۳۰ موشک بالستیک به سوی اهداف نظامی اسرائیل واکنش نشان داد. سپس اسرائیل دو موج حمله هوایی به ایران انجام داد که یکی از آنها باعث آسیب دیدن یک مجتمع بزرگ پتروشیمی در ایران شد. پس از فشار شدید ایالات متحده، دو طرف در ۸ ژوئن حملات خود را متوقف کردند، اگرچه حزب‌الله همچنان به مواضع اسرائیل از لبنان حمله می‌کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            توقف موقت حملات احتمالاً موقتی است و هر دو طرف در حالت آماده‌باش کامل به سر می‌برند. اسرائیل عملیات خود علیه حزب‌الله در لبنان را ادامه خواهد داد تا تهدید مستمر در مرز شمالی خود را addressing the persistent threat کند. در صورت احساسIsrael may believe that Israel is escalating disproportionately or failing to commit to ceasefire terms، ایران ممکن است حملات مستقیم خود را از سر بگیرد. ایالات متحده تلاش برای کاهش تنش دارد، اما نفوذ آن محدود به نظر می‌رسد. زیرا اسرائیلاصولاً و ایران اقدامات مستقلی انجام می‌دهند. وضعییت همچنان ناپایدار است و در صورت اشتباه یک طرف یا افراطی‌گرایان درون ایران یا اسرائیل، احتمال وقوع جنگ منطقه‌ای گسترده همچنان وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            • فروردین ۱۴۰۵: اسرائیل و ایران پس از ماه‌ها منازعات نیابتی، به آتش‌بس شکننده‌ای دست یافتند.<br>• ۱۷ خرداد ۱۴۰۵: اسرائیل حملات هوایی گسترده‌ای در لبنان انجام داد که منجر به کشته شدن رهبران ارشد حزب‌الله و سپاه قدس شد.<br>• ۱۷ تا ۱۸ خرداد ۱۴۰۵: ایران به‌طور تقریبی ۳۰ موشک بالستیک را به سوی اسرائیل پرتاب کرد. اسرائیل نیز با دو موج حملات هوایی به اهداف نظامی و زیرساختی ایران از جمله یک پالایشگاه فرآورده‌های نفتی واکنش نشان داد.<br>• بامداد ۱۸ خرداد ۱۴۰۵: هر دو کشور پس از فشار دونالد ترامپ، رئیس‌جمهور ایالات متحده، حملات مستقیم خود را متوقف کردند.<br>• ۱۸ خرداد ۱۴۰۵: حزب‌الله علی‌رغم توقف درگیری‌های مستقیم میان ایران و اسرائیل، به پرتاب راکت به سوی اسرائیل ادامه داد.<br>• اواخر ۱۸ خرداد ۱۴۰۵: به دلیل نگرانی‌های امنیتی مداوم، رویدادهای عمومی و فعالیت‌های فرهنگی در اسرائیل لغو شدند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در بلندمدت، این درگیری نشان‌دهندهٔ گذار استراتژیک ایران به سوی یک رویکرد نظامی تهاجمی‌تر و کنش‌گرایانه‌تر در منطقه است که با بهره‌گیری از گروه‌های نیابتی همچون حزب‌الله و حوثی‌ها سعی در گسترش نفوذ خود دارد؛ در حالی که با حفظ انکارپذیریِ احتمالی از خود فاصله می‌گیرد. اسرائیل با یک دوراهی مواجه است: اگر در برابر حزب‌الله یا گروه‌های مورد حمایت ایران واکنش شدیدی نشان دهد، خطر می‌کند که حملاتMissileهای مستقیم ایران را در پی داشته باشد، همان‌طور که در akhir این هفته مشاهده شد. آتش‌بس آوریل اکنون به‌طور قابل توجهی تضعیف شده است و در صورت شکست تلاش‌های دیپلماتیک، بازگشت به جنگ تمام‌عیار همچنان یک احتمال واقعی باقی مانده است. ایران ممکن است تلاش کند اقدامات خود را به مسائل گسترده‌تر امنیت منطقه‌ای، از جمله تسهیل تحریم‌ها و تنگهٔ هرمز، گره بزند تا یک محیط چانه‌زنی پیچیده را ایجاد کند. از سوی دیگر، به نظر می‌رسد ایالات متحده در حال دست دادن برخی از توانایی‌های خود برای کنترل اوضاع است، به ویژه تحت ریاست‌جمهوری ترامپ که در میانجی‌گری میان اسرائیل و ایران دچار مشکل است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            شدت درگیری‌های اخیر در مقایسه با یک جنگ تمام‌عیار در سطح متوسط است، اما نشان‌دهنده افزایش خطرناکی از درگیری‌های نیابتی سطح پایین سال گذشته است. ماهیت درگیری‌ها شامل حملات موشکی، حملات هوایی و حملات نیابتی (مانند موشک‌های حزب‌الله) است، که نشان‌دهنده یک درگیری چند جبهه‌ای به جای جنگ مستقیمی بین اسرائیل و ایران به تنهایی است. غیرنظامیان در هر دو کشور آسیب دیده‌اند؛ ایرانی‌ها با حملات مستقیم به سرزمین خود و اسرائیلی‌ها با اختلالات در زندگی روزمره و رویدادهای عمومی مواجه هستند. این درگیری بسیار نامتقارن است: ایران از نیابتی‌ها و موشک‌ها برای حملات برد بلند استفاده می‌کند، در حالی که اسرائیل با حملات هوایی دقیق به مکان‌های خاص هدف‌گیری می‌کند. تأثیر روانی قابل توجه است، به طوری که هر دو جمعیت علیرغم توقف موقت، احساس ناامنی می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این بحران در حال شکل‌دهی مجدد دینامیک‌های قدرت در خاورمیانه است. تمایل ایران برای حمله مستقیم به اسرائیل نشانه تغییر جسورانه در استراتژی نظامی این کشور است که احتمالاً با هدف بازدارندگی اسرائیل یا بازسازی اتحادهای منطقه‌ای صورت می‌گیرد. از سوی دیگر، اسرائیل در موقعیتی قرار گرفته که هم مرزهای خود را در برابر حزب‌الله دفاع می‌کند و هم روابط خود با ایالات متحده را مدیریت می‌نماید. این درگیری همچنین محدودیت‌های نفوذ ایالات متحده در منطقه، به ویژه در دوره ریاست‌جمهوری ترامپ، را آشکار می‌سازد، چرا که وی علی‌رغم فشارهای اعمال‌شده برای کاهش تنش‌ها، در مهار نتانیاهو با مشکل مواجه است. برای جهان، ابعاد این بحران شامل امنیت انرژی (با توجه به نقش ایران به‌عنوان یکی از تولیدکنندگان اصلی نفت و تهدیدهای حوثی‌ها علیه کشتیرانی در دریای سرخ)، بازارهای جهانی (با توجه به واکنش قیمت‌های نفت و بازارهای سهام به ناپایداری‌ها) و خطر گسترش جنگ با دخالت بازیگران متعدد منطقه‌ای همچون لبنان، یمن و احتمالاً نیروهای ایالات متحده در منطقه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیگران اصلی اسرائیل، ایران، ایالات متحده و گروه‌های نیابتی تحت حمایت ایران همچون حزب‌الله و حوثی‌ها هستند. ایالات متحده سعی دارد میانجی‌گری کند و از تشدید بیشتر جلوگیری نماید، اما نقش آن با تضعیف نفوذ دونالد ترامپ بر نتانیاهو پیچیده شده است. ترامپ به‌طور علنی نتانیاهو را تحت فشار قرار داده تا از تلافی‌جویی علیه ایران خودداری کند، اما اسرائیل علی‌رغم این، حملات خود را ادامه داده است که نشان‌دهنده استقلال فزاینده اسرائیل از خواسته‌های ایالات متحده است. ایران نیز با بهره‌گیری از نیابتی‌های منطقه‌ای خود و نشان دادن تمایل به اقدام مستقلانه، حتی با پذیرش خطر تحریک اسرائیل، در حال بازیگری است. دخالت حوثی‌ها در دریای سرخ لایه‌ای دیگر به این تنش می‌افزاید، چرا که تهدید آنها برای مسدود کردن کشتی‌های مرتبط با اسرائیل می‌تواند chains تأمین نفت جهانی را مختل کند. تاکنون هیچ کشور دیگری به‌طور مستقیم به این درگیری ملحق نشده است، اما احتمال تشدید منطقه‌ای گسترده همچنان بالا است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در ابتدا قیمت‌های نفت به‌دلیل ترس از تشدید جنگ منطقه‌ای و اخلال در عرضه افزایش یافت، به‌ویژه با توجه به تهدیدهای حوثی‌ها علیه مسیرهای کشتیرانی دریای سرخ که حدود ۱۲ درصد از سراسری ارسال نفت جهان از آن عبور می‌کنند. زمانی که ایران در ۸ ژوئن حملات خود را متوقف کرد، قیمت نفت مقداری از نوساناتش کاسته شد و نگرانی‌ها از بروز اخلال فوری در عرضه کاهش یافت. با این حال، این نوسانات بر شکنندگی منطقه و آسیب‌پذیری اقتصاد جهانی در برابر مناقشات خاورمیانه تأکید می‌کند. اگر حوثی‌ها تهدید خود برای اعمال محاصره جزئی در دریای سرخ را عملی کنند، قیمت نفت به‌دلیل اخلال در زنجیره تأمین می‌تواند به‌طور قابل توجهی افزایش یابد. تنگه هرمز، به‌عنوان یک گلوگاه حیاتی برای صادرات نفت، در صورت تشدید درگیری همچنان به یک نقطه بحرانی تبدیل خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            برای نخستین بار از آوریل، اسرائیل و ایران به طور مستقیم با یکدیگر درگیر شدند و این اقدام نشان‌دهنده تشدید خطرناکی بود، اما پس از فشار آمریکا متوقف شد. این درگیری توسط استراتژی نظامی جسورانه جدید ایران و د dilemma اسرائیل برای پاسخگویی به حزب‌الله بدون تحریک واکنش ایران، تشدید می‌شود. قیمت نفت و بازارهای جهانی به شدت به وضعیت حساس هستند و مسیرهای دریایی دریای سرخ و زیرساخت‌های نفتی ایران در معرض خطر اختلال قرار دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            شگفت‌انگیزترین نکته، به نظر تضعیفِ قابل توجه نفوذ ایالات متحده بر اسرائیل و ایران است، زیرا هر دو طرف با وجود هشدارهای ترامپ، به اقدامات خود ادامه دادند. علاوه بر این، تهدیدات فزاینده حوثی‌ها علیه کشتیرانی در دریای سرخ، بعد اقتصادی جدیدی به این درگیری می‌بخشد که می‌تواند پیامدهای گسترده‌ای در سطح جهانی به همراه داشته باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محتوا اضافی</h3>
+             truce روندی که از فروردین تا این آخر هفته تقریباً پا برجا مانده بود، به کلی فروپاشیده است و اسرائیل و ایران را در وضعیتی پرFrom the Fourth of April to this last weekend, the truce that had barely held has completely collapsed, leaving both Israel and Iran in a more confrontational stance. Iran’s strategic shift, described as a 'military doctrine' prioritizing offensive action, suggests a long-term commitment to challenging Israel and US influence in the region. Meanwhile, the Houthis' involvement, backed by Iran, is expanding the conflict beyond Israel and Lebanon, threatening global trade routes and adding complexity to any potential diplomatic resolution.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
