@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-06-09 10:06</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-06-09 10:06</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Iran: Escalation in Middle East and Beyond Situation Report 11, 8 June 2026</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 08:33</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Countries: Iran (Islamic Republic of), Afghanistan, Lebanon</div> <div class="tag source">Source: International Organization for Migration</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/da/fe/dafef8a2-b86a-5071-ad6a-a8f6b0e84c77.png" alt></p> <p>Please refer to the attached file.</p> <p>The escalation of hostilities across the Middle East and beyond continues to trigger a humanitarian crisis spanning multiple regions in an already fragile context, with significant impact on population mobility. Inside the Islamic Republic of Iran, destruction of more than 149,000 civilian infrastructures and services has directly impacted over 400,000 individuals as of 29 April. Overall, population movements remain localized, temporary, and economically driven, with no signs of mass displacement; however, ongoing strain on housing, livelihoods, and basic services is likely to sustain elevated mobility levels in the near-and medium-term.</p> <p>In Lebanon, continued hostilities and new displacement orders have contributed to increasing displacement, with 130,369 individuals remaining displaced across 632 collective shelters as of 31 May, overwhelming hugely overstretched services, with shelter capacities being reached in Saida and Tyre, South Governorate.<br> Women and girls - who account for nearly 52% of those sheltered - are affected disproportionally by ongoing displacement, facing heightened protection risks, increased care responsibilities, and greater challenges in accessing essential services. Cross-border flows into the Syrian Arab Republic are continuing, with 395,369 movements recorded as of 1 June 2026, placing additional pressure on an already overstretched humanitarian system.</p> <p>In the region, Afghanistan observes the highest number of movements with substantial variations in the volume of flows.</p> <p>412,008 arrivals from the Islamic Republic of Iran to Afghanistan and 162,557 departures from Afghanistan to the Islamic Republic of Iran between March and June 2026 underscore the criticality of ensuring continued humanitarian operations at the border under the IOM-led Border Consortium. Cross-border flows from Pakistan and Iraq remain moderate and variable rather than steadily increasing; with a total of 25,708 individuals having crossed from the Islamic Republic of Iran into Pakistan, and a net incoming movement of 1,609 individuals into Iraq, the two countries have witnessed smaller and more occasional movements.</p> <p>The situation along the borders with Türkiye, Armenia, Azerbaijan, and Turkmenistan remains stable, but investments in contingency planning and preparedness remain critical.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/escalation-middle-east-and-beyond-situation-report-11-8-june-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>The 15-Hour Fight With Iran Showed the Bind Israel Is In</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 07:48</strong></span>
+                </div>
+                <p class='summary'>As it braces for a possible U.S.-Iranian peace deal, Israel now knows that if it responds forcefully to attacks by Hezbollah, Iran may strike Israel with missiles.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/08/world/middleeast/israel-netanyahu-iran-trump-lebanon.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran conflict: Why has oil stayed near $100 a barrel?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 09:17</strong></span>
+                </div>
+                <p class='summary'>The worst-case oil scenario has been avoided, but inflation and slower growth continue to weigh on the global economy.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/6/9/iran-conflict-why-has-oil-stayed-near-100-a-barrel?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iran says US has revoked World Cup ticket allocation for their supporters</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 08:58</strong></span>
+                </div>
+                <p class='summary'>Iranian players and support staff got US visas and landed in Mexico on Sunday for the World Cup, but now fans in doubt.</p>
+                <div class='link'><a href='https://www.aljazeera.com/sports/2026/6/9/iran-says-us-have-revoked-world-cup-ticket-allocation-for-their-supporters?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Trump says Iran deal in ‘final throes’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 08:13</strong></span>
+                </div>
+                <p class='summary'>Donald Trump said that he's in the 'final throes' of a deal with Iran.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/6/9/trump-says-iran-deal-in-final?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Iran war day 102: Trump warns Israel against new strikes as ceasefire holds</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 07:25</strong></span>
+                </div>
+                <p class='summary'>Iran warns fighting could restart as tensions remain high and Trump urges Israel to protect the fragile ceasefire.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/6/9/iran-war-day-102-trump-warns-israel-against-new-strikes-as-ceasefire-holds?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>US Army helicopter crashes near Strait of Hormuz; Trump says two pilots ‘fine’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 07:49</strong></span>
+                </div>
+                <p class='summary'><p>US president says Washington to issue report on incident later in the day; cause of crash as yet unclear</p> <p>The post <a href="https://www.timesofisrael.com/us-army-helicopter-crashes-near-strait-of-hormuz-trump-says-two-pilots-fine/">US Army helicopter crashes near Strait of Hormuz; Trump says two pilots ‘fine’</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26160162038140-1024x640.jpg" title="US Army helicopter crashes near Strait of Hormuz; Trump says two pilots ‘fine’" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/us-army-helicopter-crashes-near-strait-of-hormuz-trump-says-two-pilots-fine/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Vance: Iran deal a ‘home run for the American people,’ whether Israel likes it or not</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 07:39</strong></span>
+                </div>
+                <p class='summary'><p>Main US goal is to prevent a nuclear Iran, VP says; Trump says 'we're in the final throes' of peace talks, insists Netanyahu didn't defy him in responding to renewed Iranian attacks</p> <p>The post <a href="https://www.timesofisrael.com/vance-iran-deal-a-home-run-for-the-american-people-whether-israel-likes-it-or-not/">Vance: Iran deal a ‘home run for the American people,’ whether Israel likes it or not</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AFP__20260528__B4CP782__v1__HighRes__UsVicePresidentJdVanceDeliverACommencementAddre-e1780977153541-1024x640.jpg" title="Vance: Iran deal a ‘home run for the American people,’ whether Israel likes it or not" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/vance-iran-deal-a-home-run-for-the-american-people-whether-israel-likes-it-or-not/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Iran War Live Updates: Israel Launches New Strikes in Southern Lebanon</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 09:59</strong></span>
+                </div>
+                <p class='summary'>The attacks came a day after Israel and Iran pulled back from direct confrontation. The Israeli campaign against the Lebanese militia Hezbollah has been an obstacle in U.S.-Iran peace talks.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/09/world/iran-war-trump-israel-lebanon' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>A Challenge in the U.S.-Iran Talks: Both Sides Demand Victory</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-09 09:26</strong></span>
+                </div>
+                <p class='summary'>Washington and Tehran would need to defend any potential deal as a win for their side. And each has a leader whose approach to talks is vexing mediators.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/09/world/middleeast/us-iran-talks-war.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - June 9, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is currently at the center of escalating Middle Eastern tensions, with active conflicts involving Israel, Lebanon, and Afghanistan. A fragile ceasefire has been holding since mid-2026, but new airstrikes, displaced populations, and a potential U.S.-Iran peace deal are creating uncertainty. Humanitarian crises, oil market volatility, and global geopolitical shifts are key concerns.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Iran is facing multiple crises: ongoing conflict with Israel that recently escalated into a 15-hour fight, continued tensions with Hezbollah in Lebanon, and a humanitarian disaster affecting over 400,000 people inside Iran due to infrastructure destruction. A fragile ceasefire brokered by the U.S. is holding, but new Israeli strikes in Lebanon have raised concerns. Meanwhile, the U.S. and Iran are close to finalizing a peace deal, which is controversial and opposed by Israel. Oil prices remain near $100 a barrel, reflecting global supply concerns. Additionally, Iran is accusing the U.S. of revoking World Cup tickets for Iranian fans, adding diplomatic strain.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The immediate future may see a period of tense stability if the U.S.-Iran deal holds, but risks of renewed conflict remain high. Israel is likely to push back against any agreement that limits its ability to respond to attacks, while Iran will seek to maintain its influence in the region through proxy groups like Hezbollah. Humanitarian crises in Lebanon, Iran, and Afghanistan will worsen if fighting resumes. Oil prices could stay high or spike if supply disruptions occur in the Strait of Hormuz, a critical oil shipping route.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            March 2026: Ceasefire declared after heavy fighting. April 2026: U.S. and Iran begin indirect peace talks. May 2026: Israel and Iran engage in a 15-hour military escalation. June 9, 2026: U.S. President Trump declares the Iran deal is in its 'final throes'; Israel launches new strikes in Lebanon; Iran accuses the U.S. of revoking World Cup tickets for fans; a U.S. Army helicopter crashes near the Strait of Hormuz; Iran reports 149,000 civilian infrastructures destroyed and 400,000 people displaced.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term direction suggests a geopolitical power shift in the Middle East, with the U.S. seeking to stabilize the region through diplomacy while balancing Israel's security concerns. Iran may reduce its direct confrontations if a deal is reached, but it will likely continue supporting proxy groups to maintain influence. Regional stability will depend on whether the deal addresses Iran's nuclear ambitions, its ballistic missile program, and its role in conflicts like Lebanon and Yemen. If the deal fails, the region could face prolonged conflict and economic instability.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict intensity is currently moderate but volatile. A ceasefire is holding, but skirmishes and airstrikes (like Israel's recent strikes in Lebanon) keep tensions high. The conflict is asymmetric, with Iran relying on proxy groups like Hezbollah rather than direct military confrontation with Israel. The U.S. is playing a mediating role but is also pressuring both sides to de-escalate. Civilian impacts are severe, with widespread displacement and infrastructure damage in Iran and Lebanon.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This crisis reflects broader shifts in global geopolitics, including the declining influence of traditional mediators, the rise of regional powers, and the U.S.'s shifting priorities. The Middle East remains a critical flashpoint for energy supplies, affecting global oil markets. The situation also highlights the challenge of balancing national security interests with humanitarian concerns, as civilian lives are increasingly caught in the crossfire. The outcome of U.S.-Iran talks could redefine regional alliances and power structures.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is the primary external player, pushing for a peace deal to prevent further conflict and nuclear proliferation. Israel is a key regional actor, opposed to any deal that limits its military options against Iran and Hezbollah. Iran is engaging in talks but also leveraging its proxy groups to maintain pressure. The European Union, China, and Russia may play indirect roles if a deal is reached, but their influence is limited compared to the U.S. Humanitarian organizations are struggling to address the growing displacement crisis.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are currently near $100 a barrel, higher than before the conflicts but not at crisis levels. This reflects a balance between supply concerns (due to tensions in the Strait of Hormuz) and weaker global demand from economic slowdowns. If the Strait of Hormuz is disrupted—either by conflict or U.S. sanctions—the price could spike sharply. For context, the Strait of Hormuz is a critical choke point for global oil shipping, and any disruption there would have global economic repercussions.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S. and Iran are close to finalizing a peace deal, but Israel and regional dynamics are complicating the process. Humanitarian crises are worsening in Iran, Lebanon, and Afghanistan due to ongoing conflicts and displacement. Oil prices are elevated but stable for now; a major disruption in the Strait of Hormuz could cause a global energy crisis.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The U.S. Army helicopter crash near the Strait of Hormuz was unexpected, as it occurred during a period of fragile ceasefire. Additionally, Iran's accusation that the U.S. revoked World Cup tickets for Iranian fans adds an unusual diplomatic twist, highlighting the strained relations beyond geopolitical and military issues.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The 2026 FIFA World Cup in Mexico is creating an unusual geopolitical intersection, with Iran's participation highlighting the broader tensions. The U.S.'s stance under President Trump prioritizes a deal with Iran to prevent nuclear proliferation and reduce regional conflicts, even if it means pressuring allies like Israel. Meanwhile, Iran is leveraging its proxies (like Hezbollah) to maintain regional influence while engaging in talks with the U.S. For ordinary people, this means higher energy costs, potential supply shortages, and continued uncertainty in the Middle East.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
