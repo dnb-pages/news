@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-13 04:57</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-13 04:57</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>دولت گزارش داد که برای جلوگیری از انحراف مذاكرات ايالات متحده و ايران، اقدامات ارتش اسرائيل در لبنان را محدود كرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۱۳T۰۳:۳۷:۵۹Z</strong></span>
+                </div>
+                <p class='summary'><p>دفتر نخست‌وزیر گزارش کان را تکذیب کرد؛ حملات اسرائیل به جنوب لبنان ادامه دارد در حالی که پهپادهای حزب‌الله اهدافی در لبنان را مورد هدف قرار دادند، بدون گزارش ت伤</p> <p>گزارش <a href="https://www.timesofisrael.com/government-reported-to-restrain-idf-action-in-lebanon-to-avoid-derailing-us-iran-talks/">دولت اقدامIDF در لبنان را برای جلوگیری از انحراف مذاکرات آمریکا و ایران گزارش داده است</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26163500313441-1024x640.jpg" title="Government reported to restrain IDF action in Lebanon to avoid derailing US-Iran talks" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/government-reported-to-restrain-idf-action-in-lebanon-to-avoid-derailing-us-iran-talks/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایالات متحده اعلام کرد که چندین پهپاد ایرانی را که targeting ships در تنگه هرمز را هدف قرار داده بودند، ساقط کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ ژوئن ۲۰۲۶، ساعت ۰۲:۱۸:۳۹ GMT</strong></span>
+                </div>
+                <p class='summary'><p>فرماندهی مرکزی آمریکا می‌گوید تنگه <em>هنوز برای ترانزیت باز است</em> * ترامپ می‌گوید حملهٔ نظامی، líder گروه جنایتکاران ونزوئلایی را کشت * جام جهانی با مراسم افتتاحیه‌ای به سبک هالیوود در آمریکا آغاز می‌شود.</p>
+<p>پست <a href="https://www.timesofisrael.com/liveblog-june-13-2026/">آمریکا: ساقط‌کردن چند پهپاد ایرانی که کشتی‌ها در منطقه hormonal هدف گرفته بودند</a> برای نخستین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p>
+<figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AFP__20260518__B37349E__v1__HighRes__OmanIranUsIsraelWarHormuz-1024x640.jpg" title="US says it downed multiple Iranian drones targeting ships in Hormuz" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/liveblog-june-13-2026/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>آخرین اخبار جنگ ایران: به گفته مقامات، توافق آتش‌بس در دسترس به نظر می‌رسد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۳ ژوئن ۲۰۲۶ ۰۲:۲۹ UTC</strong></span>
+                </div>
+                <p class='summary'>مقامات آمریکایی و ایرانی گفتند جزئیات نهایی هنوز در حال نهایی شدن است، اما رئیس‌جمهور ترامپ و وزیر امور خارجهٔ ایران هر دو گفتند که نزدیک به یک توافق هستند. توافق‌های احتمالی قبلی در آخرین لحظه از بین رفته‌اند.</p>
+                <div class='link'><a href='https://fa.wikipedia.org/wikipedia/مقاله_زنده/هرج_و_مرج_آمریکا؛_ترامپ،_اسرائیل_و_جنگ_با_ایران_در_سال_۲۰۲۶' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۳ خرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>اسرائیل و حزب‌الله لبنان در حال درگیری سطح پایین اما پایدار در لبنان هستند در حالی که به طور پنهانی هماهنگی می‌کنند تا از بروز جنگ گسترده جلوگیری کنند؛ در همین حال، ایالات متحده و ایران به توافقی نزدیک برای آتش‌بس شده‌اند که می‌تواند تنش‌ها در منطقه را کاهش دهد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            گزارش‌ها حاکی از آن است که اسرائیل برای جلوگیری از اختلال در مذاکرات در حال جریان بین ایالات متحده و ایران، حملات نظامی خود در لبنان را به سطوح محدودی محدود کرده است، حتی با وجود اینکه حزب‌الله همچنان با پهپادها، نیروهای اسرائیلی را در جنوب لبنان هدف قرار می‌دهد. در همین حال، ایالات متحده پهپادهای ایرانی را که هدفشان کشتی‌ها در تنگه هرمز بودند، رهگیری کرده است. نشانه‌هایی وجود دارد که حکمیتی میان ایالات متحده و ایران ممکن است به‌زودی نهایی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            به احتمال زیاد، در آینده نزدیک وضعیتی موقتی از آرامش برقرار می‌شود زیرا طرفین در تلاش برای دستیابی به آتش‌بس هستند. با این حال، در صورت شکست مذاکرات، خشونت می‌تواند به سرعت تشدید شود، به‌ویژه در لبنان یا تنگه هرمز. این منطقه همچنان در وضعیت نگران‌کننده‌ای به سر می‌برد با احتمالی وقوع درگیری‌های ناگهانی.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ['اوایل ۲۰۲۶: اسرائیل و حزب‌الله درگیری‌های مرزی خود را تشدید می‌کنند.', '۱۲ تا ۱۳ ژوئن ۲۰۲۶: گزارش‌هایی منتشر می‌شود که اسرائیل برای جلوگیری از disruption مذاکرات ایالات متحده و ایران، اقدامات نظامی خود در لبنان را محدود کرده است.', '۱۳ ژوئن ۲۰۲۶: ایالات متحده چندین پهپاد ایرانی aiming به سمت کشتی‌ها در تنگه هرمز را ساقط می‌کند.', '۱۳ ژوئن ۲۰۲۶: مقامات ایالات متحده و ایران نشان از potential یک توافق آتش‌بس اشاره می‌کنند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            جهت‌گیری بلندمدت تا حد زیادی به این بستگی دارد که آیا آتش‌بس بین آمریکا و ایرانTwo نگه داشته می‌شود یا خیر. در صورت موفقیت، تنش‌ها می‌توانند کاهش یابند و از درگیری‌های منطقه‌ای بکاهند. در صورت شکست مذاکرات، وضعیت می‌تواند بدتر شود و منجر بهMore خشونت در لبنان، تنگه هرمز، یا حتی خود ایران گردد. ثبات منطقه همچنان شکننده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری‌ها همچنان با شدت کم اما مداوم باقی مانده و حملات کوچک‌مقیاس از سوی هر دو طرف ادامه دارد. به نظر نمی‌رسد اسرائیل یا حزب‌الله تمایلی به تشدید بیشتر در این مقطع داشته باشند، اما ریسک تشدید ناخواسته وجود دارد. تنگه هرمز شاهد رهگیری‌های پهپادی بوده، اما تاکنون اختلال عمده‌ای در حمل و نقل دریایی رخ نداده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت، بازتاب‌دهندهٔ جنگ گسترده‌تر برای نفوذ در خاورمیانه است. دستیابی به توافق آمریکا و ایران می‌تواند توازن قدرت منطقه‌ای را اصلاح کند و خطرات مربوط به تأمین نفت و ثبات منطقه‌ای را کاهش دهد. با این حال، اگر مذاکرات شکست بخورد، منطقه ممکن است شاهد دور دیگری از درگیری‌ها با پیامدهای جهانی باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشاركت بين‌المللي</h3>
+            آمریکa به‌طور فعال در حال میانجی‌گری برای آتش‌بس بین اسرائیل و ایران است و از حضور نظامی خود در منطقه بهره‌برداری می‌کند. اسرائیل، که به احتمال زیاد با تأیید ضمنی آمریکا همراه است، به بمباران‌های خود در لبنان ادامه می‌دهد. اقدامات ایران در تنگه هرمز با هدف فشار آوردن به آمریکا و اسرائیل برای امتیاز دهی طراحی شده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            اگر تنگه هرمز باز بماند و تنش‌ها کاهش یابد، قیمت‌های نفت می‌تواند تثبیت شود. با این حال، هر گونه اختلال بزرگ مانند محاصره یا درگیری گسترده، احتمالاً باعث افزایش ناگهانی قیمت‌ها شده و بر بازارهای انرژی و اقتصادهای جهانی تأثیر خواهد گذاشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            اسرائیل برای جلوگیری از disruption در مذاکرات آمریکا و ایران در لبنان دست نگه داشته است، اما درگیری با حزب‌الله در سطح پایینی ادامه دارد. به نظر می‌رسد آمریکا و ایران به یک توافق آتش‌بس نزدیک شده‌اند، توافقی که می‌تواند تنش‌ها را کاهش دهد اما تضمینی برای آن وجود ندارد. تنگه هرمز هنوز یک نقطه ناپایدار است و تنش‌های بین ایالات متحده و ایران، عرضه نفت جهانی را تهدید می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            گزارشی مبنی بر اینکه اسرائیل برای جلوگیری از به خطر افتادن گفتگوهای آمریکا و ایران، اقدامات خود را در لبنان محدود می‌کند نشان‌دهنده اهمیت فراوانی دارد. این امر نشان می‌دهد که اسرائیل اولویت‌بندی اهداف دیپلماتیک گسترده‌تر را به دستاوردهای نظامی فوری ترجیح می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            اصطلاح "مذاکرات آمریکا و ایران" به مذاکراتی اشاره دارد که هدف آن کاهش تنش‌ها بین این دو کشور است، که احتمالاً شامل برنامه هسته‌ای ایران، نفوذ منطقه‌ای و رفع تحریم‌ها باشد. تنگه هرمز یک گلوگاه مهم برای صادرات جهانی نفت است و به همین دلیل منطقه‌ای با ریسک بالا در این درگیری محسوب می‌شود.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

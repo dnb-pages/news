@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-06-13 04:55</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-06-13 04:55</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Government reported to restrain IDF action in Lebanon to avoid derailing US-Iran talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-13 03:37</strong></span>
+                </div>
+                <p class='summary'><p>PM's office denies Kan news report; Israeli strikes in south Lebanon continue as Hezbollah drones target troops, without injuries</p> <p>The post <a href="https://www.timesofisrael.com/government-reported-to-restrain-idf-action-in-lebanon-to-avoid-derailing-us-iran-talks/">Government reported to restrain IDF action in Lebanon to avoid derailing US-Iran talks</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26163500313441-1024x640.jpg" title="Government reported to restrain IDF action in Lebanon to avoid derailing US-Iran talks" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/government-reported-to-restrain-idf-action-in-lebanon-to-avoid-derailing-us-iran-talks/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>US says it downed multiple Iranian drones targeting ships in Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-13 02:18</strong></span>
+                </div>
+                <p class='summary'><p>CENTCOM says strait 'remains open for transit' * Trump says military strike kills leader of Venezuelan gang * World Cup begins in US with Hollywood-style opening ceremony</p> <p>The post <a href="https://www.timesofisrael.com/liveblog-june-13-2026/">US says it downed multiple Iranian drones targeting ships in Hormuz</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/05/AFP__20260518__B37349E__v1__HighRes__OmanIranUsIsraelWarHormuz-1024x640.jpg" title="US says it downed multiple Iranian drones targeting ships in Hormuz" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/liveblog-june-13-2026/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran War Live Updates: Cease-Fire Deal Appears Within Reach, Officials Say</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-13 02:29</strong></span>
+                </div>
+                <p class='summary'>U.S. and Iranian officials said final details were still being worked out, but President Trump and Iran’s foreign minister both said they were close to an agreement. Previous potential deals have evaporated at the last minute.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/12/world/iran-war-trump-us-israel' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - June 13, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Israel and Hezbollah are engaged in low-level but persistent fighting in Lebanon while quietly coordinating to avoid a wider war, as the U.S. and Iran appear close to a cease-fire deal that could ease tensions in the region.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Israel has reportedly limited military strikes in Lebanon to avoid disrupting ongoing U.S.-Iran negotiations, even as Hezbollah continues to target Israeli troops with drones in southern Lebanon. Meanwhile, the U.S. has intercepted Iranian drones targeting ships in the Strait of Hormuz. There are signs that a cease-fire deal between the U.S. and Iran could be finalized soon.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            A temporary calm is likely to hold in the near term as both sides work toward a cease-fire. However, if talks fail, violence could escalate quickly, particularly in Lebanon or the Strait of Hormuz. The region remains on edge, with the potential for sudden flare-ups.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['Early 2026: Israel and Hezbollah escalate cross-border attacks.', 'June 12-13, 2026: Reports emerge that Israel is restraining military action in Lebanon to avoid disrupting U.S.-Iran talks.', 'June 13, 2026: U.S. downs multiple Iranian drones targeting ships in the Strait of Hormuz.', 'June 13, 2026: U.S. and Iranian officials hint at a potential cease-fire deal.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term direction depends heavily on whether a U.S.-Iran cease-fire holds. If successful, tensions could ease, reducing regional conflicts. If talks fail, the situation could worsen, leading to more violence in Lebanon, the Strait of Hormuz, or even Iran itself. Regional stability remains fragile.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The fighting remains low-intensity but persistent, with small-scale attacks on both sides. Neither Israel nor Hezbollah appears willing to escalate further at this moment, but accidental escalation is a real risk. The Strait of Hormuz has seen drone interceptions, but no major disruptions to shipping yet.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This situation reflects the broader battle for influence in the Middle East. A U.S.-Iran deal could rebalance regional power dynamics, reducing risks for oil supplies and regional stability. However, if talks collapse, the region could face another round of conflict, with global consequences.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is actively brokering a cease-fire between Israel and Iran, leveraging its military presence in the region. Israel continues its strikes in Lebanon, likely with tacit U.S. approval. Iran’s actions in the Strait of Hormuz are designed to pressure the U.S. and Israel into concessions.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            If the Strait of Hormuz remains open and tensions ease, oil prices could stabilize. However, any major disruption—like a blockade or large-scale conflict—would likely spike prices, affecting global energy markets and economies.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Israel is holding back in Lebanon to avoid disrupting U.S.-Iran talks, but fighting with Hezbollah continues at a low level. The U.S. and Iran appear close to a cease-fire deal, which could ease tensions but is not guaranteed. The Strait of Hormuz remains a flashpoint, with U.S.-Iran tensions threatening global oil supplies.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Reports that Israel is restraining its actions in Lebanon to avoid derailing U.S.-Iran talks are significant. This suggests Israel is prioritizing broader diplomatic goals over immediate military gains.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The term 'U.S.-Iran talks' refers to negotiations aimed at de-escalating tensions between the two countries, possibly involving Iran’s nuclear program, regional influence, and sanctions relief. The Strait of Hormuz is a critical chokepoint for global oil shipments, making it a high-stakes area in this conflict.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
