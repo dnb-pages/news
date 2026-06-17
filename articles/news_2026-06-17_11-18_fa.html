@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-17 11:24</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-17 11:24</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>گزارش کوتاه کشوری ایران، خرداد ۱۴۰۵ (دوره گزارش‌دهی: اردیبهشت ۱۴۰۵)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه )</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۲۸ ساعت ۱۵:۴۵:۵۸</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: ایران (جمهوری اسلامی)</div> <div class="tag source">منبع: برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/a6/85/a68531bb-b6f5-412c-948a-408d4f16893a.png" alt></p> <p>لطفاً به فایل پیوست شده مراجعه کنید.</p> <h2>به تفکیک اعداد</h2> <p><strong>۳۵٬۸۲۶</strong> نفر در ماه مه تحت حمایت قرار گرفتند <em>(۵۱٪ خانوارها)</em></p> <p><strong>۳۸۳ تن</strong> مواد غذایی در ماه مه توزیع شد</p> <p><strong>۱۹۵٬۷۷۸ دلار آمریکا</strong> در ماه مه انتقال نقدی انجام شد</p> <p><strong>۱۹٫۲ دلار آمریکا</strong> در شش ماه آینده (ژوئن تا نوامبر ۲۰۲۶) مورد نیاز است</p> <h2>نقاط برجسته</h2> <ul><li>علیرغم تشدید اوضاع در منطقه، برنامه جهانی غذا همچنان به تعهد خود به مردم تحت حمایت خود پایبند است. عملیات در ایران بدون وقفه ادامه دارد و تیم‌های موجود در کشور با تأمین مستمر کمک‌های غذایی و نقدی به پناهندگان آسیب‌پذیر ساکن در کمپ‌ها، به توزیع خدمات‌رسانی ادامه می‌دهند. برنامه جهانی غذا همچنین در consultation نزدیک با دولت جمهوری اسلامی برای بررسی فرصت‌ها جهت افزایش گستره فعالیت‌های خود است.</li><li>به‌عنوان بخشی از فرایند تلفیق ۷٬۰۰۰ پناهندهٔ تازه معرفي‌شده، از اسفندماه ۱۴۰۴ تاکنون ۱٬۹۰۰ نفر دیگر به فهرست ذی‌نفعان کمپ‌ها اضافه شده‌اند و افراد واجد شرایط بیشتری نیز به تدریج در حال وارد شدن به برنامه‌های پشتیبانی برنامه جهانی غذا هستند.</li></ul></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/wfp-iran-country-brief-june-2026-reporting-period-may-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>حملات اسراییلی به لبنان احتمالاً تا زمانی که «برای ما روشن نشود» در مورد توافق آمریکا و ایران به ادامه خود ادامه خواهد داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسه24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۸ ۰۹:۴۵:۳۳</strong></span>
+                </div>
+                <p class='summary'>نیروهای اسرائیلی روز ۱۷ ژوئن علیرغم توافق بر سر یک معاهده صلح در جریان جنگ خاورمیانه که شامل لبنان نیز می‌شود، حملاتی هوایی را علیه چندین منطقه در جنوب لبنان انجام دادند. اما محتوای این معاهده هنوز فاش نشده است، هرچند ایالات متحده تأیید کرده است که اسرائیل نیازی به عقب‌نشینی به مرزهای بین‌المللی با لبنان نخواهد داشت. ن,گا تارنوپولسکی خبرنگار FRANCE 24 از اورشلیم به ما می‌گوید که بیشتر در این باره بدانید.</p>
+                <div class='link'><a href='https://www.france24.com/fa/حملات-اسرائیل-به-لبنان-احتمالا-تا-هنگام-دریافت-اطلاعات-دقیق-در-مورد-توافق-آمریکا-و-ایران-ادامه-خواهد-داشت' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>قیمت نفت کاهش یافت، سهام افزایش یافت در بحبوحه خوش‌بینی نسبت به معامله آمریکا و ایران و بازگشایی تنگه هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۱۷T۱۰:۱۲:۴۲Z</strong></span>
+                </div>
+                <p class='summary'><p>قیمت نفت پس از اعلام توافق تا 10 درصد کاهش یافت، اگرچه کارشناس می‌گوید عدم امضای یک توافق بلندمدت و پایدار ممکن است 'شتاب اخیر کاهش را به سرعت معکوس کند'</p> <p>این مطلب در ابتدا در وب‌سایت <a href="https://www.timesofisrael.com/oil-prices-fall-stocks-rise-amid-optimism-over-us-iran-deal-reopening-of-hormuz/">افزایش قیمت سهام در بحبوحه خوش‌بینی به توافق آمریکا و ایران، و بازگشایی تنگه هرمز</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26167736673701-1024x640.jpg" title="افزایش قیمت سهام در بحبوحه خوش‌بینی به توافق آمریکا و ایران، و بازگشایی تنگه هرمز" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/oil-prices-fall-stocks-rise-amid-optimism-over-us-iran-deal-reopening-of-hormuz/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>آخرین اخبار: رهبران گروه هفت، ترامپ را برای توافق ایران-آمریکا تحسین کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۸ ۱۵:۴۴:۰۶</strong></span>
+                </div>
+                <p class='summary'>رهبران کشورهای گروه هفت که در یک نشست در فرانسه با رئیس‌جمهور ترامپ دست‌نشاندن بودند، این توافق اولیه را «گامی مهم» دانستند که تحت «رهبری قوی» رئیس‌جمهور حاصل شده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/17/world/g7-summit-trump-france' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>بحرین تابعیت آن‌ها را لغو کرد و سپس تلاش نمود آن‌ها را به ایران اخراج نماید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۸  ساعت ۱۳:۳۰ (به وقت تهران)</strong></span>
+                </div>
+                <p class='summary'>در جریان جنگ با ایران، بحرین ۶۹ نفر از جمله کودکان را از تابعیت خود محروم کرده و آنها را بی‌تابعیت و متهم به عدم وفاداری کرده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/17/world/middleeast/bahrain-iran-citizenship-expulsions.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>تانکرهای ایرانی پیش از مذاکرات برای پایان جنگ منطقه محاصره آمریکا را ترک می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۸</strong></span>
+                </div>
+                <p class='summary'>در حالی که ایالات متحده و ایران در آستانه امضای تفاهم‌نامه و آغاز مذاکرات بیشتر هستند، مانیتور TankerTrackers اعلام می‌کند که ایران برای نخستین بار در دو ماه گذشته نفت صادر کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/6/17/first-iranian-tankers-exit-us-blockade-zone-ahead-of-peace-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>لبنان: به‌روز رسانی فوری #۳۵ - تشدید درگیری‌ها در لبنان (به‌روز شده در ۱۵ ژوئن ۲۰۲۶)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۱۷ خرداد ۱۴۰۵ ساعت ۱۰:۰۰:۰۱</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: لبنان</div> <div class="tag source">منبع: دفتر هماهنگی امور بشردوستانه سازمان ملل متحد</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/76/cd/76cdc4fc-bdde-4a02-818c-3b1a1f8b2c24.png" alt></p> <p>لطفاً به فایل پیوست شده مراجعه کنید.</p> <p><strong>نکات برجسته</strong></p> <ul><li>توافق ایالات متحده و ایران در ۱۵ ژوئن اعلام شد؛ اگرچه پس از آنhostilities در لبنان کاهش یافت، اما بازگشت‌ها همچنان محدود و با احتیاط صورت می‌گیرد.</li> <li>hostilities با حملات هوایی و هفت دستور اخراج مجدد شامل ۳۷ منطقه در جنوب و استان نبطیه ادامه یافت که منجر به آواره‌شدن بیشتر بین ۱۲ تا ۱۴ ژوئن شد.</li> <li>وزارت بهداشت عمومی از ابتدای درگیری‌ها تاکنون دستکم ۳۷۹۸ کشته و ۱۱۷۸۱ زخمی ناشی از hostilities را ثبت کرده است.</li> <li>تا تاریخ ۱۵ ژوئن، در مجموع ۱۳۱٬۲۰۰ آواره داخلی در ۶۴۴ مرکز اسکان جمعی باقی مانده‌اند.</li> <li>نیازهای بشردوستانه همچنان گسترده و شدید است. بیش از ۱٫۱ میلیون نفر از طریق خدمات آب،Sanitation و بهداشت (WASH) تحت پوشش قرار گرفته‌اند و ۱۳٫۶ میلیون وعده غذایی توزیع شده است.</li> <li>فراخوان اضطراری ۲۰۲۶ لبنان ۳۲٫۷ درصد تأمین شده است و حدود ۲۰۹٫۶ میلیون دلار در برابر ۶۳۹٫۹ میلیون دلار درخواستی دریافت شده است.</li> </ul><p><strong>وضعیت کلی</strong></p> <p>وضعیت بشردوستانه در لبنان، علیرغم اعلامیه ۱۵ ژوئن مبنی بر توافق ایالات متحده و ایران بر سر یک یادداشت تفاهم و نشانه‌های بعدی کاهش تنش منطقه‌ای، همچنان شکننده و نیازمند کمک شدید است. حرکت‌های محدود و محتاطانه خانواده‌های آواره به سمت مناطق مبدا گزارش شده است، اما اکثریت نزدیک به یک میلیون نفر آواره در لبنان از ابتدای ۲ مارس هنوز در مناطق پذیرش به دلیل نگرانی‌های امنیتی مداوم و فعالیت‌های نظامی در حال انجام در جنوب لبنان باقی مانده‌اند. مقامات همچنان از بازگشت به مناطق پرخطر منع می‌کنند و بسیاری از خانواده‌های آواره منتظر ایجاد اطمینان‌های بیشتر برای تصمیم‌گیری در مورد بازگشت هستند.</p> <p>پیش از اعلامیه ۱۵ ژوئن، hostilities دوباره تشدید شد و منجر به تلفات و خسارات بیشتر در مناطق آسیب‌دیده شد. در ۱۴ ژوئن، یک حمله هوایی اسرائیلی به حومه جنوبی بیروت reportedly سه نفر را کشت و ۱۶ نفر دیگر را زخمی کرد. این حمله دومین حمله گزارش‌شده به حومه جنوبی بیروت در یک هفته بود که پس از حمله ۷ ژوئن رخ داد و پس از حمله ۶ مه پیش آمد. ارتش اسرائیل در حساب کاربری X خود اعلام کرد که یک مرکز فرماندهی حزب‌الله را هدف قرار داده و ادعا کرد که این حمله پس از پرتاب اهداف هوایی به سمت شمال اسرائیل در همان روز اتفاق افتاده است. بین ۱۲ تا ۱۴ ژوئن، نیروهای دفاعی اسرائیل (IDF) هفت دستور اخراج جدید شامل ۳۷ منطقه از جمله لویزیه (ناحیه جزین، استان جنوب) برای اولین بار صادر کردند. وزارت بهداشت عمومی دستکم ۸۷ کشته و ۲۹۸ زخمی ناشی از hostilities را در طی دوره گزارش‌شده ثبت کرد که منجر به مجموع تلفات از آغاز تشدید به دستکم <strong>۳۷۹۸ کشته (شامل ۳۶۳ زن، ۲۴۷ کودک) و ۱۱۷۸۱ زخمی (شامل ۱۴۱۲ زن، ۹۹۲ کودک)</strong> شد.</p> <p>حملات بیشتری نیز به زیرساخت‌های سلامت در طی دوره گزارش‌شده ثبت شد که موجب افزایش ارقام شناسایی‌شده توسط سیستم نظارت WHO برAttackهای بر مراکز درمانی به ۲۰۸ حمله در لبنان از ابتدای مارس ۲۰۲۶ شد که منجر به ۱۳۴ کشته و ۴۰۳ زخمی در میان کادر سلامت در حال خدمت، و همچنین تعطیلی ۴۴ مرکز سلامت اولیه (PHCCs) و ۳ بیمارستان شد.</p> <p>تا вечер ۱۵ ژوئن، در مجموع <strong>۱۳۱۲۰۰ آواره (۳۵۰۰۰ خانواده)</strong> در <strong>۶۴۴ مرکز اسکان جمعی</strong> باقی مانده بودند. هماهنگی در مورد مراکز اسکان جمعی توسط هلال احمر لبنان، نظارت ریسک بلایا (DRM)، فرمانداری‌ها، شهرداری‌ها و وزارت امور اجتماعی (MoSA) ادامه دارد.</p> <p>بسیاری از خانواده‌هایی که reportedly حرکت به سمت خانه‌های خود را آغاز کرده بودند، به نظر «بازدیدهای رفت و برگشتی» را برای بررسی وضعیت خانه‌های خود و دسترسی به خدمات اساسی انجام می‌دهند درحالی‌که arrangements اسکان فعلی خود را حفظ می‌کنند. در نتیجه، نیازهای بشردوستانه همچنان بالا بوده و فشار قابل توجهی بر ظرفیت اسکان در سراسر کشور وجود دارد و انتظار می‌رود levels آوارگی در کوتاه‌مدت افزایش یابد. حمایت‌های مستمر بشردوستانه برای رسیدگی به نیازهای اسکان، حفاظت و assistance پایه در استان‌های آسیب‌دیده ضروری است.</p> <p><strong>محدودیت‌های تأمین مالی بزرگ‌ترین چالش برای ادامه assistance بشردوستانه است.</strong> تا ۱۵ ژوئن، فراخوان اضطراری ۲۰۲۶ لبنان <a rel="noreferrer noopener" target="_blank" href="https://emea01.safelinks.protection.outlook.com/?url=https://www.unocha.org/publications/report/lebanon/flash-appeal-lebanon-march-may-2026-march-2026-enar&data=05%7C02%7Chiba.hanano@un.org%7C7fcb9e665c3c4f32c1a508deb7624e18%7C0">فراخوان اضطراری لبنان ۲۰۲۶</a> ۲۰۹٫۶ میلیون دلار یا ۳۲٫۷ درصد از ۶۳۹٫۹ میلیون دلار درخواستی دریافت کرده است.</p>
+                <div class='link'><a href='https://reliefweb.int/report/lebanon/lebanon-flash-update-35-escalation-hostilities-lebanon-15-june-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>گزارش کشور ارمنستان، برنامه جهانی غذا، ژوئن 2026 (دوره گزارش: مه 2026)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه )</span>
+                    <span class='meta-item'>📅 <strong>۱۷ ژوئن ۲۰۲۶ ساعت ۰۹:۲۹</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: ارمنستان</div> <div class="tag source">منبع: برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/75/3c/753cfb7e-4de7-447d-804b-ee08e0244b6a.png" alt></p> <p>لطفاً به فایل پیوست مراجعه کنید.</p> <h2>نقاط عطف کلیدی</h2> <p><strong>۳.۴ میلیون دلار در شش ماه آینده (ژوئن – نوامبر ۲۰۲۶) مورد نیاز است</strong></p> <ul><li>ارمنستان میزبانی یک رویداد سطح بالای درباره «برنامه‌های پایدار وعده‌های غذایی مدارس در بسترهای جهانی و منطقه‌ای» را بر عهده داشت و نمایندگانی از دولت‌ها، شرکای بین‌المللی و کارشناسان را گرد هم آورد تا از طریق کارگاه‌ها، بازدیدهای میدانی و یادگیری از همتایان، تجارب را به اشتراک بگذارند.</li> <li>طبق گزارش ارزیابی امنیت غذایی و آسیب‌پذیری سال ۲۰۲۶، امنیت غذایی ارمنستان به طور پیوسته در حال بهبود است. داده‌ها روند مثبتی را نشان می‌دهند؛ به گونه‌ای که ناامنی غذایی از ۲۰ درصد به ۱۸ درصد کاهش یافته است. علاوه بر این، سهم خانوارهای حاشیه امنیت غذایی از ۵۴ درصد به ۴۹ درصد کاهش یافته، که حاکی از تاب‌آوری و ثبات اقتصادی بیشتر خانواده‌ها در سراسر کشور است.</li> <li>علیرغم تشدید تنش‌های منطقه‌ای در اطراف ایران، اوضاع در مرزهای جنوبی ارمنستان آرام و پایدار باقی مانده و هیچ حادثه امنیتی قابل توجهی گزارش نشده است.</li> </ul></p>
+                <div class='link'><a href='https://reliefweb.int/report/armenia/wfp-armenia-country-brief-june-2026-reporting-period-may-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>ایران: مروری بر حمایت از پناهندگان در سطح میان‌دفتری برای وضعیت خاورمیانه</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (جامعه‌گیری بشردوستانه )</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۲۸ ساعت ۱۳:۳۳:۱۲</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشورها: ایران، افغانستان، ارمنستان، عراق، لبنان، سرزمین‌های فلسطینی اشغالی، پاکستان، جمهوری عربی سوریه، ترکمنستان</div> <div class="tag source">منابع: شورای دانمارکی پناهندگان، سازمان بین‌المللی مهاجرت، کمیته نجات بین‌المللی، صندوق کودکان سازمان ملل، برنامه توسعه سازمان ملل، کمیساریای عالی پناهندگان سازمان ملل، آژانس کار و امداد سازمان ملل برای آوارگان فلسطینی در خاور نزدیک، سازمان ملل برای زنان، صندوق جمعیت سازمان ملل، برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/00/12/00122cd3-98b3-5e36-a707-d90b7896e023.png" alt></p> <p>لطفاً به فایل پیوستی مراجعه فرمایید.</p> <p>گزارش "مروری بر حفاظت از پناهندگان در وضعیت خاورمیانه" برای وضعیت منطقه خاورمیانه، تحلیلی فرامنطقه‌ای از خطرات و روندهای نوظهور حفاظتی را از زمان تشدید درگیری‌ها در ۲۸ فوریه ۲۰۲۶ ارائه می‌دهد. این سند بر اساس تحلیل گروه‌های کاری حفاظتی سطح کشور، نشست‌های مشترک همآهنگی و شرکای فعال در مناطق تحت تأثیر تهیه شده است. هدف از این گزارش، حمایت از آگاهی جمعی از وضعیت، آگاه‌سازی درباره آماده‌سازی و تنظیم واکنش‌ها، و برجسته‌سازی مناطق تشدید خطرات حفاظتی مرتبط با آوارگی — از جمله در زمینه‌هایی که مهاجرت بزرگ‌مقیاس پناهندگان رخ نداده است — می‌باشد.</p> <p>از منظر آوارگی، این تشدید در چارچوب یک وضعیت منطقه‌ای از پیش کشیده و تحت فشار رخ داده است، به‌گونه‌ای که در تاریخ ۲۸ فوریه ۲۰۲۶، پیش از این تشدید، بیش از ۳۱ میلیون نفر در منطقه گسترده خاورمیانه، شامل آوارگان و تازه‌برگشتگان، در وضعیت آوارگی اجباری به سر می‌بردند. محیط حفاظتی فرامنطقه‌ای کنونی تحت تأثیر همگرایی عوامل چندگانه‌ای است که در سال ۲۰۲۶ تشدید یافته‌اند — از جمله درگیری‌های فعال، تضعیف قوانین بین‌المللی بشردوستانه (IHL) و هنجارهای برابری جنسیتی، رکود اقتصادی کلان و آسیب‌پذیری‌های بنیادی مرتبط با آب و هوا — که منجر به ایجاد خطرات حفاظتی پیچیده و چندلایه‌ای شده و نیازمند پاسخ یکپارچه و پایدار سازمان‌های مختلف می‌باشد. ​</p> <p>​در ایران و لبنان، درگیری‌ها به‌طور مستقیم بحران‌های حفاظتی حاد ایجاد کرده‌اند — از جمله آوارگی داخلی گسترده، تلفات غیرنظامیان، آسیب به زیرساخت‌ها و فشار شدید بر سیستم‌های حفاظتی ملی. پناهندگان و دیگر افراد نیازمند حفاظت بین‌المللی در معرض خطرات فزاینده‌ای مرتبط با وضعیت قانونی خود قرار دارند، در حالی که زنان و دختران به‌طور نامتناسبی تحت تأثیر خشونت جنسیتی، افزایش مسئولیت‌های مراقبتی و موانع دستیابی به کمک‌ها هستند. در کشورهای همسایه، خطرات فزونی‌یافته تحت تأثیر شوک‌های اقتصادی، کاهش خدمات، ناپایداری‌های قانونی و پریشانی‌های روان‌شناختی قرار دارند. بازگشت‌ها تحت شرایط نامطلوب، که فاقد ویژگی‌های داوطلبانه، شرافتمندانه و پایدار هستند، از نگرانی‌های اصلی حفاظتی در منطقه به‌شمار می‌روند. بازگشت به سوریه و افغانستان (شامل اخراج‌ها از ایران و پاکستان) در شرایطی انجام می‌شود که توانایی ادغام مجدد همچنان محدود است. این امر می‌تواند منجر به انحراف تلاش‌های پر fragile بازیابی، غلبه بر جوامع و ایجاد نگرانی‌های جدید حفاظتی و همچنین آوارگی یا حرکت‌های جمعی جدید گردد.</p> <p>این پویایی‌ها در شرایطی رخ می‌دهد که منابع مالی بشردوستانه و توسعه‌ای به‌طور قابل توجهی کاهش یافته و توانایی بازیگران عملیاتی در حفظ پاسخ‌های حفاظتی و ظرفیت‌های آماده‌سازی را محدود می‌سازد. با هم در نظر گرفتن این روندها، می‌توان به محیط حفاظتی تحت فشار، با تشدید آسیب‌پذیری‌ها و فشار فزاینده بر نهادهای ملی، پی برد که نیازمند پیوند حفاظت از پناهندگان با سیستم‌های ملی و چارچوب‌های برنامه‌ریزی توسعه است.</p>
+                <div class='link'><a href='https://reliefweb.int/fa/report/iran-islamic-republic/inter-agency-refugee-protection-overview-middle-east-situation' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>این آخرین اخبار است.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۲۸ ۰۹:۳۹</strong></span>
+                </div>
+                <p class='summary'>رهبران گروه هفت در روز چهارشنبه در مورد هوش مصنوعی و نابرابری‌های جهانی به گفتگو خواهند پرداخت، در حالی که پرسش‌هایی در خصوص ایران مطرح است.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/17/world/g7-summit-trump-france/g7-evian-summit' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>آیا Vance می‌تواند معامله با ایران را بفروشد؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۷June۱۷ ۱۱:۰۰ UTC</strong></span>
+                </div>
+                <p class='summary'>علاوه بر این، کشف ۴۰ میلیون دلار شمش طلا تهدید می‌کند تا اسناد محرمانه سی‌آی‌ای را فاش کند و رئیس‌جمهور ترامپ قانون تولید دفاعی (DPA) را برای مقابله با کمبود مهمات به اجرا درمی‌آورد.</p>
+                <div class='link'><a href='https://www.wsj.com/politics/can-vance-sell-the-iran-deal-c6fcad8b' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>ناتو: روٹے نے کہا اتحادی یورپی ممالک خلیجی جہازرانی کو بحال کرنے میں مدد کے لیے تیار ہیں</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۳/۲۸ ساعت ۱۵:۲۸</strong></span>
+                </div>
+                <p class='summary'>اعضای ائتلاف نظامی که تحت رهبری بریتانیا و فرانسه قرار دارد، به نقل منابع ناتو، آماده حمایت از از سرگیری عبور کشتی‌ها از تنگه هرمز هستند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/natos-rutte-says-european-allies-set-to-help-restore-gulf-shipping-65c57a0c' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>ایالات متحده با ارسال علائمی از بازگشت تحریم‌ها علیه روسیه خبر می‌دهد، زیرا گروه هفت در حمایت از اوکراین متحد می‌شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۳/۲۸ ساعت ۱۴:۳۰:۱۴ به وقت تهران</strong></span>
+                </div>
+                <p class='summary'>رهبران گروه هفت در ۱۶ خرداد موافقت کردند تا فشار بر روسیه برای پایان دادن به بیش از چهار سال جنگ علیه اوکراین را تشدید کنند. رئیس‌جمهور ایالات متحده دونالد ترامپ گفت مسکو باید «معامله‌ای انجام دهد» و نشان داد واشنگتن ممکن است تحریم‌های لغو‌شده را دوباره اعمال کند. رئیس‌جمهور اوکراین ولودیمیر زلنسکی در این نشست واقع در شهراویان فرانسه شرکت کرد و امیدوار بود که با توافق احتمالی میان ایالات متحده و ایران، دولت ترامپ اکنون توجه خود را به حل بزرگ‌ترین درگیری مسلحانه اروپا از زمان جنگ جهانی دوم معطوف کند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/سیگنال‌های-آمریکا-برای-برگشت-تحریم‌های-روسیه-همزمان-با-وحدت-گروه-هفت-اطراف-اوکراین' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>هزاران نفر علی رغم حملات هوایی اسرائیل، با وجود توافق آمریکا و ایران، بار دیگر به جنوب لبنان روی آورده‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> France24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۷ ژوئن ۲۰۲۶ ساعت ۰۹:۵۹:۱۳ به وقت هماهنگ جهانی (یوتی‌سی)</strong></span>
+                </div>
+                <p class='summary'>علی‌رغم توافق صلح اعلام‌شده توسط آمریکا و اسرائیل، لبنان هدف حملات جدید اسرائیل قرار گرفته است. با وجود این حملات و هشدارهای دولت خود، بسیاری از مردم جنوب لبنان مشتاق بازگشت به خانه‌هایشان هستند و هزاران نفر در حال بازگشت هستند. اما غیرنظامیان همچنان شک و تردید دارند. خبرنگار FRANCE 24، رنی دیویس، بیشتر از بیروت به ما می‌گوید.</p>
+                <div class='link'><a href='https://www.france24.com/fa/هزاران‌نفر-با-وجود-حمله‌های-اسرائیل-به-جنوب-لبنان-بازمی‌گردند-در-حالی‌که-قرار-است-توافق-ایران-و-آمریکا-امضا‌شود' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۷ خرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>توافقی مقدماتی میان ایالات متحده و ایران، امیدها به کاهش تنش‌های منطقه‌ای را افزایش داده، قیمت‌های نفت را پایین آورده و صادرات نفت ایران را از سر گرفته است. با این وجود، در لبنان خشونت همچنان ادامه دارد و حملاتی اسرائیل پس از اعلام این توافق، به حزب‌الله targeting کرده است. میلیون‌ها نفر در لبنان و ایران با وجود بحران‌های بشردوستانه شدید همچنان آواره هستند، در حالی که رهبران جهانی از این توافق ستایش می‌کنند اما با چالش‌های اجرایی و ثبات منطقه‌ای مواجه‌اند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            یک تفاهم‌نامهٔ مقدماتی (MoU) بین ایالات متحده و ایران در ۱۵ خرداد ۱۴۰۵ اعلام شد که نشان‌دهندهٔ تساهل احتمالی در تنش‌ها است. این امر موجب خوش‌بینی نسبت به کاهش قیمت نفت و از سرگیری صادرات نفتی ایران پس از دو ماه блокаده شده است. با این حال، اسرائیل به بمباران‌ها در لبنان ادامه می‌دهد و به نیاز خود برای روشن شدن موضوع توافق ایالات متحده-ایران استناد می‌کند. از طرفی، ایران با چالش‌های انسانی شدید دست و پنجه نرم می‌کند، به‌گونه‌ای که برنامه جهانی غذا در اردیبهشت ۱۴۰۵ به بیش از ۳۵ هزار نفر کمک‌رسانی کرده است. لبنان نیز در بحران به سر می‌برد و بیش از ۱۳۱ هزار نفر آواره هستند، بمباران‌ها ادامه دارد و زیرساخت‌های پزشکی مورد حمله قرار گرفته‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            توافق آمریکا و ایران می‌تواند منجر به کاهش تنش‌های منطقه‌ای شود، اما به دلیل سوابق توافق‌های قبلی که نقض شده‌اند، تردیدها بالاست. اسرائیل ممکن است حملات خود را ادامه دهد تا زمانی که باور کند ایران به‌طور کامل به این توافق متعهد است. بحران‌های انسانی در لبنان و ایران همچنان ادامه خواهد یافت و جمعیت‌های آواره تلاش خواهند کرد تا با امنیت به خانه‌های خود بازگردند. قیمت نفت ممکن است در صورت پایدار ماندن توافق تثبیت شود، اما درگیری‌های دوباره می‌تواند به سرعت کاهش‌های اخیر را معکوس کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ۶ ژوئن ۲۰۲۶: حملات هوایی اسرائیل به حومه جنوبی بیروت. ۱۲ تا ۱۴ ژوئن ۲۰۲۶: صدور مجدد دستورهای آوارگی در لبنان که ۳۷ منطقه را تحت تأثیر قرار می‌دهد. ۱۵ ژوئن ۲۰۲۶: ایالات متحده و ایران توافق مقدماتی ( MoU ) اعلام می‌کنند. ۱۷ ژوئن ۲۰۲۶: حملات نظامی اسرائیل در لبنان علی‌رغم توافق ادامه می‌یابد؛ برنامه جهانی غذا (WFP) از نیازهای بشردوستانه ایران گزارش می‌دهد؛ قیمت نفت با وجود خوش‌بینی ۱۰ درصد کاهش می‌یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            اگر توافق US-Iran بر قرار بماند، می‌تواند منجر به کاهش گسترده‌تری در تنش‌ها در خاورمیانه شده و به طور بالقوه درگیری‌ها در لبنان، سوریه و یمن را تسهیل کند. با این حال، عدم اعتماد منطقه‌ای بالاست و شکست احتمالی مذاکرات می‌تواند خصومت‌ها را از سر بگیرد. ایران در صورت برخورداری از حمایت اقتصادی می‌تواند حمایت خود از گروه‌های نیابتی مانند حزب‌الله را کاهش دهد. در بلند مدت، ثبات به این بستگی دارد که آیا این توافق برنامه هسته‌ای ایران، نفوذ منطقه‌ای آن و تسهیل تحریم‌ها را مورد توجه قرار می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            علیرغم توافق ایالات متحده و ایران، درگیری‌ها در لبنان همچنان ادامه دارد و حملات هوایی اسرائیل به مواضع حزب‌الله معطوف شده است. شدت درگیری‌ها بالاست به طوری که از مارس ۲۰۲۶ تاکنون ۳٬۷۹۸ کشته و ۱۱٬۷۸۱ زخمی گزارش شده است. زیرساخت‌های بشردوستانه از جمله بیمارستان‌ها و کارکنان پزشکی مکرراً هدف حملات قرار می‌گیرند و بحران را تشدید می‌کنند. در ایران، درگیری‌ها کمتر مستقیم است اما فشار اقتصادی و ناامنی غذایی را در پی داشته است و برنامه جهانی غذا به جمعیتی آسیب‌پذیر یاری می‌رساند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            توافق ایالات متحده و ایران می‌تواند نقطه عطفی در ژئوپلیتیک خاورمیانه باشد، امیدی برای کاهش تنش‌ها ایجاد می‌کند، اما در صورت شکست، خطرات بی‌ثباتی بیشتر را نیز به همراه دارد. بازارهای نفت به طرز مثبتی به احتمال از سرگیری صادرات نفت ایران و کاهش خطرات درگیری واکنش نشان می‌دهند. با این حال، رنج مردم در لبنان و ایران همچنان شدید است و بهبود بلندمدت به صلح پایدار و حمایت بین‌المللی بستگی دارد. در سطح جهانی، خاورمیانه‌ای باثبات می‌تواند توجه را دوباره به سمت سایر بحران‌ها، مانند اوکراین یا حکمرانی هوش مصنوعی، که در اجلاس گروه هفت به آن پرداخته شد، معطوف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده و ایران در این توافق حیاتی هستند. دونالد ترامپ، رئیس‌جمهور ایالات متحده، به دلیل تحقق این توافق از سوی رهبران گروه هفت ستایش شد. متحدان ناتو، از جمله انگلیس و فرانسه، در حال آماده‌سازی برای کمک به احیای کشتیرانی در خلیج فارس، به ویژه از طریق تنگه هرمز هستند. اسرائیل به‌عنوان یکی از بازیگران کلیدی، علی‌رغم توافق، اقدامات نظامی خود در لبنان را ادامه می‌دهد. سازمان‌های بشر دوستانه مانند برنامه جهانی غذا (WFP) در حال ارائه کمک‌های حیاتی به ایران و لبنان هستند، در حالی که بازیگران منطقه‌ای مانند بحرین اقدامات تنبیهی، همچون سلب تابعیت افراد متهم به خیانت مرتبط با ایران، را در پیش گرفته‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            بهای نفت تا ۱۰ درصد کاهش یافت، به دنبال اعلام توافق ایالات متحده و ایران و چشم‌انداز بازگشایی تنگه هرمز. این مسأله از آن جهت حائز اهمیت است که تنگه هرمز، یک مسیر حیاتی ارسال نفت محسوب می‌شود و هرگونه اختلال در آن می‌تواند منجر به افزایش جهانی قیمت‌ها شود. از سرگیری صادرات نفت از سوی ایران می‌تواند تنگناهای عرضه را کاهش داده و به ثبات بیشتر قیمت‌ها کمک کند. با این حال، کارشناسان هشدار می‌دهند که عدم اجرای یک توافق پایدار می‌تواند به سرعت این دستاوردها را معکوس کرده و موجب نوسانات مجدد قیمتی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            یک توافق اولیه میان آمریکا و ایران منجر به کاهش قیمت نفت و افزایش امیدها به کاهش تنش منطقه‌ای شده است، اما خشونت‌ها در لبنان همچنان ادامه دارد. بح crises های انسان دوستانه در ایران و لبنان همچنان شدید است، به طوری که میلیون‌ها نفر آواره شده‌اند، ناامنی غذایی شیوع یافته و زیرساخت‌های پزشکی مورد حمله قرار گرفته‌اند. رهبران جهانی از جمله گروه هفت و ناتو، به طور محتاطانه‌ای خوش‌بین هستند، اما با چالش‌هایی در اطمینان از اجرای معامله و ثبات بلندمدت آن روبرو می‌باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            ادامه حملات هوایی اسرائیل در لبنان علی‌رغم توافق امریکا و ایران تعجب‌آور است و سؤالاتی درباره تعهد اسرائیل به این توافق و دوام آتش‌بس را ایجاد می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 Additional Context</h3>
+            تغییرات مهمی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-06-17 11:20</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-06-17 11:20</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>WFP Iran Country Brief, June 2026 (Reporting period: May 2026)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 11:15</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Iran (Islamic Republic of)</div> <div class="tag source">Source: World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/a6/85/a68531bb-b6f5-412c-948a-408d4f16893a.png" alt></p> <p>Please refer to the attached file.</p> <h2>IN NUMBERS</h2> <p><strong>35,826</strong> people assisted in May <em>(51% female)</em></p> <p><strong>383 mt</strong> food distributed in May</p> <p><strong>USD 195,778</strong> cash transferred in May</p> <p><strong>USD 19.2</strong> required in the next six months (June - November2026)</p> <h2>KEY HIGHLIGHTS</h2> <ul><li>Despite the escalation in the region, WFP remains steadfast in its commitment to the people it serves. The operation in Iran continues without disruption, with teams on the ground ensuring uninterrupted delivery of food and cash assistance to the most vulnerable refugees residing in settlements. WFP is also in close consultation with the Government to explore opportunities to scale up its operations.</li> <li>As part of the ongoing inclusion of 7,000 newly referred refugees, a total of 1,900 beneficiaries have been added to the settlements since March 2026, with additional eligible individuals expected to be incorporated progressively in WFP assistance.</li> </ul></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/wfp-iran-country-brief-june-2026-reporting-period-may-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Israeli strikes on Lebanon likely to continue 'until we get any clarity' on US-Iran agreement</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 09:45</strong></span>
+                </div>
+                <p class='summary'>Israeli forces carried out airstrikes on several areas in south Lebanon on June 17 despite an agreement on a peace deal in the Middle East war that includes Lebanon. But the contents of the deal have yet to be revealed, although the US has confirmed Israel will not have to withdraw to the international border with Lebanon. FRANCE 24's Noga Tarnopolsky tells us more from Jerusalem.</p>
+                <div class='link'><a href='https://www.france24.com/en/israeli-strikes-on-lebanon-likely-to-continue-until-we-get-any-clarity-on-us-iran-agreement' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Oil prices fall, stocks rise amid optimism over US-Iran deal, reopening of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 10:12</strong></span>
+                </div>
+                <p class='summary'><p>Crude prices dropped as much as 10% after agreement announced, though expert says a failure to sign a lasting, long-term agreement 'could rapidly reverse the recent decline'</p> <p>The post <a href="https://www.timesofisrael.com/oil-prices-fall-stocks-rise-amid-optimism-over-us-iran-deal-reopening-of-hormuz/">Oil prices fall, stocks rise amid optimism over US-Iran deal, reopening of Hormuz</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26167736673701-1024x640.jpg" title="Oil prices fall, stocks rise amid optimism over US-Iran deal, reopening of Hormuz" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/oil-prices-fall-stocks-rise-amid-optimism-over-us-iran-deal-reopening-of-hormuz/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Live Updates: G7 Leaders Praise Trump for U.S.-Iran Deal</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 11:14</strong></span>
+                </div>
+                <p class='summary'>Leaders from the Group of 7 nations, who have been courting President Trump at a summit in France, called the preliminary agreement a “breakthrough” secured under the president’s “strong leadership.”</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/17/world/g7-summit-trump-france' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Bahrain Revoked Their Citizenship, and Then Tried to Expel Them to Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 09:00</strong></span>
+                </div>
+                <p class='summary'>Amid the war with Iran, Bahrain has stripped 69 people of their citizenship, including children, accusing them of disloyalty and rendering them stateless.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/17/world/middleeast/bahrain-iran-citizenship-expulsions.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Iranian tankers exit US blockade zone before talks to end war</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 08:57</strong></span>
+                </div>
+                <p class='summary'>As US, Iran prepare to sign MoU and start more talks, TankerTrackers monitor says Iran exports first oil in two months.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/6/17/first-iranian-tankers-exit-us-blockade-zone-ahead-of-peace-talks?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Lebanon: Flash Update #35 - Escalation of hostilities in Lebanon (as of 15 June 2026)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 10:00</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Lebanon</div> <div class="tag source">Source: UN Office for the Coordination of Humanitarian Affairs</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/76/cd/76cdc4fc-bdde-4a02-818c-3b1a1f8b2c24.png" alt></p> <p>Please refer to the attached file.</p> <p><strong>HIGHLIGHTS</strong></p> <ul><li>United States-Iran deal announced on 15 June; while hostilities in Lebanon have reduced in number subsequently, returns remain limited and cautious.</li> <li>Hostilities continued with airstrikes and seven renewed displacement orders covering 37 localities across the South and Nabatieh Governorates triggering additional displacement between 12-14 June.</li> <li>At least 3,798 deaths and 11,781 injuries due to hostilities recorded by the Ministry of Public Health since 2 March.</li> <li>A total of 131,200 Internally Displaced Persons remained in 644 collective shelters on 15 June.</li> <li>Humanitarian needs remain extensive and severe. Over 1.1 million people reached through WASH services and 13.6 million meals distributed.</li> <li>The 2026 Lebanon Flash Appeal is 32.7 per cent funded, with approximately US$209.6 million received against US$639.9 million requested.</li> </ul><p><strong>SITUATION OVERVIEW</strong></p> <p>The humanitarian situation in Lebanon remains fragile and needs immense and severe, despite the 15 June announcement that the United States and Iran had reached agreement on a Memorandum of Understanding and subsequent signs of regional de-escalation. Limited and cautious movements of displaced families towards areas of origin have been reported, but the majority of the nearly one million people displaced within Lebanon since 2 March remained in areas of reception due to continued security concerns and ongoing military activities in southern Lebanon. Authorities continued to advise against returns to high-risk locations, and many displaced families are awaiting further assurances before making decisions regarding return.</p> <p>Prior to the 15 June announcement, hostilities intensified once again, resulting in additional casualties and damages across affected areas. On 14 June, an Israeli airstrike on Beirut's southern suburbs reportedly killed three people and injured 16 others. The strike was the second reported attack on Beirut’s southern suburbs in one week, following a 7 June strike, and came after an earlier strike on 6 May. The Israeli military announced on ‘X’ that it targeted a Hezbollah command centre, and claimed that the strike followed the launch of aerial targets towards northern Israel earlier the same day. Between 12 and 14 June, the Israeli Defence Forces (IDF) issued seven renewed displacement orders concerning 37 localities, including Louaiziye (Jezzine district, South governorate) for the first time. At least 87 deaths and 298 injuries due to hostilities were recorded by the Ministry of Public Health during the reporting period, bringing the total number of casualties since the beginning of the escalation to <strong>at least 3,798 deaths (including 363 females, 247 children) and 11,781 injuries (including 1412 female, 992 children).</strong></p> <p>Additional attacks affecting healthcare were also recorded during the reporting period, bringing the total figures recorded by WHO’s Surveillance System forAttacks on Health Care to 208 such attacks in Lebanon since 2 March 2026 resulting in 134 deaths and 403 injuries among on-duty healthcare workers,as well as the closure of 44 primary health care centres (PHCCs) and 3 hospitals.</p> <p>A total of <strong>131,200 displaced people (35,000 families) remained in 644</strong> <strong>collective shelters</strong> as of the evening of 15 June. Coordination on collective shelters continues among the Lebanese Red Cross, Disaster Risk Monitoring (DRM), governors, municipalities, and Ministry of Social Affairs (MoSA).</p> <p>Many of the households that have reportedly initiated movement toward their home areas appear to be conducting "go-and-see" visits to assess the condition of their homes and the availability of basic services while maintaining their current displacement arrangements. Consequently, humanitarian needs remain elevated, shelter capacity continues to face significant pressure nationwide, and displacement levels are expected to remain elevated in the immediate term. Continued humanitarian support is required to address shelter, protection, and basic assistance needs across affected governorates.</p> <p><strong>Funding constraints remain a major challenge to sustaining humanitarian assistance.</strong> As of 15 June, the 2026<a rel="noreferrer noopener" target="_blank" href="https://emea01.safelinks.protection.outlook.com/?url=https://www.unocha.org/publications/report/lebanon/flash-appeal-lebanon-march-may-2026-march-2026-enar&data=05%7C02%7Chiba.hanano@un.org%7C7fcb9e665c3c4f32c1a508deb7624e18%7C0">Lebanon Flash Appeal</a> has received <strong>US$ 209.6 million</strong>, or <strong>32.7 per cent of the $639.9 million</strong> requested.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/lebanon/lebanon-flash-update-35-escalation-hostilities-lebanon-15-june-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>WFP Armenia Country Brief, June 2026 (Reporting period: May 2026)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 09:29</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Armenia</div> <div class="tag source">Source: World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/75/3c/753cfb7e-4de7-447d-804b-ee08e0244b6a.png" alt></p> <p>Please refer to the attached file.</p> <h2>KEY HIGHLIGHTS</h2> <p><strong>USD 3.4 M required in the next six months (June – November 2026)</strong></p> <ul><li>Armenia hosted a high-level event on “Sustainable School Meal Programmes in Global and Regional Contexts,” bringing together government delegations, international partners, and experts to exchange experiences through workshops, field visits, and peer learning.</li> <li>Armenia’s food security is steadily improving, according to the successful completion of the 2026 Food Security and Vulnerability Assessment. dData shows a positive trend, with food insecurity dropping from 20 percent to 18 percent. Additionally, the proportion of marginally food-secure households declined from 54 percent to 49 percent, signaling greater economic resilience and stability for families across the country.</li> <li>Amid heightened regional escalation centred on Iran, the situation along Armenia’s southern borders remained calm and stable, with no significant security incidents reported.</li> </ul></p>
+                <div class='link'><a href='https://reliefweb.int/report/armenia/wfp-armenia-country-brief-june-2026-reporting-period-may-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Iran: Inter-Agency Refugee Protection Overview for the Middle East Situation</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 09:03</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Countries: Iran (Islamic Republic of), Afghanistan, Armenia, Iraq, Lebanon, occupied Palestinian territory, Pakistan, Syrian Arab Republic, Turkmenistan</div> <div class="tag source">Sources: Danish Refugee Council, International Organization for Migration, International Rescue Committee, UN Children's Fund, UN Development Programme, UN High Commissioner for Refugees, UN Relief and Works Agency for Palestine Refugees in the Near East, UN Women, United Nations Population Fund, World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/00/12/00122cd3-98b3-5e36-a707-d90b7896e023.png" alt></p> <p>Please refer to the attached file.</p> <p>The Inter-Agency Refugee Protection Overview for the Middle East Situation provides a cross-regional analysis of emerging protection risks and trends since the escalation of hostilities on 28 February 2026. The document draws on analysis from county level Protection Working Groups, relevant coordination forums and partners across the affected regions. The overview is intended to support shared situational awareness, inform preparedness and response adjustments, and highlight where displacement-related protection risks are intensifying — including in contexts where large-scale refugee movements have not occurred.</p> <p>From a displacement perspective, the escalation has unfolded on top of an already overstretched regional baseline, with over 31 million forcibly displaced people and recent returnees across the wider Middle East region before 28 February 2026. The current cross‑regional protection environment is shaped by the convergence of multiple compounding factors that have escalated in 2026 — including active conflict, erosion of International Humanitarian Law (IHL) and gender equality norms, macroeconomic decline and underlying climate-related vulnerabilities — producing increasingly complex and multilayered protection risks that require integrated, sustained inter‑agency response. ​</p> <p>​In Iran and Lebanon, hostilities have directly generated acute protection crises — including large-scale internal displacement, civilian casualties, damage to infrastructure and severe strain on national protection systems. Refugees and others in need of international protection face heightened risks linked to legal status, while women and girls are disproportionately affected by gender-based violence, increased caregiving responsibilities and barriers to assistance. Across neighbouring countries, growing risks are driven by macroeconomic shocks, service degradation, legal insecurity and psychosocial distress. Returns under adverse circumstances, falling short of voluntary and dignified character and of sustainable conditions, are a central cross‑regional protection concern. Returns to Syria and Afghanistan (including deportations from Iran and Pakistan) are taking place in contexts where reintegration capacity remains constrained. This can in turn derail fragile recovery efforts, overwhelm communities and generate new protection concerns as well as new displacement or onward movements.</p> <p>These dynamics are unfolding amid significant reductions in humanitarian and development funding, curtailing operational actors' ability to sustain protection responses and preparedness capacities. Taken together, the trends point to a protection environment under stress, with deepening vulnerabilities and increasing strain on national institutions, underscoring the need to link refugee protection to national systems and development planning frameworks.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/inter-agency-refugee-protection-overview-middle-east-situation' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Here’s the latest.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 09:39</strong></span>
+                </div>
+                <p class='summary'>Group of 7 leaders will discuss Artificial Intelligence and global imbalances on Wednesday, even as questions over Iran linger.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/17/world/g7-summit-trump-france/g7-evian-summit' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Can Vance Sell the Iran Deal?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 11:00</strong></span>
+                </div>
+                <p class='summary'>Plus, the discovery of $40 million of gold bars threatens to reveal CIA secrets, and President Trump invokes the DPA to tackle munitions shortages.</p>
+                <div class='link'><a href='https://www.wsj.com/politics/can-vance-sell-the-iran-deal-c6fcad8b' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>NATO’s Rutte Says European Allies Ready to Help Restore Gulf Shipping</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 10:58</strong></span>
+                </div>
+                <p class='summary'>Members of the military alliance, led by the U.K. and France, are ready to support the return of shipping through the Strait of Hormuz, the NATO secretary-general said.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/natos-rutte-says-european-allies-set-to-help-restore-gulf-shipping-65c57a0c' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>13</span>
+                <span class='title'>US signals to return of sanctions on Russia as G7 unites around Ukraine</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 10:00</strong></span>
+                </div>
+                <p class='summary'>G7 leaders agreed on June 16 to intensify pressure on Russia to end more than four years of war against Ukraine, with US President Donald Trump saying Moscow should "make a deal" and indicating Washington could re-impose waived sanctions. Ukrainian President Volodymyr Zelensky joined the summit at the French resort of Evian, hoping that with a deal between the US and Iran ostensibly in the works, the Trump administration will now turn its attention to solving Europe's largest armed conflict since World War II.</p>
+                <div class='link'><a href='https://www.france24.com/en/us-signals-to-return-of-sanctions-on-russia-as-g7-unites-around-ukraine' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>14</span>
+                <span class='title'>Thousands flock back to south Lebanon despite Israeli strikes amid US-Iran deal</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-17 09:59</strong></span>
+                </div>
+                <p class='summary'>Lebanon has been targeted by fresh Israeli strikes despite the peace deal agreement announced by the US and Israel. Despite the attacks and warnings from their government, many south Lebanese are desperate to go back home, with thousands of people driving back. But civilians still remain sceptic. FRANCE 24's Renée Davis tells us more from Beirut.</p>
+                <div class='link'><a href='https://www.france24.com/en/thousands-flock-back-to-south-lebanon-despite-israeli-strikes-amid-us-iran-deal' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - June 17, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>A preliminary US-Iran agreement is raising hopes for regional de-escalation, reducing oil prices and allowing Iranian oil exports to resume. Despite this, violence in Lebanon continues, with Israeli strikes targeting Hezbollah even after the deal announcement. Millions remain displaced in Lebanon and Iran amid severe humanitarian crises, while global leaders praise the agreement but face challenges in implementation and regional stability.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            A preliminary Memorandum of Understanding (MoU) between the US and Iran was announced on June 15, 2026, signaling a potential easing of tensions. This has led to optimism about oil prices dropping and Iran resuming oil exports after a two-month blockade. However, Israel continues airstrikes in Lebanon, citing the need for clarity on the US-Iran deal. Meanwhile, Iran faces severe humanitarian challenges, with the World Food Programme assisting over 35,000 people in May 2026. Lebanon remains in crisis with over 131,000 internally displaced persons, continuing airstrikes, and healthcare infrastructure under attack.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The US-Iran deal could lead to a reduction in regional hostilities, but skepticism remains high due to historical broken agreements. Israel may continue strikes until it believes Iran is fully committed to the deal. Humanitarian crises in Lebanon and Iran are expected to persist, with displaced populations struggling to return home safely. Oil prices may stabilize if the deal holds, but renewed conflict could reverse recent drops quickly.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            June 6, 2026: Israeli airstrikes on Beirut's southern suburbs. June 12-14, 2026: Renewed displacement orders in Lebanon affecting 37 localities. June 15, 2026: US and Iran announce a preliminary agreement (MoU). June 17, 2026: Israeli strikes in Lebanon continue despite the deal; WFP reports on Iran's humanitarian needs; oil prices drop 10% amid optimism.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            If the US-Iran deal holds, it could lead to broader de-escalation in the Middle East, potentially easing conflicts in Lebanon, Syria, and Yemen. However, regional distrust is high, and a breakdown in talks could reignite hostilities. Iran may reduce its support for proxy groups like Hezbollah if it gains economic relief. Long term, stability depends on whether the deal addresses Iran's nuclear program, regional influence, and sanctions relief.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict in Lebanon remains active despite the US-Iran deal, with Israeli airstrikes targeting Hezbollah positions. The intensity is high, with 3,798 deaths and 11,781 injuries reported since March 2026. Humanitarian infrastructure, including hospitals and healthcare workers, is under repeated attack, worsening the crisis. In Iran, the conflict is less direct but has led to economic strain and food insecurity, with the WFP assisting vulnerable populations.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            The US-Iran deal represents a potential turning point in Middle Eastern geopolitics, offering hope for reduced tensions but also carrying risks of further instability if it fails. Oil markets are reacting positively to the prospect of resumed Iranian exports and reduced conflict risks. However, human suffering in Lebanon and Iran remains severe, with long-term recovery depending on sustained peace and international support. Globally, a stable Middle East could shift focus back to other crises, such as Ukraine or AI governance, as discussed at the G7 summit.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The US and Iran are central to the deal, with US President Trump praised by G7 leaders for securing the agreement. NATO allies, including the UK and France, are preparing to help restore Gulf shipping, particularly through the Strait of Hormuz. Israel remains a key actor, continuing military actions in Lebanon despite the deal. Humanitarian organizations like the WFP are providing critical aid in Iran and Lebanon, while regional actors like Bahrain are taking punitive actions, such as revoking citizenship of individuals accused of disloyalty linked to Iran.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices fell as much as 10% following the announcement of the US-Iran deal and the prospect of reopening the Strait of Hormuz. This matters because the Strait is a critical oil shipping route, and any disruption could cause global price spikes. Iran's resumption of oil exports could ease supply constraints, further stabilizing prices. However, experts warn that failure to implement a lasting deal could quickly reverse these gains, leading to renewed price volatility.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            A preliminary US-Iran deal has reduced oil prices and raised hopes for regional de-escalation, but violence in Lebanon continues unabated. Humanitarian crises in Iran and Lebanon remain severe, with millions displaced, food insecurity rampant, and healthcare infrastructure under attack. Global leaders, including G7 and NATO, are cautiously optimistic but face challenges in ensuring the deal's implementation and long-term stability.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The continuation of Israeli airstrikes in Lebanon despite the US-Iran deal is surprising, raising questions about Israel's commitment to the agreement and the durability of the ceasefire.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
