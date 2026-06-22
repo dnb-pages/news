@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-22 05:37</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-22 05:37</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>پایان دور اول مذاکرات آمریکا و ایران با 'پیشرفت‌های امیدوارکننده‌ای'، میانجی‌ها اعلام کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۲۲T۰۴:۴۵:۲۶Z</strong></span>
+                </div>
+                <p class='summary'>مذاکرات ایالات متحده و ایران در روز یکشنبه در سوئیس آغاز شد، پس از توافق هفته گذشته که شامل تعهد به دستیابی به توافق نهایی در مدت ۶۰ روز است.</p>
+                <div class='link'><a href='https://www.bbc.com/news/articles/cwy0q41v1lzo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>«پیشرفت‌های امیدوار کننده» پس از پایان دور اول مذاکرات آمریکا و ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسي)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۲۲T۰۴:۵۶:۴۴Z</strong></span>
+                </div>
+                <p class='summary'>مرحله نخست مذاکرات آمریکا و ایران با توافق طرفین بر سر نقشه راهی برای دستیابی به یک توافق نهایی به پایان رسید.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/6/22/encouraging-progress-made-as-first-round-us-iran-talks-end?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>شرایط خاورمیانه زنده: مذاکره‌کنندگان آمریکا و ایران پس از شروع «امیدوارکننده» وارد دومین روز مذاکرات می‌شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۲۲T۰۵:۲۰:۴۳Z</strong></span>
+                </div>
+                <p class='summary'>مذاکره‌کنندگان آمریکایی و ایرانی قرار بود پس از اینکه دو sides (طرفین) بر سر یک "نقشه راه" برای مذاکرات فنی بیشتر در سوئیس به توافق رسیدند، طبق گفته‌ی میانجی‌های پاکستانی و قطری، پس از یک روز اول مذاکرات امیدبخش، روز دوم گفت‌وگوهای خود را آغاز کنند. برای دریافت آخرین اخبار، پوشش زنده ما را دنبال نمایید.</p>
+                <div class='link'><a href='https://www.france24.com/fa/near-east/20260622-middle-east-live-korush-mohaveran-dor-dovomin-roz-mashvarat-ra-shuroo-kardand' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>بروزرسانی‌های زنده خاورمیانه: دور اول مذاکرات آمریکا و ایران به پایان رسید، میانجی‌ها اعلام کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۲۲T۰۵:۲۳:۴۹Z</strong></span>
+                </div>
+                <p class='summary'>مقامات قطری و پاکستانی اعلام کردند که در مذاکراتی در سوئیس پیشرفت‌های «امیدوارکننده‌ای» در مسیر دستیابی به یک توافق صلح پایدار وجود داشته است. اما تنش‌ها بر سر لبنان آشکار بود و رئیس‌جمهور ترامپ دوباره تهدیدها علیه ایران را از سر گرفت.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/21/world/iran-us-trump-lebanon' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>واردات نفت چین ممکن است هرگز پس از جنگ با ایران به‌طور کامل بهبود نیابد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۲ ژوئن ۲۰۲۶، ۰۴:۱۰:۵۰</strong></span>
+                </div>
+                <p class='summary'>صادرات نفتی چین احتمالاً هرگز پس از جنگ با ایران بهبود کامل پیدا نکند، چرا که تحلیلگران می‌گویند این درگیری سبب شده تا کشور به صورت دائم از سوخت‌هایی مانند بنزین و گازوئیل دوری کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinese-oil-imports-may-never-fully-recover-from-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۲ ژوئن ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران مذاکرات جدیدی را در سوئیس آغاز کرده‌اند که با هدف دستیابی به یک توافق صلح بلندمدت ظرف ۶۰ روز برگزار می‌شود. اگرچه پیشرفت‌های اولیه «امیدوارکننده» نامیده شده است، اما تنش‌ها همچنان بالاست، به ویژه بر سر لبنان. از سوی دیگر، آثار باقی‌مانده از درگیری‌های گذشته، تجارت جهانی نفت را بازتعریف می‌کند، به خصوص برای چین.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده و ایران در ۲۲ خرداد ۱۴۰۵ (۲۲ ژوئن ۲۰۲۶) اولین دور مذاکرات مستقیم خود را در سوئیس برگزار کردند. میانجی‌های کشورهایی همچون قطر و پاکستان از پیشرفت «امیدوارکننده» در جهت یک «نقشهٔ راه» برای رسیدن به توافق صلح نهایی خبر دادند و هدف آن‌ها دستیابی به توافق در مدت ۶۰ روز است. با این حال، اختلافات اساسی به‌ویژه در مورد نفوذ ایران در لبنان همچنان پابرجا است. همچنین، رئیس‌جمهور ترامپ تهدیدات خود علیه ایران را تجدید کرد و بر فشار به شرایط افزود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجاست هدینگ</h3>
+            اگر مذاکرات به نتیجه برسد، ایالات متحده و ایران می‌توانند به توافق پایداری دست یابند که به کاهش تنش‌ها، کاهش درگیری‌های نظامی در منطقه و بازگرداندن روابط دیپلماتیک منجر شود. در صورت شکست مذاکرات، ایالات متحده ممکن است تهدیدات یا اقدامات خود را تشدید کند، در حالی که ایران می‌تواند به گسترش نفوذ منطقه‌ای خود ادامه دهد که این امر احتمال بی‌ثباتی بیشتر در کشورهایی مانند لبنان، سوریه و یمن را به همراه دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>۱. ۲۱ تا ۲۲ ژوئن ۲۰۲۶: اعلام نخستین دور مذاکرات آمریکا و ایران در سوئیس با «پیشرفت‌های امیدوارکننده».</li><li>۲. ۲۲ ژوئن ۲۰۲۶: مذاکره‌کنندگان وارد دومین روز مذاکرات می‌شوند.</li><li>۳. ظرف ۶۰ روز: هدف نهایی کردن نقشهٔ راه برای یک توافق پایدار است.</li><li>۴. در جریان: تنش‌ها بر سر لبنان و سیاست‌های منطقه‌ای ایران ادامه دارد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم انداز استراتژیک</h3>
+            جهت‌گیری بلندمدت بستگی به این دارد که آیا این گفت‌وگوها منجر به کاهش تنش یا تشدید رویارویی‌های بیشتر می‌شود. موفقیت می‌تواند منطقه خاورمیانه را تثبیت کند، اختلالات بازار نفت را کاهش دهد و امنیت انرژی جهانی را بهبود بخشد. شکست ممکن است منجر به درگیری‌های دوباره، تحریم‌های شدیدتر و تغییر دائمی در دوری از نفت ایران برای واردکنندگان عمده‌ای مانند چین شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            در این مقالات هیچ گزارش فعالانه‌ای از نبرد نظامی بین ایالات متحده و ایران مشاهده نمی‌شود. در عوض، این درگیری از طریق مذاکرات دیپلماتیک، جنگ‌های نیابتی منطقه‌ای (به‌عنوان‌مثال، نفوذ ایران در لبنان) و تهدیدات کلامی دنبال می‌شود. در حال حاضر شدت درگیری از نظر خشونت مستقیم پایین است، اما در زمینه بازی‌های سیاسی مرزی بالا است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            یک توافق میان آمریکا و ایران نشان‌دهنده تحولی بزرگ در سیاست‌های خاورمیانه خواهد بود که تنش‌ها را کاهش داده و به‌طور بالقوه به کشورهای منطقه اجازه می‌دهد تا بر بهبود اقتصادی به جای درگیری تمرکز کنند. همچنین ممکن است نگرانی‌های مربوط به عرضه جهانی نفت را کاهش داده و قیمت‌های انرژی را پایین بیاورد. شکست مذاکرات می‌تواند منجر به بازگشت به رویارویی‌های پرریسک، ناپایداری بازارها و درگیری‌های منطقه‌ای طولانی‌مدت شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            قطر و پاکستان به عنوان میانجی در مذاکرات فعالیت می‌کنند. ایالات متحده توسط تیم مذاکره‌کننده خود و ایران توسط مقامات این کشور نمایندگی می‌شوند. تهدیدهای تازه رئیس‌جمهور ترامپ، موضع سخت‌گیرانه‌تر آمریکا را تشدید کرده است. نقش چین به طور غیرمستقیم به دلیل کاهش واردات نفت خود از ایران پس از درگیری‌ها، که نشان‌دهنده تغییرات عمده در تجارت جهانی انرژی است، ذکر می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            جنگ و تنش‌های مرتبط با ایران از پیش سبب کاهش دائمی واردات نفت توسط چین شده و روند کاهش وابستگی به نفت ایران را تسریع کرده است. اگر توافقی حاصل شود، به دلیل از سرگیری صادرات نفت ایران، قیمت‌ها ممکن است تثبیت شوند یا اندکی کاهش یابند. در صورتی که مذاکرات به شکست بیانجامد، قیمت‌ها ممکن است دوباره افزایش یابند، زیرا بازارها نگران disruption در عرضه هستند، به‌ویژه با توجه به تقاضای بالای جهانی.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده و ایران مذاکراتی را برای دستیابی به یک توافق صلح در ۶۰ روز آغاز کرده‌اند، اما لبنان یکی از مهم‌ترین چالش‌های پیش‌رو باقی مانده است. چین در حال حاضر وابستگی خود به نفت ایران را کاهش می‌دهد، تغییری که احتمالاً صرف‌نظر از نتیجه گفت‌وجوها، دایمی خواهد بود. تهديدات دونالد ترامپ، ميزان فشارها را افزايش ميدهد و به همين خاطر، حتي باوجود پيشرفت‌هاي نخستين «اميدوارکننده»، سرنوشت گفت‌وگوها را نامعلوم ميسازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافه</h3>
+            این گفت‌وگوها در حالی در حال انجام هستند که همواره گذشته‌ای از درگیری‌های میان ایالات متحده و ایران وجود داشته است، از جمله حملات نظامی، تحریم‌ها، و جنگ‌های نیابتی در کشورهایی مثل لبنان، یمن و سوریه. اشاره به «جنگ ایران» حاکی از آن است که درگیری‌های قبلی قابل توجهی تاکنون توانسته دینامیک‌های منطقه‌ای و بازارهای جهانی نفت را دستخوش تغییر کرده باشد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
