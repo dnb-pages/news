@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-25 04:40</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-25 04:40</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>مردم ایران نخستین عید عاشورا پس از کشته شدن خامنه‌ای در جنگ آمریکا-ایران را گرامی می‌دارند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اسلحه)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶/۰۶/۲۵ ساعت ۰۳:۵۵:۰۷</strong></span>
+                </div>
+                <p class='summary'>هزاران نفر در تهران در آستانه عاشورا جمع شدند، نخستین عزایی برای رهبری ایران، علی خامنه‌ای، پس از ترورش.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/6/25/iranians-mark-first-ashura-since-khameneis-killing-in-the-us-iran-war?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>اورشلیم و بیروت از ترامپ ناامید شده‌اند و این موضوع باعث ممانعت از طرح ایالات متحده برای خارج کردن تدریجی نیروهای دفاعی اسرائیل از لبنان می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۵ ژوئن ۲۰۲۶ ساعت ۰۳:۳۸ (به وقت گرینویچ)</strong></span>
+                </div>
+                <p class='summary'><p>روبیس تأیید می‌کند که آمریکا از گفت‌وگوی اسرائیل و لبنان برای پیش راندن عقب‌نشینی اسرائیل از بخش‌هایی از جنوب لبنان استفاده می‌کند، اما پس از آن‌که آمریکا با قراردادی موافقت کرد که به ایران در لبنان نفوذ می‌دهد، هیچ‌کدام از طرفین همکاری نمی‌کنند.</p><p>این پست با عنوان <a href="https://www.timesofisrael.com/jerusalem-and-beirut-frustrated-with-trump-hampering-us-plan-to-phase-idf-out-of-lebanon/">تل آویو و بیروت از ترامپ عصبانی‌اند، طرح آمریکا برای خارج کردن نظامیان اسرائیل از لبنان را مختل می‌کند</a> ابتدا در <a href="https://www.timesofisrael.com">تل آویو</a> منتشر شد.</p><figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26173450251179-1024x640.jpg" title="تل آویو و بیروت از ترامپ عصبانی‌اند، طرح آمریکا برای خارج کردن نظامیان اسرائیل از لبنان را مختل می‌کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/tehran-malaysia-and-beirut-frustrated-with-trump-hampering-us-plan-to-phase-idf-out-of-lebanon/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترامپ با سناتور جمهوری‌خواهی که از]توان ابزاری محدودسازی ایران] حمایت کرده، مشاجره‌ی کلامی به راه می‌اندازد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۰۵ ساعت ۰۶:۳۹:۴۶</strong></span>
+                </div>
+                <p class='summary'><p>بیل کسیدی گفت که او لحن و صدای خود را با رئیس‌جمهور آمریکا تطبیق داده است، رئیس‌جمهوری که reportedly وی را «دیوانه» خطاب کرد و بارها به او گفته است که برای درخواست دادن به کنگره جهت دریافت گزارش، بنشیند.</p> <p>این پست <a href="https://www.timesofisrael.com/trump-gets-in-shouting-match-with-gop-senator-who-backed-iran-war-powers-resolution/">جنجالی بین ترامپ و سناتور جمهوری‌خواه حامی لغو اختیارات جنگی علیه ایران</a> برای اولین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26175727310661-e1782352158140-1024x640.jpg" title="جنجالی بین ترامپ و سناتور جمهوری‌خواه حامی لغو اختیارات جنگی علیه ایران" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/trump-gets-in-shouting-match-with-gop-senator-who-backed-iran-war-powers-resolution/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>روت تلاش می‌کند برای کاهش اختلاف هلند-ناتو با ایالات متحده دربارهٔ موضوع ایران، پیش از اجلاس سالانه تلاش کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> آل‌جزیرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۴/۶ ساعت ۰۶:۵۲:۰۸</strong></span>
+                </div>
+                <p class='summary'>رئیس ناتو، مارک روته، از کاخ سفید دیدن کرد تا پیش از اجلاس آینده ماه آینده، تنش‌ها را با ترامپ کاهش دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/6/25/rutte-attempts-to-ease-trump-nato-rift-over-iran-ahead-of-annual-summit?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۴ تیر ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران در پی ترور رهبر معظم انقلاب اسلامى ، آیت‌الله على خامنه‌اى ، در ج‌نگ اخیر ایالات متحده و ایران شاهد تحولات سیاسى گسترده‌ای است که موجب عزاداری عمومى مردم در ایام ماه محرم شده است. در همین حال، تلاش‌هاى ایالات متحده برای کاهش حضور نظامی اسرائیل در لبنان به دلیل نارضایتى لبنان، اسرائیل و حتى برخی از متحدان آمریکا با بن‌بست مواجه شده که باعث پیچیدگی بیشتر تنش‌هاى منطقه‌ای شده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            علی خامنه‌ای، رهبر معظم انقلاب اسلامی ایران، در یک درگیری میان ایالات متحده و ایران به قتل رسید که نقطه عطف بزرگی به شمار می‌آید. ایرانیان برای مراسم بزرگ عاشورا ـ رویدادی مذهبی و اندوهبار ـ گرد هم آمدند، مراسمی که نخستین رویداد عمومی پس از مرگ رهبرشان محسوب می‌شود. در کشورهای همسایه لبنان و اسرائیل، تنش‌های سیاسی در حال افزایش است، زیرا اسرائیل با وجود فشارهای ایالات متحده از عقب‌نشینی نیروهای خود از جنوب لبنان خودداری می‌کند. افزون بر این، اختلافات سیاسی داخلی در ایالات متحده شدت گرفته است و رئیس‌جمهور ترامپ به طور علنی با سناتورهای جمهوری‌خواه بر سر اختیارات جنگی مربوط به ایران به مخالفت پرداخته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا هدینگ</h3>
+            با توجه به گذار رهبری در ایران در حالی که این کشور با غم و خشم دست و پنجه نرم می‌کند، این وضعیت احتمالاً تشدید خواهد شد و ممکن است ایران اقدام به انتقام‌جویی بیشتری علیه ایالات متحده یا متحدانش بکند. در این میان، لبنان و اسرائیل ممکن است با پاتک نظامی طولانی‌تری روبرو شوند، در حالی که اختلافات سیاسی داخلی در ایالات متحده می‌تواند توان دیپلماتیک آمریکا را در منطقه تضعیف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            <ul><li>۱. خامنه‌ای در جریان جنگی میان ایالات متحده و ایران کشته می‌شود (تاریخ دقیق مشخص نیست، اما رویدادها حاکی از اواسط سال ۲۰۲۶ است).</li><li>۲. سوگواری گسترده مردمی در روزهای عاشورا (۲۴ و ۲۵ ژوئن ۲۰۲۶).</li><li>۳. تلاش‌های ایالات متحده برای مذاکره پیرامون خروج اسرائیل از لبنان با مقاومت لبنان، اسرائیل و برخی قانون‌گذاران آمریکایی مواجه می‌شود.</li><li>۴. رویکرد دولت ترامپ نسبت به ایران، شکاف‌هایی در حزب جمهوری‌خواه ایجاد می‌کند.</li><li>۵. مقامات ناتو تلاش می‌کنند تا تنش‌های میان ایالات متحده و اروپا را پیش از اجلاس ناتو تعدیل کنند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            ایران در بلندمدت به احتمال زیاد موضع خود را در برابر ایالات متحده پس از ترور خمینی سخت تر خواهد کرد و ممکن است درگیری‌های نیابتی در خاورمیانه را افزایش دهد. لبنان همچنان یک نقطة عطف است و هیچ راه حل روشنی در افق دیده نمی‌شود. نفوذ ایالات متحده در منطقه ممکن است به دلیل تقسیمات سیاسی داخلی و واکنش‌های بین‌المللی به سیاست‌های تهاجمی این کشور در قبال ایران، کاهش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری با اقدامات ژئوپلیتیکی پرشدت از جمله تنش‌های نظامی (جنگ آمریکا و ایران)، اقدامات دیپلماتیک (مذاکرات آمریکا، اسرائیل و لبنان) و اختلافات سیاسی داخلی در ایالات متحده مشخص می‌شود. در حال حاضر، نبرد عمدتاً دیپلماتیک و مبتنی بر نمایندگان است تا درگیری مستقیم و گسترده در مقیاس بزرگ.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این افزایش تنش، ثبات منطقه‌ای در خاورمیانه را تهدید می‌کند و پیامدهای آن ممکن است بر اتحادهای جهانی نیز تأثیر بگذارد. در صورت تداوم تنش‌ها، کشورهایی همچون عراق، سوریه، یمن و لبنان شاهد افزایش بی‌ثباتی خواهند بود. ایالات متحده ممکن است به دلیل درگیری‌های داخلی و دیپلماسی ناپایدار خود، اعتبار خود را میان متحدانش از دست بدهد، در حالی که تندروهای ایرانی می‌توانند قدرت را تحت رهبری جدید تحکیم بخشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده در این رویدادها نقش مرکزی دارد و تلاش‌هایی را برای مقابله با ایران رهبری می‌کند، در حالی که با اختلافات داخلی مواجه است. اسرائیل به‌عنوان یک متحد اصلی ایالات متحده، هم در لبنان و هم در روابط دوجانبه، نقشی کلیدی ایفا می‌کند. دولت لبنان بین فشارهای ایالات متحده و تقسیمات سیاسی داخلی گرفتار شده است و متحدان ناتو در تلاش‌اند تا تنش‌های ایالات متحده و اروپا را مدیریت کنند. همچنین، نیابتی‌های منطقه‌ای ایران (مانند حزب‌الله) همچنان تأثیرگذار هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            به احتمال زیاد، قیمت‌های نفت به دلیل افزایش تنش‌ها در خاورمیانه، منطقه‌ای عمده در تولید نفت، افزایش خواهد یافت. هرگونه اختلال در جریان نفت (به عنوان مثال، از طریق تنگه هرمز یا از عراق و ایران) می‌تواند قیمت‌ها را بیشتر تحت تاثیر قرار داده و بازارهای انرژی و اقتصادهای جهانی را تحت الشعاع قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            پس از ترور خامنه‌ای، ایران در موقعیت خطرناکی قرار گرفته است و امکان افزایش aggression (تهاجم) علیه ایالات متحده و متحدانش وجود دارد.  تلاش‌های ایالات متحده برای کاهش حضور اسرائيل در لبنان به دلیل مقاومت سیاسی از سوی همه طرف‌های درگیر، با شکست مواجه شده است. تقسیم‌بندی‌های سیاسی داخلی ایالات متحده درباره سیاست ایران، موقعیت دیپلماتیک این کشور را در سطح بین‌المللی تضعیف کرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت انگیز</h3>
+            این درگیری آشکار میان رئیس‌جمهور ترامپ و یک سناتور جمهوری‌خواه بر سر اختیارات جنگ با ایران غیرمنتظره است و نشان‌دهندهٔ تشدید اختلافات سیاسی عمیق داخلی در ایالات متحدهٔ آمریکا.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            هیچ پیشرفت مهمی در این زمینه مشاهده نشده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
