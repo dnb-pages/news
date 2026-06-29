@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-29 22:36</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-29 22:36</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>به‌روزرسانی‌های زنده خاورمیانه: ایالات متحده و ایران برای مذاکرات جدید در قطر آماده می‌شوند، ترامپ می‌گوید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۴/۸ ساعت ۲۲:۰۴:۴۹</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ گفت که این مذاکرات روز سه‌شنبه برگزار خواهد شد، پس از آن‌که ایالات متحده و ایران در آخر هفته گذشته حملات متقابلی را انجام دادند. ایران این مذاکرات را تایید نکرد اما گفت که مشورتها با قطر ادامه دارد.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/29/world/hormuz-us-iran-strikes' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>دیدگاه | روبیو در حمایت از حزب‌الله پایداری می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پژوهش وال‌استریت جورنال</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۴/۴/۸ ساعت ۰۲:۳۷ ب.ظ</strong></span>
+                </div>
+                <p class='summary'>چارچوبی برای مهار اسراییلی‌ها و لبنانی‌ها در مرز و ایرانی‌ها را خارج از آن نگه داشتن.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/u-s-lebanon-israel-framework-marco-rubio-hezbollah-aa380594' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۳۰ خرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران پس از درگیری‌های نظامی اخیر بین دو کشور در آخر هفته، خود را برای مذاکرات غیرمستقیم در قطر آماده می‌کنند. در این میان تنش‌ها پیرامون گروه‌های مورد حمایت ایران شامل حزب‌الله در لبنان همچنان نقطه‌ضعف و بروز بحران است، و آمریکا تلاش‌هایی برای کاهش نفوذ آنها انجام می‌دهد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            طی آخر هفته، ایالات متحده و ایران در حمله‌های نظامی متقابل شرکت کردند و تنش‌ها میان دو کشور را تشدید کردند. در پی اینEvents، رئیس‌جمهور ایالات متحده، ترامپ اعلام کرد که ایالات متحده و ایران گفت‌وگوهای غیرمستقیم در قطر برگزار خواهند کرد، اگرچه ایران هنوز این مذاکرات را به صورت علنی تأیید نکرده است. در همین حال، تلاش‌ها برای مدیریت درگیری‌های مرتبط با گروه‌های طرفدار ایران، مانند حزب‌الله در لبنان، همچنان ادامه دارد و ایالات متحده درصدد است تا نفوذ آن‌ها را محدود کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرHeading</h3>
+            مذاکرات در قطر می‌تواند در صورت یافتن هر دو طرف به نقطه مشترک، به یک کاهش موقت تنش منجر شود، اما صلح پایدار تنها با حل مشکلات اساسی مانند برنامه هسته‌ای ایران و نفوذ منطقه‌ای آن امکان‌پذیر نخواهد بود. انتظار می‌رود تنش‌ها در رابطه با حزب‌الله نیز ادامه یابد و به دلیل سیاست‌های داخلی و نظامی لبنان، درگیری‌های مقطعی رخ دهد. در بلندمدت، اگر دیپلماسی شکست بخورد، خطر درگیری گسترده همچنان بالا خواهد بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط‌زمان</h3>
+            ['۲۷ ژوئن ۲۰۲۶: تبادل حملات نظامی بین ایالات متحده و ایران، افزایش تنش‌ها', '۲۸ ژوئن ۲۰۲۶: رئیس‌جمهور ترامپ اعلام کرد مذاکرات ایالات متحده و ایران در قطر، مقرر برای ۳۰ ژوئن ۲۰۲۶ برگزار خواهد شد', '۲۹ ژوئن ۲۰۲۶: ایران مذاکرات را تأیید نکرد اما گفت مشاوره‌ها با قطر ادامه دارد', 'در جریان: تلاش‌های ایالات متحده برای مقابله با گروه‌های طرفدار ایران همچون حزب‌الله در لبنان']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            در ماه‌های آینده، ایالات متحده و ایران ممکن است در مذاکرات پراکنده‌ای برای مدیریت تنش‌ها شرکت کنند، اما بدون Celle concessions قابل توجه از سوی هر دو طرف، پیشرفتی قابل تصور نیست. نفوذ منطقه‌ای ایران، به ویژه از طریق گروه‌هایی همچون حزب‌الله، همچنان نقطه اختلاف در روابط ایالات متحده و خاورمیانه خواهد بود. خطر محاسبات اشتباه یا تشدید غیرعمدی همچنان بالا است، به خصوص اگر حوادث نظامی بیشتری رخ دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 ديناميك‌هاي درگيري</h3>
+            این مناقشهٔ جاری با ترکیبی از حملات نظامی مستقیم و درگیری‌های نیابتی شامل گروه‌های مورد حمایت ایران مشخص می‌شود. اگرچه ایالات متحده و ایران از درگیری تمام‌عیار اجتناب کرده‌اند، چند نوبهٔ پرمخاطره تبادل نظر از جمله حملات موشکی و سایبری رخ داده است. با این حال، این مناقشه همچنان زیر آستانهٔ جنگ گسترده باقی مانده، زیرا به نظر می‌رسد هر دو طرف با اعمال فشار، خطر تشدید فاجعه‌بار را نیز در نظر می‌گیرند. حضور گروه‌های نیابتی مانند حزب‌الله یک لایه دیگر از ناپایداری را به این بحران می‌افزاید.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری بخشى از یک مبارزه گسترده‌تر براى نفوذ در خاورمیانه است که فقط شامل ایالات متحده و ایران نمى‌شود، بلکه کشورهايى همچون اسرائیل، عربستان سعودى، و گروه‌هاى مسلح منطقه‌اى را نيز در بر مى‌گیرد. نتايج اين تنش مى‌تواند اتحادها وPower dynamics (تعادل قدرت) در منطقه را از نو شکل بدهد و به احتمال زياد منجر به بازآراىى در سياست خاورميانه شود. براى جهان، اهميت اين مسئله شامل ثبات در تأمين نفت، ريسک گسترش هسته‌اى، و ايمنى راه‌هاى کشتى‌رانى جهانى—به‌ويژه تنگه هرمز، که يک گلوگاه بحرانى در ترانزيت نفت به شمار مى‌رود—خواهد بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیگران کلیدی شامل ایالات متحده هستند که به دنبال مهار نفوذ منطقه‌ای و توانمندی‌های هسته‌ای ایران است؛ ایران که تلاش می‌کند نفوذ خود را گسترش دهد و در برابر فشارهای ایالات متحده مقاومت کند؛ و بازیگران منطقه‌ای مانند اسرائیل و لبنان، جایی که گروه‌های مورد حمایت ایران مانند حزب‌الله فعالیت می‌کنند. قطر میزبان مذاکرات بین ایالات متحده و ایران است و نقش میانجیگری ایفا می‌کند. سازمان ملل و سایر بازیگران بین‌المللی، مانند اتحادیه اروپا، ممکن است در تلاش‌های کاهش تنش‌ها نقش داشته باشند ولی در مقایسه با ایالات متحده و ایران، نفوذ محدودی دارند. چین و روسیه ممکن است به دنبال بهره‌برداری از تنش‌ها برای گسترش نفوذ خود در منطقه باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تشدید تنش‌ها بین ایالات متحده و ایران می‌تواند عرضه نفت از خاورمیانه را مختل کند، به ویژه اگر تنگه هرمز — مسیری حیاتی برای نفت‌کش‌ها — در معرض تهدید قرار گیرد. این مسئله احتمالاً به دلیل نگرانی از کمبودهای عرضه، منجر به افزایش قیمت نفت خواهد شد. حتی بدون انسداد مستقیم، ناپایداری‌های بیشتر اغلب باعث افزایش ریسک قیمت در نفت می‌شود، زیرا معامله‌گران از اختلال‌های آینده هراس دارند. عربستان سعودی یا سایر کشورهای حاشیه خلیج فارس ممکن است با افزایش تولید خود جبران کنند، اما همچنان خطر افزایش ناگهانی قیمت‌ها بر اثر وحشت وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده و ایران تبادل حملات کرده‌اند و قرار است در قطر مذاکرات غیرمستقیم برگزار کنند، اما دستیابی به صلح پایدار بدون رسیدگی به مسائل عمیق‌تری مانند برنامه‌های هسته‌ای یا نفوذ منطقه‌ای بعید به نظر می‌رسد. گروه‌های تحت حمایت ایران مانند حزب‌الله در لبنان همچنان به یک نقطه‌سوز عمده تبدیل شده‌اند، و ایالات متحده در تلاش است تا تاثیر آنها را بر ثبات منطقه محدود کند. بازارهای جهانی نفت نسبت به تنش‌های خاورمیانه حساس هستند و تشدید بیشتر می‌تواند عرضه را مختل کرده و منجر به افزایش قیمت‌ها شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 ارجاعات اضافی</h3>
+            استراتژی ایران اغلب شامل استفاده از گروه‌های نیابتی مانند حزب‌الله است تا نفوذ خود را در منطقه گسترش دهد، در حالی که از برخورد مستقیم با آمریکا یا اسرائیل پرهیز می‌کند. این امر به ایران اجازه می‌دهد تا بدون پذیرش کامل مسئولیت حملات، دامنهٔ نفوذ خود را گسترش دهد. در همین حال، آمریکا تلاش می‌کند تا با حمایت از متحدانی مانند اسرائیل و دولت لبنان و همچنین از طریق مذاکرات برای مدیریت بحران، تأثیر ایران را خنثی نماید.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
