@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-06-30 17:21</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-06-30 17:21</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>سیستم دفاع هوایی گنبد آهن بهبود یافته و با استفاده از 'درس‌های آموخته‌شده' از جنگ با ایران، ارتقاء یافته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۶-۳۰T۱۵:۳۹:۴۶Z</strong></span>
+                </div>
+                <p class='summary'><p>وزارت دفاع می‌گوید آزمایش‌های «گسترده» شامل «سناریوهای عملیاتی مشترک» با سیستم لیزر پرتو آهن بوده است که در پایان سال ۲۰۲۵ استقرار یافته اما پوشش آنPartial است</p> <p>پست <a href="https://www.timesofisrael.com/iron-dome-air-defenses-upgraded-incorporating-lessons-learned-from-iran-war/">تقویت دفاع هوایی گنبد آهنی، «به‌کارگیری درس‌های آموخته‌شده» از جنگ با ایران</a> برای نخستین بار در <a href="https://www.timesofisrael.com">اطلاعات</a>Times of Israel منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2024/04/F230407AM04-1024x640.jpg" title="تقویت دفاع هوایی گنبد آهنی، «به‌کارگیری درس‌های آموخته‌شده» از جنگ با ایران" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/iron-dome-air-defenses-upgraded-incorporating-lessons-learned-from-iran-war/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ديپلمات‌هاى آمريکاىى در دوحه جهت ملاقات با ميانجيگران، نه مذاکره‌کنندگان ايرانى، به گفته قطر</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (نسخه اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۱۰ ساعت ۱۹:۴۰:۵۰</strong></span>
+                </div>
+                <p class='summary'>سخنگوی وزارت امور خارجه قطر می‌گوید هیچ دیدار سطح بالا یا مذاکرات مستقیمی میان ایالات متحده و ایران برنامه‌ریزی نشده است.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cpd38x1dy4no?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>به‌روزرسانی‌های زنده خاورمیانه: دیدار ایالات متحده و ایران با میانجی‌ها در قطر</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>1405-04-10 17:07</strong></span>
+                </div>
+                <p class='summary'>مسؤولان آمریکایی و ایرانی در این کشور خلیجی - که یک میانجی کلیدی بین دو کشور است - روزهایی پس از دور جدیدی از حملات که تلاش‌ها برای امضای یک قرارداد صلح پایدار را تهدید می‌کرد، حضور دارند.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/30/world/iran-us-talks-qatar-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>پس از جنگ ایالات متحده و ایران، عمان گفته می‌شود طرح اخذ عوارض تنگه هرمز را پیشنهاد کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۴/۱۰  ساعت ۲۱:۳۷:۲۰</strong></span>
+                </div>
+                <p class='summary'>طبق این طرح، طبق گفته مقامات و دیپلمات‌های آگاه به این موضوع، ایران و عمان بهای عبور کشتی‌ها از تنگه هرمز را دریافت خواهند کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/06/30/world/middleeast/iran-war-oman-strait-hormuz-fee-ships.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>اولویت‌های متضاد ایران در حال به خطر انداختن مذاکرات صلح ایالات متحده</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وallJ (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۰۹ ساعت ۱۹:۵۲</strong></span>
+                </div>
+                <p class='summary'>میانه‌روها مایلند صدها میلیارد دلار از پول‌های بلوکه شده در قطر را آزاد کنند، اما تندروهای سپاه پاسداران به کنترل تنگه هرمز متمرکز هستند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/irans-diverging-priorities-are-jeopardizing-u-s-peace-talks-a1aca6ad' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ایران برای مذاکره با قطر درباره تفاهم‌نامه با ایالات متحده و دارایی‌های مسدودشده برگزار خواهد کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۴/۱۰  ساعت ۱۹:۲۷</strong></span>
+                </div>
+                <p class='summary'>ایران اعلام کرده است که مذاکرات غیرمستقیم با قطر به عنوان میانجی برگزار خواهد کرد تا در مورد اجرای توافقنامه تفاهم‌نامه خود با ایالات متحده بحث کند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/6/30/iran-to-hold-talks-with-qatar-on-mou-deal-with-us-frozen-assets?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱ ژوئیه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و ایالات متحده در حال گفتگو‌های غیرمستقیم در قطر هستند در حالی که تنش‌ها پس از درگیری‌های اخیر بالا مانده است. از سویی، مباحثات راهبردی داخلی در داخل ایران، تلاش‌ها برای صلح را مختل کرده است. مسائل کلیدی شامل کنترل تنگه هرمز، رفع تحریم‌ها و نفوذ منطقه‌ای ایران است که می‌تواند پیامدهای جهانی بر عرضه و امنیت نفت داشته باشد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            توسعه‌های متعددی نشان می‌دهد که ایران و ایالات متحده همچنان با پیامدهای یک جنگ اخیر دست و پنجه نرم می‌کنند. سیستم‌های دفاعی اسرائیل مانند گنبد آهنین پس از lessons learned از درگیری با ایران ارتقا یافته‌اند. در همین حال، مذاکرات غیرمستقیم ایالات متحده و ایران در دوحه با میانجی‌گری قطر در حال برگزاری است که هدف آن، تثبیت روابط و تسهیل تحریم‌ها است. ایران همچنین در حال مذاکره با قطر برای رفع توقیف دارایی‌ها به‌عنوان بخشی از توافقات ایالات متحده است. با این حال، تقسیمات داخلی در ایران میان اصلاح‌طلبانی که به دنبال تسهیل تحریم‌ها هستند و تندروهایی که بر کنترل تنگه هرمز متمرکزند، مذاکرات صلح را پیچیده کرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محل عنوان</h3>
+            وضعیت احتمالاً همچنان تنش‌آمیز خواهد بود، اما در صورت پیشرفت در مذاکرات غیرمستقیم، ممکن است شاهد تثبیت تدریجی آن باشیم. ایران ممکن است برای کاهش تحریم‌ها و کنترل منطقه‌ای تلاش کند، در حالی که ایالات متحده ممکن است به دنبال تضمین‌هایی برای امنیت منطقه باشد. تنگه هرمز، یکی از مهم‌ترین مسیرهای انتقال نفت جهان، ممکن است در صورت تشدید تنش‌ها به نقطه‌ای بحرانی تبدیل شود. با این حال، فشارهای اقتصادی بر هر دو طرف ممکن است به مرور زمان آنها را به سازش و توافق ترغیب کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>اوایل سال 2۰۲۵: سیستم لیزری کمان آهنINU درخواست شده در اسرائیل مستقر می‌شود، ابتدا پوشش آن به صورت جزئی خواهد بود.</li><li>۰۲۵-2۰۲۶: تشدید جنگ بین اسرائیل و ایران به ناپایداری گسترده‌تر منطقه‌ای دامن می‌زند.</li><li>خرداد 2۰۲۶: دفاع هوایی کمان چکش اسرائیل پس از درس‌هایی بازی‌های ایران ارتقا یافت؛ آزمایش‌های جدیدی انجام شد.</li><li>خرداد 2۰۲۶: مقامات آمریکایی و ایرانی در دوحه، قطر، برای مذاکرات غیرمستقیم با میانجی‌گری قطر دیدار کردند؛ هیچ مذاکره مستقیم آمریکا و ایران برنامه‌ریزی نشده است.</li><li>خرداد 2۰۲۶: عمان طرحی را پیشنهاد می‌کند که بر اساس آن از کشتی‌هایی که از تنگه هرمز عبور می‌کنند، هزینه‌هایی دریافت شود که potentially regional tensions": افزوده خواهد شد.</li><li>خرداد 2۰۲۶: گزارش‌ها حاکی از آن است که جناح‌های سیاسی ایران درباره اولویت‌ها در مذاکرات صلح تقسیم شده‌اند و در حالی که تندروها بر تنگه هرمز تمرکز دارند، میانه‌روها به دنبال تسهیلات در کاهش تحریم‌ها هستند.</li><li>خرداد 2۰۲۶: ایران از برنامه‌ریزی برای برگزاری مذاکرات غیرمستقیم با قطر درباره دارایی‌های توقیف‌شده به عنوان بخشی از توافق‌های آمریکا خبر می‌دهد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            جهت‌گیری بلندمدت، حاکی از وضعیت شکننده‌ای از تعادل است. انشعابات داخلی ایران می‌تواند منجر به سیاست‌گذاری‌های ناهماهنگ شود و برگزاری مذاکرات صلح پایدار را دشوار کند. در صورت تحکیم کنترل ایران بر تنگه هرمز، می‌تواند موجب اختلال در عرضه جهانی نفت و واکنش‌های بین‌المللی شود. از سوی دیگر، اگر نیروهای میانه‌رو قدرت بگیرند، رفع تحریم‌های اقتصادی می‌تواند منجر به کاهش تنش در منطقه گردد. به هر حال، تنگه هرمز به دلیل اهمیت ژئوپلیتیکی و اقتصادی خود یک کانون اصلی باقی خواهد ماند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری‌ها در حال حاضر در مرحله‌ای از ناپایداری مدیریت‌شده به سر می‌برد. اگرچه در این مقاله‌ها گزارشی از درگیری‌های گسترده و فعال ارائه نشده است، اما ارتقاء سیستم دفاع موشکی «گنبد آهنین» و مذاکرات مداوم نشان می‌دهد که خشونت‌های اخیر طرفین را محتاط ساخته است. پویایی‌های این برهه بیش از نبردهای مستقیم، با میانجی‌ها، جنگ نامتقارن (مانند حملات موشکی) و مانورهای ژئوپلیتیکی تعریف می‌شود. شدت درگیری‌ها متعادل اما ناپایدار است—که به طور چشمگیری به موفقیت یا شکست تلاش‌های دیپلماتیک وابسته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            رویدادهای جاری در خاورمیانه تأثیرات جهانی دارد، به‌ویژه از طریق تنگه هرمز که حدود یک‌سوم از نفت جهان را از طریق دریا جابه‌جا می‌کند. اگر ایران تلاش کند بر تنگه هرمز کنترل پیدا کند، ممکن است اختلالات اقتصادی، افزایش قیمت نفت، یا حتی مداخله‌های نظامی را به دنبال داشته باشد. در همین حال، ایالات متحده و متحدان منطقه‌ای مانند اسرائیل احتمالاً فشار خود را بر ایران حفظ خواهند کرد تا از بی‌ثباتی بیشتر جلوگیری کنند. چین و روسیه نیز به‌طور غیرمستقیم درگیر هستند و روابط خود با ایران را متعادل می‌کنند، در عین حال منافع خود را در ثبات منطقه و جریان‌های نفتی مدیریت می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            <ul><li>**اسرائیل**: در حال دفاع فعالانه در برابر حملات ایران، سرمایه‌گذاری در سیستم‌های دفاع موشکی مانند گنبد آهن و پرتو آهن.</li><li>**ایالات متحده آمریکا**: درگیر دیپلماسی غیر مستقیم با ایران، به دنبال ثبات منطقه‌ای و توافقات مربوط به هسته‌ای/تحریم‌ها.</li><li>**قطر**: به عنوان میانجی کلیدی در مذاکرات ایالات متحده و ایران فعالیت می‌کند.</li><li>**عمان**: پیشنهاد طرح بحث‌برانگیز دریافت عوارض تنگه هرمز، که احتمالاً خود را به عنوان یک قدرت اقتصادی منطقه‌ای مطرح می‌سازد.</li><li>**روسیه و چین**: به دقت وضعیت را رصد می‌کنند، به اتحاد با ایران بدون حمایت آشکار ازActionهای تخریب‌گرانه تعادل برقرار می‌سازند.</li><li>**کشورهای خلیج (مانند امارات و عربستان سعودی)**: نگران پیامدهای سرریز شدن هستند و احتمالاً به‌طور مخفیانه در تلاشند تا بر مذاکرات تأثیر بگذارند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            هرگونه تهدید یا اختلال در تنگه هرمز احتمالاً باعث افزایش قیمت جهانی نفت خواهد شد. این تنگه یک گلوگاه مهم برای حمل و نقل نفت است، بنابراین هرگونه اقدام ایران برای اختلال یا دریافت مالیات از کشتی‌ها باعث بروز نگرانی از عرضه و به دنبال آن افزایش شدید قیمت‌ها خواهد شد. حتی پیشنهاد دریافت عوارض نیز عدم قطعیت و خطر تشدید تنش‌ها را به همراه دارد. از سوی دیگر، اگر دیپلماسی منجر به ثبات شود و تحریم‌ها لغو گردند، قیمت نفت می‌تواند تثبیت یا کاهش یابد، به خصوص اگر نفت ایران دوباره به بازارهای جهانی بازگردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            مذاکرات غیرمستقیم آمریکا و ایران در قطر در حال انجام است اما به دلیل تقسیم‌بندی‌های داخلی در ایران درباره اولویت‌های کلیدی پیچیده شده است. کنترل تنگه هرمز همچنان به عنوان یک مسئله بسیار ناپایدار باقی مانده است که می‌تواند عرضه جهانی نفت را مختل کرده و واکنش‌های بین‌المللی را برانگیزد. سیستم‌های دفاعی گنبد آهنین ارتقا یافته اسرائیل نشان می‌دهد که درگیری اخیر تأثیر lasting بر استراتژی‌های نظامی منطقه ای گذاشته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            پیشنهاد عمان برای دریافت عوارض از کشتی‌هایی که از تنگه هرمز عبور می‌کنند، غیرمنتظره بوده و می‌تواند تلاشی خلاقانه، اما پرریسک برای ایجاد کنترل اقتصادی یا کسب درآمد در منطقه‌ای پرمناقشه تلقی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 context اضافی</h3>
+            هیچ‌گونه تحولات قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
