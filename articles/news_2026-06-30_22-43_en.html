@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-06-30 22:44</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-06-30 22:44</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>U.S. and Iran to Meet with Mediators in Qatar</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-30 20:49</strong></span>
+                </div>
+                <p class='summary'>American and Iranian officials are in the Gulf state, a key intermediary between the two countries, days after new round of attacks threatened efforts to sign a lasting peace deal.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/06/30/world/iran-us-talks-qatar-hormuz' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Opinion | The ‘Christian’ Putin’s Alliance With the Taliban</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-30 20:19</strong></span>
+                </div>
+                <p class='summary'>His propagandists and useful idiots have characterized him as the savior of a decadent and declining West.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/the-christian-putins-alliance-with-the-taliban-b1ea9699' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Evolution under fire: Iran’s ‘axis of resistance’ in a post-war era</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-06-30 20:00</strong></span>
+                </div>
+                <p class='summary'>Has Iran's regional deterrence been permanently degraded, or is its proxy network mutating into a resilient force?</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/6/30/evolution-under-fire-irans-axis-of-resistance-in-a-post-war-era?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - June 30, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. and Iran are holding indirect talks in Qatar to ease tensions amid new attacks and shifting regional alliances involving Russia, the Taliban, and Iran's proxy groups. Meanwhile, Iran's regional influence faces challenges but adapts to survive in a post-war landscape.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. and Iran are holding talks in Qatar with mediators to address rising tensions after recent attacks threatened a fragile peace process. At the same time, Russia's Putin is consolidating ties with the Taliban, framing himself as a counter to Western decline. Iran's 'axis of resistance'—its network of regional proxy groups—is under pressure but morphing to survive in a new world order.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            Negotiations in Qatar may lead to a temporary truce or framework agreement, but deep mistrust and proxy conflicts will likely continue. Russia's alliance with the Taliban could escalate regional instability, forcing Iran to adapt its strategies. Iran's influence may decline in some areas but strengthen in others as it shifts tactics.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['Early 2026: New rounds of attacks between U.S. and Iranian-backed forces raised tensions.', 'June 2026: U.S. and Iranian officials convene in Qatar with mediators to discuss de-escalation.', 'June 2026: Russia intensifies engagement with the Taliban, positioning itself as a regional power.', "June 2026: Iran's proxy network faces significant setbacks but begins adapting to new challenges."]
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            Iran's regional deterrence is weakened but not broken. Its proxy groups are likely to evolve into smaller, more covert cells to avoid direct conflict. The U.S. may seek a temporary deal to avoid further escalation, but structural tensions—including Iran's nuclear program and regional ambitions—will persist. Russia's growing ties with the Taliban add a wild card, potentially destabilizing Afghanistan and neighboring regions.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current fighting is characterized by proxy wars and low-intensity but high-impact attacks (e.g., drone strikes, sabotage). Direct U.S.-Iran clashes are avoided, but their proxy forces (e.g., in Yemen, Iraq, Syria) remain active. The Taliban's resurgence in Afghanistan under Russian influence could create new flashpoints.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This moment represents a power shift in the Middle East and Central Asia. Iran is on the defensive but resilient, while Russia is expanding its footprint by backing the Taliban. For the U.S., balancing engagement with containment remains a challenge. The global oil market and regional stability are at risk if tensions escalate further.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Key players: U.S. (seeking de-escalation but maintaining pressure), Iran (defending its interests and adapting its proxy strategy), Russia (building ties with the Taliban to counter Western influence), and Gulf states (mediating between the U.S. and Iran). The EU and China may play supporting roles in diplomacy or economic ties.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are likely to remain volatile. If tensions escalate, disruptions in the Strait of Hormuz (a critical oil shipping route) could spike prices. However, current talks may ease some pressure, keeping prices relatively stable. Russia's oil exports may also fluctuate depending on its alliances.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Direct US-Iran talks in Qatar aim to de-escalate tensions, but major trust gaps remain. Iran's regional influence is weakened but evolving, while Russia's ties with the Taliban add a new layer of instability. The Strait of Hormuz's security is a critical wildcard for global oil prices.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Russia's explicit alliance with the Taliban is notable, as it signals Moscow's willingness to engage with hardline Islamist groups to counter Western influence. This breaks typical alliances and could reshape Central Asian geopolitics unexpectedly.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
