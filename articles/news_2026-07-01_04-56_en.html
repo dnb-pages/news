@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-01 04:57</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-01 04:57</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Iran says it couldn’t export a ‘single barrel of oil’ during US blockade</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-01 02:45</strong></span>
+                </div>
+                <p class='summary'>Iran was unable to export any oil during the US blockade of its ports, the country's chief negotiator has said.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/1/iran-says-it-couldnt-export-a-single-barrel-of-oil-during-us-blockade?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Middle East live: Qatar reaffirms backing for US – Iran talks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-01 02:46</strong></span>
+                </div>
+                <p class='summary'>Qatari Prime Minister Sheikh Mohammed bin Abdulrahman al-Thani reaffirmed his country's role as a mediator in US – Iran negotiations during talks with US envoy Steve Witkoff and presidential adviser Jared Kushner on Tuesday, as Doha said it remained committed to supporting efforts to implement the memorandum of understanding aimed at ending the Middle East war. Follow our liveblog for the latest updates.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260701-middle-east-live-qatar-reaffirms-backing-for-us-iran-talks' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Vance and Rubio take different approaches as Iran tests their 2028 prospects</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-01 02:58</strong></span>
+                </div>
+                <p class='summary'><p>White House denies rift but Trump officials say Rubio was so skeptical that acceptable deal with Iran was possible that he declined to head US delegation, leading Vance to seize opportunity</p> <p>The post <a href="https://www.timesofisrael.com/vance-and-rubio-take-different-approaches-as-iran-tests-their-2028-prospects/">Vance and Rubio take different approaches as Iran tests their 2028 prospects</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AP26090650984322-1024x640.jpg" title="Vance and Rubio take different approaches as Iran tests their 2028 prospects" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/vance-and-rubio-take-different-approaches-as-iran-tests-their-2028-prospects/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Oil Steadies as Peace Talks Continue, Hormuz Traffic Recovers</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-01 02:40</strong></span>
+                </div>
+                <p class='summary'>Oil steadied after the biggest quarterly drop since the pandemic, as traders monitored peace talks between the US and Iran and the return of shipping through the Strait of Hormuz.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-steadies-as-peace-talks-continue-hormuz-traffic-recovers' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Goldman Flags Up Oil Surplus Even as Nations Rebuild Stockpiles</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-01 02:19</strong></span>
+                </div>
+                <p class='summary'>The global oil market is set to swing back into oversupply as the impact of the Iran war fades and traffic through the Strait of Hormuz recovers, according to Goldman Sachs Group Inc.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/goldman-flags-up-oil-surplus-even-as-nations-rebuild-stockpiles' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. and Iran are in tense negotiations mediated by Qatar, with Iran struggling economically due to U.S. oil export blockades. Meanwhile, oil markets are stabilizing as talks progress and trade routes reopen, but long-term tensions could shape Middle East stability and global energy markets.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. has blocked Iranian oil exports, severely impacting Iran's economy. Iran’s negotiators claim no oil has been exported under the blockade, while Qatar mediates high-stakes talks between the U.S. and Iran to end the Middle East war. Oil prices are stabilizing as shipping through the Strait of Hormuz recovers, but Goldman Sachs warns of a potential oil surplus as tensions ease.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            Peace talks between the U.S. and Iran will likely continue, with Qatar playing a key role. However, internal U.S. disagreements—between officials like Vance and Rubio—could slow progress. Iran’s economic struggles may push it toward compromise, but domestic pressures could harden its stance. Oil markets will remain volatile until a resolution is reached.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            Late 2025: U.S. imposed oil export blockade on Iran. Early 2026: Escalation in Middle East tensions led to war. Now (July 2026): Qatar mediates talks; Iran claims no oil exports; oil markets fluctuate as Hormuz Strait reopens cautiously.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            If talks succeed, Iran may regain limited oil exports, easing tensions but keeping geopolitical rivals (U.S., Saudi Arabia, Israel) at odds. If talks fail, Iran could escalate proxy conflicts (e.g., Yemen, Syria) or even resume nuclear activities, risking further U.S. sanctions or military action. Long-term, Iran’s economy and regional influence hinge on whether it can secure sanctions relief without conceding too much politically.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current conflict is primarily economic and diplomatic rather than direct military combat. Iran is economically weakened, while the U.S. faces internal divisions over negotiation strategies. Proxies (e.g., Hezbollah, Houthi rebels) remain active but with reduced intensity due to ongoing talks. Violence is low-level but ever-present.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            For the world, this fight could stabilize oil markets but deepen Middle East instability if Iran’s regime feels cornered. A failed deal risks renewed conflict spilling into global energy supplies. For ordinary people, this means pricier gas and potential energy shortages if tensions spike, alongside ongoing refugee crises and economic strain on fragile nations.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Qatar is the main mediator, balancing ties with both the U.S. and Iran. The U.S. is split internally: Vance favors diplomacy, while Rubio (and allies) doubt Iran’s willingness to compromise. Other regional players (Saudi Arabia, UAE) may quietly support U.S. efforts to contain Iran. Israel watches closely but isn’t directly involved yet.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are steady as Hormuz Strait traffic reopens, reducing supply fears. However, a potential oil surplus (per Goldman Sachs) could push prices down later in 2026 unless new geopolitical shocks emerge. For consumers, this means fuel prices may stay moderate—unless talks collapse or Iran retaliates.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            U.S. sanctions have crippled Iran’s oil exports, forcing it to negotiate but also pushing it toward potential escalations. Middle East peace talks are the best hope for stability, but U.S. divisions (e.g., Vance vs. Rubio) could derail progress. Oil markets are calm for now, but a relapse in talks could send prices surging—or a surplus could crash them.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The stark internal U.S. divide on Iran policy (Vance vs. Rubio) wasn’t widely expected, raising doubts about America’s unified approach.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
