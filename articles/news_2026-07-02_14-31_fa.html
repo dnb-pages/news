@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-02 14:35</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-02 14:35</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>آیا با بازگشایی تنگه هرمز، نفت به فراوانی گرایید؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۰۲T۱۳:۴۸:۵۱Z</strong></span>
+                </div>
+                <p class='summary'>هنگامی که جریان در تنگه از سر گرفته می‌شود، مازاد نفتی ممکن است دوباره بازارهای انرژی جهانی را دچار بی‌ثباتی کند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/2/with-hormuz-reopened-has-the-oil-shortage-turned-into-a-glut?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایران در آستانه خاک‌سپاری رهبر معظم انقلاب اسلامی، آیت‌الله علی خامنه‌ای که در ابتدای جنگ با عراق به قتل رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل NYT</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۱۲ ساعت ۱۴:۰۱:۳۴</strong></span>
+                </div>
+                <p class='summary'>مراسم خاکسپاری طولانی‌مدت آیت‌الله علی خامنه‌ای، که در روزهای آغازین جنگ در حملات ایالات متحده و اسرائیل جان باخت، قرار است از روز جمعه آغاز شود. برای رژیم جمهوری اسلامی، این یک لحظه حیاتی برای نشان‌دادن این است که توانسته است دوام بیاورد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/02/world/middleeast/iran-funeral-ali-khamenei-preparations.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران در آستانه تشییع جنازه طولانی‌مدت خامنه‌ای، به آمریکا و اسرائیل در برابر اقدامات تهاجمی هشدار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۱۲ ساعت ۱۲:۱۸:۳۳ (وقت هماهنگ جهانی)</strong></span>
+                </div>
+                <p class='summary'><p>انتظار می‌رود ۱۵ تا ۲۰ میلیون نفر حضور داشته باشند؛ رئیس مجلس ایرانPeople's Mass Call Urged: "Fulfill the nation's demand for vengeance"; ارتش ایران به کشتی‌ها هشدار می‌دهد از مسیرهای تنگه هرمز که تأیید نکرده‌اند، استفاده نکنند</p> <p>این مطلب ابتدا در <a href="https://www.timesofisrael.com/iran-warns-us-israel-against-attacks-ahead-of-long-delayed-khamenei-funeral/">وب‌سایت تایمز آو اسرائیل</a> با عنوان «ایران آمریکا و اسرائیل را از انجام حملات قبل از تشییع جنازه به تعویق‌افتاده خمینی هشدار می‌دهد» منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AFP__20260626__B8EY7MW__v1__HighRes__IraqReligionIslamAshura-e1782992077698-1024x640.jpg" title="Iran warns US, Israel against attacks ahead of long-delayed Khamenei funeral" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/حاکم-اکبر-احمدی-چهارشنبه-در-خواست- läxa.is-persian-warns-us-israel-against-attacks-ahead-of-delayed-khamenei-funeral/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>آمریکا امیدوار به سرمایه‌گذاری در ایران با طی‌کردن دهه‌ها تاریخ به‌کلی متفاوت خواهد بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اِن‌یو‌تی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۰۲T۱۴:۱۴:۳۸Z</strong></span>
+                </div>
+                <p class='summary'>مقامات ارشد آمریکایی گفته‌اند که در صورت تغییر موضع ایران درباره ایالات متحده، پاداش‌های فراوانی به این کشور داده خواهد شد. رهبران ایران در گذشته این معامله را رد کرده‌اند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/02/world/middleeast/us-iran-negotiations-economy-opening-up.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ژوئیه 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران با آئین تشییع جنازه رهبر سابق خود آیت‌الله علی خامنه‌ای که در جنگی گذشته کشته شده است، در مقطعی حساس قرار دارد، در حالی که تنش‌ها با ایالات متحده و اسرائیل همچنان در سطح بالایی قرار دارد. بازگشایی تنگه هرمز نگرانی‌های مربوط به نفت را کاهش می‌دهد، اما باعث نگرانی در مورد مازاد عرضه جهانی می‌شود. ایران قبل از تشییع جنازه تهدید به تلافی می‌کند، در حالی که ایالات متحده به پاداش‌های اقتصادی بالقوه برای تغییر مسیر اشاره می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران خود را برای تشییع جنازه رهبر معظم انقلاب آیت‌الله علی خامنه‌ای آماده می‌کند که در جریان حمله آمریکایی-اسرائیلی در ابتدای یک درگیری گذشته کشته شد. بدن او برای سال‌ها در حالت بزرگ‌داشت نگهداری شده بود و اکنون تشییع جنازه‌اش قرار است آغاز شود که انتظار می‌رود بین ۱۵ تا ۲۰ میلیون نفر در آن شرکت کنند. ایران به ایالات متحده و اسرائیل هشدار داده است که در طول این مراسم حمله نکنند و می‌رود تا با بسیج نیروهای نظامی خود از هرگونه دخالت احتمالی جلوگیری کند. از سوی دیگر، تنگه هرمز، یک مسیر حیاتی حمل و نقل نفت، پس از تهدیدات گذشته درباره مسدود کردن آن، اکنون بازگشایی شده است که می‌تواند به کاهش تنگناهای نفتی کمک کند، اما نگرانی‌هایی درباره ضرر بازار نیز پدیدار ساخته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا هدینگ</h3>
+            تشکیلِ مجلس ترحیمِ خامنه‌ای احتمالاً به نمایشی بزرگ از قدرت رهبری در ایران تبدیل خواهد شد و مقاومت این کشور پس از سال‌ها درگیری را به نمایش خواهد گذاشت. تنش‌ها با ایالات متحده و اسرائیل ممکن است به‌طور موقت با تمرکز ایران بر مراسم تشییع جنازه کاهش یابد، اما خطرات انتقام‌گیری یا تشدید بیشتر همچنان بالاست. از نظر اقتصادی، بازگشایی تنگه هرمز می‌تواند منجر به مازاد نفتی و کاهش قیمت‌ها در کوتاه‌مدت شود، اما ریسک‌های ژئوپلیتیکی ممکن است به سرعت این وضعیت را معکوس کند. ایالات متحده ممکن است به دنبال مذاکرات برای باز کردن اقتصاد ایران باشد، اما رهبران ایران به‌طور تاریخی چنین توافقاتی را رد کرده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            <ul><li>۱. گذشته: آیت‌الله علی خامنه‌ای در حملهٔ هوایی ایالات متحده و اسرائیل در آغاز جنگی کشته شد (سال دقیق ذکر نشده است اما به عنوان «اوایل جنگ» اشاره شده است).</li><li>۲. سال‌ها بعد: جنازه او به صورت دولتی نگهداری می‌شود در حالی که ایران برای برگزاری مراسم تشییع آماده می‌شود.</li><li>۳. اکنون (تیر ۱۴۰۵): تنگهٔ هرمز بازگشایی شده است که نگرانی‌های مربوط به حملهٔ نفت را کاهش می‌دهد.</li><li>۴. تیر ۱۴۰۵: آغاز مراسم تشییع و گرامیداشت آیت‌الله خامنه‌ای با حضور گستردهExpectedillä olevassa ohjelmassa ja varoitukset Yhdysvaltoihin ja Israeliin lähetetään.</li><li>۵. آینده نزدیک: ایران ممکن است از طریق برگزاری مراسم، وحدت ملی خود را نشان دهد، در حالی که ایالات متحده به بررسی مشوق‌های اقتصادی برای مذاکره با ایران می‌پردازد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            انتقال رهبری در ایران بر استراتژی بلندمدت آن تأثیر خواهد گذاشت و تشییع جنازه به عنوان آزمونی حیاتی برای سنجش ثبات و اراده این کشور محسوب می‌شود. اگر این مراسم بدون حادثه‌ای به پایان برسد، ایران ممکن است اعتمادبه‌نفس خود را نمایان کرده و برای احیای نفوذ خود در منطقه تلاش کند، چه از طریق گروه‌های نیابتی یا کانال‌های دیپلماتیک. از نظر اقتصادی، توانایی ایران در بازگرداندن صادرات نفت می‌تواند تا حدی به اقتصاد ضربه‌دیده‌اش تحت تحریم‌ها تسهیلاتی فراهم کند، اما ریسک‌های ژئوپلیتیکی همچنان بر بازارها و اعتماد سرمایه‌گذاران تأثیر منفی خواهند گذاشت. ایالات متحده و ایران ممکن است وارد مذاکرات غیرمستقیم شوند، اما بی‌اعتمادی عمیق و رنج‌های تاریخی باعث می‌شود تا بدون مصالحات قابل‌توجه، پیشرفتی حاصل نشود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            دینامیک‌های درگیری کنونی با تنش‌های پرمخاطره به جای درگیری‌های گسترده و فعال مشخص می‌شوند. ایران بر دفاع از مراسم خاکسپاری و بازدارندگی در برابر دخالت خارجی متمرکز است، در حالی که ایالات متحده و اسرائیل نیز اخطارهایی صادر کرده‌اند، اما در حال حاضر درگیری مستقیم ندارند. بازگشایی تنگه هرمز نشان‌دهنده کاهش تهدیدهای مرتبط با نفت است، اما موضع نظامی ایران (به عنوان مثال، اخطار به کشتی‌ها) وضعیت را پر تنش نگه داشته است. مراسم خاکسپاری می‌تواند با نمایش اتحاد، تنش‌ها را کاهش داده یا در صورت بروز تحریکات احتمالی، آن‌ها را تشدید کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت، تعادل ظریف میان جنگ و دیپلماسی در خاورمیانه را برجسته می‌کند. ثبات ایران به مراسم خاک‌سپاری خامنه‌ای وابسته است که می‌تواند رهبری آن را تقویت یا نقاط ضعف آن را آشکار کند. برای جهان، بازگشایی تنگه هرمز مایه آسودگی بازارهای نفتی است، اما ریسک‌های ژئوپلیتیکی در منطقه همچنان ابری تیره بر امنیت انرژی جهانی سایه افکنده است. برخورد میان ایران، ایالات متحده و اسرائیل، دشواری ایجاد صلح بلندمدت در منطقه‌ای را برجسته می‌کند که ریشه‌های تاریخی و بی‌اعتمادی متقابل در آن عمیق است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            کشور آمریکا و رژیم صهیونیستی به دلیل حملات گذشته به ایران و تنش‌های جاری، نقش‌های اصلی را ایفا می‌کنند. ایالات متحده امکان مذاکره با ایران از طریق مشوق‌های اقتصادی را مدنظر دارد، در حالی‌که اسرائیل در برابر تهدیدهای perceived - خود هشیار است. قدرت‌های منطقه‌ای، به ویژه کشورهای حاشیه خلیج فارس که برای صادرات نفت از تنگه هرمز به آن وابسته‌اند، به دقت وضعیت را زیر نظر دارند، اما تاکنون درگیری مستقیمی نداشته‌اند. بازارهای جهانی نفت و اقتصادهای وابسته به انرژی نیز وضعیت را رصد می‌کنند، چرا که هرگونه اختلال می‌تواند پیامدهای جهانی به دنبال داشته باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            بازگشایی دوباره تنگه هرمز می‌تواند عرضه نفت جهانی را به طور موقت افزایش دهد و به طور بالقوه در کوتاه‌مدت منجر به مازاد عرضه و کاهش قیمت‌ها شود. با این حال، اگر ایران یا نیابتی‌های آن تهدید به بستن دوباره تنگه کنند یا در حین مراسم ختم تنش‌ها تشدید شوند، به دلیل نگرانی‌های مربوط به عرضه، قیمت‌ها می‌توانند به شدت و ناگهانی بالا روند. بازار نفت همچنان نسبت بهGeopolitics خاورمیانه بسیار حساس است و هرگونه نشانه‌ای از بی‌ثباتی می‌تواند نوسانات شدید ایجاد کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            رهبری ایران تحت نظارت شدید قرار گرفته است زیرا خود را برای تشییع جنازه‌ی خامنه‌ای آماده می‌کند؛ لحظه‌ای که می‌تواند رژیم را ثبات بخش یا بی‌ثبات کند. تنگه هرمز اکنون باز است، نگرانی‌های فوری از وضع نفت را کاهش داده اما ریسک‌های بلندمدت همچنان وابسته به اقدامات بعدی ایران است. ایالات متحده با پیشنهاد پاداش‌های اقتصادی به ایران برای تغییر مسیر، ارتباط برقرار کرده است، اما رهبران ایران سابقه رد کردن چنین توافق‌هایی را دارند و پیشرفت در این زمینه نامشخص است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ‌کدام. تمامی این تحولات با تنش‌های شناخته‌شده میان ایران، ایالات متحده و اسرائیل هم‌سو هستند و از سوی دیگر، بازگشایی تنگه هرمز پس از تهدیدهای پیشین، موضوعی بود که به широко انتظار می‌رفت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
