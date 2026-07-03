@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-03 19:54</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-03 19:54</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Iran begins public mourning for Ayatollah killed in February</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 19:03</strong></span>
+                </div>
+                <p class='summary'>Ali Khamenei's body will lie in state in Tehran's Grand Mosalla from Friday ahead of days-long funeral events.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cx2k4k7jqeno?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Saudi deputy foreign minister pays respects at Khamenei funeral</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 18:54</strong></span>
+                </div>
+                <p class='summary'>Saudi Arabia’s Vice Foreign Minister Walid al-Khuraiji unexpectedly attended the former Supreme Leader's funeral</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/3/saudi-deputy-foreign-minister-pays-respects-at-khamenei-funeral?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran begins week of funeral ceremonies for slain Supreme Leader Khamenei</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 18:39</strong></span>
+                </div>
+                <p class='summary'>Top Iranian officials and foreign dignitaries pay respects to late leader killed in joint US-Israeli strike in February.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/3/iran-begins-week-of-funeral-ceremonies-for-slain-supreme-leader-khamenei?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>World leaders pay tribute to Iran’s late leader Khamenei in Tehran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 17:35</strong></span>
+                </div>
+                <p class='summary'>World leaders pay tribute to Iran's late leader Khamenei in Tehran</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/3/world-leaders-pay-tribute-to-irans-late-leader-khamenei-in-tehran?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>New Lebanon deal revives Jerusalem’s hopes of curbing Iran’s influence</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 19:07</strong></span>
+                </div>
+                <p class='summary'><p>Trilateral pact formalizes IDF coordination with Lebanese army and ties Israeli withdrawal to Hezbollah's disarmament, but certainly doesn't guarantee peace on the northern border</p> <p>The post <a href="https://www.timesofisrael.com/new-lebanon-deal-revives-jerusalems-hopes-of-curbing-irans-influence/">New Lebanon deal revives Jerusalem’s hopes of curbing Iran’s influence</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26179337180292-1024x640.jpg" title="New Lebanon deal revives Jerusalem’s hopes of curbing Iran’s influence" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/new-lebanon-deal-revives-jerusalems-hopes-of-curbing-irans-influence/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>U.S. Officials Believed Israel Was Plotting to Kill Iranian Negotiators</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 18:10</strong></span>
+                </div>
+                <p class='summary'>Any Israeli attempt to kill Abbas Araghchi, the foreign minister, or Mohammad Ghalibaf, the Parliament speaker, would have derailed peace talks, American officials feared.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/02/us/politics/israel-iran-negotiators-plot.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 3, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is in the midst of a week-long funeral for its late Supreme Leader Ayatollah Khamenei, killed in February, with global leaders attending. Tensions remain high as Iran's enemies face challenges in negotiation, while new agreements aim to reduce Iran's influence in the region, particularly in Lebanon. Meanwhile, accusations circulate that Israel planned to assassinate Iranian negotiators, potentially disrupting fragile diplomacy.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Ayatollah Ali Khamenei, Iran's top leader, was assassinated in February in what Iran claims was a joint US-Israeli strike. Iran is now holding a week-long funeral with his body lying in state in Tehran. High-profile foreign dignitaries, including a Saudi deputy foreign minister, are attending to pay their respects. Meanwhile, a recent trilateral agreement between Israel, Lebanon, and their armed forces aims to curb Iran-backed Hezbollah's influence. Separately, the US has accused Israel of planning to assassinate senior Iranian negotiators, which could have derailed ongoing peace talks.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The funeral events will likely lead to a temporary display of unity among Iran's allies and even some regional rivals, but tensions remain high as Iran seeks vengeance for Khamenei's death. The Lebanon deal is an attempt by Israel to weaken Hezbollah and reduce Iran's regional sway, but it is fragile and not guaranteed to last. If Israel did plot to kill Iranian negotiators, this could further escalate tensions and stall any peace efforts. In the near term, expect rhetoric and possible retaliation from Iran, while long-term shifts in regional alliances may emerge.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            February 2026: Ayatollah Khamenei assassinated in a targeted strike. Early July 2026: Iran begins a week-long funeral with global leaders attending. Early July 2026: Saudi deputy foreign minister attends Khamenei's funeral, signaling unexpected diplomatic engagement. Early July 2026: Lebanon, Israel, and the Lebanese army agree to a deal aimed at disarming Hezbollah and Israeli withdrawal. Early July 2026: US officials reveal Israel was allegedly planning to assassinate Iranian negotiators, raising alarms about further conflict escalation.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            Iran will likely focus on rebuilding its leadership structure while seeking reprisals for Khamenei's death, potentially through its proxies like Hezbollah. The Lebanon deal, while a step toward reducing Iran's influence, is uncertain and may face resistance or collapse. If Israel's alleged plots are confirmed, diplomatic channels could close entirely, leading to a more volatile and possibly violent Middle East. Over the long term, Iran may seek to strengthen its ties with non-Western allies like Russia or China to counter US influence.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current environment is highly tense but not yet fully escalated into open warfare. Iran's proxies, such as Hezbollah, are likely to remain on high alert, and retaliatory attacks by Iran could occur. The funeral events provide a symbolic show of strength, but behind the scenes, Iran may be planning covert actions. The Lebanon deal offers a flicker of hope for stability in that region, but it is fragile and dependent on all parties adhering to terms.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This series of events highlights the ongoing proxy wars and covert operations across the Middle East, with Iran at the center. The assassination of Khamenei has added fuel to the fire, and the world watches closely to see whether diplomacy can prevail or if retaliation will dominate. The funeral rituals are a moment of reflection, but the underlying conflicts—regional influence, nuclear ambitions, and proxy wars—remain unresolved. For the global oil market, any escalation in the region risks supply disruptions and price spikes.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Key players include Iran (backed by Russia and China), Israel and the US (allied in covert operations), Saudi Arabia (shows cautious engagement with Iran), and Lebanon's government and Hezbollah (caught between regional powers). The surprise attendance of a Saudi official at Khamenei's funeral suggests a possible thaw in relations, but this is uncharted territory. Meanwhile, the US is closely monitoring Israel's actions to prevent a broader conflict that could drag in American forces.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The Middle East is a critical oil-producing region, and any escalation—such as attacks on oil infrastructure or blockades—could disrupt global oil supplies. Iran, a major oil producer, may retaliate against oil facilities or shipping lanes, while Israel's actions could further destabilize the region. If tensions rise, oil prices are likely to increase due to uncertainty and potential supply risks. If the Lebanon deal holds and tensions ease slightly, prices may stabilize, but the risk remains high.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Iran is holding a high-profile funeral for its slain leader, with global leaders attending, signaling both mourning and a show of strength amid ongoing tensions. A new Lebanon deal aims to weaken Hezbollah and reduce Iran's influence, but it is fragile and unlikely to resolve deeper regional conflicts. Allegations that Israel planned to assassinate Iranian negotiators could derail fragile diplomacy and push the region closer to open conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The surprise attendance of a Saudi deputy foreign minister at Khamenei's funeral is unexpected given the long-standing rivalry between Saudi Arabia and Iran, hinting at a possible thaw in relations.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
