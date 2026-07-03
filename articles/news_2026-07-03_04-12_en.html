@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-03 04:13</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-03 04:13</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Iran warns ships against using unapproved routes in Strait of Hormuz</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 03:01</strong></span>
+                </div>
+                <p class='summary'>Military command issues threat a day after Qatari mediators hailed 'positive progress' in indirect US-Iranian talks.</p>
+                <div class='link'><a href='https://www.aljazeera.com/economy/2026/7/3/iran-warns-ships-against-using-unapproved-routes-in-strait-of-hormuz?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Middle East live: Iran prepares to say final goodbye to Supreme Leader Khamenei</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 03:05</strong></span>
+                </div>
+                <p class='summary'>Iran has warned the United States and Israel against any attack as the country prepares for the funeral of Supreme Leader Ayatollah Ali Khamenei, who was killed in airstrikes on the first day of the war. Authorities expect between 15 and 20 million people to attend in Tehran alone for this three-day tribute, which begins Saturday. Once it concludes, negotiations between Tehran and Washington will resume. Follow our liveblog for the latest updates.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260703-middle-east-live-iran-prepares-to-say-final-goodbye-to-supreme-leader-khamenei' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>US indirectly warned Iran during talks that Israel might try to kill its top negotiators — NYT</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 03:24</strong></span>
+                </div>
+                <p class='summary'><p>US reportedly feared that Israeli assassinations of Mohammad Bagher Ghalibaf, Iran's parliament speaker, and Foreign Minister Abbas Araghchi, would derail negotiations</p> <p>The post <a href="https://www.timesofisrael.com/us-indirectly-warned-iran-during-talks-that-israel-might-try-to-kill-its-top-negotiators-nyt/">US indirectly warned Iran during talks that Israel might try to kill its top negotiators — NYT</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/06/AP26172528913995-e1782392620112-1024x640.jpg" title="US indirectly warned Iran during talks that Israel might try to kill its top negotiators — NYT" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/us-indirectly-warned-iran-during-talks-that-israel-might-try-to-kill-its-top-negotiators-nyt/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Flowers and ‘vengeance’: Tehran’s Grand Mosalla readies for Khamenei memorial</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 01:20</strong></span>
+                </div>
+                <p class='summary'><p>Slain Ayatollah Ali Khamenei's body is set to lie in state at vast Tehran religious complex beginning on Saturday, as 15 to 20 million mourners expected to gather in extreme heat</p> <p>The post <a href="https://www.timesofisrael.com/flowers-and-vengance-tehrans-grand-mosalla-readies-for-khamenei-memorial/">Flowers and ‘vengeance’: Tehran’s Grand Mosalla readies for Khamenei memorial</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AP26183625347220-1024x640.jpg" title="Flowers and ‘vengeance’: Tehran’s Grand Mosalla readies for Khamenei memorial" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/flowers-and-vengance-tehrans-grand-mosalla-readies-for-khamenei-memorial/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Iran Prepares to Bury Supreme Leader, Ayatollah Ali Khamenei, Killed at Iran War’s Outset</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-03 02:47</strong></span>
+                </div>
+                <p class='summary'>Long-delayed funeral ceremonies for Ayatollah Ali Khamenei, killed during U.S.-Israeli strikes at the war’s outset, are set to begin Friday. For the regime, it is a critical moment to demonstrate that it has endured.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/02/world/middleeast/iran-funeral-ali-khamenei-preparations.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is in a critical moment as it prepares for the funeral of its Supreme Leader Ayatollah Ali Khamenei, killed at the start of a war with Israel and the U.S., while tensions remain high over regional security and indirect negotiations.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Supreme Leader Ayatollah Ali Khamenei was killed in the first day of a war involving Israel and the U.S. Iran is now preparing for his funeral, expected to draw 15-20 million mourners in Tehran. Meanwhile, Iran has warned ships not to use unapproved routes in the Strait of Hormuz, a key oil shipping lane. Indirect talks between Iran and the U.S. are paused but set to resume after the funeral.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            After the funeral, negotiations between Iran and the U.S. are likely to resume, but risks remain high. Iran may escalate its rhetoric or actions in the Strait of Hormuz as a show of strength. Israel could also take aggressive steps to disrupt Iranian leadership or negotiations.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>**Early 2026**: War between Israel/U.S. and Iran begins; Khamenei killed in airstrikes.</li><li>**July 3, 2026**: Iran warns ships in the Strait of Hormuz not to use unapproved routes.</li><li>**July 5-7, 2026**: Khamenei’s funeral takes place in Tehran.</li><li>**Post-funeral**: Indirect U.S.-Iran negotiations resume.</li><li>**Future**: Potential Israeli assassinations of Iranian negotiators or further military tensions.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            Iran is likely to double down on its regional influence, possibly through proxy groups like Hezbollah or Houthis, to counter perceived threats. The funeral could be a moment for the regime to rally domestic support but also risks provoking further conflict. Long-term, the death of Khamenei could destabilize Iran’s leadership succession and escalate tensions.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is highly tense but not yet in full-scale war. Iran’s warnings in the Strait of Hormuz suggest it may use its military to disrupt shipping as leverage. The nature of the fighting so far includes airstrikes and proxy conflicts, but direct war between Iran and Israel/U.S. has not yet materialized.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            The death of Khamenei and Iran’s preparations for his funeral highlight the fragility of Iran’s leadership amid ongoing war. This moment could reshape regional power balances, especially if Iran’s succession process becomes unstable. The global community is watching closely due to Iran’s role in oil markets and regional security.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. and Israel are directly involved as the parties that struck Iran at the start of the war. Qatar is mediating indirect talks between Iran and the U.S. Other regional actors, like Saudi Arabia or Gulf states, may be watching cautiously but are not directly involved. China and Russia may seek to influence the situation diplomatically.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Iran’s threats to disrupt shipping in the Strait of Hormuz could cause oil prices to rise due to fears of supply disruptions in a major global oil route. If conflict spreads further, oil prices could spike significantly, affecting economies worldwide. For now, prices may fluctuate based on news from the funeral and negotiations.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Khamenei’s funeral is a critical moment for Iran’s leadership and could determine the country’s next moves in the war. Iran has warned it may disrupt shipping in the Strait of Hormuz, raising risks to global oil supplies. Indirect U.S.-Iran talks are paused but set to resume, offering a possible path to de-escalation or further conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The scale of the funeral preparations (15-20 million mourners) suggests both Iranian regime strength and vulnerability. The U.S. warning Iran about potential Israeli assassinations of its negotiators is an unexpected layer of geopolitical tension.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
