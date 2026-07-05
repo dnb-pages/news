@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-05 04:36</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-05 04:36</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>یک دیپلمات ایرانی اعلام کرد که کشورش به 'قطعیت' عوارض تنگه هرمز را دریافت خواهد کرد و در مقابل دستورالعمل‌های ایالات متحده دست به چالش می‌زند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تایمز اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۱۵ ساعت ۰۶:۴۰:۰۴ به وقت UTC</strong></span>
+                </div>
+                <p class='summary'><p>به گفتهٔ فرستاده، احتمالاً کشورهای دوستدار «رفتار ویژه» دریافت خواهند کرد. ربیو گفته است هر معاملهٔ نهایی مانع از هر گونه پرداخت خواهد شد. تازه فرمانده نیروی دریایی سپاه پاسداران «انتقام الهی» علیه اسرائیل و ایالات متحده را تبلیغ می‌کند</p> <p>مقالهٔ <a href="https://www.timesofisrael.com/iranian-diplomat-says-country-will-definitely-collect-hormuz-fees-defying-us/">دیپلمات ایرانی می‌گوید این کشور «حتماً» عوارض تنگه هرمز را دریافت خواهد کرد، در حالی که با ایالات متحده به چالش برمی‌خیزد</a> برای اولین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AP26183278812917-1024x640.jpg" title="دیپلمات ایرانی می‌گوید این کشور «حتماً» عوارض تنگه هرمز را دریافت خواهد کرد، در حالی که با ایالات متحده به چالش برمی‌خیزد" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/%d8%a7%db%8c%d8%b1%d8%a7%d9%86-%d8%af%db%8c%d9%be%d9%84%d9%85%d8%a7%d8%aa-%d8%af%d8%b1-%da%af%d9%81%d8%aa-%d8%a8%d8%a7-%d8%b9%db%8c%d9%85-%d9%85%d8%b3%d8%aa%d9%82%d9%84-%d8%a7%d8%b2-%d8%ac%d8%b2%d8%a7%db%8c%d8%b1-%d8%b9%d9%88%d8%a7%db%8c%d8%af-%d9%85%d9%86%d8%a7%d8%b9-%d8%a7%d9%86%d8%ac%d8%a7%d9%85-%d9%85%db%8c%da%af%d8%b1%d8%af/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تجزیه و تحلیل وضعیت ایران - ژوئیه 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران در حال تهدید به دریافت هزینه برای کشتی‌هایی است که از تنگه هرمز عبور می‌کنند و با وجود هشدارهای آمریکا به این اقدام ادامه می‌دهد. این اقدام تنش‌ها با آمریکا و اسرائیل را تشدید می‌کند، در حالی که ایران همچنین نشان می‌دهد ممکن است به کشورهای دوست تعرفه‌های پایین‌تری ارائه دهد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده؟</h3>
+            یک دیپلمات ایرانی اعلام کرد که ایران «کاملا» از ناوهای عبوری از تنگه هرمز عوارض دریافت خواهد کرد و به خواسته‌های ایالات متحده برای توقف این اقدام بی‌توجهی نمود. این مقام رسمی اشاره کرد که کشورهای دوست ممکن است شرایط بهتری دریافت کنند. در همین حال، فرمانده جدید نیروی دریایی سپاه پاسداران انقلاب اسلامی نسبت به «مجازات الهی» علیه اسرائیل و ایالات متحده هشدار داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محل عنوان</h3>
+            افزایش تنش‌ها میان ایران و ایالات متحده/اسرائیل محتمل است. ایران ممکن است با اعمال عوارض یا حتی مسدود کردن کشتی‌ها، قدرت بازدارندگی قدرت‌های غربی را مورد آزمایش قرار دهد. در عین حال، اظهارات و ادبیات رهبران ایرانی نشان‌دهنده آمادگی آنها برای رویارویی مستقیم با رقبا است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            «تابستان ۲۰۲۶: دیپلمات ایرانی از طرح جمع‌آوری عوارض تنگهٔ هرمز علی‌رغم مخالفت ایالات متحده خبر داد.»، «اوایل تیر ۱۳۶۵: فرمانده جدید نیروی دریایی سپاه پاسداران تهدید به مقابله با اسرائیل و ایالات متحده کرد.»، «اواسط دههٔ ۲۰۲۰: برنامهٔ هسته‌ای ایران کماکان مسئله‌ای جنجالی بوده، ناپایداری منطقه‌ای را تشدید می‌کند.»، «سال‌های اخیر: ایران بارها تهدید کرده که در واکنش به تحریم‌ها یا حملات ادراک‌شده، تنگهٔ هرمز را مسدود خواهد کرد.»
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            به نظر می‌رسد ایران مصمم است تا بر سراسر آبراه‌های کلیدی کنترل خود را اعمال کند و از نفوذ نظامی و منطقه‌ای خود بهره‌برداری نماید. در صورت تشدید این وضعیت، آمریکا یا اسرائیل ممکن است با اقدامات نظامی یا اقتصادی واکنش نشان دهند. دیپلماسی چندان محتمل نیست، مگر اینکه ایران تحت فشار قرار گیرد یا منافعی در عقب‌نشینی ببیند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های برخورد</h3>
+            این مناقشه در حال حاضر دیپلماتیک و کلامی است، اما به دلیل اظهارات جسورانه ایران و احتمال مخالفت آمریکا، خطر بالای تشدید وجود دارد. در صورت تلاش ایران برای اعمال فیزیکی این هزینه‌ها، ممکن است درگیری‌های نظامی یا درگیری‌های سطح پایین رخ دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            سرپیچی ایران نشان‌دهنده جاه‌طلبی‌های منطقه‌ای و تمایل آن برای چالش با نفوذ ایالات متحده است. یک اختلاف طولانی‌مدت می‌تواند عرضه نفت جهانی را مختل کند، خاورمیانه را بی‌ثبات سازد و خطر درگیری گسترده‌تر شامل ایالات متحده، اسرائیل و گروه‌های تحت حمایت ایران را افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            به احتمال زیاد ایالات متحده با اقدامات ایران مخالفت خواهد کرد و ممکن است از گشت‌های نظامی برای محافظت از حمل و نقل دریایی استفاده کند. در صورت هدف قرار دادن صادرات نفتی ایران توسط تهران، کشورهای حاشیه خلیج فارس مانند عربستان سعودی یا امارات متحده عربی نیز ممکن است درگیر شوند. کشورهای دیگر، مانند چین یا روسیه، ممکن است از ایران به صورت دیپلماتیک یا اقتصادی حمایت کنند تا قدرت نفوذ ایالات متحده را خنثی کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            اگر ایران دسترسی به تنگه هرمز را مختل کند، به دلیل ترس از کمبود عرضه، قیمت نفت می‌تواند به شدت افزایش یابد. این تنگه حدود 20 درصد از عرضه نفت جهان را مدیریت می‌کند، بنابراین هرگونه مسدودسازی، موج‌های شوک‌آوری را در بازارهای جهانی ایجاد خواهد کرد. حتی تهدید به اقدام نیز می‌تواند باعث نوسانات قیمتی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران در آستانه وضع عوارض برای کشتی‌هایی است که از تنگه هرمز عبور می‌کنند، تنش‌ها با آمریکا و اسرائیل را تشدید کرده است. این اقدام می‌تواند عرضه جهانی نفت را مختل کند و ممکن است پاسخ‌های نظامی یا اقتصادی ایالات متحده را به همراه داشته باشد. این وضعیت، استراتژی جسورانه ایران برای تحکیم سلطه منطقه‌ای خود را علیرغم مخالفت‌های ایالات متحده برجسته می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            سخنان تحریک‌آمیز سرهنگ جدید نیروی دریایی سپاه پاسداران در مورد «انتقام الهی» حتی در استانداردهای ایران نیز به شدت تهاجمی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 متن اضافی</h3>
+            تغییر و تحولی معنادار در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
