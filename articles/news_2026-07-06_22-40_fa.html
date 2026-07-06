@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-06 22:43</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-06 22:43</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایرانیان رهبری را که به قتل رسید عزاداران و خواستار انتقام می‌شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تاریش نویز تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۱۶ ساعت ۱۹:۴۵:۱۷</strong></span>
+                </div>
+                <p class='summary'>میلیون‌ها نفر در خیابان‌های ایران حاضر شدند تا به آیت‌الله علی خامنه‌ای، که در جنگ با ایالات متحده و اسرائیل کشته شد، ادای احترام کنند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/06/world/middleeast/iran-khamenei-funeral.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>نظر اندازی | چین، کشور مورد علاقهٔ ایران در تنگهٔ هرمز</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶/۰۷/۱۵ ساعت ۲۳:۳۸</strong></span>
+                </div>
+                <p class='summary'>پکن در حین عبور از این آبراه چند تخفیف ویژه برای خانواده و دوستان دریافت خواهد کرد.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/irans-most-favored-strait-of-hormuz-nation-is-china-91b3ea8d' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>تاثیرگذاران می‌گویند که با افتخار در تشییع جنازه خامنه‌ای شرکت می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۴/۱۶  ساعت ۲۱:۲۹:۳۷</strong></span>
+                </div>
+                <p class='summary'>چندین چهره تأثیرگذار در رسانه‌های اجتماعی برای تشییع جنازهState-level علی خامنه‌ای رهبر معظم انقلاب به ایران سفر کردند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/6/influencers-say-theyre-honoured-to-attend-khamenei-funeral?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>جسد رهبر فقید ایران علی خامنه‌ای به قم می‌رسد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته) </span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۴/۱۵ ۱۹:۵۶:۰۹</strong></span>
+                </div>
+                <p class='summary'>پیکر آیت‌الله علی خامنه‌ای پس از سه روز عزای عمومی به قم منتقل شد. میلیون‌ها نفر به بزرگداشت رهبری وی در این مدت پرداخته‌اند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/6/body-of-irans-slain-supreme-leader-ali-khamenei-arrives-in-qom?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>اوپک+ تولید را افزایش می‌دهد اما آینده کارتل در هاله‌ای از ابهام قرار دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۱۵ ۲۳:۳۴:۲۰</strong></span>
+                </div>
+                <p class='summary'>تعدادی از کشورهای اوپک+ موافقت کرده‌اند که از ماه آگوست سقف تولید خود را افزایش دهند، اما این کارتل پس از خروج امارات از آن، در تلاش برای بقای خود است. یک شرکت فرانسوی در حال استفاده از رود سن برای خنک کردن ساختمان‌های پاریس است. علاوه بر این، اسکای اعلام کرده است که در حال خرید کانال‌های پخش تلوزیونی و سرویس استریم ITV به قیمت ۱.۶ میلیارد پوند است.</p>
+                <div class='link'><a href='https://www.france24.com/en/tv-shows/business/20260706-opec-raises-output-but-cartel-s-future-hangs-in-balance' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 6 ژوئیه 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران پس از ترور رهبر معظم انقلاب، آیت‌الله علی خامنه‌ای، در سوگ عمیقی فرو رفته است و میلیارها نفر در آستانه تشییع جنازه ایشان در خیابان‌ها به سر می‌برند. این رویداد تنش‌های منطقه‌ای را به ویژه با ایالات متحده و اسرائیل تشدید کرده است، در حالی که تغییرات اقتصادی و استراتژیک در بازارهای نفت و تحولات در اتحادها نگرانی‌های جهانی را افزایش داده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            آیت‌الله علی خامنه‌ای، رهبر معظم ایران، در درگیری‌ای درگیر با ایالات‌متحده و اسرائیل درگذشت. مرگ او باعث بروز سوگ عمومی گسترده در ایران شد، به‌طوری‌که میلیون‌ها نفر در تشییع جنازه‌ها شرکت کردند، به‌ویژه در شهر مذهبی قم. اینفلوئنسرهای رسانه‌های اجتماعی نیز در این مراسم حضور یافتند و بر اهمیت این رویداد تأکید کردند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            به احتمال زیاد ایران وارد دورانی از بی‌ثباتی heightened در روند انتقال رهبری خود خواهد شد. جانشین آیت‌الله خامنه‌ای تحت فشار زیادی برای حفظ کنترل و پاسخ‌گویی به تهدیدهای خارجی خواهد بود که ممکن است به رویارویی‌های نظامی بیشتر یا تشدید روابط دیپلماتیک منجر شود. نقش نوظهور چین در امنیّت‌رسانی به ترانزیت نفت از طریق تنگه هرمز می‌تواند اتحادهای منطقه‌ای را بازتعریف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>۱. ۳ تیر ۱۴۰۵: آیت‌الله علی خامنه‌ای در یک جنگ درگیر با ایالات متحده آمریکا و اسرائیل به‌قتل می‌رسد.</li><li>۲. ۴ تا ۶ تیر ۱۴۰۵: میلیون‌ها ایرانی در تهران و قم برای عزاداری عمومی و مراسم تشییع جنازه جمع می‌شوند.</li><li>۳. ۶ تیر ۱۴۰۵: جسد خامنه‌ای برای انجام مراسم تدفین نهایی به قم منتقل می‌شود.</li><li>۴. ادامه دارد: اوپک‌پلاس با تهدید امارات متحده عربی برای خروج از این اتحادیه با بی‌ثباتی مواجه می‌شود.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            آیندهٔ سیاسی ایران نامشخص است و احتمال دارد که یا جانشینی سخت‌گیرانه بر سر کار آید و تنش‌ها را افزایش دهد، و یا رهبری جدید تلاش کند تا روابط با غرب را تثبیت کند. مرگ خامنه‌ای شخصیتی را از میان می‌برد که دهه‌ها نظام را یکپارچه نگاه داشته بود و خطر درگیری‌های قدرت داخلی را پدید می‌آورد. تأثیر فزایندهٔ چین بر صادرات نفتی ایران می‌تواند ایران را بیش از پیش از بازارهای غربی منزوی سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            درگیری میان ایران، ایالات متحده و اسرائیل تشدید شده است و احتمال ترور خامنه‌ای می‌تواند منجر به حملات تلافی‌جویانه یا اقدامات از طریق نماینده‌ها شود. اگرچه مراسم‌های این روز از سوی عموم مردم صلح‌آمیز برگزار می‌شود، اما خطر تداوم خشونت‌ها یا خرابکاری در منطقه همچنان بالاست.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این رویداد نقطه عطفی برای جهت‌گیری آینده ایران و پویایی‌های قدرت منطقه‌ای است. انتقال رهبری می‌تواند خاورمیانه را بیشتر تثبیت کند یا بی‌ثباتی آن را تقویت. دخالت قدرت‌های جهانی مانند چین و احتمال فروپاشی اوپک+ لایه‌هایی از عدم قطعیت اقتصادی و ژئوپلیتیکی را به همراه دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            شورا و اسرائیل به احتمال زیاد در ترور خامنه‌ای دخیل هستند، با توجه به مضمون «جنگ» اشاره شده در مقاله. چین در حال positioning itself را برای تضمین معاملات عبوری نفت در تنگه هرمز است، اقدامی که می‌تواند مسیرهای تجاری نفت جهانی را تغییر دهد. اوپک+ در حال fragmentation است و احتمال خروج امارات متحده عربی به معنای ناپایداری در بازارهای جهانی نفت است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت احتمالاً به دلیل ناپایداری در ایران و عدم قطعیت پیرامون اوپک+ افزایش خواهد یافت. تنگه هرمز، که یک چهارراه حیاتی ترانزیت نفت است، به‌طور فزاینده‌ای مورد مناقشه قرار دارد و هر گونه اختلال می‌تواند موج‌های شوک‌کننده‌ای را در بازارهای جهانی انرژی ایجاد کند. معامله چین با ایران می‌تواند مسیرهای تحت کنترل غرب را دور بزند و زنجیره‌های تأمین را تغییر دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ترور آیت‌الله خامنه‌ای نشانه‌ای از تحول چشمگیر در رهبری ایران است و می‌تواند منجر به بی‌ثباتی یا درگیری‌های بیشتر شود. چین به‌طور پنهانی در حال تقویت پیوندهای اقتصادی خود با ایران است، اقدامی که ممکن است تجارت جهانی نفت را دگرگون ساخته و ایران را از نفوذ غرب منزوی کند. قیمت‌های نفت تحت فشار است به دلیل ناپایداری‌های ژئوپلیتیکی و شکنندگی اوپک+ که نگرانی‌هایی درباره تأمین انرژی آینده ایجاد می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            حضور چهره‌های تأثیرگذار رسانه‌های اجتماعی در مراسم خاکسپاری، آمیختگی سیاست سنتی با روایت‌های دیجیتال نوین را برجسته می‌کند که می‌تواند نشانه‌ای از دور جدیدی از دیپلماسی عمومی یا تبلیغات در ایران باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات قابل توجهی در این زمینه اتفاق نیفتاده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

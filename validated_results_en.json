@@ -1,23 +1,33 @@
 [
   {
-    "original_title": "Huge crowds fill Tehran streets for Khamenei's funeral procession",
-    "title": "Huge crowds fill Tehran streets for Khamenei's funeral procession",
-    "original_summary": "Many people were waving Iranian flags and red banners symbolising vengeance for the former supreme leader's war death.",
-    "summary": "Many people were waving Iranian flags and red banners symbolising vengeance for the former supreme leader's war death.",
-    "source_name": "BBC News (core)",
-    "published_at": "2026-07-06T18:50:44Z",
-    "link": "https://www.bbc.co.uk/news/articles/cdejj44kl70o?at_medium=RSS&at_campaign=rss",
+    "original_title": "Iranians Mourn a Slain Leader, and Call for Vengeance",
+    "title": "Iranians Mourn a Slain Leader, and Call for Vengeance",
+    "original_summary": "Million of people filled the streets of Iran to bid farewell to Ayatollah Ali Khamenei, who was killed in the war with the United States and Israel.",
+    "summary": "Million of people filled the streets of Iran to bid farewell to Ayatollah Ali Khamenei, who was killed in the war with the United States and Israel.",
+    "source_name": "NYT (analysis)",
+    "published_at": "2026-07-06T19:45:17Z",
+    "link": "https://www.nytimes.com/2026/07/06/world/middleeast/iran-khamenei-funeral.html",
+    "domain": "Khamenei, Ali|Funerals and Memorials|US and Israeli Attack on Iran (2026)|Iran|Tehran (Iran)"
+  },
+  {
+    "original_title": "Opinion | Iran’s Most Favored Strait of Hormuz Nation Is China",
+    "title": "Opinion | Iran’s Most Favored Strait of Hormuz Nation Is China",
+    "original_summary": "Beijing will receive a friends-and-family deal in transiting the waterway.",
+    "summary": "Beijing will receive a friends-and-family deal in transiting the waterway.",
+    "source_name": "WSJ (analysis)",
+    "published_at": "2026-07-06T21:38:00Z",
+    "link": "https://www.wsj.com/opinion/irans-most-favored-strait-of-hormuz-nation-is-china-91b3ea8d",
     "domain": ""
   },
   {
-    "original_title": "The Funeral of Iran’s Supreme Leader Ayatollah Ali Khamenei",
-    "title": "The Funeral of Iran’s Supreme Leader Ayatollah Ali Khamenei",
-    "original_summary": "Iran’s new leaders are commemorating Ayatollah Khamenei, who was killed on the first day of the U.S.-Israeli war against the country.",
-    "summary": "Iran’s new leaders are commemorating Ayatollah Khamenei, who was killed on the first day of the U.S.-Israeli war against the country.",
-    "source_name": "NYT (analysis)",
-    "published_at": "2026-07-06T18:21:25Z",
-    "link": "https://www.nytimes.com/2026/07/04/world/middleeast/the-funeral-of-irans-supreme-leader-ali-khamenei.html",
-    "domain": "vis-photo|Iran|Khamenei, Ali|Muslims and Islam"
+    "original_title": "Influencers say they’re ‘honoured’ to attend Khamenei funeral",
+    "title": "Influencers say they’re ‘honoured’ to attend Khamenei funeral",
+    "original_summary": "Several social media influencers travelled to Iran for the state funeral of Supreme Leader Ali Khamenei.",
+    "summary": "Several social media influencers travelled to Iran for the state funeral of Supreme Leader Ali Khamenei.",
+    "source_name": "Al Jazeera (core)",
+    "published_at": "2026-07-06T21:29:37Z",
+    "link": "https://www.aljazeera.com/video/newsfeed/2026/7/6/influencers-say-theyre-honoured-to-attend-khamenei-funeral?traffic_source=rss",
+    "domain": "Show Types"
   },
   {
     "original_title": "Body of Iran’s slain Supreme Leader Ali Khamenei arrives in Qom",
@@ -30,66 +40,6 @@
     "domain": "News"
   },
   {
-    "original_title": "Iranians Mourn a Slain Leader, and Call for Vengeance",
-    "title": "Iranians Mourn a Slain Leader, and Call for Vengeance",
-    "original_summary": "Million of people filled the streets of Iran to bid farewell to Ayatollah Ali Khamenei, who was killed in the war with the United States and Israel.",
-    "summary": "Million of people filled the streets of Iran to bid farewell to Ayatollah Ali Khamenei, who was killed in the war with the United States and Israel.",
-    "source_name": "NYT (analysis)",
-    "published_at": "2026-07-06T19:45:16Z",
-    "link": "https://www.nytimes.com/2026/07/06/world/middleeast/iran-khamenei-funeral.html",
-    "domain": "Khamenei, Ali|Funerals and Memorials|US and Israeli Attack on Iran (2026)|Iran|Tehran (Iran)"
-  },
-  {
-    "original_title": "Iran to Bury Ayatollah Ali Khamenei in Holy City of Mashhad",
-    "title": "Iran to Bury Ayatollah Ali Khamenei in Holy City of Mashhad",
-    "original_summary": "The city of three million people is home to a gold-domed shrine that Shiite Muslims revere as Iran’s most sacred site. The final ceremony will take place there on Thursday.",
-    "summary": "The city of three million people is home to a gold-domed shrine that Shiite Muslims revere as Iran’s most sacred site. The final ceremony will take place there on Thursday.",
-    "source_name": "NYT (analysis)",
-    "published_at": "2026-07-06T18:41:26Z",
-    "link": "https://www.nytimes.com/2026/07/06/world/middleeast/mashhad-iran-khamenei-buried.html",
-    "domain": "Iran|Khamenei, Ali|Khamenei, Mojtaba (1969- )|Raisi, Ebrahim|US and Israeli Attack on Iran (2026)|Muslims and Islam|Funerals and Memorials|Pilgrimages|Imams|Shiite Muslims"
-  },
-  {
-    "original_title": "As Mourners for Khamenei Descend on Tehran, Many Residents Take Flight",
-    "title": "As Mourners for Khamenei Descend on Tehran, Many Residents Take Flight",
-    "original_summary": "Some residents have escaped the city and posted photos of their getaways on social media — a reminder that not all Iranians are mourning the death of Ayatollah Khamenei.",
-    "summary": "Some residents have escaped the city and posted photos of their getaways on social media — a reminder that not all Iranians are mourning the death of Ayatollah Khamenei.",
-    "source_name": "NYT (analysis)",
-    "published_at": "2026-07-06T19:23:11Z",
-    "link": "https://www.nytimes.com/2026/07/06/world/middleeast/khamenei-funeral-tehran-residents-exodus.html",
-    "domain": "Social Media|Funerals and Memorials|Grief (Emotion)|Assassinations and Attempted Assassinations|War and Armed Conflicts|Iran-Israel War (2025- )|Khamenei, Ali|Iran|Caspian Sea|Tehran (Iran)"
-  },
-  {
-    "original_title": "Iran Isn’t Just Eulogizing a Leader. It’s Sending a Message.",
-    "title": "Iran Isn’t Just Eulogizing a Leader. It’s Sending a Message.",
-    "original_summary": "Events to honor Ali Khamenei include threats to President Trump, as well as Quranic quotes chosen to troll Saudi Arabia and Turkey.",
-    "summary": "Events to honor Ali Khamenei include threats to President Trump, as well as Quranic quotes chosen to troll Saudi Arabia and Turkey.",
-    "source_name": "WSJ (analysis)",
-    "published_at": "2026-07-06T18:06:00Z",
-    "link": "https://www.wsj.com/world/middle-east/iran-isnt-just-eulogizing-a-leader-its-sending-a-message-221c97e5",
-    "domain": ""
-  },
-  {
-    "original_title": "Iran reappoints a familiar face to powerful post during Khamenei funeral",
-    "title": "Iran reappoints a familiar face to powerful post during Khamenei funeral",
-    "original_summary": "The judiciary chief has emphasised the need to avenge Supreme Leader Ali Khamenei and prosecute foreign &#039;aggressors&#039;.",
-    "summary": "The judiciary chief has emphasised the need to avenge Supreme Leader Ali Khamenei and prosecute foreign 'aggressors'.",
-    "source_name": "Al Jazeera (core)",
-    "published_at": "2026-07-06T18:28:38Z",
-    "link": "https://www.aljazeera.com/news/2026/7/6/iran-reappoints-a-familiar-face-to-powerful-post-during-khamenei-funeral?traffic_source=rss",
-    "domain": "News"
-  },
-  {
-    "original_title": "Khamenei family mourns, but Mojtaba’s absence fuels public insecurity",
-    "title": "Khamenei family mourns, but Mojtaba’s absence fuels public insecurity",
-    "original_summary": "Many Tehran residents say the absence of Iran&#039;s new supreme leader makes them question their own security. ",
-    "summary": "Many Tehran residents say the absence of Iran's new supreme leader makes them question their own security.",
-    "source_name": "Al Jazeera (core)",
-    "published_at": "2026-07-06T17:20:23Z",
-    "link": "https://www.aljazeera.com/news/2026/7/6/khamenei-family-mourns-but-mojtabas-absence-fuels-public-insecurity?traffic_source=rss",
-    "domain": "News"
-  },
-  {
     "original_title": "OPEC+ raises output but cartel's future hangs in balance",
     "title": "OPEC+ raises output but cartel's future hangs in balance",
     "original_summary": "\nA handful of OPEC+ countries have agreed to increase their output targets from August but the cartel is fighting for its survival after the UAE's departure. A French company is using the Seine to cool down Paris' buildings. And, Sky says it's buying ITV's broadcast channels and streaming service for £1.6bn.\n",
@@ -98,25 +48,5 @@
     "published_at": "2026-07-06T20:04:20Z",
     "link": "https://www.france24.com/en/tv-shows/business/20260706-opec-raises-output-but-cartel-s-future-hangs-in-balance",
     "domain": "Business"
-  },
-  {
-    "original_title": "France's Macron in first post-Assad visit to Damascus : why the Syria stopover ?",
-    "title": "France's Macron in first post-Assad visit to Damascus : why the Syria stopover ?",
-    "original_summary": "\nAs Iran buries its Supreme Guide who was killed last February, and Hamas started to disarm in Gaza, Emmanuel Macron is going to Damascus, for the first visit of a French President since Nicolas Sarkozy met the deposed President Bachar Al-Assad in 2009. The timing of this visit raises questions, as well as the objectives of the French President when meeting his Syrian counterpart Ahmed Al-Shareh.\n",
-    "summary": "As Iran buries its Supreme Guide who was killed last February, and Hamas started to disarm in Gaza, Emmanuel Macron is going to Damascus, for the first visit of a French President since Nicolas Sarkozy met the deposed President Bachar Al-Assad in 2009. The timing of this visit raises questions, as well as the objectives of the French President when meeting his Syrian counterpart Ahmed Al-Shareh.",
-    "source_name": "France24 (regional)",
-    "published_at": "2026-07-06T18:18:11Z",
-    "link": "https://www.france24.com/en/tv-shows/the-debate/20260706-france-s-macron-in-first-post-assad-visit-to-damascus-why-the-syria-stopover",
-    "domain": "The Debate"
-  },
-  {
-    "original_title": "Macron arrives in Syria for first post-Assad visit by West European head of state",
-    "title": "Macron arrives in Syria for first post-Assad visit by West European head of state",
-    "original_summary": "<p>French president says he came to show commitment to Syrian people, seek a 'Syria, united in its diversity,' and at peace with its neighbors</p>\n<p>The post <a href=\"https://www.timesofisrael.com/macron-arrives-in-syria-for-first-post-assad-visit-by-west-european-head-of-state/\">Macron arrives in Syria for first post-Assad visit by West European head of state</a> appeared first on <a href=\"https://www.timesofisrael.com\">The Times of Israel</a>.</p>\n<figure><img src=\"https://static-cdn.toi-media.com/www/uploads/2026/07/AFP__20260706__B9ER63H__v2__HighRes__SyriaFrancePoliticsDiplomacy-1024x640.jpg\" title=\"Macron arrives in Syria for first post-Assad visit by West European head of state\" border=\"0\" width=\"160\" height=\"100\" class=\"type:primaryImage\"></figure>",
-    "summary": "<p>French president says he came to show commitment to Syrian people, seek a 'Syria, united in its diversity,' and at peace with its neighbors</p> <p>The post <a href=\"https://www.timesofisrael.com/macron-arrives-in-syria-for-first-post-assad-visit-by-west-european-head-of-state/\">Macron arrives in Syria for first post-Assad visit by West European head of state</a> appeared first on <a href=\"https://www.timesofisrael.com\">The Times of Israel</a>.</p> <figure><img src=\"https://static-cdn.toi-media.com/www/uploads/2026/07/AFP__20260706__B9ER63H__v2__HighRes__SyriaFrancePoliticsDiplomacy-1024x640.jpg\" title=\"Macron arrives in Syria for first post-Assad visit by West European head of state\" border=\"0\" width=\"160\" height=\"100\" class=\"type:primaryImage\"></figure>",
-    "source_name": "Times of Israel (regional)",
-    "published_at": "2026-07-06T18:21:52Z",
-    "link": "https://www.timesofisrael.com/macron-arrives-in-syria-for-first-post-assad-visit-by-west-european-head-of-state/",
-    "domain": "Israel & the Region|Syria|France-Syria relations|Emmanuel Macron|Ahmed al-Sharaa|Asaad al-Shaibani"
   }
 ]
