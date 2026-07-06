@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-06 20:19</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-06 20:19</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Huge crowds fill Tehran streets for Khamenei's funeral procession</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:50</strong></span>
+                </div>
+                <p class='summary'>Many people were waving Iranian flags and red banners symbolising vengeance for the former supreme leader's war death.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cdejj44kl70o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>The Funeral of Iran’s Supreme Leader Ayatollah Ali Khamenei</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:21</strong></span>
+                </div>
+                <p class='summary'>Iran’s new leaders are commemorating Ayatollah Khamenei, who was killed on the first day of the U.S.-Israeli war against the country.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/04/world/middleeast/the-funeral-of-irans-supreme-leader-ali-khamenei.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Body of Iran’s slain Supreme Leader Ali Khamenei arrives in Qom</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 19:56</strong></span>
+                </div>
+                <p class='summary'>Ayatollah Ali Khamenei’s body arrives in Qom as millions of mourners honour his leadership over past three days.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/6/body-of-irans-slain-supreme-leader-ali-khamenei-arrives-in-qom?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iranians Mourn a Slain Leader, and Call for Vengeance</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 19:45</strong></span>
+                </div>
+                <p class='summary'>Million of people filled the streets of Iran to bid farewell to Ayatollah Ali Khamenei, who was killed in the war with the United States and Israel.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/06/world/middleeast/iran-khamenei-funeral.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Iran to Bury Ayatollah Ali Khamenei in Holy City of Mashhad</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:41</strong></span>
+                </div>
+                <p class='summary'>The city of three million people is home to a gold-domed shrine that Shiite Muslims revere as Iran’s most sacred site. The final ceremony will take place there on Thursday.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/06/world/middleeast/mashhad-iran-khamenei-buried.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>As Mourners for Khamenei Descend on Tehran, Many Residents Take Flight</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 19:23</strong></span>
+                </div>
+                <p class='summary'>Some residents have escaped the city and posted photos of their getaways on social media — a reminder that not all Iranians are mourning the death of Ayatollah Khamenei.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/06/world/middleeast/khamenei-funeral-tehran-residents-exodus.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Iran Isn’t Just Eulogizing a Leader. It’s Sending a Message.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:06</strong></span>
+                </div>
+                <p class='summary'>Events to honor Ali Khamenei include threats to President Trump, as well as Quranic quotes chosen to troll Saudi Arabia and Turkey.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-isnt-just-eulogizing-a-leader-its-sending-a-message-221c97e5' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Iran reappoints a familiar face to powerful post during Khamenei funeral</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:28</strong></span>
+                </div>
+                <p class='summary'>The judiciary chief has emphasised the need to avenge Supreme Leader Ali Khamenei and prosecute foreign 'aggressors'.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/6/iran-reappoints-a-familiar-face-to-powerful-post-during-khamenei-funeral?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Khamenei family mourns, but Mojtaba’s absence fuels public insecurity</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 17:20</strong></span>
+                </div>
+                <p class='summary'>Many Tehran residents say the absence of Iran's new supreme leader makes them question their own security.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/6/khamenei-family-mourns-but-mojtabas-absence-fuels-public-insecurity?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>OPEC+ raises output but cartel's future hangs in balance</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 20:04</strong></span>
+                </div>
+                <p class='summary'>A handful of OPEC+ countries have agreed to increase their output targets from August but the cartel is fighting for its survival after the UAE's departure. A French company is using the Seine to cool down Paris' buildings. And, Sky says it's buying ITV's broadcast channels and streaming service for £1.6bn.</p>
+                <div class='link'><a href='https://www.france24.com/en/tv-shows/business/20260706-opec-raises-output-but-cartel-s-future-hangs-in-balance' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>France's Macron in first post-Assad visit to Damascus : why the Syria stopover ?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:18</strong></span>
+                </div>
+                <p class='summary'>As Iran buries its Supreme Guide who was killed last February, and Hamas started to disarm in Gaza, Emmanuel Macron is going to Damascus, for the first visit of a French President since Nicolas Sarkozy met the deposed President Bachar Al-Assad in 2009. The timing of this visit raises questions, as well as the objectives of the French President when meeting his Syrian counterpart Ahmed Al-Shareh.</p>
+                <div class='link'><a href='https://www.france24.com/en/tv-shows/the-debate/20260706-france-s-macron-in-first-post-assad-visit-to-damascus-why-the-syria-stopover' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Macron arrives in Syria for first post-Assad visit by West European head of state</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 18:21</strong></span>
+                </div>
+                <p class='summary'><p>French president says he came to show commitment to Syrian people, seek a 'Syria, united in its diversity,' and at peace with its neighbors</p> <p>The post <a href="https://www.timesofisrael.com/macron-arrives-in-syria-for-first-post-assad-visit-by-west-european-head-of-state/">Macron arrives in Syria for first post-Assad visit by West European head of state</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AFP__20260706__B9ER63H__v2__HighRes__SyriaFrancePoliticsDiplomacy-1024x640.jpg" title="Macron arrives in Syria for first post-Assad visit by West European head of state" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/macron-arrives-in-syria-for-first-post-assad-visit-by-west-european-head-of-state/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Analysis Unavailable</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Error: Error code: 504 - {'object': 'error', 'message': 'Service unavailable.', 'type': 'internal_server_error', 'param': None, 'code': '3804', 'raw_status_code': 504}</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            No significant developments in this area. No significant developments in this area. No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            No significant developments in this area.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
