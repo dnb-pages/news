@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-06 11:08</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-06 11:08</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>The Funeral of Iran’s Supreme Leader Ayatollah Ali Khamenei</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 10:28</strong></span>
+                </div>
+                <p class='summary'>Iran’s new leaders are commemorating Ayatollah Khamenei, who was killed on the first day of the U.S.-Israeli war against the country, with a funeral unlike any other in the country’s recent history.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/04/world/middleeast/the-funeral-of-irans-supreme-leader-ali-khamenei.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>'Genuine admiration and emotion' in Tehran's streets as Iran mourns supreme leader</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 10:27</strong></span>
+                </div>
+                <p class='summary'>Vast crowds have gathered for the funeral procession of Iran's slain supreme leader Ali Khamenei in Tehran on July 6, with authorities estimating millions were on the streets. The final public tribute is expected to last around 10 hours. FRANCE 24's Reza Sayah tells us more on what to know.</p>
+                <div class='link'><a href='https://www.france24.com/en/genuine-admiration-and-emotion-in-tehran-s-streets-as-iran-mourns-supreme-leader' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Masses accompany Khamenei funeral procession through Tehran as throngs chant for revenge</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-06 09:59</strong></span>
+                </div>
+                <p class='summary'><p>Flag-draped coffins of slain leader, relatives paraded on truck through crowded capital, as mourners call for death to Trump and Netanyahu; Katz vows same fate for new supreme leader</p> <p>The post <a href="https://www.timesofisrael.com/masses-accompany-khamenei-funeral-procession-through-tehran-as-throngs-chant-for-revenge/">Masses accompany Khamenei funeral procession through Tehran as throngs chant for revenge</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AP26187278684773-1024x640.jpg" title="Masses accompany Khamenei funeral procession through Tehran as throngs chant for revenge" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/masses-accompany-khamenei-funeral-procession-through-tehran-as-throngs-chant-for-revenge/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 6, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is in deep mourning after the death of Supreme Leader Ayatollah Ali Khamenei, who was killed at the start of a major U.S.-Israeli conflict. Millions of Iranians took to the streets for his funeral, chanting slogans for revenge against the U.S. and Israel. The event is fueling tensions and raising fears of further escalation in the region.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Ayatollah Ali Khamenei, Iran’s Supreme Leader for over three decades, was killed on the first day of a U.S.-Israeli military attack on Iran. His funeral procession in Tehran drew massive crowds, with millions participating in a display of public mourning. The atmosphere was charged with emotion, including chants calling for revenge against U.S. President Trump and Israeli Prime Minister Netanyahu, reflecting widespread anger and grief.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            Iran’s leadership transition is likely to be chaotic and unstable. The new Supreme Leader, whoever replaces Khamenei, will inherit a country at war with deep divisions and a public demanding vengeance. This could lead to more aggressive actions from Iran, including increased attacks on U.S. and Israeli targets, both directly and through proxies like Hezbollah in Lebanon or militias in Iraq and Yemen. The risk of a wider regional war escalating remains high.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['Early 2025: Tensions between Iran and Israel/U.S. escalate due to Iran’s nuclear program and proxy activities in the region.', 'Early 2026: A U.S.-Israeli military strike on Iran’s nuclear facilities and key military targets begins, marking the start of a declared war.', 'July 1, 2026: Ayatollah Ali Khamenei is killed during the opening phase of the U.S.-Israeli attack.', 'July 6, 2026: Khamenei’s funeral procession takes place in Tehran, attended by millions, with chants for revenge against the U.S. and Israel.', 'July 6, 2026 (later): New leadership in Iran is officially announced, but uncertainty persists over who will succeed Khamenei and how they will handle the crisis.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The death of Khamenei and the ongoing war mark a turning point for Iran. The new leadership—likely a hardliner given the current climate—will prioritize retaliation and restoring Iran’s deterrent image. This could mean an intensification of attacks on U.S. and Israeli interests, possibly including cyberattacks, missile strikes, or actions through proxy groups. There’s also a risk of Iran pulling out of any future negotiations or agreements, making diplomacy even harder. The long-term outlook suggests continued instability in the region, with Iran seeking revenge and the U.S./Israel prepared for further conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is currently at a peak of intensity, with Iran under direct military attack. The funeral and public reactions show that the Iranian leadership and population are unified in their anger, which raises the stakes for de-escalation. Iran’s response so far includes calls for revenge and likely preparations for asymmetrical warfare (e.g., drones, missiles, or proxy attacks). The U.S. and Israel, on the other hand, are mobilized for sustained military pressure, increasing the risk of prolonged fighting. Civilian casualties and infrastructure damage in Iran will likely fuel further outrage and resistance.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This is a historic moment for the Middle East, marking one of the most direct and violent confrontations between Iran and the U.S./Israel in decades. It risks destabilizing the entire region, potentially drawing in other countries like Saudi Arabia, Turkey, or Russia. For the global community, the biggest worry is the potential for a wider war, disruption to global oil supplies, and a humanitarian crisis in Iran. It also reflects the Trump administration’s aggressive foreign policy and could reshape alliances in the Middle East, depending on how events unfold.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. and Israel are the primary actors leading the military campaign against Iran. The U.S. is likely providing intelligence, weapons, and logistical support to Israel, while also targeting Iranian assets directly. Other countries are reacting with caution. Russia and China may offer diplomatic support to Iran to counter U.S. influence, but are unlikely to intervene militarily. European nations are calling for restraint, fearing further escalation. Arab countries like Saudi Arabia and the UAE are cautiously watching, worried about the economic and security fallout if the conflict spreads.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The conflict has already caused oil prices to surge because Iran is a major oil producer (about 3.5% of global supply) and a key player in OPEC+ (a group of oil-producing countries coordinating supply). Any disruption to Iranian oil exports—whether due to sanctions, attacks on infrastructure, or maritime blockades—will tighten global oil supply. Additionally, fears of the conflict spreading to other oil-rich Gulf countries (e.g., Saudi Arabia, UAE) could drive prices even higher. Higher oil prices mean higher costs for gasoline, shipping, and goods worldwide, which could slow down the global economy.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Khamenei’s death and Iran’s mourning have unified the country against the U.S. and Israel, making de-escalation very difficult in the short term. The war between Iran and the U.S./Israel is now at its most intense, with a high risk of further escalation, including attacks by proxy groups or on oil shipments. The death of Khamenei marks a leadership transition in Iran that could lead to even more aggressive policies, increasing instability in the Middle East.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The sheer scale of the public turnout for Khamenei’s funeral, with millions openly expressing anger and a desire for revenge, suggests that the war has deeply radicalized Iranian society. This level of public mobilization is rare even in Iran’s history of protests and revolutions.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
