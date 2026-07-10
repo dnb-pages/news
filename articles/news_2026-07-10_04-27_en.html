@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-10 04:28</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-10 04:28</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>US and Iran trade attacks as Khamenei is buried</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-10 04:18</strong></span>
+                </div>
+                <p class='summary'>Centcom says it hit 90 Iranian targets in the latest round of strikes, with the Iranian health ministry saying 14 people were killed since Tuesday.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cz75zjj5wp8o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Iran says strikes hit southern areas, but US denies it carried attacks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-10 03:05</strong></span>
+                </div>
+                <p class='summary'>Iranian state media reported that military headquarters were hit by strikes in Bushehr province and the city of Konarak.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/10/iran-says-strikes-hit-southern-areas-but-us-denies-it-carried-attacks?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Strait of Hormuz traffic plunges as US, Iran resume fighting</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-10 02:55</strong></span>
+                </div>
+                <p class='summary'>Brent crude holds steady despite a plunge in traffic in the critical waterway.</p>
+                <div class='link'><a href='https://www.aljazeera.com/economy/2026/7/10/strait-of-hormuz-shipping-grinds-to-halt-as-us-iran-resume-fighting?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>US-Iran conflict escalates as fresh missile strikes threaten Middle East ceasefire</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-10 02:47</strong></span>
+                </div>
+                <p class='summary'>The United States launched fresh airstrikes on Iran early Thursday, prompting Tehran to fire missiles at Bahrain, Qatar, Kuwait and Jordan, targeting countries hosting US forces, officials said. The exchanges threatened a fragile interim ceasefire aimed at ending the Middle East conflict, with explosions also reported near Iran's nuclear power plant.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260710-us-iran-conflict-escalates-missile-strikes-threaten-middle-east-ceasefire' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Khamenei buried following dayslong funeral procession as successor remains out of sight</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Times of Israel (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-10 03:47</strong></span>
+                </div>
+                <p class='summary'><p>'By the blood of the supreme leader, Trump, we will kill you!' shout crowds in Mashhad, months after the longtime supreme leader was killed in opening strikes of the war</p> <p>The post <a href="https://www.timesofisrael.com/khamenei-buried-following-dayslong-funeral-procession-as-successor-remains-out-of-sight/">Khamenei buried following dayslong funeral procession as successor remains out of sight</a> appeared first on <a href="https://www.timesofisrael.com">The Times of Israel</a>.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AP26190057827751-e1783640764224-1024x640.jpg" title="Khamenei buried following dayslong funeral procession as successor remains out of sight" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/khamenei-buried-following-dayslong-funeral-procession-as-successor-remains-out-of-sight/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Iran War Updates: U.S. and Iran Sink Into Violent Cycle After Latest Strikes</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-10 02:08</strong></span>
+                </div>
+                <p class='summary'>As Iranians buried their slain leader, Ayatollah Ali Khamenei, prospects for a long-term peace deal appeared to be dimming.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/07/09/world/iran-war-us-trump' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 10, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. and Iran are engaged in intense military exchanges following the death of Iran's Supreme Leader Ayatollah Ali Khamenei. Multiple rounds of airstrikes and missile attacks have escalated tensions in the Middle East, threatening regional stability, disrupting global oil shipping, and raising fears of a prolonged conflict.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The recent round of violence began after the death of Iran's long-time Supreme Leader, Ayatollah Ali Khamenei. The U.S. launched airstrikes targeting Iranian military sites across the country, killing at least 14 people, according to Iranian health officials. Iran retaliated by firing missiles at Bahrain, Qatar, Kuwait, and Jordan—countries hosting U.S. military bases. Meanwhile, the Strait of Hormuz, a critical oil shipping route, has seen a sharp drop in traffic due to the renewed fighting.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to escalate further in the short term as both sides respond to each other's attacks. Iran's leadership is in flux, with Khamenei's successor still unclear, which could lead to more aggressive actions from hardliners seeking to assert control. The U.S. may continue its strikes in an effort to weaken Iran's military capabilities, while Iran could further target U.S. allies in the region to increase pressure. A ceasefire remains fragile and unlikely in the near term.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>Early July 2026: Ayatollah Ali Khamenei dies after months-long illness, sparking days-long funeral processions across Iran.</li><li>July 9: U.S. launches major airstrikes on Iranian military targets, killing 14 people.</li><li>July 10: Iran fires missiles at U.S. allies (Bahrain, Qatar, Kuwait, Jordan).</li><li>July 10: Fresh U.S. airstrikes reported.</li><li>July 10: Reports of explosions near Iran’s nuclear power plant.</li><li>July 10: Traffic in the Strait of Hormuz plummets.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term outlook suggests a prolonged period of tension between the U.S. and Iran. Iran's government is likely to become more unstable as it navigates succession and internal power struggles. The U.S. may take a harder line against Iran, potentially aiming to weaken its military and nuclear ambitions. Regional allies of both sides may get pulled deeper into the conflict. A full-scale war is possible but not guaranteed, though prolonged low-intensity conflict seems likely.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is currently characterized by tit-for-tat strikes, with both sides engaging in direct military action but avoiding large-scale ground warfare. The U.S. is using its superior air power to target Iranian military infrastructure, while Iran is using missile attacks to strike U.S. allies, seeking to pressure the U.S. and its regional partners. The fighting is intense but localized, with no signs yet of a major ground invasion.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict has global implications. The Middle East is a critical region for oil production, and any disruption in key shipping lanes like the Strait of Hormuz can impact global oil prices. The U.S.-Iran conflict also risks drawing in other regional players, such as Israel or Saudi Arabia, potentially widening the war. The broader struggle between U.S. influence and Iranian regional ambitions is at the heart of this crisis, with wider implications for global security.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is leading the military strikes against Iran, with indirect support from its regional allies like Israel and Saudi Arabia. Meanwhile, Iran is rallying support from groups like Hezbollah in Lebanon and other anti-Western factions in the region. Countries like Qatar, Bahrain, and Kuwait are directly involved as targets of Iranian missile strikes due to their hosting of U.S. military bases. Other nations, including European powers and China, may seek to mediate but have limited influence so far.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The price of oil is likely to rise due to the conflict. The Strait of Hormuz is a vital route for oil shipments from the Persian Gulf, and the reported halt in traffic raises fears of supply disruptions. Even if no ships are actually blocked, the uncertainty alone can cause prices to spike. High oil prices would impact economies worldwide, particularly in countries dependent on imported oil, and could slow down global economic growth.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The death of Iran’s Supreme Leader and subsequent U.S.-Iran strikes have escalated tensions to a new high. The Strait of Hormuz, critical for global oil shipping, is seeing reduced traffic, which could push oil prices higher worldwide. A fragile ceasefire is in danger, and the conflict is likely to worsen before any resolution is reached.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The direct involvement of U.S. allies like Bahrain, Qatar, Kuwait, and Jordan as targets of Iranian missile strikes is unexpected, as these countries have not typically been on the front lines of the conflict. Additionally, the report of explosions near Iran’s nuclear power plant is a development that could signal a more severe escalation.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
