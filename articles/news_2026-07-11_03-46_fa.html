@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-11 03:49</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-11 03:49</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایالات متحده می‌خواهد ایران تعهد بدهد که از شلیک به کشتی‌ها در تنگه هرمز دست بکشد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار BBC (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۱۱T۰۱:۲۴:۴۹Z</strong></span>
+                </div>
+                <p class='summary'>انتظار می‌رود معاون رئیس‌جمهور، جی‌دی ونس، از جمله مقامات آمریکایی باشد که در مذاکرات از سر گرفته‌شده در روز شنبه در عمان شرکت کنند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/crelyq79x71o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - جولای ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده در حال مذاکره با ایران در عمان برای توقف حملات به کشتی‌ها در تنگه هرمز، مسیر حیاتی حمل‌ونقل نفت، است. این مذاکرات در حالی صورت می‌گیرد که تنش‌ها پس از اقدامات نظامی اخیر در منطقه همچنان بالا است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده در حال تلاش برای متقاعد کردن ایران جهت موافقت با عدم targeting کشتی‌هایی است که از تنگه هرمز عبور می‌کنند، یک آبراه باریک که بخش عمده‌ای از نفت جهان از آن عبور می‌کند. مقامات ارشد آمریکا، از جمله معاون رئیس‌جمهور JD Vance، در حال گفتگو با نمایندگان ایران در عمان هستند تا در این باره و همچنین مسائل گسترده‌تری همچون ثبات منطقه‌ای بحث کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سربرگ</h3>
+            اگر مذاکرات موفقیت‌آمیز باشد، می‌تواند خطرات نظامی فوری در یکی از شلوغ‌ترین مسیرهای کشتیرانی جهان را کاهش دهد. با این حال، تنش‌های بلندمدت بین ایالات متحده و ایران به این زودی‌ها ناپدید نخواهد شد، زیرا اختلافات سیاسی و ایدئولوژیک ریشه‌دار همچنان پابرجاست. حتی اگر اینIssue خاص حل و فصل شود، احتمال وقوع درگیری‌های دوره‌ای وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. اوایل سال ۲۰۲۶: تنش‌های فزاینده در خلیج فارس پس از چندین حادثه کوچک اما تحریک‌آمیز بین گروه‌های تحت حمایت ایران و کشتی‌های تجاری.</li><li>۲. ژوئن ۲۰۲۶: چندین نفت‌کش در تنگه هرمز آسیب دیدند یا توقیف شدند که توجه جهانی را به خود جلب کرد.</li><li>۳. ۱۱ ژوئیه ۲۰۲۶: مقامات ایالات متحده و ایران مذاکراتی را در عمان برای متوقف کردن چنین حملات آغاز کردند.</li><li>۴. هفته‌ها/ماه‌های آینده: امکان دستیابی به توافق یا شکست مذاکرات و در صورت ناکامی گفتگوها، احتمال بروز مجدد خصومت‌ها وجود دارد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این تنگه به دلیل اهمیت استراتژیک خود، در آینده قابل پیش‌بینی همچنان کانون تنش خواهد بود. ایران ممکن است با اعمال فشار دریایی به عنوان ابزاری جهت گرفتن امتیاز یا بازدارندگی از اقدامات تهاجمی تلقی شده، استفاده کند، در حالی که ایالات متحده و متحدانش بهlikely برای حفظ حضور نظامی جهت حفاظت از حمل و نقل دریایی بپردازند. انتظار می‌رود چرخه‌ای از مذاکره و لبه پرتگاه (بریم مک آمریکا) به جای صلحی پایدار باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی های درگیری</h3>
+            درگیری فعلی عمدتاً دیپلماتیک و اقتصادی است تا جنگ تمام‌عیار. ایران از درگیر شدن در حملات مستقیم و گسترده خودداری کرده و به جای آن، به آزار و اذیت، توقیف کشتی‌ها یا حملات از طریق گروه‌های نیابتی روی آورده تا از رویارویی مستقیم با آمریکا دوری کند. پاسخ آمریکا در حد اعتدال بوده و تمرکز آن بیشتر بر بازدارندگی به جای تشدید تنش بوده است. تا کنون، تلفات و درگیری‌های نظامی محدود بوده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این بخشی از یک مبارزه دیرپا بین ایران و کشورهای غربی-متحد در مورد نفوذ منطقه‌ای، جاه‌طلبی‌های هسته‌ای و قدرت نظامی است. تنگه هرمز نقطه فشاری است که ایران می‌تواند از آن برای اختلال در عرضه جهانی نفت استفاده کند و به دنیا یادآوری نماید که توانایی بر هم زدن ثبات را دارد. یک اختلاف طولانی‌مدت می‌تواند امنیت انرژی جهانی را تضعیف کند و روابط بین‌المللی را تحت فشار قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده رهبری مذاکرات را به عهده دارد که توسط متحدانی همچون عربستان و امارات متحده عربی پشتیبانی می‌شود. این کشورها ایران را تهدیدی منطقه‌ای می‌دانند. کشورهای اروپایی ممکن است نقش میانجی‌گرانه ایفا کنند، اما تأثیر مستقیمی ندارند. چین و روسیه ممکن است از ایران به صورت دیپلماتیک حمایت کرده و قدرت ایالات متحده در منطقه را تراز کنند. کشورهایی همچون ژاپن و هند که در واردات نفت وابستگی زیادی به نفت خلیج فارس دارند، وضعیت را به دقت رصد می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            هرگونه اختلال در تنگه هرمز می‌تواند موجب افزایش شدید قیمت نفت شود، زیرا حدود ۲۰ درصد از نفت جهان از این مسیر عبور می‌کند. حتی اگر اختلال عمده‌ای رخ ندهد، تهدید حملات ممکن است به دلیل عدم قطعیت، موجب حفظ سطح بالای قیمت‌ها بماند. در صورت تشدید تنش‌ها، آمریکا و متحدان آن ممکن است ذخایر استراتژیک نفت خود را آزاد کنند تا قیمت‌ها را تثبیت نمایند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            تنگه هرمز یک گلوگاه حیاتی برای نفت جهانی است و اقدامات ایران در این منطقه می‌تواند بر قیمت بنزین و امنیت انرژیEveryone تأثیر بگذارد. ایالات متحده سعی دارد برای کاهش درگیری‌های مستقیم با ایران مذاکره کند، اما راه‌حل‌های بلندمدت برای rivalitи آن‌ها در آینده نزدیک بعید به نظر می‌رسد. حتی حملات یا تشنج‌های کوچک در تنگه می‌توانند به دلیل اهمیت آن در تجارت جهانی، پیامدهای اقتصادی گسترده‌ای داشته باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌آور</h3>
+            حضور معاون رئیس‌جمهور، جِی‌دی ونس، حاکی از اولویت بالای مذاکرات از سوی ایالات متحده است که در نوع خود تا حدی غيرمعمول به نظر می‌رسد، زیرا ونس عموماً رویه‌ای سختگیرانه در قبال ایران دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 context بیشتر</h3>
+            توسعه قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
