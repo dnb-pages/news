@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-11 08:19</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-11 08:19</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایالات متحده خواستار آن است که ایران رسماً تعهد دهد از حمله به تنگه هرمز دست بردارد و از اخذ عوارض از کشتی‌ها خودداری کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تلخбар اسرائيل (منطق‌های منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۲۱  ساعت ۰۷:۳۳:۴۹</strong></span>
+                </div>
+                <p class='summary'><p>واشنگتن می‌گوید بدون تحویل اورانیوم توسط تهران به توافقی نهایی نخواهد رسید، در حالی که تصاویر ماهواره‌ای تازه فعالیت‌های تجدیدشده در سایت‌های هسته‌ای را نشان می‌دهد</p> <p>مقاله‌ی <a href="https://www.timesofisrael.com/us-demanding-iran-publicly-vow-to-stop-attacks-in-hormuz-and-forswear-tolls-on-ships/">آمریکا از ایران می‌خواهد علناً متعهد به توقف حملات در تنگه هرمز و خودداری از اخذ عوارض از کشتی‌ها شود</a> ابتدا در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AFP__20260627__B8J44ZQ__v1__HighRes__OmanIranUsIsraelWar-e1783726466655-1024x640.jpg" title="آمریکا از ایران می‌خواهد علناً متعهد به توقف حملات در تنگه هرمز و خودداری از اخذ عوارض از کشتی‌ها شود" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/fa/us-demanding-iran-publicly-vow-to-stop-attacks-in-hormuz-and-forswear-tolls-on-ships/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ترامپ می‌گوید ایالات متحده در صورت تلاش ایران برای ترور او، «آن را به‌طور کامل نابود و منهدم خواهد کرد»</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تیم اوف اسرائیل (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۲۱ ساعت ۱۲:۲۲:۰۹</strong></span>
+                </div>
+                <p class='summary'><p>رئیس‌جمهور ایالات متحده هشدار می‌دهد که در صورت تحقق تهدیدهای علنی تهران، ۱٬۰۰۰ موشک «آماده وLocked» علیه جمهوری اسلامی شلیک خواهد شد، و گزارش‌هایی مبنی بر انتقال اطلاعات توسط اسرائیل در خصوص این طرح توطئه جعلی را رد می‌کند</p> <p>پست <a href="https://www.timesofisrael.com/trump-says-us-will-completely-decimate-and-destroy-iran-if-it-attempts-to-kill-him/">ترامپ می‌گوید آمریکا ایران را «کاملاً نابود و تخریب خواهد کرد» اگر اقدام به قتل او کند</a> برای اولین بار در <a href="https://www.timesofisrael.com">تایمز آو اسرائیل</a> منتشر شد.</p> <figure><img src="https://static-cdn.toi-media.com/www/uploads/2026/07/AP26190188642591-1024x640.jpg" title="ترامپ می‌گوید آمریکا ایران را «کاملاً نابود و تخریب خواهد کرد» اگر اقدام به قتل او کند" border="0" width="160" height="100" class="type:primaryImage"></figure></p>
+                <div class='link'><a href='https://www.timesofisrael.com/trump-says-us-will-completely-decimate-and-destroy-iran-if-it-attempts-to-kill-him/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۱ تیر ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده آمریکا ایران را تحت فشار قرار داده است تا حملات خود را در تنگه هرمز متوقف کند و از گرفتن عوارض از کشتی‌ها دست بردارد، در حالی که تنش‌ها پس از هشدارهای ترامپ مبنی بر واکنش شدید در صورت هدف قرار گرفتن او، افزایش یافته است. فعالیت‌های هسته‌ای جدید در ایران و تهدیدهای موشکی از سوی هر دو طرف، نقطه عطفی را در ثبات منطقه‌ای آشکار می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده از ایران می‌خواهد که به صورت علنی متعهد شود حملات در تنگه هرمز—یکی از مهم‌ترین مسیرهای کشتیرانی—را متوقف کند و تلاش‌ها برای دریافت عوارض ('سفره‌ها') از کشتی‌های عبوری را رها سازد. تصاویر ماهواره‌ای نشان می‌دهد که ایران فعالیت‌های هسته‌ای خود را از سر گرفته است که احتمالاً نشان‌دهنده غنی‌سازی بیشتر اورانیوم است. از سوی دیگر، ترامپ در واکنش تهدید کرد که اگر به او آسیبی وارد شود، ایران را 'به‌طور کامل نابود و ویران' خواهد کرد و مدعی شد ۱٬۰۰۰ موشک 'آماده شلیک' هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            وضعیت در حال تشدید است به طوری که طرفین به مواضع خود سخت‌تر گرفته‌اند. ایران ممکن است از مزیت‌های هسته‌ای خود استفاده کند یا مختل کردن بیشتر کشتیرانی را برای فشار بر آمریکا در دستور کار قرار دهد، در حالی که آمریکا می‌تواند تحریم‌های سخت‌گیرانه‌تری اعمال کند یا حتی به سایت‌های هسته‌ای ایران حمله کند. بعید است که ایران بیانیه علنی صادر کند، و این خطر رویارویی نظامی یا بن‌بست طولانی‌مدت را افزایش می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. **اوایل تیر ۱۴۰۵:** تصاویر ماهواره‌ای اخیر فعالیت جدیدی در سایت‌های هسته‌ای ایران را شناسایی می‌کند.</li><li>۲. **۱۱ تیر ۱۴۰۵:** ایالات متحده از ایران می‌خواهد رسماً تعهد به توقف حملات به تنگه هرمز و رها کردن عوارض کشتی‌ها بدهد و ترامپ تهدیدی مستقیم به ایران ارسال می‌کند.</li><li>۳. **آینده نزدیک:** واکنش ایران (یا عدم واکنش آن) و اقدامات بعدی آمریکا (تحریم‌ها، حملات، یا مذاکرات) طی روزها یا هفته‌ها آشکار خواهد شد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            به احتمال قوی ایران پیشرفت‌های هسته‌ای را به‌عنوان ابزاری چانه‌زنی قلمداد می‌کند و همزمان با استفاده از نیروهای نیابتی منطقه‌ای، به disruption در حمل‌ونقل دریایی می‌پردازد. ایالات متحده تلاش دارد تا جاه‌طلبی‌های هسته‌ای و تهاجم منطقه‌ای ایران را مهار کند، اما به‌دلیل لفاظی‌های تهاجمی ترامپ، خطر افزایش ناخواسته تنش وجود دارد. به نظر می‌رسد راه‌حل دیپلماتیک چندان دور نیست، با این حال طرفین ترجیح می‌دهند به‌جای عقب‌نشینی، به ایران هزینه تحمیل کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری در حال حاضر در بن‌بست با تنش بالا قرار دارد. ایران از نیروهای نیابتی (مانند شبه‌نظامیان در یمن یا عراق) برای انجام غیرمستقیم حملات استفاده می‌کند و از درگیر شدن مستقیم با آمریکا اجتناب می‌کند. آمریکا نیز با تهدیدات و اقدامات مخفی پاسخ می‌دهد اما از جنگی تمام‌عیار دوری می‌کند. با این حال، خطر محاسبه اشتباه (برای مثال، پرتاب موشک اشتباه یا حمله تصادفی) در حال افزایش است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این بحران عرضه‌ی نفت جهانی را تهدید می‌کند، زیرا ۲۰ تا ۳۰ درصد از نفت حمل شده توسط دریا از تنگه‌ی هرمز عبور می‌کند. اختلال مداوم می‌تواند باعث جهش قیمت انرژی شود، اقتصادها را آسیب بزند و متحدان خاورمیانه‌ای از جمله عربستان سعودی و اسرائیل را بی‌ثبات کند. همچنین ممکن است قدرت‌های دیگری مانند روسیه یا چین را درگیر کند که می‌توانند مذاکرات را میانجی‌گری کنند یا از این هرج و مرج بهره‌برداری کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            کشورهای حاشیه خلیج عرب، به ویژه عربستان سعودی و امارات متحده عربی، نگران هستند و ممکن است به طور خفا از اقدامات ایالات متحده حمایت کنند. به احتمال زیاد اسرائیل در حال هماهنگی با ایالات متحده در زمینه اطلاعات و برنامه‌ریزی نظامی است. روسیه و چین ممکن است تهدیدهای ایالات متحده را مورد انتقاد قرار دهند، در حالی که به دنبال پر کردن هرگونه خلأ قدرت در منطقه باشند و احتمالاً پوششی اقتصادی یا دیپلماتیک برای ایران فراهم کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل ترس از disruption در تنگه هرمز در حال افزایش است. اگر ایران تهدیدهای خود مبنی بر بستن تنگه را عملی سازد یا ایالات متحده اقدام به حمله به زیرساخت‌های مهم نفتی در نزدیکی تنگه کند، قیمت‌ها ممکن است 10 تا 20 درصد افزایش یابد که منجر به گرانی بنزین در سراسر جهان و تشدید تورم در اقتصادهای وابسته به انرژی خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات مهم</h3>
+            آمریکا خواهان توقف disruption در تنگه هرمز توسط ایران و کنار گذاشتن اهرم‌های هسته‌ای از سوی این کشور به عنوان پیش‌شرط هرگونه توافق است. تنش‌ها پس از تهدید ترامپ مبنی بر نابودی کامل ایران در صورت هدف قرار دادن او تشدید شده‌اند و خطر تشدید نظامی را افزایش می‌دهد. این درگیری می‌تواند عرضه جهانی نفت را مختل کرده و موجب افزایش قیمت‌ها و تأثیرگذاری بر اقتصادها در سراسر جهان گردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تهدید شخصی کاملاً آشکار ترامپ به ایران قابل توجه است، زیرا او امنیت شخصی خود را به پاسخی نظامی گسترده پیوند می‌دهد، پاسخی که می‌تواند کانال‌های دیپلماتیک سنتی را دور بزند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            در گذشته، زمانی که تحت فشار قرار گرفته، ایران بارها تهدید به بستن تنگه هرمز کرده است، اما چنین تهدیدهایی هرگز منجر به یک محاصره کامل نشده‌اند. برنامهٔ هسته‌ای همچنان یک نقطه بحرانی است و در ماه‌های اخیر، ایران اورانیوم را تا سطوح نزدیک به سطوح مورد نیاز для تسلیحات هسته‌ای غنی‌سازی کرده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
