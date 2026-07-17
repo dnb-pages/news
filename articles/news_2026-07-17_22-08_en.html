@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-17 22:10</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-17 22:10</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>U.S. hits bridges and energy targets, Iran says, as strikes widen</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Washington Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-17 19:59</strong></span>
+                </div>
+                <p class='summary'>The attacks on Iran’s infrastructure came on the sixth consecutive day of U.S. strikes. A retaliatory attack by Iran caused damage to a power and desalination plant in Kuwait.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/07/17/us-hits-bridges-energy-targets-iran-says-strikes-widen/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Iran War Live Updates: Bridges and Water Plants Hit as Strikes Stretch to 7th Straight Day</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-17 22:06</strong></span>
+                </div>
+                <p class='summary'>Overnight and into Friday, Iran reported U.S. strikes on infrastructure that can serve civilian purposes and has targeted similar sites in Gulf countries that host American bases. In the afternoon, the U.S. military announced a new round of attacks on Iran.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/07/17/world/iran-war-trump-hormuz' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>War Between U.S. and Iran Expands, With Strikes Across the Region</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-17 21:49</strong></span>
+                </div>
+                <p class='summary'>Videos and reports in Iranian state media showed damage to bridges, railways and other infrastructure. U.S. allies in the region reported retaliatory strikes by Iran.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/17/world/middleeast/us-iran-war-strikes-infrastructure-civilians.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>The U.S. and Iran Creep Toward a Wider War With Escalating Attacks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-17 20:47</strong></span>
+                </div>
+                <p class='summary'>Strikes on more sensitive targets across the Persian Gulf risk setting off a spiral as neither side is backing down.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/the-u-s-and-iran-creep-toward-a-wider-war-with-escalating-attacks-7323c060' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 17, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. and Iran are locked in an escalating military conflict that has spread beyond their borders, with both sides targeting infrastructure like bridges, energy facilities, and water plants. The fighting has turned regional, involving Gulf countries, and risks spiraling into a larger war with significant global consequences, particularly for oil markets.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. military conducted strikes on Iran for the seventh consecutive day, hitting bridges, energy infrastructure, and other potential dual-use targets (facilities with both civilian and military purposes). Iran retaliated by attacking targets in Kuwait, including a power and desalination plant, and reportedly launched strikes in other Gulf countries hosting U.S. bases. Videos and reports from Iranian state media showed damage to Iranian infrastructure like railways and bridges. The conflict has now expanded beyond direct U.S.-Iran exchanges to involve regional allies.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict is likely to keep expanding geographically and in intensity. The U.S. and Iran appear unwilling to back down, which increases the risk of further escalation, including possible direct attacks on each other's homelands or deeper strikes into Gulf allies' territories. Diplomatic efforts to de-escalate have so far failed, and both sides show signs of hardening their positions. The situation could settle into a prolonged cycle of retaliatory strikes or explode into a full-blown regional war if either side makes a critical miscalculation.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['Day 1-3: Initial U.S. strikes on Iranian military and nuclear-related sites.', 'Day 4-5: Expansion of strikes to broader infrastructure targets in Iran (bridges, roads, energy facilities).', 'Day 6: Iran launches retaliatory strikes on U.S. bases in the Gulf and targets in Kuwait (power/desalination plants).', 'Day 7: U.S. announces new rounds of strikes; Iran and U.S. allies report further damage to infrastructure in the region. Videos and reports confirm expanding regional scope.', 'Future Possibility: Next steps could include strikes on shipping lanes (e.g., Strait of Hormuz), direct attacks on leaders, or large-scale invasions.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict is entering a dangerous new phase where neither side seems willing to de-escalate. The U.S. may aim to weaken Iran’s military and economic capacity over time, while Iran could try to push the U.S. out of the region through sustained pressure on allies. Neither side has shown a clear off-ramp yet. If this continues, the Middle East could see prolonged instability, proxy wars, or even a direct larger conflict involving more countries. The risk of a miscalculation—like hitting a non-military target that causes major civilian casualties—could rapidly escalate tensions.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The fighting has become more intense and geographically widespread. Previously, strikes were focused on military or nuclear sites, but now critical civilian infrastructure like water and energy plants are being targeted. This signals a deliberate strategy to inflict economic pain and disrupt daily life, raising the risk of a humanitarian crisis. The conflict has also taken on a more regional character, with Iran attacking U.S. allies and the U.S. striking deeper into Iran. The nature of the attacks suggests neither side is prioritizing restraint, and both are willing to absorb costs to gain leverage.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict threatens to reshape the Middle East and global energy markets. The Strait of Hormuz—a critical chokepoint for oil shipping—could become a battleground if Iran decides to disrupt oil flows. A wider war could draw in countries like Saudi Arabia, Israel, and even global powers like China or Russia, depending on how events unfold. Economically, persistent instability in the Gulf region will likely drive up oil prices, straining global supply chains and economies already dealing with other crises. Geopolitically, it could redraw alliances and power balances in the Middle East, possibly sidelining countries that seek neutrality.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is leading the military campaign with support from regional allies like Kuwait, the UAE, and Saudi Arabia, which are hosting U.S. bases targeted by Iran. Israel may also be involved behind the scenes, given its long-standing hostility toward Iran. China and Russia have so far remained cautious, likely seeking to avoid direct involvement while protecting their interests in Iran (e.g., oil deals, trade). European countries have urged restraint but have limited influence in de-escalating the crisis. International organizations like the UN have condemned the strikes but lack the power to enforce a ceasefire. No major country has yet brokered significant diplomatic efforts.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The conflict is likely to push oil prices higher due to two main reasons: 1) Disruption risks in the Strait of Hormuz, where about 20% of the world's oil passes; and 2) Sanctions or conflict-related outages in Iran and Gulf oil production. Even if the Strait remains open, uncertainty and fear of supply disruptions can cause prices to spike. Higher oil prices would impact everything from gasoline at the pump to the cost of goods and services globally, exacerbating inflation in many countries. If the conflict spreads to major oil producers like Saudi Arabia, prices could skyrocket, causing economic ripple effects worldwide.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The U.S. and Iran are escalating their conflict beyond military targets, hitting civilian infrastructure like energy and water plants, increasing humanitarian risks. The war is expanding geographically, now affecting multiple Gulf countries and raising the chance of a broader regional conflict. Global oil prices are likely to rise due to supply chain disruptions in the Middle East, potentially worsening inflation globally.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The rapid expansion of strikes into Lebanon, based on some reports, showing Hezbollah (Iran-backed militia) joining the conflict unexpectedly, and Kuwait being pulled in as a secondary target of Iran’s retaliation.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
