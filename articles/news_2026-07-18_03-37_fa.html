@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-18 03:41</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-18 03:41</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>حملات ایالات متحده برای هفتمین شب پیاپی، ایران را هدف گرفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> بی‌بی‌سی نیوز (هسته‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ تیر ۱۴۰۵ ساعت ۰۷:۳۲:۰۱ +۰۴:۳۰</strong></span>
+                </div>
+                <p class='summary'>فرماندهی ایالات متحده اعلام می‌کند که در حال انجام حملات بیشتری برای تضعیف نیروهای مسلح ایران است، در حالی که ایران گزارش می‌دهد انفجارهایی در نزدیکی تنگه هرمز رخ داده است.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cy748n8zx8ro?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>یک مقام ایرانی می‌گوید سیاست مذاکره در زمان جنگ به پایان رسیده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (نسخهٔ اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۱۸T۰۲:۰۹:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>مصطفی رزاقی (معروف به محمد رضا) هشدار داده است که اگر آمریکا به بمباران ایران ادامه دهد، تهران پاسخ خود را به جنگی تمام‌عیار تشدید خواهد کرد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/18/iranian-official-says-the-policy-of-negotiating-during-war-is-over?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>اهداف حملات اخیر آمریکا علیه ایران، نشان‌دهنده تغییر راهبردی هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۲۸ ۰۱:۵۴:۴۵ (به وقت جهانی)</strong></span>
+                </div>
+                <p class='summary'>ایالت متحده دامنه کمپین نظامی خود در رابطه با ایران را گسترش داده است، به‌گفته مایک هانا، خبرنگار الجزیره.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/18/targets-of-latest-us-strikes-on-iran-signal-strategic-shift?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>به‌روز‌رسانی‌های جنگ ایران: پل‌ها و تصفیه‌خانه‌های آب مورد هدف قرار گرفتند؛ در حالی که حملات به هفتمین روز متوالی رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۸ تیر ۱۴۰۵، ساعت ۰۶:۳۱:۴۸</strong></span>
+                </div>
+                <p class='summary'>از شب گذشته و تا روز جمعه، ایران گزارش داد که حملات آمریکا به زیرساخت‌هایی صورت گرفته است که می‌تواند اهداف غیرنظامی را تأمین کند و این کشور سایت‌های مشابهی را در کشورهای حاشیه خلیج فارس که پایگاه‌های آمریکایی در آنها مستقر است، مورد هدف قرار داده است. بعد از ظهر همان روز، ارتش ایالات متحده اعلام کرد که حملات تازه‌ای را علیه ایران انجام داده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/07/17/world/iran-war-trump-hormuz' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>درگیری در خلیج فارس برای ملوانان تجاری وخیم‌تر شده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل وال‌استریت ژورنال</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۴/۲۸ ساعت ۰۶:۳۰</strong></span>
+                </div>
+                <p class='summary'>هفته گذشته یکی از خطرناک‌ترین هفته‌ها از زمان آغاز جنگ بوده است، زیرا تهران به استفاده از موشک‌های کشتار‌تاثر روی آورده است.</p>
+                <div class='link'><a href='https://www.wsj.com/fa-IR/world/middle-east/gulf-sailing-risk-iran-war-fb61d65a' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 آنالیز وضعیت ایران - ۱۸ تیر ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران در یک تشدید خطرناک حملات هوایی گرفتار هستند، به طوری که ایالات متحده مناطق نظامی و زیرساخت‌های ایرانی از جمله اهداف غیرنظامی مانند پل‌ها و کارخانه‌های آب را برای هفتمین شب متوالی هدف قرار داده است. ایران هشدار می‌دهد که در صورت ادامه بمباران‌ها، با تمام توان جنگی خود پاسخ خواهد داد و این نگرانی را ایجاد می‌کند که ممکن است منجر به یک вگیری گسترده منطقه‌ای شود.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده آمریکا به مدت هفت شب متوالی حملات هوایی را علیه ایران انجام داده است و بر кампین خود برای هدف قرار دادن طیف وسیع‌تری از سایت‌های نظامی و زیرساختی، از جمله مواردی با کاربرد غیرنظامی همچون پل‌ها و کارخانه‌های آب، شدت بخشیده است. ایران نیز با گزارش انفجارهایی در نزدیکی تنگه هرمز (یک مسیر کلیدی حمل و نقل نفت) و هشدار درباره آنکه آمریکا در حال عبور از خطوط قرمز است، واکنش نشان داده است. رهبران ایران اعلام کرده‌اند که در زمان جنگ دیگر مذاکره نخواهند کرد و در صورت ادامه بمباران‌ها، به تشدید اقدامات خود خواهند پرداخت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سربرگ</h3>
+            این تنش‌ها احتمالاً در روزها یا هفته‌های آینده تشدید خواهد شد. ایران نشانه‌هایی از خود نشان داده که ممکن است حملات گسترده‌تری، احتمالاً targeting پایگاه‌های آمریکایی در خلیج فارس یا حتی حملات مستقیم به اسرائیل یا متحدان آمریکا، انجام دهد. ایالات متحده نیز ممکن است برای تضعیف ظرفیت نظامی ایران، حملات خود را ادامه یا گسترش دهد که خطر بروز جنگی تمام‌عیار را افزایش می‌دهد. تلاش‌های دیپلماتیک تا زمانی که یکی از طرفین عقب‌نشینی کند یا درگیری‌ها بیشتر شدت یابد،Name unlikely است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            فروردین ۱۴۰۵: تنش‌ها بین ایالات متحده و ایران به دلیل درگیری‌های نیابتی منطقه‌ای و برنامه هسته‌ای ایران بالا می‌گیرد. ۱۲ تیر ۱۴۰۵: بمباران‌ها تشدید می‌شوند زیرا ایالات متحده حملات هوایی روزانه را آغاز می‌کند. ۱۸ تیر ۱۴۰۵: حملات ایالات متحده برای هفتمین شب پیاپی به ایران اصابت می‌کند؛ مقامات ایرانی از آغاز جنگ تمام‌نفوذ هشدار می‌دهند. اواسط تیر ۱۴۰۵: انفجارهایی در نزدیکی تنگه هرمز گزارش می‌شود در حالی که ایران به دنبال واکنش‌های تهاجمی‌تر است. همان بازه زمانی: حمل‌ونقل تجاری در خلیج فارس به دلیل استفاده ایران از موشک‌های مرگبارتر بسیار خطرناک‌تر می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            اگر این درگیری بدون کنترل ادامه یابد، ممکن است به جنگ منطقه‌ای گسترده‌ای فراتر رود که شامل ایالات متحده، ایران، اسرائیل و کشورهای حوزهٔ خلیج فارس شود. ایالات متحده هدف دارد توان نظامی ایران را تضعیف کند تا نفوذ آن را در منطقه کاهش دهد، در حالی که ایران ممکن است به دنبال واکنش غیرمتقارن (مثلاً از طریق گروه‌های نیابتی مانند حزب‌الله یا شورشیان حوثی) باشد. در درازمدت، این وضعیت می‌تواند به بازسازی اتحادهای خاورمیانه، فروپاشی دیپلماسی هسته‌ای و ایجاد چرخهٔ طولانی خشونت، مشابه جنگ ایران و عراق، منجر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های مناقشه</h3>
+            نبرد از حملات نظامی متمرکز به حملات گسترده‌تری که زیرساخت‌ها را هدف قرار می‌دهند، تغییر یافته است و خطرات غیرنظامیان را افزایش داده است. ایالات متحده از قدرت هوایی overwhelming استفاده می‌کند، در حالی که ایران به موشک‌های خطرناک‌تر و تاکتیک‌های نامتقارن احتمالی (مانند حملات پهپادی، حملات سایبری یا حملات به کشتی‌ها) متوسل می‌شود. این درگیری برای مردم عادی، از جمله ملوانان تجاری گرفتار در میدان نبرد، کشنده‌تر شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این بحران با مختل ساختن یکی از مهم‌ترین مسیرهای حمل و نقل نفت جهان (تنگه هرمز) و خطر بروز جنگی گسترده، ثبات جهانی را تهدید می‌کند. این بحران می‌تواند مذاکرات هسته‌ای را متوقف کند، مواضع کشورهای خاورمیانه را سختگیرانه‌تر سازد و کشورها را مجبور به انتخاب طرف کند که منجر به تکه‌تکه شدن دیپلماسی جهانی خواهد شد. برای مردم عادی، این بدین معنا است که قیمت نفت بالاتر می‌رود، کمبودهای احتمالی عرضه پیش می‌آید و در صورتی که این درگیری گسترش یابد، خطر وقوع بحران انسانی وجود خواهد داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیگران اصلی: ایالات‌متحده (رهبری حملات هوایی برای تضعیف نیروهای نظامی ایران) و ایران (دفاع از خود و نشان‌دادن تشدید وضعیت). اسرائیل احتمالاً در پس‌زمینه درگیر است به‌دلیل خصومت آن با جاه‌طلبی‌های هسته‌ای ایران و تهاجم منطقه‌ای. کشورهای عرب حاشیه خلیج‌فارس مانند عربستان سعودی و امارات متحده عربی ممکن است به‌طور پنهانی از آمریکا حمایت کنند اما از واکنش مستقیم می‌ترسند. کشورهای دیگر مانند چین و روسیه ممکن است برای میانجی‌گری تلاش کنند یا از هرج‌ومرج به وجود آمده برای پیشبرد منافع خود بهره‌برداری نمایند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            این احتمال وجود دارد که قیمت‌های نفت به دلیل تهدیدهای علیه تنگه هرمز، که حدود ۲۰ درصد از نفت جهان از آن عبور می‌کند، به شدت افزایش یابد. اگر ایران این تنگه را مسدود کند یا حمل و نقل دریایی را مختل سازد، اختلال در عرضه نفت می‌تواند قیمت‌ها را به بیش از ۱۰۰ دلار در هر بشکه سوق دهد. افزایش قیمت‌های نفت منجر به افزایش هزینه‌های سوخت برای مصرف‌کنندگان، تورم و کندی‌های بالقوه اقتصادی می‌شود، به‌ویژه در کشورهایی که به انرژی وابسته هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            آمریکا و ایران در یک دور باطلاق آمیز و خطرناک تشدید تنش قرار دارند، به طوری که ایران در صورت ادامه حملات بمبی، تهدید به جنگ تمام عیار کرده است. این درگیری در حال گسترش فراتر از اهداف نظامی به زیرساخت‌ها است که خطر آسیب به غیرنظامیان و بحران انسانی را افزایش می‌دهد. عرضه و قیمت جهانی نفت در معرض تهدید جدی قرار دارد و می‌تواند پیامدهای اقتصادی جهانی گسترده‌ای داشته باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تغییرات قابل توجهی در این حوزه رخ نداده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محتوای اضافی</h3>
+            تنگه هرمز یک گلوگاه حیاتی برای تجارت جهانی نفت است و حتی اختلال موقت می‌تواند تأثیرات اقتصادی نامتناسبی داشته باشد. هشدار ایران درباره پایان مذاکرات در طول جنگ نشان می‌دهد که تهران گفتگوها را بی‌فایده می‌داند مگر اینکه ایالات متحده حملات خود را متوقف کند. هدف قرار دادن زیرساخت‌های غیرنظامی مانند کارخانه‌های آب توسط ایالات متحده، نشان از تشدید قابل توجهی دارد که نگرانی‌هایی را درباره نقض قوانین بین‌المللی بشردوستانه فراهم کرده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
