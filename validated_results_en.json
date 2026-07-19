@@ -1,22 +1,52 @@
 [
   {
-    "original_title": "Israel’s $50 Million Experiment to Change U.S. Public Opinion",
-    "title": "Israel’s $50 Million Experiment to Change U.S. Public Opinion",
-    "original_summary": "The Israeli government deploys AI and payments to conservative media to try to beat back the tide of unfavorable U.S. views about its handling of wars in Gaza and Iran.",
-    "summary": "The Israeli government deploys AI and payments to conservative media to try to beat back the tide of unfavorable U.S. views about its handling of wars in Gaza and Iran.",
-    "source_name": "WSJ (analysis)",
-    "published_at": "2026-07-19T01:00:00Z",
-    "link": "https://www.wsj.com/politics/israels-50-million-experiment-to-change-u-s-public-opinion-253b3b70",
+    "original_title": "US and Iran trade fire after two US soldiers killed in Jordan",
+    "title": "US and Iran trade fire after two US soldiers killed in Jordan",
+    "original_summary": "Kuwait says an electricity and water plant is on fire after the second such attack in two days. Iran says US strikes hit an under-construction nuclear power plant.",
+    "summary": "Kuwait says an electricity and water plant is on fire after the second such attack in two days. Iran says US strikes hit an under-construction nuclear power plant.",
+    "source_name": "BBC News (core)",
+    "published_at": "2026-07-19T13:10:57Z",
+    "link": "https://www.bbc.co.uk/news/articles/cgk417jp83po?at_medium=RSS&at_campaign=rss",
     "domain": ""
   },
   {
-    "original_title": "Iran War Live Updates: U.S. Launches Strikes After Iranian Attack Kills 2 American Soldiers",
-    "title": "Iran War Live Updates: U.S. Launches Strikes After Iranian Attack Kills 2 American Soldiers",
-    "original_summary": "The soldiers, killed in Jordan, were the first U.S. troops to die from hostile fire since an April truce. U.S. forces began retaliatory strikes early Sunday.",
-    "summary": "The soldiers, killed in Jordan, were the first U.S. troops to die from hostile fire since an April truce. U.S. forces began retaliatory strikes early Sunday.",
+    "original_title": "Iranians suffer from power blackouts during war and heatwave",
+    "title": "Iranians suffer from power blackouts during war and heatwave",
+    "original_summary": "Collapsing grid, battered by military strikes and chronic underinvestment, leaves Iranians sweltering in the dark.",
+    "summary": "Collapsing grid, battered by military strikes and chronic underinvestment, leaves Iranians sweltering in the dark.",
+    "source_name": "Al Jazeera (core)",
+    "published_at": "2026-07-19T11:16:20Z",
+    "link": "https://www.aljazeera.com/news/2026/7/19/iranians-suffer-from-power-blackouts-during-war-and-heatwave?traffic_source=rss",
+    "domain": "News"
+  },
+  {
+    "original_title": "Iran War Live Updates: U.S. and Iran Edge Closer to Wider War After U.S. Service Members Killed",
+    "title": "Iran War Live Updates: U.S. and Iran Edge Closer to Wider War After U.S. Service Members Killed",
+    "original_summary": "The U.S. military said it had targeted Iranian forces that were responsible for an attack on a base in Jordan that left two American service members dead and one missing.",
+    "summary": "The U.S. military said it had targeted Iranian forces that were responsible for an attack on a base in Jordan that left two American service members dead and one missing.",
     "source_name": "NYT (analysis)",
-    "published_at": "2026-07-19T03:48:47Z",
-    "link": "https://www.nytimes.com/live/2026/07/18/world/iran-war-strikes-trump-hormuz",
+    "published_at": "2026-07-19T13:44:21Z",
+    "link": "https://www.nytimes.com/live/2026/07/19/world/iran-war-strikes-trump-hormuz",
     "domain": ""
+  },
+  {
+    "original_title": "Deaths of 2 U.S. Troops in Jordan Brings American Toll in the War With Iran to 16",
+    "title": "Deaths of 2 U.S. Troops in Jordan Brings American Toll in the War With Iran to 16",
+    "original_summary": "President Trump vowed to avenge the deaths of any U.S. military personnel.",
+    "summary": "President Trump vowed to avenge the deaths of any U.S. military personnel.",
+    "source_name": "NYT (analysis)",
+    "published_at": "2026-07-19T11:00:25Z",
+    "link": "https://www.nytimes.com/2026/07/18/world/middleeast/us-troops-killed-iran-war-jordan.html",
+    "domain": "United States Defense and Military Forces|US and Israeli Attack on Iran (2026)|Deaths (Fatalities)|Missiles and Missile Defense Systems|Military Bases and Installations|Defense Department|United States Central Command|Jordan|Iran"
+  },
+  {
+    "original_title": "South Africa Recommits to Nuclear Power After Safety Incidents",
+    "title": "South Africa Recommits to Nuclear Power After Safety Incidents",
+    "original_summary": "South Africa is sticking with a plan to add more nuclear power to the grid after several minor incidents tested safety procedures at its four-decade old atomic station.",
+    "summary": "South Africa is sticking with a plan to add more nuclear power to the grid after several minor incidents tested safety procedures at its four-decade old atomic station.",
+    "source_name": "Financial Post (analysis)",
+    "published_at": "2026-07-19T13:42:18Z",
+    "link": "https://financialpost.com/pmn/business-pmn/south-africa-recommits-to-nuclear-power-after-safety-incidents",
+    "domain": "PMN Business"
   }
 ]
