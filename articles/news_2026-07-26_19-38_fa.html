@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-26 19:42</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-26 19:42</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ توقف در حمله به ایران را به تأخیر انداخت؛ چراکه مقامات در حال بررسی کاهش ذخایر دفاع هوایی هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۰۵T10:00:00Z</strong></span>
+                </div>
+                <p class='summary'>مقامات گفتند که ایالات متحده از انجام یک عملیات نظامی بزرگ که می‌توانست دو هفته به طول بینجامد، خودداری کرد.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/trump-pauses-iran-strikes-as-officials-weigh-dwindling-air-defense-stocks-c7d7ebb0' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل اوضاع ایران - ۲۶ ژوئیه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده پس از بررسی دسترسی محدود به سامانه‌های دفاع هوایی خود که می‌توانست تنش‌ها در خاورمیانه را تشدید کند، به‌طور موقت از اجرای حمله نظامی گسترده به ایران صرف نظر کرد. این تصمیم نگرانی‌ها در مورد افزایش توانایی‌های نظامی ایران و پیامدهای احتمالی یک درگیری گسترده را منعکس می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده تصمیم گرفت که به یک حمله نظامی بزرگ‌برخورد علیه ایران—که قرار بود تا دو هفته به طول انجامد—اقدام نکند. مقامات آمریکایی نگران بودند که اجرای چنین حمله‌هایی می‌توانست ذخایر موشک‌های دفاع هوایی آمریکا را تهی کند و توانایی این کشور را برای محافظت از خود و متحدانش در برابر احتمال پاسخ تلافی‌جویانه ایران تضعیف سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محل عنوان</h3>
+            به احتمال زیاد ایالات متحده به ارزیابی گزینه‌های نظامی خود ادامه خواهد داد که می‌تواند شامل حملات هدفمند به جای یک کارزار گسترده باشد. ایران احتمالاً به صورت دیپلماتیک یا از طریق گروه‌های نیابتی واکنش نشان خواهد داد تا درگیری مستقیم، اما تنش‌ها همچنان بالاست. این تعلیق به معنای حل و فصل اختلاف نیست—این بیشتر مانند یک وقت استراحت موقت برای بازاندیشی در استراتژی‌ها است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ــ: اوایل ژوئیه ۲۰۲۶: گزارش‌هایی مبنی بر احتمال حمله نظامی ایالات متحده به ایران پس از افزایش تنش‌ها منتشر شد. این احتمال ممکن است به برنامه هسته‌ای ایران یا اقدامات منطقه‌ای آن از جمله حمایت از گروه‌های نیابتی (گروه‌های مسلح که به نمایندگی از ایران در مکان‌هایی مانند یمن، سوریه یا عراق عمل می‌کنند) مرتبط باشد. ــ ۲۶ ژوئیه ۲۰۲۶: ایالات متحده اعلام کرد که در حال توقف حملات برنامه‌ریزی‌شده برای ارزیابی این است که آیا موشک‌های دفاع هوایی کافی (مانند سیستم‌های پاتریوت یا تاد) برای محافظت از خود در برابر احتمال تلافی جویانه ایران دارد یا خیر. ــ چند روز/هفته بعد: ایالات متحده احتمالاً به گفتگو با متحدان خود (مانند اسرائیل یا کشورهای خاورمیانه) ادامه خواهد داد و آمادگی نظامی خود را قبل از اتخاذ تصمیم نهایی دوباره ارزیابی خواهد کرد. انتظار می‌رود ایران همچنان در حالت آماده‌باش بالا باقی بماند و ممکن است سیاست‌های فعلی خود را ادامه دهد. ــ در جریان: تنش‌ها ادامه خواهد یافت زیرا هر دو طرف اقدامات یکدیگر را به دقت نظارت می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم انداز استرات‍ژیک</h3>
+            چشم‌انداز بلندمدت همچنان نامشخص ولی پرتحرک باقی خواهد ماند. ایالات متحده در تلاش است تا میان ارسال یک پیام قوی به ایران و اجتناب از وضعیتی که توانایی‌های دفاعی خود آمریکا تضعیف شود، تعادل ایجاد کند. ایران احتمالاً به استراتژی‌های کنونی خود ادامه خواهد داد—حمایت از نیروهای نیابتی، پیشبرد برنامه هسته‌ای (در صورت تصمیم‌گیری خود ایران) و حفظ رویکردی رو در رو در برابر آمریکا و متحدانش. تلاش‌های دیپلماتیک ممکن است افزایش یابد، اما انتظار پیشرفت‌های چشمگیر در کوتاه‌مدت نمی‌رود. خطر محاسبات اشتباه یا تشدید ناخواسته همچنان یکی از اصلی‌ترین ریسک‌ها به شمار می‌آید.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های مخاصمه</h3>
+            در حال حاضر، این درگیری نه درگیری فعال بلکه در وضعیتی از توقف تنش‌آمیز به سر می‌برد. شدت حملات برنامه‌ریزی‌شده ایالات متحده شدت بالایی داشت، اما تعویق آن احتیاط را نشان می‌دهد. احتمالاً پاسخ ایران به‌گونه‌ای غیرمستقیم خواهد بود و از طریق گروه‌های وکیل برای حمله به منافع ایالات متحده در منطقه (به‌عنوان مثال، در سوریه، عراق یا خلیج فارس) اقدام کند تا از بروز درگیری مستقیم اجتناب کند. حملات سایبری یا عملیات پنهان (فعالیت‌های مخفی مانند جاسوسی یا خرابکاری) نیز ممکن است بخشی از ترفندهای مورد استفاده ایران باشد. ایالات متحده احتمالاً در وهله اول بر دفاع و بازدارندگی متمرکز خواهد شد تا اقدامات تهاجمی، تا زمانی که از آمادگی ذخایر خود مطمئن شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت، مبارزه مداوم بین ایالات متحده و ایران بر سر نفوذ در خاورمیانه را مورد توجه قرار می‌دهد. جنگی تمام‌عیار برای هر دو طرف و همچنین ثبات جهانی فاجعه‌بار خواهد بود، اما هیچ یک از دو کشور قادر به عقب‌نشینی کامل نخواهد بود. توقف در حملات، زمان خریداری می‌کند، اما مسائل اساسی مانند جاه‌طلبی‌های هسته‌ای ایران، تهاجم منطقه‌ای و حضوری نظامی ایالات متحده همچنان حل‌نشده باقی مانده است. این موضوع می‌تواند خاورمیانه را واکنش‌پذیرتر کند، عرضه جهانی نفت را دچار اختلال کند و روابط بین ایالات متحده، متحدانش و قدرت‌های جهانی دیگری مانند چین یا روسیه را تحت فشار قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیگران اصلی شامل این موارد هستند: ایالات متحده (در حال مقابله با نفوذ ایران)، اسرائیل (به شدت مخالف برنامه هسته‌ای و سیاست‌های منطقه‌ای ایران)، عربستان سعودی و سایر کشورهای خلیج فارس (مخالف جاه‌طلبی‌های منطقه‌ای ایران) و خود ایران (در حال دفاع از منافع خود). اتحادیه اروپا در گذشته سعی در میانجیگری داشته است، در حالی که چین و روسیه ممکن است این را فرصتی برای گسترش نفوذ خود در منطقه ببینند یا به انتقاد از خصومت‌های ایالات متحده بپردازند. قدرت‌های جهانی ممکن است خواستار خویشتن‌داری باشند، اما بعید است که به نقش‌آفرینی مستقیم عمده‌ای بپردازند مگر اینکه درگیری به شدت تشدید شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            اگر تنش‌ها به درگیری‌های آشکار تبدیل شوند، قیمت نفت ممکن‌تواند به دلیل اختلال در مسیرهای ترابری نفت (مانند تنگه هرمز، که یک گلوگاه حیاتی برای حمل‌ونقل جهانی نفت است) به شدت افزایش یابد. حتی تهدید چنین اختلال‌هایی می‌تواند باعث افزایش موقتی قیمت‌ها شود. توقف کنونی اندکی ریسک فوری افزایش قیمت را کاهش می‌دهد، اما اگر اعتصاب‌ها بعداً اتفاق بیفتد یا ایران اقدام تلافی‌جویانه انجام دهد، قیمت نفت به میزان قابل توجهی افزایش خواهد یافت. این امر اقتصادهای سراسر جهان، به‌ویژه کشورهای واردکننده انرژی مانند ایالات متحده، اروپا و هند را تحت تأثیر قرار خواهد داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده برای بررسی انبار موشک‌های دفاع هوایی خود، ضربات برنامه‌ریزی‌شده علیه ایران را متوقف کرد، نه به این دلیل که مناقشه زمینه‌ساز حل شده است. هر دو کشور ایالات متحده و ایران با دقت از برخورد مستقیم خودداری می‌کنند در حالی که همچنان تنش‌ها را از طریق گروه‌های نیابتی، خرابکاری یا مانورهای دیپلماتیک تشدید می‌کنند. درگیری گسترده‌تر عرضه جهانی نفت را تهدید می‌کرد و ثبات خاورمیانه را برهم می‌زد، در نتیجه اوضاعی بسیار حساس و پرمخاطره برای همگان ایجاد می‌سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            ایران به‌طور پیوسته در حال بهبود توانایی‌های نظامی خود از جمله پهپادها، موشک‌ها و ابزارهای سایبری است که پیش‌بینی یا مقابله با واکنش‌های آن را برای ایالات متحده دشوارتر می‌کند. از سوی دیگر، ایالات متحده نیز با عدم قطعیت‌های سیاسی (مانند انتخابات آتی) مواجه است که می‌تواند بر تصمیم‌گیری‌های آن تاثیر بگذارد. منطقه همچنان یکNowcross پر از درگیری‌های همپوشان متعدد (ازجمله اسرائیل و حماس، جنگ داخلی یمن و هرج‌ومرج سوریه) است که ممکن است به‌طور ناخواسته بازیگران بیشتری را درگیر کند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
