@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-27 17:17</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-27 17:17</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'> اوکراین تهدیدهای ایران را رد می‌کند زیرا حمله به دریای خزر به جنگ‌ها ارتباط مستقیمی دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> خبرگزاری بی‌بی‌سی (هسته اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۲۷T۱۶:۳۳:۰۵Z</strong></span>
+                </div>
+                <p class='summary'>ایران با عصبانیت شدید به این حمله به کشتی واکنش نشان داده و وزیر امور خارجه تهران گفته است که «این موضوع نمی‌تواند بی‌پاسخ بماند».</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cwyj7yl0xndo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>قیمت نفت سقوط کرد زیرا آمریکا و ایران از حملات خودداری کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اداره اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۵/۶ ۱۹:۳۸</strong></span>
+                </div>
+                <p class='summary'>ایالات متحده می‌گوید حمله به ایران برای ایجاد «فضایی برای گفت‌وگوها» متوقف شده است که امیدواری به حل درگیری را افزایش داده است.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/clyj834jn5lo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>مذاکرات ایران و عمان بر راه‌اندازی دوباره ترافیک حمل و نقل دریایی در تنگه هرمز متمرکز بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۶ ۱۶:۵۰:۴۵</strong></span>
+                </div>
+                <p class='summary'>مذاکره‌کنندگان از ایران و عمان در تلاشند تا با توافق به ترافیک دریایی تنگه هرمز را از سر بگیرند، طبق اعلام افراد مطلع از این موضوع.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-oman-talks-focused-on-restarting-hormuz-shipping-traffic' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>استارت‌آپ نفتی حمایت شده توسط کری، مدیر ارشد سابق کالاها در گلدمن ساکس، برای عرضه اولیه برنامه‌ریزی می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اکونومی پست (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۰۶T16:50:31Z</strong></span>
+                </div>
+                <p class='summary'>جف کری، مدیر سابق بخش کالا های گروه گلدمن ساکس که پیش‌بینی‌های او او را به یکی از معروف‌ترین استراتژیست‌های بازار انرژی در وال استریت تبدیل کرده بود، در حال آماده‌سازی برای جمع‌آوری ۵۰ میلیون پوند (۶۷ میلیون دلار) در فهرست بازار سهام لندن است تا یک تولیدکننده نفت در خلیج مکزیک بسازد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-startup-backed-by-ex-goldman-commodity-chief-currie-to-ipo' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>ایران: هم‌اکنون هیچ مذاکره‌ای با آمریکا انجام نشده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۶ ۱۹:۳۸:۲۷</strong></span>
+                </div>
+                <p class='summary'>سخنگوی وزارت امور خارجه ایران اسماﺋیل باقایی دوشنبه گفت که ایران در پی مذاکرات با آمریکا نیست.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/27/iran-currently-no-negotiations-with-the-us?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>تصاویر ماهواره‌ای از دود در تاسیسات نفتی عربستان معامله‌گران را در حالت آماده‌باش نگه داشته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۷ ۱۹:۴۷</strong></span>
+                </div>
+                <p class='summary'>معامله‌گران نفت به‌دقت تصاویر ماهواره‌ای را بررسی کردند که دود در چندین تأسیسات نفتی سعودی در ۴۸ ساعت گذشته پدیدار شده بود، اما این داده‌ها اطلاعات اندکی درباره تأثیر حملات اخیر شبه‌نظامیان مرتبط با ایران بر تولید انرژی این پادشاهی نشان می‌داد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/satellite-shots-of-smoke-at-saudi-oil-sites-keep-traders-on-edge' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>اثرات سرریز: چگونه بحران خاورمیانه امنیت غذایی را تهدید می‌کند - تمرکز روی میانمار (تاریخ انتشار: ۵ ژوئن ۲۰۲۶ / دوره گزارش: هفته منتهی به ۱ ژوئن)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۶ ساعت ۱۹:۴۳:۳۲</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: میانمار</div> <div class="tag source">منبع: برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/42/46/4246b352-bbf2-4524-8f63-c4c8796b5175.png" alt></p> <p>لطفاً به فایل پیوست شده مراجعه کنید.</p> <p>مجموعoverview</p> <p>از هفته اول خرداد ۱۴۰۵، درگیری ایران با ایالات متحده/اسرائیل که از ۹ اسفند ۱۴۰۴ آغاز شده، همچنان در حالت آتش‌بس شکننده‌ای به سر می‌برد. حملات اولیه گسترده به اهداف نظامی ایران، بزرگ‌ترین شوک عرضه نفت در تاریخ را به وجود آورد و به طور موقت ۱۰ تا ۲۰ درصد از عرضه جهانی را مختل کرد که باعث نوسانات شدید در بازارهای انرژی شد. گران شدن انرژی موجب تشدید تورم، افزایش هزینه‌های حمل‌ونقل و نقل و انتقال، و رشد قیمت‌های مواد غذایی از طریق کمبود گازوئیل و کود شیمیایی گردید. این بحران فشار زیادی بر اقتصادهای وابسته به واردات وارد می‌کند. میانمار یکی از کشورهای آسیایی است که به دلیل وابستگی کامل به سوخت وارداتی، بیش از همه متضرر شده است. جهش چشمگیر قیمت‌ها به کمبود مداوم سوخت، صف‌های طولانی در پمپ‌بنزین‌ها، سهمیه‌بندی، و محدودیت‌های استفاده از خودرو منجر شده است. این اختلال‌ها جریان کالاها را با مشکل مواجه ساخته، کارکرد بازار را تضعیف نموده و قدرت خرید خانوارها را کاهش داده است. در کنار کمبودهای قبلی کود شیمیایی و درگیری‌های داخلی، این وضعیت تولیدات کشاورزی را پیش از فصل موسمی تهدید کرده و باعث وخامت بیشتر امنیت غذایی و چالش‌های بشردوستانه می‌گردد.</p> <p>خلاصه</p> <p>• ناامنی غذایی: برنامه جهانی غذا برآورد می‌کند اگر درگیری‌ها تا پایان خردادماه ادامه یابد، حداقل ۴۵ میلیون نفر در جهان ممکن است با ناامنی غذایی حاد مواجه شوند که بیش از ۹ میلیون نفر از این تعداد در آسیا هستند. در میانمار، بین ۳.۵ تا ۵ میلیون نفر دیگر ممکن است به دلیل این بحران، در کنار ۱۲.۴ میلیون نفر موجود دچار ناامنی غذایی گردند. این بحران آسیب‌پذیری‌ها را به ویژه در مناطق درگیر و دوردست تشدید می‌کند، زیرا کاهش تولیدات کشاورزی، افزایش قیمت‌ها و اختلال در بازارها فشار زیادی بر مصرف خانوار و معیشت آنها وارد ساخته است.</p> <p>• قیمت‌های سوخت: از ابتدای خردادماه، قیمت گازوئیل به طور میانگین ۶۸ درصد در سرتاسر کشور افزایش یافته که در یانگون به ۷۰ درصد رسیده است. بنزین اکتان ۹۵ نیز به طور میانگین ۷۷ درصد افزایش یافته که در سیتوه (تا ده برابر) و مییتکیینا (تقریباً چهار برابر نسبت به سطح قیمت‌ها در یانگون پیش از بحران) به اوج‌های شدیدی رسیده است. اگرچه قیمت‌ها همچنان بالا هستند، اما از اواخر فروردین به بعد تا حدودی کاهش یافته‌اند.</p> <p>• هزینه سبد غذایی: تا اوایل خرداد، هزینه سبد غذایی میانگین حدود ۱۹ درصد بیش از اواخر بهمن بوده که عمدتاً به دلیل افزایش قیمت برنج، روغن نخل و نمک است.</p> <p>• مناطق درگیر در مناقشات: کمبود سوخت و افزایش قیمتهای بالای ۷۰ درصد از اسفندماه تا کنون منجر به صف‌های طولانی، سهمیه‌بندی و محدودیت‌های حمل‌ونقل شده و توزیع مواد غذایی، دارو و کمک‌های بشردوستانه را به تأخیر انداخته است. موانع جاده‌ای و ناامن‌سازی باعث افزایش بیش از ۷۰ درصدی قیمت مواد غذایی در عرضه‌های اساسی در ایالات کاچین، کایین، کایا، سگاینگ، راخین، مگوی و شان گردیده است.</p> <p>• کشاورزی: در فصل کاشت فصل موسمی، کشاورزان با کمبود سوخت و افزایش هزینه‌های کود که با بحران سوخت ارتباط دارد، روبرو هستند. این چالش‌ها آماده‌سازی زمین را به تأخیر انداخته، هزینه‌های تولید را افزایش داده و دسترسی به بازارها را محدود نموده و در نهایت به افزایش ریسک تولیدات کشاورزی و درآمدهای کشاورزان منجر می‌شود.</p>
+                <div class='link'><a href='https://reliefweb.int/report/myanmar/spillover-effects-how-middle-east-crisis-threatens-food-security-focus-myanmar-date-released-5-ژوئن-2026-reporting-period-week-1-ژوئن' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>بحران خاورمیانه: خطرات وwirkungen برای امنیت غذایی در تانزانیا (ژوئن 2026)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb ( انسان دوستانه )</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۲۷T۱۴:۵۷:۳۱Z</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: جمهوری متحده تانزانیا</div> <div class="tag source">منبع: برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/c3/56/c356cca3-4ec0-4f1b-ab78-5766d816388f.png" alt></p> <p>لطفاً به فایل ضمیمه مراجعه کنید.</p> <p><strong>نکات برجسته</strong></p> <p>شوک انرژی</p> <p>• تانزانیا در معرض شدید شوک‌های خارجی سوخت قرار دارد، زیرا ۱۰۰٪ سوخت خود را وارد می‌کند. بین ۵۶٪ تا ۵۹٪ سوخت از تنگه هرمز عبور می‌کند.</p> <p>• قیمت سوخت همچنان بالا است: بنزین ۴۷٪، دیزل ۶۰٪ و از فوریه ۲۰۲۶ افزایش یافته است.</p> <p>• قیمت ال‌پی‌جی ۹٪ به ۱۷٪ برای سیلندرهای ۱۵ کیلوگرمی و ۶ کیلوگرمی به ترتیب افزایش یافته است. تانزانیا ۱۰۰٪ ال‌پی‌جی را وارد می‌کند.</p> <p>تجاوز به تجارت</p> <p>• افزایش قیمت جهانی انرژی و هزینه‌های حمل‌ونقل، صورتحساب واردات تانزانیا را به ویژه برای کالاها و تجهیزات صنعتی بیشتر کرده است.</p> <p>• ارزش واردات ۱۵/۵٪ افزایش یافته که عمدتاً به دلیل واردات نهاده‌های صنعتی، ماشین‌آلات و تجهیزات حمل‌ونقل است.</p> <p>• رشد سریع‌تر واردات نسبت به صادرات، کسری حساب جاری تانزانیا را به حدود ۲/۶۵ میلیارد دلار تا آوریل ۲۰۲۶ افزایش داده است.</p> <p>محدودیت‌های نهاده‌ها</p> <p>• قیمت برخی از کودهای وارداتی (SA، DAP و CAN) از آغاز بحران به ترتیب ۴۰٪، ۲۲٪ و ۱۱٪ افزایش یافته است.</p> <p>• وابستگی ۸۰–۹۰ درصدی به واردات کود، خطر تولید در فصل‌های آینده را تهدید می‌کند.</p> <p>استرس اقتصاد کلان</p> <p>• تورم در ماه مه به ۴/۲٪ افزایش یافت که ناشی از هزینه‌های انرژی و حمل‌ونقل بود.</p> <p>• تورم انرژی (۵/۳٪) به بخش‌های غذایی و لجستیک سرایت می‌کند.</p> <p>• نرخ ارز به لطف صادرات طلا نسبتاً پایدار باقی‌مانده است.</p> <p>• ذخایر ارزی تانزانیا برای چهار ماه تعهدات خارجی را پوشش می‌دهد، اگرچه با تقاضای بالای ارز با فشار مواجه است.</p> <p>• اقدامات محتاطانه بانک مرکزی و نقدینگی مناسب به کاهش نوسانات و حمایت از نظم بازار کمک کرده است.</p>
+                <div class='link'><a href='https://reliefweb.int/report/united-republic-tanzania/middle-east-crisis-risks-and-impacts-food-security-tanzania-june-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>عربستان سعودی می‌گوید در اقدامی، پهپادهایی را که از سوی جنبش حوثی‌ها از عراق به سوی تاسیسات نفتی هدف گرفته شده بودند، رهگیری کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه ای)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۲۷T۱۴:۴۳:۰۳Z</strong></span>
+                </div>
+                <p class='summary'>عربستان سعودی اعلام کرد که روز دوشنبه پهپادهای پرتاب‌شده از سوی شبه‌نظامیان مورد حمایت ایران از عراق را که به تاسیسات نفتی و ریاض targeting بودند، رهگیری کرده است. در همین حال، شورشیان حوثی یمن نیز حمله‌های جداگانه پهپادی را به زیرساخت‌های نفتی این پادشاهی در عربستان سعودی اعلام کردند. این حملات نشان‌دهنده تشدید تازه در درگیری‌های منطقه‌ای است که با وجود کاهش اخیر در تنش‌ها میان ایالات متحده و ایران رخ می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260727-گره-عربستان-گفته-است-آن-را-هواپیماهای-خودکار-از-عراق-رهگیری-کرد-زمانی-که-حوثی-ها-سایت-های-نفتی-را-هدف-قرار-دادند' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>جهان: به‌روزرسانی ماهانه بازار شماره 2 – ژوئن 2026، خاورمیانه، شمال آفریقا و اروپای شرقی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (رهاورد وب در امور بشردوستانه) </span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۲۷T۱۴:۱۴:۵۸Z</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشورها: جهان، مصر، ایران (جمهوری اسلامی)، ترکیه، یمن</div> <div class="tag source">منبع: برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/d1/a3/d1a30170-3a50-4a41-a27f-140e17d419a4.png" alt></p> <p>لطفاً به فایل ضمیمه مراجعه کنید.</p> <p><strong>نکات برجسته</strong></p> <p>دوباره بازگشایی موقت تنگه هرمز پس از توافق ژوئن بین ایالات متحده و ایران، فشارهای جهانی بر کالاها و تورم را کاهش داد. قیمت نفت برنت در ماه ژوئن (در مقایسه با اردیبهشت) ۲۰٪ سقوط کرد و به ۷۳ دلار در هر بشکه رسید، در حالی که قیمت اوره ۲۱٪ زیر سطح پیش از درگیری سقوط کرد. همچنین قیمت‌های غلات و گاز طبیعی به میزان کمی (۴۵٪) کاهش یافت، اگرچه گاز طبیعی همچنان ۳۷٪ بالاتر از سطح پیش از درگیری باقی ماند.</p> <p>تورم سالانه در منطقه در ماه ژوئن به شدت ناهمگن بود. ایران و ترکیه همچنان با بیشترین فشارهای قیمتی مواجه بودند، در حالی که اکثر کشورهای منطقه تورم پایدار یا کاهنده‌ای ثبت کردند و کاهش تورم در غزه نیز ناشی از ثبات بعد از جهش‌های ناشی از درگیری بود.</p> <p>هزینه سبد خوارکی در اکثریت منطقه در ماه ژوئن نسبتاً پایدار باقی ماند و نشان‌دهنده کاهش فشارهای تورمی بود؛ به جز ایران که شاهد افزایش ۸٪ نسبت به ماه قبل (MoM) و ۱۲۰٪ نسبت به سال گذشته بود.</p> <p>فشارهای تورمی همچنان قدرت خرید ارزش انتقالات نقدی در ایران و ترکیه را کاهش می‌دهد و دسترسی خانوارهای آسیب‌پذیر به غذاهای کافی و مغذی را محدود می‌کند.</p> <p>اکثر ارزهای منطقه پس از بالا گرفتن تنش‌ها (فوریه ۲۰۲۶) همچنان ضعیف‌تر از سطوح قبل هستند، علی‌رغم بهبودهای modest در بازارهای خرد در ماه ژوئن، به‌ویژه در ایران (۶٪+) و مصر (۴٪+)، در حالی که ارزهای کشورهایی مانند ارمنستان، فلسطین و یمن (IRG) طی یک سال گذشته نسبتاً پایدار یا تقویت یافته بودند.</p> <p>قیمت سوخت در منطقه در ماه ژوئن پس از کاهش قیمت‌های جهانی انرژی و بهبود شرایط ژئوپلیتیکی کاهش یافت. گاز مایع و گازوئیل بیشترین کاهش ماهانه را تجربه کردند، در حالی که همچنان بالاتر از سطوح پیش از درگیری باقی ماندند.</p>
+                <div class='link'><a href='https://reliefweb.int/report/world/monthly-market-update-2-june-2026-middle-east-northern-africa-and-eastern-europe' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>چگونه حوثی‌های تحت حمایت ایران عربستان سعودی را به درگیری تازه‌ای کشاند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل NYT</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۲۷T۱۶:۰۳:۵۳Z</strong></span>
+                </div>
+                <p class='summary'>کمک‌های ایرانی از گروه مسلح حوثی در یمن که از ضعف لحظه‌ای عربستان سعودی در همسایگی سود برده است. این گروه امیدوار است، با اعمال فشار، امتیازات سیاسی در یمن به دست آورد که به آن اختیار بیشتر و دسترسی گسترده‌تری به منابع مالی بدهد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/27/world/middleeast/houthis-saudi-arabia-iran-war.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>عربستان سعودی شبه‌نظامیان مورد حمایت ایران مستقر در عراق را به حملات با پهپاد متهم می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۶ ساعت ۱۹:۳۷:۴۵</strong></span>
+                </div>
+                <p class='summary'>پادشاهی به دلیل حملات از عراق و یمن، به طور فزاینده‌ای درگیر مناقشات گسترده منطقه‌ای شده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/27/world/middleeast/saudi-arabia-drone-attacks-iraq-iran.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 آنالیز وضعیت ایران - ۲۷ تیر ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و نیروهای نیابتی آن در درگیری‌های منطقه‌ای از جمله حملات به زیرساخت‌های نفتی در عربستان سعودی و دریای خزر درگیر هستند. اگرچه آتش‌بس‌های موقت باعث کاهش قیمت نفت شده‌اند، تنش‌های ادامه‌دار تهدیدی برای عرضه انرژی و امنیت غذایی جهان، به‌ویژه در کشورهای آسیب‌پذیر مانند میانمار و تانزانیا است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایران به شدت به حملات علیه منافع خود، از جمله حمله به یک کشتی در دریای خزر، واکنش نشان داده است. ایالات متحده و ایران حملات مستقیم خود را برای مذاکره به حالت تعلیق درآورده‌اند، اما گروه‌های نیابی منطقه‌ای مانند حوثی‌های یمن و Ч militia هایSupported از ایران در عراق همچنان به انتشار حملات پهپادی به تاسیسات نفتی عربستان ادامه می‌دهند. همچنین مذاکراتی بین ایران و عمان برای بازگشایی تنگه هرمز، یک مسیر مهم حمل و نقل نفت، در جریان است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرآغاز</h3>
+            وضعیت احتمالاً همچنان داغ خواهد بود، اما در صورت موفقیت مذاکرات ممکن است کمی آرام‌تر شود. در صورت شکست گفت‌و‌گوها، حملات به زیرساخت‌های نفتی ممکن است ادامه یابد که می‌تواند به افزایش قیمت نفت و اختلال در اقتصاد جهانی منجر شود. عربستان سعودی در میانه این تحولات گرفتار شده است و مورد حملات از جهات مختلف قرار گرفته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ['اوایل 2026: تشدید درگیری ایالات متحده و ایران با یورش‌های وسیع.', 'ژوئن 2026: آتش‌بس موقت و بازگشایی موقت تنگه هرمز باعث کاهش قیمت نفت می‌شود.', '26-27 ژوئیه 2026: ایران حمله به کشتی دریای خزر را محکوم می‌کند، عربستان سعودی پهپادهای targeting شده از عراق و یمن را که aiming به سایت‌های نفتی بودند، رهگیری می‌کند، ایالات متحده برخی حملات را برای مذاکراتی متوقف می‌کند.', 'در حال پیگیری: مذاکرات ایران و عمان برای بازگردانی تردد کشتی‌های تنگه هرمز.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم انداز راهبردی</h3>
+            این درگیری خطر دارد به یک جنگ نیابتی طولانی تبدیل شود که در آن ایران از گروه‌هایی مانند حوثی‌ها برای فشار آوردن به عربستان سعودی و ایالات متحده بدون رویارویی مستقیم استفاده می‌کند. تلاش‌های عربستان سعودی برای اجتناب از جنگ، در صورت تشدید حملات، ممکن است بدتر شود. تنگه هرمز همچنان یک نقطه بحرانی باقی مانده است—اگر بسته شود، قیمت جهانی نفت می‌تواند به طور چشمگیری افزایش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک درگیری</h3>
+            نبرد مستقیم آمریکاوایران موقتاً متوقف شده است، اما کشورهای منطقه از طریق نیابتی به شدت فعال هستند. حملات هدفمند هستند (تأسیسات نفتی، پهپادها) و برای تضعیف رقبا بدون ایجاد جنگ تمام‌عیار طراحی شده‌اند. شدت برخوردها متوسط است، اما در صورت شکست مذاکرات، خطر افزایش آن وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری موجب اختلال در عرضه نفت جهانی می‌شود، قیمت‌ها را افزایش می‌دهد و باعث تورم در سراسر جهان می‌گردد. کشورهای ضعیف‌تر مانند میانمار و تانزانیا بیشتر تحت تأثیر کمبود سوخت و مواد غذایی قرار می‌گیرند و بحران‌های بشردوستانه را عمیق‌تر می‌کنند. بی‌ثباتی خاورمیانه نیز تجارت جهانی، بازارهای انرژی و اتحادهای ژئوپلیتیکی را تحت تأثیر قرار می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده آمریکا به صورت مستقیم درگیر است و در حین مذاکره حملات را متوقف اما همچنان از عربستان سعودی حمایت می‌کند. ایران از نیروهای نیابتی در یمن و عراق حمایت می‌کند. عمان در حال مذاکره در میان طرفین است. چین، روسیه و اروپا ممکن است به طور غیرمستقیم تحت تأثیر کمبودهای نفتی قرار گیرند، اما در مذاکرات مستقیم به‌طور جدی دخالت ندارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت به طور موقتی به دلیل توقف درگیری‌های ایالات متحده و ایران افتاد و در ماه ژوئن ۲۰ درصد کاهش یافت و به ۷۳ دلار هر بشکه رسید. با این حال، در صورت بسته شدن تنگه هرمز یا از سرگیری حملات، قیمت‌ها ممکن است دوباره افزایش یابد و به طور جهانی باعث افزایش هزینه‌های سوخت و مواد غذایی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران و ایالات متحده حملات را برای مذاکرات متوقف کرده‌اند، اما نیروهای نیابتی به زیرساخت‌های نفتی ادامه می‌دهند. تنگه هرمز و سایت‌های نفتی عربستان همچنان نقاط درگیری بحرانی هستند؛ هر گونه اختلال می‌تواند باعث شوک‌های نفتی جهانی شود. اقتصادهای ضعیفی مانند میانمار و تانزانیا با کمبودهای شدید سوخت دست و پنجه نرم می‌کنند که منجر به تشدید ناپایداری غذایی می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            ایران در حال گفت‌وگوهای غیرمستقیم با عمان برای بازگشایی تنگه هرمز است که نشان‌دهنده تمایل کمیاب به مذاکره بر سر زیرساخت‌های کلیدی است. از سوی دیگر، عربستان سعودی درگیر جبهه‌های متعددی شده است که باعث پیچیده‌تر شدن تلاش‌های دیپلماتیک توازن‌گرایانه این کشور می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه قابل توجهی در این زمینه وجود نداشت.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

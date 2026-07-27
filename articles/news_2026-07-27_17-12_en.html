@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-27 17:13</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-27 17:13</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Ukraine dismisses Iranian threats as Caspian Sea strike directly links wars</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:33</strong></span>
+                </div>
+                <p class='summary'>Iran has reacted with fury to the assault on the vessel, with Tehran's foreign minister saying it "cannot go unanswered".</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cwyj7yl0xndo?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Oil price dives as US and Iran pause attacks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 15:08</strong></span>
+                </div>
+                <p class='summary'>The US says attacks on Iran have been halted to give "talks some space", raising hopes of a resolution to the conflict.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/clyj834jn5lo?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran-Oman Talks Focused on Restarting Hormuz Shipping Traffic</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:50</strong></span>
+                </div>
+                <p class='summary'>Negotiators from Iran and Oman are trying to reach an agreement to restart shipping through the Strait of Hormuz, according to people familiar with the matter.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-oman-talks-focused-on-restarting-hormuz-shipping-traffic' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Oil Startup Backed by Ex-Goldman Commodity Chief Currie to IPO</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:50</strong></span>
+                </div>
+                <p class='summary'>Jeff Currie, the former Goldman Sachs Group Inc. commodities chief whose calls made him one of Wall Street’s best-known energy market strategists, is preparing to raise £50 million ($67 million) in a London stock market listing to build an oil producer in the Gulf of Mexico.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-startup-backed-by-ex-goldman-commodity-chief-currie-to-ipo' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Iran: Currently no negotiations with the US</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:08</strong></span>
+                </div>
+                <p class='summary'>Iranian Foreign Ministry Spokesperson, Esmaeil Baghaei, said on Monday that Iran is not seeking negotiations with US.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/27/iran-currently-no-negotiations-with-the-us?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Satellite Shots of Smoke at Saudi Oil Sites Keep Traders on Edge</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:17</strong></span>
+                </div>
+                <p class='summary'>Oil traders pored over satellite images that showed smoke appearing at several Saudi oil facilities over the past 48 hours, but the data offered few clues as to whether the kingdom’s energy production had been impacted by recent attacks from Iran-backed militias.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/satellite-shots-of-smoke-at-saudi-oil-sites-keep-traders-on-edge' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Spillover Effects: How the Middle East crisis threatens food security - Focus on Myanmar (Date Released: 5 June 2026 / Reporting period: week of 1 June )</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 15:13</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Myanmar</div> <div class="tag source">Source: World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/42/46/4246b352-bbf2-4524-8f63-c4c8796b5175.png" alt></p> <p>Please refer to the attached file.</p> <p>Overview</p> <p>As of the first week of June 2026, the Iran-US/Israel conflict that began on 28 February remains in a fragile ceasefire. The initial largescale strikes on Iranian military triggered the largest oil supply shock in history, temporarily disrupting 10-20% of global supply and causing significant volatility in energy markets. Higher energy costs are fueling inflation, raising transportation and logistics expenses, and driving up food prices through diesel and fertilizer shortages. The crisis is placing pressure on import-dependent economies. Myanmar ranks among the most severely affected countries in Asia due to its near-total dependence on imported fuel. Dramatic price surges have led to persistent fuel shortages, queues at petrol stations, rationing, and vehicle-use restrictions. These disruptions have hampered commodity flows, weakened market functionality, and eroded household purchasing power. Compounded by fertilizer shortages and existing internal conflict, the situation threatens agricultural production ahead of the monsoon season and further exacerbates food insecurity and humanitarian challenges.</p> <p>Summary</p> <p>• Food insecurity: WFP estimates that if the conflict continues through Q2, at least 45 million additional people globally may face acute food insecurity, including over 9 million in Asia. In Myanmar, a further 3.5–5 million people could become food insecure due to this crisis, on top of the existing 12.4 million. The crisis is intensifying vulnerabilities, especially in conflict-affected and remote areas, as reduced agricultural output, rising prices, and market disruptions strain household food consumption and livelihoods.</p> <p>• Fuel prices: Diesel prices have risen by an average of 68 percent nationwide, with Yangon seeing a 70 percent increase. Octane 95 has increased by 77 percent on average, with extreme spikes in Sittwe (up to tenfold) and Myitkyina (nearly fourfold compared to precrisis Yangon levels). Prices remain high but have gradually declined since late April.</p> <p>• Food basket cost: As of early June, the average food basket cost is about 19 percent higher than in late February, driven mainly by increases in rice, palm oil, and salt prices.</p> <p>• Conflict-affected areas: Fuel shortages and price increases of over 70 percent since February have led to queues, rationing, and transport restrictions, delaying the delivery of food, medicine, and aid. Roadblocks and insecurity continue to drive up staple food prices across Kachin, Kayin, Kayah, Sagaing, Rakhine, Magway, and Shan.</p> <p>• Agriculture: During the monsoon planting season, farmers face fuel shortages and higher fertilizer costs linked to the fuel crisis. These challenges are delaying land preparation, increasing production costs, and limiting market access, raising risks to agricultural output and incomes.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/myanmar/spillover-effects-how-middle-east-crisis-threatens-food-security-focus-myanmar-date-released-5-june-2026-reporting-period-week-1-june' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Middle East Crisis: Risks and Impacts for Food Security in Tanzania (June 2026)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 14:57</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: United Republic of Tanzania</div> <div class="tag source">Source: World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/c3/56/c356cca3-4ec0-4f1b-ab78-5766d816388f.png" alt></p> <p>Please refer to the attached file.</p> <p><strong>Key Highlights</strong></p> <p>ENERGY SHOCK</p> <p>• Tanzania is highly exposed to external fuel shocks, as it import 100% of fuel. Between 56% and 59% of fuel passes through the Strait of Hormuz.</p> <p>• Fuel prices remain elevated; petrol up by 47%, diesel up by 60% compared to February 2026.</p> <p>• LPG price increased by 9% to 17% for 15 kg and 6 kg cylinders, respectively. Tanzania imports 100% of the LPG.</p> <p>TRADE DISRUPTION</p> <p>• Higher global energy prices and freight costs increased Tanzania's import bill, especially for capital and industrial goods.</p> <p>• Imports value increased by 15.5% driven by industrial inputs, machinery and transport equipment.</p> <p>• Faster import growth than exports widened Tanzania’s current account deficit to about USD 2.65 billion by April 2026.</p> <p>INPUT CONSTRAINTS</p> <p>• Prices of some imported fertilizer (SA, DAP and CAN) have increased by 40%, 22% and 11% respectively since the start of the crisis.</p> <p>• High fertilizer import dependence (80–90%) risks production in upcoming seasons.</p> <p>MACROECONOMIC STRESS</p> <p>• Inflation rose to 4.2% in May, driven by energy and transport costs.</p> <p>• Energy inflation (5.3%) is transmitting into food and logistics sectors.</p> <p>• Exchange rate remains relatively stable, supported by gold exports.</p> <p>• Tanzania has sufficient foreign exchange reserves to meet external obligations for four months, although strained by high demand for foreign exchange.</p> <p>• Prudent central bank actions and adequate liquidity helped smooth volatility and support market order.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/united-republic-tanzania/middle-east-crisis-risks-and-impacts-food-security-tanzania-june-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Saudi Arabia says it intercepted drones from Iraq as Houthis target oil sites</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 14:43</strong></span>
+                </div>
+                <p class='summary'>Saudi Arabia said it intercepted drones launched by Iran-backed militias from Iraq targeting oil facilities and Riyadh on Monday, while Yemen's Houthi rebels claimed separate drone strikes on the kingdom's oil infrastructure. The attacks mark a renewed escalation involving Saudi Arabia despite a recent lull in fighting between the United States and Iran.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260727-saudi-arabia-says-it-intercepted-drones-from-iraq-as-houthis-target-oil-sites' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>World: Monthly market update #2 – June 2026, Middle East, Northern Africa and Eastern Europe</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 14:14</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Countries: World, Egypt, Iran (Islamic Republic of), Türkiye, Yemen</div> <div class="tag source">Source: World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/d1/a3/d1a30170-3a50-4a41-a27f-140e17d419a4.png" alt></p> <p>Please refer to the attached file.</p> <p><strong>HIGHLIGHTS</strong></p> <p>The temporary reopening of the Strait of Hormuz following a June US–Iran agreement eased global commodity and inflationary pressures, with Brent crude falling 20% in June (compared to May) reaching USD 73/bbl, and urea prices dropping 21% below pre-conflict levels. Cereals and natural gas prices also declined slightly (45%), although natural gas remained 37% above pre-conflict levels.</p> <p>Annual Inflation remained highly uneven across the region in June, with Iran and Türkiye continuing to face the region’s highest price pressures, while most countries recorded stable or easing inflation and Gaza’s deflation reflected ongoing normalization from conflict-driven price spikes.</p> <p>Food basket costs were broadly stable in June across most of the region, reflecting easing inflationary pressures; with Iran as a notable exception (+8% MoM, +120% YoY).</p> <p>Inflationary pressures continue to erode purchasing power of cash transfer values in Iran and Türkiye, constraining vulnerable households’ access to adequate and nutritious food</p> <p>Most regional currencies remain weaker than pre-escalation levels (February 2026), despite modest June recoveries in some markets, most prominently in Iran (+6%) and Egypt (+4%), while currencies in Armenia, Palestine, and Yemen (IRG) maintained relative stability or strengthening over the past year.</p> <p>Regional fuel prices eased in June following declining global energy prices and improving geopolitical conditions, with cooking gas and diesel recording the largest month-on-month declines, while generally remaining above pre-conflict levels.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/world/monthly-market-update-2-june-2026-middle-east-northern-africa-and-eastern-europe' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>How the Iran-Backed Houthis Cornered Saudi Arabia Into a New Conflict</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:03</strong></span>
+                </div>
+                <p class='summary'>The Iran-backed Houthi militia in Yemen has seized on a vulnerable moment for neighboring Saudi Arabia, which does not want another war. The group hopes to force political concessions in Yemen that could give it more authority and more access to resources.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/27/world/middleeast/houthis-saudi-arabia-iran-war.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>Saudis Blame Iran-Backed Militias Based in Iraq for Drone Attacks</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-27 16:07</strong></span>
+                </div>
+                <p class='summary'>The kingdom is being dragged deeper into the wider regional conflict as it faces attacks from Iraq and Yemen.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/27/world/middleeast/saudi-arabia-drone-attacks-iraq-iran.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 27, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran and its proxies are involved in escalating regional conflicts, including attacks on oil infrastructure in Saudi Arabia and the Caspian Sea. While temporary pauses in fighting have lowered oil prices, ongoing tensions threaten global energy supplies and food security, especially in vulnerable countries like Myanmar and Tanzania.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Iran is reacting strongly to attacks on its interests, including a strike on a vessel in the Caspian Sea. The U.S. and Iran have paused direct attacks to allow talks, but regional proxies like Yemen's Houthis and Iran-backed militias in Iraq continue launching drone strikes on Saudi oil facilities. There are also negotiations between Iran and Oman to reopen the Strait of Hormuz, a critical oil shipping route.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to remain tense but may cool slightly if negotiations succeed. If talks fail, attacks on oil infrastructure could continue, risking higher oil prices and global economic disruption. Saudi Arabia is caught in the middle, facing attacks from multiple directions.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['Early 2026: U.S.-Iran conflict escalates with large-scale strikes.', 'June 2026: Partial ceasefire and temporary reopening of the Strait of Hormuz ease oil prices.', 'July 26-27, 2026: Iran condemns attacks on Caspian Sea vessel; Saudi Arabia intercepts drones from Iraq and Yemen targeting oil sites; U.S. pauses some attacks for talks.', 'Ongoing: Iran-Oman talks to restore Hormuz shipping traffic.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict risks becoming a prolonged proxy war where Iran uses groups like the Houthis to pressure Saudi Arabia and the U.S. without direct confrontation. Saudi Arabia’s attempts to avoid war could worsen if attacks escalate. The Strait of Hormuz remains a flashpoint—if closed, global oil prices could surge dramatically.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            Direct U.S.-Iran fighting has paused, but regional proxies are highly active. Attacks are targeted (oil facilities, drones) and designed to weaken opponents without triggering full-scale war. The intensity is moderate but risks increasing if negotiations collapse.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict disrupts global oil supplies, pushing prices higher and fueling inflation worldwide. Weaker countries, like Myanmar and Tanzania, are hit hardest by fuel and food shortages, deepening humanitarian crises. The Middle East’s instability also affects global trade, energy markets, and geopolitical alliances.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is directly involved, pausing attacks to negotiate but still backing Saudi Arabia. Iran supports proxies in Yemen and Iraq. Oman is mediating talks. China, Russia, and Europe may be indirectly affected by oil shortages but are not heavily engaged in direct talks.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices have dropped temporarily due to the U.S.-Iran pause in attacks, falling 20% in June to $73/barrel. However, if the Strait of Hormuz closes or attacks resume, prices could spike again, driving up fuel and food costs globally.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Iran and U.S. have paused attacks for talks, but proxies continue striking oil infrastructure. The Strait of Hormuz and Saudi oil sites remain critical flashpoints; a shutdown would cause global oil shocks. Weak economies like Myanmar and Tanzania face severe fuel shortages, worsening food insecurity.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Iran is engaging in indirect talks with Oman to reopen the Strait of Hormuz, showing a rare willingness to negotiate on key logistics. Meanwhile, Saudi Arabia is being dragged into multiple fronts, complicating its diplomatic balancing act.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
