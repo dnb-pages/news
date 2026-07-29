@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-29 14:35</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-29 14:35</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Saudi Arabia joins US in strikes on Iran-backed militias in Iraq</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 13:48</strong></span>
+                </div>
+                <p class='summary'>US Central Command says proxy groups launched attacks against US bases and Saudi energy infrastructure.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c70g6y24d76o?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Trump threatens to hit Iran ‘hard’ following missile attack on U.S. assets</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Washington Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 13:33</strong></span>
+                </div>
+                <p class='summary'>The threat came after Saudi Arabia joined U.S. military strikes on Iranian proxies.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/07/28/us-says-it-shot-down-iranian-missiles-targeting-troops-middle-east/' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Zelensky and Netanyahu meet Trump as wars in Ukraine and Iran drag on</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 12:17</strong></span>
+                </div>
+                <p class='summary'>The two leaders sound encouraged after holding back-to-back bilaterals at the White House.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cj4k2z8z45ro?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iran War Live Updates: U.S. and Saudi Airstrikes Drag More Countries Into Fighting</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 14:18</strong></span>
+                </div>
+                <p class='summary'>Global oil prices jumped on Wednesday after the U.S. and Saudi Arabia said they had carried out joint airstrikes on Iranian proxies in Iraq.</p>
+                <div class='link'><a href='https://www.nytimes.com/live/2026/07/28/world/iran-us-strikes-iraq-trump' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>Somalia’s Families Face Impossible Choices as Fuel and Food Costs Soar</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 13:01</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Somalia</div> <div class="tag source">Source: International Committee of the Red Cross</div> <p>Somalia is in the grip of a hunger crisis. At Kismayo General Hospital in southern Somalia, the ICRC-supported stabilization centre saw a 41% increase in child admissions during the first half of 2026 compared to the same period last year – all of whom were malnourished.</p> <p>One of them is Hassan. He is not yet three and a half years old. Hassan arrived at the centre in July, showing signs of severe malnutrition, stomatitis, marasmus, and pneumonia.</p> <p>His mother, Sabirin, is a widow. When she saw Hassan’s condition deteriorate, she knew it was a matter of life or death. But with no clinic nearby, transport prohibitively expensive, and the roads clogged with mud, reaching help would not be easy.</p> <p>“[Hassan] was swollen, and his skin was cracking all over. I didn’t have money for transport, so contributions were made. I got in the car, and we spent days on the road. It had rained, making the road impassable. We got here on the third night, around evening,” she said.</p> <p>“Now, thank God, he is doing better.”</p> <p>The ICRC has recently expanded the number of Somali Red Crescent nutrition clinics it supports from 10 to 22. But access remains a challenge: many rural areas still lack health facilities, and some have been forced to close due to aid cuts.</p> <p>As a result, families often travel for days to get help, paying large sums of money to cover the cost of fuel, which has more than doubled in recent months due to disruptions along regional shipping routes.</p> <p>Like Sabirin, Hawa had an arduous 60-kilometre journey to Kismayo General Hospital - the only facility in the region equipped to provide the life-saving care that her daughter, Nasro, so desperately needed.</p> <p>Hawa saved for weeks to afford the $30 taxi fare, as Nasro’s health deteriorated by the hour. By the time they arrived at the hospital, Nasro’s condition was critical. She was rushed to the intensive care unit and has since shown signs of improvement.</p> <p>“I came yesterday and spent the night here. When I arrived, they examined [Nasro] and fixed an IV on her after giving her an injection. They gave her milk,” Hawa said.</p> <blockquote> <p><em><strong>“She’s better than she was yesterday. She was in critical condition. Now her eyes are open."</strong></em></p> </blockquote> <p>Shrinking aid funding, the lingering effects of drought, and increasing costs of basic goods like food and fuel are driving acute food insecurity across Somalia. This impact is noticeable in Kismayo’s markets, where the soaring cost of transporting and purchasing food is a major burden for families already living on the edge.</p> <blockquote> <p><em><strong>Everything in the world depends on fuel. Before the conflict [in Iran], five litres of fuel sold for $3.80. This morning, five litres were going for $8.50. You can see the difference. This change affects everything we use,”</strong></em></p> </blockquote> <p>said Ali Isse, a trader in Jamaame market in Kismayo.</p> <p>“Almost 95 per cent of everything has been affected. A sack of potatoes used to cost $45, but today it’s $80. That’s a $35 increase, all because of the ongoing conflict. It’s disrupted the shipping routes for fuel, and this is impacting our daily lives.”</p> <p>As needs rise, funding is shrinking. Aid cuts have resulted in devastating disruptions to healthcare, nutritional programmes, and food assistance, with women and children especially hard hit.</p> <p>“We’re seeing the combined impact of rising fuel and food costs, the lingering consequences of drought which have disrupted livelihoods, and reductions in aid funding just as families in Somalia need that help the most. We are working with our partners, the Somali Red Crescent, to provide healthcare services across the country, but more work is needed,” said Antoine Grand, head of the ICRC in Somalia.</p> <p>Despite budget reductions, Somalia remains the ICRC’s third-largest operation in Africa, with a budget of $80 million. Without urgent and sustained funding relative to the scale of needs, however, more lives will be lost and the gains made in building resilience among communities will be reversed.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/somalia/somalias-families-face-impossible-choices-fuel-and-food-costs-soar' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>F1 season to end in Europe if Qatar, Abu Dhabi unable to host due to war</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 12:27</strong></span>
+                </div>
+                <p class='summary'>F1 sets a mid-September deadline to decide whether final rounds in Middle East can be held due to US-Israel war on Iran.</p>
+                <div class='link'><a href='https://www.aljazeera.com/sports/2026/7/29/f1-season-to-end-in-europe-if-qatar-abu-dhabi-unable-to-host-due-to-us-iran-war?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Yemen Under Pressure: How the Iran-US Conflict Is Disrupting Trade, Prices, and Cash Assess - May 2026</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 11:58</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Yemen</div> <div class="tag source">Sources: Agency for Technical Cooperation and Development, Cash Consortium of Yemen, Danish Refugee Council, European Commission's Directorate-General for European Civil Protection and Humanitarian Aid Operations, International Organization for Migration, Mercy Corps, Norwegian Refugee Council, Solidarités International</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/32/9b/329ba888-6c77-46c3-b920-e0ca0d5ab982.png" alt></p> <p>Please refer to the attached file.</p> <p>Yemen is experiencing the negative economic effects of the US-Israel-Iran conflict, which has disrupted trade flows and increased pressure on an economy heavily reliant on imports for food and fuel.</p> <p>This study examines the impact of the 2026 Iran-US conflict on Yemen, a country already weakened by nearly a decade of internal war. Yemen depends heavily on imports for essential goods, and the closure of the Strait of Hormuz has significantly disrupted hydrocarbon supplies, contributing to sharp declines in fuel imports and rising domestic fuel process, particularly in the Internationally Recognized Government (IRG) areas.</p> <p>The crisis has also intensified food price increases, supply chain disruptions, and a deepening rial liquidity crisis in IRG areas. These pressures are affecting household purchasing power and complicating the delivery of multi-purpose cash assistance (MPCA). At the same time, the humanitarian response is facing a major funding gap, with only 13% of the 2026 Humanitarian Response Plan funded by mid-May, limiting the ability to absorb further shocks.</p> <p>Drawing on desk review, trader surveys, price monitoring, and key informant interviews, the study concludes that supply chain disruption, currency stress, and price volatility are likely to persist through at least the second half of 2026, with serious implications for humanitarian operations and market stability.</p> <p><strong>KEY TERMS:</strong></p> <p>Multi-purpose cash assistance (MPCA) | Cash and Voucher Assistance (CVA) | Minimum Expenditure Basket (MEB) | Yemen economy | Food prices | Liquidity constraints | Market price monitoring</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/yemen/yemen-under-pressure-how-iran-us-conflict-disrupting-trade-prices-and-cash-assess-may-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Iran hits US in Jordan, US-Saudi strikes on Iraq: Is war spreading?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 11:34</strong></span>
+                </div>
+                <p class='summary'>The US says it intercepted an Iranian 'surprise attack' on US forces as fears rise of wider war.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/29/iran-hits-us-in-jordan-us-saudi-strikes-on-iraq-is-war-spreading?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Iran Gambles on Escalation With Surprise Attack on U.S. Forces</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 13:09</strong></span>
+                </div>
+                <p class='summary'>The attack illustrates a shift in which Tehran has grown more comfortable with the war. Trump was quoted as saying the U.S. will hit Iran hard.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-gambles-on-escalation-with-surprise-attack-on-u-s-forces-72cfd422' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Oil Surges as Fresh Middle East Strikes Threaten Fragile Diplomacy</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 12:20</strong></span>
+                </div>
+                <p class='summary'>Oil prices climbed more than 4% as a fresh round of fighting across the Middle East undermined diplomatic efforts to end a five-month-old conflict that has roiled energy markets.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/oil-surges-as-fresh-middle-east-strikes-threaten-fragile-diplomacy-7fd2d4e8' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>Public executions in Iran spark anti-regime protests</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 14:00</strong></span>
+                </div>
+                <p class='summary'>The Islamic Republic publicly executed two Iranian protesters in Isfahan at dawn on July 28. Several hundred people gathered near a stage set up in the city’s Alikhani Square, but instead of cheering the execution, they chanted slogans against the police, prompting anti-riot units to disperse the crowd.</p>
+                <div class='link'><a href='https://www.france24.com/en/middle-east/20260729-iran-public-executions-isfahan-anti-regime-protests' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>12</span>
+                <span class='title'>'Two options' for Trump in Middle East war: 'he waits or he escalates massively'</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-29 13:46</strong></span>
+                </div>
+                <p class='summary'>US President Donald Trump confirmed on Fox News that the US and Saudi Arabia coordinated attacks on Iran-backed Iraqi militias with the Iraqi government itself. But Iraq has called the strikes a 'blatant violation', and its prime minister has called off a meeting with the Saudi Prince Mohammed bin Salmane due to the attack. This comes as the US struggles to put an end to the war with Iran. FRANCE 24's Angela Diffley tells us more.</p>
+                <div class='link'><a href='https://www.france24.com/en/two-options-for-trump-in-middle-east-war-he-waits-or-he-escalates-massively' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 29, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The Middle East is locked in escalating conflict as the U.S. and Saudi Arabia launch strikes on Iran-backed militias in Iraq following Iranian missile attacks on U.S. assets. The fighting risks spreading into a broader regional war, disrupting global oil supplies, worsening humanitarian crises in Somalia and Yemen, and straining international diplomacy.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. and Saudi Arabia conducted joint airstrikes on Iran-backed militias in Iraq after these groups launched attacks on U.S. military bases and Saudi energy infrastructure. Iran responded with missile strikes on U.S. forces in Jordan, marking a significant escalation. The U.S. intercepted these missiles, and President Trump threatened a hardline response against Iran. Meanwhile, anti-regime protests in Iran broke out after public executions of protesters, adding internal pressure to the regime's external conflicts.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict is likely to escalate further, with the U.S. and Saudi Arabia continuing their strikes to weaken Iran's proxy forces. Iran may respond with more direct attacks on U.S. or allied targets, risking a broader regional war. Diplomatic efforts to de-escalate seem increasingly fragile as both sides dig in. The humanitarian crises in Yemen and Somalia will worsen due to rising fuel and food costs, driven by supply chain disruptions from the conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>July 28, 2026: Iran-backed militias attack U.S. bases and Saudi energy infrastructure.</li><li>U.S. and Saudi Arabia launch retaliatory airstrikes on militias in Iraq.</li><li>Iran fires missiles at U.S. forces in Jordan; U.S. intercepts them and Trump threatens 'hard' retaliation.</li><li>Anti-regime protests erupt in Iran after public executions.</li><li>Global oil prices surge over 4% due to fears of wider conflict disrupting energy supplies.</li><li>Humanitarian crises worsen in Somalia and Yemen due to fuel price spikes and aid shortages.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term direction suggests a protracted conflict where neither side backs down easily. Iran may seek to expand its influence further while avoiding direct war with the U.S., using proxies to apply pressure. The U.S. and Saudi Arabia aim to weaken Iran's regional power but risk further destabilizing Iraq and the broader Middle East. The global oil market will likely remain volatile, and regional economies—especially those dependent on imports—will face severe strain. Diplomatic solutions appear increasingly distant as military actions intensify.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is intensifying, with direct exchanges between Iran and the U.S./Saudi Arabia becoming more frequent. The nature of the fighting involves airstrikes, missile attacks, and proxy warfare, with both sides avoiding large-scale direct confrontation for now. Internal unrest in Iran adds to the regime's challenges, while external military actions risk drawing more countries into the conflict. The humanitarian toll is rising rapidly, with civilians in Yemen and Somalia suffering disproportionately from economic fallout.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This escalation threatens to reshape the Middle East by drawing multiple countries into a wider war, disrupting global oil supplies, and worsening humanitarian crises. It could redefine alliances, with Saudi Arabia aligning more closely with the U.S. against Iran. The risk of a broader conflict involving Israel or other regional players (e.g., Turkey, Qatar) is growing, which could have global repercussions. The world may face a prolonged period of instability in one of its most oil-rich regions.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. and Saudi Arabia are leading the military response against Iran-backed groups, with Iraq caught in the middle as it condemns the strikes despite its own vulnerability to militias. The U.S. is also engaging with allies like Israel (implied by Netanyahu's meeting with Trump) to coordinate responses. Global powers, including Russia and China, may seek to mediate, but their influence is limited given the current stance. The humanitarian crisis has drawn aid organizations like the ICRC, but funding gaps persist.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices have surged over 4% due to fears that the conflict could disrupt critical shipping routes, particularly if the Strait of Hormuz (a major oil chokepoint) is closed. Saudi Arabia and Iran are key oil producers, so any prolonged conflict risks supply disruptions. Countries heavily reliant on oil imports, such as in Europe and Asia, will face higher energy costs, potentially slowing economic growth. The surge reflects market unease about long-term stability in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The conflict between the U.S./Saudi Arabia and Iran-backed militias is escalating, with direct strikes and threats of further retaliation raising the risk of a broader war. Global oil prices are rising sharply, threatening economic stability worldwide due to potential supply disruptions in a key oil-producing region. Humanitarian crises in Somalia and Yemen are worsening rapidly, with soaring fuel and food prices making it harder for families to access basic needs.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            Iran's shift to using missiles in direct attacks (e.g., in Jordan) instead of relying solely on proxies signals a bold escalation. Public executions sparking anti-regime protests in Iran add internal instability to the regime's external challenges.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
