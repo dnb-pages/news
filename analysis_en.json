@@ -1,21 +1,21 @@
 {
-  "title": "Analysis Unavailable",
-  "summary": "```json\n{\n    \"title\": \"Iran Situation Analysis - July 29, 2026\",\n    \"summary\": \"Iran is facing escalating internal unrest, regional conflicts, and diplomatic isolation amid a standoff over key waterways and its nuclear program. Meanwhile, proposals to ease tensions in the Strait of Hormuz have stalled as Iran demands more control, while regional tensions continue to rise.\",\n    \"full_analysis\": {\n        \"what_happened\": \"Iran is rejecting a Gulf-backed proposal by Oman to jointly manage the S",
+  "title": "Iran Situation Analysis - 2026-07-29",
+  "summary": "Tensions in the Middle East are escalating rapidly as Iran renews attacks on US and Saudi targets while the US and Saudi Arabia conduct joint airstrikes on Iran-backed militias in Iraq. Ceasefire talks are under strain, and regional stability is at risk as fighting disrupts civilian life, health services, and global oil supplies.",
   "full_analysis": {
-    "what_happened": "No significant developments in this area.",
-    "where_heading": "No significant developments in this area.",
-    "timeline": "No significant developments in this area.",
-    "strategic_outlook": "No significant developments in this area.",
-    "conflict_dynamics": "No significant developments in this area.",
-    "big_picture": "No significant developments in this area.",
-    "international_involvement": "No significant developments in this area.",
-    "oil_price": "No significant developments in this area.",
+    "what_happened": "Iran has resumed missile strikes on regional targets, including an attack intercepted by Jordan, while the US and Saudi Arabia launched joint airstrikes on Iran-backed militias in Iraq. These strikes followed a brief ceasefire that collapsed after weeks of relative calm. The violence has reignited concerns about regional stability and global oil markets.",
+    "where_heading": "The situation is likely to escalate further in the short term, with both sides hardening their positions. Iran may continue probing for weaknesses in US-Saudi coordination, while the US and Saudi Arabia could intensify strikes to pressure Iran into renewed negotiations. Diplomatic efforts may struggle to regain traction amid ongoing violence.",
+    "timeline": "1. Early July 2026: A US-Iran ceasefire agreement (Memorandum of Understanding) was signed, reducing hostilities temporarily. 2. July 8, 2026: Media reports indicated the ceasefire was ineffective, leading to renewed airstrikes. 3. July 28-29, 2026: Iran attacked US bases and regional targets (e.g., Jordan intercepted missiles). 4. July 29, 2026: US and Saudi Arabia conducted joint airstrikes on Iran-backed militias in Iraq, ending a days-long lull.",
+    "strategic_outlook": "The conflict risks entering a prolonged phase of tit-for-tat attacks unless a new diplomatic breakthrough occurs. Iran may seek to weaken US-Saudi coordination, while the US and Saudi Arabia could escalate strikes to force Iran to the negotiating table. The risk of miscalculation or accident remains high, potentially dragging more regional actors into the conflict.",
+    "conflict_dynamics": "Fighting has shifted between direct strikes (Iran vs. US-Saudi) and proxy conflicts (militias in Iraq). The intensity is moderate but rising, with daily airstrikes and missile launches causing civilian casualties and infrastructure damage. The involvement of multiple armed groups complicates de-escalation efforts.",
+    "big_picture": "This conflict threatens to destabilize the Middle East, disrupt global oil supplies, and strain international alliances. A prolonged war could trigger refugee crises, economic instability in oil-dependent nations, and further geopolitical realignments (e.g., US-Israel-Saudi cooperation vs. Iran-backed groups).",
+    "international_involvement": "Major players include the US (military strikes, diplomatic pressure), Saudi Arabia (joined strikes, alliance with US), Iran (proxy attacks, missile strikes), and regional actors like Jordan (intercepted strikes) and Lebanon (fragile ceasefire). Israel is also engaged, with Netanyahu coordinating closely with Trump. International organizations (WHO, UN) warn of humanitarian crises.",
+    "oil_price": "Oil prices are likely to rise due to the conflict’s impact on Middle Eastern oil supply routes (e.g., Strait of Hormuz) and regional instability. Any disruption in Iraqi oil fields or shipping lanes would tighten global supply, pushing prices higher. The Eurozone’s focus on rising wages (Article 4) reflects inflationary pressures from energy costs.",
     "key_takeaways": [
-      "No significant developments in this area.",
-      "No significant developments in this area.",
-      "No significant developments in this area."
+      "Iran and US-Saudi tensions have reignited, ending a brief ceasefire and risking further escalation.",
+      "Regional instability is worsening, with attacks on civilian infrastructure and health services under threat.",
+      "Global oil markets are reacting, with prices expected to rise due to potential supply disruptions."
     ],
-    "surprising_elements": "No significant developments in this area.",
-    "additional_context": "No significant developments in this area."
+    "surprising_elements": "The rapid collapse of the ceasefire after months of relative calm caught many observers off guard, as did Jordan’s interception of Iranian missiles—symbolizing how quickly the conflict has spread across the region.",
+    "additional_context": "The Strait of Hormuz, a critical oil shipping route, remains a flashpoint with Iran and Oman proposing competing deals to control it (Article 3). Meanwhile, Israel’s alignment with the US and Saudi Arabia underscores the broader sectarian and geopolitical divisions in the Middle East."
   }
 }

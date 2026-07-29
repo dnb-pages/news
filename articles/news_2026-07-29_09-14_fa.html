@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-29 09:18</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-29 09:18</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>عربستان سعودی به همراه آمریکا به مواضع گروه‌های مسلح وابسته به ایران در عراق حمله کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (هسته اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۵/۰۸</strong></span>
+                </div>
+                <p class='summary'>فرماندهی مرکزی ایالات متحده می‌گوید، گروه‌های نیابتی حملات خود را علیه پایگاه‌های ایالات متحده و زیرساخت‌های انرژی عربستان سعودی آغاز کرده‌اند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c70g6y24d76o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آمریکا و عربستان سعودی به گروه‌های «همسو با ایران» در عراق حمله کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>29 تیر 1405 ساعت 08:33:39 UTC</strong></span>
+                </div>
+                <p class='summary'>آمریکا و عربستان سعودی حملات هوایی مشترک خود را علیه عراق آغاز کردند و گروه‌های «همسو با ایران» را هدف گرفتند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/29/us-and-saudi-arabia-strike-iran-aligned-groups-in-iraq?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران و عمان مبادله پیشنهادها برای مدیریت تنگه هرمز: آنچه می‌دانیم</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۸ ساعت ۱۲:۴۶</strong></span>
+                </div>
+                <p class='summary'>ایران در حال ارائه یک توافق است که منجر به کنترل بسیار بیشتری از عمان برای آن می‌شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/29/iran-and-oman-swap-proposals-to-manage-strait-of-hormuz-what-we-know?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>رشد دستمزد در منطقه یورو قرار است در سال آینده تسریع شود، بانک مرکزی اروپا اعلام کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۹ تیر ۱۴۰۵ ساعت ۱۳:۰۵:۲۲ (به وقت تهران)</strong></span>
+                </div>
+                <p class='summary'>بانک مرکزی اروپا اعلام کرد که رشد دستمزدها در حوزه یورو تا اوایل سال ۲۰۲۷ سرعت خواهد گرفت، هرچند همچنان بسیار پایین تر از اوج های پیشین خواهد بود، در حالی که تورم ناشی از جنگ ایران را می‌سنجد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/euro-zone-wage-growth-set-to-quicken-into-next-year-ecb-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>ایران به پایگاه‌های آمریکایی حمله کرد و عربستان سعودی به حملات در عراق پیوست</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیوزپست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۰۸T۰۸:۲۰:۰۳Z</strong></span>
+                </div>
+                <p class='summary'>ایران شب گذشته به نیروهای آمریکایی شلیک کرد و آمریکا و عربستان سعودی، شبه‌نظامیان مورد حمایت تهران در عراق را مورد حمله قرار دادند که موجب پایان ناگهانی آتش‌بس چند روزه‌ای در درگیری‌ها شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-attacks-us-bases-and-saudi-arabia-joins-strikes-in-iraq' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ایران: سازمان جهانی بهداشت - تشدید درگیری در خاورمیانه، گزارش وضعیت جهانی شماره ۱۰ - ۲۲ ژوئیه ۲۰۲۶</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۷-۲۹T۰۷:۴۳:۳۳Z</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: ایران (جمهوری اسلامی)</div> <div class="tag source">منبع: سازمان جهانی بهداشت</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/7d/3b/7d3b1d91-6211-4bde-bda9-ee0ebb703868.png" alt></p> <p>لطفاً به فایل پیوست مراجعه کنید.</p> <p>این دهمین گزارش وضعیت عمومی جهانی سازمان جهانی بهداشت درباره تشدید در خاورمیانه است. این گزارش وضعیت بهداشت و به‌روزرسانی‌های عملیاتی سازمان جهانی بهداشت در کشورهای آسیب‌دیده در مناطق خاورمیانه و اروپا، همچنین فعالیت‌ها و اولویت‌های پاسخ جهانی سازمان را پوشش می‌دهد.</p> <p>در ۲۷ خرداد ۱۴۰۵، ایالات متحده آمریکا و جمهوری اسلامی ایران بر سر تفاهم‌نامه‌ای درباره متوقف کردن خصومت‌ها به توافق رسیدند. از زمان اعلام این تفاهم‌نامه و آتش‌بس متعاقب آن، شدت کلی خصومت‌ها کاهش یافته است. با این حال، فعالیت‌های نظامی ادامه دارد که بر زیرساخت‌های غیرنظامی و دسترسی به مراقبت‌های بهداشتی تأثیر می‌گذارد.</p> <p>در ۲۸ تیر ۱۴۰۵، گزارش‌های رسانه‌ای مبنی بر بی‌اثر شدن تفاهم‌نامه و تشدید دوباره خصومت‌ها منتشر شد، به‌طوری‌که از روزانه گزارش بمباران‌ها می‌رسد. در لبنان، علی‌رغم کاهش خصومت‌ها پس از اعلام آتش‌بس، وضعیت امنیت همچنان شکننده است و گزارش‌هایی از فعالیت‌های نظامی محلی روزانه وجود دارد. تهدیدهای حاد سلامت شامل خطرات ترومای ناشی از جنگ و تلفات انبوه، خطرات بیماری‌های واگیر ناشی از آواره شدن مردم و سرریز پناهگاه‌ها، افزایش شیوع سرخک و سالک در سوریه، انتقال سرخک در اردن، و مشکلات مداوم تأمين سوخت، برق و زنجیره تأمین است که استمرار خدمات اساسی بهداشتی را تحت تأثیر قرار می‌دهند.</p>
+                <div class='link'><a href='https://reliefweb.int/report/iran-islamic-republic/world-health-organization-middle-east-escalation-conflict-global-situation-report-10-22-july-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>نتانیاهوSessionID_1398 "عالی"SessionID_1398 راSessionID_1398 پسSessionID_1398 ازSessionID_1398 جنگSessionID_1398 باSessionID_1398 ایرانSessionID_1398SessionID_1398 موردSessionID_1398 تحسینSessionID_1398 قرارSessionID_1398 داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۸ ساعت ۱۳:۳۴:۲۲</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده دونالد ترامپ و نخست‌وزیر اسرائیل بنیامین نتانیاهو در ۲۸ ژوییه در واشنگتن دی‌سی دیدار کردند، زمانی که نتانیاهو برای حضور در مراسم خاکسپاری سناتور آمریکایی لیندسی گراهام به این شهر پرواز کرده بود. این اولین باری بود که این دو پس از راه‌اندازی مشترک جنگ علیه ایران در فبراير، حضوری با یکدیگر ملاقات می‌کردند. علی‌رغم شایعاتی مبنی بر تنش بین ترامپ و متحدش پیش از مذاکرات، هر دو side از این دیدار ستایش کردند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/netanyahu-praises-excellent-meeting-with-trump-in-first-since-iran-war' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>آمریکا می‌گوید ایران در تلاش برای 'مخدوش کردن مذاکرات آتش‌بس در حال انجام' است؛ در حالی‌که حملات از سر گرفته شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس 24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۵۱/۱۱/۷ ۱۲:۲۹:۴۲</strong></span>
+                </div>
+                <p class='summary'>ارتش اردن اعلام کرد که پنج موشک ایرانی را در ۹ مرداد [۲۹ ژوئیه] [جهت معادل‌سازی تاریخی با ۲۹ تیر ۱۴۰۳] رهگیری کرده است. این اولین اقدام نظامی منطقه‌ای ایران در چند روز اخیر پس از وقفه‌ای در درگیری‌ها با ایالات متحده محسوب می‌شود. سپاه پاسداران ایران حمله را تائید کرده و آن را پاسخی به "اقدامات تهاجمی" ایالات متحده توصیف کرد، بدون توضیح بیشتر. این حمله نخستین اقدام نظامی ایران علیه کشورهای منطقه طی چند روز گذشته بود. فِرِنس ۲۴، به نقل از فریزر جکسون، گزارش می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/ایالات-متحده-می‌گوید-ایران-در-تلاش-برای-برهم-زدن-مذاکرات-آتش‌بس-دائمی-همزمان-با-از-سر-گرفتن-حمله‌ها' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 2026-07-29</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌ها در خاورمیانه به سرعت در حال تشدید است، زیرا ایران حملات خود را علیه اهداف آمریکایی و سعودی از سر گرفته است در حالی که ایالات متحده و عربستان سعودی با انجام حملات هوایی مشترک علیه شبه‌نظامیان подsupported ایران در عراق اقدام می‌کنند. مذاکرات آتش‌بس در معرض فشار قرار گرفته است و ثبات منطقه‌ای در معرض خطر است زیرا درگیری‌ها زندگی غیرنظامی، خدمات بهداشتی و عرضه جهانی نفت را مختل می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران حملات موشکی خود را به اهداف منطقه‌ای از سر گرفته است که یکی از آنها توسط اردن متوقف شد؛ در حالی که ایالات متحده و عربستان سعودی، حملاتی مشترک به شبه‌نظامیان مورد حمایت ایران در عراق انجام دادند. این حملات پس از برقراری آتش‌بس موقت و سپس فروپاشی آن پس از هفته‌ها آرامش نسبی رخ داده است. این خشونت‌ها نگرانی‌ها درباره ثبات منطقه‌ای و بازارهای جهانی نفت را دوباره برافروخته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            در کوتاه مدت احتمالاً وضعیت تشدید بیشتری خواهد یافت و هر دو طرف موضع خود را سخت‌گیرانه‌تر خواهند کرد. ایران ممکن است به دنبال یافتن نقاط ضعف در هماهنگی آمریکا و عربستان بپردازد، در حالی که آمریکا و عربستان سعودی می‌توانند حملات خود را تشدید کرده و فشار بر ایران را برای از سرگیری مذاکرات افزایش دهند. تلاش‌های دیپلماتیک در میان خشونت‌های ongoing ممکن است برای بازگرداندن روند مذاکرات با چالش مواجه شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. اوایل تیر ۱۴۰۵: توافق آتش‌بس میان آمریکا و ایران (یادداشت تفاهم) امضا شد که برای مدتی کوتاه باعث کاهش تنش‌ها گردید.</li><li>۲. ۸ تیر ۱۴۰۵: رسانه‌ها گزارش دادند که آتش‌بس بی‌اثر بود و باعث از سرگیری بمباران‌های هوایی شد.</li><li>۳. ۲۸–۲۹ تیر ۱۴۰۵: ایران به پایگاه‌های آمریکا و اهداف منطقه‌ای حمله کرد (به عنوان مثال، اردن موشک‌های میان‌هنگامی را رهگیری کرد).</li><li>۴. ۲۹ تیر ۱۴۰۵: آمریکا و عربستان سعودی اقدام به حملات هوایی مشترک علیه شبه‌نظامیان مورد حمایت ایران در عراق کردند و این اقدام، دوره سکون چند روزه را پایان داد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این درگیری در معرض خطر وارد شدن به یک مرحله طولانی مدت از حملات تلافی جویانه است مگر اینکه یک پیشرفت دیپلماتیک جدید رخ دهد. ایران ممکن است به دنبال تضعیف هماهنگی میان آمریکا و عربستان سعودی باشد، در حالی که آمریکا و عربستان سعودی می‌توانند حملات خود را تشدید کنند تا ایران را به میز مذاکره بکشانند. خطر بدفهمی یا وقوع حادثه همچنان بالا است و ممکن است بازیگران بیشتری از منطقه را وارد این درگیری کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            نبردها مابین حملات مستقیم (ایران در برابر ایالات متحده-عربستان) و درگیری‌های نیابتی (مسلحانه در عراق) در نوسان بوده است. شدت درگیری‌ها متوسط اما در حال افزایش است، به طوری که بمباران‌های روزانه و پرتاب موشک‌ها، تلفات غیرنظامی و خسارات زیرساختی را به همراه داشته است. دخالت چندین گروه مسلح تلاش‌ها برای کاهش تنش را پیچیده‌تر می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری تهدید می‌کند که خاورمیانه را بی‌ثبات کند، عرضه جهانی نفت را disrupted و پیمان‌های بین‌المللی را تحت فشار قرار دهد. یک جنگ طولانی‌مدت می‌تواند به بحران‌های پناهندگی، ناپایداری اقتصادی در کشورهای وابسته به نفت و realignments ژئوپلیتیکی بیشتر منجر شود (به عنوان مثال، همکاری‌های ایالات متحده-اسرائیل-عربستان سعودی در مقابل گروه‌های مورد حمایت ایران).
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیکنان اصلی عبارتند از آمریکا (حمله‌های نظامی، فشار دیپلماتیک)، عربستان سعودی (شرکت در حمله‌ها، اتحاد با آمریکا)، ایران (حملات دستی و نیابتی، موشک‌اندازی‌ها)، و بازیگران منطقه‌ای مانند اردن (توقف حملهٔ موشکی) و لبنان (آتش‌بس شکننده). اسرائیل نیز درگیر است و نتانیاهو به‌طور نزدیک با ترامپ هماهنگ می‌کند. سازمان‌های بین‌المللی (سازمان جهانی بهداشت، سازمان ملل) در مورد بحران‌های انسان‌دوستانه هشدار می‌دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت به دلیل تأثیر درگیری بر مسیرهای تأمین نفت خاورمیانه (مانند تنگهٔ هرمز) و ناپایداری منطقه‌ای احتمالاً افزایش خواهد یافت. هرگونه اختلال در میادین نفتی عراق یا خطوط کشتیرانی منجر به کاهش عرضه جهانی و افزایش قیمت‌ها خواهد شد. تمرکز منطقه یورو بر افزایش دستمزدها (مقالهٔ ۴) نشان‌دهندهٔ فشارهای تورمی ناشی از هزینه‌های انرژی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            تنش‌های میان ایران و آمریکا-عربستان دوباره شعله‌ور شده که آتش‌بس کوتاه‌مدت را برهم زده و خطر تشدید بحران را افزایش می‌دهد. ناپایداری منطقه‌ای در حال تشدید است و زیر حملات به زیرساخت‌های غیرنظامی و خدمات بهداشتی در معرض تهدید قرار دارند. بازارهای جهانی نفت در حال واکنش هستند و انتظار می‌رود قیمت‌ها به دلیل احتمال اختلالات در عرضه افزایش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            سقوط ناگهانی آتش‌بس پس از ماه‌ها آرامش نسبی بسیاری از ناظران را غافلگیر کرد، به‌ویژه در پی برخورد موشک‌های ایرانی از سوی اردن که نمادی از سرعت گسترش این مناقشه در سراسر منطقه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تنگه‌ی hormones، یک مسیر کشتی‌رانی نفتی حیاتی، همچنان نقطه‌ی مهم تنش است، با ایران و عمان که برای کنترل آن پیشنهادهای رقیب ارائه می‌کنند (مقاله‌ی 3). از سوی دیگر، هم‌سویی اسرائیل با ایالات متحده و عربستان سعودی، تقسیم‌بندی‌های broader مذهبی و ژئوپلیتیکی در خاورمیانه را برجسته می‌سازد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
