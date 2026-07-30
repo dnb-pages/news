@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-30 09:08</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-30 09:08</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>US launches 'heavy' strikes on Iran after attempted attack on American troops</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 08:42</strong></span>
+                </div>
+                <p class='summary'>After a short period of relative calm when hostilities were paused, both sides have now restarted missile attacks.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c74gwdzywmeo?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Saudi Economy Shrinks Most Since 2020 as War Roils Oil Exports</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 07:47</strong></span>
+                </div>
+                <p class='summary'>Saudi Arabia’s economy saw its sharpest quarterly contraction since the Covid-19 pandemic, as the US-Israeli war against Iran poses challenges to the vital oil industry.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/saudi-economy-shrinks-most-since-2020-as-war-roils-oil-exports' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>US strikes cause extensive damage on Iran’s Qeshm Island</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 07:24</strong></span>
+                </div>
+                <p class='summary'>Video from Iran's Qeshm Island shows widespread damage following US attacks.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/7/30/us-strikes-cause-extensive-damage-on-irans-qeshm-island?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Hormuz Shipping Traffic Picks Up Despite Middle East Hostilities</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 07:16</strong></span>
+                </div>
+                <p class='summary'>Shipping across the crucial Strait of Hormuz has picked up in recent days despite a continuation of hostilities in the Middle East, with the US claiming its navy escorted some tankers across the waterway.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/hormuz-shipping-traffic-picks-up-despite-middle-east-hostilities' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>In the waters off Malaysia, Iranian oil sales continue despite blockade</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 07:02</strong></span>
+                </div>
+                <p class='summary'>A large anchorage area off the coast of Malaysia is a major marketplace for sanctioned oil.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/30/in-the-waters-off-malaysia-iranian-oil-sales-continue-despite-blockade?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>World: UN report: Global hunger levels ease for third consecutive year as regional disparities persist</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 08:09</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: World</div> <div class="tag source">Source: Food and Agriculture Organization of the United Nations</div> <p>Please refer to the attached file.</p> <h2>UN report: Global hunger levels ease for third consecutive year as regional disparities persist</h2> <p>The 2026 edition of The State of Food Security and Nutrition in the World (SOFI) also examines the cost of healthy diets</p> <p>According to the 2026 SOFI report, a third of the global population still cannot afford a healthy diet.</p> <p>©FAO</p> <p><strong>21/07/2026</strong></p> <p><strong>Rome</strong> – Global hunger declined for a third consecutive year in 2025, demonstrating that progress is possible. However, the improvements remain fragile, unevenly distributed and insufficient to achieve the Sustainable Development Goals by 2030, according to <a rel="noreferrer noopener" target="_blank" href="https://doi.org/10.4060/cd8306en"><em>The State of Food Security and Nutrition in the World 2026</em></a>(SOFI 2026) report, released on Tuesday by five United Nations specialized agencies.</p> <p>The report estimates that <strong>7.8 percent of the global population faced hunger in 2025</strong>, down from <strong>8.1 percent in 2024</strong> and <strong>8.6 percent in 2022</strong>, confirming a sustained, albeit slow, improvement. This means that around <strong>645 million people</strong> were affected by hunger in 2025, representing a reduction of nearly <strong>14 million</strong> compared to 2024 and <strong>43 million</strong> compared to 2022.</p> <p>Despite global progress, recovery remains uneven across regions. Asia, together with Latin America and the Caribbean, has recorded steady improvements in recent years. In contrast, Africa is now home to approximately <strong>309 million</strong> hungry people, compared with <strong>292 million</strong> in Asia. Although Africa’s previously rising trend is beginning to stabilize, with the share of its population facing hunger decreasing from 20.3 percent in 2024 to 20.0 percent in 2025, the continent now has the highest number of hungry people in absolute terms amid a rapidly growing population.</p> <p>Broader measures of food access tell a similar story. In 2025, an estimated <strong>25.8 percent</strong> of the global population (around <strong>2.1 billion people</strong>) experienced <strong>moderate or severe food insecurity</strong>, meaning they were at times forced to compromise on the quality or quantity of the food they ate. This is down from <strong>27.1 percent</strong> in 2024 and <strong>28.7 percent</strong> in 2020 – equivalent to nearly <strong>86 million</strong> fewer people than in 2024 and <strong>135 million</strong> fewer than in 2020, though still above pre-pandemic levels.</p> <p>Regional disparities remain stark. <strong>More than half of Africa’s population</strong> (56.6 percent) faced moderate or severe food insecurity in 2025, compared to <strong>20.3 percent in Asia</strong>, <strong>22.9 percent in Latin America and the Caribbean, and 8.7 percent in Northern America and Europe</strong>. Food insecurity also continues to be more prevalent in rural areas than in peri-urban and urban areas, while women remain disproportionately affected, although the gender gap narrowed slightly in 2025.</p> <p><strong>Hunger projections in the context of the Middle East conflict</strong></p> <p>The annual report also offers updated hunger projections for the next five years in light of the conflict in the Middle East. Depending on the length of the impact of the crisis on food inflation – which is driven by higher energy and fertilizer prices – approximately <strong>510 to 520 million people</strong> may still be facing hunger in 2030 (compared to the lower projection of 503 million in the pre-conflict scenario), with the global number of undernourished people expected to <strong>decrease by 20 percent</strong>. However, other potential disruptors, including the effects of weather extremes such as El Niño in 2026 and 2027, are not considered in these projections and could further compound these effects.</p> <p>The report’s joint authors - the Food and Agriculture Organization of the United Nations (FAO), the International Fund for Agricultural Development (IFAD), the United Nations Children’s Fund (UNICEF), the UN World Food Programme (WFP), and the World Health Organization (WHO) – warn that the 2026 Middle East conflict, along with weather extremes and the reductions in official development assistance and humanitarian funding, are threatening to undermine the progress made to end global hunger.</p> <p><strong>Slow progress on global nutrition targets</strong></p> <p>The report highlights that global progress on maternal and child nutrition also remains insufficient to meet international commitments, including the 2030 nutrition targets.</p> <p>Indicators such as <strong>child stunting, wasting, overweight, low birthweight and exclusive breastfeeding</strong> show only marginal improvements and progress is too slow to meet the targets. At the same time, anaemia among women aged 15 to 49 years is worsening, while the prevalence of <strong>adult obesity</strong> shows a steady increase – from 12.1 percent in 2012 to 16.2 percent in 2024 – contrary to the target of halting its rise by 2025. Only 30.8 percent of children aged 6 to 23 months worldwide consume a minimally diverse diet and 150 million children under five years of age are still stunted.</p> <p>Progress again varies significantly across regions. The prevalence of child stunting is declining in Africa and is on track to meet the 2030 target in Asia, while exclusive breastfeeding rates are improving across all regions where data is available. However, nearly all regions are experiencing widening gaps in addressing anaemia among women, and child overweight is increasing rapidly in Oceania.</p> <p><strong>The cost of a healthy diet</strong></p> <p>This year’s SOFI report takes a closer look at the cost of a healthy diet - the average minimum expenditure required to obtain locally available foods that meet energy and most nutrient requirements. According to FAO and WHO, a healthy diet is one that is adequate, balanced, diverse, and moderate.</p> <p>The report underscores that costs remain a major constraint to achieving <a rel="noreferrer noopener" target="_blank" href="https://sdgs.un.org/goals/goal2">SDG 2 (Zero Hunger)</a>, although lowering such costs alone will not be sufficient to improve dietary quality and nutrition outcomes.</p> <p>In 2025, <strong>the average global cost of a healthy diet rose to 4.28 purchasing power parity (PPP) dollars per person per day</strong>, up from 3.44 PPP dollars in 2021 and 2.94 PPP dollars in 2017, with the highest levels recorded in Latin America and the Caribbean (4.91 PPP dollars). At the same time, the number of people unable to afford a healthy diet has declined - from <strong>2.97 billion</strong> (37.4 percent of the global population) in 2021 to <strong>2.69 billion</strong> (32.7 percent) in 2025.</p> <p>However, this trend masks significant regional disparities. In Africa, affordability worsened markedly, with 66.6 percent of the population unable to afford a healthy diet in 2025 - more than double the levels observed in Asia and in Latin America and the Caribbean.</p> <p>Healthy diet costs vary widely across regions due to structural differences in agrifood systems. Animal source foods, fruits and vegetables account for the largest share of costs, while starchy staples contribute relatively little. Animal source foods are the largest contributor to the cost of a healthy diet in Africa, whereas vegetables represent the largest share in Latin America and the Caribbean.</p> <p>Food value chains are a major determinant of prices. Post-farmgate activities account for 70 to 75 percent of what consumers pay, with up to 40 percent of total costs arising in processing, logistics and wholesale. Improving efficiency in these segments is therefore critical, particularly for lowering the cost of perishable, nutrient-rich foods.</p> <p>Reducing the cost of a healthy diet requires context-specific policy responses that expand the supply of nutritious foods while lowering structural costs across agrifood value chains. This includes investments in infrastructure, research and development, irrigation and cold chains, alongside reforms in subsidies, trade facilitation and regulatory frameworks.</p> <p>Targeted interventions that boost productivity, reduce losses and promote sustainable practices can simultaneously improve nutrition outcomes, strengthen resilience and support climate goals.</p> <p>“The work that lies ahead over the years to 2030 is immense. However, a world in which a healthy diet is no longer out of reach for nearly one in three people is a world worth building,” the report argues.</p> <p><strong>What they said</strong></p> <p><strong>FAO Director-General, QU Dongyu</strong>: <em>“The report shows that progress is possible, but we must move faster. Ending hunger and making healthy diets affordable requires political commitment, sustained investment and enabling policies. Recent crises – from natural disasters like the COVID-19 pandemic to man-made disaster like hotspots of conflicts, the war in Ukraine, the Gaza crisis, and the recent Strait of Hormuz disruption - have demonstrated both the resilience of agrifood systems and the need to strengthen them further to better serve the world’s most vulnerable people, farmers and consumers.”</em></p> <p><strong>IFAD President, Alvaro Lario</strong>: <em>“SOFI tells us that the cost of a healthy diet continues to rise and that nearly 2.7 billion people may still be unable to afford a healthy diet. Resilient value chains must be a central part of the answer. Our task now is to turn the evidence SOFI provides into investment - and to do so through partnership. Together, we can build the value chains, market systems and rural economies that make healthy food affordable for all.”</em></p> <p><strong>UNICEF Executive Director, Catherine Russell:</strong> <em>“Every child deserves the chance to grow and develop to their full potential, and this starts with access to nutritious, affordable food. This report is a stark reminder that food systems fail millions of children and families. Food, health, education and social protection must go hand in hand to protect the most vulnerable children and women from global shocks.”</em></p> <p><strong>WFP Acting Executive Director, Carl Skau</strong>: <em>“Behind every number in this report is a family counting the cost of food. Conflict and climate shocks push them further beyond their means. We must continue working with partner agencies, governments and communities to build food systems that hold up under shock, so families can afford nutritious diets, even in times of crisis. We now need sustained investment to match the scale of the challenge.”</em></p> <p><strong>WHO Director-General, Dr. Tedros Adhanom Ghebreyesus</strong>: <em>"While we welcome the clear progress we have made in reducing hunger, a healthy diet still remains unaffordable for one in three people globally. Obesity is rising and progress on maternal and child nutrition is stalling. But we know what works: policies that make healthy food the easy choice, promoting breastfeeding, front-of-pack labelling, taxing unhealthy products, and protecting children from harmful marketing. Healthy diets are not a luxury - they are the foundation of health and must be within everyone's reach."</em></p> <h3>More on this topic</h3> <p><a rel="noreferrer noopener" target="_blank" href="https://doi.org/10.4060/cd8306en">The State of Food Security and Nutrition in the World 2026</a></p> <p><a rel="noreferrer noopener" target="_blank" href="https://www.fao.org/publications/fao-flagship-publications/the-state-of-food-security-and-nutrition-in-the-world/en">SOFI FAO homepage</a></p> <p><a rel="noreferrer noopener" target="_blank" href="https://digital-media.fao.org/Package/2A6XC5L08P6N">Multimedia content</a></p> <p><a rel="noreferrer noopener" target="_blank" href="https://sdgs.un.org/goals">Sustainable Development Goals</a></p> <h3>Contact</h3> <p><strong>FAO News and Media</strong>(+39) 06 570 53625FAO-Newsroom@fao.org</p> <p><strong>Nicholas Rigillo</strong>FAO News and Media (Rome)Nicholas.Rigillo@fao.org</p> <p><strong>Alberto Trillo Barca</strong>Communication Officer, IFADa.trillobarca@ifad.org</p> <p><strong>Nadia Samie-Jacobs</strong>UNICEF, Communication Specialist (Media)nsamie@unicef.org</p> <p><strong>Jordan Cox</strong>WFP/Romejordan.cox@wfp.org</p> <p><strong>Ni Jin</strong>Communications Officerjinn@who.int</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/world/un-report-global-hunger-levels-ease-third-consecutive-year-regional-disparities-persist-0' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>U.S.-Saudi Attack on Iraqi Militias Risks Drawing Them into War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 06:20</strong></span>
+                </div>
+                <p class='summary'>Iran-aligned militias in Iraq were under growing pressure to disarm, but the latest strikes may embolden them to get more deeply involved in the war.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/30/world/europe/iraqi-militias-iran-war-saudi-arabia-us.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Eurozone Economies Advance Despite Uncertainty From Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 08:59</strong></span>
+                </div>
+                <p class='summary'>Germany, France and Spain expanded in the second quarter, overcoming some of the uncertainty about the course and consequences of conflict in the Middle East.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/french-economy-rebounded-in-second-quarter-despite-war-uncertainty-f2221427' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 30, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. has launched a new wave of heavy airstrikes on Iran after an attempted attack on American troops by Iranian-backed forces renewed hostilities. The conflict is now escalating, threatening global oil supplies, regional stability, and humanitarian conditions, with ripple effects on food security and economies worldwide.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The U.S. has resumed heavy missile strikes on Iran after a brief pause in hostilities, following an attempted attack by Iranian-backed forces on American troops. The strikes have caused extensive damage on Iran’s Qeshm Island. This marks a significant escalation after months of relative calm, reigniting a conflict that has already disrupted global oil markets, regional stability, and food security.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict is likely to escalate further in the short term as both sides retaliate. The U.S. and its allies may intensify strikes on Iranian military and economic targets, while Iran may increase asymmetric attacks through proxy groups in Iraq, Yemen, or the Strait of Hormuz. Long-term, the war risks destabilizing the Middle East further, disrupting oil supplies, and worsening global hunger, especially in conflict-affected regions like Africa and parts of Asia.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>Early 2026: Relative calm in hostilities after previous rounds of strikes and de-escalation talks.</li><li>Late July 2026: Renewed clashes begin with an attempted attack by Iranian-backed forces on U.S. troops.</li><li>July 30, 2026: U.S. launches heavy airstrikes on Qeshm Island, causing extensive damage.</li><li>Ongoing: Shipping in the Strait of Hormuz continues despite disruptions, and Iranian oil sales persist globally despite sanctions.</li><li>Immediate future: Potential for further U.S.-Saudi strikes on Iraqi militias aligned with Iran, increasing risks of wider regional war.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict is unlikely to de-escalate quickly. The U.S. aims to weaken Iran’s military capabilities and curb its regional influence, while Iran seeks to counter U.S. dominance and protect its nuclear and military programs. The long-term outlook includes a prolonged proxy war in Iraq, Yemen, and possibly Syria, with continued disruptions to global oil supplies and food security. Iran may also strengthen ties with China and Russia to counter U.S. pressure, deepening geopolitical divides.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is currently intense but largely indirect, with limited direct U.S.-Iranian fighting. The U.S. uses precision airstrikes and naval escorts to protect shipping, while Iran relies on proxy groups (like Iraqi militias or Yemeni Houthi rebels) to launch attacks. The fighting is asymmetric, with Iran avoiding direct confrontation but causing economic and political damage through proxy actions. Civilians in Iran, Iraq, and neighboring countries bear the brunt of the costs.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This war is reshaping the Middle East’s geopolitical landscape, deepening U.S.-Iran tensions, and exacerbating global challenges like food insecurity and economic instability. The conflict threatens critical oil supply routes, potentially driving up energy prices and fueling inflation worldwide. It also risks undermining decades of progress in reducing global hunger, particularly in Africa and parts of Asia, where food prices are already high. The humanitarian toll, especially on civilians, is severe.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            <ul><li>United States: Leading airstrikes on Iran and targeting proxy groups in Iraq/Syria.</li><li>Saudi Arabia: Supporting U.S. strikes and facing economic fallout due to oil export disruptions.</li><li>Iran: Backing proxy groups in Iraq, Yemen, and Lebanon while avoiding direct war.</li><li>China and Russia: Likely providing diplomatic and possibly military support to Iran to counter U.S. influence.</li><li>Global shipping and oil markets: Indirectly involved due to the Strait of Hormuz being a critical oil chokepoint.</li><li>International organizations: Warn of worsening global hunger and food insecurity due to the conflict.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are highly volatile due to the conflict. The Strait of Hormuz, a key oil shipping route, remains at risk of disruption, which could trigger price spikes. Iran’s ability to sell oil despite sanctions (e.g., via Malaysia) is a mitigating factor, but further escalation could reduce global oil supply, driving prices up. Saudi Arabia’s economy is already shrinking due to reduced oil exports, reflecting broader regional economic strain. Higher oil prices would hurt consumers globally, especially in poorer countries already struggling with food insecurity.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            U.S. heavy strikes on Iran have reignited the conflict, increasing the risk of a broader regional war involving Iraq, Yemen, and the Strait of Hormuz. Global oil supplies and food security are under severe threat, with ripple effects for economies worldwide and millions at risk of hunger. Iran is adapting to sanctions by continuing oil sales through covert channels, while the U.S. and its allies are tightening military and economic pressure.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            None. The resumption of strikes follows a predictable pattern of escalation after a brief pause in hostilities.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The global hunger crisis is worsening due to the conflict’s impact on food prices and supply chains. The UN reports that 645 million people faced hunger in 2025, with Africa being the hardest-hit region. The Middle East conflict is a major driver of this crisis, exacerbating food inflation and reducing access to nutritious diets.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
