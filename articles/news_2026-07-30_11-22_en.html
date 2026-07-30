@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-30 11:24</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-30 11:24</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>US launches 'heavy' strikes on Iran after attempted attack on American troops</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 10:49</strong></span>
+                </div>
+                <p class='summary'>After a short period of relative calm when hostilities were paused, both sides have now restarted missile attacks.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c74gwdzywmeo?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>US launches wave of strikes on Iran in response to Tehran missile attack in Jordan</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 09:48</strong></span>
+                </div>
+                <p class='summary'>The US military completed a "heavy wave of strikes" against Iran on Thursday in retaliation against Tehran targeting American bases in Jordan, as fighting intensified in the Middle East war after a nearly week-long pause. The reignited hostilities have drawn in the Islamic republic's proxies, and appear to have dashed hopes of a quick return to negotiations between the foes. US President Donald Trump had vowed to hit Iran "hard" after Tehran launched missiles at Jordan, its first regional strike in days. FRANCE 24's Fraser Jackson reports from Washington.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260730-us-launches-wave-of-strikes-on-iran-in-response-to-tehran-missile-attack-in-jordan' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>US military launches 'powerful' retaliatory strikes on Iran</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> France24 (regional)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 09:05</strong></span>
+                </div>
+                <p class='summary'>The United States military launched "powerful" strikes on Iran on Thursday, in retaliation for Tehran's attacks targeting US bases in Jordan as the Middle East war reignited and again drew in the Islamic republic's proxies. The first strikes after a nearly week-long lull in fighting dashed hopes of a return to negotiations.</p>
+                <div class='link'><a href='https://www.france24.com/en/video/20260730-us-military-launches-powerful-retaliatory-strikes-on-iran' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Why is Saudi Arabia forming a coalition to protect the Red Sea?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 10:18</strong></span>
+                </div>
+                <p class='summary'>The alliance aims to defend shipping from attacks by Iran-backed Houthis in Yemen.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/30/why-is-saudi-arabia-forming-a-coalition-to-protect-the-red-sea?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>US hits multiple targets in Iran as IRGC pledges retaliation: What we know</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 09:49</strong></span>
+                </div>
+                <p class='summary'>Jordan said it intercepted missiles shortly after the US struck Iranian sites including Qeshm and Bushehr.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/30/us-hits-multiple-targets-in-iran-as-irgc-pledges-retaliation-what-we-know?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>Egypt Suffers First Drone Attack, Widening the Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 10:41</strong></span>
+                </div>
+                <p class='summary'>The strike, unclaimed by any country or group, serves as a warning that the Suez Canal might not be a safe alternative for oil exports.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/egypt-suffers-first-drone-attack-widening-the-iran-war-5ce2b49e' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>WFP Syria Monthly Market Price Bulletin, June 2026 - Issue 138</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 08:41</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Country: Syrian Arab Republic</div> <div class="tag source">Source: World Food Programme</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/69/8c/698c5c0b-f121-45ec-8e57-d1d1f12e1c1f.png" alt></p> <p>Please refer to the attached file.</p> <ul><li>The cost of living in June 2026, as measured by the Minimum Expenditure Basket (MEB), remained stable at New SYP 26,551 compared to the previous month. However, it was 33 percent higher than in June 2025 (year-on-year).</li> <li>The Syrian pound (SYP) depreciated in the official market, with the exchange rate increasing from New SYP 113.00 per USD to New SYP 122.00 per USD in June 2026.also in the parallel market depreciated to New SYP 140.76 from 136.21 New SYP per USD.</li> <li>The Syrian Grain Corporation announced that it had procured 1.1 million metric tons of wheat from farmers as of 27 June, covering approximately 44 percent of Syria's annual wheat requirement. Wheat procurement is expected to reach 2.5 million metric tons by the end of July, which would strengthen domestic wheat availability, support farmers' incomes, and reduce reliance on imports.</li> <li>The Ministry of Energy announced that petroleum products will be priced in Syrian pounds instead of foreign currency, aiming to strengthen the national currency, reduce fuel price volatility, and support price stability.</li> <li>The National Import and Export Committee suspended imports of broiler chickens, broiler chicks, and layer chicks to support domestic poultry production. The measure aims to protect local producers and encourage investment in the poultry sector. Its impact on poultry meat and egg prices will depend on the domestic sector's ability to meet market demand.</li> </ul></p>
+                <div class='link'><a href='https://reliefweb.int/report/syrian-arab-republic/wfp-syria-monthly-market-price-bulletin-june-2026-issue-138' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>How AI Is Helping One-Person Companies Scale to $1 Million—and Beyond</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 09:50</strong></span>
+                </div>
+                <p class='summary'>Plus, we look at new fronts erupting in the Iran war, and a daring mission to recover American POWs from the ocean floor.</p>
+                <div class='link'><a href='https://www.wsj.com/world/how-ai-is-helping-one-person-companies-scale-to-1-millionand-beyond-5cfe84d5' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>BOE on Alert for Signs of Persistent Inflation as It Holds Rates</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 11:06</strong></span>
+                </div>
+                <p class='summary'>The U.K. central bank may yet raise interest rates if the Strait of Hormuz remains closed.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/central-banking/boe-on-alert-for-signs-of-persistent-inflation-as-it-holds-rates-a1c57cb6' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>Eurozone Economy Advances Despite Uncertainty From Iran War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 09:23</strong></span>
+                </div>
+                <p class='summary'>GDP in the 21-nation currency area rose more than expected, regaining some momentum despite uncertainty about the course and consequences of the conflict in the Middle East.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/french-economy-rebounded-in-second-quarter-despite-war-uncertainty-f2221427' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>BOE Holds Rates in Split Vote as War Clouds Inflation Outlook</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-30 11:18</strong></span>
+                </div>
+                <p class='summary'>The Bank of England kept interest rates steady at 3.75%, as UK officials sought to balance the threat from resurgent US-Iran tensions against signs that domestic price pressures are easing more quickly than predicted.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/boe-holds-rates-in-split-vote-as-war-clouds-inflation-outlook' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 30, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The US and Iran have resumed heavy military strikes after a temporary pause, escalating the Middle East conflict. US attacks on Iran and its proxies have spread beyond the Israel-Hamas war to include Jordan, Saudi Arabia's Red Sea, Egypt, and Syria. The fighting risks disrupting global oil supplies and worsening regional instability.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The US launched 'heavy' and 'powerful' retaliatory strikes on Iran after Tehran targeted American bases in Jordan with missiles. This marks the end of a brief lull in fighting and has reignited hostilities involving Iran-backed proxies across multiple Middle Eastern countries. Jordan intercepted some missiles, but the attack still caused damage. Iran's Revolutionary Guards have vowed further retaliation.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The conflict is likely to escalate further in the short term, with Iran responding to US strikes and the US continuing to target Iranian military sites. The involvement of Saudi Arabia's Red Sea coalition and the unclaimed drone strike in Egypt suggest the war is widening. Diplomatic efforts for a quick return to negotiations have stalled, and the fighting may drag on while spreading to new fronts.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>July 23-29, 2026: Temporary pause in fighting, hopes for negotiations.</li><li>July 29, 2026: Iran launched missiles at US bases in Jordan.</li><li>July 30, 2026: US launched retaliatory strikes on multiple targets in Iran (Qeshm and Bushehr).</li><li>July 30, 2026: Jordan intercepted some missiles; Iran vows retaliation.</li><li>July 30, 2026: Saudi Arabia forms a Red Sea coalition to counter Iran-backed Houthi attacks.</li><li>July 30, 2026: Unclaimed drone strike hits Egypt, raising concerns about Suez Canal security.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The long-term direction points to a protracted and spreading conflict involving multiple regional actors. Iran is unlikely to back down quickly, and the US, under President Trump's administration, has shown a willingness to strike hard. The involvement of Gulf states like Saudi Arabia and the potential for attacks on critical shipping routes (like the Red Sea and Suez Canal) could reshape Middle Eastern geopolitics. The risk of a wider war involving more countries or non-state actors remains high.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is intensifying, with direct US-Iran strikes and proxy involvement (e.g., Houthis in Yemen). The fighting has expanded geographically to include Jordan, the Red Sea, Egypt, and Syria. The use of missiles, drones, and potential blockades indicates a high level of sophistication and coordination among Iran and its allies. The pace of attacks suggests neither side is backing down, and civilian and military casualties are likely to rise.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This escalation risks destabilizing the entire Middle East, potentially drawing in more countries and disrupting global trade, particularly oil flows. The conflict could redefine regional power dynamics, weaken fragile economies, and worsen humanitarian crises (e.g., in Syria, as seen in the World Food Programme report). The world’s ability to manage inflation and economic stability may also be challenged if oil supply routes like the Strait of Hormuz or Suez Canal are disrupted.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            <ul><li>US: Directly involved with military strikes on Iran and defense of allies (Jordan).</li><li>Iran: Backing proxies and launching direct attacks on US targets.</li><li>Jordan: Intercepted Iranian missiles but remains vulnerable.</li><li>Saudi Arabia: Forming a coalition to protect the Red Sea from Houthi attacks.</li><li>Egypt: Suffered an unclaimed drone strike, raising security concerns.</li><li>Syria: Struggling with economic instability; no direct involvement yet. European nations (e.g., UK, Eurozone) are monitoring the situation due to potential economic repercussions (e.g., inflation).</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are likely to rise due to the conflict’s potential to disrupt supply routes like the Strait of Hormuz or Suez Canal. The UK's Bank of England (BOE) is already on alert for inflation spikes if these routes are closed. Higher oil prices would increase fuel costs globally, worsening inflation and economic stress in import-dependent countries.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The US and Iran have resumed direct military strikes, ending a temporary pause in fighting and raising the risk of further escalation. The conflict is spreading geographically, with attacks in Jordan, the Red Sea, Egypt, and Syria involving multiple actors. Disruptions to oil supply routes (e.g., Strait of Hormuz, Suez Canal) could drive up global oil prices, worsening inflation and economic instability.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The unclaimed drone strike in Egypt is unexpected, as it signals the conflict may be expanding beyond known frontlines. The formation of a Saudi-led Red Sea coalition to counter Iran-backed Houthis is also a significant development.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

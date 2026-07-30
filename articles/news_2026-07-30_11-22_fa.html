@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-30 11:27</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-30 11:27</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>آمریکا بعد از حمله نافرجام به نیروهای خودی strikes سنگینی علیه ایران انجام داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۱T۱۰:۴۹:۱۴Z</strong></span>
+                </div>
+                <p class='summary'>پس از یک دوره کوتاه آرامش نسبی که درگیری‌ها متوقف شده بود، اکنون هر دو طرف دوباره حملات موشکی را از سر گرفته‌اند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c74gwdzywmeo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایالات متحده در واکنش به حمله موشکی تهران در اردن، حملات گسترده‌ای را آغاز کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> France24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۸ ساعت ۰۹:۴۸:۵۰</strong></span>
+                </div>
+                <p class='summary'>ارتش ایالات متحده در روز پنج‌شنبه یک «موج گسترده حملات» را علیه ایران به انجام رساند که واکنش تلافی‌جویانه‌ای در برابر هدف قرار دادن پایگاه‌های آمریکایی در اردن توسط تهران محسوب می‌شد. این در حالی است که درگیری‌ها در جنگ خاورمیانه پس از یک وقفه تقریباً یک هفته‌ای تشدید شده‌اند. از سرگیری خصومت‌ها گروه‌های نیابتی جمهوری اسلامی را درگیر ساخته و به نظر می‌رسد امیدها برای بازگشت سریع به مذاکرات بین دشمنان را از میان برده باشد. دونالد ترامپ، رئیس‌جمهور ایالات متحده، پس از حمله موشکی تهران به اردن – نخستین حمله منطقه‌ای ایران در روزهای اخیر – تهدید کرده بود که «به سختی» به ایران ضربه وارد خواهد کرد. گزارشگر FRANCE 24 فراسر جکسون از واشینگتن این خبر را ارسال کرده است.</p>
+                <div class='link'><a href='https://www.france24.com/fa/video/20260730-واکنش-شدید-آمریکا-به-حمله-موشکی-ایران-به-اردن-با-انجام-حمله-ها-ایایی' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>نیروهای نظامی ایالات متحده حملات تلافی‌جویانه قدرتمندی علیه ایران انجام دادند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسه24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>30 تیر 1405  ساعت 13:35</strong></span>
+                </div>
+                <p class='summary'>ارتش ایالات متحده روز پنجشنبه حملات «قوی» علیه ایران را آغاز کرد که واکنشی به حملات تهران به پایگاه‌های آمریکایی در اردن بود، زیرا جنگ خاورمیانه از سر گرفته شد و دوباره هم‌پیمانان جمهوری اسلامی را به درگیری کشاند. این اولین حملات پس از یک هفته توقف تقریباً در مناقشات بودند و امیدها به بازگشت به مذاکرات را نقش بر آب کردند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/video/20260730-ارتش-ایالات-متحده-حمله-دفاعی-قوی-به-ایران-انجام-داد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>چرا عربستان سعودی در حال تشکیل ائتلافی برای حفاظت از دریای سرخ است؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ تیر ۱۴۰۵ ساعت ۱۴:۴۸</strong></span>
+                </div>
+                <p class='summary'>این اتحادیه به منظور دفاع از کشتی‌ها در برابر حملات حوثی‌های تحت حمایت ایران در یمن فعالیت می‌کند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/30/why-is-saudi-arabia-forming-a-coalition-to-protect-the-red-sea?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>آمریکا چندین هدف در ایران را مورد حمله قرار داد و سپاه پاسداران انقلاب اسلامی تهدید به تلافی کرد: آنچه باید بدانیم</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ تیر ۱۴۰۵ ساعت ۰۹:۴۹:۲۹</strong></span>
+                </div>
+                <p class='summary'>اردن اعلام کرد که اندکی پس از آنکه ایالات متحده به سایت‌های ایرانی از جمله قشم و بندر بوشهر حمله کرد، موشک‌ها را رهگیری کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/7/30/us-hits-multiple-targets-in-iran-as-irgc-pledges-retaliation-what-we-know?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>مصر متحمل اولین حمله پهپادی شد و دامنه جنگ با ایران گسترش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ تیر ۱۴۰۵ ساعت ۱۵:۱۱:۰۰ (به وقت تهران)</strong></span>
+                </div>
+                <p class='summary'>این اعتصاب که توسط هیچ کشور یا گروهی پذیرفته نشده است، به عنوان یک هشدار عمل می‌کند مبنی بر اینکه کانال سوئز ممکن است جایگزین امنی برای صادرات نفت نباشد.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/egypt-suffers-first-drone-attack-widening-the-iran-war-5ce2b49e' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>بولتن قیمت بازار ماهانه برنامه جهانی غذا در سوریه، خرداد ۱۴۰۵ - شماره ۱۳۸</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (بشردوستانه )</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۹ ساعت ۱۲:۱۱</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: جمهوری عربی سوریه</div> <div class="tag source">منبع: برنامه جهانی غذا</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/69/8c/698c5c0b-f121-45ec-8e57-d1d1f12e1c1f.png" alt></p> <p>لطفاً به فایل پیوست شده مراجعه کنید.</p> <ul><li>هزینه زندگی در خرداد ۱۴۰۵، که توسط سبد حداقل هزینه‌ها (MEB) اندازه‌گیری شده است، با ۲۶٬۵۵۱ لیر جدید سوریه نسبت به ماه قبل بدون تغییر باقی ماند. با این حال، این رقم نسبت به خرداد ۱۴۰۴ (به صورت سالانه) ۳۳ درصد افزایش داشته است.</li><li>لیر سوریه در بازار رسمی دچار افت ارزش شد، به طوری که نرخ تبدیل از ۱۱۳ لیر جدید سوریه به ازای هر دلار آمریکا در خرداد ۱۴۰۴ به ۱۲۲ لیر جدید سوریه به ازای هر دلار آمریکا در خرداد ۱۴۰۵ افزایش یافت. همچنین در بازار غیررسمی، ارزش لیر سوریه از ۱۳۶/۲۱ لیر جدید به ازای هر دلار به ۱۴۰/۷۶ لیر جدید در هر دلار کاهش یافت.</li><li>شرکت غلات سوریه اعلام کرد که تا تاریخ ۲۷ خرداد ۱۴۰۵ میلادی، ۱/۱ میلیون تن گندم از کشاورزان خریداری کرده است که تقریباً ۴۴ درصد از نیاز سالانه گندم سوریه را پوشش می‌دهد. انتظار می‌رود خرید گندم تا پایان تیر ۱۴۰۵ به ۲/۵ میلیون تن برسد که این امر منجر به افزایش عرضه داخلی گندم، حمایت از درآمد کشاورزان و کاهش وابستگی به واردات خواهد شد.</li><li>وزارت انرژی سوریه اعلام کرد که قیمت مواد نفتی دیگر بر حسب ارزهای خارجی تعیین نمی‌شود بلکه بر پایه لیر سوریه قیمت‌گذاری خواهد شد. هدف از این اقدام، تقویت ارز ملی، کاهش نوسانات قیمت سوخت و پشتیبانی از ثبات قیمت‌ها است.</li><li>کمیته ملی واردات و صادرات، واردات جوجه‌های گوشتی، جوجه‌های یک‌روزه و جوجه‌های مولد را به منظور حمایت از تولیدات داخلی طیور متوقف کرده است. این اقدام جهت حمایت از تولیدکنندگان محلی و تشویق سرمایه‌گذاری در بخش طیور انجام می‌شود. تأثیر این تصمیم بر قیمت گوشت و تخم‌مرغ به توانایی بخش داخلی در تأمین تقاضای بازار بستگی خواهد داشت.</li></ul></p>
+                <div class='link'><a href='https://reliefweb.int/report/syrian-arab-republic/wfp-syria-monthly-market-price-bulletin-june-2026-issue-138' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>چگونه هوش مصنوعی به شرکت‌های یک‌نفره کمک می‌کند تا به یک میلیون دلار و فراتر مقیاس برسند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۹ ساعت ۱۳:۲۰ (وقت محلی)</strong></span>
+                </div>
+                <p class='summary'>علاوه بر این، جبهه‌های جدیدی را در جنگ ایران بررسی می‌کنیم و także یک ماموریت جسورانه برای بازیابی اسیران جنگی آمریکایی از کف اقیانوس.</p>
+                <div class='link'><a href='https://www.wsj.com/world/how-ai-is-helping-one-person-companies-scale-to-1-millionand-beyond-5cfe84d5' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>بانک مرکزی انگلیس درAlertInvestigationابه بررسی نشانه‌های تورم پایدار در حالی که نرخ‌ها را ثابت نگه می‌دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۹ ساعت ۱۵:۳۶</strong></span>
+                </div>
+                <p class='summary'>بانک مرکزی بریتانیا ممکن است نرخ‌های بهره را افزایش دهد، اگر تنگه هرمز مسدود بماند.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/central-banking/boe-on-alert-for-signs-of-persistent-inflation-as-it-holds-rates-a1c57cb6' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>10</span>
+                <span class='title'>اقتصاد منطقه یورو با وجود عدم قطعیت ناشی از جنگ ایران پیشرفت می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۳۰ تیر ۱۴۰۵ ساعت ۰۹:۲۳</strong></span>
+                </div>
+                <p class='summary'>در منطقه ی ۲۱ کشور تحت واحد پولی مشترک، تولید ناخالص داخلی بیش از آنچه انتظار می‌رفت افزایش یافت و علیرغم عدم قطعیت درباره مسیر و پیامدهای جنگ در خاورمیانه، دوباره روند رو به رشدی را پشت سر گذاشت.</p>
+                <div class='link'><a href='https://www.wsj.com/economy/french-economy-rebounded-in-second-quarter-despite-war-uncertainty-f2221427' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>11</span>
+                <span class='title'>شورای سیاست‌گذاری بانک انگلستان با رأی متفرق نرخ‌ها را تغییر نداد؛ ابهام جنگ بر چشم‌انداز تورم</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۰۹</strong></span>
+                </div>
+                <p class='summary'>بانک انگلستان نرخ بهره را به طور ثابت در 3.75% نگه داشت، در حالی که مقامات بریتانیا در تلاش بودند تا تهدید ناشی از تنش‌های فزاینده آمریکا و ایران را با نشانه‌هایی که فشارهای قیمتی داخلی سریع‌تر از پیش‌بینی کاهش می‌یابد، متعادل کنند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/boe-holds-rates-in-split-vote-as-war-clouds-inflation-outlook' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعيت ايران - ۳۰ تیر ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا و ایران پس از یک توقف موقت، حملات نظامی سنگین خود را از سر گرفته‌اند و درگیری در خاورمیانه را تشدید کرده‌اند. حملات آمریکا علیه ایران و نیابتی‌های آن، از جنگ اسرائیل و حماس فراتر رفته و به اردن، دریای سرخ عربستان سعودی، مصر و سوریه گسترش یافته است. این درگیری‌ها خطر اختلال در عرضه جهانی نفت و تشدید بی‌ثباتی منطقه‌ای را در پی دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده پس از آنکه تهران با موشک، پایگاه‌های آمریکایی در اردن را هدف قرار داد، با حمله‌های 'سنگین' و 'قوی' تلافی‌جویانه به ایران حمله کرد. این رخداد پایان دوره‌ای کوتاه از آرامی در جنگ و از سرگیری تنش‌ها با درگیری‌های نیروهای نیابتی وابسته به ایران در سراسر چند کشور خاورمیانه همراه شده است. اردن بخشی از موشک‌ها را رهگیری کرد، اما حمله همچنان خساراتی به دنبال داشت. سپاه پاسداران انقلاب اسلامی ایران نیز تهدید به تلافی‌های بیشتر کرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا سرتیتر</h3>
+            به نظر می‌رسد که در میان‌مدت درگیری‌ها احتمالاً تشدید بیشتری پیدا خواهد کرد، زیرا ایران در واکنش به حملات آمریکا به پایگاه‌ها و سایت‌های نظامی ایرانی، واکنش نشان خواهد داد و ایالات متحده نیز به هدف قرار دادن این سایت‌ها ادامه خواهد داد. درگیری‌های اخیر شامل عربستان سعودی در ائتلاف دریایی دریای سرخ و نیز حمله پهپادی بدون واگذاری مسئولیت در مصر، نشان می‌دهد که طیف درگیری‌ها در حال گسترش است. تلاش‌های دیپلماتیک برای بازگشت سریع به مذاکرات شکست خورده و جنگ احتمالاً با گسترش به جبهه‌های جدید ادامه خواهد یافت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. ۲۳ تا ۲۹ ژوئیه ۲۰۲۶: توقف موقت در вj fighting (درگیری) و امید به مذاکرات.</li><li>۲. ۲۹ ژوئیه ۲۰۲۶: جمهوری اسلامی ایران موشک‌هایی را به پایگاه‌های ایالات متحده در اردن شلیک کرد.</li><li>۳. ۳۰ ژوئیه ۲۰۲۶: ایالات متحده حملات تلافی‌جویانه‌ای را به چندین هدف در ایران (قشم و بوشهر) انجام داد.</li><li>۴. ۳۰ ژوئیه ۲۰۲۶: اردن برخی از موشک‌ها را رهگیری کرد؛ ایران تهدید به تلافی کرد.</li><li>۵. ۳۰ ژوئیه ۲۰۲۶: عربستان سعودی برای مقابله با حملات حوثی‌هایSupported by ( backed by ) ایران ائتلافی در دریای سرخ تشکیل داد.</li><li>۶. ۳۰ ژوئیه ۲۰۲۶: حمله بدون اعلام драг strike (حمله هوایی) به مصر، نگرانی‌هایی در مورد امنیت کانال سوئز را افزایش داد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            روند بلندمدت حاکی از درگیری فرسایش‌زا و گسترده‌ای است که چندین بازیگر منطقه‌ای را درگیر می‌کند. احتمالاً ایران به‌سرعت عقب‌نشینی نخواهد کرد و ایالات متحده تحت ریاست‌جمهوری ترامپ، تمایل خود را به ضربه سخت نشان داده است. مشارکت کشورهای حاشیه خلیج فارس مانند عربستان سعودی و احتمال حملات به مسیرهای حیاتی حمل‌ونقل (مانند دریای سرخ و کانال سوئز) می‌تواند ژئوپلیتیک خاورمیانه را بازتعریف کند. خطر جنگ گسترده‌تر با مشارکت کشورهای بیشتر یا بازیگران غیردولتی همچنان بالاست.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری رو به تشدید است و حملات مستقیم ایالات متحده و ایران و همچنین دخالت‌های غیرمستقیم (مثلاً حوثی‌ها در یمن) در آن دیده می‌شود. اکنون دامنه جنگ از نظر جغرافیایی گسترش یافته و کشورهای اردن، دریای سرخ، مصر و سوریه را درگیر کرده است. استفاده از موشک‌ها، پهپادها و احتمال ایجاد محاصره‌ها حاکی از سطح بالای پیچیدگی و هماهنگی میان ایران و متحدانش است. سرعت حملات نشان می‌دهد که هیچ‌یک از طرفین عقب‌نشینی نمی‌کنند و احتمالاً تلفات غیرنظامیان و نظامی‌ها افزایش خواهد یافت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مفهوم كلی</h3>
+            این تشدید خطر بی‌ثبات‌کردن کل خاورمیانه را دارد و به‌طور بالقوه می‌تواند بیش از کشورهای دیگر را درگیر کند و تجارت جهانی — به‌ویژه جریان‌های نفتی — را مختل سازد. این درگیری می‌تواند دینامیک‌های قدرت منطقه‌ای را از نو تعریف کند، اقتصادهای شکننده را ضعیف سازد و بحران‌های انسان‌دوستانه (مثلاً در سوریه، همان‌طور که گزارش برنامه جهانی غذا نشان می‌دهد) را بدتر کند. توانایی جهان برای مدیریت تورم و ثبات اقتصادی نیز در صورت اختلال در مسیرهای تأمین نفت مانند تنگه هرمز یا کانال سوئز به چالش کشیده خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            <ul><li>۱. ایالات متحده: به صورت مستقیم در حملات نظامی علیه ایران و دفاع از متحدان (اردن) شرکت داشته است.</li><li>۲. ایران: حمایت از گروه‌های نیابتی و اجرای حملات مستقیم به اهداف آمریکایی.</li><li>۳. اردن: موشک‌های ایرانی را رهگیری کرده، اما همچنان آسیب‌پذیر است.</li><li>۴. عربستان سعودی: تشکیل ائتلافی برای حفاظت از دریای سرخ در برابر حملات حوثی‌ها.</li><li>۵. مصر: مورد حمله پهپادی بی‌نامی قرار گرفته، نگرانی‌های امنیتی را برانگیخته است.</li><li>۶. سوریه: با بی‌ثباتی اقتصادی دست و پنجه نرم می‌کند؛ هنوز دخالت مستقیمی نداشته است. کشورهای اروپایی (مانند بریتانیا، منطقه یورو) به دلیل پیامدهای اقتصادی احتمالی (مانند تورم) وضعیت را زیر نظر دارند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            احتمال دارد که قیمت‌های نفت به دلیل خطر بالقوه اختلال در مسیرهای تأمین مانند تنگه هرمز یا کانال سوئز افزایش یابد. بانک انگلستان (BOE) که در بریتانیا قرار دارد، از پیش برای مقابله با افزایش نرخ تورم در صورت بسته شدن این مسیرها آماده است. افزایش قیمت نفت منجر به بالا رفتن هزینه‌های سوخت در سطح جهانی خواهد شد و تورم و تنش اقتصادی را در کشورهای وابسته به واردات تشدید می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            آمریکا و ایران حملات مستقیم نظامی خود را از سر گرفته‌اند، که این به معنای پایان یافتن یک وقفه موقت در جنگ و افزایش خطر تشدید بیشتر آن است. این درگیری از لحاظ جغرافیایی در حال گسترش است و شامل حملات در اردن، دریای سرخ، مصر و سوریه می‌شود که در آن بازیگران متعددی دخیل هستند. اختلال در مسیرهای تأمین نفت (به عنوان مثال، تنگه هرمز، کانال سوئز) می‌تواند منجر به افزایش قیمت‌های جهانی نفت شود و منجر به تشدید تورم و بی‌ثباتی اقتصادی گردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            حمله هوایی پهپادی معترض در مصر غیرمنتظره است، زیرا نشان‌دهنده گسترش احتمالی درگیری‌ها فراتر از خطوط مقدم شناخته‌شده است. همچنین تشکیل ائتلاف دریایی سرخ به رهبری عربستان برای مقابله با حوثی‌های مورد حمایت ایران، تحول مهم دیگری به شمار می‌رود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            توسعه قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
