@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-31 09:23</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-31 09:23</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>تورم فرانسه با افزایش قیمت‌های انرژی و خدمات بالاتر رفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۰T۰۶:۵۹:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>افزایش صددرصدی انرژی با نرخ دو رقمی، میزان کلی را بالاتر برد، اما نرخ خدمات نیز تسریع یافت؛ نشانه‌ای از این که هزینه‌های بالاتر نفت و گاز ناشی از جنگ ایران بر سایر بخش‌های اقتصاد تأثیر گذاشته است.</p>
+                <div class='link'><a href='https://www.wsj.com/fa-ir/%D9%81%D8%B1%D8%A7%D9%86%D8%B3%D9%87/%D9%82%DB%8C%D9%85%D8%AA-%D8%AA%D9%88%D8%B1%D9%85-%D9%81%D8%B1%D8%A7%D9%86%DB%8C%D9%87-%D8%A8%D8%A7-%D8%AA%D8%BA%DB%8C%DB%8C%D8%B1-%D9%82%DB%8C%D9%85%D8%AA-%D8%B3%D9%88%D8%AE%D8%AA-%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%86%D8%B1%D8%AC%DB%8C-912c6d33' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>تورم فرانسه با شتاب غیرمنتظره‌ای در بخش خدمات و انرژی افزایش یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل‌های نشریه فایننشال پست</span>
+                    <span class='meta-item'>📅 <strong>۳۱ تیر ۱۴۰۵ ساعت ۰۸:۳۵:۱۰</strong></span>
+                </div>
+                <p class='summary'>در این ماه، تورم فرانسه به‌طور غیرمنتظره‌ای افزایش یافت و به دلیل آن، احتمال افزایش دیگر نرخ بهره بانک مرکزی اروپا بیشتر تقویت شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/french-inflation-unexpectedly-accelerates-on-services-power' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>قیمت خانه‌های بریتانیا در ماه ژوئیه افزایش جزئی داشته است، به گزارش Nationwide</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل - پست مالی</span>
+                    <span class='meta-item'>📅 <strong>۳۱ تیر ۱۴۰۵  ساعت ۰۷:۳۴:۳۸ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>گزارش یکی از بزرگ‌ترین وام‌دهندگان مسکن در بریتانیا نشان می‌دهد که قیمت خانه‌ها در این کشور در ماه ژوئیه بار دیگر به رشد بازگشته است و خریداران با وجود افزایش نرخ‌های وام مسکن مرتبط با جنگ ایران، نسبت به انتظارات بهتر عمل کرده‌اند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uk-house-prices-edge-higher-in-july-nationwide-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Engie outlook سود را به‌دلیل کاهش هزینه‌ها و اثرات ارزی بهبود بخشید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۰ ساعت ۱۰:۳۸:۲۸ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>شرکت خدمات آب و برق فرانسوی انژی SA پیش‌بینی سود سالانه خود را به دلیل بهره‌مندی از نوسانات ارزی، بزرگ‌ترین تملک خود در بریتانیا، کاهش هزینه‌ها و نوسانات بازار انرژی مرتبط با جنگ در خاورمیانه که به جبران کاهش سود در شش ماه اول سال کمک کرد، افزایش داد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/engie-raises-full-year-profit-outlook-amid-market-volatility' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>جنگ ایران زنده: سپاه پاسداران حملهٔ 'تلافی‌جویانه' به کویت را اعلام کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۰T۰۶:۴۹:۳۸Z</strong></span>
+                </div>
+                <p class='summary'>ایران حملات خود را علیه کشورهای خلیج فارس ادامه داده است، اقدامی که آن را تلافی حملات آمریکا در روز پنجشنبه نامیده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/liveblog/2026/7/31/iran-war-live-irgc-claims-retaliatory-attack-on-kuwait?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۳۱ ژوئیه ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران در واکنش به حملات اخیر ایالات متحده، در حال تشدید حملات خود به کشورهای حوزه خلیج فارس از جمله کویت است. در همین حال، اقتصادهای جهانی مانند فرانسه و بریتانیا دچار تأثیرات اقتصادی ناشی از این درگیری—شامل تورم بالاتر، افزایش هزینه‌های انرژی و قیمت مسکن—شده‌اند. اوضاع همچنان بی‌ثبات است و پیامدهای بلندمدتی برای بازارهای انرژی، تورم جهانی و روابط بین‌المللی دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            سپاه پاسداران انقلاب اسلامی ایران (سپاه) مدعی شده است که در پاسخ به حملات ایالات متحده به خاک ایران اوایل این هفته، حمله انتقام‌جویانه‌ای را به کویت انجام داده است. در همین حال، اقتصادهای اروپایی مانند فرانسه و بریتانیا به دلیل افزایش هزینه‌های انرژی و تورم دچار فشار اقتصادی شده‌اند، موضوعی که بسیاری از تحلیلگران، بخشی از آن را به درگیری‌های ongoing در خاورمیانه از جمله درگیری‌های مرتبط با ایران، نسبت می‌دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            این درگیری احتمالاً در کوتاه‌مدت تشدید خواهد شد و با واکنش‌های تلافی‌جویانه بیشتر از سوی ایران و پاسخ‌های احتمالی از سوی ایالات متحده یا کشورهای منطقه خلیج فارس همراه خواهد بود. از نظر اقتصادی، افزایش قیمت‌های انرژی ممکن است به تورم در اروپا و سایر مناطق ادامه دهد، در حالی که بازار جهانی نفت به دلیل اختلال در عرضه در خلیج فارس تحت فشار باقی خواهد ماند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['تیر 1405: تنش‌های ادامه‌دار بین ایران و ایالات متحده/کشورهای حاشیه خلیج فارس تشدید شده و شامل چندین حمله و ضدحمله می‌شود.', '30 تیر 1405: ایالات متحده حمله‌هایی را علیه ایران انجام می‌دهد که منجر به تهدید جمهوری اسلامی ایران به تلافی‌جویی می‌شود.', '31 تیر 1405: سپاه پاسداران ادعای حمله تلافی‌جویانه به کویت را مطرح می‌کند؛ فرانسه و بریتانیا گزارش از افزایش تورم، هزینه‌های انرژی و تأثیرات اقتصادی ناشی از درگیری می‌دهند.', 'آینده نزدیک: احتمال تشدید بیشتر در حملات، ایجاد تداخلات اقتصادی بیشتر و واکنش‌های بالقوه بازار وجود دارد.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            این درگیری بین ایران و رقیبانش (عمدتاً ایالات متحده و کشورهای حوزه خلیج فارس) با در نظر گرفتن کینه‌های عمیق موجود و منافع استراتژیک درگیر، احتمالاً ادامه یافته یا تشدید خواهد شد. از نظر اقتصادی، غرب نسبت به شوک‌های قیمتی انرژی حساس‌تر می‌شود، عاملی که می‌تواند منجر به اتخاذ سیاست‌های پولی انقباضی برای مقابله با تورم گردد. از منظر ژئوپلیتیکی، این شرایط ممکن است کشورهای بیشتری را به سوی جستجوی استقلال انرژی یا تنوع‌بخشی به تأمین‌کنندگان سوق دهد و وابستگی به نفت خاورمیانه‌ای متلاطم را کاهش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            این درگیری کنونی با حملات متقابل بین ایران و ایالات متحده/کشورهای خلیج فارس مشخص می‌شود، به طوری که ایران از نیابتی‌ها یا حمله‌های مستقیم به کشورهای همسایه مانند کویت استفاده می‌کند. شدت این درگیری‌ها متوسط اما خطرناک است—به اندازه‌ای که ثبات منطقه‌ای و جریان‌های جهانی نفت را مختل کند، اما هنوز در سطحی نیست که منجر به جنگ تمام‌عیار شود. این مناقشه همچنان به درگیری‌های نظامی محدود و خرابکاری‌های اقتصادی محدود می‌شود تا تهاجمات یا حمله‌های گسترده.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری نشان می‌دهد که چگونه تنش‌های منطقه‌ای در خاورمیانه می‌تواند تأثیرات گسترده جهانی داشته باشد، از قیمت انرژی گرفته تا تورم و ثبات اقتصادی. وابستگی جهان به نفت این منطقه به این معناست که حتی منازعات محلی می‌توانند ناراحتی اقتصادی گسترده‌ای ایجاد کنند. همچنین، این موضوع آسیب‌پذیری زنجیره‌های تأمین جهانی و взаим‌درهم‌تنیدگی اقتصادهای امروزی را برجسته می‌سازد. برای مردم عادی، این موضوع می‌تواند به معنای هزینه‌های بالاتر برای بنزین، گرما و کالاهای روزمره، و همچنین عدم اطمینان در بازارهای مالی باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            شخصیت‌های اصلی در این میان، ایران، ایالات متحده و کشورهای حوزه خلیج فارس (مانند کویت و عربستان سعودی) هستند. کشورهای اروپایی مانند فرانسه و بریتانیا به‌طور غیرمستقیم از طریق مجاری اقتصادی (تورم،Cost های انرژی) تحت تأثیر قرار می‌گیرند. سازمان‌های بین‌المللی همچون سازمان ملل یا اتحادیه اروپا ممکن است تلاش‌های دیپلماتیک انجام دهند، اما نفوذشان در شرایط کنونی محدود است. کشورهای واردکننده انرژی با دقت وضعیت را دنبال می‌کنند، زیرا ثبات اقتصادی آنها به عرضه پایدار نفت وابسته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت انرژی بر اثر درگیری ها هم اکنون بالاست، و هرگونه اختلال در جریان نفت از خلیج فارس (یکی از مهم‌ترین مسیرهای تنگناهای نفتی جهان) ممکن است قیمت ها را حتی بالاتر ببرد. این امر اهمیت زیادی دارد زیرا قیمت‌های بالاتر نفت به تورم در همه جای جهان دامن می‌زند و باعث گران‌تر شدن کالاها برای مصرف‌کنندگان و افزایش هزینه‌ها برای کسب و کارها می‌شود. همچنین، ممکن است رشد اقتصادی کند شود اگر هزینه‌های بالاتر باعث کاهش مخارج مصرف‌کنندگان گردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران در واکنش به حملات ایالات متحده، حملات خود را در برابر کشورهای خلیج فارس مانند کویت تشدید می‌کند و نگرانی‌هایی را درباره گسترش درگیری منطقه‌ای ایجاد کرده است. اقتصادهای جهانی (به ویژه در اروپا) در حال احساس فشار اقتصادی ناشی از افزایش قیمت انرژی هستند که منجر به تورم فزاینده و افزایش هزینه‌های زندگی می‌شود. این درگیری می‌تواند در کوتاه‌مدت تشدید شود، و موجب اختلال‌های احتمالی در تأمین نفت جهانی و رنج اقتصادی بیشتر در سراسر جهان گردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سياق اضافي</h3>
+            این درگیری بخشی از یک مبارزه در حال جریان طولانی‌تر بین ایران و کشورهای خلیج فارس همسو با غرب است که ایالات متحده اغلب نقشی در حمایت از متحدانی مانند کویت دارد. تاثیرات اقتصادی در فرانسه و بریتانیا نشان می‌دهد که اثرات درگیری‌های منطقه‌ای می‌تواند تا چه حد گسترده باشد، حتی برای کشورهایی که به‌طور مستقیم در جنگ مشارکت ندارند. این وضعیت همچنین چالش‌های کاهش وابستگی جهانی به نفت خاورمیانه را برجسته می‌کند، علیرغم تلاش‌ها برای انتقال به منابع انرژی تجدیدپذیر.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
