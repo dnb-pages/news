@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-07-31 14:41</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-07-31 14:41</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Man Accused of Spying for Iran at British Air Base in Cyprus</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-31 12:16</strong></span>
+                </div>
+                <p class='summary'>Rashad Sultanov, a dual British and Azerbaijani citizen, was arrested after accusations he surveilled the military installation, a hub for Mideast operations, and shared the details with the Revolutionary Guards.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/31/world/europe/iran-spy-uk-air-base-cyprus-sultanov.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>BOE’s Pill Warns of Energy Price Volatility Persisting Into 2027</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-31 13:58</strong></span>
+                </div>
+                <p class='summary'>Bank of England Chief Economist Huw Pill said the wild swings in energy and commodity prices due to the Iran war could linger into 2027, highlighting the risk that inflation stays elevated for longer and forces policymakers to respond</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/boes-pill-warns-of-energy-price-volatility-persisting-into-2027' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran Says It Targeted U.S. Military in Kuwait With Drones</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-07-31 13:46</strong></span>
+                </div>
+                <p class='summary'>The Kuwaiti military said that it had detected and destroyed multiple drones in its airspace since dawn. A U.S. Defense Department official said there had been no major impact on its military bases in the region.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/31/world/middleeast/iran-us-military-kuwait-drone-attack.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - July 31, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is escalating tensions by allegedly spying in Cyprus, attacking U.S. interests in Kuwait with drones, and indirectly causing economic uncertainty in global energy markets, raising fears of a prolonged conflict and economic instability.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Iran is accused of conducting espionage through a British-Azerbaijani dual citizen at a British military base in Cyprus, which is a key location for operations in the Middle East. Additionally, Iran launched drone attacks near U.S. military bases in Kuwait, though these were intercepted by local forces without major damage. These actions come amid rising concerns about energy price volatility and inflation persisting into 2027 due to regional instability.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to escalate further as Iran continues to assert pressure on regional rivals, particularly the U.S. and its allies like the UK. Economic instability in energy markets may persist, forcing governments to take measures to control inflation. Further attacks or espionage activities could occur if tensions remain unresolved.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>July 31, 2026: Rashad Sultanov, a dual British-Azerbaijani citizen, is accused of spying for Iran at a UK air base in Cyprus.</li><li>July 31, 2026: Iran allegedly targets U.S. military installations in Kuwait with drones, but these are intercepted by Kuwaiti forces.</li><li>July 31, 2026: Bank of England Chief Economist Huw Pill warns of prolonged energy price volatility and inflation risks into 2027 due to regional conflicts involving Iran.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            Iran appears to be pushing a strategy of pressure and provocation, targeting U.S. allies and military interests while indirectly destabilizing global energy markets. This could lead to a prolonged standoff, with Iran attempting to extract concessions or weaken U.S. influence in the region. The economic fallout from energy volatility may also force global policymakers to adapt, possibly leading to higher interest rates or energy rationing in some countries.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current conflict is marked by asymmetric warfare, with Iran using drones and espionage rather than direct military confrontation. The intensity is moderate but rising, as seen in the drone attacks and espionage accusations. The nature of the conflict suggests Iran is testing the limits of Western and regional responses without triggering a full-scale war.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This escalation highlights the deepening proxy dynamics between Iran and the U.S. in the Middle East. For the global economy, the prolonged risk of energy supply disruptions and price volatility could undermine recovery efforts and fuel inflation in many countries. For smaller regional players like Kuwait, the situation increases the risk of being caught in the crossfire of a larger conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            Key players include Iran, the UK, the U.S., and Kuwait. The UK is directly involved due to the espionage allegations on its territory, while the U.S. is a primary target of Iran’s attacks. Kuwait, as a U.S. partner, finds itself caught between maintaining regional stability and addressing threats to its security. The broader international community, particularly energy-dependent nations, will also be affected by knock-on economic consequences.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Energy prices are likely to remain volatile due to the perceived risk of supply disruptions in the Middle East, a critical oil-producing region. Higher oil prices would disproportionately impact energy-importing countries, potentially stoking inflation and forcing central banks to raise interest rates to stabilize economies. The unpredictability of Iran's actions adds a risk premium to oil markets, keeping prices elevated.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Iran is increasingly using asymmetric tactics like drone attacks and espionage to challenge the U.S. and its allies without direct military confrontation. Energy price volatility and inflation are likely to persist due to the ongoing conflict, affecting economies worldwide. The situation increases risks for regional U.S. partners like Kuwait, which are vulnerable to spillover violence or economic instability.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The sudden escalation of drone attacks in Kuwait is notable, as it represents a shift from proxy conflicts to direct confrontations in the immediate region. Additionally, the espionage case in Cyprus suggests Iran is expanding its operational reach beyond traditional conflict zones.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
