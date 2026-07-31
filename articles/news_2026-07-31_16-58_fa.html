@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-07-31 17:02</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-07-31 17:02</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>چرا ریاض به حملات ایالات متحده به متحدان تهران در عراق پیوست؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۳۱ تیر ۱۴۰۵ ساعت ۱۵:۴۱ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>عربستان سعودی برای اولین بار در حملات هوایی علیه شبه‌نظامیان مورد حمایت ایران در عراق که در روز چهارشنبه انجام شد، به ایالات متحده پیوست و تغییری چشمگیر در موضع منطقه‌ای این پادشاهی پس از ماه‌ها خودداری را رقم زد. اگرچه ریاض بر این باور است که اقدام کرده است دفاع از خود و حفظ عملیات پرسش‌هایی را درباره اینکه آیا پادشاهی در حال رها کردن رویکرد محتاطانه خود در قبال تهران است - یا صرفاً اخطاری فرستاده - مطرح می‌سازد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260731-چی-سبب-شده-است که-ریاض-به-همراهی-آمریکا-در-حمله-به-تهران-پیوسته-است' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>دونالد ترامپ در آستانه انتخابات میان‌دوره‌ای تلاش می‌کند 'داستان را از جنگ با ایران دور کند'</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۰ ساعت ۱۹:۵۰</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده دونالد ترامپ در یک نشست کابینه در استقرار کمپ دیوید، به طیف وسیعی از موضوعات از جمله ایران تا انتخابات میان‌دوره‌ای پرداخت. او همچنین دولت اسپانیا را برای ورود گسترده مهاجران به برون‌بوم سبته اسپانیا مقصر دانست و آن را یک «ت invading» نامید. فراس جکسون از FRANCE 24 به سخنرانی رئیس‌جمهور گوش فرا داد و برای ما توضیح می‌دهد که باید چه مواردی را بدانیم.</p>
+                <div class='link'><a href='https://www.france24.com/fa/دونالد-ترامپ-سعی-دارد-داستان-اقدامات-در-مقابل-جنگ-با-ايران-را-پیش-از-انتخابات-می-انجانی-تغییر-دهد' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۳۱ تیر ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>عربستان سعودی برای نخستین بار به همراه ایالات متحده در بمباران‌های هوایی علیه شبه‌نظامیانSupported توسط ایران در عراق شرکت کرد و احتمالاً نشانه‌ای از تغییر احتمالی در رویکرد ریاض نسبت به تهران است. در همین حال، دونالد ترامپ رئیس‌جمهور ایالات متحده با فشارهای سیاسی رو به فردای انتخابات میان‌دوره‌ای مواجه است و به‌نظر می‌رسد در حال منحرف کردن توجه‌ها از مناقشات مرتبط با ایران است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            عربستان سعودی در حملات هوایی به رهبری ایالات متحده علیه شبه‌نظامیان مورد حمایت ایران در عراق شرکت کرد، اقدامی که نشان از دور شدن ریاض از رویکرد محتاطانه معمول خود نسبت به تهران دارد. این حملات پس از تشدید تنش‌ها انجام می‌شود که احتمالاً در واکنش به حملات اخیر به مسیرهای کشتیرانی یا درگیری‌های نیابتی منطقه‌ای صورت گرفته است. ایالات متحده نیز با نزدیک شدن به انتخابات میان‌دوره‌ای ۲۰۲۶، تحت نظارت گسترده‌ای بر سیاست خود در قبال ایران قرار دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            درگیری منطقه ای احتمالاً تشدید بیشتری خواهد یافت و شاهد رویارویی های مستقیم بیشتری بین ایران و متحدانش در مقابل نیروهایSupported توسط ایالات متحده و عربستان سعودی خواهیم بود. تلاش‌های دیپلماتیک ممکن است شدت بگیرد، اما روند موجود نشان‌دهنده تداوم اقدامات نظامی است. حضور عربستان سعودی نشان‌دهنده احتمال realignment مجدد در اتحادهای خاورمیانه‌ای است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. ۳۱ تیر ۱۴۰۵: عربستان سعودی به حملات هوایی ایالات متحده علیه شبه‌نظامیان مورد حمایت ایران در عراق می‌پیوندد.</li><li>۲. همان روز: ترامپ نشست کابینه برگزار می‌کند، تمرکز را از روی ایران منحرف کرده و به‌طور همزمان اسپانیا را به جریان مهاجرتی متهم می‌سازد.</li><li>۳. هفته‌های اخیر: تشدید تنش‌ها میان ایران و ائتلاف به رهبری ایالات متحده و عربستان، از جمله حمله به کشتی‌ها و درگیری‌های نیابتی در عراق و یمن.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+             جهت‌گیری بلندمدت به سوی رویارویی فزاینده بین ایران و عربستان سعودی/آمریکا قرار دارد و جنگ‌های نیابتی در عراق، یمن و سوریه ادامه خواهد داشت. مشارکت عربستان سعودی در حملات، حاکی از موضع‌گیری سخت‌تری علیه نفوذ ایران است که می‌تواند ساختار قدرت منطقه‌ای را دگرگون سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            در حال حاضر درگیری‌ها به بمباران‌های هوایی و جنگ‌های نیابتی محدود شده است، اما خطر رویارویی مستقیم بین نیروهای ایران و آمریکا یا عربستان وجود دارد. شدت این جدال در حد متوسط است اما در حال افزایش است و احتمالاً هر دو طرف در واکنش به تهدیدات درک شده، تشدید رویارویی را دنبال خواهند کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری خطر بی‌ثباتی بیشتر خاورمیانه را افزایش می‌دهد و احتمال وقوع یک جنگ گسترده منطقه‌ای را بالا می‌برد. همچنین عرضه جهانی نفت را تهدید کرده و ممکن است بازیگران بین‌المللی بیشتری از جمله روسیه و چین را وارد ماجرا کند، کشورهایی که در ایران منافعی دارند. برای افراد عادی، بالاتر رفتن قیمت نفت و احتمال اختلال در عرضه بزرگ‌ترین نگرانی‌ها هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده و عربستان سعودی در حمله به گروه‌های تحت حمایت ایران پیشتاز هستند، در حالی که ایران نیز از گروه‌هایی همچون شبه‌نظامیان در عراق و حوثی‌ها در یمن پشتیبانی می‌کند. اروپا و دیگر قدرت‌های جهانی ممکن است خواستار خودداری از درگیری شوند، اما مداخله مستقیم بعید است، مگر آنکه بحران از کنترل خارج شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت احتمالاً بر اثر افزایش تنش‌ها بالا خواهند رفت، زیرا هرگونه اختلال در تنگه هرمز (یک مسیر کلیدی حمل نفت) یا حملات به زیرساخت‌های نفتی می‌تواند عرضه را از بازار حذف کند. افزایش قیمت نفت بر قیمت بنزین در سراسر جهان تأثیر خواهد گذاشت و ممکن است رشد اقتصادی را کند کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            درگیری عربستان سعودی در حملات هوایی علیه گروه‌های مورد حمایت ایران، نشان‌دهنده تغییر رویه این کشور به سمت همسویی قوی‌تر با ایالات متحده در برابر تهران است. این درگیری می‌تواند عرضه‌ی نفت جهانی را مختل کند، قیمت‌ها را افزایش دهد و اقتصادهای جهان را تحت تأثیر قرار دهد. فشارهای سیاسی آمریکا در آستانه انتخابات میان‌دوره‌ای ممکن است بر نحوه برخورد ترامپ با مسئله ایران تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            مشارکت عربستان سعودی در حملات غافلگیرکننده است زیرا این کشور رویکرد traditionally cautious خود را در قبال ایران دنبال نمی‌کند. علاوه بر این، انحراف ترامپ از تمرکز بر ایران به سمت مسائل دیگر نشان می‌دهد که اولویت‌های سیاسی ممکن است بر این درگیری سایه افکنده باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه قابل توجهی در این زمینه صورت نگرفته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
