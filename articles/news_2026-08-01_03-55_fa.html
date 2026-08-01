@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-01 03:58</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-01 03:58</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>شواهدی مبنی بر بمباران مناطق مسکونی در ایران توسط آمریکا و کشته شدن ۳ غیرنظامی</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۱ ۰۸:۱۰</strong></span>
+                </div>
+                <p class='summary'>این سلاح، که یکی از بزرگ‌ترین‌ها در زرادخانه ایالات متحده محسوب می‌شد، طبق تحلیل تایمز، به خانه‌ای در یک منطقه پرجمعیت اصابت کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/07/31/world/middleeast/us-iran-bomb-mk84-qeshm-island.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>موشک کارآمد ایران در حال خطرناک‌تر شدن برای نیروهای آمریکایی است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۰  ساعت ۰۵:۵۸</strong></span>
+                </div>
+                <p class='summary'>تماشا کنید چگونه شلبی هالیدی از وال‌استریت ژورنال دلایل تهدیدآمیز بودن موشک «خیبر‌شکن» ساخت ایران را تشریح می‌کند.</p>
+                <div class='link'><a href='https://www.wsj.com/fa-ir/world/middle-east/irans-workhorse-missile-is-becoming-more-dangerous-for-u-s-troops-341a77ee' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>گزارش‌های غیررسمی حاکی است که ایالات متحده بمبی بزرگ را در یک منطقه مسکونی در ایران منفجر کرده و در این حادثه سه غیرنظامی کشته شده‌اند. در همین حال، موشک ساخت ایران «خلیج‌شکن» به تهدیدی جدی برای نیروهای آمریکایی تبدیل شده است. این رویدادها می‌توانند تنش‌ها میان دو کشور را تشدید کنند که پیامدهایی همچون تأثیر بر امنیت جهانی و نوسانات قیمت نفت را در پی خواهد داشت.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            آمریکا متهم به انداختن بمب قدرتمند MK84 بر روی یک خانه مسکونی در جزیره قشم ایران شده و در این حمله سه غیرنظامی کشته شدند. از سوی دیگر، ایران موشکی به نام خضر شِکان توسعه داده که توجه‌ها را به دلیل دقت و قدرت تخریب آن در برابر اهداف نظامی آمریکا جلب کرده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            در صورتی که هر یک از طرفین به صورت نظامی واکنش نشان دهند یا خواستار مطالبات شدید دیپلماتیک شوند، وضعیت می‌تواند تشدید بیشتری یابد. احتمال آغاز دور جدیدی از واکنش‌ها و انزجار وجود دارد که ممکن است کشورهای منطقه‌ای دیگر یا قدرت‌های جهانی مانند روسیه یا چین را درگیر کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            ['۳۱ ژوئیه ۲۰۲۶: ایالات متحده به‌طور ظن آمیز بمبی را بر روی یک خانه غیرنظامی در جزیره قشم، ایران، می‌اندازد و سه نفر کشته می‌شوند.', '۳۱ ژوئیه ۲۰۲۶: موشک «خیبرشکنان» ایران به عنوان تهدیدی فزاینده برای forces نظامی ایالات متحده معرفی می‌شود.', 'آخر ژوئیه ۲۰۲۶: تشدید تنش‌ها بین ایالات متحده و ایران به دلیل اقدامات نظامی و تهدیدات طرفین.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            رویکرد بلندمدت، نشان‌دهنده روابطی پر تلاطم و خطرناک‌تر میان ایالات متحده و ایران است. اگر کنترل نشده باقی بماند، این امر می‌تواند به یک درگیری prolonged با گسترش منطقه‌ای منجر شود و کشورهایی مانند عراق، سوریه و عربستان سعودی را تحت تأثیر قرار دهد. راه‌حل‌های دیپلماتیک ممکن است با افزایش نمایش‌های نظامی، دشوارتر شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری در حال تشدید است و با اقدامات نظامی مستقیم (بمباران) و پیشرفت در فناوری موشک‌ها همراه است. استفاده از یک بمب بزرگ در یک منطقه مسکونی نشان‌دهنده سطح بالایی از تشدید تنش است، در حالی که توسعه موشک‌های ایران نشان می‌دهد که این کشور در حال سرمایه‌گذاری سنگین بر روی جنگ نامتقارن برای مقابله با مزیت‌های نظامی آمریکا است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این امر می‌تواند بی‌ثباتی خاورمیانه را بیش از پیش تشدید کند، عرضه جهانی نفت را مختل سازد و روابط بین‌المللی را تحت فشار قرار دهد. کشورهایی که وابسته به نفت خاورمیانه هستند، همچون ایالات متحده، چین و اروپا، ممکن است با پیامدهای اقتصادی مواجه شوند. ریسک گسترده‌تر درگیری گسترده‌تر با حضور بازیگران منطقه‌ای متعدد است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بزرگترین بازیگران مانند ایالات متحده، ایران و متحدان منطقه‌ای (مانند اسرائیل و عربستان سعودی) به‌طور مستقیم درگیر هستند. روسیه و چین ممکن است نقش‌های فرعی ایفا کنند و احتمالاً از ایران حمایت کرده یا در دیپلماسی برای جلوگیری از تشدید بیشتر درگیر شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            با توجه به تنش‌های فزاینده در خلیج فارس، منطقه‌ای مهم در تولید نفت، قیمت‌های نفت به احتمال زیاد افزایش خواهند یافت. در صورت تداخل در مسیرهای حمل و نقل همچون تنگه هرمز، اختلال در عرضه نفت می‌تواند منجر به افزایش قیمت جهانی سوخت شده و بر اقتصادهای سراسر جهان تاثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            به گفته منابع، ایالات متحده به طور مشکوک یک خانه مسکونی در ایران را بمباران کرد که در نتیجه آن سه نفر کشته شدند و تنش‌های نظامی تشدید شد. موشک پیشرفته «خیبرشکنان» ایران اکنون تهدیدی جدی برای نیروهای آمریکایی به شمار می‌رود و باعث افزایش حساسیت‌ها در رقابت این دو کشور شده است. این وضعیت خطر گسترش دارد و منابع نفتی جهانی و ثبات بین‌المللی را تهدید می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ‌کدام. هر دو رویداد، تنش‌های دیرینه و تحولات نظامی اخیر میان ایالات متحده و ایران را منعکس می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 context اضافی</h3>
+            تنگه هرمز، یکی از مهم‌ترین مسیرهای دریایی حمل نفت در نزدیکی ایران، همچنان می‌تواند تبدیل به نقطه‌ای حساس و درگیری‌زا در صورت تشدید تنش‌های بیشتر شود. کانال‌های دیپلماتیک در حال حاضر تحت فشار قرار دارند و نشانه‌ای دال بر مذاکرات فوری برای کاهش تنش مشاهده نمی‌شود.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
