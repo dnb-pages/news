@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-02 19:42</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-02 19:42</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایران برنامه‌ریزی برای جنگ گسترده‌تر با کمک نیابتی‌های خود را انجام داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نشریهٔ نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۲ ۲۳:۰۶:۲۹</strong></span>
+                </div>
+                <p class='summary'>در طی آتش‌بسی زودگذر، ایرانیان به طور پنهانی برای افزایش هزینه‌های جنگ بر سر رئیس‌جمهور ترامپ در صورت حمله مجدد نیروهای ایالات متحده، طرحی را تدارک دیدند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/01/world/middleeast/iran-proxies-war-oil.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>تریومف مشارکت در جنگ ایران برای ترامپ در نیویورک به سخره گرفته شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> العربیہ (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۲T۱۷:۰۶:۳۰Z</strong></span>
+                </div>
+                <p class='summary'>یک تندیس طلایی ۳ متری ساخته‌شده برای مسخره‌کردن رئیس‌جمهور ایالات متحده دونالد ترامپ به دلیل جنگ با ایران، در نیویورک ظاهر شده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/2/iran-war-participation-trophy-mocking-trump-appears-in-new-york?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران می گوید مذاکرات با عمان در مورد تنگه هرمز در مراحل نهایی است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۲ ساعت ۲۳:۳۸:۰۶</strong></span>
+                </div>
+                <p class='summary'>اعلام تهران پس از آن صورت گرفت که ترامپ گفته بود ایالات متحده در صورت امکان توافق فوری، حمله جدیدی علیه ایران انجام نخواهد داد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/2/iran-says-negotiations-with-oman-over-strait-of-hormuz-in-final-stages?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>«دست آهنین» با ایران کار نمی‌کند: سابقه گیراندازه‌شده آمریکایی در تهران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۲</strong></span>
+                </div>
+                <p class='summary'>جان لیبرت، زندانی سابق آمریکایی، می‌گوید که واشنگتن «نمی‌تواند از طریق بمباران و ترور، روابطی بهتر با ایران برقرار کند».</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/the-bottom-line/2026/8/2/iron-fist-doesnt-work-with-iran-former-us-hostage-in-tehran?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و ایالات متحده در تنش‌های فزاینده‌ای گرفتار شده‌اند؛ درحالی‌که به‌گفته برخی، ایران در حال برنامه‌ریزی برای راهبرد جنگ گسترده‌تری است و مذاکرات بر سر یک مسیر حیاتی کشتیرانی (تنگه هرمز) رو به پایان است. در هر دو کشور، واکنش‌های داخلی نارضایتی عمیق‌تری از مناقشه را نشان می‌دهد. به دلیل این ناپایداری، بازار نفت و ثبات جهانی بیش از پیش در معرض خطر قرار دارند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            گزارش‌های اخیر نشان می‌دهد که ایران به‌صورت محرمانه قصد تشدید درگیری با ایالات متحده را با درگیر کردن هر چه بیشتر گروه‌های نیابتی خود (نمایندگان) برای افزایش هزینه هرگونه حمله آینده آمریکا داشته است. در همین حال، ایران مدعی است که در مراحل پایانی مذاکره با عمان برای مدیریت ترافیک تنگه هرمز، یکی از مهم‌ترین مسیرهای حمل نفت، قرار دارد. ایالات متحده تحت ریاست‌جمهوری ترامپ حملات بیشتری را به ایران متوقف کرده و امیدوار است به یک راه‌حل دیپلماتیک سریع دست یابد. واکنش‌های عمومی، از جمله اهدای یک جایزه طنز‌آمیز «جشنی برای مشارکت» به ترامپ در نیویورک و نیز شهادت یک گروگان سابق آمریکایی که از راه‌حل‌های نظامی برحذر داشته، بر جو پرتنش دامن می‌زند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرگرم کننده کجاست</h3>
+            وضعیت به نظر می‌رسد در یک چهارراه شکننده قرار دارد. اگر دیپلماسی با عمان موفقیت‌آمیز باشد، می‌تواند تنش‌ها را به‌طور موقت کاهش دهد، اما برنامه‌های جنگی گسترده مدعای ایران حاکی از آن است که اگر تحریک بیشتری صورت گیرد، این کشور برای درگیری طولانی‌مدت آماده می‌شود. ایالات متحده بهlikely به پیگیری توازن میان فشار و مذاکره ادامه خواهد داد، در حالی که ایران ممکن است از مذاکرات تنگه هرمز به‌عنوان اهرمی برای کاهش تهدیدات نظامی ایالات متحده استفاده کند. با این حال، عدم اعتماد و مواضعHardline در دو طرف می‌تواند به سرعت مذاکرات را متوقف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['۱۴۰۵/۰۵/۱۱: روزنامه نیویورک تایمز گزارش می‌دهد ایران به صورت محرمانه استراتژی جنگ گسترده‌ای برای افزایش هزینه حملات آمریکا برنامه‌ریزی کرده بود.', '۱۴۰۵/۰۵/۱۲: جام طلاینی به مسخره‌ی ترامپ برای جنگ با ایران در نیویورک نمایان می‌شود (واکنش عمومی نسبت به تنش‌ها).', '۱۴۰۵/۰۵/۱۲: ایران مذاکرات نهایی با عمان بر سر تنگه هرمز را اعلام می‌کند (تلاش دیپلماتیک برای کاهش تنش).', '۱۴۰۵/۰۵/۱۲: یک گروگان سابق ایالات متحده هشدار می‌دهد که بمباران و ترور روابط ایالات متحده و ایران را بهبود نخواهد بخشید (دعوت به دیپلماسی).']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            جهت‌گیری و تا okoli نشان از چرخه‌ای از تنش و کاهش موقت آن دارد. استراتژی ایران به نظر می‌رسد شامل آماده‌سازی برای درگیری طولانی‌مدت و استفاده از مذاکرات (مانند مذاکرات بر سر تنگه هرمز) برای کاهش فشار نظامی فوری ایالات متحده باشد. ایالات متحده تحت ریاست‌جمهوری ترامپ به نظر ترکیبی از بازدارندگی و دیپلماسی را ترجیح می‌دهد، اما فشارهای داخلی و منطقه‌ای می‌تواند هر یک از طرفین را به سوی تشدید تنش سوق دهد. بدون تغییرات ساختاری در نحوه تعامل دو کشور (مثلاً پرداختن به نارضایتی‌های ریشه‌ای)، درگیری به احتمال زیاد به صورت چرخه‌ای ادامه خواهد یافت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            درگیری‌ها در حال حاضر در مرحله‌ای از تنش بالا، اما جنگ آشکار و فعال نیست. گزارش‌ها حاکی از آن است که ایران در حال برنامه‌ریزی برای یک استراتژی جنگ گسترده‌تر است، که نشان می‌دهد این کشور در حال آمادگی برای حملات احتمالی آینده ایالات متحده می‌باشد. با این حال، ایالات متحده حملات خود را متوقف کرده و یک توقف موقت ایجاد نموده است. دخالت عوامل واپسین (پروکسی‌ها) و تمرکز بر کنترل تنگهٔ هرمز حاکی از آن است که درگیری در حال تغییر به سمت مبارزه‌های واسطه‌ای و فشارهای اقتصادی (مانند اختلال در حمل‌ونقل نفت) به جای رویارویی نظامی مستقیم است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری خاورمیانه را بی‌ثبات می‌کند و بازارهای جهانی نفت را تهدید می‌نماید. تنگه هرمز یک نقطه استراتژیک برای حدود ۲۰ درصد از عرضه نفت جهان محسوب می‌شود، از این رو هرگونه اختلال می‌تواند پیامدهای اقتصادی گسترده‌ای به دنبال داشته باشد. علاوه بر این، حضور نیابتی‌ها و خطر گسترش جنگ ممکن است قدرت‌های منطقه‌ای مانند عربستان سعودی یا اسرائیل را به درگیری‌های deeper بکشاند. برای فرد عادی، این به معنای افزایش قیمت نفت، کمبودهای احتمالی انرژی و تهدید فزاینده خشونت یا بی‌ثباتی در منطقه‌ای است که از قبل ناپایدار بوده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیکنان کلیدی شامل: 1) ایالات متحده (دولت ترامپ) هستند که در حال تعادلی میان فشار و دیپلماسی موقت هستند؛ 2) ایران که در تلاش است تا با مذاکره برای کاهش تهدیدات فوری، از حملات ایالات متحده جلوگیری کند؛ 3) عمان که به‌عنوان میانجی‌گر بین ایران و ایالات متحده عمل کرده و بازیگری منطقه‌ای خنثی اما تأثیرگذار است؛ و 4) نیروهای نیابتی ایران (مثلاً شبه‌نظامیان در عراق، سوریه و یمن) که ممکن است ایران با فعال کردن آنها به‌طور غیرمستقیم درگیری‌ها را تشدید کند. کشورهای دیگر مانند چین یا روسیه ممکن است حمایت یا میانجی‌گری ارائه دهند، اما نقش مستقیم آنها در حال حاضر محدود است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            به دلیل عدم اطمینان و خطر اختلال در تنگه هرمز، احتمالاً قیمت‌های نفت افزایش خواهد یافت. این تنگه حدود 20 درصد از عرضه نفت جهانی را تشکیل می‌دهد، بنابراین هرگونه تهدید واقعی یا درک‌شده برای حمل‌ونقل در منطقه، منجر به افزایش قیمت خواهد شد. این موضوع اهمیت دارد زیرا افزایش قیمت نفت، هزینه‌های سوخت را در سراسر جهان بالا برده و بر جنبه‌هایی از حمل‌ونقل تا قیمت‌های مواد خوراکی تأثیر می‌گذارد. در صورت تشدید تنش‌ها، قیمت‌های نفت می‌تواند به شدت افزایش یافته و منجر به اختلال‌های اقتصادی در سطح جهان شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            آموزش سنگ شکن در سایتRc المحدودة مذاکرات مربوط به تنگه هرمز می‌تواند موقتاً تنش‌ها را کاهش دهد، اما همچنان مناقشهٔ بنیادی حل‌نشده باقی می‌ماند. اگر این مسئله بیشتر تشدید شود، بالاتر رفتن قیمت نفت و بی‌ثباتی جهانی بزرگ‌ترین خطرات به شمار می‌روند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر تعجب‌آور</h3>
+            تمسخر عمومی ترامپ در نیویورک با اعطای جایزه مشارکتی نمادین بابت جنگ ایران نشان از تشدید نارضایتی داخلی ایالات متحده از این مناقشه دارد که ممکن است بر تصمیمات سیاسی تأثیر بگذارد. علاوه بر این، هشدار بازداشت‌شده سابق آمریکایی در برابر رویکرد نظامی، بیانگر skepticism عمیق نسبت به استراتژی ترامپ است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییر شاخص خاصی در این زمینه وجود ندارد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
