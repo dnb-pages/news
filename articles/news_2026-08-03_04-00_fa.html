@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-03 04:03</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-03 04:03</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>اردن در حال یادگیری است که اتحاد خود با ایالات متحده در جنگ با ایران هزینه دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۲ ساعت ۰۷:۳۰</strong></span>
+                </div>
+                <p class='summary'> از آنجا که ایالات متحده بیشتر به پایگاه‌های بیابانی خود در این کشور متکی است، پادشاهی به هدف تهران تبدیل شده است.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/jordan-is-learning-its-u-s-alliance-has-a-price-in-the-iran-war-7ce9fd8b' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ترامپ حمله‌ی عظیم به ایران را متوقف می‌کند و می‌گوید مذاکرات جدید آغاز خواهد شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۳T۰۳:۱۷:۳۳Z</strong></span>
+                </div>
+                <p class='summary'>رییس‌جمهور ایالات متحده ترامپ پس از لغو حمله، از آغاز مذاكرات جديد با ايران در روز دوشنبه به 'شيوه مذاكره' خبر داد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/3/trump-pauses-massive-attack-on-iran-says-new-talks-to-begin?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - اوت 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا و ایران در آستانه یک درگیری بزرگ قرار گرفته‌اند پس از اینکه ایران تنش‌ها را تشدید کرد و منجر به تهدیدهای ایالات متحده درباره یک 'حمله گسترده' از سوی رئیس‌جمهور ترامپ شد. ترامپ برای pursuit of negotiations با توقف حمله، اما ایران با هدف قرار دادن متحدان آمریکا مانند اردن از طریق حملات موشکی پاسخ داد. این وضعیت به‌شدت ناپایدار است و خطر تشدید بیشتر می‌تواند بر قیمت‌های جهانی نفت و ثبات منطقه‌ای تأثیر بگذارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده و ایران وارد مرحله خطرناکی از خصومت شده‌اند. رئیس‌جمهور ترامپ انجام یک 'حمله گسترده' برنامه‌ریزی‌شده علیه ایران را متوقف اعلام کرد و گفت مذاکرات جدید صلح آغاز خواهد شد که نشان‌دهنده تغییر از اقدام نظامی به دیپلماسی است. با این حال، ایران به نوبه خود با هدف قرار دادن متحدان آمریکا، از جمله اردن، با حملات موشکی پاسخ داده که احتمالاً برای تنبیه کشورهایی است که پایگاه‌های نظامی آمریکا را در خود جای داده‌اند. این موضوع باعث نگرانی از بروز جنگ گسترده‌تر منطقه‌ای شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا</h3>
+            آینده نزدیک نامشخص است اما حاکی از بن‌بست احتمالی، به تنش کشیده‌شده است. ایالات متحده ممکن است برای دستیابی به مذاکرات در جهت کاهش تنش فشار آورد، اما ایران ممکن است با ادامه حملات به کشورهای هم‌پیمان نظیر اردن به دنبال تضعیف نفوذ آمریکا باشد. در صورت شکست مذاکرات، likelihood  وجود دارد که آمریکا مجدداً اقدام نظامی گسترده‌ای انجام دهد که احتمالاً کشورهای بیشتری را در منطقه درگیر ساخته و بی‌ثباتی را تشدید خواهد کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['تیر ۱۴۰۵: تنش‌ها بین آمریکا و ایران پس از حملة سریعی از زد و خوردها و درگیری‌های نیابتی در خاورمیانه به طرز چشمگیری اوج می‌گیرد.', 'اوایل مرداد ۱۴۰۵: آمریکا برای حملهٔ «عظیم» به ایران آماده می‌شود که نشان‌دهندهٔ تشدید فزایندهٔ تنش‌هاست.', '۳ مرداد ۱۴۰۵: رئیس‌جمهور ترامپ حملهٔ برنامه‌ریزی‌شده را متوقف کرده و مذاکرات جدید با ایران را اعلام می‌کند.', '۳ مرداد ۱۴۰۵ (همان روز): ایران با حملة موشکی به اردن تلافی کرده و تمایل خود به هدف گرفتن متحدان آمریکا را نشان می‌دهد.', '۳ مرداد ۱۴۰۵ (دیرتر): وضعیت همچنان در حال تغییر است زیرا طرفین حرکات یکدیگر را ارزیابی می‌کنند—آمریکا به دنبال مذاکره است، ایران متحدانش را تحت فشار قرار می‌دهد.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در درازمدت، این مناقشه می‌تواند به یکی از دو شکل زیر ابتدا شود. اگر دیپلماسی ناکام بماند، ایالات متحده ممکن است اقدام به حمله‌ای دیگری کند که منجر به دور باطلی از تلافی‌جویی ادامه‌دار شود. از سوی دیگر، اگر مذاکرات موفقیت‌آمیز باشد، ممکن است چندین دهه کاهش تنش رخ دهد، اما برنامه هسته‌ای و نفوذ منطقه‌ای ایران همچنان به نقاط انتقادزا باقی خواهند ماند. در هر صورت، خاورمیانه احتمالاً شاهد بی‌ثباتی بیشتری خواهد بود و ایران کماکان به چالش کشیدن سلطه ایالات متحده در منطقه ادامه خواهد داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            این درگیری کنونی بسیار ناپایدار است. در حالی که ایالات متحده حمله برنامه‌ریزی شده‌اش را متوقف کرده، حملات موشکی اخیر ایران به اردن نشان می‌دهد که این کشور حاضر است به‌طور مستقیم با متحدان آمریکا درگیر شود. این امر خطر تشدید بیشتر را افزایش می‌دهد، زیرا ایران ممکن است حمله به متحدان را راهی برای تضعیف نفوذ ایالات متحده بدون رویارویی مستقیم با خود آمریکا ببیند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری پیامدهای جهانی دارد. خاورمیانه منطقه‌ای حیاتی برای تولید نفت است و هرگونه تشدید می‌تواند عرضه را مختل کند و باعث افزایش جهانی قیمت نفت گردد. افزون بر این، یک جنگ گسترده‌تر می‌تواند کشورهای دیگری همچون اسرائیل یا عربستان سعودی را نیز درگیر نماید و درگیری منطقه‌ای را به یک بحران جهانی مبدل سازد. جهان با نگرانی ناظر ماجراست، در حالی که ایالات متحده و ایران در آستانه رویارویی خطرناکی قرار دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            آمریکا بدون تردید بازیگر اصلی (کلیدی) است، اما کشورهای هم‌پیمانش در منطقه مانند اردن، عربستان سعودی و اسرائیل نیز به دلیل حملات ایران به طور مستقیم درگیر شده‌اند. سایر کشورها مانند روسیه یا چین ممکن است در حاشیه باقی بمانند، ولی وضعیت را با دقت زیر نظر خواهند داشت. سازمان ملل و اروپا ممکن است تلاش کنند تا صلح برقرار کنند، اماGiven the high stakesTheir influence is limited.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در صورت تشدید بیشتر درگیری‌ها، احتمال بسیار بالایی وجود دارد که قیمت‌های نفت افزایش یابد. ایران یک تولیدکننده عمده نفت است و هرگونه اختلال در توانایی این کشور برای صادرات نفت (به دلایل تحریم‌ها یا جنگ) سبب تنگ‌تر شدن عرضه جهانی خواهد شد. علاوه بر این، حملات به متحدان ایالات متحده مانند اردن می‌تواند مسیرهای حمل و نقل یا ثبات منطقه‌ای را مختل کند و به این ترتیب قیمت‌های نفت را بیش از پیش افزایش دهد. این موضوع اهمیت دارد زیرا افزایش قیمت‌های نفت بر همه چیز، از قیمت بنزین تا رشد اقتصادی جهانی، تأثیر می‌گذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده حمله برنامه‌ریزی شده به ایران را برای پیگیری مذاکرات متوقف کرده است، اما تنش‌ها همچنان در سطح بسیار بالایی قرار دارد. ایران در حال هدف قرار دادن متحدان آمریکا مانند اردن است که این نشان می‌دهد که این کشور مایل است به‌طور غیرمستقیم با تضعیف نفوذ آمریکا مبارزه کند. یک جنگ منطقه‌ای گسترده می‌تواند عرضه نفت جهانی را مختل کند و منجر به افزایش قیمت‌ها و تأثیرات اقتصادی گسترده در سرتاسر جهان شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            توقف ناگهانی حمله آمریکا و اعلام مذاکرات غیرمنتظره بود، زیرا گزارش‌های اولیه حاکی از تشدید سریع نظامی داشت. این لحظهٔ نادری است که امکان دیپلماسی به نظر می‌رسد، حتی اگر احتمال موفقیت کم باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            هيچ پيشرفتي شاخصي در اين زمينه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
