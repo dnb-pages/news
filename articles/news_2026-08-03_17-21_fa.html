@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-03 17:26</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-03 17:26</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایران می‌گوید پس از اشاره ترامپ به پیشرفت در تنگه هرمز مذاکرات فعلی با آمریکا وجود ندارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۳  ساعت ۱۹:۴۱:۵۲</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ طی آخر هفته میلادی با لغو حمله تهدیدآمیز به ایران از پیشرفت‌های مذاکرات خبر داد. ایران اعلام کرد که در حال حاضر گفت‌وگوهایی با ایالات متحده در جریان نیست.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/03/world/middleeast/iran-talks-us-oman-strait-hormuz-trump.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایران اعلام کرد که پس از اظهارات ترامپ در مورد از سرگیری مذاکرات، در حال گفت‌وگو با عمان است، اما نه با ایالات متحده آمریکا</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (محتوای اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۳  ساعت ۱۹:۲۹:۴۸</strong></span>
+                </div>
+                <p class='summary'>اظهارات ایران مبنی بر اینکه هیچ مذاکراتی با ایالات متحده نداشته است، دونالد ترامپ را بر آن داشت تا محکومیت شدیدی علیه رهبران ایران صادر کند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c23579jzv08o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>تهدید به تانکرهای نفتی در خاورمیانه بدترین وضعیت از زمان آغاز جنگ با ایران است، تحلیلگران می‌گویند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۳ ساعت ۱۹:۲۷:۲۷ (به وقت گرینویچ)</strong></span>
+                </div>
+                <p class='summary'>به گفته تحلیلگران، حمل‌ونقل‌گران در حال مواجهه با وضعیت فزاینده پیچیده‌ای هستند زیرا حملات تازه به مسیرهای جایگزین حمل‌ونقل، تانکرها را هدف قرار داده‌اند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cjrv0dy2e90o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ایران: مذاکراتی با آمریکا درباره تنگه هرمز برگزار نخواهد شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۳T۱۶:۵۳:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>وزارت امور خارجه کشور اعلام کرد که مذاکرات با عمان درباره مدیریت ترافیک از این گذرگاه راهبردی ادامه دارد.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-says-no-talks-with-the-u-s-on-hormuz-strait-9863c9f0' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>نظر | راه خروج از تله ایران دونالد ترامپ؟ ما تا سال ۲۰۲۹ پاسخ آن را خواهیم یافت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۲ ساعت ۱۹:۰۸</strong></span>
+                </div>
+                <p class='summary'>او اولین رئیس‌جمهوری نیست که در آسیا گرفتار شده است. دیگران آن را به جانشینان خود واگذار کردند.</p>
+                <div class='link'><a href='https://www.wsj.com/opinion/the-way-out-of-trumps-iran-trap-well-find-out-in-2029-6abd049c' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>ابهام در ذهن ایرانیان پس از نوسانات ترامپ بین جنگ و مذاکره</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۳ساعت ۱۶:۳۳:۰۸Z</strong></span>
+                </div>
+                <p class='summary'>ایرانی‌ها در میان اظهارات متغیر رئیس‌جمهور آمریکا درباره درگیری و مذاکرات احساس فشار می‌کنند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/3/uncertainty-on-iranians-minds-as-trump-fluctuates-on-war-and-talk?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>قیمت نفت افت کرد زیرا ترامپ از حمله به ایران خودداری کرد و گفت مذاکرات از سر گرفته خواهد شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> گزارش مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۳  ساعت ۱۹:۴۷:۲۹ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>قیمت نفت پس از آنکه رئیس‌جمهور ایالات متحده دونالد ترامپ اعلام کرد از حمله برنامه‌ریزی‌شده به ایران صرف‌نظر کرده و گفت مذاکرات جدید با جمهوری اسلامی از روز دوشنبه آغاز خواهد شد، کاهش یافت.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/oil-slips-as-trump-holds-off-iran-attack-says-talks-to-resume' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>ایران برای ترک کردن بلوف ترامپ، مذاکره با آمریکا را تکذیب کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسه24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۳  ساعت ۱۹:۱۴:۳۱ به وقت محلی</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده دونالد ترامپ پس از اعلام این‌که он تصمیم گرفته است از انجام حملات گسترده‌ای که تهدید کرده بود علیه این کشور، حمله‌های جدید برای کاهش تنش‌ها در جنگ با ایران را از تاریخ ۳ اوت آغاز کند. این اتفاق یک بار رخ نداده است: ترامپ معمولاً بعد از تهدید به حمله به ایران، از گفت‌وگوهای جاری خبر می‌دهد. اما این بار به‌نظر می‌رسد که ایران تسلیم این استراتژی نشده است. خبرنگار فرانسه ۲۴، کتِوان گوجِستانِی توضیحات بیشتری می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/ایران_ترامپ_را_بلوف_باز_می‌کند_و_مذاکره_با_آمریکا_را_انکار_می‌کند' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۳ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های میان ایالات متحده و ایران دوباره افزایش یافته است. رئیس‌جمهور ترامپ پس از ادعای پیشرفت در مذاکرات با ایران در مورد تنگه هرمز، یک حمله نظامی برنامه‌ریزی‌شده را لغو کرد. با این حال، ایران هرگونه مذاکرات مستقیم با ایالات متحده را تکذیب کرده و تنها به مذاکرات غیرمستقیم با عمان اعتراف کرده است. معامله‌گران نفت با افزایش ابهام درباره اوضاع، قیمت‌ها را اندکی پایین آوردند. اوضاع همچنان پر از نوسان است و هر دو طرف در حال بازی خطرناکی از موسوم به «لبه پرتگاه» هستند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            رئیس‌جمهور ترامپ اعلام کرد که از انجام حملات نظامی برنامه‌ریزی‌شده علیه ایران خودداری می‌کند و مدعی شد که مذاکرات برای کاهش تنش‌ها در حال پیشرفت است. ایران در پاسخ هرگونه مذاکرات مستقیم با ایالات متحده را انکار کرد، اگرچه به گفتگوهای غیرمستقیم در حال انجام با عمان برای مدیریت ترافیک در تنگه هرمز—یکی از مهم‌ترین مسیرهای انتقال نفت—اعتراف نمود. ایالات متحده همچنین ادعا کرد مذاکرات با ایران از سوم اوت از سر گرفته می‌شود، اما ایران این ادعا را رد کرده و استراتژی ترامپ را یک bluff (حقه) خواند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرفصل</h3>
+            به نظر می‌رسد وضعیت در کوتاه مدت احتمالاً همچنان تنش‌آمیز باقی بماند. ایران به نظر می‌رسد در حال فشار آوردن به آمریکا است و مذاکرات مستقیم را رد کرده، در حالی که ارتباطات غیرمستقیم خود را از طریق عمان حفظ می‌کند. بسته به نحوهٔ مدیریت طرفین حرکت‌های بعدی خود، احتمال رخ دادن تشدید بیشتر یا کاهش ناگهانی تنش‌ها وجود دارد. اگر پیشرفتی حاصل نشود، خطر وقوع درگیری نظامی یا مختل شدن بیشتر مسیرهای حمل‌ونقل نفت همچنان بالاست.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            <ul><li>۱. ۳ اوت ۲۰۲۶: ترامپ حملات نظامی تهدیدشده را لغو می‌کند و مدعی می‌شود مذاکرات با ایران در حال پیشرفت است.</li><li>۲. ۳ اوت ۲۰۲۶: ایران ادعاهای آمریکا را رد می‌کند، خبرد می‌دهد که هیچ مذاکره مستقیمی در جریان نیست و تنها مذاکرات غیرمستقیم از طریق عمان ادامه دارد.</li><li>۳. ۳ اوت ۲۰۲۶: قیمت‌های نفت به slight افت می‌کند زیرا بازارها به کاهش فوری تهدید درگیری واکنش نشان می‌دهند.</li><li>۴. هفته‌های گذشته: تنش‌های ادامه‌دار از جمله حملات به نفت‌کش‌ها و تهدیدهای طرفین.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در بلندمدت، به نظر نمی‌رسد که تنش بین ایالات متحده و ایران به سرعت حل شود. به نظر می‌رسد ایران مصمم است که بدون تسلیم در برابر خواسته‌های ایالات متحده، نفوذ خود در منطقه را تثبیت کند، در حالی که ایالات متحده در تلاش است تا میان فشار و دیپلماسی توازن برقرار کند. وضعیت می‌تواند در صورت حصول توافق تثبیت شود یا در صورت شکست مذاکرات به درگیری‌های عمیق‌تری منجر شود. involvement بازیگران منطقه‌ای مانند عمان نشان می‌دهد که دیپلماسی همچنان امکان‌پذیر است، اما اعتماد بین ایالات متحده و ایران به شدت پایین است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            این درگیری هنوز با ریسک بالا، ولی به جنگ تمام‌عیار تبدیل نشده است. هر دو طرف از ترکیبی از تهدیدهای نظامی و مانورهای دیپلماتیک استفاده می‌کنند. ایران ترامپ را به چالش کشیده و آمریکا نیز در حالی که گاه سخن tough و گاه تمایل به مذاکره نشان می‌دهد. شدت بحران به دلیل حملات مکرر به تانکرهای نفتی و تهدید اقدام نظامی جدی افزایش یافته، اما تاکنون هیچ یک از طرفین تمام‌قد به جنگ تمام‌عیار متعهد نشده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری پیامدهای جهانی دارد زیرا تنگه هرمز یک مسیر حیاتی انتقال نفت است. هرگونه اختلال در این منطقه می‌تواند باعث افزایش قیمت نفت و تأثیر بر اقتصاد جهانی شود. این ناپایداری همچنین ناآرامی‌هایی در خاورمیانه ایجاد می‌کند که شامل تنش‌های گسترده‌تر با کشورهای دیگری مانند عربستان سعودی و اسرائیل است. در بلند مدت، این وضعیت می‌تواند پیوندها و روابط قدرت در منطقه را بازتعریف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده و ایران بازیگران اصلی هستند و عمان به‌عنوان یک واسطه عمل می‌کند. کشورهای دیگر، به‌ویژه متحدان ایالات متحده در خاورمیانه، به دلیل خطر تهدید عرضه نفت، به دقت وضعیت را زیر نظر دارند. متحدان ایالات متحده ممکن است برای دستیابی به راه‌حل دیپلماتیک فشار بیاورند، در حالی که شرکای منطقه‌ای ایران (مانند حزب‌الله لبنان یا حوثی‌های یمن) ممکن است اقدامات خود را برای حمایت از ایران تشدید کرده و بر پیچیدگی‌ها بیفزایند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت اندکی کاهش یافت زیرا ترامپ از حمله نظامی عقب‌نشینی کرد و نشان داد که احتمال درگیری فوری کمتر شده است. با این حال، تنش‌ها و بی‌ثباتی مداوم در تنگه هرمز به دلیل خطرات عرضه، قیمت‌ها را بالا نگه داشته است. چنانچه حملات بیشتری بر تانکرها یا زیرساخت‌های نفتی رخ دهد، قیمت‌ها می‌تواند به‌طرز شدیدی افزایش یابد و بر هزینه‌های سوخت جهانی و ثبات اقتصادی تاثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران با وجود ادعاهای ترامپ مبنی بر مذاکرات مستقیم با ایالات متحده، این اظهارات را تردستی می‌داند و چنین استراتژی را فریب‌کاری قلمداد می‌کند. تنگه هرمز همچنان نقطه حساسی باقی مانده است و خطر اختلال‌های بیشتر در عرضه جهانی نفت وجود دارد. هر دو طرف در حال راه رفتن روی یک طناب کش tightrope بین جنگ و دیپلماسی هستند، به همین خاطر وضعیت پیش‌بینی‌نشدنی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            این مورد الگویی را دنبال می‌کند که در آن ترامپ بین تهدید و مذاکره در نوسان است و امتناع ایران از مشارکت مستقیم نیز با رفتار گذشته آن کشور سازگار می‌باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه‌های قابل توجهی در این زمینه صورت نگرفته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
