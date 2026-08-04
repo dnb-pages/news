@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-04 09:17</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-04 09:17</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ همچنان به تهدیدات خود ادامه می‌دهد. واشنگتن و جهان دیگر در برابر آنها واکنشی از خود نشان نمی‌دهند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۴ ساعت ۰۹:۰۰ بامداد (به وقت جهانی)</strong></span>
+                </div>
+                <p class='summary'>رhetorیک بی‌پایه رئیس‌جمهور دیگر قدرتِ ترساندن رهبران جهان را ندارد؛ زیرا آنها او را در محدوده دادگاه‌ها محصور دیده‌اند، توسط کنگره، طرد شده و از سوی ایران نادیده گرفته شده است.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/08/04/trump-keeps-making-threats-washington-world-have-stopped-flinching/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آرامکو گفت: حملات ماه ژوئیه تاثیر عملیاتی مادی نداشته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۴T۰۷:۳۶:۳۹Z</strong></span>
+                </div>
+                <p class='summary'>آرمانکو عربستان اعلام کرد که حملات اخیر ماه گذشته تأثیر مادی بر عملیات این شرکت نداشته و این شرکت در حال تلاش برای گسترش ظرفیت صادرات نفت خود است زیرا جنگ با ایران جریان‌های نفتی را از طریق تنگه هرمز مختل کرده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/aramco-says-july-attacks-had-no-material-impact-on-operations' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>چگونگی تخریب اسرائیل به زیارتگاه تاریخی سماغ صالح (رَفی-نیا) در ایران (۱/۲)</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۴ ۱۳:۳۹:۱۴</strong></span>
+                </div>
+                <p class='summary'>این کنیسه بزرگ پیش از آن‌که در جریان حمله هوایی اسرائیل در ۷ آوریل از بین برود، نمونه‌ای از یکی از بزرگ‌ترین جوامع یهودی خاورمیانه خارج از اسرائیل محسوب می‌شد. به گفته یکی از عبادت‌کنندگان و یک کارشناس که با جامعه پویای آن آشنایی زیادی داشتند، این کنیسه برجسته تنها مکانی برای عبادت نبود.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260804-how-israel-reduced-iran-historic-rafi-nia-synagogue-rubble-1-2' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>سود خالص آرامکوی عربستان ۳۳ درصد افزایش یافت؛ دلیل آن افزایش قیمت نفت به خاطر جنگ با ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۴ ساعت ۱۰:۵۴</strong></span>
+                </div>
+                <p class='summary'>افزایش قیمت‌های نفت خام باعث بهبود سود شد، علی‌رغم اختلال در تنگه هرمز که منجر به کاهش حجم فروش گردید.</p>
+                <div class='link'><a href='https://www.wsj.com/business/energy-oil/saudi-aramco-profit-jumps-33-on-higher-oil-prices-amid-iran-war-3ae028ce' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 آنالیز اوضاع ایران - 4 اوت 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران همچنان در تنش رو به افزایش با اسرائیل و قدرت‌های غربی گرفتار است که شامل حملات نظامی، فشارهای اقتصادی و درگیری‌های نیابتی می‌شود. حملات اخیر اسرائیل یک کنیسه تاریخی در تهران را ویران کرد، در حالی که بازارهای نفت منطقه با وجود اختلال در تنگه هرمز، انعطاف‌پذیری خود را نشان می‌دهند. تهدیدات آمریکا تحت ریاست‌جمهوری ترامپ اهمیت چندانی ندارد، چرا که بازیگران جهانی خود را با ناپایداری‌های طولانی‌مدت وفق می‌دهند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            اسرائیل در ۱۷ فروردین ۱۴۰۵ (۷ آوریل ۲۰۲۶)، کنیسهٔ تاریخی رفیع‌نیا در تهران که نماد درگیری عمیق‌تر بین این دو کشور بود را با بمباران‌های هوایی منهدم کرد. در همین حال، شرکت سعودی آرامکو اعلام کرد که حملات اخیر به تأسیسات این شرکت در تیر ماه (ژوئیه) تأثیر عملیاتی کمتری داشته است، اما با وجود اختلال در تنگه هرمز — گلوگاه مهم حمل‌ونقل جهانی نفت — ظرفیت صادرات نفتی این شرکت در حال افزایش است. ایالات متحده تحت ریاست‌جمهوری ترامپ به ادامه تهدیدها ادامه می‌دهد، اما رهبران جهان و ایران چندان تحت تأثیر الفاظ واشنگتن قرار نگرفته‌اند. قیمت نفت به دلیل درگیری‌ها همچنان بالا است و این امر با وجود کاهش حجم فروش شرکت آرامکو، به نفع این شرکت سعودی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            چشم‌انداز فوری نشان‌دهنده ادامه و در عین حال کنترل‌شده افزایش تنش است. اسرائیل احتمالاً به حملات هدفمند برای تضعیف توانایی‌های نظامی ایران ادامه خواهد داد، در حالی که ایران ممکن است برای اجتناب از برخورد مستقیم به گروه‌های نیابتی خود (مانند حزب‌الله یا حوثی‌ها) reliance کند. اختلالات تنگه هرمز ادامه خواهد یافت، اما نه در حدی که موجب قطع جریان نفت شود. ایالات متحده ممکن است با توجه به محدودیت‌های داخلی و توانایی ایران برای مقابله، مشارکت مستقیم خود را کاهش دهد. راه‌حل‌های دیپلماتیک همچنان دور از دسترس هستند، زیرا هیچ یک از طرفین تمایلی به کاهش تنش نشان نمی‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ['۷ آوریل ۲۰۲۶: اسرائیل حملات هوایی را آغاز و کنیسه رفیع‌نیا در تهران را تخریب می‌کند.', 'ژوئیه ۲۰۲۶: حملات به تاسیسات شرکت سعودی آرامکو، اگرچه عملیات آن‌ها تا حد زیادی تحت تاثیر منفی قرار نمی‌گیرد.', 'اوت ۲۰۲۶: شرکت سعودی آرامکو گزارش می‌دهد که به دلیل بالا بودن قیمت نفت، سود آن ۳۳٪ افزایش یافته است، علی‌رغم کاهش حجم صادرات.', 'در جریان: ایالات متحده تهدید می‌کند، اما بازیگران جهانی و ایران این تهدیدات را بی‌تاثیر و غیرموثر تلقی می‌کنند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            در بلندمدت، احتمالاً درگیری وارد مرحله‌ای طولانی از جنگ‌های با شدت низкой، با وقوع دوره‌های پراکنده‌ای از خشونت بیشتر خواهد شد. به نظر می‌رسد استراتژی اسرائیل بر مهار نفوذ ایران بدون تحریک جنگ گسترده متمرکز است. در همین حال، ایران ممکن است به استفاده از نیابتی‌های منطقه‌ای برای اعمال فشار ادامه دهد، ضمن اینکه از تلافی مستقیم برای جلوگیری از واکنش‌های شدیدتر پرهیز می‌کند. تحریم‌های اقتصادی و دستکاری در بازار نفت از ابزارهای کلیدی طرفین خواهند بود. ایالات متحده ممکن است نقش نظامی مستقیم خود را کاهش دهد، و در نتیجه، متحدان منطقه‌ای مانند عربستان سعودی و اسرائیل این مسئولیت را به طور مستقل در قبال ایران بر عهده بگیرند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این مناقشه در حال حاضر با عدم تقارن مشخص می‌شود: حملات دقیق اسرائیل علیه اهداف با ارزش بالا (مانند کنیسه) در مقابل reliance ایران بر نیروهای نیابتی (مانند حملات پهپادی، خرابکاری) و متحدان منطقه‌ای قرار دارد. شدت این درگیری متوسط است—به اندازه‌ای کافی برای بالا نگه داشتن تنش‌ها، اما نه به اندازه‌ای که به جنگ تمام‌عیار منجر شود. هر دو طرف به دقت اقدامات خود را تنظیم می‌کنند تا از تشدید درگیری‌ها اجتناب کنند، در حالی که به اهداف خود دست یابند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال شکل‌دهی مجدد به ژئوپلیتیک خاورمیانه است؛ به طوری که اسرائیل بازدارندگی خود در برابر ایران را تقویت می‌کند، در حالی که ایران با وجود تحریم‌های فلج‌کننده به دنبال حفظ نفوذ خود است. بازار جهانی نفت همچنان در معرض اختلالات تنگه هرمز قرار دارد، اما نه به حدی که دچار فروپاشی شود. کاهش نقش ایالات متحده، بازتابی از تحولات گسترده‌تر در دینامیک‌های قدرت بین‌المللی است، جایی که بازیگران منطقه‌ای مانند عربستان سعودی و اسرائیل ابتکار عمل بیشتری را بر عهده گرفته‌اند. هزینه انسانی این بحران—مانند تلفات غیرنظامیان در ایران—خطر تقویت بی‌ثباتی بیشتر و احساسات ضدغربی در منطقه را به دنبال دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            اسرائیل بازیگری اصلی در برخوردهای مستقیم است، در حالی که ایران بر روی نیروهای واسطه‌ای مانند حزب‌الله (لبنان) و حوثی‌ها (یمن) برای جنگ‌های نامتقارن متکی است. عربستان سعودی، علی‌رغم اینکه هدف قرار دارد، کماکان بر ثبات‌بخشی به بازارهای نفتی متمرکز است. ایالات متحده در دوره ریاست‌جمهوری ترامپ، به دلیل محدودیت‌های سیاسی داخلی و توانایی ایران در متوازن‌سازی نفوذ آمریکا (به‌عنوان مثال از طریق متحدانی مانند روسیه یا چین) نفوذ واشنگتن را محدود می‌کند. روسیه و چین احتمالاً حمایت‌های دیپلماتیک یا محدود جنبه مادی را به ایران ارائه می‌دهند، اما نه به گونه‌ای که منجر به رویارویی مستقیم با ایالات متحده یا متحدانش شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل ناآرامی‌های مداوم در تنگه هرمز و خطر حملات بیشتر به زیرساخت‌های حیاتی همچنان بالا باقی مانده‌اند. اگرچهARAMCO سعودی از تأثیرات عملیاتی اندک حملات اخیر خبر می‌دهد، تهدیدهای مداوم باعث نگرانی بازارها می‌شود. افزایش قیمت نفت برای کشورهای خلیج‌فارس مانند عربستان سعودی سودمند است، اما برای واردکنندگان فشار بالایی ایجاد کرده و ناپایداری اقتصادی جهانی را تشدید می‌کند. در صورت تشدید ناآرامی‌ها، قیمت‌ها ممکن است به‌سرعت اوج بگیرند و خطر رکود جهانی یا کمبود انرژی را به همراه داشته باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            اسرائیل با هدف تضعیف ایران از حملات هدفمند استفاده می‌کند بدون آنکه منجر به جنگی گسترده شود. هم‌چنان ناآرامی‌ها در تنگه هرمز باعث بالا نگه داشتن قیمت‌های نفت شده و این در حالی است که کشورهای حاشیه خلیج فارس از این موضوع منتفع می‌شوند، اما خطر فشارهای اقتصادی جهانی را به دنبال دارد. نقش ایالات متحده در حال کاهش است، زیرا تهدیدات ترامپ وزن کمتری دارد و بازیگران منطقه‌ای رهبری را بر عهده گرفته‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تخریب کنیسه تاریخی رفیع‌نژاد (سمبلی از جامعه یهودیان ایران)، باعث ارتقای چشمگیری و شگفت‌انگیزی در تنش‌ها شد و نشان داد که اسرائیل حاضر است برای ارسال پیامی، به تخریب اماکن فرهنگی و مذهبی دست بزند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییری قابل توجه در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
