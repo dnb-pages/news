@@ -1,25 +1,5 @@
 [
   {
-    "original_title": "Trump keeps making threats. Washington and the world have stopped flinching.",
-    "title": "Trump keeps making threats. Washington and the world have stopped flinching.",
-    "original_summary": "The president’s bombast has ceased to rattle world leaders, who have seen him fenced in by courts, rebuffed by Congress and strung along by Iran. ",
-    "summary": "The president’s bombast has ceased to rattle world leaders, who have seen him fenced in by courts, rebuffed by Congress and strung along by Iran.",
-    "source_name": "Washington Post (analysis)",
-    "published_at": "2026-08-04T09:00:00Z",
-    "link": "https://www.washingtonpost.com/world/2026/08/04/trump-keeps-making-threats-washington-world-have-stopped-flinching/",
-    "domain": ""
-  },
-  {
-    "original_title": "Aramco Says July Attacks Had No Material Operational Impact",
-    "title": "Aramco Says July Attacks Had No Material Operational Impact",
-    "original_summary": "Saudi Aramco said attacks last month didn’t have a material impact on its operations, and the company is working to expand its oil export capacity as the Iran war disrupts flows through the Strait of Hormuz.",
-    "summary": "Saudi Aramco said attacks last month didn’t have a material impact on its operations, and the company is working to expand its oil export capacity as the Iran war disrupts flows through the Strait of Hormuz.",
-    "source_name": "Financial Post (analysis)",
-    "published_at": "2026-08-04T07:36:39Z",
-    "link": "https://financialpost.com/pmn/business-pmn/aramco-says-july-attacks-had-no-material-impact-on-operations",
-    "domain": "PMN Business"
-  },
-  {
     "original_title": "How Israel reduced Iran’s historic Rafi-Nia synagogue to rubble (1/2)",
     "title": "How Israel reduced Iran’s historic Rafi-Nia synagogue to rubble (1/2)",
     "original_summary": "\nBefore it was destroyed in an Israeli air strike on April 7, Tehran’s Rafi-Nia synagogue was emblematic of one of the Middle East's largest Jewish communities outside of Israel. According to one worshipper and an expert, both well acquainted with its vibrant community, the prominent synagogue was far more than just a place of worship.\n",
@@ -30,13 +10,43 @@
     "domain": "Middle East"
   },
   {
-    "original_title": "Saudi Aramco Profit Jumps 33% on Higher Oil Prices Amid Iran War",
-    "title": "Saudi Aramco Profit Jumps 33% on Higher Oil Prices Amid Iran War",
-    "original_summary": "Elevated crude prices lifted earnings despite disruption in the Strait of Hormuz pushing sales volumes lower.",
-    "summary": "Elevated crude prices lifted earnings despite disruption in the Strait of Hormuz pushing sales volumes lower.",
-    "source_name": "WSJ (analysis)",
-    "published_at": "2026-08-04T06:24:00Z",
-    "link": "https://www.wsj.com/business/energy-oil/saudi-aramco-profit-jumps-33-on-higher-oil-prices-amid-iran-war-3ae028ce",
+    "original_title": "Trump keeps making threats. Washington and the world have stopped flinching.",
+    "title": "Trump keeps making threats. Washington and the world have stopped flinching.",
+    "original_summary": "The president’s bombast has ceased to rattle world leaders, who have seen him fenced in by courts, rebuffed by Congress and strung along by Iran. ",
+    "summary": "The president’s bombast has ceased to rattle world leaders, who have seen him fenced in by courts, rebuffed by Congress and strung along by Iran.",
+    "source_name": "Washington Post (analysis)",
+    "published_at": "2026-08-04T09:00:00Z",
+    "link": "https://www.washingtonpost.com/world/2026/08/04/trump-keeps-making-threats-washington-world-have-stopped-flinching/",
     "domain": ""
+  },
+  {
+    "original_title": "‘One last chance’: The times Trump threatened Iran, said deal imminent",
+    "title": "‘One last chance’: The times Trump threatened Iran, said deal imminent",
+    "original_summary": "US president has claimed Iran &#039;desperate&#039; to do a deal or given Tehran &#039;last chance&#039; on multiple occasions.",
+    "summary": "US president has claimed Iran 'desperate' to do a deal or given Tehran 'last chance' on multiple occasions.",
+    "source_name": "Al Jazeera (core)",
+    "published_at": "2026-08-04T10:53:33Z",
+    "link": "https://www.aljazeera.com/features/2026/8/4/one-last-chance-the-times-trump-threatened-iran-said-deal-imminent?traffic_source=rss",
+    "domain": "Features"
+  },
+  {
+    "original_title": "Hormuz Opening Uncertain After New Strike, Hurdles in Talks",
+    "title": "Hormuz Opening Uncertain After New Strike, Hurdles in Talks",
+    "original_summary": "Talks to open the waterway were bogged down in a dispute over fees, clouding the outlook for the vital energy corridor.",
+    "summary": "Talks to open the waterway were bogged down in a dispute over fees, clouding the outlook for the vital energy corridor.",
+    "source_name": "WSJ (analysis)",
+    "published_at": "2026-08-04T11:15:00Z",
+    "link": "https://www.wsj.com/world/middle-east/hormuz-opening-uncertain-after-new-strike-hurdles-in-talks-e2dfd2ce",
+    "domain": ""
+  },
+  {
+    "original_title": "Emerging Markets Stay Under Pressure as Iran Impasse Lifts Oil",
+    "title": "Emerging Markets Stay Under Pressure as Iran Impasse Lifts Oil",
+    "original_summary": "Emerging-market stocks and currencies stayed under pressure as the lack of progress on US-Iran talks lifted oil prices back above $86 a barrel.",
+    "summary": "Emerging-market stocks and currencies stayed under pressure as the lack of progress on US-Iran talks lifted oil prices back above $86 a barrel.",
+    "source_name": "Financial Post (analysis)",
+    "published_at": "2026-08-04T10:56:32Z",
+    "link": "https://financialpost.com/pmn/business-pmn/emerging-markets-stay-under-pressure-as-iran-impasse-lifts-oil",
+    "domain": "PMN Business"
   }
 ]
