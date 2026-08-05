@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-05 16:58</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-05 16:58</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایران اعلام کرد با عمان بر سر توافقنامه‌ای برای کشتی‌رانی در تنگه هرمز به توافق رسید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۵T۱۵:۴۶:۵۰Z</strong></span>
+                </div>
+                <p class='summary'>ایران اعلام کرد که با عمان بر سر یک مسیر پیشنهادی برای حمل‌ونقل از تنگه هرمز به توافق رسیده است؛ این می‌تواند گامی به‌سوی بازگشایی دوباره این آبراه حیاتی برای تأمین انرژی باشد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/iran-says-agreement-on-hormuz-shipping-route-reached-with-oman' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>رئيس حقوق بشر سازمان ملل از افزایش اعدام‌ها در ایران از مارس به این سو ابراز نگرانی کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۵T۱۴:۰۴:۰۹Z</strong></span>
+                </div>
+                <p class='summary'>ولکر تورک می‌گوید ۵۶ نفر به اتهام‌های مرتبط با امنیت ملی اعدام شده‌اند که از این میان، ۲۷ نفر مرتبط با اعتراضات ژانویه بودند.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c75gvzxrz49o?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>جنگ علیه ایران: توافق آمریکا و ایران دنبال نزدیک‌تر شدن</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۵ ساعت ۱۹:۴۲:۳۴</strong></span>
+                </div>
+                <p class='summary'>بر اساس گفته مقامات آمریکایی، قراردادی بین ایالات متحده و ایران ممکن است ظرف ۴۸ ساعت آینده امضا شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/5/war-on-iran-us-iran-deal-edges-closer?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>چگونه پورتفوی خود را برای درد طولانی‌مدت ناشی از شوک نفتی جنگ ایران آماده کنیم</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۵ ساعت ۲۰:۴۱:۰۳ به وقت رسمی ایران</strong></span>
+                </div>
+                <p class='summary'>جان دوگوئیه: با تغییر موازنه قدرت در سطح جهانی و ظهور ایران به عنوان یک بازیگر تعیین‌کننده، تنش‌های اقتصادی می‌تواند تشدید شود</p>
+                <div class='link'><a href='https://financialpost.com/investing/how-to-prepare-portfolio-for-long-term-oil-shock-pain' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۵ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>پس از ماه‌ها تنش، به نظر می‌رسد یک توافق میان آمریکا و ایران در آستانه finalization قرار دارد که می‌تواند منجر به کاهش برخی از درگیری‌ها شود. از سوی دیگر، در حالی که ایران در میان اعتراض‌ها اقدام به اعدام افراد بیشتری می‌کند، ایران و عمان توافق کرده‌اند تا یک مسیر حمل و نقل دریایی جدید در تنگه هرمز افتتاح کنند و بازارهای نفتی جهان خود را برای مواجهه با اختلالات بالقوه بلندمدت آماده می‌کنند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            توسعه‌های مهم متعددی در ایران در حال وقوع است. نخست اینکه ایران و ایالات متحده در آستانه نهایی کردن توافقی هستند که می‌تواند دهه‌ها خصومت را کاهش دهد. دوم اینکه ایران با عمان توافق کرده است تا یک مسیر کشتیرانی جدید در تنگه هرمز، یک آبراه حیاتی برای عرضه جهانی نفت، بازگشایی کند. سوم اینکه وضعیت حقوق بشر در ایران در حال وخیم‌تر شدن است و از فروردین تاکنون دست‌کم ۵۶ اعدام انجام شده که بسیاری از آنها به اعتراضات ضد دولتی مرتبط است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            توافق بین آمریکا و ایران احتمالاً تنش‌های فوری را کاهش می‌دهد، فرصت‌های اقتصادی را باز می‌گرداند و به ایران اجازه می‌دهد تا دوباره به تجارت جهانی بپیوندد. توافق تنگه هرمز با عمان می‌تواند مسیرهای کشتیرانی را تثبیت کرده و خطر اختلالات ناگهانی در عرضه نفت را کاهش دهد. با این حال، سرکوب داخلی ایران و رقابت‌های منطقه‌ای به این معنی است که ثبات بلندمدت نامشخص است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. پنجم اوت ۲۰۲۶: ایران و عمان قرارداد گشایش مسیر کشتیرانی جدیدی در تنگه هرمز را اعلام کردند.</li><li>۲. پنجم اوت ۲۰۲۶: رئیس حقوق بشر سازمان ملل در مورد افزایش اعدام‌ها در ایران هشدار داد.</li><li>۳. پنجم اوت ۲۰۲۶: مقام‌های آمریکایی اعلام کردند که توافق احتمالی میان ایران و آمریکا می‌تواند ظرف ۴۸ ساعت (تا هفتم اوت ۲۰۲۶) امضا شود.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            اگر توافقی میان آمریکا و ایران حاصل شود، منطقه می‌تواند شاهد کاهش تنش‌های نظامی اما افزایش رقابت‌های ژئوپلیتیکی میان ایران، عربستان و دیگر قدرت‌های منطقه‌ای باشد. سرکوب داخلی در ایران ممکن است ادامه یابد یا تشدید شود، به‌ویژه اگر اعتراض‌ها افزایش پیدا کند. از لحاظ اقتصادی، ایران ممکن است بازگشایی به روی سرمایه‌گذاری خارجی را آغاز کند، اما ناپایداری در رهبری یا سیاست‌ها می‌تواند این روند را مختل کند. در سطح جهانی، بازارهای انرژی ممکن است شاهد تغییرات بلندمدتی باشند اگر ایران نقش مهم‌تری در عرضه نفت و گاز ایفا کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های تعارض</h3>
+            شدت این درگیری مختلط است: تلاش‌های دیپلماتیک (مانند توافق ایالات متحده و ایران و توافق عمان) برخی از تنش‌ها را کاهش می‌دهند، اما سرکوب‌های داخلی در ایران و رقابت‌های منطقه‌ای (با عربستان سعودی، اسرائیل و ایالات متحده) خطرات را بالا نگه می‌دارند. اعدام‌ها و اعتراض‌ها نشان می‌دهند که دولت ایران در مهار نارضایتی‌ها دچار مشکل است که می‌تواند به بیشتر شدن آشوب منجر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            جهان با دقت نظاره‌گر است، زیرا ایران یک تولیدکننده بزرگ نفت و بازیگر کلیدی در خاورمیانه به شمار می‌رود. заклю یک توافق با ایالات متحده می‌تواند اتحادهای منطقه‌ای را تغییر دهد، تهدیدهای نظامی (مانند حملات به کشتیرانی یا اسرائیل) را کاهش دهد و درهای اقتصادی را بگشاید. اما اگر مذاکرات با شکست مواجه شود، قیمت نفت ممکن است جهش کند، درگیری‌ها تشدید یابد و سرکوب داخلی ایران بدتر شده، ناپایداری بیشتری در منطقه را دامن زند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده به طور مستقیم با ایران در حال مذاکره است و هدف آن کاهش تنش‌ها و احتمالاً لغو تحریم‌ها است. عمان به عنوان میانجی و شریک در توافق تنگه هرمز ایفای نقش می‌کند. سازمان ملل در حال هشدار در مورد نقض حقوق بشر در ایران است. قدرت‌های منطقه‌ای مانند عربستان سعودی و اسرائیل ناظر این مذاکرات هستند، چراکه تقویت ایران ممکن است تعادل قدرت در خاورمیانه را تغییر دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            توافق بر سر بازگشایی مسیر تنگه هرمز می‌تواند نگرانی‌های لحظه‌ای مربوط به عرضه نفت را کاهش دهد، اما خطر گسترده‌تر درگیری همچنان پابرجاست. در صورت دستیابی به توافق میان آمریکا و ایران، ممکن است قیمت نفت تثبیت شود یا حتی کمی کاهش یابد، زیرا تحریم‌ها تسهیل می‌شوند و ایران نفت بیشتری صادر می‌کند. در صورت شکست مذاکرات یا تشدید ناآرامی‌های ایران، قیمت نفت ممکن است به دلیل اختلالات در供应 یا ترس از درگیری‌های گسترده‌تر در خلیج فارس افزایش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            توافقی نزدیک میان آمریکا و ایران وجود دارد که می‌تواند تنش‌ها را کاهش دهد، اما ممکن است منازعات عمیق‌تری مانند نقض حقوق بشر یا رقابت‌های منطقه‌ای را حل نکند. در ایران اعدام‌ها در حال افزایش است، به ویژه اعدام معترضان، که نشان می‌دهد دولت این کشور در حالی که مذاکرات با آمریکا ادامه دارد، سرکوب شدید مخالفان را تشدید کرده است. یک مسیر جدید کشتیرانی در تنگه هرمز می‌تواند عرضه نفت را تثبیت کند، اما خطر اختلال ناگهانی یا درگیری همچنان بالاست اگر تنش‌ها دوباره افزایش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            سرعت شکل‌گیری یک توافق احتمالی میان ایالات متحده و ایران پس از سال‌ها خصومت، با توجه به عدم اعتماد عمیق میان دو کشور، غیرمنتظره است. همچنین، تمایل ایران برای مذاکره درباره تنگه هرمز با عمان، کشوری که traditionally seen as neutral (به‌طور سنتی به عنوان بی‌طرف شناخته می‌شد)، شگفت‌آور است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافه</h3>
+            خاورمیانه همچنان یک منطقه بسیار ناآرام است. ایران در حالی که تلاش می‌کند با ایالات متحده ارتباط برقرار کند، اما نفوذ منطقه‌ای خود را حفظ می‌کند. تحریم‌ها و فشارهای اقتصادی نقش مهمی در رفتار ایران دارند، همان‌طور که در توافق هسته‌ای ۲۰۱۵ دیده شد. در همین حال، هم‌سویی ایران با گروه‌هایی مانند حماس و حزب‌الله همچنانImpact در نقش آن در درگیری‌های زن و لبنان دارد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
