@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-06 14:42</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-06 14:42</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>با پابرجایی شرایط جنگی با ایالات متحده، ایران نظارت امنیتی خود را در داخل کشور تشدید می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۶ ساعت ۱۷:۴۶</strong></span>
+                </div>
+                <p class='summary'>اعدام‌ها، بازداشت‌ها و تعطیلی فضاهای تجمع عمومی نگرانی‌هایی را در میان ایرانیان و گروه‌های حقوق بشری ایجاد کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/6/iran-tightens-security-grip-at-home-as-war-conditions-with-us-linger?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آیا جنگ ایالات متحده و ایران و بن‌بست اروندژنگ زمانی چند ماه به طول خواهد انجامید؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (الاساسية)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ مرداد ۱۴۰۵ ساعت ۱۷:۴۳:۰۵ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>آیا جنگ علیه ایران و تنگه هرمز به بن‌بست ماه‌ها ادامه خواهد یافت؟ کارشناسان موانعی را بررسی می‌کنند که مانع از رسیدن به یک توافق پایدار می‌شوند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/6/will-the-us-iran-war-and-hormuz-deadlock-last-for-months?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>جنگ‌ها، آتش‌سوزی‌های وسیع و مهاجرت، اروپا را برای کنترل تحت فشار گذاشته‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۶Т۱۳:۱۸:۳۵Z</strong></span>
+                </div>
+                <p class='summary'>این تابستان طاقت‌فرسا نشان داد که کشورهای اروپایی تا چه اندازه تحت فشار نیروهای خارج از کنترل خود هستند: جنگ در ایران و اوکراین، گرمای رکوردشکن و موارد دیگر.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/06/world/europe/europe-war-wildfires-migration.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ایران می‌گوید توافق با عمان در مورد تنگه هرمز به صورت اصولاً مورد توافق قرار گرفته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل فایننشیال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۵ ۱۳:۵۷:۴۱</strong></span>
+                </div>
+                <p class='summary'>این تحولات پس از ماه‌ها بن‌بست میان واشنگتن و تهران بر سر نحوه خاتمه جنگ صورت می‌گیرد</p>
+                <div class='link'><a href='https://financialpost.com/commodities/iran-says-oman-deal-strait-of-hormuz-agreed-in-principle' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 بررسی وضعیت ایران - 06-08-2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران در حال مقابله با سرکوب‌های داخلی فزاینده‌ای است که همراه با اعدام‌ها و بازداشت‌ها در شرایط تنش‌های پیوسته با ایالات متحده رخ می‌دهد، در حالی که به cautious بررسی یک توافق با عمان برای تسهیل بن‌بست تنگه هرمز می‌پردازد. از سوی دیگر، اروپا زیر فشار چندین بحران از جمله جنگ‌ها در ایران و اوکراین، آتش‌سوزی‌های گسترده و فشارهای مهاجرتی دست و پنجه نرم می‌کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران بر امنیت داخلی از جمله اعدام‌ها، بازداشت‌ها و تعطیلی فضاهای عمومی تشدید کنترل کرده است که احتمالاً واکنشی به تهدیدات یا ناپایداری‌های perceived  می‌باشد. در عین حال، نشانه‌هایی از پیشرفت دیپلماتیک احتمالی وجود دارد، به ‌نحوی که گزارش شده ایران و عمان توافق کلی در خصوص معامله‌ای درباره تنگه هرمز، یک مسیر مهم انتقال نفت، داشته‌اند.ایالات متحده و ایران پس از ماه‌ها درگیری همچنان در بن‌بست به سر می‌برند و آینده نامشخص باقی مانده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            وضعیت در ایران ممکن است در صورت موفقیت دیپلماسی با عمان تخفیف یابد و یا در صورت افزایش ناآرامی‌های داخلی وخیم‌تر شود. شرایط جنگی با ایالات متحده ممکن است ماه‌ها ادامه داشته باشد، بدون اینکه مسیری مشخص برای حل و فصل وجود داشته باشد. توانایی اروپا در مقابله با چند بحران همزمان احتمالاً قبل از بهبود یافتن، بدتر خواهد شد؛ چراکه سیاستمداران برای مدیریت جنگ، بلایای اقلیمی و مهاجرت در حال دست و پنجه نرم کردن هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ["در تاریخ ۶ اوت ۲۰۲۶: سرکوب‌های گسترده در ایران شدت گرفت و گزارش‌هایی از اعدام‌ها و بازداشت‌ها منتشر شد. عمان و ایران موافقت کردند که به‌طور اصل بر سر قراردادی برای تنگه هرمز به توافق رسیدند.", "در ماه ژوئن ۲۰۲۶: جنگ بین آمریکا و ایران آغاز شد که منجر به ماه‌ها بن‌بست درباره شرایط پایان دادن به این درگیری گردید.", "در ماه ژوئیه ۲۰۲۶: کشور‌های اروپایی با فشارهای فزاینده ناشی از جنگ در اوکراین، ایران، امواج گرما، آتش‌سوزی‌های گسترده و چالش‌های مهاجرت مواجه شدند.", "در ماه مه ۲۰۲۶: نخستین escalation بین آمریکا و ایران آغاز شد که به درگیری پایدار و فشارهای اقتصادی منجر گردید."]
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم انداز راهبردی</h3>
+            جهت‌گیری بلندمدت حاکی از سرکوب داخلی بیشتر در ایران است زیرا دولت تلاش می‌کند در بحبوحهٔ فشارهای خارجی، کنترل خود را حفظ کند. از لحاظ دیپلماتیک، یک توافق با عمان می‌تواند برخی از تنش‌ها را بر سر تنگهٔ هرمز کاهش دهد، اما یک توافق جامع با آمریکا به‌زودی چندان محتمل به نظر نمی‌رسد. اروپا به احتمال زیاد با بی‌ثباتی طولانی‌مدت مواجه خواهد شد که ممکن است منجر به تغییراتی در سیاست، به سمت همکاری بیشتر درون اتحادیهٔ اروپا یا ارتش‌گرایی بیشتر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            در حال حاضر، این درگیری در بن‌بست سخت بین ایالات متحده و ایران قرار دارد، با خشونت‌های پراکنده اما بدون پیروزی مشخص در چشم‌انداز. سرکوب ایران حاکی از دولتی تحت فشار است که احتمالاً از شورش داخلی یا تهدیدات خارجی می‌ترسد. تنگه هرمز همچنان یک نقطه داغ باقی مانده است، با احتمال توافق ایران با عمان که نوید کاهش تنش را می‌دهد. شدت تنش بالا است اما در سطح محلی، و هیچ جنگ گسترده و مستقیمی میان ایالات متحده و ایران در جریان نیست.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت ناپایداری ثبات جهانی را برجسته می‌کند، زیرا درگیری‌ها در چندین منطقه سیستم‌های بین‌المللی را تحت فشار قرار می‌دهد. برای جهان، این موضوع به معنای قیمت‌های بالاتر نفت، عدم اطمینان اقتصادی و تغییرات احتمالی در اتحادها است. تلاش‌های اروپا نشان می‌دهد که چگونه بحران‌های منطقه‌ای حتی می‌تواند برترین کشورهای آماده را تحت تأثیر قرار دهد. برای مردم عادی، این موضوع می‌تواند به معنای هزینه‌های بالاتر کالاها، کمبود انرژی و افزایش فشارهای مهاجرتی باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین المللی</h3>
+            ایالات متحدهٔ آمریکا و ایران اصلی‌ترین بازیگران در این منازعه هستند که درگیر یک رویارویی طولانی‌مدت و بی‌برون‌رفت هستند. عمان در حال ایفای نقش میانجی‌گری است؛ به گونه‌ای که توافق آن با ایران می‌تواند تنش‌ها بر سر تنگهٔ هرمز را کاهش دهد. اروپا به‌طور غیرمستقیم تحت تأثیر قرار دارد، زیرا اثرات اقتصادی و مهاجرتی ناشی از جنگ را مدیریت می‌کند. قدرت‌های بزرگی همچون چین یا روسیه هنوز چندان درگیر نشده‌اند، اما نفوذ آنان می‌تواند در صورت ادامه‌یافتن درگیری افزایش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تنگه هرمز یک مسیر حیاتی حمل و نقل نفت است و هرگونه اختلال—اعم از ناشی از درگیری یا بن‌بست‌های دیپلماتیک—به احتمال زیاد قیمت نفت را افزایش خواهد داد. در حال حاضر که بن‌بست ادامه دارد و توافق با عمان هنوز بهPrinciple (در مرحله اصول و تئوری) است، بازارهای نفت نگران هستند. در صورت تحقق این توافق، قیمت‌ها ممکن است تثبیت شوند، اما اگر درگیری تشدید شود یا توافق از بین برود، قیمت‌ها به شدت افزایش خواهند یافت. افزایش قیمت نفت به معنای سوخت، کالاها و قبوض انرژی گران‌تر برای مردم در سراسر جهان است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            ایران در میانه جنگ با ایالات متحده و می‌تواند آغازگر گفت‌وگوهای دیپلماتیک با عمان، امنیت داخلی خود را تشدید می‌کند. درگیری ایالات متحده و ایران در بن‌بست قرار دارد و هیچ پایان روشنی در افق دیده نمی‌شود. از سوی دیگر، اروپا نیز با بحران‌های متعدد دست و پنجه نرم می‌کند. قیمت‌های نفت به دلیل تنش‌ها در تنگه هرمز در معرض خطر افزایش هستند که ممکن است بر اقتصادهای جهانی تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            توافق غیرمنتظره در اصل میان ایران و عمان درباره معامله تنگه هرمز، که می‌تواند تنش‌ها را کاهش دهد ولی هنوز موانع عمده‌ای برای نهایی شدن آن وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
