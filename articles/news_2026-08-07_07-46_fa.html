@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-07 07:49</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-07 07:49</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>روند مقاومتی صنعت آلمان علیرغم ابهامات پایدار ادامه دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> والت استریت جورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳ تیر ۱۴۰۵ ۰۷:۴۷</strong></span>
+                </div>
+                <p class='summary'>تولید صنعت آلمان در ماه ژوئن به طور غیرمنتظره‌ای افزایش یافت و این پدیده، ادامه روند داده‌های مثبت تولید است که نشان می‌دهد بزرگترین اقتصاد اروپا همچنان توانسته است تأثیرات اقتصادی جنگ در خاورمیانه را به خوبی تحمل کند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/europe/german-industrial-production-unexpectedly-rose-in-june-acad6aae?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل اوضاع ایران - 7 اوت 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>خاورمیانه همچنان پر از تنش است، زیرا تنش‌های منطقه‌ای مرتبط با اقدامات ایران و درگیری‌های نیابتی نشانه‌ای از کاهش ندارند. علی‌رغم نوسانات قیمت نفت و ناآرامی‌های ژئوپلیتیکی، اقتصاد آلمان نیز شگفتی‌های غیرمنتظره‌ای از خود نشان می‌دهد، با این حال، درگیری‌های گسترده‌تر می‌تواند بازارهای انرژی و امنیت جهانی را آشفته سازد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            جنگ در خاورمیانه همچنان به شکل خفیفی ادامه دارد و ایران با حمایت از گروه‌های نیابتی مانند حزب‌الله و حوثی‌ها نقشی محوری ایفا می‌کند. این هفته، علی‌رغم چشم‌اندازهای اقتصادی مبهم مرتبط با این درگیری، تولید صنعتی آلمان در ماه ژوئن به طور غیرمنتظره‌ای افزایش یافت. با این حال، این تنها نمونه‌ای از چگونگی سازگاری برخی اقتصادها در حالی است که منطقه وسیع‌تر همچنان ناپایدار باقی مانده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            احتمالاً در کوتاه مدت وضعیت تشدید شود، با افزایش حملات جانشینانه علیه مسیرهای دریایی (مثلاً دریای سرخ) و پاسخ‌های احتمالی نظامی اسرائیل به گروه‌هایSupported by ایران. اروپا و ایالات متحده سعی خواهند کرد تا با توازن میان بازدارندگی و جلوگیری از ایجاد جنگ تمام‌عیار منطقه‌ای، عمل کنند، در حالی که احتمالاً ایران به استراتژی رویارویی غیرمستقیم خود ادامه خواهد داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ۲۰۲۴-۲۰۲۵: تشدید درگیری‌های نیابتی؛ ۲۰۲۵: فروپاشی آتش‌بس اسرائیل-حماس؛ ۲۰۲۶ (کنونی): افزایش تنش‌ها در دریای سرخ، حملات حوثی‌ها به کشتی‌ها، پیشرفت برنامه هسته‌ای ایران؛ اوت ۲۰۲۶: انعطاف‌پذیری اقتصادی آلمان حکایت از سازگاری با ابهامات دارد، اما ریسک‌ها همچنان بالاست.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            استراتژی بلندمدت ایران به نظر معطوف به اعمال فشار بر اسرائیل و غرب بدون ایجاد جنگ مستقیم است. رژیم احتمالاً هدفش تضعیف رقبای منطقه‌ای (مانند عربستان و امارات) در حالی است که برنامه هسته‌ای خود را به‌عنوان یک بازدارنده حفظ می‌کند. در دهه آینده، در صورت شکست دیپلماسی، خطر محاسبات اشتباه یا رویارویی مستقیم (مانند جنگ ایالات متحده و ایران) می‌تواند افزایش یابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری همچنان با شدت پایین اما پایدار است، ویژگی‌هایی مانند جنگ‌های نیابتی، حملات پهپادی/موشکی و حملات سایبری دارد به جای نبردهای گسترده زمینی. تلفات به طور عمده محدود به رزمندگان و غیرنظامیان در مناطق درگیری هستند، اما تهدید تشدید شدن همواره وجود دارد. جنگ اقتصادی (تحریم‌ها، دستکاری در بازار نفت) نیز ابزاری کلیدی محسوب می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            خاورمیانه همچنان یک نقطه بحرانی جهانی با پیامدهایی برای امنیت انرژی، مسیرهای تجاری و اتحادهای ژئوپلیتیکی است. یک جنگ گسترده‌تر می‌تواند عرضه نفت را مختل کند (نیمی از عرضه جهانی نفت از تنگه هرمز عبور می‌کند)، باعث رکود شود یا ایالات متحده و چین را بر سر نفوذ مجبور به برخورد کند. انعطاف‌پذیری اروپا (مانند آلمانی‌ها) آسیب‌پذیری‌های عمیق‌تری را پنهان می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیگران اصلی: ۱) ایران: از گروه‌های نیابتی (حوثی‌ها، حزب‌الله، شبه‌نظامیان عراقی) حمایت می‌کند درحالی‌که برنامه هسته‌ای خود را پیش می‌برد؛ ۲) اسرائیل: تمرکز بر مقابله با نفوذ ایران در سوریه/لبنان دارد؛ ۳) ایالات متحده: تحریم‌ها را حفظ می‌کند اما در تشدید تنش مردد است؛ ۴) اروپا: نگران انرژی/نفت است اما در سیاست‌گذاری دچار تفرقه است؛ ۵) چین/روسیه: احتمالاً حمایت‌های دیپلماتیک و اقتصادی خود را برای ایران فراهم می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل ریسک‌های خاورمیانه نوسانات زیادی دارد. هرگونه اخلال عمده (به عنوان مثال، حملات به تنگه هرمز) می‌تواند قیمت‌ها را طی چند روز بین ۲۰ تا ۳۰ درصد افزایش داده و منجر به بحران انرژی جهانی شود. انعطاف‌پذیری اروپا (مانند رشد صنعتی آلمان) نشان‌دهندهٔ سازگاری موقت است، اما درگیری‌های prolonged بودجه‌ها و تجارت را تحت فشار قرار خواهد داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            استراتژی جنگ نیابتی ایران، بدون درگیری مستقیم، تنش‌ها را بالا نگه می‌دارد و خطر تشدید ناخواسته را به دنبال دارد. اروپا در حال انطباق اقتصادی است اما همچنان در برابر شوک‌های انرژی و اختلالات زنجیره تأمین آسیب‌پذیر می‌باشد. کشورهای ایالات متحده و متحدان با یک معضل مواجه هستند: بازدارندگی ایران بدون ایجاد جنگ گسترده‌ای که می‌تواند باعث بی‌ثباتی بازارهای جهانی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ‌کدام. چگونگی درگیری‌های کنونی با الگوهای دیرینه جنگ‌های وکالتی و جنگ‌های اقتصادی در آستانه بحران همچنان مطابقت دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            استحکام صنعتی آلمان تا حدی به ذخیره‌سازی مواد کلیدی و متنوع‌سازی تجارت وابسته است، اما در صورت تداوم اختلال‌ها، این استراتژی پایدار نخواهد بود. ذخایر استراتژیک انرژی اتحادیه اروپا نیز در معرض خطر قرار دارد اگر درگیری‌ها گسترش یابد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
