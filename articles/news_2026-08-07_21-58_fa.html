@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-07 22:01</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-07 22:01</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>لبنان از پیشرفت‌های مثبت در مذاکرات مرزها و زندانیان با اسرائیل سخن می‌گوید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۴۵/۵/۱۹ ۲۱:۰۲:۳۱</strong></span>
+                </div>
+                <p class='summary'>گزارشی از حملات جدید اسرائیل در جنوب لبنان منتشر شد؛ در حالی که پس از هفتمین دور مذاکرات، بیروت خشمش را کم کرده است</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/7/lebanon-points-to-positive-progress-on-borders-prisoners-in-israel-talks?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>حملات حوثی‌ها حداقل 10 کشته در یمن برجای گذاشت؛ زیرا شورشیان هدف حمله به استان نفت‌خیز مارب قرار دادند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۵/۱۶ - ساعت ۲۰:۵۲:۴۵</strong></span>
+                </div>
+                <p class='summary'>در جریان حملات جدید شورشیان حوثی در استان نفت‌خیز یمن که روز جمعه رخ داد، حداقل هشت تن از نیروهای دولتی یمن و دو غیرنظامی کشته شدند.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260807-حمله-حوثی-ها-حداقل-١٠-نفر-در-یمَن-کشته-شد-همچنانکه-شورشیان-تحت-حمایت-ایران-به-ماریب-حمله-کردند' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>حوثی‌ها ادعای حمله به پایگاه نظامی یمن</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل (نیویورک تایمز)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۶ ۲۰:۴۴:۴۶</strong></span>
+                </div>
+                <p class='summary'>افزایش اخیر تنش‌ها میان گروهSupported ایران در یمن و دولت یمن نگرانی‌هایی را برانگیخته است که آتش‌بس حاکم از سال ۲۰۲۲ در آستانه فروپاشی است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/07/world/middleeast/yemen-houthis-attack-military-camp.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۴ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ﻋﺎﻣﻞﺍﻯ ﺍﯾﺮﺍﻥ در ﺧﺎﻭﺭﻣﯿﺎﻧﻪ ﻣﻨﻄﻘﻪ — ﺣﺰﺑﺎﻟﻠﻪ ﻟﺒﻨﺎﻥ، شورشیان حوثی در یمن و نیروهای نیابتی—دﺑﯿﺮﺗﺮ ﺍﻓﺰﺍﯾﺶ ﻓﻌﺎﻟﯿﺖﻫﺎﯾﯽ ﺭﺍ ﻧﺸﺎﻥ ﻣﯽﺩﻫﻨﺪ ﮐﻪ ﺗﻨﺶﻫﺎﯼ ﻣﻨﻄﻘﻪ‌اﯼ را افزایش داده اند. مذاکرات دیپلماتیک بین لبنان و اسرائیل با خوش‌بینی محتاطانه‌ای همراه است، اما خشونت در یمن و لبنان همچنان گسترش می‌یابد. بازارهای نفت و ثبات جهانی در معرض خطر هستند، زیرا ممکن است این درگیری‌ها گسترش بیشتری یافته و پیامدهای گسترده‌تری به دنبال داشته باشند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            درگیری‌ها در چندین جبهه مرتبط با ایران در حال تشدید است. در لبنان، اسرائیل حملات جدیدی را در جنوب آغاز کرده در حالی که لبنان گزارش‌هایی از «پیشرفت مثبت» در مذاکرات با اسرائیل درباره مسائل مرزی و زندانیان ارائه کرده است. در یمن، شورشیان حوثی ( حمایت شده توسط ایران) به نیروهای دولتی در استان سرشار از نفت ماریب حمله کرده‌اند و دست‌کم ۱۰ نفر کشته شده‌اند. این حملات نشان می‌دهد که ترس از فروپاشی آتش‌بس ۲۰۲۲ در یمن معنا دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            وضع احتمالاً بی‌ثبات‌تر خواهد شد. در لبنان، مذاکرات ممکن است هم تنش‌ها را کاهش دهند و هم منجر به توقف آن شوند و در نهایت خطر بروز درگیری‌های بیشتر را ایجاد کنند. در یمن، اگر آتش‌بس به‌طور رسمی پایان یابد، حملات حوثی‌ها ممکن است تشدید شود و خطر جنگ گسترده‌تری را شامل عربستان سعودی و امارات متحده عربی دربرگیرد. خطر سرایت منطقه‌ای—به‌ویژه به عراق یا سوریه—هنوز هم در صورت ادامه افزایش تنش‌ها بالا باقی می‌ماند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 برنامه زمانی</h3>
+            • اوت ۲۰۲۶: گزارش‌هایی از حملات جدید اسرائیل به جنوب لبنان همزمان با برگزاری هفتمین دور مذاکرات ادامه‌دار<br>• ۷ اوت ۲۰۲۶: شورشیان حوثی به اردوگاه نظامی یمن در مارب حمله کرده و دست‌کم ۱۰ نفر را کشتند<br>• ۲۰۲۲: پس از سال‌ها جنگ، آتش‌بس بین حوثی، ایران و عربستان سعودی برقرار شد<br>• سال‌های پیشین: درگیری یمن پس از تصرف توسط حوثی‌ها در ۲۰۱۴ شدت گرفت و به جنگ نیابتی میان ایران، عربستان سعودی، امارات متحده عربی و دیگران تبدیل شد
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+             Iran در بلندمدت به نظر می‌رسد قصد حفظ نفوذ خود را از طریق گروه‌های واسطه‌ای مانند حوثی‌ها و حزب‌الله دارد و از آن‌ها به عنوان ابزاری برای وارد آوردن فشار بر اسرائیل، عربستان سعودی و بازیگران جهانی استفاده می‌کند. در صورت افزایش حملات این گروه‌ها، ایران ممکن است با واکنش‌های متقابل مواجه شود، از جمله اقدامات تهاجمی‌تر اسرائیل یا واکنش‌های گسترده‌تر ائتلاف کشورهای عربی. کانال‌های دیپلماتیک همچنان شکننده به نظر می‌رسند و نشانه‌های اندکی از صلح پایدار وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            نبردهای فعلی به صورت متمرکز اما خطرناک است. در لبنان، حملات و مذاکرات به طور ناخوشایندی همراه یکدیگر به پیش می‌روند. در یمن، حملات حوثی‌ها در یک منطقه نفتی کلیدی شدت گرفته است که ممکن است نشانه‌ای از بازگشت به جنگ تمام‌عیار باشد. ماهیت این نبردها نامتقارن است—شورشیان از موشک و پهبادها علیه نیروهای دولتی استفاده می‌کنند—و به دلیل زیرساخت‌های نفتی و اتحادهای منطقه‌ای یمن بسیار حساس است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این مسئله کمتر مربوط به ایران به طور مستقیم و بیشتر مربوط به شبکه منطقه‌ای آن است. ایران با حمایت از نیروهای نیابتی، نفوذ خود را بدون رویارویی مستقیم گسترش می‌دهد. اما این استراتژی خطر کشاندن کشورهای بیشتری به این رویدادها و بی‌ثبات کردن کل خلیج فارس را به دنبال دارد. اگر آتش‌بس یمن فرو بپاشد یا لبنان دوباره شعله‌ور شود، بازارهای جهانی انرژی، مسیرهای تجاری و امنیت ممکن است آسیب ببینند. این یک بازی پرخطر از سوی ایران برای حفظ نفوذ در شرایط انزوای روزافزون منطقه‌ای است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            اگرچه در مقالات به صورت مستقیم ذکر نشده، اما قدرت‌های منطقه‌ای احتمالاً درگیر هستند: اسرائیل (با تهدیداتی از جانب لبنان)، عربستان سعودی و امارات متحده عربی (با مخالفت از حوثی‌ها در یمن) و احتمالاً ایالات متحده و اتحادیه اروپا که بر اوضاع نظارت دارند. نقش ایران به صورت غیرمستقیم ولی محوری است، چرا که حامی حوثی‌ها و حزب‌الله است. روسیه و چین ممکن است از لحاظ دیپلماتیک ورود کنند، اما بعید است که مداخله نظامی داشته باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            استان مریب یمن یکی از مناطق مهم تولیدکننده نفت است. حملات در این منطقه می‌تواند عرضه را مختل کرده یا زیرساخت‌های اصلی را تهدید نماید، که موجب نگرانی در خصوص عرضه و افزایش قیمت نفت خواهد شد. از آنجایی که اروپا و آسیا به نفت خلیج فارس وابسته هستند، هرگونه اختلال پایدار می‌تواند قیمت‌ها را افزایش داده و تورم را بیشتر نموده و روند بهبود اقتصادی جهانی را damage کند. ریسک بالا است اما هنوز speculation است و به این بستگی دارد که آیا حملات گسترش یابد یا میادین نفتی بزرگ را تهدید کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 موارد مهم</h3>
+            حملات حوثی‌ها در استان مرزی غنی از نفت یمن که دارای منابع نفتی فراوانی است، در حال شدت گرفتن است و خطر بازگشت کامل به جنگ و مختل شدن عرضه جهانی نفت را به همراه دارد. اسرائیل و لبنان با احتیاط در حال مذاکره دربارهٔ مسائل مرزی و زندانیان در میان حملاتِ مداوم هستند، وضعیتی که تنش‌زا است اما می‌تواند منجر به کاهش تنش گردد. استفاده ایران از گروه‌های نیابتی مانند انصارالله (حوثی‌ها) و حزب‌الله همچنان باعث بی‌ثباتی در منطقه می‌شود و خطرات افزایش یافته درگیری گسترده‌تری را از جمله درگیری با عربستان سعودی و دیگران به دنبال دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ یک. تشدید توسط گروه‌های وابسته به ایران و تنش‌های تلافی‌جویانه در لبنان با الگوهای منطقه‌ای در حال جریان همسو هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            هیچ تحولات قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
