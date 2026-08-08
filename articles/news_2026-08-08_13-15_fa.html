@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-08 13:18</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-08 13:18</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>یمن در آستانه جنگ داخلی قرار دارد و ثبات منطقه در معرض خطر</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۸ ۱۲:۱۴:۲۴</strong></span>
+                </div>
+                <p class='summary'>در حالی که خاورمیانه منتظر شنیدن این موضوع است که آیا می‌توان به توافقی برای بازگشایی تنگه هرمز دست یافت یا خیر، درگیری‌های دولت یمن با شورشیان هوتی تحت حمایت ایران یک‌شبه تشدید شد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/08/world/middleeast/yemen-houthis-regional-stability.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>امارات متحده عربی اعلام کرد ایران یکی از کشتی‌های آنها در تنگه هرمز را مورد حمله قرار داده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۹T13:12:00Z</strong></span>
+                </div>
+                <p class='summary'>این حمله منجر به پدید آمدن ابهام بیشتری در چشم‌انداز توافق برای بازگشایی آبراه راهبردی می‌شود.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/u-a-e-says-iran-attacked-one-of-its-ships-in-hormuz-bfbec3b2?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>اتحاد عربستان، ترکیه و پاکستان در بحبوحهٔ پیامدهای جنگ احتمالی ایالات متحده و ایران شکل گرفت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانسه24 (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۸ ساعت ۱۷:۲۲:۳۶</strong></span>
+                </div>
+                <p class='summary'>عربستان سعودی، پاکستان و ترکیه در روز جمعه یک پیمان دفاع متقابل امضا کردند که هر گونه اقدام تهاجمی علیه یکی از این سه کشور را به عنوان حمله‌ای علیه همه آنها تلقی می‌کند. این متحدان در بیانیه‌ای مشترک اعلام کردند. با این حال، مشخص نشد که آیا این توافق آنها را ملزم به اقدام نظامی خاصی در دفاع از یکدیگر می‌کند. هنری بارکی، همکار ارشد عالیِ مطالعات خاورمیانه در شورای روابط خارجی، بینش‌های بیشتری ارائه می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/saudi-turkey-pakistan-pact-comes-amid-us-iran-war-fallout' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۸ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>actions ایران در تنگه هرمز و یمن موجب تشدید تنش‌ها در منطقه شده و عرضه جهانی نفت را تهدید می‌کند و کشورهای خاورمیانه را به تشکیل اتحادهای تازه برای دفاع مشترک سوق داده است. این وضعیت شکننده خطر گسترش یافتن به درگیری گسترده‌ای شامل کشورها و طرف‌های متعدد را به همراه دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            ایران یک کشتی امارات متحدهٔ عربی (امارات) را در تنگهٔ راهبردی هرمز که آبراهی کلیدی برای ترابری جهانی نفت است، مورد حمله قرار داد. در همین ح момент، درگیری‌ها میان شورشیان حوثی تحت حمایت ایران و دولت یمن تشدید شده و یمن را به آستانهٔ جنگ داخلی نزدیک‌تر می‌کند. این رویدادها تلاش‌ها برای از سرگیری ترابری در تنگهٔ هرمز، که یک مسیر مهم شحنهٔ نفت است، را تحت‌الشعاع قرار داده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سربرگ</h3>
+            به نظر می‌رسد که وضعیت قبل از بهبود یافتن، بدتر خواهد شد. ایران ممکن است اقدامات تهاجمی خود را ادامه داده یا تشدید کند تا رقبای منطقه‌ای را تحت فشار قرار داده و در مذاکرات دریافت سایر امتیازات، قدرت چانه‌زنی کسب کند. کشورهای همسایه نیز احتمالاً با تقویت دفاعیات خود یا تشکیل اتحادهای جدید پاسخ خواهند داد. در صورت تداوم یا گسترش حملات ایران، خطر درگیری نظامی گسترده‌تر، در حال افزایش است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>۲) ۸ مرداد ۱۴۰۵ (صبح): ایران حمله‌ای به یک کشتی اماراتی در تنگه هرمز انجام داده و اوضاع را بیش از پیش داغ می‌کند.</li><li>۳) ۸ مرداد ۱۴۰۵: عربستان سعودی، ترکیه و پاکستان یک پیمان دفاع دسته‌جمعی امضا می‌کنند تا در برابر تهدیدات منطقه‌ای مقابله کنند که احتمالاً در واکنش به اقدامات ایران و بی‌ثباتی گسترده‌تر صورت گرفته است.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            ساختار درازمدت حاکی از خاورمیانه‌ای است که به‌طور فزاینده‌ای به لحاظ فرقه‌ای و سیاسی تقسیم شده و در آن، ایران نقش پررنگ‌تری پیدا کرده و بر گسترش نفوذ خود بیش از پیش اصرار دارد. پیمان دفاعی جدید عربستان سعودی، ترکیه و پاکستان نشانه‌ای از تغییر در ساختار ائتلاف‌ها برای مهار ایران است. خطر بالای بی‌ثباتی طولانی‌مدت وجود دارد و احتمال برخوردهای مستقیم نظامی میان چندین کشور وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های تعارض</h3>
+            نبرد در یمن یک درگیری واسطه‌ای است که در آن ایران از حوثی‌ها حمایت می‌کند، در حالی که عربستان سعودی و دیگر بازیگران منطقه‌ای از دولت یمن پشتیبانی می‌کنند. حمله به کشتی امارات یک اقدام مستقیم‌تر توسط ایران است که تمایل این کشور برای افزایش تنش‌ها را نشان می‌دهد. ماهیت این درگیری هم منطقه‌ای (جنگ‌های واسطه‌ای) و هم مستقیم (حملات ایران) است که باعث بی‌ثباتی و غیرقابل‌پیش‌بینی بودن آن می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویرِ بزرگ</h3>
+            این بحران، عرضه جهانی نفت را تهدید می‌کند، زیرا روزانه حدود 20 درصد از نفت جهان از تنگه هرمز عبور می‌کند. هرگونه اختلال طولانی مدت می‌تواند باعث افزایش شدید قیمت نفت شده و اقتصادهای جهانی را تحت تأثیر قرار دهد. پیامد گسترده‌تر، خاورمیانه‌ای است که در لبه درگیری گسترده‌تر قرار دارد و می‌تواند قدرت‌های جهانی را درگیر کند و بحران‌های بشردوستانه موجود، به ویژه در یمن، را تشدید نماید.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیگران اصلی: ایران (متجاوز در این سناریو), امارات متحده عربی (قربانی حمله), عربستان سعودی (قدرت منطقه‌ای پیشرو و حریف حوثی‌ها), ترکیه و پاکستان (اعضای جدید پیمان دفاعی), و حوثی‌ها (شورشیان هوادار ایران در یمن). ایالات متحده و قدرت‌های جهانی دیگر ممکن است به دلایلی همچون امنیت نفتی و ثبات منطقه‌ای به طور غیرمستقیم وارد ماجرا شوند. روسیه و چین نیز با توجه به منافع خود در خاورمیانه و بازارهای انرژی ممکن است نقشی ایفا کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            این درگیری خطر اختلال در ارسال‌های نفتی از طریق تنگه هرمز را افزایش می‌دهد، که یک گلوگاه مهم برای تجارت جهانی نفت به شمار می‌رود. در صورتی که این تنگه حتی موقتاً بسته شود، قیمت نفت به احتمال زیاد به دلیل ترس از کمبود عرضه، به شدت افزایش خواهد یافت. در حال حاضر، هیچ گونه بسته‌شدن کامل رخ نداده است، اما صرف حمله‌ها و عدم قطعیت کافی است تا با واکنش بازارها به این خطر، قیمت‌ها بالاتر برود. این مسئله اهمیت دارد زیرا افزایش قیمت نفت می‌تواند اقتصادهای جهانی را کند کرده و هزینه سوخت مصرف‌کنندگان عادی را افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            اقدامات تهاجمی ایران در تنگه هرمز و یمن به سرعت تنش‌های منطقه‌ای را تشدید می‌کند. پیمان دفاعی جدید میان عربستان سعودی، ترکیه و پاکستان در پاسخ مستقیم به تهدیدهای فزاینده ایران است و نشانه‌ای از یک realignment (realignment) بالقوه در اتحادهای خاورمیانه به شمار می‌رود. this crisis threatens global oil supplies and risks price fluctuations that could affect economies worldwide.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            تشکیل سریع اتحاد دفاعی میان Saudi-Turkey-Pakistan در واکنش به اقدامات ایران جالب توجه است، چرا که نشان می‌دهد چگونه پویایی‌های منطقه‌ای می‌توانند در مواجهه با تهدیدهای مستقیم به سرعت دستخوش تغییر شوند. علاوه بر این، زمان‌بندی این رویدادها نشانگر استراتژی هماهنگ یا سودجویانه‌ی ایران برای حداکثر فشار به دشمنانش است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تعادل حساس قدرت در خاورمیانه، همراه با رقیب‌های تاریخی (به عنوان نمونه، تنش‌های سعودی-ایرانی) و بحران انسان‌دوستانه در یمن، این وضعیت را به ویژه بی‌ثبات‌کننده می‌سازد. involvement (درگیری) قدرت‌های جهانی، اگر چه هنوز مستقیم نیست، در پس‌زمینه به دلیل اهمیت حیاتی نفت و ثبات منطقه‌ای برجسته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
