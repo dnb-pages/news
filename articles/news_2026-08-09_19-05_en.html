@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-08-09 19:06</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-08-09 19:06</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Iran Taps Longtime I.R.G.C. Commander Mohsen Rezaei to Top Security Post</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-09 18:18</strong></span>
+                </div>
+                <p class='summary'>The appointment of Mohsen Rezaei as secretary of the Supreme National Security Council suggests that Iran’s old guard is consolidating power.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/09/world/middleeast/iran-security-council-guards-commander.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Where does Iran stand on Saudi-Pakistan-Turkiye pact?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-09 18:44</strong></span>
+                </div>
+                <p class='summary'>Iran not immediately threatened by pact, analysts say, with officials focusing on aspect of diminishing US role.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/9/where-does-iran-stand-on-saudi-pakistan-turkiye-pact?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Iran, Holding Firm to Hormuz, Pushes for Return to June MOU</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-09 17:58</strong></span>
+                </div>
+                <p class='summary'>The Strait of Hormuz is Iran’s best leverage to get Washington to release Iran’s frozen assets, lift economic sanctions and end its naval blockade.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/09/world/europe/iran-strait-hormuz-trump-deal.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - August 9, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Iran is strengthening its internal security leadership by appointing a powerful military figure to a key role, while using its control over the Strait of Hormuz as leverage in negotiations with the U.S. Meanwhile, Iran cautiously observes new regional alliances like the Saudi-Pakistan-Turkey pact, prioritizing its focus on reducing American influence rather than reacting immediately to new pacts.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Iran has appointed Mohsen Rezaei, a longtime commander of the Islamic Revolutionary Guard Corps (IRGC), to the top security post of secretary of the Supreme National Security Council. This move signals a consolidation of power by Iran's conservative old guard. Simultaneously, Iran is leveraging its control over the Strait of Hormuz—a critical global oil shipping route—to pressure the U.S. into lifting sanctions, releasing frozen assets, and ending its naval blockade. Iran is also closely monitoring a new regional alliance between Saudi Arabia, Pakistan, and Turkey, though it does not see this as an immediate threat, instead focusing on diminishing U.S. influence in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            In the short term, Iran is likely to continue using its control over the Strait of Hormuz as a bargaining chip in negotiations with the U.S., while maintaining a cautious stance on new regional alliances. Domestically, the appointment of Rezaei suggests Iran’s leadership is preparing for more hardline policies, both internally and externally. In the medium term, if the U.S. does not respond to Iran’s demands, tensions could escalate, potentially leading to further disruptions in shipping through the Strait of Hormuz or even direct confrontations with U.S. forces in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            <ul><li>**August 9, 2026**: Iran appoints Mohsen Rezaei, a hardline IRGC commander, as secretary of the Supreme National Security Council, signaling a shift toward more conservative and hardline leadership within Iran’s security apparatus.</li><li>**August 9, 2026**: Iran emphasizes its leverage over the Strait of Hormuz, linking its control of the waterway to U.S. actions such as lifting sanctions, releasing frozen assets, and ending the naval blockade.</li><li>**August 9, 2026**: Analysts note that Iran is not immediately concerned by a new Saudi-Pakistan-Turkey pact, instead focusing on long-term goals like reducing U.S. influence in the region.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            Iran’s strategic outlook appears to be one of cautious hardline consolidation. Internally, the appointment of Rezaei suggests a tightening grip by conservative factions over Iran’s security and political apparatus. Externally, Iran is doubling down on its long-standing strategy of using its geographic and military leverage—particularly over the Strait of Hormuz—to extract concessions from the U.S. and other Western powers. In the long term, this could mean Iran will continue to resist U.S. influence through asymmetric tactics, such as proxy groups in the region, rather than direct military confrontation. However, if diplomatic efforts fail, there is a risk of escalation that could involve the broader region.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The current conflict dynamics involve Iran using non-military but high-impact leverage, such as control over the Strait of Hormuz, to pressure the U.S. rather than engaging in open military conflict. The intensity is currently low to moderate, with no direct fighting, but there is an undercurrent of tension. Iran’s approach is strategic and calculated, avoiding actions that could provoke a large-scale U.S. response. The conflict is more about economic and diplomatic pressure than armed confrontation, but the potential for miscalculation or accidental escalation remains.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This situation highlights Iran’s growing confidence in using its regional influence and military positioning as tools for achieving its political and economic goals. By focusing on reducing U.S. influence and leveraging control over critical oil routes, Iran is positioning itself as a key player in reshaping the Middle East’s balance of power. The world should watch for how the U.S. responds to Iran’s pressure, as this could set the tone for future negotiations or confrontations in the region. A disruption in oil shipping through the Strait of Hormuz would have global economic repercussions, affecting oil prices and energy security worldwide.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The key international players involved are the U.S., which is the primary target of Iran’s pressure, and the new Saudi-Pakistan-Turkey pact, which Iran is observing but not yet reacting to. The U.S. has imposed economic sanctions on Iran and maintains a naval presence in the region, which Iran seeks to challenge. Other regional actors, such as Israel, Gulf states, and European powers, may also factor in if tensions escalate, as they have interests in regional stability and energy security. The involvement of the U.S. and its allies could increase if Iran’s actions threaten global oil supplies or regional stability.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Iran’s control over the Strait of Hormuz makes it a critical player in global oil markets. If Iran disrupts shipping through the Strait—even temporarily—it could lead to a sharp rise in oil prices due to reduced supply. The Strait of Hormuz sees about 20% of the world’s oil supply pass through it daily, so any blockage or threat to ships would likely cause market panic and price spikes. This matters not just for oil-importing countries but for the global economy, as higher oil prices can slow economic growth, increase inflation, and worsen energy crises in vulnerable nations. Iran is aware of this leverage and is likely to use it as a bargaining tool in negotiations.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Iran has appointed a hardline military commander to a top security role, signaling a shift toward more conservative and hardline leadership internally. Iran is using its control over the Strait of Hormuz as leverage to pressure the U.S. into lifting sanctions and releasing frozen assets. Iran is not immediately threatened by the new Saudi-Pakistan-Turkey pact but is focusing on reducing U.S. influence in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            None
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
