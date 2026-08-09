@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-09 10:02</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-09 10:02</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>انتظار برای توافق هرمز ادامه دارد زیرا ایران می‌گوید شرایط باید محقق شوند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  تحليل فايننشال پست (تجزیه و تحلیل) </span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۵/۱۸ ساعت ۸:۳۰:۱۷</strong></span>
+                </div>
+                <p class='summary'>انتظار برای انعقاد توافق میان ایران و عمان بر سر تنگه هرمز به درازا کشید و جمهوری اسلامی به ایالات متحده هشدار داد که هرگونه توافق فوری منجر به بازگشایی دوباره این گذرگاه مهم انرژی نخواهد شد.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/wait-for-hormuz-deal-stretches-on-as-iran-says-terms-must-be-met' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>بسیاری از درخواست‌های ایران که به گفته آن "قبلا در یادداشت تفاهم ژوئن با ایالات متحده به توافق رسیده است"</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۹ ۰۷:۰۶:۵۰</strong></span>
+                </div>
+                <p class='summary'>ایران روز شنبه اقدام به ارائه لیستی از خواسته‌ها به منظور بازگشایی تنگه هرمز کرد که این خواسته‌ها به‌عنوان "م prends‌های جدید" توصیف شده‌اند. گزارش FRANCE 24 از واشنگتن، فِرِیزر جکسون خاطر نشان می‌کند که بسیاری از این خواسته‌ها "پیش از این توسط ایالات متحده در [پروتکل] تفاهم‌نامه اسلام‌آباد، که در خردادماه میان ایران و آمریکا امضا شده بود، [به رسمیت شناخته شده بودند]. "سر difficulty در آن زمان [زبان و توصیف‌ها] بسیار گسترده و مبهم بودند".</p>
+                <div class='link'><a href='https://www.france24.com/fa/بسیاری-از-خواسته‌های-ایران-که-در-مذاکرات-ژوئن-پذیرفته-شده-در-حال-حاضر-بار-دیگر-طرح-شده‌اند' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۹ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و ایالات متحده در مذاکرات مربوط به بازگشایی تنگه هرمز، یکی از مهم‌ترین گلوگاه‌های ترانزیتی نفت، گیر کرده‌اند؛ چراکه ایران علی‌رغم توافق خردادماه، خواستار شرایط سخت‌گیرانه‌تری شده است. این بن‌بست می‌تواند عرضه نفت جهانی را مختل کرده و قیمت‌ها را افزایش دهد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایران در حال به تعویق انداختن توافقی با عمان برای بازگشایی تنگه هرمز، یک آبراه باریک که بخش زیادی از نفت جهانی از آن عبور می‌کند، است. ایران خواسته‌های جدیدی برای بازگشایی عنوان کرده و ادعا می‌کند این خواسته‌ها به طور کامل در توافقنامه ماه ژوئن بین ایران و آمریکا مورد توجه قرار نگرفته‌اند. ایران هشدار می‌دهد که هرگونه پیمان جدید به طور فوری منجر به بازگشایی تنگه نخواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            تنگنهٔ تنش میان ایران و ایالات متحده در تنگه هرمز احتمالاً تا زمانی که طرفین مفاد توافق ماه ژوئن خود را روشن نکنند، ادامه خواهد یافت. در صورت عدم دستیابی به توافق، تنگه ممکن است همچنان بسته بماند یا به شکل جزئی محدود شود که منجر به اختلال در عرضه جهانی نفت خواهد گردید. این وضعیت می‌تواند در صورت اقدامات بیشتر ایران به منظور فشار بر ایالات متحده یا واکنش این کشور با تحریم‌ها یا اقدامات نظامی، تشدید شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. ژوئن ۲۰۲۶: ایران و ایالات متحده تفاهم‌نامه‌ای گسترده را در اسلام‌آباد برای رسیدگی به مسائل امنیتی منطقه‌ای، از جمله تنگه هرمز، امضا کردند.</li><li>۲. اوایل اوت ۲۰۲۶: ایران خواسته‌های جدیدی برای بازگشایی تنگه ارائه داد و ادعا کرد این خواسته‌ها از قبل در تفاهم‌نامه ژوئن توافق شده بودند.</li><li>۳. ۹ اوت ۲۰۲۶: ایران به ایالات متحده هشدار داد که هر گونه معامله جدید به طور فوری منجر به بازگشایی تنگه نخواهد شد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            آیندهٔ بلندمدت به این بستگی دارد که آیا ایران و ایالات متحده می‌توانند شکاف میان توافق گسترده ماه ژوئن و خواسته‌های جدید ایران را پر کنند. اگر شکاف گسترده‌تر شود، ایران ممکن است به disruption (آشفته‌سازی) درGo to the channel shipping ادامه دهد، در حالی که ایالات متحده ممکن است تحریم‌های سخت‌گیرانه‌تری اعمال کند یا اقدام نظامی انجام دهد. رسیدگی به مشکل به دیپلماسی پشت پرده و میانجی‌گری از سوی شخص ثالث بستگی خواهد داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری کنونی عمدتاً ديپلماتيک است، به طوري که ايران با کنترل خود بر تنگه آن را به عنوان حربه‌اي براي پيشبرد خواسته‌هاي خود به کار مي‌گيرد. فعلا هيچ جنگ و درگيري نظامي فعال وجود ندارد، اما خطر تشنج بيشتر همچنان بالاست. ايران در گذشته نيز تانکرهاي نفت را توقيف کرده و در مورد بسته شدن تنگه تهديد کرده است، از اين رو همچنان اوضاع پرتنش به شمار مي‌رود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            تنگهٔ هرمز، شریان حیاتی برای تأمین نفت جهانی است، به طوری که حدود ۲۰٪ از نفت جهان روزانه از آن عبور می‌کند. مسدود شدن یا محدود شدن طولانی‌مدت این تنگه می‌تواند اختلالات قابل توجهی در بازارهای جهانی نفت ایجاد کند، منجر به جهش قیمت‌ها و احتمال کمبود انرژی در اروپا و آسیا گردد. این امر می‌تواند باعث کند شدن روند بهبود اقتصادی و افزایش فشارهای تورمی در سراسر جهان شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            <ul><li>۲. آمریکا: خواهان بازگشایی تنگه و حفظ ثبات در بازارهای نفتی است.</li><li>۳. کشورهای حاشیه خلیج فارس: عربستان سعودی، امارات متحده عربی و سایر کشورهای حاشیه خلیج فارس که به تنگه برای صادرات نفت وابسته‌اند، در حال نظارت نزدیک بر وضعیت هستند.</li><li>۴. اروپا: وابسته به نفت خلیج فارس بوده و برای جلوگیری از بحران‌های انرژی، حل این اختلاف را به پیش خواهد برد.</li><li>۵. چین و هند: خریداران اصلی نفت خلیج فارس، به دنبال اطمینان از باز بودن تنگه هستند.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            بستن یا محدود کردن تنگه هرمز احتمالاً منجر به افزایش شدید قیمت نفت خواهد شد، زیرا حدود 20 درصد از عرضه جهانی نفت مختل می‌شود. افزایش قیمت نفت، هزینه‌های حمل و نقل، قیمت سوخت و به‌طور کلی تورم را تحت تأثیر قرار داده و رشد اقتصادی را تضعیف خواهد کرد. کشورهایی که وابسته به واردات نفت هستند، مانند کشورهای اروپایی و آسیایی، با صورتحساب‌های انرژی بالاتر و همچنین کمبود احتمالی مواجه خواهند شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            ایران و ایالات متحده در مذاکرات مربوط به بازگشایی تنگه هرمز گیر کرده‌اند، زیرا ایران علی‌رغم توافق ماه ژوئن، خواسته‌های جدیدی مطرح کرده است. یک تعطیلی طولانی ممکن است موجب اختلال در ۲۰٪ از عرضه‌های جهانی نفت شده و باعث نوسانات قیمت و کمبود انرژی گردد. مشارکت بین‌المللی، به‌ویژه توسط عمان، در میانجیگری برای رفع شکاف میان خواسته‌های ایران و موضع ایالات متحده بسیار حیاتی خواهد بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            ادعای ایران مبنی بر اینکه بسیاری از «تازه‌ترین» خواسته‌های آن پیشتر در یادداشت تفاهم ژوئن مورد توافق قرار گرفته، حاکی از اختلاف در تفسیر این agreement است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            تنگه هرمز پیش‌تر نیز نقطه آتشین تنش بوده است. در سال ۲۰۱۹، ایران نفتکش‌ها را توقیف کرد و به تأسیسات نفتی حمله نمود، و در سال ۲۰۲۱ نیز به طور موقت یک نفتکش را متوقف ساخت. بازیگران منطقه‌ای همچون عربستان سعودی و امارات متحده عربی در حال تنوع بخشیدن به مسیرهای صادرات نفت خود برای کاهش وابستگی به این تنگه بوده‌اند، اما این تنگه همچنان یک گلوگاه استراتژیک به شمار می‌رود. ایالات متحده حضور نظامی در منطقه دارد تا از باز بودن تنگه اطمینان حاصل کند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
