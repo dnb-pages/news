@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-09 13:23</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-09 13:23</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>دو طرف در مذاکرات غیرمستقیم خود یکدیگر را ‘نادیده می‌گیرند’؛ آمریکا و ایران</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۵/۱۸  ساعت ۱۵:۲۳</strong></span>
+                </div>
+                <p class='summary'>«ایالات متحده و ایران بدون توجه به یکدیگر هستند» در مذاکرات غیرمستقیم</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/9/us-and-iran-are-talking-past-each-other-in-indirect-negotiations?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ارتش یمن پس از افزایش حملات، خطر تشدید درگیری را هشدار داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۹T۱۰:۴۵:۵۷Z</strong></span>
+                </div>
+                <p class='summary'>ارتش یمن پس از افزایش حملات، از حوثی‌ها هشدار می‌دهد</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/9/yemeni-army-warns-houthis-after-attacks-heighten-escalation-risk?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران و عمان در آستانه بستن قراردادی درباره تنگه هرمز هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۱۸ ساعت ۱۵:۰۳:۰۱</strong></span>
+                </div>
+                <p class='summary'>ایران می‌گوید مذاکرات با عمان برای بازگشایی تنگه هرمز به مراحل نهایی نزدیک می‌شود، اما بازگشایی این آبراه به شروط و جبران خسارت‌های بیشتر بستگی دارد؛ خسارت‌هایی که تهران مدعی, توافق ژوئن را نقض کرده‌اند. ایران خواسته‌های جدیدی مطرح کرده، از جمله اینکه آمریکا محاصره دریایی تنگه و بنادر ایرانی را لغو کند و نیروهای نظامی خود را از منطقه خارج کند. پروفسور اسکات لوکاس، استاد سیاست بین‌الملل در موسسه کلینتون دانشگاه کالج دوبلین، اطلاعات بیشتری را در این باره ارائه می‌دهد.</p>
+                <div class='link'><a href='https://www.france24.com/fa/ايران-عمان-نزديک-به-توافق-در-مورد-تنگه-هرمز' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ترامپ فکر می‌کرد باز شدن تنگه هرمز imminent در شرف وقوع است. ایران برنامه‌های دیگری داشت.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وای‌اس‌جی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۰۹T۱۱:۰۰:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>خواسته‌های جدید تهران برای امتیازهای اساسی، روزها پس از آن رخ داد که کاخ سفید اعلام کرده بود توافق برای باز کردن مسیر تجاری در دسترس است.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/trump-strait-of-hormuz-opening-iran-negotiations-b6a43ad6?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>سعودی‌ها پس از ادعای حمله حوثی‌ها، آتش‌سوزی در کارخانه جازان را مهار کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۵/۱۸ ساعت ۱۷:۱۶:۱۱</strong></span>
+                </div>
+                <p class='summary'>وزارت انرژی عربستان اعلام کرد که یک روز یکشنبه، آتش‌سوزی در پالایشگاه نفت جازان این کشور را خاموش کرد؛Hours later، انصارالله یمن (حوثی‌ها) ادعای حمله به این تاسیسات را کردند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/saudis-put-out-fire-at-jazan-plant-as-houthis-claim-attack' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>دفاع از ارز بازسازی می‌شود؛ چراکه کشورهای در حال ظهور آسیا از ذخایر ارزی خود حفاظت می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> گزارش تحلیلی فایننشال پست</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۵/۱۹  ساعت ۱۴:۳۹:۰۱</strong></span>
+                </div>
+                <p class='summary'>درAsian pe садбираи آسیای نوظهور روز به روز راه‌های بیشتری برای حمایت از ارزهای ملی خود بدون اقدام به استفاده از ذخایر ارزی خارجی پیدا می‌کنند، زیرا تنش‌های مکرر خاورمیانه و چشم‌انداز نرخ بهره بالاتری که برای مدت طولانی‌تری در ایالات متحده پابرجا خواهد بود، سیاست‌گذاران را در حالت هشدار نگاه داشته است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/currency-defense-gets-makeover-as-emerging-asia-guards-reserves' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۹ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>مذاکرات غیرمستقیم آمریکا و ایران بر سر تقاضاهای جدید ایران از جمله کنترل تنگه هرمز و حضور نظامی منطقه‌ای متوقف شده است. در همین حال، حملات حوثی‌ها از یمن به تاسیسات نفتی عربستان، تنش‌های منطقه‌ای را تشدید کرده است. مذاکرات بین ایران و عمان برای بازگشایی تنگه هرموز با تاخیر مواجه شده زیرا ایران خواستار امتیازاتی از آمریکا از جمله لغو محاصره‌های دریایی و خروج نیروهای نظامی است. قیمت نفت و ثبات ارزی در معرض خطر افزایش خطرات درگیری قرار دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            ایالات متحده و ایران در مذاکرات غیرمستقیم گیر کرده‌اند، زیرا آنها مسائل یکسانی را موردAddress قرار نمی‌دهند. ایران خواسته‌های جدیدی از جمله لغو محاصره دریایی آمریکا از تنگه هرمز و خارج کردن نیروهای نظامی آمریکا از منطقه را مطرح کرده است. در همین حال، گروه شیدایی یemeni (حوثی) مسئولیت حمله به پالایشگاه نفت عربستان را بر عهده گرفت که به سرعت مهار شد. ایران و عمان به توافق برای بازگشایی تنگه هرمز نزدیک هستند، اما ایران شرایطی را اضافه می‌کند که توافق را پیچیده می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محل سرتیتر</h3>
+            تشدید تنش‌ها محتمل‌تر به نظر می‌رسد. ایالات متحده ممکن است در برابر خواسته‌های جدید ایران مقاومت کند، در حالی که ایران می‌تواند با مختل کردن کشتیرانی در تنگه هرمز یا حمایت از حملات نیابتی مانند حملات حوثی‌ها فشار خود را افزایش دهد. بن‌بست دیپلماتیک نیز محتمل است مگر اینکه هر دو طرف انعطاف‌پذیری نشان دهند، اما روند به نظر در جهت تشدید rather than مصالحه در حال حرکت است. عربستان سعودی احتمالاً دفاع‌های خود را در برابر حملات حوثی‌ها تقویت خواهد کرد که این امر می‌تواند منجر به واکنش‌های متقابل بیشتر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمان‌بندی</h3>
+            <ul><li>۱. در سال ۲۰۲۶، تنش‌ها بین ایالات متحده و ایران پس از آنکه ایران در ماه اوت خواسته‌های جدیدی مطرح کرد، افزایش یافت.</li><li>۲. در ۹ اوت، مذاکرات غیرمستقیم ایالات متحده و ایران پس از آنکه ایران خواستار لغو محاصره دریایی ایالات متحده و خروج نیروهای آمریکایی شد، به شکست انجامید.</li><li>۳. همچنین در ۹ اوت، ایران و عمان در آستانه بستن قراردادی برای بازگشایی تنگه هرمز بودند، اما با شروطی که به حضور نیروهای آمریکایی tied بود.</li><li>۴. اوایل همان هفته، کاخ سفید نشانه‌هایی از نزدیک بودنContract برای پاکسازی تنگه هرمز از موانع ارائه کرده بود، اما خواسته‌های گسترده ایران برای امتیازهای بیشتر آن را خراب کرد.</li><li>۵. در ۹ اوت، پیکارجویان حوثی یک پالایشگاه نفتی عربستان سعودی را مورد حمله قرار دادند که به سرعت خاموش شد، اما ترس از تشدید درگیری‌ها را افزایش داد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در بلندمدت، این منطقه با خطر درگیری‌های prolonged یا Wiederaufnahme مذاکرات بی‌نتیجه مواجه است. ایران ممکن است از نفوذ خود بر نیروهای نیابتی مانند حوثی‌ها برای فشار آوردن به عربستان سعودی و ایالات متحده استفاده کند، در حالی که ایالات متحده نیز می‌تواند با اقدامات نظامی یا اقتصادی پاسخ دهد. تنگه هرمز به‌عنوان یک نقطه‌بحرانی استراتژیک باقی می‌ماند و هرگونه اختلال در آن می‌تواند پیامدهای اقتصادی جهانی داشته باشد. چشم‌انداز استراتژیک بستگی به این دارد که آیا ایالات متحده و ایران می‌توانند به توافقاتی دست یابند یا اینکه ایران احساس فشار کرده و به تشدید تنش‌ها روی آورد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری در حال حاضر ترکیبی از مذاکرات غیرمستقیم و حملات نیابتی است. ایران از متحدان منطقه‌ای خود (مانند حوثی‌ها) برای فشار به عربستان و ایالات متحده بهره می‌برد، در حالی که با ارائه demands جدید، مذاکرات را به تأخیر می‌اندازد. مبارزات کنونی دارای شدت کم است اما در حال تشدید بوده و بر روی تاکتیک‌های نامتقارن (به عنوان مثال، حملات پهپادی، موشک‌ها و عملیات سایبری) به جای رویارویی مستقیم متمرکز شده است. ایالات متحده احتمالاً با اقدامات دفاعی (به عنوان مثال، گشت‌های دریایی) به جای اقدامات تهاجمی واکنش نشان می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت بر عرضه‌های نفتی جهانی، مسیرهای کشتی‌رانی و ثبات اقتصادی تأثیر می‌گذارد. تنگه هرمز یک گلوگاه حیاتی برای حمل و نقل نفتی است و هرگونه اختلالات می‌تواند منجر به افزایش قیمت نفت و تشدید تورم در سراسر جهان شود. متحدان منطقه‌ای مانند عربستان سعودی و عمان در میانه این بحران گرفتار شده‌اند و تلاش می‌کنند تا میان دیپلماسی و دفاع از خود تعادل برقرار کنند. تقابل آمریکا و ایران نیز بازتاب‌دهنده رقابت‌های ژئوپلیتیکی گسترده‌تر در خاورمیانه است که تأثیراتی بر متحدانی مانند اسرائیل و کشورهای دیگر حوزه خلیج فارس دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده به دلیل حضور نظامی در منطقه و مخالفت با برنامه‌های هسته‌ای و موشکی ایران، به‌طور مستقیم در این ماجرا درگیر است. ایران نیز توسط متحدان منطقه‌ای خود مانند حوثی‌های یمن و گروه‌های نیابتی در عراق و سوریه حمایت می‌شود. عربستان سعودی در خط مقدم حملات حوثی‌ها قرار دارد و به احتمال زیاد در جستجوی حمایت ایالات متحده برای دفاع از زیرساخت‌های نفتی خود است. عمان نیز در مذاکرات برای باز کردن تنگه هرمز نقش میانجی‌گری ایفا می‌کند. سایر کشورها مانند چین و روسیه ممکن است منافع غیرمستقیمی در کاهش تنش‌ها برای تأمین ثبات در عرضه نفت داشته باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت نفت احتمالاً به دلیل خطر اختلال در تنگه هرمز که حدود 20 درصد از عرضه جهانی نفت را مدیریت می‌کند، نوسانی باقی خواهد ماند. در صورتی که ایران تنگه را مسدود کند یا اگر تأسیسات نفتی عربستان مکرراً مورد حمله قرار گیرد، قیمت نفت ممکن است به شدت افزایش یابد. این موضوع به اقتصادهای جهانی، به ویژه بازارهای نوظهوری که به شدت به واردات نفت وابسته هستند، آسیب خواهد رساند. بانک‌های مرکزی در آسیا از پیش در حال آماده‌سازی اقداماتی برای تثبیت ارزهای خود در صورت بروز جهش‌های قیمتی هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            مذاکرات غیرمستقیم آمریکا و ایران پس از تقاضاهای جدید ایران متوقف شده و به نظر نمی‌رسد به زودی به توافقی دست یابند. حمله‌های حوثی‌ها به تاسیسات نفتی عربستان و شروط ایران برای بازگشایی تنگه هرمز، تنش‌های منطقه‌ای را تشدید می‌کند. قیمت‌های نفت و ثبات اقتصادی جهانی به دلیل احتمال اختلال در تنگه هرمز در معرض خطر قرار دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            شکست غیرمنتظره مذاکرات ایالات متحده و ایران تنها چند روز پس از نزدیک شدن به توافق، و همچنین درخواست‌های جدید و جسورانه ایران برای رفع محاصره دریایی ایالات متحده و عقب نشینی نیروها.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات چشمگیری در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
