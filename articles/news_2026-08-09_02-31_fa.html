@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-09 02:35</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-09 02:35</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>تورم چین کاهش می‌یابد در حالی که شوک نفتی ناشی از جنگ ایران در حال فروکش است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۱۸T۰۲:۱۷:۲۱Z</strong></span>
+                </div>
+                <p class='summary'>در چین، تورم کارخانه برای نخستین بار از زمان آغاز جنگ ایران در اواخر فوریه تسهیل شد در حالی که قیمت‌های مصرف‌کننده نیز کاهش یافت. این نشان می‌دهد نشانه‌هایی از برگشت فشارهای هزینه‌ای ناشی از شوک نفتی آغاز شده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/chinas-inflation-cools-as-oil-shock-of-iran-war-starts-to-ease' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>جنگ ایران زنده: تهران خواستار پایان محاصره ایالات متحده برای بازگشایی تنگه هرمز است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶/۰۸/۰۹</strong></span>
+                </div>
+                <p class='summary'>سپاه پاسداران انقلاب اسلامی شرط‌هایی برای بازگشایی تنگه هرمز تعیین می‌کند؛ در حالی که آمریکا به دنبال تعهداتی برای پایان دادن به حملات به کشتی‌ها در این آبراه است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/fa/news/liveblog/2026/8/9/iran-war-live-tehran-demands-end-to-us-blockade-to-reopen-strait-of-hormuz?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترکیه می‌گوید پیمان دفاع از مکه معطوف به ایران نیست</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۰۶/۱۷ - ساعت ۲۳:۵۹:۱۵</strong></span>
+                </div>
+                <p class='summary'>ترکیه اعلام کرد که پیمان دفاعی مکه میان عربستان سعودی و پاکستان، ایران را هدف قرار نداده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/mnews/2026/8/8/trky-hooqr-sayy-y-mekka-ndef-s-ytahd-ks-br-ary-an?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۹ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌ها میان ایران و ایالات متحده در حال تشدید است و ایران خواستار آن شده است که آمریکا پیش از بازگشایی مسیر حیاتی کشتیرانی، محاصره خود بر تنگه هرمز را خاتمه دهد. در همین حال، اقتصاد چین نشانه‌هایی از کاهش فشار از شوک نفتی این درگیری را نشان می‌دهد، و ترکیه علیرغم واکنش‌های منطقه‌ای، پذیرش پیمان دفاعی جدید خود را متوجه ایران نمی‌داند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            سپاه پاسداران انقلاب اسلامی ایران (پاسداران) برای بازگشایی تنگه هرمز، یکی از مهم‌ترین مسیرهای کلیدی حمل و نقل جهانی نفت، شرایطی از جمله پایان محاصره ایالات متحده را تعیین کرده است. ایالات متحده در تلاش است تا تضمین‌هایی برای توقف حملات به کشتی‌ها در این آبراهه دریافت کند، اقدامی که به ایران نسبت داده می‌شود. نرخ تورم چین، که به دلیل افزایش قیمت نفت ناشی از جنگ افزایش یافته بود، در حال کاهش است که نشان می‌دهد شوک اقتصادی فوری ممکن است در حال فروکش کردن باشد. جداگانه، ترکیه اعلام کرده است که توافق دفاعی جدید این کشور با عربستان سعودی و پاکستان در مورد مکه، به ایران معطوف نیست، اگرچه ناظران منطقه‌ای در زمان‌بندی آن تردید دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا سرصفحه</h3>
+            تمرکز فوری احتمالاً بر مذاکرات در مورد تنگه هرمز خواهد بود. اگر ایران احساس فشار از تحریم‌های ایالات متحده یا انزوا در منطقه داشته باشد، ممکن است خواسته‌های خود را کاهش دهد، اما در صورت عدم مشاهده پیشرفت، ممکن است اقدامات تلافی‌جویانه بیشتری انجام دهد. تثبیت اقتصادی چین ممکن است نیاز فوری به آتش‌بس را کاهش دهد، در حالی که پیمان دفاعی ترکیه می‌تواند اختلافات منطقه‌ای را عمیق‌تر کند یا باعث دیپلماسی‌های بیشتر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['اواخر اسفندماه ۱۴۰۴ (فوریه 2026): تشدید درگیری ایران و آمریکا، با ایجاد نگرانی در بازارها از احتمال disruption در تنگه هرمز، منجر به شوک قیمتی در بازار نفت می‌شود.', '۸ مرداد ۱۴۰۵ (اوت 2026): ترکیه با عربستان سعودی و پاکستان، پیمان دفاعی مکه را پایه‌گذاری می‌کند که با framing آن به‌عنوان یک اتحاد امنیتی منطقه‌ای، اما سؤالاتی درباره نقش ایران مطرح می‌شود.', '۹ مرداد 1405 (اوت 2026): ایران از آمریکا می‌خواهد تحریمِ تنگه هرمز را پایان دهد تا این مسیر از سر گرفته شود؛ در همین حال، چین گزارش می‌دهد فشارهای تورمی فروکش کرده و اثرات شوک نفتی نیز کاهش می‌یابد.', 'آینده: احتمال برگزاری مذاکرات بین ایران و آمریکا وجود دارد که بازیگران منطقه‌ای همچون ترکیه، عربستان سعودی و پاکستان، نقش تسهیل‌کننده یا پیچیده‌کننده دارند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این درگیری به احتمال زیاد به سرعت حل نخواهد شد، بلکه ممکن است به یک بن‌بست طولانی‌مدت با خشونت‌های دوره‌ای، به جای جنگ گسترده، تبدیل گردد. به احتمال زیاد، ایران به استفاده از کنترل خود بر تنگه هرمز به عنوان اهرم فشار ادامه خواهد داد، در حالی که ایالات متحده و متحدانش به دنبال ایزوله‌سازی اقتصادی ایران خواهند بود. قدرت‌های منطقه‌ای مانند ترکیه و عربستان سعودی ممکن است به یک بازی موازنهٔ پیچیده وارد شوند—تقویت روابط با یک‌دیگر برای مقابله با نفوذ ایران، در حالی که از برخورد مستقیم اجتناب می‌کنند. در درازمدت، این امر می‌تواند باعث بازتعریف اتحادهای خاورمیانه و زنجیره‌های تأمین جهانی نفت گردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            نبرد کنونی تا حد زیادی غیرمستقیم است؛ تحریم‌های اقتصادی، حملات سایبری و جنگ‌های نیابتی در مکان‌هایی مانند یمن یا عراق، به جای برخوردهای نظامی مستقیم. تنگه هرمز یک کانون بحران است، به طوری که ایران با تهدید به disruption تجارت دریایی (در صورت عدم پذیرش خواسته‌ها) و ایالات متحده تلاش دارد تا با ارائه تضمین به متحدانش، آزادی تردد را تضمین کند. اقدامات سپاه پاسداران انقلاب اسلامی (IRGC) حاکی از استراتژی فشار هوشمندانه به منظور اعمال خواسته‌ها بدون تحریک یک جنگ تمام‌عیار است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری بازارهای جهانی انرژی و موازنهٔ قدرت منطقه‌ای را دستخوش تغییر کرده است. تنگهٔ هرمز گلوگاه حدود ۲۰٪ از تأمین نفت جهان محسوب می‌شود، از این رو هرگونه اختلال می‌تواند پیامدهای زنجیره‌ای بر اقتصادهای جهانی داشته باشد. کاهش تورم چین نشان می‌دهد شوک اولیه موقتی است، اما تنش‌های prolonged می‌تواند منجر به افزایش هزینهٔ بلندمدت انرژی شود. در سطح منطقه‌ای، ائتلاف‌های به رهبری سنی از جمله پیمان مکه ممکن است نفوذ شیعی ایران را با عمیق‌تر کردن شکاف‌های فرقه‌ای خنثی کنند. برای جهان، این به معنای افزایش قیمت انرژی و عدم‌اطمینان بیشتر در منطقه‌ای حیاتی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده تلاش‌ها برای مهار کردن ایران را آغاز کرده است که احتمالاً با حمایت کشورهای حاشیه خلیج فارس مانند عربستان و امارات متحده عربی همراه خواهد بود. چین همچنان یک بازیگر کلیدی باقی می‌ماند و منافع اقتصادی خود (از جمله واردات نفت از ایران) را با رویکرد دیپلماتیک کلی خود متعادل می‌کند. ترکیه در حال positioning کردن خود به عنوان میانجی است، اما به وضوح بیش از پیش خود را با عربستان و پاکستان همسو می‌سازد که می‌تواند ایران را بیشتر منزوی کند. روسیه نیز ممکن است با حمایت از ایران از این وضعیت برای بازیابی نفوذ خود در خاورمیانه بهره‌برداری کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت پس از شوک اولیه ناشی از درگیری ایران و ایالات متحده احتمالاً در حال تثبیت هستند، همان‌طور که در کاهش تورم چین دیده می‌شود. با این حال، هرگونه اختلال شدید در تنگه هرمز می‌تواند دوباره باعث جهش قیمت‌ها شود. تداوم درگیری منجر به بالا ماندن قیمت نفت خواهد شد، که به نفع کشورهای تولیدکننده نفت مانند عربستان سعودی و ایالات متحده است اما به اقتصادهای وابسته به واردات، مانند那些 در اروپا و آسیا، آسیب می‌رساند. این مسئله می‌تواند رشد اقتصادی جهانی را کند کرده و فشارهای تورمی را در سراسر جهان افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران در حال استفاده از کنترل تنگه هرمز به‌عنوان ابزاری برای فشار است و از ایالات متحده می‌خواهد تحریم‌های خود را لغو کند تا این مسیر حیاتی دریایی بازگشایی شود. اقتصاد چین نشانه‌هایی از تطبیق با شوک نفتی نشان می‌دهد، که ممکن است فشار فوری برای آتش‌بس یا حل و فصل را کاهش دهد. اتحادهای منطقه‌ای مانند پیمان مکه ترکیه نشان‌دهنده شکل‌گیری اتحادهای متقابل در برابر نفوذ ایران است که خطر تشدید شکاف‌های مذهبی و سیاسی-جغرافیایی را در پی دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            اعلام ناگهانی ترکیه در مورد پیمان دفاعی مکه که به‌عنوان اقدامی علیه ایران معرفی نشده اما احتمالاً نگاه‌های منطقه‌ای را متوجه خود خواهد کرد، به عنوان یک تحوّل قابل توجه مطرح است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            تغییرات قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
