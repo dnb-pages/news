@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-12 19:34</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-12 19:34</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>اعضای کابینه ترامپ پس از خروج آرام رئیس‌جمهور، در هواپیمای قلابی باقی ماندند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۱ ۱۶:۳۴:۰۱</strong></span>
+                </div>
+                <p class='summary'>ترامپ به دلیل مسائل امنیتی مرتبط با ایران، در جریان یک نشست ناتو در ترکیه سوار پروازی متفاوت شد.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c4g306eln8wo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۲ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های مرتبط با ایران به حدی تشدید شده است که رئیس‌جمهور آمریکا، ترامپ، ناگهان ترکیه را به مقصد نشست ناتو ترک کرد و برای حفظ جان خود از هواپیمایی وانمود استفاده نمود؛ اقدامی که نگرانی‌ها درباره احتمال درگیری‌های منطقه‌ای یا تهدیدهای مرتبط با ایران را برجسته می‌سازد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            در جریان نشست ناتو در ترکیه، دونالد ترامپ، رئیس‌جمهور ایالات متحده، به‌طور ناگهانی با استفاده از یک هواپیمای طعمه به جای هواپیمای اصلی خود، جلسه را ترک کرد. به گفته‌ی گزارش‌ها، این اقدام به دلایل امنیتی و به دلیل تهدیدات احتمالی از سوی ایران صورت گرفته است. تعدادی از اعضای کابینه وی همچنان در هواپیمای اصلی ماندند که نشان از نگرانی‌های heightened فعالیت‌های مرتبط با ایران دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            تنش‌های درگیر با ایران به احتمال زیاد تشدید خواهد شد و احتمالاً شاهد افزایش مانورهای نظامی، حملات احتمالی، یا فروپاشی مذاکرات دیپلماتیک خواهیم بود. استفاده از هواپیمای طعمه نشان از ترس از حمله قریب‌الوقوع یا تشدید تنش در منطقه دارد که احتمالاً درگیر گروه‌های مورد حمایت ایران یا اقدامات مستقیم ایران خواهد بود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            <ul><li>۱. ۱۲ اوت ۲۰۲۶: ترامپ برای دلایل امنیتی مربوط به ایران، summit ناتو در ترکیه را با استفاده از هواپیمای فریب‌دهنده ترک کرد. اعضای کابینه در هواپیمای اصلی باقی ماندند.</li><li>۲. هفته‌ها/ماه‌های اخیر منتهی به ۱۲ اوت: تشدید تنش‌ها بین ایران و کشورهای غربی از جمله ایالات متحده بر سر برنامه هسته‌ای ایران، گروه‌های نیابتی منطقه‌ای، و اقدامات تهاجمی در تنگه هرمز.</li><li>۳. پیش از ۲۰۲۶: تشدید تنش‌ها، از جمله تحریم‌ها، مانورهای نظامی، و درگیری‌های نیابتی در خاورمیانه.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            جهت‌گیری بلندمدت حاکی از تداوم بن‌بست بین ایران و کشورهای غربی با امکان درگیری نظامی یا فشارهای اقتصادی و سیاسی طولانی مدت است. ایران ممکن است از طریق نیابتیان (مانند حزب‌الله یا حوثی‌ها) به گسترش نفوذ خود بپردازد، در حالی که کشورهای غربی ممکن است تحریم‌ها یا بازدارندگی نظامی خود را تشدید کنند. راه‌حل‌های دیپلماتیک همچنان شکننده است و در کوتاه‌مدت نامحتمل به نظر می‌رسد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری کنونی با رویارویی‌های غیرمستقیم از طریق نمایندگان، جنگ سایبری و فشارهای اقتصادی مشخص می‌شود، نه نبردهای گسترده و مستقیم. با این حال، تهدید اقدامات نظامی مستقیم، مانند حملات به تاسیسات هسته‌ای یا مواضع شبه‌نظامیان حامی ایران، در حال افزایش است. شدت درگیری همچنان بالا است، اما عمدتاً به جنگ‌های نیابتی و جنگ‌های سایه محدود می‌باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت ثبات شکننده را در خاورمیانه برجسته می‌کند، جایی که اقدامات ایران و واکنش‌های غرب می‌تواند اتحادهای منطقه‌ای و تعادل قدرت جهانی را از نو تعریف کند. یک درگیری گسترده می‌تواند عرضه جهانی نفت را مختل کند، روابط بین‌المللی را تحت فشار قرار دهد و منجر به بحران‌های بشردوستانه شود. جهان در یک برهه حیاتی قرار دارد که در آن کاهش تنش ضروری است، اما به نظر می‌رسد به‌طور فزاینده‌ای غیرمحتمل است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیگران کلیدی شامل ایالات متحده، متحدان ناتو (به‌ویژه ترکیه، اسرائیل و کشورهای خلیج‌فارس مانند عربستان سعودی) و ایران هستند. ایالات متحده و متحدانش ایران را به‌عنوان نیروی بی‌ثبات‌کننده می‌بینند، در حالی که ایران سیاست‌های غربی را تهدیدات وجودی تلقی می‌کند. روسیه و چین ممکن است به‌عنوان میانجی یا پشتیبانان ایران ایفای نقش کنند که تلاش‌های حل مسئله را پیچیده می‌سازد. سازمان ملل و اتحادیه اروپا به‌دلیل اختلافات عمیق در میانجی‌گری با چالش مواجه هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            به احتمال زیاد قیمت‌های نفت به دلیل تنش‌های افزایش یافته در خلیج فارس، منطقه‌ای حیاتی برای ترانزیت نفت، افزایش خواهد یافت. هرگونه اختلال در حمل و نقل نفت (مانند: حملات به نفت‌کش‌ها در تنگه هرمز) یا تحریم‌های اقتصادی علیه ایران می‌تواند به طور چشمگیری عرضه جهانی نفت را کاهش داده و باعث افزایش قیمت‌ها شود. این موضوع حائز اهمیت است زیرا افزایش قیمت‌های نفت می‌تواند رشد اقتصادی جهانی را کند کرده و تورم راTrigger کند، که هزینه‌های روزمره افراد در سراسر جهان را تحت تاثیر قرار می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 درباره‌ی این موضوع مهم</h3>
+            تنش‌ها میان ایران و کشورهای غربی به مرحله‌ای بحرانی رسیده است، به گونه‌ای که ایالات متحده اقدامات امنیتی فوق‌العاده‌ای را در نشست ناتو ترتیب داده و حاکی از ریسک بالای تشدید تنش‌ها است. این درگیری عمدتاً از طریق نمایندگان و فشارهای اقتصادی انجام می‌شود، اما تهدید اقدام نظامی مستقیم در حال افزایش است که می‌تواند کل خاورمیانه را بی‌ثبات کند. بازارهای جهانی نفت به دلیل موقعیت استراتژیک ایران در خلیج فارس آسیب‌پذیر هستند؛ هرگونه درگیری می‌تواند قیمت نفت را افزایش داده و بر اقتصادهای سراسر جهان تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            استفاده ترامپ از هواپیمای طعمه یک اقدام امنیتی بسیار غیرمعمول است که نشان می‌دهد ادراک از تهدید مربوط به ایران به سطوح بی‌سابقه‌ای رسیده است. علاوه بر این، انتخاب زمان این اقدام در حین نشست ناتو نشان می‌دهد که حتی متحدان غربی نیز تهدیدهای مرتبط با ایران را جدی تلقی می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            توسعه قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
