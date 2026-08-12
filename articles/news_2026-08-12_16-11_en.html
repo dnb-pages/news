@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-08-12 16:13</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-08-12 16:13</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>Members of Trump's cabinet remained on decoy plane, after president's quiet exit</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> BBC News (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 15:57</strong></span>
+                </div>
+                <p class='summary'>Trump boarded a different plane in Turkey during a Nato summit for security reasons involving Iran.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c4g306eln8wo?at_medium=RSS&at_campaign=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Is Russia’s economy cracking despite the Iran war windfall?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 15:36</strong></span>
+                </div>
+                <p class='summary'>A widening deficit and Ukrainian strikes are testing Russia's economy, even as war in the Middle East lifts oil revenue.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/8/12/is-russias-economy-cracking-despite-the-iran-war-windfall?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Trump Says Hormuz Is Under U.S. Control. Few Ships Are Listening.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 15:30</strong></span>
+                </div>
+                <p class='summary'>With limited bursts of firepower, Iran is able to make the waterway too risky to cross.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/trump-says-hormuz-is-under-u-s-control-few-ships-are-listening-485ba60e?mod=rss_worldnews' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Iran remains defiant as it vows to fight US until demands met</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 15:29</strong></span>
+                </div>
+                <p class='summary'>IRGC advisers say Iran has replaced more missiles and drones than it used, and cite falling US munition stocks.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/12/iran-remains-defiant-as-it-vows-to-fight-us-until-demands-met?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>War Is Squeezing Another Global Chokepoint: The Black Sea</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 14:52</strong></span>
+                </div>
+                <p class='summary'>Russia is ramping up attacks on grain shipments while Ukraine is striking oil tankers, putting global markets on edge.</p>
+                <div class='link'><a href='https://www.wsj.com/world/europe/war-is-squeezing-another-global-chokepoint-the-black-sea-ce08b232?mod=rss_worldnews' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>As Strait of Hormuz transit drops, Trump again says US has ‘control’</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 15:07</strong></span>
+                </div>
+                <p class='summary'>Just eight vessels crossed strait on Tuesday, down from 130 to 140 prior to the war as peace talks stall.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/12/as-strait-of-hormuz-transit-drops-trump-again-says-us-has-control?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>Iran is not anti-imperialist. It is a state calculating survival</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 14:23</strong></span>
+                </div>
+                <p class='summary'>Regardless of its current hostile rhetoric, the Islamic Republic will likely reach a settlement with the US and Israel.</p>
+                <div class='link'><a href='https://www.aljazeera.com/opinions/2026/8/12/iran-is-not-anti-imperialist-it-is-a-state-calculating-survival?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>Hormuz Closure Helps Emerging-Market Company Bonds Beat US Peers</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 15:13</strong></span>
+                </div>
+                <p class='summary'>The average borrowing cost of emerging-market companies has fallen to the lowest level since January relative to US corporates as global bond investors’ diversification into higher-yielding assets drives an outperformance.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/hormuz-closure-helps-emerging-market-company-bonds-beat-us-peers' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>Nigeria: Borno, Adamawa, and Yobe (BAY) states - Quarter 2 Situation Report, April - June 2026</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> ReliefWeb (humanitarian)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-12 14:18</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">Countries: Nigeria, Cameroon</div> <div class="tag source">Source: UN Office for the Coordination of Humanitarian Affairs</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/6c/4f/6c4fa1ef-08bb-4c60-9f33-a247a1f75775.png" alt></p> <p>Please refer to the attached file.</p> <p><em>This report is produced by OCHA Nigeria in collaboration with humanitarian partners. It covers the April-June 2026 period. The next report will be issued in October 2026.</em></p> <p>Highlights</p> <ul><li>Lean season takes hold with 6.4 million people food insecure across Borno, Adamawa and Yobe states</li> <li>Record Nigeria Humanitarian Fund (NHF) allocation gets underway in northeast, northwest and northcentral Nigeria.</li> <li>As cholera cases rise across Borno, humanitarian partners scale-up life-saving responses</li> <li>Borno State progresses with plans to close IDP camps</li> <li>Escalating insecurity disrupts lives and humanitarian operations across the northeast</li> <li>Nigeria on its way to locally- led and financed humanitarian coordination</li> </ul><p><strong>Situation overview</strong></p> <p><strong>Lean season hits northeast communities, driving rising food insecurity.</strong></p> <p>More than 6.4 million people in Borno, Adamawa and Yobe (BAY) states are projected to face crisis-level hunger or worse during the June–August 2026 lean season, marking the worst acute food insecurity peak recorded in northeast Nigeria in more than a decade.</p> <p>According to the latest Cadre Harmonisé (CH) food security analysis, conducted jointly by the Government and humanitarian partners, nearly 4 in every 10 people in the BAY states - about 36 per cent of the population - are expected to experience acute food insecurity during the season. The latest projection represents a 10 per cent increase from previously estimates made in October 2025, highlighting the rapid deterioration of food security conditions across the region.</p> <p>The situation is particularly alarming for the most vulnerable households. More than 1.1 million people are projected to face Emergency (Phase 4) levels of food insecurity, characterized by severe food consumption gaps and heightened risks of acute malnutrition. At the same time, about 10,300 people could fall into Catastrophe (Phase 5), the most extreme level of food insecurity, by August 2026 if urgent action is not taken.</p> <p>The CH warns that a combination of conflict, economic hardship and climate-related shocks is driving the crisis. Persistent insecurity continues to limit access to farmland and markets, undermining livelihoods and reducing food production. Renewed attacks in parts of Borno State, including Askira/Uba, Chibok, Gwoza and Kaga local government areas, have further restricted agricultural activities and access to essential services.</p> <p>At the same time, families are grappling with soaring food prices, elevated fuel costs and expensive agricultural inputs as a result of the conflict in the Middle East. Inflation, currency depreciation and rising transportation costs have reduced household purchasing power, making it increasingly difficult for vulnerable communities to meet their basic food needs.</p> <p>Climate risks are complicating the food security landscape. Early warning information points to the likelihood of localized El Niño-related impacts, including both dry spells and flooding during the current agricultural season. Such shocks could destroy crops, disrupt farming activities and further erode household food stocks and incomes, particularly among already vulnerable rural communities.</p> <p>Humanitarian agencies say assistance remains a critical lifeline, but current resources are insufficient to match rising needs. As of May 2026, approximately 700,000 people targeted for food assistance under the 2026 Humanitarian Needs and Response Plan had not received support, while 830,000 people missed out on planned emergency agricultural assistance because of funding shortfalls.</p> <p>The Food Security Sector needs US$224.4 million in 2026 to provide food assistance to 1.5 million people and emergency agricultural support to 900,000 people. However, funding remains critically low. As of mid-year, the sector had received only US$76 million, representing only a third of requirements, leaving a funding gap of approximately 66 per cent (US$148.4 million). The shortfall is particularly concerning for agricultural interventions which are critical to helping vulnerable households produce food, protect livelihoods, and reduce dependence on humanitarian assistance.</p> <p>Without urgent action during the lean season, aid agencies warn that worsening food insecurity could lead to increased displacement, deeper poverty, heightened malnutrition and greater instability across north-east Nigeria. Every day of delay increases the risk of irreversible harm for families already struggling to survive. Additional and rapid funding is urgently needed to expand lifesaving food assistance, support food production and reach the most vulnerable people before hunger escalates further across Borno, Adamawa and Yobe states.</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/nigeria/nigeria-borno-adamawa-and-yobe-bay-states-quarter-2-situation-report-april-june-2026' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - August 12, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>Tensions between Iran and the U.S. are escalating, leading to disruptions in global shipping routes like the Strait of Hormuz. Iran remains defiant despite military pressures, while economic struggles in Russia and Nigeria add to geopolitical instability.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            Iran and the U.S. are locked in a standoff involving military strikes, naval blockades, and economic pressures. Iran claims it can replace its missiles and drones faster than the U.S. can deplete them, while the U.S. insists it controls the Strait of Hormuz despite Iran's ability to disrupt shipping. The conflict is blocking key global trade routes and straining economies worldwide.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The situation is likely to escalate further with Iran continuing to challenge U.S. control over shipping routes. Peace talks are stalling, and Iran's defiance suggests it will not back down unless its demands are met. Meanwhile, economic pressures on Russia and Nigeria could lead to broader instability.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            • Mid-2026: Escalation in Iran-U.S. tensions begins.<br>• Recent events (August 12, 2026): Iran vows to fight the U.S. until demands are met, shipping through the Strait of Hormuz drops sharply, and Trump claims U.S. control despite low transit levels.<br>• Ongoing: Russia's economic struggles and Ukraine's strikes on Russian oil tankers add to global market concerns.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict is likely to persist unless a major diplomatic breakthrough occurs. Iran will likely seek to maintain pressure on the U.S. to extract concessions, while the U.S. may continue limited military actions to assert control. Long-term, this could lead to a reshaping of Middle Eastern alliances and global energy markets.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The conflict is intense but asymmetrical: Iran uses drones, missiles, and naval tactics to disrupt shipping, while the U.S. relies on limited use of force and economic sanctions. Iran's ability to replenish its stockpiles faster than expected is a key factor. The conflict is low-intensity but high-stakes due to its impact on global trade.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This conflict threatens global supply chains, particularly oil and food shipments from the Middle East and Black Sea. It also strains already fragile economies like Russia, which is struggling with deficits and sanctions, and Nigeria, which faces severe food insecurity worsened by regional instability.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The U.S. is leading the effort to counter Iran with military and economic tools. Russia is indirectly involved through its military actions in Ukraine and its economic ties with Iran. Other nations, such as China and European countries, may face pressure to mediate or take sides as the conflict disrupts global trade.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are likely to rise due to disruptions in the Strait of Hormuz, a critical global chokepoint for oil shipments. This would impact fuel costs worldwide and could further strain economies already struggling with inflation and sanctions.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            Iran is defiant and escalating its challenge to U.S. control over key shipping routes. Disruptions in the Strait of Hormuz are already affecting global oil and food supplies. Geopolitical and economic strains in Russia and Nigeria are worsening due to conflicts in the Middle East and Ukraine.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The speed at which Iran claims it can replace its missile and drone stocks, countering U.S. military pressures more effectively than expected.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            The humanitarian crisis in Nigeria's northeast states is worsening due to regional conflicts, economic instability, and climate shocks. This adds another layer of urgency to the global situation, as food insecurity and displacement could fuel further instability.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-12 16:16</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-12 16:16</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>اعضای کابینه ترامپ پس از خروج آرام رئیس‌جمهور بر روی هواپیمای طعمه ماندند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۳  ساعت ۱۹:۲۷:۱۸</strong></span>
+                </div>
+                <p class='summary'>ترامپ برای دلایل امنیتی مرتبط با ایران، در جریان یک اجلاس ناتو در ترکیه سوار هواپیمای دیگری شد.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/c4g306eln8wo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آیا اقتصاد روسیه علیرغم سود جنگ با ایران در حال فروپاشی است؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۱ ساعت ۱۹:۳۶:۳۳</strong></span>
+                </div>
+                <p class='summary'>کمبود روزافزون و حملات اوکراین در حال آزمایش اقتصاد روسیه هستند، حتی در زمانی که جنگ در خاورمیانه درآمدهای نفتی را افزایش می‌دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/8/12/is-russias-economy-cracking-despite-the-iran-war-windfall?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترامپ می‌گوید تنگه هرمز تحت کنترل آمریکا است. اما کشتی‌های اندکی به این گفته توجه نشان می‌دهند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۲ ساعت ۱۹:۳۰ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>با قدرت آتش محدود، ایران می‌تواند این آبراه را بسیار پرخطر برای عبور ساخته و آن را غیرقابل عبور کند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/trump-says-hormuz-is-under-u-s-control-few-ships-are-listening-485ba60e?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ایران همچنان سرسخت باقی مانده است در حالی که وعده می‌دهد تا زمانی که خواسته‌ها برآورده شوند، با ایالات متحده مبارزه خواهد کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (نسخه اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۲  ساعت ۱۹:۵۹:۲۰</strong></span>
+                </div>
+                <p class='summary'>مشاوران سپاه پاسداران می‌گویند که ایران بیش از میزان استفاده‌شده‌ی خود موشک و پهپاد جایگزین کرده و به کاهش ذخایر مهمات ایالات متحده اشاره می‌کنند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/12/iran-remains-defiant-as-it-vows-to-fight-us-until-demands-met?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>جنگ، نقطه تنگنا/گلوگاه دیگری از جهان را زیر فشار گذاشته است: دریای سیاه</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۱ - ساعت ۱۹:۲۲</strong></span>
+                </div>
+                <p class='summary'>روسیه در حالی حمل و نقل غلات را که اوکراین می‌زند، verstärkt می‌کند و به تانکرهای نفت نیز حمله می‌کند، بازارهای جهانی را مضطرب کرده است.</p>
+                <div class='link'><a href='https://www.wsj.com/world/europe/war-is-squeezing-another-global-chokepoint-the-black-sea-ce08b232?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>با کاهش ترانزیت تنگه هرمز، ترامپ دوباره می‌گوید ایالات متحده «کنترل» دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (هسته اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۲ مرداد ۱۴۰۵ ساعت ۱۹:۳۷:۴۱ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>تنها هشت کشتی روز سه‌شنبه از تنگه عبور کردند که این میزان قبل از جنگ ۱۳۰ تا ۱۴۰ مورد بود و اکنون، به دلیل توقف مذاکرات صلح، کاهش یافته است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/12/as-strait-of-hormuz-transit-drops-trump-again-says-us-has-control?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>ایران ضد امپریالیست نیست. این یک دولت است که در محاسبه بقای خود است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۲ ساعت ۱۴:۲۳:۱۳</strong></span>
+                </div>
+                <p class='summary'>با وجودِ لحنِ خصمانه‌ی کنونی‌اش، جمهوری اسلامیِ ایران احتمالاً با ایالاتِ متحده و اسرائیل به توافق خواهد رسید.</p>
+                <div class='link'><a href='https://www.aljazeera.com/opinions/2026/8/12/iran-is-not-anti-imperialist-it-is-a-state-calculating-survival?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>8</span>
+                <span class='title'>بسته‌شدن تنگه هرمز به صندوق‌های قرضه شرکت‌های بازارهای نوظهور کمک کرد تا از همتایان آمریکایی خود سبقت بگیرند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فایننشال پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۱ ساعت ۱۹:۴۳:۳۱</strong></span>
+                </div>
+                <p class='summary'>هزینه متوسط وام‌گیری شرکت‌های بازارهای نوظهور از ژانویه تاکنون به پایین‌ترین سطح خود نسبت به شرکت‌های آمریکایی سقوط کرده است. این در حالی است که تنوع‌بخشی سرمایه‌گذاران جهانی اوراق قرضه به دارایی‌های با بازده بالاتر، عملکرد بهتری در پی داشته است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/hormuz-closure-helps-emerging-market-company-bonds-beat-us-peers' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>9</span>
+                <span class='title'>نیجریه: ایالات بورنو، آداماوا و یوبه (BAY) - گزارش وضعیت سه‌ماهه دوم، آوریل تا ژوئن ۲۰۲۶</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong>  ReliefWeb (humanitario) </span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۲  ساعت ۱۸:۴۸</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشورها: نیجریه، کامرون</div> <div class="tag source">منبع: دفتر هماهنگی امور بشردوستانه سازمان ملل متحد</div> <p><img src="https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/6c/4f/6c4fa1ef-08bb-4c60-9f33-a247a1f75775.png" alt></p> <p>لطفاً به فایل پیوست شده مراجعه کنید.</p> <p><em>این گزارش توسط OCHA نیجریه در همکاری با شرکای بشردوستانه تهیه شده است. این گزارش دوره آوریل تا ژوئن ۲۰۲۶ را پوشش می‌دهد. گزارش بعدی در اکتبر ۲۰۲۶ منتشر خواهد شد.</em></p> <p>نکات برجسته</p> <ul><li>فصل خُشکی آغاز شده و ۶/۴ میلیون نفر در ایالت‌های بورنو، آداماوا و یوبه درگیر ناامنی غذایی هستند</li> <li>توزیع بی‌سابقه کمک‌های صندوق بشردوستانه نیجریه (NHF) در شمال شرق، شمال غرب و شمال مرکزی نیجریه آغاز شده است</li> <li>با شیوع وبا در بورنو، شرکای بشردوستانه اقدامات نجات‌بخش خود را افزایش داده‌اند</li> <li>دولت ایالت بورنو در حال اجرای برنامه‌هایی برای بسته‌شدن اردوگاه‌های آوارگان است</li> <li>افزایش ناامنی، زندگی مردم و عملیات بشردوستانه را در شمال شرق مختل کرده است</li> <li>نیجریه در مسیر هماهنگی انسانی محلی و تأمین مالی‌شده قرار دارد</li> </ul><p><strong>خلاصه وضعیت</strong></p> <p><strong>فصل خُشکی جامعه‌های شمال شرق را در می‌نورد، و ناامنی غذایی را افزایش می‌دهد.</strong></p> <p>بر اساس برآوردها، بیش از ۶/۴ میلیون نفر در ایالت‌های بورنو، آداماوا و یوبه (BAY) طی فصل خُشکی ژوئن تا اوت ۲۰۲۶ با گرسنگی سطح بحران یا بدتر مواجه خواهند شد. این بدترین اوج ثبت‌شده از ناامنی غذایی حاد در شمال شرق نیجریه طی بیش از یک دهه گذشته است.</p> <p>بر اساس آخرین تحلیل امنیت غذایی کادر هماهنگی (CH) که به‌طور مشترک توسط دولت و شرکای بشردوستانه انجام شده است، از هر ۱۰ نفر در ایالت‌های BAY، حدود ۴ نفر (معادل ۳۶ درصد از جمعیت) انتظار می‌رود در طی این فصل با ناامنی غذایی حاد مواجه شوند. این برآورد جدید نشان‌دهنده افزایش ۱۰ درصدی نسبت به برآوردهای قبلی اکتبر ۲۰۲۵ است و زمینه‌ساز تشدید سریع شرایط امنیت غذایی در منطقه است.</p> <p>وضعیت برای آسیب‌پذیرترین خانوارها به‌طور فزاینده‌ای نگران‌کننده است. برآورد می‌شود که بیش از ۱/۱ میلیون نفر در سطح اضطرار (فاز ۴) ناامنی غذایی قرار گیرند که مشخصه آن شکاف‌های شدید در مصرف مواد غذایی و خطر بالای سوءتغذیه حاد است. هم‌زمان، حدود ۱۰،۳۰۰ نفر می‌توانند تا اوت ۲۰۲۶ به بدترین سطح ناامنی غذایی (فاز ۵ - فاجعه) سقوط کنند، مگر آنکه اقدام فوری صورت پذیرد.</p> <p>آنالیز CH هشدار می‌دهد که تلفیقی از درگیری‌ها، مشکلات اقتصادی و شوک‌های مربوط به آب و هوا، این بحران را تشدید می‌کند. ناامنی پایدار دسترسی به زمین‌های کشاورزی و بازارها را محدود کرده و معیشت‌ها را نابود ساخته، تولید مواد غذایی را کاهش داده است. حملات مکرر در بخش‌هایی از ایالت بورنو از جمله مناطق شهرداری‌های آسکیرا/اوبا، چبوک، گووا و کاگا، فعالیت‌های کشاورزی و دسترسی به خدمات اساسی را بیش از پیش محدود کرده است.</p> <p>در عین حال، خانواده‌ها با افزایش شدید قیمت مواد غذایی، هزینه‌های بالای سوخت و افزایش قیمت‌های نهاده‌های کشاورزی به دلیل درگیری‌ها در خاورمیانه دست و پنجه نرم می‌کنند. تورم، کاهش ارزش پول و هزینه‌های بالای حمل و نقل قدرت خرید خانوارها را کاهش داده و شرایط را برای برآورده کردن نیازهای اساسی غذایی برایComprehensive (CH) analysis conducted jointly by the government and humanitarian partners, nearly four out every 10 people in the BAY states—about 36 percent of the population—are expected to face acute food insecurity during this season. The latest figures represent a 10% increase from the previous estimates in October 2025, underscoring the rapid deterioration of food security conditions across the region.</p> <p>The situation is particularly alarming for the most vulnerable households. More than 1.1 million people are projected to face Emergency (Phase 4) levels of food insecurity, characterized by severe food consumption gaps and heightened risks of acute malnutrition. At the same time, 10,300 people could slip into the Catastrophe (Phase 5) level—the most extreme level of food insecurity—by August 2026 if urgent action is not taken.</p> <p>The CH warns that the crisis is being driven by a combination of conflict, economic hardship and climate-related shocks. Persistent insecurity continues to limit access to farmland and markets, undermining livelihoods and reducing food production. Renewed attacks in parts of Borno State, including Askira/Uba, Chibok, Gwoza and Kaga local government areas, have further restricted agricultural activities and access to essential services.</p> <p>At the same time, households are grappling with soaring food prices, elevated fuel costs and expensive agricultural inputs as a result of the conflict in the Middle East. Inflation, currency depreciation and rising transportation costs have shrunk household purchasing power, making it increasingly difficult for vulnerable communities to afford basic food needs.</p> <p>Climate risks are exacerbating the food insecurity crisis. Early warning information points to a high likelihood of localized El Niño-related impacts, including both dry spells and flooding during the current agricultural season. Such shocks could destroy crops, disrupt farming activities and further erode household food stocks and incomes, especially among already vulnerable rural communities.</p> <p>Humanitarian agencies state that assistance is a critical lifeline, but current resources are insufficient to meet the rising needs. As of May 2026, approximately 700,000 people targeted for food assistance under the 2026 Humanitarian Needs and Response Plan had not received support, while 830,000 people missed out on planned emergency agricultural assistance due to funding shortfalls.</p> <p>The Food Security Sector requires US$224.4 million in 2026 to provide food assistance to 1.5 million people and emergency agricultural support to 900,000 people. However, funding remains critically low. As of mid-year, the sector had received only US$76 million, filling just a third of requirements—leaving a funding gap of approximately 66% (US$148.4 million). The shortfall is particularly concerning for agricultural interventions which are critical to helping vulnerable households produce food, protect livelihoods and reduce their dependence on humanitarian assistance.</p> <p>Without urgent action during the lean season, aid agencies warn that worsening food insecurity could lead to increased displacement, deeper poverty, rising malnutrition and greater instability across northeast Nigeria. Every day of delay increases the risk of irreversible harm for families already struggling to survive. Additional and rapid funding is urgently needed to scale up lifesaving food assistance, support food production and reach the most vulnerable people before hunger escalates further across Borno, Adamawa and Yobe states.</p></p>
+                <div class='link'><a href='https://reliefweb.int/fa/report/nigeria/nigeria-borno-adamawa-and-yobe-bay-states-quarter-2-situation-report-april-june-2026' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۲ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تensions میان ایران و ایالات متحده رو به افزایش است، به گونه‌ای که شاهد اختلال در مسیرهای کشتیرانی جهانی نظیر تنگه هرمز هستیم. ایران با وجود فشارهای نظامی، همچنان مقاومت می‌کند، در حالی که مشکلات اقتصادی در روسیه و نیجریه نیز بر ناپایداری‌های ژئوپلیتیکی می‌افزایند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران و ایالات متحده در یک بن‌بست درگیر هستند که شامل اقدامات نظامی، محاصره‌های دریایی و فشارهای اقتصادی می‌شود. ایران ادعا می‌کند که می‌تواند موشک‌ها و پهپادهای خود را سریع‌تر از آنچه ایالات متحده بتواند آن‌ها را از دسترس خارج کند، جایگزین کند، در حالی که ایالات متحده بر این باور است که علی‌رغم توانایی ایران در مختل‌کردن حمل‌ونقل دریایی، تنگه هرمز را کنترل می‌کند. این درگیری مانع از مسدودشدن مسیرهای تجاری کلیدی جهانی شده و اقتصادهای جهان را تحت فشار قرار داده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            این وضعیت احتمالاً تشدید خواهد شد زیرا ایران به چالش‌ طلبی علیه کنترل آمریکا بر مسیرهای حمل‌ونقل ادامه می‌دهد. مذاکرات صلح در حال متوقف شدن است و سرپیچی ایران نشان می‌دهد که بدون برآورده شدن درخواست‌هایش عقب‌نشینی نخواهد کرد. در همین حال، فشارهای اقتصادی بر روسیه و نیجریه می‌تواند منجر به ناپایداری گسترده‌تری شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            • میانه‌ی ۲۰۲۶: تنش‌های ایران و ایالات متحده آغاز می‌شود.<br>• رویدادهای اخیر (۱۲ اوت ۲۰۲۶): ایران تعهد می‌کند تا زمانی که خواسته‌های خود برآورده شوند، با ایالات متحده بجنگد، ترابری از تنگه‌ هرمز به شدت کاهش می‌یابد و ترامپ علی‌رغم سطح پایین عبور از تنگه، مدعی کنترل ایالات متحده می‌شود.<br>• در جریان: مشکلات اقتصادی روسیه و حملات اوکراین به نفتکش‌های روسی بر نگرانی‌های بازارهای جهانی می‌افزایند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این вражение احتمالاً ادامه خواهد داشت مگر اینکه پیشرفتی دیپلماتیک عمده رخ دهد. ایران احتمالاً سعی خواهد کرد فشار خود را بر ایالات متحده حفظ کند تا امتیازات سیاسی کسب کند، در حالی که ایالات متحده ممکن است اقدامات نظامی محدود را برای اعمال کنترل ادامه دهد. در بلندمدت، این امر می‌تواند منجر به تغییر ساختار اتحادهای خاورمیانه و بازارهای جهانی انرژی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های ввзможного вв conflicts</h3>
+            این درگیری، شدت‌ دارد، اما نامتقارن است: ایران از پهپادها، موشک‌ها و تاکتیک‌های دریایی برای اختلال در حمل و نقل دریایی استفاده می‌کند، در حالی که ایالات متحده به استفاده محدود از زور و تحریم‌های اقتصادی متوسل می‌شود. توانایی ایران در تجدید سريع موجودی‌های خود، نکته کلیدی است. درگیری، هرچند با شدت پایین است، اما به دلیل تأثیرش بر تجارت جهانی، دارای اهمیت بالایی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نقشه‌ی بزرگ</h3>
+            این درگیری زنجیره‌های تأمین جهانی از جمله حمل و نقل نفت و مواد غذایی از خاورمیانه و دریای سیاه را تهدید می‌کند. این وضعیت همچنین اقتصادهای شکننده‌ای مانند روسیه که با کسری و تحریم‌ها دست و پنجه نرم می‌کند و نیجریه که با ناامنی شدید غذایی ناشی از بی‌ثباتی منطقه‌ای مواجه است، را تحت فشار قرار می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            آمریکا با ابزارهای نظامی و اقتصادی پیشرو در تلاش برای مقابله با ایران است. روسیه به طور غیرمستقیم از طریق اقدامات نظامی خود در اوکراین و پیوندهای اقتصادی‌اش با ایران در این ماجرا دخالت دارد. سایر کشورها از جمله چین و کشورهای اروپایی ممکن است تحت فشار قرار گیرند تا به عنوان میانجی عمل کنند یا طرفی بگیرند، چراکه این درگیری تجارت جهانی را مختل می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت احتمالاً به دلیل اختلالات در تنگه هرمز، که یک گلوگاه جهانی حیاتی برای حمل و نقل نفت است، افزایش می‌یابد. این امر بر هزینه‌های سوخت در سراسر جهان تأثیر خواهد گذاشت و می‌تواند اقتصادهایی را که هم‌اکنون با تورم و تحریم‌ها دست و پنجه نرم می‌کنند، تحت فشار بیشتری قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران سرسختانه در حال افزایش چالش خود علیه کنترل ایالات متحده بر مسیرهای کلیدی دریایی است. اختلال‌هایی در تنگه هرمز در حال تاثیرگذاری بر عرضه جهانی نفت و مواد غذایی است. تنش‌های ژئوپلیتیکی و اقتصادی در روسیه و نیجریه به دلیل درگیری‌ها در خاورمیانه و اوکراین در حال تشدید هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            سرعتی که ایران مدعی است می‌تواند با آن ذخایر موشکی و پهپادی خود را جایگزین سازد، فشارهای نظامی آمریکا را موثرتر از آنچه انتظار می‌رفت، خنثی کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            بحران انسانی در ایالت‌های شمال شرق نیجریه به دلیل درگیری‌های منطقه‌ای، ناپایداری اقتصادی و شوک‌های اقلیمی تشدید می‌شود. این امر لایه‌ای دیگر از فوریت را به شرایط جهانی می‌افزاید، زیرا ناامنی غذایی و آواره‌شدن مردم ممکن است ناپایداری‌های بیشتری را به دنبال داشته باشد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
