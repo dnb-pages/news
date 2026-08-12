@@ -1,21 +1,21 @@
 {
-  "title": "Analysis Unavailable",
-  "summary": "```json\n{\n    \"title\": \"Iran Situation Analysis - August 12, 2026\",\n    \"summary\": \"Tensions between the U.S. and Iran are escalating, with clashes over control of the Strait of Hormuz—a critical global shipping route. Iran demands the U.S. meet certain conditions to reopen the strait, while the U.S. claims dominance. Talks involving Oman and Pakistan are underway, but progress is slow. The situation threatens global oil supplies and risks wider conflict.\",\n    \"full_analysis\": {\n        \"what_h",
+  "title": "Iran Situation Analysis - August 12, 2026",
+  "summary": "Escalating tensions between Iran and the West, particularly the U.S., are disrupting global oil shipping lanes in the Red Sea and Strait of Hormuz. Recent attacks, blockades, and military actions are pushing oil prices higher, raising concerns about energy security while demonstrators in Iran continue to call for change.",
   "full_analysis": {
-    "what_happened": "No significant developments in this area.",
-    "where_heading": "No significant developments in this area.",
-    "timeline": "No significant developments in this area.",
-    "strategic_outlook": "No significant developments in this area.",
-    "conflict_dynamics": "No significant developments in this area.",
-    "big_picture": "No significant developments in this area.",
-    "international_involvement": "No significant developments in this area.",
-    "oil_price": "No significant developments in this area.",
+    "what_happened": "Several violent incidents have taken place in key shipping routes near Yemen and Iran. Six people were killed when Houthi rebels attacked an Egyptian-owned ship near Bab al-Mandeb, a critical choke point connecting the Red Sea to the Indian Ocean. Meanwhile, the U.S. military struck a Panama-flagged ship violating its blockade of Iranian ports. Iran has made it clear it will not reopen the Strait of Hormuz, a vital oil route, unless the U.S. meets its demands. These actions have driven up oil prices and intensified geopolitical friction.",
+    "where_heading": "The situation is likely to get worse before it gets better. Shipping lanes remain under threat, and Iran continues to hold firm on its conditions for reopening the Strait of Hormuz. The Houthis are unlikely to back down without significant concessions, and the U.S. appears determined to enforce its blockade. Diplomatic negotiations may drag on, with little progress expected soon.",
+    "timeline": "['August 12, 2026: Houthi attack on Bab al-Mandeb ship kills six.', 'August 12, 2026: U.S. military strikes a ship violating its blockade of Iranian ports.', 'August 12, 2026: Iran states the Strait of Hormuz will not reopen unless U.S. conditions are met.', 'August 12, 2026: Oil prices rise due to renewed violence and disrupted shipping routes.', 'Earlier 2026: U.S.-Israel war on Iran began, escalating regional tensions.']",
+    "strategic_outlook": "Long-term, this conflict is pushing the Middle East toward prolonged instability. The U.S. seems committed to maintaining pressure on Iran, possibly to weaken its regional influence or force policy changes. Iran, however, may escalate its actions to counter this pressure, leading to a prolonged standoff. Global energy markets will remain volatile, and countries dependent on Middle Eastern oil will seek alternatives, potentially accelerating shifts toward renewable energy or new trade routes. The risk of a broader regional war remains a serious concern.",
+    "conflict_dynamics": "The conflict is intensifying, with direct military actions like airstrikes and blockades increasing the risk of escalation. The U.S. and Iran are locked in a high-stakes game of brinkmanship, using proxies like the Houthis to gain leverage. Violence is escalating both in the Red Sea and near Iranian waters, with civilian casualties and commercial ship targets raising humanitarian concerns. The nature of the fighting is asymmetric, involving naval blockades, drone strikes, and proxy warfare, making de-escalation difficult.",
+    "big_picture": "The world is facing higher energy costs and potential disruptions to oil supplies, which could slow down economic growth in oil-dependent countries. The conflict also highlights the fragility of global trade routes, with chokepoints like the Strait of Hormuz and Bab al-Mandeb becoming flashpoints for geopolitical rivalry. For ordinary people, this means higher gasoline prices and greater uncertainty in regions already struggling with economic or political instability. It also raises fears about the risk of a wider conflict involving more countries.",
+    "international_involvement": "The U.S. is actively enforcing a blockade on Iranian ports and conducting military strikes to assert control over shipping lanes. Regional actors like Yemen's Houthis, backed by Iran, are attacking commercial ships. Pakistan, represented by its interior minister visiting Tehran, appears to be attempting mediation but so far without success. Other countries, particularly those reliant on Middle Eastern oil like China, India, and European nations, are watching closely but have limited direct involvement. Russia and China may subtly support Iran to counter U.S. influence, but large-scale intervention is unlikely.",
+    "oil_price": "Oil prices are rising sharply because attacks on key shipping lanes (Strait of Hormuz and Bab al-Mandeb) threaten global oil supply. These routes handle a significant portion of the world's oil shipments, so any disruption causes prices to spike. Iran's refusal to reopen the Strait of Hormuz adds to the uncertainty. For consumers, this means higher fuel costs, which could lead to inflation and reduced spending power. For countries, it's a reminder to diversify energy sources and reduce reliance on unstable regions.",
     "key_takeaways": [
-      "No significant developments in this area.",
-      "No significant developments in this area.",
-      "No significant developments in this area."
+      "Shipping lanes in the Red Sea and Strait of Hormuz are under serious threat, raising oil prices and global economic concerns.",
+      "The U.S. and Iran are locked in a dangerous standoff, with neither side backing down, increasing the risk of further escalation.",
+      "Diplomacy is failing to ease tensions, and the humanitarian impact—including civilian deaths—is becoming more severe."
     ],
-    "surprising_elements": "No significant developments in this area.",
-    "additional_context": "No significant developments in this area."
+    "surprising_elements": "The timing and co-occurrence of multiple high-stakes events (Houthi attack, U.S. strike, Iran's firm stance) suggest the situation could spiral rapidly. The active involvement of non-state actors like the Houthis, backed by Iran, adds unpredictability to an already volatile scenario.",
+    "additional_context": "The U.S.-Israel war on Iran, mentioned in the articles, has been ongoing since earlier in 2026. This war has exacerbated regional tensions and emboldened proxy groups like the Houthis to take action against perceived common enemies (e.g., Israel and the U.S.). The blockade of Iranian ports by the U.S. is an attempt to cut off Iran's oil exports, a key leverage point in negotiations."
   }
 }
