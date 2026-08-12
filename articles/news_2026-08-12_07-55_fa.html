@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-12 07:58</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-12 07:58</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ترامپ می‌گوید هواپیمای طعمهٔ او در تغییر مخفیانه پرواز با «ریسک بیشتری» مواجه بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۲  ساعت ۱۱:۰۱:۱۵ به وقت جهانی هماهنگ</strong></span>
+                </div>
+                <p class='summary'>هواپیمای اختصاصی رئیس‌جمهور ایالات متحده (نیروی هوایی یک) همچنان خبرنگاران و مقامات ارشد را که به نظر در معرض خطر حمله احتمالی ایران بودند، حمل می‌کرد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/12/trump-says-his-decoy-plane-faced-greater-risk-in-secret-flight-change?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>امارات متحده عربی هدف دارد تا تولید آلومینیوم آسیب‌دیده از جنگ را در سه‌ماهه نخست احیا کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۲ مرداد ۱۴۰۵ ۰۶:۴۰:۰۸</strong></span>
+                </div>
+                <p class='summary'>آلومینیوم جهانی امارات می‌کوشد پس از اعتصاب ماه مارس که کارخانه اصلی ذوب خود را تعطیل کرد، زودهنگام سال آینده تولید را دوباره راه‌اندازی کند. این اقدام می‌تواند به بازار فلزاتی که به دلیل کمبود عرضه دچار افزایش قیمت شده‌اند، کمک کند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/uae-aims-to-restore-war-hit-aluminum-output-in-first-quarter' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ترامپ مدعی کنترل تنگه هرمز شد؛ در حالی که ایالات متحده و ایران مواضع خود را سخت‌گیرانه‌تر می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> آینده مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۲ - ۱۰:۳۵</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور دونالد ترامپ مدعی شد که آمریکا «کنترل کامل بر تنگه هرمز» دارد، در حالی که واشنگتن و تهران در مذاکرات راکد بر سر این گذرگاه آبی، موضع‌گیری‌های خود را تشدید می‌کنند.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/trump-claims-hormuz-control-as-us-iran-harden-their-positions' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۲ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های میان ایالات متحده و ایران افزایش یافته است. رئیس‌جمهور ترامپ ادعای کنترل تنگه حیاتی هرمز را می‌کند، مذاکرات در بن‌بست است، یک کارخانه آلومینیوم امارات متحده عربی توسط حملات ایرانی آسیب دیده و نگرانی‌هایی بابت اختلالات عرضه نفت در بحبوحه تغییر تاکتیک‌های نظامی مطرح است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            رویدادهای اخیر نشان می‌دهند که ایالات متحده و ایران در تنش بر سر تنگه هرمز، یک مسیر حیاتی حمل و نقل نفت، قرار دارند. رئیس‌جمهور ترامپ ادعا کرد ایالات متحده طی مذاکرات پر تنش «کنترل کامل» بر تنگه را در دست دارد. در همین حال، حمله ایران در ماه مارس به یک کارخانه بزرگ ذوب آلومینیوم در امارات متحده عربی آسیب قابل توجهی وارد کرد و تولید را متوقف ساخت. هواپیمای نیروی هوایی شماره یک ایالات متحده در هنگام تغییر مخفی پرواز با خطرات فزاینده‌ای روبرو شد که ناپایداری اوضاع را برجسته می‌کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            تنش‌ها احتمالاً ادامه خواهند یافت، زیرا مذاکرات به بن‌بست رسیده است. در صورت شکست دیپلماسی، ممکن است حملات بیشتر و مستقیم به اهداف اقتصادی یا تشدید نظامی رخ دهد. ایالات متحده و ایران ممکن است توانایی‌های یکدیگر را مورد آزمون قرار دهند که به درگیری‌های محلی یا اختلالات اقتصادی منجر شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            مارس 2026: حمله ایران به کارخانه ذوب آلومینیوم امارات متحده عربی. ۱۲ اوت ۲۰۲۶: ترامپ ادعا می‌کند که کنترل تنگه هرمز در اختیار ایالات متحده است، مذاکرات شکست می‌خورد و فروند د Air Force One در هنگام تغییر پرواز با خطراتی مواجه می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            آمریکا هدف دارد تا بر تنگه هرمز، که یک نقطه استراتژیک حیاتی برای تأمین نفت جهانی است، تسلط خود را حفظ کند. ایران به دنبال اثبات نفوذ و مقابله با فشارهای آمریکا است. در صورت شکست تلاش‌های دیپلماتیک، درگیری ممکن است به رویارویی‌های نظامی مستقیم یا جنگ‌های نیابتی در منطقه escalate شود که اثرات بی‌ثبات‌کننده بلندمدتی به همراه خواهد داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            این درگیری در حال حاضر با اعتصاب‌های پراکنده و مواضع نظامی تشدید شده به جای جنگ تمام عیار مشخص می‌شود. ایالات متحده به نظر مطمئن می‌آید اما با خطرات ناشی از محاسبه اشتباه مواجه است. ایران از تاکتیک‌های نامتقارن مانند هدف قرار دادن زیرساخت‌های اقتصادی برای فشار به ایالات متحده استفاده می‌کند. شدت درگیری نسبتاً بالاست اما هنوز فاجعه‌بار نیست.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            تنگه هرمز یک نقطه تنگنا (چوک) مهم برای نفت جهانی است و هر گونه اختلال در این منطقه می‌تواند موج‌های شوک به بازارهای انرژی و اقتصاد جهانی بفرستد. یک درگیری طولانی‌مدت خطر بی‌ثباتی در عرضه نفت، افزایش قیمت‌ها و فشار بر روابط بین قدرت‌های منطقه‌ای و جهانی را به همراه دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            آمریکا و ایران بازیگران اصلی هستند. متحدانی مانند عربستان سعودی و امارات ممکن است به‌طور غیرمستقیم از آمریکا حمایت کنند، در حالی که ایران ممکن است به گروه‌هایی نظیر حزب‌الله یا حوثی‌های یمن به‌عنوان نیابتی متکی باشد. چین و روسیه بسته به منافع خود می‌توانند نقش میانجی‌گر یا حامی را ایفا کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            هرگونه درگیری در تنگه هرمز یا اختلال‌های مرتبط به احتمال زیاد موجب افزایش قیمت نفت به دلیل کاهش عرضه خواهد شد. قیمت آلومینیوم نیز ممکن است به دلیل کمبود عرضه از کارخانه ذوب آلومینیوم امارات افزایش یابد. قیمت‌های بالاتر نفت می‌تواند اقتصادهای جهانی به ویژه در مناطق وابسته به واردات را تحت فشار قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده و ایران درگیر یک بن‌بست خطرناک بر سر تنگه هرمز هستند و مذاکرات به بن‌بست خورده است. ایران زیرساخت‌های اقتصادی از جمله کارخانه‌های آلومینیوم را هدف گرفته و تمایل خود را برای تشدید فشارها نشان داده است. هر گونه اختلال در تنگه هرمز ممکن است باعث افزایش قیمت جهانی نفت شده و اقتصادهای سراسر جهان را تحت تأثیر قرار دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ. رویدادهای اخیر با افزایش تنش‌ها بین ایالات متحده و ایران مطابقت دارد، از جمله مواضع نظامی و حملات به زیرساخت‌ها.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
