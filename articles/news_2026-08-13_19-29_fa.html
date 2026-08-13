@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-13 19:32</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-13 19:32</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>حمله‌های آمریکا به یمن در سال ۲۰۲۵ منجر به کشته شدن ۱۵۳ غیرنظامی شد، طبق اعلام پنتاگون</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پست مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۵/۲۳  ساعت ۱۸:۵۹:۲۱</strong></span>
+                </div>
+                <p class='summary'>حملات هوایی ایالات متحده به شورشیان حوثی طرفدار ایران در یمن در سال گذشته منجر به کشته شدن ۱۵۳ غیرنظامی و زخمی شدن ۲۴۳ نفر دیگر شد که طبق ارزیابی وزارت دفاع از این حملات بوده است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-attacks-on-yemen-killed-153-civilians-in-2025-pentagon-says' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>حوثی‌ها پالایشگاه جازان آرامکو را برای دومین بار در یک هفته هدف قرار دادند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> پیش بینی مالی (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۲۳T۱۷:۵۲:۳۰Z</strong></span>
+                </div>
+                <p class='summary'>حوثی های یمن اعلام کردند که پالایشگاه نفتی آرامکو در جازان در سواحل دریای سرخ را هدف قرار دادند؛ این دومین حمله گروه مسلح به این تاسیسات در کمتر از یک هفته است.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/houthis-hit-aramco-jazan-refinery-for-second-time-in-a-week' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>گزارش‌هایی از ملوانان آمریکایی در خاورمیانه که سعی در فرار از کشتی دارند، خشم عمومی را برانگیخته است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۰۵/۲۳  ساعت  ۱۶:۴۴:۱۵</strong></span>
+                </div>
+                <p class='summary'>سناتورهای آمریکایی خواستار بررسی پرونده‌ای شدند در حالی که ناو جنگی یواس‌اس لینکلن با رکورد طولانی‌ترین دوره بدون لنگرگاه، در بحبوحه جنگ علیه ایران قرار دارد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/13/reports-of-us-sailors-in-middle-east-trying-to-jump-ship-spark-outcry?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>آیا اقتصاد روسیه علیرغم افزایش درآمدهای جنگ با ایران در حال ترکیدن است؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۴/۵/۲۲ ساعت ۲۱:۱۰:۴۲</strong></span>
+                </div>
+                <p class='summary'>کمبود فزاینده و حملات اوکراین، اقتصاد روسیه را مورد آزمایش قرار داده است، حتی در حالی که جنگ در خاورمیانه باعث افزایش درآمد نفتی می‌شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/8/13/is-russias-economy-cracking-despite-the-iran-war-windfall?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۳ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>در خاورمیانه تنش‌ها در حال افزایش است، چرا که حملات آمریکا به یمن در سال ۲۰۲۵ به‌طور تصادفی منجر به کشته شدن ۱۵۳ غیرنظامی گردید. حوثی‌ها یک پالایشگاه بزرگ نفت عربستان را برای دومین بار در یک هفته هدف قرار دادند. گزارش‌ها حاکی از آن است که ملوانان آمریکایی به شدت تمایل دارند کشتی‌های خود را ترک کنند و اقتصاد روسیه با وجود سودهای ناشی از درگیری‌های خاورمیانه دچار مشکل است. گروه‌های تحت حمایت ایران مانند حوثی‌ها نقش مرکزی در این وقایع ایفا می‌کنند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            در سال ۲۰۲۵، دولت ایالات متحده حملات هوایی علیه شبه‌نظامیان حوثی وابسته به ایران در یمن انجام داد، اما بنا بر گزارش پنتاگون، این حملات منجر به کشته شدن ۱۵۳ غیرنظامی و زخمی شدن ۲۴۳ نفر دیگر شد. حوثی‌ها، که یک گروه شبه‌نظامی در یمن هستند، با حمله به پالایشگاه نفت جازان عربستان سعودی در ساحل دریای سرخ برای دومین بار در هفته، تولید نفت عربستان را مختل کردند. در همین حال، گزارش‌ها حاکی است ملوانان آمریکایی مستقر در خاورمیانه به دلیل تداوم درگیری‌ها در تلاشند تا کشتی‌های خود را ترک کنند که منجر به criticism سیاسی شده است. اقتصاد روسیه نیز علی‌رغم منافع مالی ناشی از جنگ خاورمیانه، با افزایش کسری و حملات اوکراین بر بحران‌های اقتصادی خود می‌جنگد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا هدینگ</h3>
+            آینده نزدیک احتمالاً شامل ادامه اعتصابات حوثی‌ها علیه زیرساخت‌های نفتی عربستان، اقدامات تلافی‌جویانه بیشتر توسط ایالات متحده و عربستان، و فشار اقتصادی احتمالی بر روسیه خواهد بود. اگر ایالات متحده به دلیل پایین بودن روحیه، حضور نظامی خود را کاهش دهد، گروه‌های حوثی و گروه‌های تحت حمایت ایران ممکن است جسورتر شوند. درگیری‌های منطقه‌ای می‌تواند به‌ویژه در صورت افزایش تلفات غیرنظامی ناشی از حملات، تشدید شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            ۲۰۲۵: حملات هوایی آمریکا در یمن منجر به کشته شدن ۱۵۳ غیرنظامی (بر اساس گزارش پنتاگون) می‌شود. اوایل ۲۰۲۶: حوثی‌ها پالایشگاه جازان شرکت سعودی آرامکو را هدف قرار دادند (اولین حمله). اوت ۲۰۲۶: حملات دوم حوثی‌ها به پالایشگاه جازان در عرض یک هفته. گزارش‌هایی منتشر می‌شود که ملوانان آمریکایی به دلیل درگیری‌های طولانی مدت در حال تلاش برای فرار از کشتی‌های خود در خاورمیانه هستند. روسیه علی‌رغم افزایش درآمدهای نفتی ناشی از جنگ، با مشکلات اقتصادی روبرو است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            درگیری در یمن و منطقه دریای سرخ به نظر در حال تشدید است. گروه‌های حوثی مورد حمایت ایران تهدیدی جدی‌تر برای زیرساخت‌های نفتی عربستان سعودی به حساب می‌آیند. ایالات متحده میان دفاع از متحدانش (مانند عربستان سعودی) و جلوگیری از تلفات غیرنظامی گیر کرده است، امری که می‌تواند موقعیت بین‌المللی این کشور را به خطر اندازد. روسیه علی‌رغم سودهای کوتاه‌مدت ناشی از قیمت‌های بالای نفت، با چالش‌های بلندمدت اقتصادی ناشی از هزینه‌های جنگ و تحریم‌ها روبه‌روست. در بلندمدت، احتمال درگیری نیابتی میان گروه‌های مورد حمایت ایران و ائتلاف‌های ایالات متحده/عربستان در این منطقه وجود دارد که پیامدهای جهانی برای عرضه نفت و اتحادهای ژئوپلیتیکی خواهد داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            در حال حاضر، درگیری‌ها ترکیبی از یورش‌های نظامی مستقیم (آمریکا در مقابل حوثی‌ها) و جنگ نامتقارن (حوثی‌ها هدف قرار دادن تاسیسات نفتی) است. این درگیری به یک جنگ گسترده تبدیل نشده، اما شامل حملات مکرر با شدت پایین است که ثبات منطقه‌ای را مختل می‌کند. ائتلاف ایالات متحده و عربستان در تلاش است تا از تجاوز حوثی‌ها جلوگیری کند، در حالی که حوثی‌ها باTargeting  زیرساخت‌های حیاتی به این اقدامات پاسخ می‌دهند.هزینه انسانی قابل توجه بوده و آمار تلفات غیرنظامیان بر اثر حملات هوایی رو به افزایش است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            اين وضعيت، عرضه جهاني نفت را تهديد مي‌کند، زيرا حوثي‌ها به طور مکرر توليد نفت عربستان را مختل کرده‌اند. ايالات متحده در تلاش است تا با در نظر گرفتن ملاحظات نظامي و بشردوستانه به موازنه دست يابد، در حالي که مشکلات اقتصادي روسيه مي‌تواند بازارهاي انرژي جهاني را بيشتر ناپايدار سازد. پيامدهاي گسترده‌تر شامل تغيير در توازن قدرت در خاورميانه مي‌شود، به طوري كه گروه‌هاي حمايت‌شده توسط ايران نفوذ بيشتري پيدا كرده و احتمالا تعهدات نظامي ايالات متحده در اين منطقه تغيير يابد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            آمریکا از طریق حملات هوایی و حضور نظامی در خاورمیانه، به طور مستقیم درگیر است و عربستان سعودی را در برابر تهدیدهای حوثی‌ها حمایت می‌کند. عربستان سعودی هدف اصلی حملات حوثی‌ها است و از زیرساخت‌های نفتی و منافع اقتصادی خود دفاع می‌نماید. ایران به‌طور غیرمستقیم درگیر است و از حوثی‌ها به صورت نظامی و سیاسی حمایت می‌کند. روسیه هرچند از افزایش قیمت نفت منتفع می‌شود، اما به دلیل هزینه‌های درگیری در اوکراین و تحریم‌های احتمالی با فشار اقتصادی روبه‌رو است. هیچ مداخله دیپلماتیک معنادار سازمان ملل یا سایر قدرت‌های جهانی گزارش نشده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            حمله به زیرساخت‌های نفتی عربستان (که تامین‌کننده کلیدی در سطح جهانی است) می‌تواند باعث افزایش قیمت نفت شود، زیرا disruption‌های عرضه، عدم قطعیت را در بازار به وجود می‌آورد. اگر پالایشگاه‌ها یا میدان‌های نفتی بیشتری مورد هدف قرار گیرند، قیمت‌ها می‌توانند به شدت افزایش یابند و اقتصادهای سراسر جهان را تحت تأثیر قرار دهند. با این حال، عربستان ظرفیت تولید پشتیبان دارد، بنابراین ممکن است کمبودهای فوری رخ ندهد. مشکلات اقتصادی ایالات متحده و روسیه نیز باعث افزایش غیرقابل‌پیش‌بینی‌پذیری در بازارهای جهانی نفت می‌شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            حمله‌های هوایی آمریکا در یمن منجر به کشته شدن تصادفی صدها غیرنظامی شد و نگرانی‌های جدی اخلاقی و استراتژیک درباره دخالت آمریکا در این منطقه را افزایش داد. حمله‌های حوثی‌ها به پالایشگاه‌های نفتی سعودی، تهدید فزاینده گروه‌های وابسته به ایران در disruption عرضه جهانی نفت را برجسته می‌کند. با وجود افزایش موقتی درآمد نفتی، اقتصاد روسیه تحت فشار است که نشان‌دهنده ناپایداری عمیق‌تر در تلاش‌های جنگی آن است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            گزارش‌هایی از ملوانان آمریکاییAttempting to leave their ships در منطقه خلیج فارس unusual and suggest problems اخلاقی به دلیل prolonged deployment بدون جایگزینی unusual circumstances است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            هیچ پیشرفتی قابل توجهی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

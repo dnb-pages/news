@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-08-13 19:30</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-08-13 19:30</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>US Attacks on Yemen Killed 153 Civilians in 2025, Pentagon Says</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-13 18:59</strong></span>
+                </div>
+                <p class='summary'>US airstrikes on Iran-backed Houthi militants in Yemen last year killed 153 civilians and injured 243 others, according to a Defense Department review of the attacks.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/us-attacks-on-yemen-killed-153-civilians-in-2025-pentagon-says' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>Houthis Hit Aramco Jazan Refinery for Second Time in a Week</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Financial Post (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-13 17:52</strong></span>
+                </div>
+                <p class='summary'>Yemen’s Houthis said they targeted Saudi Aramco’s oil refinery in Jazan on the Red Sea coast, the second attack by the militant group on the facility in less than a week.</p>
+                <div class='link'><a href='https://financialpost.com/pmn/business-pmn/houthis-hit-aramco-jazan-refinery-for-second-time-in-a-week' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>Reports of US sailors in Middle East trying to jump ship spark outcry</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-13 16:44</strong></span>
+                </div>
+                <p class='summary'>US senators call for inquiry as USS Lincoln has record-long period without port stop amid war on Iran.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/13/reports-of-us-sailors-in-middle-east-trying-to-jump-ship-spark-outcry?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>Is Russia’s economy cracking despite the Iran war windfall?</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> Al Jazeera (core)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-13 16:40</strong></span>
+                </div>
+                <p class='summary'>A widening deficit and Ukrainian strikes are testing Russia's economy, even as war in the Middle East lifts oil revenue.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/counting-the-cost/2026/8/13/is-russias-economy-cracking-despite-the-iran-war-windfall?traffic_source=rss' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - August 13, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The Middle East is seeing increased tensions as US strikes in Yemen accidentally killed 153 civilians in 2025, Houthis targeted a major Saudi oil refinery for the second time in a week, US sailors are reportedly desperate to leave their ships, and Russia's economy is struggling despite gains from Middle East conflicts. Iran-backed groups like the Houthis are central to these events.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            The US conducted airstrikes targeting Iran-backed Houthi militants in Yemen in 2025, but these strikes killed 153 civilians and injured 243 others, according to the Pentagon. The Houthis, a militant group in Yemen, retaliated by attacking Saudi Aramco’s Jazan oil refinery on the Red Sea coast for the second time in a week, disrupting Saudi oil production. Meanwhile, reports suggest US sailors stationed in the Middle East are trying to abandon their ships due to the prolonged conflict, leading to political backlash. Russia’s economy is also struggling despite financial benefits from the Middle East war, as deficits widen and Ukraine strikes erode its stability.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The immediate future likely includes continued strikes by the Houthis on Saudi oil infrastructure, further retaliatory actions by the US and Saudi Arabia, and potential economic strain on Russia. If the US reduces its military presence due to low morale, the Houthis and Iran-backed groups may grow bolder. Regional conflicts could escalate, especially if civilian casualties from strikes rise further.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            2025: US airstrikes in Yemen kill 153 civilians (per Pentagon report). Early 2026: Houthis attack Saudi Aramco’s Jazan refinery (first attack). August 2026: Second Houthi attack on Jazan refinery within a week. Reports emerge that US sailors are attempting to abandon their ships in the Middle East due to prolonged conflict. Russia faces economic struggles despite war-related oil revenue gains.
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The conflict in Yemen and the Red Sea region appears to be intensifying, with Iran-backed Houthis becoming a more potent threat to Saudi oil infrastructure. The US is caught between defending its allies (like Saudi Arabia) and avoiding civilian casualties, which could damage its international standing. Russia, despite short-term gains from high oil prices, faces long-term economic instability due to the cost of war and sanctions. In the long run, the region may see a proxy war between Iran-backed groups and US/Saudi coalitions, with global implications for oil supplies and geopolitical alliances.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            The fighting is currently a mix of direct military strikes (US vs. Houthis) and asymmetric warfare (Houthis targeting oil facilities). The conflict is not a full-scale war but involves frequent, low-intensity attacks that disrupt regional stability. The US-Saudi coalition is trying to deter Houthi aggression, while the Houthis are pushing back by targeting critical infrastructure. The human cost is significant, with civilian casualties rising from airstrikes.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This situation threatens global oil supplies, as the Houthis have repeatedly disrupted Saudi oil production. The US is struggling to balance military intervention with humanitarian concerns, while Russia’s economic woes could destabilize global energy markets further. The wider implications include a shifting Middle East power balance, with Iran-backed groups gaining influence, and potential shifts in US military commitments in the region.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            The US is directly involved through airstrikes and military presence in the Middle East, supporting Saudi Arabia against Houthi threats. Saudi Arabia is the primary target of Houthi attacks, defending its oil infrastructure and economic interests. Iran is indirectly involved, backing the Houthis militarily and politically. Russia, though benefiting from higher oil prices, is facing economic strain due to the costs of its involvement in Ukraine and potential sanctions. No significant UN or global diplomatic interventions have been reported.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            The attacks on Saudi oil infrastructure (a key global supplier) have the potential to drive oil prices higher, as supply disruptions create uncertainty in the market. If more refineries or oil fields are targeted, prices could surge further, impacting economies worldwide. However, Saudi Arabia has backup production capacity, so immediate shortages may be avoided. The US and Russia’s economic struggles add further unpredictability to global oil markets.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            The US’s airstrikes in Yemen accidentally killed hundreds of civilians, raising serious ethical and strategic concerns about American involvement in the region. Houthi attacks on Saudi oil refineries highlight the growing threat of Iran-backed groups disrupting global oil supplies. Russia’s economy is under strain despite short-term oil revenue gains, signaling deeper instability in its war efforts.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            The reports of US sailors trying to abandon their ships in the Middle East are unusual and suggest morale problems due to prolonged deployment without relief.
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            No significant developments in this area.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
