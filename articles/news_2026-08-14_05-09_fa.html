@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-14 05:12</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-14 05:12</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>بیش از ۲٫۶ میلیون دختر در افغانستان از سال ۲۰۲۱ از دسترسی به آموزش متوسطه محروم شده‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> ریلوفوب (امور بشردوستانه)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۲۳T۰۴:۳۳:۰۷Z</strong></span>
+                </div>
+                <p class='summary'><div class="tag country">کشور: افغانستان</div> <div class="tag source">منبع: صندوق سازمان ملل متحد برای کودکان</div> <p><strong>نیویورک، 24 مرداد 1405 –</strong> بیش از 2.6 میلیون دختر در افغانستان در پنج سال گذشته از زمان تسلط گروه حاکم بر این کشور به آموزش ابتدایی محروم شده‌اند. افغانستان تنها کشوری در جهان است که در آن آموزش ابتدایی و عالی برای دختران و زنان عملاً مسدود شده است.</p> <p>از سپتامبر 2021، دختران از تحصیل رسمی فراتر از پایه ششم منع شده‌اند، و از دسامبر 2022، زنان از ورود به دانشگاه‌ها محروم شدند.</p> <p>«پنج سال ممکن است در تاریخ یک کشور کوتاه باشد، اما دورانی تعیین‌کننده در زندگی یک دختر است»، گفت کاترین راسل، مدیر اجرایی یونیسف. «کلاس درس فراتر از آموزش است. این کلاس‌ها به نوجوانان صدایی می‌دهند و توانایی رسیدن به پتانسیل کامل خود را فراهم می‌کنند. و همچنین سپری در برابر کار کودک، ازدواج زودهنگام، و خشونت و سوءاستفاده هستند. زمانی که مدارس تعطیل شدند، این حمایت‌ها از بین رفت – درست زمانی که دختران به آن‌ها بیش از هر زمان دیگری نیاز داشتند.»</p> <p>دخترانی که از تحصیل بازمی‌مانند، با خطرات افزایش‌یافته‌ای مانند کار کودک، سوءاستفاده، ازدواج زودهنگام، و خشونت جنسیتی مواجه‌اند. این خطرات با فقر خانوادگی و جابه‌جایی افزایش می‌یابند، و هر دوی این‌ها در افغانستان گسترده هستند. از سال 2023، بیش از 2.7 میلیون نفر از ایران و پاکستان به افغانستان بازگشته‌اند که 60 درصد از آن‌ها کودکان و جوانان هستند.</p> <p>تأثیرات فراتر از دخترانی است که به‌طور مستقیم تحت تأثیر قرار گرفته‌اند. تحلیل یونیسف که در آوریل 2026 منتشر شد، «هزینه بی‌تحرکی در آموزش دختران و مشارکت زنان در بازار کار در افغانستان»، نشان داد که این کشور تا سال 2030 تا 20 هزار معلم زن و 5 هزار و 400 کارمند زن بهداشت را از دست خواهد داد. تعداد معلمان زن در آموزش ابتدایی از حدود 73 هزار نفر در سال 2022 به حدود 66 هزار نفر در سال 2024 کاهش یافته است. نمایندگی زنان در خدمات کشوری نیز از 21 درصد در سال 2023 به 17.7 درصد در سال 2025 کاهش یافته است.</p> <p>این تحلیل تخمین می‌زند که محدودیت‌ها بر آموزش دختران و اشتغال زنان سالانه 84 میلیون دلار به تولید ناخالص داخلی افغانستان آسیب می‌زند، و با تداوم این محدودیت‌ها، زیان‌ها سالانه بیشتر می‌شود. پیامدهای این محدودیت‌ها به نسل بعدی نیز کشیده می‌شود. همان‌طور که سهم مادران بی‌سواد افزایش می‌یابد، خطرات کم‌وزنی هنگام تولد، کم‌دوزشی واکسن، و کوتاهی قد در میان فرزندان آن‌ها نیز افزایش می‌یابد و فشار بیشتری بر سیستمی که از قبل تحت فشار است، وارد می‌شود.</p> <p>علی‌رغم این محدودیت‌ها، یونیسف به حمایت از آموزش در افغانستان ادامه می‌دهد. در سال 2025، بیش از 3.7 میلیون دانش‌آموز در مدارس دولتی از حمایت‌های آموزشی اضطراری برخوردار شدند، 442 هزار کودک در یادگیری‌های مبتنی بر جامعه شرکت کردند – 66 درصد از آن‌ها دختر بودند – و 232 مدرسه ساخته یا نوسازی شدند.</p> <p>«یونیسف از گروه حاکم بر افغانستان درخواست می‌کند که محدودیت‌ها بر آموزش را لغو کند و اجازه دهد همه دختران و زنان فوراً به مدارس و دانشگاه‌ها بازگردند»، گفت راسل، که درخواست دبیرکل سازمان ملل برای برداشتن تعلیق آموزش دختران در افغانستان را تکرار کرد. «یونیسف و شرکای ما آماده حمایت از بازگشایی مدارس هستیم تا همه دختران بتوانند به‌طور ایمن بازگشته و به تحصیل ادامه دهند. هیچ کشوری نمی‌تواند شکوفا شود در حالی که نیمی از جوانان آن از پیشرفت بازداشته می‌شوند. آینده افغانستان در خارج از کلاس درس در انتظار ورود آن است.»</p> <p>#####</p> <h2><strong>اطلاعات تماس رسانه‌ای</strong></h2> <p><strong>دانیل تیمه</strong></p> <p>یونیسف افغانستان</p> <p>تلفن: +93 79 998 7110</p> <p>ایمیل: dtimme@unicef.org</p> <p><strong>ریکاردو پیرس</strong></p> <p>مدیر ارتباطات و سخنگوی معتمد</p> <p>یونیسف ژنو</p> <p>تلفن: +41 79 481 5021</p> <p>ایمیل: rpires@unicef.org</p></p>
+                <div class='link'><a href='https://reliefweb.int/report/afghanistan/more-26-million-girls-afghanistan-have-been-denied-secondary-education-2021' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>خاورمیانه زنده: ایالات متحده ایران را با انزوای اقتصادی بی‌سابقه تهدید می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۳ ساعت ۰۶:۳۱:۵۵ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>وزیر خزانه‌داری ایالات متحده، اسکات بسنت، روز پنج‌شنبه تهدید کرد که ایران را به انزوای اقتصادی «آن‌گونه که جهان پیش از این ندیده است»، اختصاص داد و افزود که هفته آینده اقدامات جدیدی اعمال خواهد شد. برای دریافت آخرین به‌روزرسانی‌ها، صفحه زنده ما را دنبال کنید.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260814-middle-east-live-us-threatens-iran-with-economic-isolation-like-never-seen-before' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 آنالیز وضعیت ایران - ۱۴ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>آمریکا در حال تهدید ایران با تحریم‌های اقتصادی شدید است که می‌تواند این کشور را در سطح جهانی منزوی کند. در همین حال، ممنوعیت تحصیل دختران در افغانستان همچنان در حال وخیم‌تر شدن است و منجر به ایجاد یک بحران انسانی و فشار بر ثبات منطقه‌ای می‌شود.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            وزیر خزانه‌داری ایالات متحده آمریکا، ایران را با انزوای اقتصادی بی‌سابقه تهدید کرد و به تحریم‌های جدیدی اشاره کرد که هفته آینده اعمال خواهند شد. در همین حال، دولت تحت رهبری طالبان در افغانستان همچنان به اجرای ممنوعیت آموزش دختران در مقاطع تحصیلی متوسطه و زنان در دانشگاه‌ها، که به ترتیب در سال‌های ۲۰۲۱ و ۲۰۲۲ اعمال شد، ادامه می‌دهد. بیش از ۲.۶ میلیون دختر از حق تحصیل محروم مانده‌اند که پیامدهای اقتصادی و اجتماعی شدیدی را به دنبال داشته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            به نظر می‌رسد ایالات متحده تحریم‌های خود علیه ایران را تشدید کند که احتمالاً شامل محدودیت‌هایی در صادرات نفت، بانکداری و تجارت خواهد بود. تحریم‌های آموزشی در افغانستان به احتمال زیاد ادامه خواهد یافت مگر آن‌که فشارهای بین‌المللی طالبان را مجبور به تغییر رویه کند، امری که در حال حاضر بدون اعطای امتیازهای بزرگ، بعید به نظر می‌رسد. بحران در هر دو کشور در سال آینده ممکن است تشدید شود، به ویژه اگر تحریم‌ها اقتصاد ایران را فلج کند یا وضعیت انسانی افغانستان بیشتر وخیم شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            2021: طالبان دختران را از تحصیلات متوسطه محروم کرد. 2022: زنان از ورود به دانشگاه‌ها محروم شدند. 2023-2026: بیش از 2.6 میلیون دختر از تحصیل محروم شدند و اقتصاد افغانستان سالانه 84 میلیون دلار ضرر می‌کند. 14 اوت 2026: ایالات متحده تهدید به تحریم‌های شدید جدید علیه ایران کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            برای ایران، تحریم‌های ایالات متحده می‌تواند منجر به تشدید انزوای اقتصادی شده و ثبات داخلی را تحت فشار قرار دهد و وابستگی به کشورهای دوست مانند روسیه یا چین را افزایش دهد. برای افغانستان، ممنوعیت دائمی آموزش احتمالاً منجر به از دست دادن نسل جدیدی از دختران خواهد شد و فقر، کار کودک و ازدواج‌های زودهنگام را تشدید می‌کند. بی‌ثباتی در منطقه ممکن است افزایش یابد و به طور بالقوه افراط‌گرایی یا مهاجرت دسته‌جمعی را دامن بزند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های تعارض</h3>
+            هیچ گونه درگیری نظامی فعالی ذکر نشده است، اما تنش‌ها به دلیل تهدیدهای تحریم‌ها در سطح بالایی قراردارد. در افغانستان، این درگیری‌های بیشتر جنبه‌ی ایدئولوژیک و مربوط به نقض حقوق بشر هستند تا نظامی. تنش‌ها میان ایالات متحده و ایران نیز عمدتاً اقتصادی است و خطرات ازسرگیری ناخواسته آن را در پی دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            بحت از بحران‌های ایران و افغانستان بر شکاف‌های جهانی فزاینده در زمینه حقوق بشر و فشارهای اقتصادی به‌عنوان ابزاری سیاسی تأکید می‌کند. اعمال تحریم‌ها علیه ایران می‌تواند بازارهای جهانی نفت و زنجیره‌های تأمین را مختل کند. ممنوعیت آموزش در افغانستان، خطر ایجاد نسلی از زنان تحصیل‌نکرده را در پی دارد که ثبات بلندمدت و بازیابی اقتصادی این کشور را تضعیف خواهد کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده آمریکا رهبری تلاش‌ها برای تحریم‌های علیه ایران به منظور جلوگیری از برنامه‌های هسته‌ای و نفوذ منطقه‌ای این کشور را بر عهده دارد. طالبان در افغانستان همچنان منزوی هستند و به دلیل سیاست‌هایشان با حداقل شناسایی و حمایت بین‌المللی مواجه‌اند. یونیسف و گروه‌های بشر دوستانه حمایت محدودی را به دختران و زنان افغان ارائه می‌دهند، اما برای اقدام جهانی جهت لغو ممنوعیت‌ها فرا می‌خوانند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            اگر ایالات متحده تحریم‌های سخت‌گیرانه‌ای بر ایران اعمال کند، عرضه جهانی نفت ممکن است کاهش یافته و منجر به افزایش قیمت‌ها شود. ایران یکی از تولیدکنندگان اصلی نفت است و هرگونه اختلال در صادرات آن تأثیر قابل توجهی بر بازارها خواهد داشت. افزایش قیمت نفت اقتصادهای سراسر جهان، به‌ویژه کشورهای فقیر وابسته به سوخت وارداتی، را تحت فشار قرار خواهد داد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده فشار بر ایران را با تهدید تحمیل تحریم‌های اقتصادی فاجعه‌بار تشدید می‌کند. تحریم افغانستان بر آموزش دختران، 2.6 میلیون دختر را از تحصیل محروم کرده و فقر و بی‌ثباتی را تشدید کرده است. هر دو بحران می‌توانند شرایط اقتصادی را در منطقه بدتر کنند و بر قیمت نفت و ثبات جهانی تأثیر بگذارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محتوا/زمینه اضافی</h3>
+            توسعه‌های مهمی در این زمینه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
