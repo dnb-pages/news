@@ -1,15 +1,5 @@
 [
   {
-    "original_title": "Yemeni government forces hit back after new Houthi offensive",
-    "title": "Yemeni government forces hit back after new Houthi offensive",
-    "original_summary": "Yemeni government forces, backed by Saudi Arabia, have struck back after a new Houthi offensive in areas it controls. ",
-    "summary": "Yemeni government forces, backed by Saudi Arabia, have struck back after a new Houthi offensive in areas it controls.",
-    "source_name": "Al Jazeera (core)",
-    "published_at": "2026-08-16T04:09:01Z",
-    "link": "https://www.aljazeera.com/video/newsfeed/2026/8/16/08-16-2026-houthis-yemen-sv?traffic_source=rss",
-    "domain": "Show Types"
-  },
-  {
     "original_title": "As China Pushes to Expand in Asia, Trump Focuses on Iran",
     "title": "As China Pushes to Expand in Asia, Trump Focuses on Iran",
     "original_summary": "Asian allies are beginning to wonder whether the United States would or could defend them in a war.",
@@ -18,5 +8,25 @@
     "published_at": "2026-08-16T06:53:38Z",
     "link": "https://www.nytimes.com/2026/08/15/us/politics/china-expansion-asia-trump-iran.html",
     "domain": "International Relations|United States International Relations|US and Israeli Attack on Iran (2026)|Territorial Disputes|Trump, Donald J|Xi Jinping|East Asia|China|Philippines|Second Thomas Shoal|Southeast Asia|United States Politics and Government|South China Sea"
+  },
+  {
+    "original_title": "As Iran War Turns Into Economic Battle, a New U.S. Strategy Recalls Old Ones",
+    "title": "As Iran War Turns Into Economic Battle, a New U.S. Strategy Recalls Old Ones",
+    "original_summary": "The United States and Iran are poised to blow past a deadline they had set themselves to broker terms on peace and Iran’s nuclear program.",
+    "summary": "The United States and Iran are poised to blow past a deadline they had set themselves to broker terms on peace and Iran’s nuclear program.",
+    "source_name": "NYT (analysis)",
+    "published_at": "2026-08-16T09:31:10Z",
+    "link": "https://www.nytimes.com/2026/08/16/world/middleeast/iran-war-us-trump.html",
+    "domain": "US and Israeli Attack on Iran (2026)|United States International Relations|Strait of Hormuz|Ships and Shipping|Araghchi, Abbas|Trump, Donald J|Peace Process"
+  },
+  {
+    "original_title": "Qatar denies capturing three Iranian pilots after downing fighter jets",
+    "title": "Qatar denies capturing three Iranian pilots after downing fighter jets",
+    "original_summary": "Iran claims they have been held since Qatar downed two fighter jets at the start of the US-Iran war.",
+    "summary": "Iran claims they have been held since Qatar downed two fighter jets at the start of the US-Iran war.",
+    "source_name": "BBC News (core)",
+    "published_at": "2026-08-16T09:27:58Z",
+    "link": "https://www.bbc.co.uk/news/articles/cj4kk8kz271o?at_medium=RSS&at_campaign=rss",
+    "domain": ""
   }
 ]
