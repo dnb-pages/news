@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-16 13:07</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-16 13:07</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>«اقتصاد درگیری با آمریکا» بسیاری از ایرانیان را با گزینه‌های محدود مواجه کرده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۶ مرداد ۱۴۰۵ ساعت ۱۵:۰۸:۵۰ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>میلیون‌ها ایرانی برای گذران زندگی دست و پنجه نرم می‌کنند، زیرا جنگ با آمریکا اقتصاد را ویران کرده و قیمت‌ها را به شدت افزایش داده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/fa/news/2026/8/16/ bravāri-yendo-bazdid-e-bā-Estāid-be-fulān-ticār-bā-khāndan-e-nukte-e-ḥuqūqī-dar-irtibāṭ-bā-īrān' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ترامپ تهدید به مالکیت تنگه هرمز توسط ایالات‌متحده: آیا او می‌تواند این کار را بکند؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۶ ساعت ۱۵:۴۴:۲۳</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ایالات متحده بار دیگر تهدیدی عجیب و غریب برای ایران مطرح می‌کند، در حالی که به نظر نمی‌رسد پایانی برای جنگ در کار باشد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/16/trump-threatens-to-make-the-strait-of-hormuz-a-us-territory-can-he?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>دوران پس از هرمز فرصتی بزرگ را برای آفریقا فراهم می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۲۶ ساعت ۱۴:۳۹:۳۲</strong></span>
+                </div>
+                <p class='summary'>اما برای بهره‌مندی از این مزایا، قاره باید سیاست دریایی مشترک و مؤثری را توسعه دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/opinions/2026/8/16/the-post-hormuz-era-offers-africa-a-great-opportunity?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ایران می‌گوید خلبانانی که پس از یک حمله هوایی جسورانه ناپدید شده‌اند، در قطر زندانی هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵-۰۵-۲۶T۱۱:۰۰:۰۰Z</strong></span>
+                </div>
+                <p class='summary'>قطر گزارش‌هایی مبنی بر بازداشت سهخدمه‌ای که هواپیماهای آنها اوایل جنگ ساقط شدند را رد می‌کند.</p>
+                <div class='link'><a href='https://www.wsj.com/world/iran-says-pilots-missing-after-a-brazen-bombing-run-are-prisoners-in-qatar-9095fac0?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۱۶ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران در حال تجربه سختی‌های اقتصادی شدید است، زیرا جنگی طولانی‌مدت با ایالات متحده تشدید می‌شود و منابع میلیون‌ها ایرانی را تحت فشار قرار می‌دهد. در همین حال، تنش‌ها در تنگه هرمز—یک گلوگاه حمل و نقل نفت—پس از ادعاهای ارضی افراطی دونالد ترامپ، رئیس‌جمهور ایالات متحده، به اوج تازه‌ای می‌رسد و منطقه را بیشتر بی‌ثبات می‌کند. این بحران همچنین تأثیرات غیرمنتظره‌ای مانند تغییر فرصت‌های دریایی برای آفریقا ایجاد کرده است، در حالی که اختلافات دیپلماتیک بر سر خلبانان اسیر نیز به هرج و مرج دامن می‌زند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران در میانه بحران اقتصادی شدید ناشی از جنگ مداوم خود با آمریکا قرار دارد که تجارت را مختل کرده، قیمت‌ها را افزایش داده و موجب شده است که بسیاری از شهروندان در تأمین نیازهای اساسی خود با مشکل مواجه شوند. آمریکا با تشدید لحن خود، رئیس‌جمهور ترامپ تهدید کرده است که تنگه هرمز — گذرگاه راهبردی نفت — را به قلمرو ایالات متحده تبدیل خواهد کرد که به افزایش تنش‌ها دامن می‌زند. در این میان، سه خلبان ایرانی که اوایل جنگ ساقط شدند، ناپدید گزارش شده‌اند و ایران ادعا می‌کند آنان در قطر در بازداشت هستند، اگرچه قطر این ادعا را رد می‌کند. آفریقا با توجه به بی‌ثباتی فزاینده در اطراف تنگه هرمز، فرصت‌هایی را می‌بیند، به شرطی که بتواند استراتژی دریایی یکپارچه‌ای را هماهنگ سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            وضعیت احتمالاً بدتر خواهد شد تا قبل از اینکه راه حلی پیدا شود. اعلام ایالات متحده درباره تنگه هرمز می‌تواند منجر به واکنش شدید از سوی ایران شود، احتمالاً مسدود کردن خود تنگه که این حرکت تجارت جهانی نفت را فلج خواهد کرد. بحران اقتصادی در ایران عمیق‌تر خواهد شد، مگر اینکه مذاکرات آغاز گردد، اما هر دو طرف به نظر دور از سازش هستند. قطر ممکن است تحت فشار دیپلماتیک قرار گیرد اگر ایران به سرزنش آن برای بازداشت خلبانان ادامه دهد. واکنش آفریقا به بحران هرمز می‌تواند نقش این قاره را در حمل‌ونقل جهانی تغییر دهد اگر به سرعت اقدام کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ['اوایل دهه 2020 میلادی: افزایش تنش‌ها بین ایران و ایالات متحده بر سر برنامه‌های هسته‌ای، تحریم‌ها و نفوذ منطقه‌ای.', '2025: پس از سلسله درگیری‌های نظامی در خلیج فارس، جنگ بین ایران و ایالات متحده تشدید می‌شود.', 'اوایل 2026: درگیری‌های متعدد در تنگه هرمز منجر به توقف تقریباً کامل صادرات نفت از منطقه می‌شود.', '16 اوت 2026: دونالد ترامپ، رئیس‌جمهور ایالات متحده، تهدید می‌کند که تنگه هرمز را قلمروی ایالات متحده اعلام کند. اقتصاد ایران تحت تأثیر جنگ و تحریم‌های مداوم فرو می‌پاشد. گزارش‌هایی مبنی بر نگهداری خلبانان ایرانی سرنگون‌شده در начальный جنگ در قطر توسط ایران مطرح می‌شود. آفریقا شروع به بحث درباره یک سیاست دریایی یکپارچه در واکنش به ناپایداری در حوزه هرمز می‌کند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            چشم‌انداز بلندمدت مبهم است و احتمالاً پر نوسان خواهد بود. اگر ایالات متحده تعهدات خود برای کنترل تنگه هرمز را عملی سازد، ایران احتمالاً با اقدام نظامی تمام عیار برای جلوگیری از تحریم‌های نفتی پاسخ دهد که خطر درگیری گسترده‌تر را در پی خواهد داشت. اقتصاد ایران ممکن است به طور کامل فرو بپاشد و منجر به ناآرامی‌های داخلی یا تغییر رهبری شود. این بحران ممکن است سایر کشورها در منطقه را به انتخاب طرف وادارد و باعث شکاف بیشتر در اتحادها گردد. توانایی آفریقا برای تبدیل شدن به یک مسیر کلیدی کشتیرانی به سرعت به وحدت سیاست‌های دریایی خود وابسته است. جنگ ممکن است سال‌ها به درازا بکشد مگر اینکه یک میانجی قدرتمند مانند چین یا روسیه برای ایجاد صلح مداخله کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            در حال حاضر، این درگیری ترکیبی از جنگ اقتصادی، نبردهای نیابتی منطقه‌ای و تهدیدات نظامی مستقیم است. ایران از نظر اقتصادی ضعیف شده، اما هنوز از نظر نظامی فعال بوده و ضربات و حملات پهپادی را در منطقه انجام می‌دهد. ایالات متحده نیز به نظر می‌رسد با اظهارنظرهای جسورانه (مانند کنترل تنگه هرمز) سطح تنش را افزایش می‌دهد، اما هنوز اقدام نظامی مستقیم برای اعمال این ادعا انجام نداده است. ماهیت جنگ فعلی نامتقارن است—ایران بر گروه‌های نیابتی و تاکتیک‌های نامتقارن (مانند پهپادها و موشک‌های بالستیک) تکیه دارد تا درگیری‌های مستقیم دریایی. افشای اسیر شدن خلبانان، نشان‌دهنده هزینه‌های انسانی و فروپاشی دیپلماتیک میان این دو طرف است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری به خطر تبدیل شدن به یکی از مهلک‌ترین اختلالات در عرضه جهانی نفت از زمان بحران نفتی دهه ۱۹۷۰ تبدیل می‌شود. تنگه هرمز، که حدود ۲۰ درصد از نفت جهان را جابه‌جا می‌کند، کانون این اختلاف بوده است. در صورت وقوع یک محاصره کامل، قیمت‌های نفت به شدت افزایش یافته و باعث آشفتگی اقتصادی جهانی و احتمالاً بروز رکود یا کمبود انرژی در بسیاری از کشورها خواهد شد. این بحران همچنین می‌تواند منجر به تغییر ائتلاف‌ها در خاورمیانه شده و کشورهای متحد ایالات متحده مانند عربستان سعودی و اسرائیل را به هم نزدیک‌تر کند در حالی که کشورهای دیگر مانند قطر را در میانه این درگیری قرار دهد. برای آفریقا، این اختلال در هرمز می‌تواند فرصتی باشد تا در صورت سازمان‌دهی سریع، تجارت جهانی را از طریق سواحل خود منحرف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده بازیگر اصلی خارجی است که پشتیبانی نظامی از متحدان منطقه خلیج فارس را انجام داده و با حفظ حضور گسترده در منطقه، به مقابله با ایران می‌پردازد. اتحادیه اروپا دچار اختلاف است— niektóre از کشورهای عضو مانند فرانسه و آلمان ممکن است در راستای دیپلماسی برای جلوگیری از کمبود انرژی فشار بیاورند، در حالی که برخی دیگر بیشتر از ایالات متحده حمایت می‌کنند. روسیه و چین به احتمال زیاد حمایت سیاسی و اقتصادی از ایران ارائه می‌دهند تا بر نفوذ ایالات متحدهCounterbalance کنند، هرچند ممکن است از درگیری نظامی مستقیم خودداری نمایند. کشورهای خلیج فارس مانند عربستان سعودی و امارات متحده عربی متحدان سرسخت ایالات متحده هستند و در صورت تشدید جنگ، در معرض تهدید حملات مستقیم از سوی ایران قرار دارند. قطر از نظر دیپلماتیک در شرایط دشواری قرار گرفته و بین پیوندهای خود با ایران و reliance آن بر حفاظت نظامی ایالات متحده به دام افتاده است. آفریقا در وضعیتی انتظار قرار دارد اما در صورت توانایی در بسیج یک استراتژی همدلانه دریانوردی می‌تواند به بازیگری مهم تبدیل شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            به احتمال زیاد قیمت نفت در صورت مسدود شدن تنگه هرمز یا تشدید درگیری‌ها افزایش خواهد یافت. ایران در بحران‌های گذشته بارها تهدید کرده است که تنگه هرمز را ببندد، و هرگونه اقدامی از این دست به سرعت میلیون‌ها بشکه نفت را از بازار جهانی حذف خواهد کرد. حتی تهدید به مسدودسازی قبلاً باعث جهش قیمت نفت در اوایل سال ۲۰۲۶ شده بود. اگر ایالات متحده به ادعای خود مبنی بر کنترل تنگه هرمز عمل کند، قیمت نفت می‌تواند با افزایش عدم اطمینان، روندی صعودی تر را تجربه کند. این موضوع تأثیرات گسترده‌ای در سرتاسر جهان خواهد داشت و منجر به افزایش قیمت بنزین، تورم و احتمال کمبود سوخت در کشورهایی همچون هند و بخش‌هایی از اروپا خواهد شد که به شدت به نفت خاورمیانه وابسته‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            اقتصاد ایران به دلیل جنگ به سراشیبی سقوط رفته و وضعیت شهروندان عادی به سرعت در حال وخامت است. ایالات متحده تهدیدهای افراطی انجام می‌دهد (مانند اعلام تنگه هرمز به‌عنوان قلمرو ایالات متحده) که ممکن است درگیری را به سطوحی بی‌سابقه افزایش دهد. محاصره یا اختلال در تنگه هرمز منجر به جهش شدید قیمت‌های جهانی نفت می‌شود و اقتصاد جهان را تهدید خواهد کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ‌کدام. تنها نکته شگفت‌آور، تهدید اخیر ترامپ برای تملک تنگه هرمز به‌عنوان قلمرو ایالات متحده است که از نظر قانونی و عملی قابل تردید است، اما این کار نشان‌دهنده تشدید بیشتر لفاظی‌ها به‌جای تغییر واقعی در سیاست است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            جنگ مداوم از سال 2025 میلادی، هزینه‌های دفاعی را در سرتاسر جهان افزایش داده و کشورهای مختلف را به انباشتن نفت و ایجاد اتحادهای جدید سوق داده است. گروه‌های نیابتی ایران در یمن، عراق و سوریه همچنان به انجام حملات علیه منافع ایالات متحده ادامه می‌دهند، در حالی که این کشور نیز حملات هوایی را اجرا کرده و نیروهای اضافی را به منطقه اعزام کرده است. بهای انسانی این جنگ در حال افزایش است؛ به‌گونه‌ای که میلیون‌ها نفر به علت درگیری‌ها و تحریم‌های اقتصادی آواره شده‌اند یا در فقر به سر می‌برند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
