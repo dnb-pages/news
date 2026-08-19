@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-19 21:48</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-19 21:48</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>امارات متحده عربی اعلام کرد پس از پرتاب موشک، تجارت خود را با ایران متوقف می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۵/۲۸ - ساعت ۲۳:۱۵:۵۸</strong></span>
+                </div>
+                <p class='summary'>امارات متحده عربی، که از بزرگ‌ترین شرکای تجاری ایران است، اعلام کرد این اقدام «در راستای تشدیدهای منطقه‌ای است که به صلح و امنیت منطقه‌ای و بین‌المللی آسیب می‌زند».</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/08/19/uae-says-it-is-suspending-trade-with-iran-after-missile-attack/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>مشکلات ناو لینکلن ایالات متحده، محدودیت‌های نیروی دریایی این کشور را در جنگ طولانی با ایران برملا می‌کند: کارشناسان</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵-۰۵-۲۹T۲۱:۰۱:۵۴Z</strong></span>
+                </div>
+                <p class='summary'>据专家表示，对恶劣环境的报道凸显了供应挑战，并引发了美国未来计划的质疑。</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/19/uss-lincoln-woes-highlight-us-navy-limits-in-prolonged-iran-war-experts?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 19 اوت 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>افزایش تنش‌ها میان ایران و امارات به دلیل پرتاب موشک توسط ایران منجر به تعلیق تجارت امارات با ایران شده است در حالی که گزارش‌ها گویای مشکلات فزاینده برای ارتش ایالات متحده در درگیری مداوم خود با ایران از جمله کمبودهای تدارکاتی و منابع تحت فشار هستند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران موشک‌هایی را پرتاب کرد که واکنش‌های منطقه‌ای را به دنبال داشت. امارات متحده عربی، یکی از شرکای تجاری کلیدی ایران، اعلام کرد که all trade with ایران را به حالت تعلیق در خواهد آورد و نگرانی‌های خود را درباره ثبات و صلح منطقه‌ای ابراز داشت. در همین حال، گزارش‌هایی حاکی از آن بود که یو اس اس لینکلن، یک ناو هواپیمابر بزرگ ایالات متحده که نزدیک به ایران فعالیت می‌کند، به دلیل تداوم درگیری، با کمبود شدید تدارکات و چالش‌های عملیاتی جدی مواجه است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سر فصل ها</h3>
+            وضعیت احتمالاً تشدید خواهد شد زیرا ایران به اقدامات نظامی خود ادامه می‌دهد و شرکای منطقه‌ای مانند امارات متحده عربی برای فشار به ایران اقدامات اقتصادی انجام می‌دهند. ایالات متحده ممکن است تحت فشار فزاینده‌ای قرار گیرد تا برای حمایت نظامی بیشتر در منطقه یا تجدیدنظر در استراتژی خود به دلیل محدودیت‌های تأمین و تدارکات اقدام کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 imtârawnâme</h3>
+            <ul><li>۱. ایران موشک‌هایی پرتاب کرد که باعث نگرانی‌های منطقه‌ای شد.</li><li>۲. امارات متحده عربی در واکنش به پرتاب موشک‌ها و ناآرامی‌های منطقه‌ای، تجارت با ایران را متوقف کرد.</li><li>۳. گزارش‌هایی دربارۀ وضعیت بسیار نامناسب در ناو هواپیمابر یواس‌اس لینکلن منتشر شد که مشکلات نیروی دریایی آمریکا را در این в نبرد طولانی‌مدت نشان می‌دهد.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            به نظر می‌رسد که مناقشه میان ایران و غرب در حال وارد شدن به مرحله‌ای طولانی‌مدت است. ایران ممکن است برای تحکیم جایگاه خود در منطقه، به اقدامات نیابتی یا پاسخ‌های مستقیم نظامی ادامه دهد، در حالی که ایالات متحده و متحدانش به دلیل چالش‌های مربوط به تأمین و تدارکات، ممکن است در اعمال فشار نظامی پایدار با مشکل مواجه شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            اخیراً درگیری تشدید شده است، از جمله پرتاب موشک توسط ایران و اقدامات تلافی جویانه اقتصادی از سوی امارات متحده عربی. مشکلات نیروی دریایی ایالات متحده نشان می‌دهد که اگرچه ارتش درگیر اقدامات نظامی است، اما با فشار عملیاتی قابل توجهی روبرو است که می‌تواند توانایی آن را برای افزایش سریع اقدامات محدود کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز کلان</h3>
+            تقابل ایران و غرب، همراه با قدرت‌های منطقه‌ای ایران، در حال بازتعریف ژئوپلیتیک خاورمیانه است. تحریم‌های اقتصادی، درگیری‌های نظامی و تغییرات در اتحادها، موجب بی‌ثباتی شده‌اند که می‌تواند بر تجارت جهانی، امنیت و بازارهای انرژی — به‌خصوص عرضه نفت — تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیکنان اصلی شامل ایران، امارات متحده عربی، ایالات متحده و متحدان منطقه‌ای می‌شوند. امارات متحده عربی در حال اتخاذ اقدامات اقتصادی برای مجازات ایران است، در حالی که ایالات متحده برای حفظ حضور نظامی خود در منطقه تلاش می‌کند. کشورهای دیگر، به خصوص در اروپا و آسیا، ممکن است تحت فشار باشند تا میانجی‌گری کنند یا جانب یکی از طرفین را بگیرند، زیرا درگیری تشدید می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            هرگونه تشدید تنش درگیری با ایران، یکی از بزرگ‌ترین تولیدکنندگان نفت، خطر مختل کردن عرضه نفت از خاورمیانه را دارد که می‌تواند منجر به افزایش جهانی قیمت‌های نفت شود. با توجه به موقعیت استراتژیک ایران، حتی تهدید درگیری می‌تواند باعث نوسانات بازار شود زیرا معامله‌گران به دنبال پیش‌بینی اختلال‌های احتمالی در عرضه هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            تصمیم امارات متحده عربی برای تعلیق تجارت با ایران نشان‌دهنده یک واکنش اقتصادی قابل توجه به پرتاب موشک ایران و ایجاد تنش‌های فزاینده منطقه‌ای است. مشکلات نیروی دریایی ایالات متحده، چالش‌های پایداری یک کارزار نظامی طولانی‌مدت علیه ایران را برجسته می‌کند که ممکن است گزینه‌های آمریکا را محدود کند. منطقهٔ خاورمیانه در حال مواجهه با بی‌ثباتی فزایندهٔ است که پیامدهای بالقوه‌ای برای عرضه‌های نفتی جهانی و ثبات اقتصادی دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            مشکلات عملیاتی ناو هواپیمابر یواس‌اس لینکلن، از جمله کمبودهای شدید تدارکاتی، به‌خصوص شگفت‌انگیز هستند زیرا آن‌ها ضعف‌های موجود در تدارکات نظامی ایالات متحده در جنگ‌های طولانی‌مدت را آشکار می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            ایران برای سال‌ها یکی از بازیگران اصلی دردرگیری‌های خاورمیانه بوده و اغلب در جنگ‌های نیابتی و اقدامات نظامی مستقیم شرکت کرده است. تنش‌های کنونی نشان‌دهنده تلاش‌های مداوم ایران برای اعمال نفوذ در میان فشارهای perceived آمریکا و منطقه‌ای است. از سوی دیگر، ایالات متحده با مواجهه با متحدان منطقه‌ای با وفاداری دوگانه و همچنین بحث‌های داخلی درباره مداخله نظامی روبه‌رو است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
