@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-19 15:52</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-19 15:52</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>جنگ علیه ایران:据说 ایران امارات متحده عربی را هدف قرار داده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۵/۲۸</strong></span>
+                </div>
+                <p class='summary'>پس از گزارش‌هایی مبنی بر این‌که ایران دو فروند موشک بالستیک به امارات متحده عربی شلیک کرده است، امارات تجارت خود با تهران را متوقف کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/19/war-on-iran-iran-allegedly-targets-the-uae?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>جنگ آمریکا علیه ایران، تحصیل کودکان کامبوج را به خطر می‌اندازد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۱۸/۱۱/۲۸ ۱۶:۲۶:۵۲</strong></span>
+                </div>
+                <p class='summary'>جنگ ایالات متحده علیه ایران آموزش کودکان کامبوج را با چالش مواجه می‌کند</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/19/us-war-on-iran-puts-cambodian-childrens-education-at-risk?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>امارات متحده عربی اعلام کرد پس از حمله موشکی، تجارت با ایران را قطع می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تحلیل واشنگتن پست</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵/۰۶/۲۸  ساعت ۱۸:۲۷:۲۲ به وقت UTC</strong></span>
+                </div>
+                <p class='summary'>امارات متحده عربی، یکی از بزرگ‌ترین شرکای تجاری ایران، اعلام کرد که این اقدام «در پی افزایش تنش‌های منطقه‌ای صورت گرفته که امنیت و صلح منطقه‌ای و بین‌المللی را خدشه‌دار می‌کند.»</p>
+                <div class='link'><a href='https://www.washingtonpost.com/world/2026/08/19/uae-says-it-is-suspending-trade-with-iran-after-missile-attack/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>امارات متحده عربی با توجه به تلاش‌های ترامپ برای منزوی کردن تهران، توقف تجارت با ایران را اعلام کرد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۹۵-۰۵-۲۸T15:27:01Z</strong></span>
+                </div>
+                <p class='summary'>امارات متحده عربی مدت‌هاست که یک مرکز مهم تجاری برای ایران بوده و تحلیلگران می‌گویند این کشور نقش کلیدی در تلاش‌های ایران برای دور زدن تحریم‌های بین‌المللی داشته است، امری که مقام‌های اماراتی آن را رد می‌کنند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/19/world/middleeast/uae-cuts-trade-ties-iran-missiles.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>سوالات خود را در مورد جنگ ایران برای ما ارسال کنید</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۸۵/۹/۴ ساعت ۱۴:۴۷:۳۷</strong></span>
+                </div>
+                <p class='summary'>خبرنگاران تایمز که به پوشش جنگ، دیپلماسی، انرژی و خاورمیانه گسترده می‌پردازند، همزمان با نزدیک شدن درگیری‌ها به شش‌ماهه، به ویژگی «از خبرنگار بپرسید» ما می‌پیوندند. به ما بگویید چه در ذهنتان است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/19/world/iran-war-reader-questions.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 19 اوت 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>تنش‌های میان ایران و همسایگان آن، به ویژه امارات، پس از آنکه ایران متهم به پرتاب موشک‌های بالستیک به سمت امارات شد، تشدید شده و این اقدام امارات را به تعلیق تجارت با ایران سوق داد. این اقدام در چارچوب تلاش گسترده‌تر آمریکا برای منزوی کردن تهران انجام می‌شود که پیامدهای جهانی آن شامل افزایش قیمت نفت و اختلال در برنامه‌های آموزشی در کشورهایی مانند کامبوج است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران متهم شده است که با دو موشک بالیستیک به امارات متحدهٔ عربی حمله کرده است، عملی که امارات به شدت آن را انکار می‌کند اما منجر به اقداماتی فوری مانند تعلیق تمام تجارت با ایران شده است. امارات، که یکی از شرکای تجاری مهم ایران بوده، اعلام کرد این تصمیم به دلیل ناپایداری منطقه‌ای است که صلح و امنیت را تهدید می‌کند. در همین حال، گزارش‌ها حاکی است که ایالات متحده در تلاش است تا ایران را از نظر دیپلماتیک و اقتصادی بیشتر منزوی کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 به کجا می‌رود</h3>
+            وضعیت احتمالاً بیشتر تشدید خواهد شد و لغو تعلیق تجارت امارات، ممکن است منجر به انزوای اقتصادی گسترده‌تری برای ایران گردد. ایالات متحده ممکن است تلاش‌های خود را برای تشدید اقدامات علیه ایران ادامه دهد، احتمالاً با حمایت یا مقاومت بازیگران منطقه‌ای و جهانی دیگر. ایران نیز ممکن است با اقدامات نظامی بیشتر یا مانورهای دیپلماتیک تلافی‌جویانه، ناپایداری منطقه را افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['۱۴۰۵-۰۵-۲۹: گزارش‌هایی منتشر می‌شود اعلام می‌کند که ایران allegedly دو موشک بالستیک به امارات متشنج کرده است.', '۱۴۰۵-۰۵-۲۹: امارات تمامی تجارت با ایران را به دلیل تشدید تنش‌های منطقه‌ای متوقف می‌سازد.', '۱۴۰۵-۰۵-۲۹: گزارش‌هایی از تلاش ایالات متحده برای منزوی کردن ایران از لحاظ دیپلماتیک و اقتصادی منتشر می‌شود.', '۱۴۰۵-۰۵-۲۹: رسانه‌ها به پوشش پیامدهای گسترده‌تر بحران از جمله تاثیرات آن بر برنامه‌های آموزشی جهانی و قیمت‌های نفت می‌پردازند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در درازمدت، ایران با افزایش انزوا مواجه خواهد شد، به خصوص اگر امارات متحده عربی و دیگر شرکای تجاری به قطع روابط خود ادامه دهند. استراتژی ایالات متحده به نظر می‌رسد متمرکز بر منزوی‌سازی ایران برای مهار نفوذ منطقه‌ای آن است، که ممکن است منجر به اقدامات نظامی بیشتر و درگیری‌های پنهانی از سوی تهران گردد. این بحران ممکن است شکاف‌ها در خاورمیانه را عمیق‌تر کند، به طوری که برخی کشورها از ایالات متحده حمایت کرده و برخی دیگر احتمالاً به دنبال میانجی‌گری یا حمایت از ایران باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            درگیری فعلی شامل ترکیبی از نمایش‌های نظامی (حمله با موشک) و اقدامات اقتصادی (تعلیق تجارت) می‌شود. اگرچه امارات متحده عربی اعلام کرده است که خسارات عمده‌ای متحمل نشده، اما اهمیت نمادین و استراتژیک حمله موشکی، تنش‌ها را تشدید کرده است. در حال حاضر، ماهیت این درگیری بیشتر دیپلماتیک و اقتصادی است تا نظامی در مقیاس گسترده، اما خطر تشدید بیشتر آن وجود دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این بحران بخشی از یک کاربرد طولانی مدت قدرت در خاورمیانه است که شامل ایران، ایالات متحده و بازیگران منطقه‌ای مانند امارات متحده عربی می‌شود. نگرانی فوری معطوف به ثبات منطقه‌ای است، اما پیامدهای گسترده‌تر آن شامل تأثیرات اقتصادی جهانی، به ویژه در بازارهای نفت، و احتمال درگیری گسترده‌تری است که کشورهای متعددی را درگیر می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            بازیکن‌های اصلی شامل ایران (متهم به حمله موشکی), امارات متحده عربی (تعلیق تجارت و تهدید به ناامنی اقتصادی علیه ایران), و ایالات متحده (در تلاش برای منزوی کردن ایران) هستند. جامعه بین‌المللی تقسیم شده است و در حالی که برخی کشورها ممکن است از ایالات متحده حمایت کنند، برخی دیگر احتمالاً به دنبال میانجی‌گری هستند. این بحران همچنین تأثیری جهانی دارد، از جمله تأثیر بر برنامه‌های آموزشی در کشورهای دوردستی مانند کامبوج.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت احتمالاً به دلیل ناپایداری در خاورمیانه، منطقه‌ای بزرگ تولیدکننده نفت، افزایش یابد. اختلال در تجارت و تهدیدهای احتمالی به زیرساخت‌های نفتی در خلیج فارس ممکن است عرضه جهانی نفت را کاهش دهد و قیمت‌ها را بالا ببرد. این موضوع اهمیت دارد زیرا افزایش قیمت‌های نفت می‌تواند منجر به افزایش هزینه‌ها برای مصرف‌کنندگان در سراسر جهان، به‌ویژه در اقتصادهای وابسته به انرژی، شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران متهم به پرتاب موشک به امارات متحده عربی شده است که موجب تعلیق تمام تجارت امارات با ایران شده است. ایالات متحده در تلاش است تا ایران را از نظر دیپلماتیک و اقتصادی منزوی کند و تنش‌های منطقه‌ای را تشدید نماید. این بحران می‌تواند منجر به افزایش قیمت نفت و ناپایداری گسترده‌تر در خاورمیانه شود که پیامدهای جهانی خواهد داشت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌آور</h3>
+            انتظار نمی‌رود که ایران هدف قرار گرفته‌ی مستقیم امارات متحده‌ی عربی باشد، زیرا روابط اقتصادی نزدیک بین دو کشور وجود دارد. علاوه بر این، تأثیرات جهانی این رویداد، مانند تأثیر بر برنامه‌های آموزشی در کامبوج، نشان می‌دهد که پیامدهای این بحران می‌تواند تا چه حد گسترده باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            توسعه قابل توجهی در این زمینه صورت نگرفته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
