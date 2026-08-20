@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-20 15:54</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-20 15:54</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>چگونه چین و روسیه می‌توانند برنامه‌های ترامپ برای منزوی کردن ایران را خنثی کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصل)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۲۰T۱۴:۵۵:۴۷Z</strong></span>
+                </div>
+                <p class='summary'>پیوندهای تجاری عمیق ایران با پکن و مسکو می‌تواند برای ایالات متحده دشوار باشد تا مختلشان کند، آن‌گونه که تحلیلگران می‌گویند.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/20/how-china-and-russia-could-hobble-trumps-plans-to-isolate-iran?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>جنگ با ایران: ترامپ آغاز یک کمپین جدید برای منزوی ساختن اقتصادی ایران را اعلام می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۵/۳۰  ساعت ۱۷:۴۴</strong></span>
+                </div>
+                <p class='summary'>رئیس جمهور ایالات متحده دونالد ترامپ اقدام به راه‌اندازی کارزاری جدید برای منزوی ساختن ایران و مجازات شرکای تجاری این کشور کرده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/20/war-on-iran-trump-announces-a-new-campaign-to-isolate-iran-economically?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>«هزینه‌های هنگفت»: آیا ترامپ می‌تواند مانع از تجارت دیگر کشورها با ایران شود؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۳۰ ساعت ۱۴:۴۰:۵۱Z</strong></span>
+                </div>
+                <p class='summary'>وزیر امور خارجه ایران تهدیدات اخیر ترامپ را رد کرده و آن‌ها را تبلیغاتی از بحران‌های داخلی آمریکا نامیده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/20/tremendous-costs-can-trump-stop-other-countries-from-trading-with-iran?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>تهدید اقتصادی ترامپ، تمرکز را بر شرکای تجاری ایران معطوف می‌کند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۵/۳۰  ساعت ۱۹:۰۴:۴۶ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>به نظر می‌رسید رئیس‌جمهور ترامپ اعلام کند که ایالات متحده در صورت انجام تجارت با ایران، مجازات‌های اقتصادی اعمال خواهد کرد، هرچند او مشخص نکرد چه اقداماتی را به انجام خواهد رساند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/20/world/middleeast/iran-trade-trump-threat-china.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۳۰ امرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده تحت ریاست‌جمهوری ترامپ در حال راه‌اندازی کمپینی جدید برای منزوی‌سازی اقتصادی ایران از طریق تنبیه کشورهایی است که با آن معامله می‌کنند. ایران که از سوی روسیه و چین حمایت می‌شود، این تهدیدات را نادیده گرفته، آن‌ها را حواس‌پرتی می‌خواند و با وجود فشارهای آمریکا، روابط تجاری خود را ادامه می‌دهد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده در تلاش است با تهدید به مجازات کشورهایی که با ایران تجارت می‌کنند، آن را از نظر اقتصادی منزوی کند. این بخشی از تلاش‌های تجدیدنظرطلبانه دولت ترامپ برای تضعیف اقتصاد ایران پس از آن است که تحریم‌های قبلی نتوانستند برنامه هسته‌ای و نفوذ منطقه‌ای ایران را متوقف کنند. وزیر خارجه ایران این تهدیدات را نادیده گرفته و ادعا کرده است که آن‌ها فقط برای منحرف کردن توجه از مشکلات داخلی آمریکا هستند. meanwhile چند آلانی، شرکاى تجاری ایران، به‌ویژه چین و روسیه، در حال تقویت پیوندهای اقتصادی خود با ایران هستند تا فشار آمریکا را خنثى کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            در کوتاه مدت، ایران به احتمال زیاد به تجارت خود با چین و روسیه ادامه خواهد داد، اقدامی که به آن در برابر فشار اقتصادی ایالات متحده کمک می‌کند. ایالات متحده ممکن است با تحریم‌های شدیدتر یا حتی تهدیدات نظامی پاسخ دهد، اما این امر می‌تواند تنش‌ها در منطقه را تشدید کند. در بلند مدت، ایران یا مجبور خواهد شد تا برای کاهش خصومت‌های ایالات متحده تسلیم خواسته‌های مهم شود یا نزاع می‌تواند به بروز بحرانی جدید در خاورمیانه منجر گردد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['۲۰ اوت ۲۰۲۶: رئیس‌جمهور ترامپ از یک کارزار جدید برای منزوی‌سازی اقتصادی ایران خبر می‌دهد و کشورهای دارای روابط تجاری با ایران را تهدید به مجازات می‌کند.', '۲۰ اوت ۲۰۲۶: وزیر امور خارجه ایران تهدیدات ترامپ را رد کرده و آنها را به عنوان عاملی تغییر جهت و انتقاد از آمریکا به دلیل نادیده گرفتن مشکلات داخلی خود توصیف می‌کند.', '۲۰ اوت ۲۰۲۶: کارشناسان معتقدند روابط اقتصادی چین و روسیه با ایران می‌تواند تلاش‌های آمریکا برای منزوی‌سازی ایران را مختل کند، چرا که هر دوی این کشورها به رغم فشارهای آمریکا به تجارت با تهران ادامه می‌دهند.', '۲۰ اوت ۲۰۲۶: گزارش‌ها حاکی از آن است که ترامپ جزئیات مربوط به مجازات‌های آمریکا برای شرکای تجاری ایران را مشخص نکرده و ابهامات در این باره همچنان باقی مانده است.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+             美國不太可能成功完全在经济上孤立伊朗，除非能够说服或迫使中国和俄罗斯与德黑兰断绝联系。 伊朗拥有俄罗斯和中国等盟友，可能会找到绕过美国制裁的方法，可能通过更多依赖非美元贸易或易货系统。 这可能导致长期对峙，双方均不会轻易让步。 如果紧张局势升级，可能进一步破坏中东稳定，特别是对那些依赖该地区石油的国家而言。
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            وضعیت کنونی عمدتاً یک منازعه اقتصادی به جای جنگ نظامی مستقیم است. ایالات متحده از فشار اقتصادی (تحریم‌ها، محدودیت‌های تجاری) برای واداشتن ایران به تسلیم استفاده می‌کند، در حالی که ایران بر متحدانش برای مقاومت تکیه دارد. هنوز جنگ گسترده‌ای رخ نداده است، اما تهدید اقدام نظامی در صورت تشدید اوضاع وجود دارد. ایالات متحده تاکنون مشخص نکرده است که آیا از زور استفاده خواهد کرد، اما لحن statements آن تهاجمی است. از سوی دیگر، ایران عقب‌نشینی نکرده و به صادرات نفت، تجارت کالاها و همکاری با متحدانش برای مقابله با فشار ایالات متحده ادامه می‌دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری بخشی از یک مبارزه گسترده‌تر میان ایالات متحده و متحدانش (به ویژه چین و روسیه) برای نفوذ در خاورمیانه است. ایران در این منطقه بازیگری کلیدی به شمار می‌رود و همپیمانی‌هایش با چین و روسیه موجب می‌شود تا کنترل کامل این منطقه برای ایالات متحده دشوارتر شود. اگر ایالات متحده نتواند با تحریم‌های اقتصادی ایران را منزوی سازد، ممکن است ناچار به پذیرش سطحی از نفوذ ایران در منطقه شود. اگر فشار بیش از حد اعمال کند، می‌تواند منجر به رویارویی خطرناک‌تری گردد. برای بقیه جهان، این موضوع می‌تواند به معنای افزایش قیمت نفت، بی‌ثباتی بیشتر در خاورمیانه و تغییر در دینامیک قدرت جهانی به نفع چین و روسیه باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            آمریکا بازیگر اصلی است که به دنبال انزوای ایران بوده و از فشارهای اقتصادی و دیپلماتیک برای این منظور بهره می‌برد. اصلی‌ترین متحدان ایران، چین و روسیه هستند که به طور فعال با ایران تجارت کرده و از آن حمایت اقتصادی و سیاسی می‌کنند. کشورهای دیگری همچون عربستان سعودی و اسرائیل در خاورمیانه احتمالاً از تلاش‌های آمریکا حمایت می‌کنند، اما نقشی عمومی در این کارزار خاص ندارند. اتحادیه اروپا در مقالات به آن اشاره نشده است، اما اگر تحریم‌هایی علیه شرکت‌های مستقر در اروپا اعمال شوند، ممکن است این اتحادیه از نظر دیپلماتیک وارد عمل شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            ایران یکی از بزرگ‌ترین تولیدکنندگان نفت است و اگر ایالات متحده در کاهش صادرات نفت ایران موفق شود، قیمت نفت می‌تواند به سرعت افزایش یابد. این امر می‌تواند بر اقتصاد جهانی تأثیر بگذارد، زیرا افزایش قیمت نفت به معنای هزینه‌های بالاتر برای حمل و نقل، تولید و انرژی است. اگر ایران بتواند با فروش نفت به چین و روسیه، صادرات نفتی خود را حفظ کند، قیمت نفت چندان افزایش نخواهد یافت. با این حال، اگر ایالات متحده تحریم‌های شدیدی را بر کشورهای خریدار نفت ایران اعمال کند، عرضه جهانی نفت می‌تواند کاهش یابد و قیمت‌ها را افزایش دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده در تلاش است با تهدید کردن کشورهایی که با ایران تجارت می‌کنند، این کشور را از نظر اقتصادی منزوی کند، اما چین و روسیه در حال کمک به ایران برای مقاومت در برابر این فشار هستند. ایران عقب‌نشینی نمی‌کند و به تجارت با متحدانش ادامه می‌دهد، به این معنا که ایالات متحده ممکن است برای دستیابی به اهداف خود مجبور به اتخاذ اقدامات قوی‌تری شود. این درگیری در صورت کاهش صادرات ایران می‌تواند منجر به افزایش قیمت‌های نفت شود و به طور بالقوه بر اقتصاد جهانی تأثیر بگذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت ‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            این نبرد اقتصادی چیز تازه‌ای نیست—تحریم‌های علیه ایران برای دهه‌ها اعمال شده‌اند، اما اغلب نتوانسته‌اند به اهداف آمریکا دست یابند، چراکه ایران راه‌هایی برای دور زدن آنها با کمک متحدانی مانند چین و روسیه پیدا کرده است. وضعیت کنونی نشان می‌دهد که تا زمانی که چین و روسیه از ایران حمایت کنند، آمریکا در ایزوله‌سازی کامل آن دچار مشکل خواهد شد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
