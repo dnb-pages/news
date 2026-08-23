@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-23 18:54</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-23 18:54</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>جنگ ایران: یک مقام برجسته آمریکایی می‌گوید جمهوری‌خواهان «از هر لحاظ» می‌توانند انتخابات میان‌دوره‌ای را ببرند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۶/۲Sun ۱۷:۵۳:۳۱</strong></span>
+                </div>
+                <p class='summary'>مایک جانسون، رئیس مجلس نمایندگان و متحد ترامپ، اذعان می‌کند که پایان یافتن درگیری قبل از انتخابات ماه نوامبر "کمک‌کننده خواهد بود".</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/23/iran-war-top-us-lawmaker-says-republicans-can-absolutely-win-midterms?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>آیا نیجریه می‌تواند از جنگ ایران سود ببرد؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (core)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۲۳T۱۶:۰۷:۰۱Z</strong></span>
+                </div>
+                <p class='summary'>اکپریکپه اکپو می‌گوید جنگ ایالات متحده و اسرائیل علیه ایران باعث شده است تا نیجریه تولید گاز خود را گسترش دهد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/talk-to-al-jazeera/2026/8/23/can-nigeria-cash-in-on-iran-war?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>ایران به کشورهای حاشیه خلیج فارس هشدار داد تا در جنگ اقتصادی ترامپ مشارکت نکنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۳ مرداد ۱۴۰۵ ساعت ۲۱:۳۰:۰۹ به وقت جهانی</strong></span>
+                </div>
+                <p class='summary'>مشاور جدید امنیتی ملی ایران و ازMembers او تندروی سپاه پاسداران، محسن رضایی، سوگند خورد تا نگذارد «حتی یک قطره نفت» از این منطقه خارج شود.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/23/world/europe/iran-economy-war-united-states.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>ترامپ در جنگ با ایران 'دیگر چاره‌ای ندارد': استیون والت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۳ مرداد ۱۴۰۵ ساعت ۲۲:۴۵</strong></span>
+                </div>
+                <p class='summary'>استیون والت، کارشناس علوم سیاسی، می‌گوید ترامپ قول داد آمریکا را قدرتمندتر کند، اما بسیاری از سیاست‌های او در حال ضعیف‌تر کردن آن است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/the-bottom-line/2026/8/23/trump-has-run-out-of-options-in-iran-war-stephen-walt?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - 23 اوت 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران در میانه‌ی یک رویارویی تنش‌زا با تهدیدهای نظامی، فشارهای اقتصادی و احتمال درگیری‌ها در خاورمیانه قرار دارند. رهبران سیاسی ایالات متحده امیدوارند که درگیری با ایران قبل از انتخابات نوامبر به پایان برسد، در حالی که ایران کشورهای حوزه خلیج فارس را در برابر پیوستن به جنگ اقتصادی به رهبری آمریکا هشدار می‌دهد. در همین حین، نیجریه در نظر دارد تولید نفت و گاز خود را افزایش دهد تا از افزایش قیمت‌های انرژی ناشی از این بحران بهره‌برداری کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایالات متحده تحت ریاست‌جمهوری ترامپ درگیر یک درگیری نظامی و اقتصادی با ایران است. ایران، مانند عربستان سعودی و امارات متحده عربی، کشورهای حاشیه خلیج نیز را از پیوستن به جنگ اقتصادی آمریکا علیه خود برحذر داشته است. سیاستمداران آمریکایی، از جمله مایک جانسون، رئیس مجلس نمایندگان، امیدوارند که درگیری به‌زودی پایان یابد، شاید برای تأثیرگذاری بر نتایج انتخابات میان‌دوره‌ای در نوامبر. دولت ایران نیز در تلاش است تا جلوی خروج هرگونه نفت از منطقه را بگیرد و احتمالاً برای فلج کردن تلاش‌های آمریکا برای منزوی کردن اقتصادی خود، این کار را انجام می‌دهد. در همین حال، نیجریه با افزایش تولید نفت خود از قیمت‌های بالاتر جهانی بهره‌برداری می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عنوان</h3>
+            اگر ایران احساس کند که توسط فشارهای ایالات متحده‌ها محاصره شده است، درگیری می‌تواند تشدید شود و منجر به حملات مستقیم به کشورهای حاشیه خلیج فارس یا اقدامات تهاجمی‌تری مانند مختل کردن حمل و نقل نفت گردد. از سوی دیگر، ایالات متحده ممکن است برای جلوگیری از هزینه‌های اقتصادی و سیاسی در آستانه انتخابات، تلاش کند با مذاکره برای یک وقفه موقت در جنگ موافقت کند. نیجریه می‌تواند در صورت اختلال در تولید نفت ایران یا دیگر کشورهای خاورمیانه، تولید نفت خود را افزایش دهد تا تقاضای جهانی را برآورده سازد. در بلندمدت، ایران ممکن است به دنبال اتحادهای قوی‌تر با کشورهایی مانند روسیه یا چین باشد تا فشارهای ایالات متحده را خنثی کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['اواخر 2025: ایالات متحده تحت ریاست‌جمهوری ترامپ پس از از سرگیری بخش‌هایی از برنامه هسته‌ای ایران، تحریم‌ها و فشارهای نظامی خود را بر این کشور افزایش می‌دهد.', 'اوایل 2026: تنش‌ها تشدید می‌شود زیرا ایران رزمایش‌های نظامی انجام می‌دهد و تهدید می‌کند تنگه هرمز، مسیری حیاتی برای حمل و نقل نفت، را مسدود کند.', 'اواسط 2026: درگیری‌های پراکنده بین نیروهای آمریکایی و ایرانی در خلیج فارس باعث افزایش تنش‌ها می‌شود. متحدان آمریکایی در منطقه خلیج فارس از سوی هر دو طرف تحت فشار قرار می‌گیرند.', 'اوت 2026: مشاور جدید امنیتی تندرو ایران به کشورهای حاشیه خلیج فارس هشدار می‌دهد که در «جنگ اقتصادی آمریکا» شرکت نکنند. قانون‌گذاران آمریکایی امیدوارند درگیری‌ها پیش از انتخابات نوامبر برای کسب منافع سیاسی به پایان برسد.', '23 اوت 2026: نیجریه از طرح‌های خود برای افزایش تولید نفت و گاز خبر می‌دهد تا از فرصت ناشی از افزایش قیمت‌ها در اثر این درگیری بهره‌برداری کند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            به نظر می‌رسد ایران مصمم است در برابر فشارهای آمریکا مقاومت کند و از انزوای اقتصادی پیشگیری نماید و احتمالاً در صورت تداوم تشدید تحریم‌ها یا اقدامات نظامی از سوی آمریکا، به‌شدت واکنش نشان خواهد داد. ایالات متحده ممکن است پیش از انتخابات نوامبر به دنبال راهی برای حفظ آبروی خود جهت کاهش تنش باشد، اما رویکرد تهاجمی ترامپ دستیابی به توافق را دشوار می‌سازد. در بلندمدت، این درگیری ممکن است ایران را به تقویت روابط خود با روسیه، چین و سایر قدرت‌های ضدآمریکایی سوق دهد و خاورمیانه‌ای سازمان‌یافته‌تر را به وجود آورد. برای نیجریه و سایر تولیدکنندگان نفت، افزایش قیمت‌ها می‌تواند فرصتی اقتصادی باشد، اما بی‌ثباتی در خاورمیانه همچنان ریسکی برای بازارهای جهانی انرژی محسوب می‌شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            در حال حاضر، این مناقشه با جنگ روانی، فشار اقتصادی و درگیری‌های نظامی با شدت کم به جای جنگ کامل مشخص می‌شود. ایران سعی دارد با تهدید به مختل کردن صادرات نفت منطقه، کشورهای حوزه خلیج فارس را به بی‌طرفی وادارد. ایالات متحده نیز از تحریم‌های اقتصادی، گشت‌های دریایی و فشار غیرمستقیم بر متحدان ایران استفاده می‌کند. درگیری‌ها پراکنده است، اما خطر تشدید عمده همچنان بالاست اگر هر یک از طرفین اشتباه محاسباتی کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری در حال تغییر баланс قدرت в خاورمیانه است. ایران تلاش می‌کند ثابت کند که نمی‌توان آن را تحت فشار ایالات متحده قرار داد، در حالی که ایالات متحده مصمم است از گسترش قدرت منطقه‌ای ایران جلوگیری کند. برای سایر کشورهای جهان، این درگیری به معنای افزایش قیمت نفت، عدم قطعیت بیشتر در بازارهای انرژی و ریسک اختلال بیشتر در تجارت جهانی است. کشورهای کوچک‌تری مانند نیجریه فرصت بهره‌برداری از این وضعیت را می‌بینند، اما در عین حال در صورت گسترش درگیری، با خطراتی نیز مواجه هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده اصلی‌ترین نیروی پشت فشار به ایران است که توسط اسرائیل و برخی از کشورهای خلیج فارس مانند عربستان سعودی که از نفوذ فزاینده ایران هراس دارند، پشتیبانی می‌شود. ایران نیز از سوی روسیه، چین و تعدادی از متحدان منطقه‌ای مانند سوریه حمایت می‌گردد. کشورهای اروپایی عمدتاً از درگیری مستقیم دوری می‌کنند اما نگران افزایش قیمت نفت هستند. نیجریه در تلاش است خود را به‌عنوان یک تأمین‌کننده جدید انرژی مطرح کند تا از این بحران بهره‌برداری کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت های نفت به دلیل نگرانی از اختلال در عرضه در خاورمیانه به طور قابل توجهی افزایش یافته است. در صورت مسدود شدن تنگه هرمز توسط ایران یا کاهش صادرات از سوی کشورهای حاشیه خلیج فارس، قیمت ها ممکن است بیشتر افزایش یابد و به طور بالقوه قیمت بنزین را در سراسر جهان بالاتر ببرد. این امر می تواند به نفع کشورهایی مانند نیجریه که تولیدکننده نفت هستند، باشد اما به مصرف کنندگان جهانی آسیب بزند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایالات متحده و ایران در یک رویارویی متشنج به سر می‌برند و هر دو طرف با استفاده از فشارهای اقتصادی و نظامی سعی در تضعیف یکدیگر دارند. افزایش قیمت نفت برای برخی کشورها مانند نیجریه سودمند است، اما مصرف‌کنندگان در سراسر جهان را تحت فشار قرار می‌دهد و در صورت تشدید درگیری، احتمال افزایش بیشتر قیمت‌ها وجود دارد. این درگیری در حال تبدیل شدن به یک مبارزه طولانی‌مدت است، به‌ویژه با احتمال تقویت روابط ایران با چین و روسیه در صورت تداوم فشار ایالات متحده.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            غیرمنتظره است که نیجریه این درگیری را به عنوان فرصتی برای گسترش صنعت نفت و گاز خود ببیند. معمولاً چنین بحران‌هایی سرمایه‌گذاری را دلسرد می‌کند، اما قیمت‌های بالای نفت آن را سودآور می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋  زمینه اضافی</h3>
+            هیچ توسعه معناداری در این حوزه صورت نگرفته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
