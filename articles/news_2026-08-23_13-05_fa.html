@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-23 13:08</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-23 13:08</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>آیا ایران می‌تواند در برابر کشورهایی که به «جنگ اقتصادی» ایالات متحده می‌پیوندند، مقابله به مثل کند؟</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة ( grundlegend )</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۰۲ ساعت ۱۵:۵۰:۲۲</strong></span>
+                </div>
+                <p class='summary'>ایران هشدار می‌دهد که کشورهایی که از تحریم‌های اقتصادی ایالات متحده حمایت می‌کنند، دشمن تهران قلمداد خواهند شد.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/23/can-iran-retaliate-against-countries-that-join-us-economic-war?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایران کشورهای حاشیه خلیج ‌فارس را از پیوستن به جنگ اقتصادی ترامپ برحذر داشت</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> تجزیه و تحلیل نیویورک تایمز</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۲۳T۱۲:۴۷:۳۰Z</strong></span>
+                </div>
+                <p class='summary'>رضا رضایی، مشاور جدید امنیت ملی جریان اصول‌گرای ایران، سوگند یاد کرد که از خروج «حتی یک قطره نفت» از منطقه جلوگیری خواهد کرد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/23/world/europe/iran-economy-war-united-states.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۳ مرداد ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران به کشورهای حامی تحریم‌های اقتصادی ایالات متحده علیه خود هشدارهای شدیدی داده و ضمن اعلام پاسخ متقابل، دولت‌های خلیج فارس را از مشارکت در آنچه «جنگ اقتصادی» می‌نامد بر حذر داشته است. این تنش‌ها در حالی تشدید شده است که ایران تلاش می‌کند تا فشارهای ایالات متحده به رهبری این کشور را خنثی کند و همزمان نفوذ منطقه‌ای خود را حفظ نماید، نگرانی‌هایی در مورد ثبات منطقه‌ای و بازارهای جهانی نفت برانگیخته است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            دولت ایران به رهبری چهره‌های تندرو از جمله مشاور امنیت ملی‌اش، محسن رضایی، تهدید به تلافی‌جویی علیه هر کشوری کرده است که تحریم‌های اقتصادی ایالات متحده به رهبری آمریکا علیه ایران را بپذیرد. این هشدارها به‌طور خاص کشورهای حاشیه خلیج فارس را هدف گرفته‌اند که ایران آن‌ها را به همکاری با «جنگ اقتصادی آمریکا» متهم کرده است. رضایی اعلام کرده است که ایران از خروج هرگونه صادرات نفت از منطقه جلوگیری خواهد کرد و به این ترتیب، مرحله جدیدی از رویارویی را آغاز می‌کند که فشارهای اقتصادی را با تهدیدهای نظامی درآمیخته است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرصفحه</h3>
+            در صورت حمایت کشورهای خلیج فارس از تحریم‌های ایالات متحده، احتمالاً این شرایط تشدید شده و به اقدامات مستقیم— چه اقتصادی (مانند اخلال در حمل و نقل نفت) و چه نظامی— منجر خواهد شد. ایران ممکن است اقدام به هدف قراردادن مسیرهای کشتیرانی، تاسیسات نفتی یا منافع اقتصادی در منطقه کند. تلاش‌های دیپلماتیک برای کاهش تنش، به نظر غیرمحتمل است زیرا هر دو طرف رویکردی سخت‌گیرانه دارند. ریسک سوءتفاهم یا وقوع حادثه می‌تواند منجر به تشدید سریع شده و احتمالاً دیگر بازیگران منطقه‌ای مانند عربستان سعودی، اسرائیل یا ایالات متحده را به درگیری مستقیم بکشاند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            [<br>'۲۰۲۵: ایالات متحده پس از خروج از برجام (JCPOA) تحریم‌های اقتصادی گسترده‌ای را مجدداً علیه ایران اعمال می‌کند که منجر به فشار اقتصادی شدید در این کشور می‌شود.',<br>'اوایل ۲۰۲۶: ایران حملات نیابتی خود علیه متحدان ایالات متحده در منطقه (مانند حزب‌الله و حوثی‌ها) را تشدید کرده و در حال جنگ سایه علیه کشتی‌رانی در خلیج فارس است.',<br>'اواسط ۲۰۲۶: ایران تهدیدات خود را گسترش می‌دهد، تانکرهای نفتی را مورد حمله قرار می‌دهد و زیرساخت‌های نفتی منطقه را تهدید می‌کند تا کشورهای حاشیه خلیج فارس را از حمایت تحریم‌های ایالات متحده بازدارد.',<br>'۲۲ تا ۲۳ اوت ۲۰۲۶: ایران در rhetoric خود تشدید می‌کند، کشورهای حاشیه خلیج فارس را از پیوستن به تحریم‌های ایالات متحده بر حذر می‌دارد و صادرات نفت خود را تهدید می‌کند. ایالات متحده نیز با افزایش حضور نظامی خود در منطقه پاسخ می‌دهد.',<br>'روزها/هفته‌های آینده: احتمال پایاپای نظامی، خرابکاری در زیرساخت‌های نفتی یا حملات نیابتی علیه اهداف ایالات متحده یا متحدانش وجود دارد.'<br>]
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم انداز استراتژیک</h3>
+            در بلندمدت، به‌نظر می‌رسد ایران در حال اتخاذ استراتژی «جنگ نامتقارن» است—یعنی استفاده از روش‌های غیرمستقیم (از طریق نیابتی‌ها، خرابکاری، تهدیدها) برای مقابله با فشار آمریکا، به‌جای مواجهه نظامی مستقیم. این تاکتیک منعکس‌کننده فهم ایران از ضعف نظامی خود در برابر آمریکا و متحدانش است. با این حال، اگر اقتصاد ایران به فروپاشی ادامه دهد یا تهدیدهای وجودی perceived کند، ممکن است اقدامات جسورانه‌تری انجام دهد، از جمله حملات مستقیم به زیرساخت‌های نفتی یا دارایی‌های نظامی آمریکا. این بحران ممکن است ایران را به سمت همسویی بیشتر با روسیه یا چین سوق دهد و اقتصاد جهانی تحت سلطه آمریکا را دور بزند. از سوی دیگر، اگر آمریکا و متحدانش با اعمال زور بیش از حد واکنش نشان دهند، ممکن است ایران دچار فروپاشی داخلی یا مذاکرات تحمیلی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی درگیری</h3>
+            این درگیری فعلی عمدتاً اقتصادی و کلامی است، اما به تدریج در حال تبدیل شدن به جنگی سایه‌روشن است. ایران به شدت بر تهدیدات و عملیات‌های پنهانی (به عنوان مثال، خرابکاری، حملات از طریق نیابتی) به جای جنگ آشکار متکی است. شدت درگیری در حال افزایش است و در عین حال در حد متوسط باقی مانده است. هر دو طرف در حال انجام یک بازی خطرناک انفعال و لبه پرتگاه هستند. خطر تشدید تنش‌ها به دلیل محاسبات اشتباه یا اقدامات شخص ثالث (به عنوان مثال، اصابت ناخواسته به یک نفت‌کش) همچنان بالاست. ماهیت درگیری‌ها غيرمعمول است و در کنار تهدیدات سنتی، حملات سایبری، کمپین‌های اطلاعات پلشت و درگیری‌های نیابتی نقش‌های عمده‌ای ایفا می‌کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویب کلی</h3>
+            این بحران در حال شکل‌دهی مجدد توازن قدرت در خاورمیانه است؛ جایی که ایران تلاش می‌کند با وجود تحریم‌های ایالات متحده و فشارهای نظامی، خود را به‌عنوان یک قدرت منطقه‌ای دوباره معرفی کند. برای جهان، این موضوع اهمیت فراوانی دارد: اختلال در عرضه نفت ممکن است اقتصاد جهانی را به لرزه درآورد، به‌ویژه اگر ایران تهدیدهای خود برای مسدود کردن تنگه هرمز (یکی از مهم‌ترین مسیرهای حمل‌ونقل نفت) را عملی کند. اروپا و آسیا که به شدت به نفت خلیج فارس وابسته هستند، ممکن است با کمبود نفت و افزایش قیمت‌ها مواجه شوند. توانایی ایالات متحده در حفظ رژیم تحریم‌ها تعیین خواهد کرد که آیا اقتصاد ایران فرو می‌پاشد یا راه‌هایی برای دور زدن محدودیت‌ها پیدا می‌کند (به عنوان مثال، از طریق روسیه یا چین). این بحران همچنین توانایی جنگ اقتصادی را به‌عنوان ابزاری از دیپلماسی، با درس‌هایی احتمالی برای سایر درگیری‌های جهانی، آزمایش می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            در این درگیری، ایالات متحده دشمن اصلی است، رهبری کارزار تحریم‌های اقتصادی را بر عهده دارد و به احتمال زیاد حمایت نظامی از متحدان خود در خلیج فارس را افزایش خواهد داد. عربستان سعودی، امارات متحده عربی، اسرائیل و دیگر کشورهای حاشیه خلیج به شدت با ایالات متحده همسو هستند و تحریم‌ها را اجرا کرده و از سوی ایران تهدیدهای مستقیمی را متحمل می‌شوند. روسیه و چین متحدان بالقوه کلیدی برای ایران هستند و خطوط اقتصادی (به‌طور مثال، توافقات تجاری و سرمایه‌گذاری) را به منظور دور زدن تحریم‌های ایالات متحده ارائه می‌دهند. نقش اتحادیه اروپا تقسیم شده است: برخی از کشورهای اروپایی می‌خواهند از فشار ایالات متحده مستقل بمانند (به‌طور مثال، خرید نفت ایران)، در حالی که برخی دیگر با واشنگتن همسو هستند. کشورهای کوچک‌تری مانند ترکیه یا عراق در میانه قرار گرفته‌اند و سعی دارند منافع خود را بدون خشمگین کردن هیچ‌کدام از طرف‌ها متعادل سازند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تهدید به مسدودسازی صادرات نفت خلیج فارس، عرضه جهانی نفت را بسیار مختل می‌کرد، به گونه‌ای که قیمت‌ها به شدت اوج می‌گرفت. تنگه هرمز حدود ۲۰٪ از عرضه نفت جهان را مدیریت می‌کند، بنابراین هرگونه اختلال می‌تواند قیمت‌ها را تا بالای ۱۲۰ تا ۱۵۰ دلار در هر بشکه (در مقایسه با قیمت فعلی ~۸۰ دلار) برساند. این امر اقتصادهای وابسته به سوخت را آسیب می‌زند، هزینه‌های کسب‌وکارها و مصرف‌کنندگان را افزایش می‌دهد و به طور بالقوه ممکن است باعث رکود در کشورهای واردکننده انرژی مانند هند، ترکیه یا حتی ایالات متحده شود. خطر افزایش قیمت‌های نفت از هم‌اکنون در حال تأثیرگذاری بر بازارها است، به طوری که هزینه‌های بیمه کشتی‌ها افزایش یافته و برخی شرکت‌ها مسیرهای حمل نفت خود را تغییر داده‌اند تا از خلیج فارس دور بمانند. یک اختلال پایدار در عرضه می‌تواند منجر به یک بحران انرژی جهانی مشابه شوک‌های نفتی دهه ۱۹۷۰ شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران در واکنش به کشورهای حامی تحریم‌های ایالات متحده، با تهدید به مسدود کردن صادرات نفت خلیج فارس، اقدامی انجام می‌دهد که می‌تواند عرضه انرژی جهانی را مختل کند. خطر افزایش تنش بسیار بالاست، زیرا هر دو طرف (آمریکا و متحدانش در مقابل ایران) در آستانه لبه پا گذاشتن قرار دارند و احتمال بروز درگیریِ تصادفی یا عمدی را افزایش می‌دهند. این بحران، محدودیت‌های جنگ اقتصادی را برجسته می‌کند، چرا که کشورهایی مانند چین و روسیه ممکن است وارد عمل شده و به ایران برای دور زدن تحریم‌ها کمک کنند و فشارهای تحت رهبری ایالات متحده را ضعیف سازند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋  زمینه اضافی</h3>
+            هیچ پیشرفت قابل توجهی در این زمینه صورت نگرفته است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
