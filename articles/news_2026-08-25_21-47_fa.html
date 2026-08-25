@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-25 21:50</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-25 21:50</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>تحریم‌های جدید آمریکا نشانه‌ای از درماندگی ترامپ در قبال ایران است، به گفته کارشناسان</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۲۵ اوت ۲۰۲۶ ساعت ۲۰:۳۴:۴۹ به وقت گرینویچ</strong></span>
+                </div>
+                <p class='summary'>据专家表示，经济升级不太可能迫使伊朗政府屈服于美国的要求。</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/25/new-us-sanctions-signal-trump-desperation-on-iran-experts-say?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایران و عمان درباره راهرو موقت دریایی از تنگه هرمز گفت‌وگو کردند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (الگو)</span>
+                    <span class='meta-item'>📅 <strong>۲۵ مرداد ۱۴۰۵ ۱۹:۴۷:۵۱Z</strong></span>
+                </div>
+                <p class='summary'>وزیر خارجه عمان امیدوار است دو کشور به‌زودی «اعلام کنند» یک کریدutako عبور موقت مشترک از تنگه هرمز راه‌اندازی شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/8/25/iran-oman-discuss-temporary-shipping-lane-through-strait-of-hormuz?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۴ شهریور ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده تحریم‌های جدیدی را علیه ایران وضع کرده است که کارشناسان می‌گویند احتمالاً باعث تغییر اساسی در سیاست‌های تهران نخواهد شد. از سوی دیگر، ایران و عمان در حال مذاکره درباره ایجاد یک مسیر موقتی کشتیرانی در تنگه هرمز هستند تا تنش‌ها را کاهش دهند و امکان عبور ایمن نفت جهانی را فراهم کنند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            دولت ایالات متحده تحت ریاست‌جمهوری ترامپ تحریم‌های اقتصادی جدیدی علیه ایران اعمال کرده است تا دولت ایران را تحت فشار قرار دهد تا سیاست‌های خود را تغییر دهد. کارشناسان معتقدند این تحریم‌ها به احتمال زیاد به آن هدف دست نخواهد یافت. به صورت جداگانه، ایران و عمان در حال مذاکره برای ایجاد یک走廊 ترابری موقت از طریق تنگه هرمز، یک نقطه حیاتی برای حمل و نقل جهانی نفت، هستند تا خطرات ناشی از в conflicts را کاهش دهند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            تحریم‌های جدید ایالات متحده ممکن است فشار اقتصادی بر ایران را تشدید کند، اما بعید است که به زودی منجر به انعطاف سیاسی درTehran  شود. گفتگوهای مربوط به کریدور حمل و نقل در تنگه هرمز حاکی از احتمال کاهش تنش‌ها، حداقل در حوزه امنیت دریایی، است. هر دو جانب به نظر باز برای راه‌حل‌های مذاکراتی در جهت جلوگیری از درگیری رو در رو هستند، اما تنش‌های زیربنایی همچنان حل نشده باقی مانده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            <ul><li>۱. ۲۵ اوت ۲۰۲۶: ایالات متحده تحریم‌های جدیدی را علیه ایران اعمال کرد.</li><li>۲. ۲۵ اوت ۲۰۲۶: ایران و عمان از برگزاری مذاکرات درباره ایجاد عبورگاه موقت دریایی در تنگه هرمز خبر دادند.</li><li>۳. ۲۰۲۴–۲۰۲۶: تحریم‌های پیشین و تهدیدهای دوره‌ای برای بستن تنگه هرمز منجر به افزایش تنش‌ها شده است.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            در بلندمدت، تحریم‌های آمریکا ممکن است ایران را به سمت اتحادهای اقتصادی جایگزین سوق دهد، مانند روابط عمیق‌تر با روسیه، چین، یا شرکای منطقه‌ای مانند عمان و عراق. اگر کریدور کشتیرانی از طریق تنگه هرمز محقق شود، می‌تواند خطر درگیری‌های بزرگ ناشی از محاصره را کاهش دهد، اما به تنش‌های ژئوپلیتیکی عمیق‌تر پایان نخواهد داد. ایران ممکن است به مقاومت در برابر خواسته‌های آمریکا ادامه دهد و در عین حال به دنبال راه‌هایی برای دور زدن تحریم‌ها باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دینامیک‌های درگیری</h3>
+            وضعیت کنونی با فشار اقتصادی (تحریم‌ها) به جای برخورد نظامی مستقیم مشخص می‌شود. تنگه هرمز همچنان یک نقطه بحرانی است، اما پیشنهاد برای ایجاد یک مسیر موقت دریای نشان‌دهنده تلاش‌ها برای جلوگیری از تشدید فوری تنش است. میزان شدت درگیری‌های فعال کم است، اما از لحاظ اقدامات اقتصادی و دیپلماتیک، بالا است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این وضعیت تنش‌های گسترده‌تری بین ایران و ایالات متحده منعکس می‌کند و پیامدهایی برای بازارهای جهانی نفت، ثبات خاورمیانه و روابط بین‌الملل دارد. اگر تنگه هرمز امن‌تر شود، ممکن است به‌طور موقت قیمت نفت تثبیت شود ولی به مسائل اساسی ریشه‌ای درگیری رسیدگی نخواهد کرد. خطر بلندمدت این است که تحریم‌های طولانی‌مدت می‌تواند ایران را به سمت دشمنانی مانند روسیه یا چین سوق دهد و دينامیک‌های قدرت منطقه‌ای را دگرگون کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده بازیگر اصلی اعمال تحریم‌ها است که هدف آن مهار نفوذ و جاه‌طلبی‌های هسته‌ای ایران است. عمان نقش میانجی را ایفا می‌کند و با ایران همکاری می‌کند تا اطمینان حاصل شود تنگهٔ هرمز باز می‌ماند. سایر کشورها، به‌ویژه کشورهای خلیج فارس و کشورهای اروپایی، به دقت در حال نظارت هستند اما در این تحولات خاص اقدام مستقیمی انجام نداده‌اند. چین و روسیه ممکن است از طریق میانِ برهای اقتصادی یا دیپلماتیک به‌طور غیرمستقیم از ایران حمایت کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            تحریم‌های جدید علیه ایران در صورتی که بتوانند صادرات نفتی ایران را محدود کنند، می‌تواند عرضه جهانی نفت را کاهش داده و در نتیجه احتمالاً موجب افزایش قیمت نفت شود. با این حال، در صورتی که کریدور کشتیرانی تنگه هرمز برقرار شود و باز باشد، می‌تواند نگرانی‌ها درباره disruption‌های عرضه را کاهش داده و ثباتی در قیمت‌ها به وجود آورد. اثر خالص به این بستگی دارد که تحریم‌ها یا کریدور کشتیرانی، بر جریان نفتی چه تاثیر بزرگ‌تری داشته باشند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            تحریم‌های ایالات متحده علیه ایران احتمالاً تغییرات سیاست‌گذارانه عمده‌ای به دنبال نخواهد داشت و ممکن است ایران را به کشورهای دیگری مانند روسیه یا چین نزدیک‌تر کند. گفت‌وگوی ایران و عمان درباره ایجاد یک مسیر موقت کشتیرانی از تنگه هرمز گامی در جهت کاهش خطر درگیری‌های بزرگ و disruption در عرضه جهانی نفت است. این وضعیت بر تنش‌های پیوسته میان ایران و ایالات متحده تأکید می‌کند، در حالی‌که بازارهای جهانی نفت و ثبات منطقه در معرض خطر قرار دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            تغییرات قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
