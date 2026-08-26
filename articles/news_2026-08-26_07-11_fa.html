@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-26 07:15</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-26 07:15</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>یک مقام عالی‌رتبه اعلام کرد ایران و عمان بر سر یک مسیر موقت جدید در تنگه هرمز به توافق رسیده‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۰۴ ۱۰:۳۲:۱۳</strong></span>
+                </div>
+                <p class='summary'>معاون وزیر خارجه اعلام کرد که مسیر ورود و همچنین بخشی از خروجی از طریق آب‌های سرزمینی ایران خواهد گذشت.</p>
+                <div class='link'><a href='https://www.aljazeera.com/economy/2026/8/26/top-official-says-iran-oman-have-agreed-new-temporary-hormuz-route?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایران بر این باور است که درگیری اقتصادی باعث تحت فشار قراردادن ترامپ در بازی "مرغ رومی" خواهد شد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزیره (اصلی)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۲۶T۰۵:۲۰:۱۷Z</strong></span>
+                </div>
+                <p class='summary'>ایران در حال شرط‌بندی بر اثرات اقتصادی جهانی و نگرانی جمهوری‌خواهان از انتخابات میان‌دوره‌ای است تا باعث عقب‌نشینی ترامپ شود.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/26/iran-bets-economic-pain-will-pressure-trump-in-game-of?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>خاورمیانه زنده: ایران می‌گوید تنگه هرمز همچنان بسته است علیرغم مذاکرات راهرو ترانزیتی با عمان</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>٢٠٢٦-٠٨-٢٦T٠٦:٠٤:٠٥Z</strong></span>
+                </div>
+                <p class='summary'>تهران روز چهارشنبه هشدار داد که تنگه هرمز تا زمانی که جنگ توسط ایالات متحده پایان نیابد، بسته خواهد ماند؛ اگرچه مذاکراتی با عمان برای ایجاد یک走廊 موقت ترانزیتی در این آبراه حیاتی در جریان است. واشنگتن پیش‌تر تحریم‌های جدیدی را اعلام کرده بود که aimed at  فشار آوردن بر ایران و وادار ساختن آن به تسلیم شدن، به گونه‌ای که اسکات بسنت، وزیر خزانه‌داری ایالات متحده، با تهدید "خفه کردن اقتصادی" کشور را پشتوانه قرار داد. برای آخرین به‌روزرسانی‌ها، صفحه زنده ما را دنبال کنید.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260826-middle-east-live-iran-says-hormuz-strait-still-closed-despite-transit-corridor-talks-with-oman' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۶ آگوست ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران و عمان درباره یک مسیر موقت در تنگه هرمز گفتگو می‌کنند، اما ایران بر بستن تنگه تا زمانی که آمریکا جنگ در منطقه را پایان دهد، پافشاری می‌کند. ایران همچنین تهدید کرده است که فشارهای اقتصادی را برای وادار کردن آمریکا به عقب‌نشینی اعمال خواهد کرد، در حالی که آمریکا تحریم‌های تازه‌ای وضع کرده و از «خفه کردن اقتصادی» هشداری داده است. تنش‌ها در حال افزایش است زیرا هر دو طرف بازی پرخطری را دنبال می‌کنند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران و عمان بر سر راهرو ترانزیتی موقت جدیدی در تنگه هرمز توافق کردند، اما ایران اعلام کرد که تنگه همچنان بسته خواهد ماند مگر اینکه آمریکا جنگ در منطقه را پایان دهد. در همین حال، آمریکا تحریم‌های جدیدی علیه ایران اعمال کرده و تهدید می‌کند که برای فشار به ایران جهت عقب‌نشینی، اقتصاد این کشور را قطع خواهد کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیترها</h3>
+            اگر ایالات متحده تحریم‌ها را تسهیل نکند یا جنگ را پایان ندهد، ایران ممکن است به مسدود کردن تنگه هرمز ادامه دهد و از فشارهای اقتصادی برای وادار کردن ایالات متحده به عقب‌نشینی استفاده کند، به ویژه با نزدیک شدن به انتخابات میان‌دوره‌ای. در صورت چشم‌پوشی نکردن طرفین از مواضع خود، این وضعیت می‌تواند به یک درگیری نظامی مستقیم escalate شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            <ul><li>۱. ۲۶ اوت ۲۰۲۶: ایران و عمان بر سر مسیر موقت در تنگه هرمز به توافق می‌رسند، اما ایران اعلام می‌کند تنگه تا پایان یافتن جنگ توسط ایالات متحده بسته باقی می‌ماند.</li><li>۲. همان روز: ایالات متحده تحریم‌های جدیدی علیه ایران اعلام می‌کند و با تهدید به «خفه کردن اقتصادی»، فشار می‌آورد.</li><li>۳. ایران امیدوار است که درد اقتصادی و نگرانی‌های سیاسی ایالات متحده (مانند انتخابات میان‌دوره‌ای) باعث عقب‌نشینی ترامپ شود.</li></ul>
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            در بلندمدت، به نظر می‌رسد ایران سعی دارد استفاده از تهدیدهای نظامی (مانند بستن تنگهٔ هرمز) را با فشارهای دیپلماتیک (مسیرهای موقت) متعادل کند تا آمریکا را در ادامهٔ جنگ دوباره به تأمل وادارد. اگر آمریکا واکنش نشان ندهد، ایران ممکن است تهاجمی‌تر شود. اگر آمریکا فشار خود را کاهش دهد، تنگه ممکن است دوباره بازگشایی شود، اما اعتماد میان دو کشور همچنان پایین است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            در حال حاضر, درگیری در مرحله‌ای پرتنش و غیرنظامی است که در آن به جای جنگ مستقیم از فشارهای اقتصادی و تهدیدها استفاده می‌شود. ایران از تنگه هرمز به عنوان یک برگ برنده استفاده می‌کند, در حالی که ایالات متحده بر تحریم‌ها تکیه کرده تا ایران را به تسلیم وادار کند. هر دو طرف در یک بازی خطرناک 'جوجه' دست دارند که در آن هیچکدام نخست عقب‌نشینی نمی‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            تنگه هرمز یک مسیر حیاتی جهانی برای حمل نفت است و هرگونه اختلال در آن می‌تواند باعث افزایش قیمت نفت و صدمه به اقتصاد جهانی شود. این درگیری نه تنها مربوط به ایران و ایالات متحده است؛ بلکه بسیاری از کشورهایی را که به نفت خاورمیانه وابسته هستند، تحت تأثیر قرار می‌دهد. اگر تنگه بسته بماند یا تنش‌ها تشدید شوند، جهان با هزینه‌های بالاتر انرژی و ناپایداری روبرو خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            ایالات متحده و ایران بازیگران اصلی هستند و عمان به عنوان میانجی در گفتگوهای مسیر موقت نقش‌آفرینی می‌کند. کشورهای دیگر، به ویژه آنهایی که به نفت خاورمیانه وابسته هستند همچون چین، هند و کشورهای اروپایی، به دقت وضع را زیر نظر دارند اما هنوز به صورت مستقیم درگیر نشده‌اند. در صورت تشدید بحران، سازمان ملل و سایر نهادهای بین‌المللی ممکن است دخالت کنند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در صورتی که تنگه هرمز بسته بماند و یا تنش‌ها بیشتر افزایش یابد، احتمالاً قیمت‌های نفت افزایش خواهند یافت. تنگه هرمز یک مسیر اصلی ترابری نفت است و هرگونه اختلال می‌تواند عرضه نفت در بازار جهانی را محدود کرده و قیمت‌ها را بالا ببرد. این وضع می‌تواند بر قیمت سوخت در سراسر جهان تأثیر بگذارد و سرعت بهبود اقتصاد جهانی که هنوز از بحران‌های گذشته در حال بازیابی است، را کُند کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            ایران در حال استفاده از تنگه هرمز به عنوان اهرم فشار است و تهدید می‌کند که آن را تا زمانی که ایالات متحده جنگ را پایان دهد، بسته نگه خواهد داشت. آمریکا تحریم‌های جدیدی اعمال می‌کند و برای وادار کردن ایران به عقب‌نشینی، تهدید به «خفه کردن اقتصادی» کرده است. در صورت بسته ماندن تنگه، اقتصاد جهانی در خطر است زیرا قیمت نفت ممکن است به شدت افزایش یابد و به بسیاری از کشورها آسیب برساند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            هیچ پیشرفت قابل توجهی در این حوزه رخ نداده است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
