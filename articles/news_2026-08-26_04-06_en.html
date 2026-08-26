@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>News 2026-08-26 04:07</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>News 2026-08-26 04:07</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ Important Note</div>
+        This content is automatically collected from selected news sources and the final analysis is machine-generated without any political or expert review. Some news sources may have delays, so always check the original publication time.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>How the Iranian Shahed Drone Transformed War—With China’s Help</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> WSJ (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-26 02:00</strong></span>
+                </div>
+                <p class='summary'>The rapid rise of cheap one-way attack drones was made possible by a complex global supply chain that keeps leading back to China.</p>
+                <div class='link'><a href='https://www.wsj.com/world/how-the-iranian-shahed-drone-transformed-warwith-chinas-help-2671bb43?mod=rss_worldnews' target='_blank'>Link</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>What to Know About Bank Melli, Singled Out in U.S. Call for Economic War</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>Source:</strong> NYT (analysis)</span>
+                    <span class='meta-item'>📅 <strong>2026-08-26 04:01</strong></span>
+                </div>
+                <p class='summary'>Bank Melli, Iran’s largest lender, already faces waves of sanctions that severely limit its ability to operate abroad. Every foreign branch must be shut down, Treasury Secretary Scott Bessent said.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/26/world/europe/iran-melli-bank-us-sanctions.html' target='_blank'>Link</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 Iran Situation Analysis - August 26, 2026</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>The U.S. is escalating economic pressure on Iran by targeting Bank Melli and exposing how Chinese support fuels Iran's military drone program, potentially widening regional conflicts and disrupting global oil markets.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📰 What Happened</h3>
+            U.S. Treasury Secretary Scott Bessent announced sweeping new sanctions against Iran's largest bank, Bank Melli, demanding all foreign branches close. Simultaneously, a Wall Street Journal investigation revealed how Iran's cheap 'Shahed' one-way attack drones—used widely in Ukraine and the Middle East—rely on a global supply chain centered in China. This includes critical electronic components that make the drones harder to counter.
+        </div>
+        <div class="analysis-card">
+            <h3>🔮 Where Heading</h3>
+            The U.S. is likely doubling down on economic warfare to weaken Iran, possibly pushing Iran toward further retaliatory actions like proxy attacks or deeper partnerships with Russia and China. Sanctions on Bank Melli could cripple Iran's trade and military funding, but Iran may seek evasion tactics or rally internal support against foreign pressure. Drone supply chains may persist or shift to other countries.
+        </div>
+        <div class="analysis-card">
+            <h3>📅 Timeline</h3>
+            ['2024-2025: Iran develops and deploys Shahed drones in Ukraine, Yemen, and Iraq using components from China.', 'Early 2026: Sanctions on Iranian banks begin tightening, targeting oil exports and financial networks.', "August 2026: U.S. announces full shutdown of Bank Melli's foreign branches; WSJ reports on China’s role in drone supply chains.", 'Late 2026: Expected increase in Iranian proxy attacks, cyber operations, or attempts to bypass sanctions via third-party countries.', '2027: Potential escalation if Iran acquires advanced military tech or faces internal instability due to economic strain.']
+        </div>
+        <div class="analysis-card">
+            <h3>🎯 Strategic Outlook</h3>
+            The U.S. strategy appears to be suffocating Iran's economy and military capacity through financial and technological isolation. Iran will likely respond with asymmetrical tactics—cyberattacks, drone strikes via proxy groups, or further alignment with U.S. adversaries like Russia and China. If sanctions succeed, Iran could face internal unrest or be forced into negotiations. If they fail, the Middle East could see more direct conflict.
+        </div>
+        <div class="analysis-card">
+            <h3>⚡ Conflict Dynamics</h3>
+            Economic warfare (sanctions) is the primary current battleground, but the risk of kinetic conflict (airstrikes, invasions) is rising. Iran’s use of drones—cheap, precision-guided, and exportable—has lowered the cost of war and enables attacks without direct attribution. Proxy groups like Houthis or Hezbollah are likely to intensify attacks on Israeli or U.S. interests, escalating tensions without full-scale war.
+        </div>
+        <div class="analysis-card">
+            <h3>🌍 Big Picture</h3>
+            This is part of a broader U.S.-China-Iran-Russia power struggle. By targeting Iran’s financial lifeline and revealing China’s indirect support for Iran’s military, the U.S. aims to disrupt alliances and reduce Iran’s influence. For the world, this means higher risks of regional instability (Middle East), disrupted trade (China’s role), and potential energy market shocks. Countries may need to reassess supply chain dependencies on China.
+        </div>
+        <div class="analysis-card">
+            <h3>🌐 International Involvement</h3>
+            • U.S.: Leading the sanctions campaign, aiming to cripple Iran’s economy and military capacity. Focus on isolating Iran financially and technologically.<br>• China: Accused of enabling Iran’s drone program by supplying components, likely to avoid direct conflict but may resist U.S. pressure to comply with sanctions.<br>• Iran: Defiant, likely to retaliate via proxies and seek new trade partners (e.g., India, Russia, Turkey).<br>• Russia: Could deepen ties with Iran for military and political leverage against the U.S./West.<br>• EU/Global South: Likely divided—some may comply with U.S. sanctions to avoid secondary penalties, others may seek to bypass them for trade benefits.
+        </div>
+        <div class="analysis-card">
+            <h3>🛢️ Oil Price</h3>
+            Oil prices are likely to rise if sanctions against Bank Melli disrupt Iran’s oil exports, already limited. Iran exports around 1.5 million barrels/day; further reductions could tighten global supply, especially if tensions escalate in the Strait of Hormuz (a critical oil transit chokepoint). However, other OPEC+ producers (e.g., Saudi Arabia) may compensate. High oil prices hurt consumers globally but benefit oil-dependent economies.
+        </div>
+        <div class="analysis-card">
+            <h3>🔑 Key Takeaways</h3>
+            U.S. sanctions on Iran’s Bank Melli aim to cut off its financial lifeline, potentially destabilizing its economy and military funding. Chinese companies supply critical components for Iran’s Shahed drones, showing how one-sided supply chains fuel modern warfare. This escalation raises the risk of more proxy wars, cyberattacks, and potential oil market disruptions in the Middle East.
+        </div>
+        <div class="analysis-card">
+            <h3>✨ Surprising Elements</h3>
+            None
+        </div>
+        <div class="analysis-card">
+            <h3>🧭 Additional Context</h3>
+            Iran’s reliance on China for drone components highlights the delicate balance in U.S.-China relations. While the U.S. pressures China to stop aiding Iran, Beijing may resist to avoid appearing subservient to Washington. Additionally, Iran’s nuclear program remains a latent concern—sanctions could push Iran to accelerate enrichment as a bargaining chip.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
