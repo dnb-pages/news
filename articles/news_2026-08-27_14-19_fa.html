@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-27 14:23</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-27 14:23</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایران و قطر در مورد تنگه هرمز مذاکره کردند، در حالی که محاصره آمریکا صادرات نفت ایران را تحت فشار قرار داده است</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۰۶ ساعت ۱۶:۳۱:۱۶</strong></span>
+                </div>
+                <p class='summary'>مقامات ایرانی و قطری روز چهارشنبه در تهران برای مذاکرات دیپلماتیک در مورد تنگه راهبردی هرمز دیدار کردند؛ در حالی که محاصره دریایی آمریکا به صادرات نفت ایران فشار می‌آورد و این کشور با کمبود داخلی سوخت روبروست. این مذاکرات پس از هفته‌ای از دیپلماسی فشرده در ایران انجام شد که شامل دیدارهای جداگانه با مقامات عمان و پاکستان بود تا راه‌هایی برای پایان جنگ و بازگشایی تنگه هرمز بررسی شود.</p>
+                <div class='link'><a href='https://www.france24.com/fa/middle-east/20260827-iran-qatar-hold-hormuz-talks-as-us-blockade-chokes-iran-oil-imports' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>واکنش عربستان به حملات حوثی‌ها به کشتی‌ها ممکن است به جنگ جدیدی تبدیل شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویورک تایمز (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۲۷ مرداد ۱۴۰۵ ۱۱:۵۹:۴۳Z</strong></span>
+                </div>
+                <p class='summary'>تجزیه و تحلیلگران می‌گویند که هفته‌ها حمله حوثی‌ها به اهداف سعودی، این پادشاهی و شبه‌نظامیان حمایت‌شده توسط ایران را به آستانه یک درگیری تمام‌عیار رسانده و می‌تواند جبهه جدیدی در جنگ ایران بگشاید.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/27/world/middleeast/saudi-arabia-yemen-houthis-war.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>نخست‌وزیر قطر به تهران سفر می‌کند؛ در حالی‌که جنگ ایران به شش ماهگی نزدیک می‌شود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> نیویارک تایمز (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۰۶</strong></span>
+                </div>
+                <p class='summary'>شیخ محمد بن عبدالرحمن آل ثانی (امیر قطر) به‌عنوان یک میانجی کلیدی در این مناقشه ایفای نقش کرده است، حتی زمانی که کشورش تهران را به حملات صدها موشک و پهپادی متهم کرده است.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/08/27/world/middleeast/qatar-visit-iran.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>شش ماه پس از حمله نظامی ایالات متحده به مدرسه در ایران، والدین هنوز سوگواری می‌کنند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسي)</span>
+                    <span class='meta-item'>📅 <strong>۲۰۲۶-۰۸-۲۷T۱۳:۴۷:۰۷Z</strong></span>
+                </div>
+                <p class='summary'>شش ماه پس از آنکه یک حمله موشکی آمریکا به یک مدرسه در ایران دستکم ۱۷۰ نفر، که اکثر آنها کودک بودند، را کشت.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/27/six-months-after-us-strike-on-iran-school-parents-still-grieve?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تجزیه و تحلیل وضعیت ایران - ۲۷ اوت ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایران تحت فشار شدید اقتصادی از محاصره دریایی ایالات متحده قرار دارد که صادرات نفت این کشور را فلج کرده است، در حالی که تنش‌های منطقه‌ای با عربستان و حوثی‌های یمن در میانه دیپلماسی‌های ادامه‌دار برای بازگشایی تنگه هرمز تشدید می‌شود. خشم ضد آمریکایی پس از حمله‌ای که ۶ ماه پیش موجب کشته شدن ۱۷۰ غیرنظامی—بیشتر آن‌ها کودکان—شد، همچنان در جامعه ادامه دارد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            ایران و قطر در مورد تنگه هرمز گفتگو‌هایی را برای مقابله با محاصره آمریکا که باعث هدر رفتن صادرات نفتی ایران و ایجاد کمبود سوخت داخلی می‌شود، برگزار کردند. در همین حال، عربستان سعودی در حال بررسی پاسخ نظامی به حملات حوثی‌ها است که می‌تواند ریاض را وارد درگیری جدیدی با نیروهای تحت حمایت ایران کند. نخست‌وزیر قطر، به عنوان یک میانجی کلیدی، برای پیشبرد مذاکرات به تهران سفر کرد. شش ماه پس از حمله آمریکا به یک مدرسه ایرانی که منجر به کشته شدن ۱۷۰ نفر، عمدتاً کودکان، خانواده‌ها هنوز در حال سوگواری هستند و کینه عمیقی نسبت به آمریکا ایجاد شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سر تیتر</h3>
+            فشارهای دیپلماتیک بیشتر ممکن است زیرا قدرت‌های جهانی سعی می‌کنند از گسترش جنگ جلوگیری کنند. با این حال، در صورت تشدید درگیری‌های سعودی-حوثی، این مناقشه می‌تواند به یک جنگ منطقه‌ای چندجانبه با مشارکت ایران، عربستان سعودی و نیابتی‌های آن‌ها گسترش یابد. صادرات نفت از طریق تنگه هرمز همچنان نقطه حساس و اولیه‌ای است—اگر اختلال ایجاد شود، قیمت‌های جهانی نفت به شدت افزایش خواهد یافت.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 جدول زمانی</h3>
+            ['اوایل ۲۰۲۶: ایالات متحده محاصره دریایی خود را علیه ایران تشدید کرد تا درآمدهای نفتی آن را قطع کند.', 'مرداد ۲۰۲۶: حملات موشکی افزایش‌یافته حوثی‌ها به اهداف سعودی.', '۲۷ مرداد ۱۴۰۵: مذاکرات ایران و قطر در تهران برای بحث درباره امنیت تنگه هرمز.', '۲۷ مرداد ۱۴۰۵: عربستان سعودی در حال بررسی پاسخ نظامی به حملات حوثی‌ها است.', '۲۷ مرداد ۱۴۰۵: نخست‌وزیر قطر به‌عنوان میانجی به تهران سفر می‌کند.', '۲۷ مرداد ۱۴۰۵: شش ماه از anniversary حمله آمریکا به یک مدرسه ایرانی می‌گذرد که با تظاهرات‌های پیوسته همراه است.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            تحریم‌ها و افزایش حملات منطقه‌ای، نشان‌دهنده یک تشدید خطرناک است. اگر تنگه هرمز بسته شود، بازارهای نفتی وحشت‌زده خواهند شد و تنش‌های آمریکا و ایران احتمالا بدتر خواهند شد. از سویی، ناآرامی‌های داخلی در ایران می‌تواند در صورت تداوم کمبود سوخت، افزایش یابد. احتمال جنگ سعودی‌ها با حوثی‌ها، خطر کشاندن ایران به یک درگیری نیابتی دیگر و ایجاد جنگ وسیع‌تر منطقه‌ای را بالا می‌برد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            خشونت به آرامی اما پیوسته در حال تشدید است. در حالی که درگیری مستقیم بین ایران و ایالات متحده از سر گرفته نشده، جنگ اقتصادی (محاصره) و درگیری‌های نیابتی (حوثی‌ها در مقابل عربستان سعودی) همچنان در حال تشدید هستند. غیرنظامیان، مانند ۱۷۰ دانش‌آموز کشته‌شده در ماه فوریه، باعث خشم بیش‌تری می‌شوند اما هنوز منجر به انتقام‌گیری گسترده نشده‌اند—هرچند این موضوع ممکن است به سرعت تغییر کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری یک بمب ساعتی است که می‌تواند منجر به جنگ گسترده‌تری در خاورمیانه شود. تنگه هرمز مهم‌ترین گلوگاه نفتی جهان است—اگر بسته شود، بازارهای جهانی نفت فلج خواهند شد. قدرت‌های غربی مانند ایالات متحده هدفشان فلج کردن اقتصاد ایران است، در حالی که ایران از طریق گروه‌های نیابتی و دیپلماسی مقاومت می‌کند. بهای انسانی این درگیری هم اکنون فجیع است و مرگ غیرنظامیان خشم عمومی را برمی‌انگیزد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            ایالات متحده به طور فعال در حال مسدودسازی صادرات نفتی ایران است تا اقتصاد آن را تضعیف کند. عربستان سعودی به دلیل حملات حوثی‌ها به طور فزاینده‌ای وارد مناقشه deeper می‌شود. قطر با وجود اینکه پیش از این ایران را به خاطر حملات موشکی مقصر می‌دانست، اکنون در نقش مذاکره‌گر غیرمنتظره‌ای ظاهر شده است. قدرت‌های منطقه‌ای مانند عمان و پاکستان نیز وارد عمل شده‌اند تا از بسته‌شدن تنگه هرمز جلوگیری کنند. قدرت‌های جهانی نگران بروز جنگ گسترده‌ای هستند که عرضه نفت را disruption دهد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            در صورتی که درگیری‌ها در تنگه هرمز تشدید شود، احتمال افزایش قیمت نفت وجود دارد زیرا روزانه نزدیک به 20 درصد از نفت جهان از این تنگه عبور می‌کند. هر گونه اختلال در این مسیر، تلاطم‌هایی در بازارهای انرژی به وجود خواهد آورد و باعث افزایش قیمت بنزین، گرما و کالاهای جهانی خواهد شد. تاکنون، قیمت‌ها به دلیل ذخایر انرژی نسبتاً پایدار بوده است، اما تعطیلی طولانی‌مدت منجر به کمبود خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            اقتصاد نفتی ایران توسط تحریم‌های ایالات متحده خفه شده است که منجر به تشدید کمبودهای داخلی سوخت و نابسامانی‌های عمومی می‌شود. به‌زودی ممکن است عربستان سعودی وارد جنگی با شورشیان حزب‌الله حوثی تحت حمایت ایران شود و درگیری منطقه‌ای را تشدید کند. بسته شدن تنگه هرمز موجب افزایش شدید قیمت نفت جهانی خواهد شد و اقتصادهای جهانی را تهدید می‌کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            نقش قطر به عنوان میانجی، علی‌رغم سرزنش‌های قبلی از ایران به خاطر حملات، غیرمنتظره است. وسعت و گستره حمله اخیر ایالات متحده به یک مدرسه شش ماه پیش، علی‌رغم تلفات آشکار غیرنظامیان، به ندرت گزارش شده است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌های اضافی</h3>
+            حمله ایالات متحده به مدرسه ایرانی، که به کشته شدن ۱۷۰ کودک منجر شد، کینه عمیق و پایداری ایجاد کرده و هرگونه تلاش دیپلماتیک آینده را پیچیده‌تر می‌سازد. اقتصاد ایران به‌شدت به درآمدهای نفتی وابسته است—مسدود کردن صادرات نفت یکی از نقاط فشار بحرانی در این درگیری محسوب می‌شود. افزایش حملات حوثی‌ها به عربستان سعودی نشان‌دهنده تغییر استراتژی از جنگ نیابتی به حملات مستقیم به کشورهای خلیج فارس است.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
