@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-29 21:02</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-29 21:02</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>گازا از داروهای سرطانی به تنگنا می‌افتد؛ در حالی که حملات اسرائیل ادامه دارد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۰۸</strong></span>
+                </div>
+                <p class='summary'>مقامات بیمارستان شهدای الاسرای شهر غزه اعلام کردند، با ادامه حملات اسرائیلی‌ها، داروهای سرطان کاملاً به پایان رسیده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/8/29/29-08-sv-gaza-hospitals-targetting-fm?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 آنالیز وضعیت ایران - ۱ سپتامبر ۲۰۲۶</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>درگیری غزه تشدید شده است که منجر به بحران انسانی شدید، از جمله اتمام داروهای سرطان، شده است زیرا حملات اسرائیل شدت گرفته است. اگرچه نقش ایران در اینجا به صراحت ذکر نشده است، اما تأثیر منطقه‌ای و حمایت این کشور از گروه‌هایی مانند حماس، این لحظه را به یک دوره بحرانی در تنش‌های گسترده ژئوپلیتیکی میان ایران، اسرائیل و متحدان منطقه‌ای آنها تبدیل کرده است.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده است</h3>
+            بیمارستان شهدای ال‌اقصی غزه از داروهای سرطان برخوردار است، که نتیجه مستقیمی از بمباران‌های مداوم اسرائیل و محاصره است. تجهیزات پزشکی از جمله داروهای حیاتی به شدت کم است و رنج فلسطینی‌های غیرنظامی، به ویژه بیماران سرطانی، را بدتر می‌کند. این حملات همچنین تاسیسات بهداشتی را هدف قرار داده‌اند و در نتیجه، خدمات درمانی در منطقه را مختل کرده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 محل قرار گرفتن سرتیتر</h3>
+            بحرانی در غزه احتمالاً در کوتاه مدت تشدید خواهد شد، در حالی که عملیات نظامی اسرائیل ادامه خواهد یافت و فاجعه انسانی عمیق‌تر خواهد شد. فشارهای بین‌المللی ممکن است برای آتش‌بس افزایش یابد، اما بدون تغییر قابل توجه در استراتژی اسرائیل یا میانجی‌گری خارجی، شمار تلفات غیرنظامیان بالا خواهد رفت. نفوذ ایران در منطقه می‌تواند در صورت تصمیم به افزایش حمایت از گروه‌هایی مانند حماس تشدید یابد، هرچند ممکن است با بازخورد منفی جهانی نیز مواجه شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خطوط زمانی</h3>
+            ['اوت 2023: پس از حمله حماس به اسرائیل در ۷ اکتبر ۲۰۲۳، اسرائیل campaign نظامی گسترده‌ای را در نوار غزه آغاز کرد. از آن زمان، مناقشه با تشدیدهای دوره‌ای ادامه یافته است.', 'اوت ۲۰۲۴: تلاش‌ها برای آتش‌بس بارها شکست خورده است و خشونت پراکنده از جمله پرتاب موشک از غزه و حملات تلافی‌جویانه اسرائیل ادامه دارد.', '۲۹ اوت ۲۰۲۶: الجزیره گزارش می‌دهد که به دلیل حملات و محاصره‌های ongoing اسرائیل، داروهای سرطانی در بیمارستان شهدای الاقصی غزه تمام شده است.', ' اواخر اوت ۲۰۲۶: بحران انسانی در غزه تشدید می‌شود، بیمارستان‌ها overwhelmed هستند، کمبودهای جدی در مواد غذایی و پزشکی وجود دارد و هزاران نفر آواره شده‌اند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز راهبردی</h3>
+            جهت بلندمدت این مناقشه همچنان نامشخص است. به نظر می‌رسد هدف اسرائیل، از بین بردن توانمندی‌های نظامی حماس و securing آزادسازی گروگان‌ها بوده باشد، اما این موضوع خطر بیثباتی مداوم در غزه و تشدید بحران انسانی را در پی دارد. ایران که از حماس و دیگر گروه‌های مسلح حمایت می‌کند، ممکن است به تأمین حمایت‌های خود ادامه داده و تنش‌ها با اسرائیل را افزایش دهد که احتمال بروز درگیری گسترده‌تر منطقه‌ای را نیز به همراه خواهد داشت. بدون مداخله قابل توجه بین‌المللی یا تغییر استراتژی یکی از طرف‌ها، رسیدن به یک راه‌حل دیپلماتیک دور از دسترس به نظر می‌رسد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی درگیری</h3>
+            نبرد کنونی شدید و نامتقارن است. اسرائیل به فناوری نظامی برتر و قدرت هوایی متکی است، در حالی که حماس و سایر گروه‌ها از تاکتیک‌های چریکی و حملات موشکی استفاده می‌کنند. غیرنظامیان، به ویژه در غزه، بیشترین بار تخریب را متحمل می‌شوند. وضعیت انسانی وخیم است، به طوری که بیمارستان‌ها، مدارس و زیرساخت‌ها بارها هدف قرار گرفته‌اند. هزینه‌های روانی و جسمی بر غیرنظامیان، به خصوص کودکان، فاجعه‌بار است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر کلی</h3>
+            این درگیری بازتاب‌دهنده تنش‌های عمیق‌تر منطقه‌ای درگیر اسرائیل، ایران و متحدانشان است. نفوذ منطقه‌ای ایران از طریق گروه‌های نیابتی مانند حماس و حزب‌الله، تلاش‌ها برای صلح را پیچیده می‌کند. یک جنگ گسترده‌تر درگیر لبنان، یمن، یا دیگر بازیگران منطقه‌ای می‌تواند خاورمیانه را بیشتر بی‌ثبات کند. بحران انسانی در غزه نیز خطر تشدید خشم جهانی و فراخوان‌هایی برای اقدام را به همراه دارد که در صورت تداوم خشونت، می‌تواند اسرائیل را از نظر دیپلماتیک منزوی سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیکنان اصلی شامل اسرائیل هستند که توسط متحدان غربی مانند ایالات متحده پشتیبانی می‌شود، و حماس که توسط ایران حمایت می‌شود. ایالات متحده به طور تاریخی پشتیبانی نظامی و دیپلماتیک خود را به اسرائیل ارائه داده است، در حالی که ایران امکانات مالی و نظامی را برای حماس و سایر گروه‌های مسلح تأمین می‌کند. بازیگران منطقه‌ای مانند مصر، قطر و اردن ممکن است سعی در میانجی‌گری داشته باشند، اما نفوذ آنها محدود است. سازمان ملل و سازمان‌های انسان‌دوستانه به دلیل تداوم خشونت در تلاش برای ارائه کمک هستند. قدرت‌های جهانی درباره نحوه رسیدگی به این بحران تقسیم شده‌اند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            درگیری در غزه اگرچه باعث ایجاد نگرانی‌هایی دربارهٔ ناآرامی‌های منطقه‌ای گسترده‌تر شده است، اما اثر مستقیمی بر قیمت جهانی نفت نداشته است. با این حال، در صورت گسترش خشونت به کشورهای تولیدکننده بزرگ نفت مانند ایران، عربستان سعودی یا عراق، قیمت نفت می‌تواند به دلیل disruption در عرضه، به‌طور ناگهانی افزایش یابد. در حال حاضر، بازارهای نفتی بیشتر نگران ریسک‌های ژئوپلیتیکی گسترده در خاورمیانه، از جمله تنش‌های مرتبط با ایران هستند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            غزه با یک بحران انسانی فاجعه‌بار مواجه است، به‌طوری‌که داروهای سرطان در حال تمام شدن است و بیمارستان‌ها مورد هدف بمب‌باران‌های اسرائیل قرار دارند. این درگیری همچنان کانون بحران در منطقه‌ای است که tensions گسترده‌تری از جمله اسرائیل، ایران وProxyهای منطقه‌ای مانند حماس را شامل می‌شود. تلاش‌های بین‌المللی برای مذاکرات صلح تاکنون شکست خورده است، و بدون مداخله، بحران عمیق‌تر خواهد شد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌آور</h3>
+            هیچ
+        </div>
+        <div class="analysis-card">
+            <h3>📋 Additional Context</h3>
+            علائق ایران استراتژیک در منطقه فراتر از غزه است. این کشور با حمایت از گروه‌های مسلح و متحدانی همچون سوریه و حزب‌الله به دنبال مقابله با نفوذ ایالات متحده و اسرائیل است. هرگونه تشدید درگیری‌های مرتبط با ایران می‌تواند ایالات متحده و متحدانش را درگیر کرده و خطر بروز یک درگیری گسترده‌تر را به همراه داشته باشد. علاوه بر این، فشارهای اقتصادی در ایران، از جمله تحریم‌ها و نارضایتی‌های داخلی، ممکن است در تصمیم‌گیری‌های این کشور در زمینه‌های مناقشات منطقه‌ای تأثیرگذار باشد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
