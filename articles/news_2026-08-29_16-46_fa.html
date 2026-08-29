@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-08-29 16:49</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-08-29 16:49</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>جنگ ایران ۶ ماهه شد: هزینه این درگیری برای هر شهروند آمریکایی ۱ هزار و ۱۰۰ دلار بود</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> فرانس ۲۴ (منطقه‌ای)</span>
+                    <span class='meta-item'>📅 <strong>۱۳۴۵/۶/۸ ساعت ۱۵:۲۴:۳۸</strong></span>
+                </div>
+                <p class='summary'>پس از شش ماه جنگ، رهبری ایران حول یک هسته سخت از ژنرال‌های نظامی و روحانیون که مدت‌ها در حاکمیت تئوکراتیک این کشور ریشه دوانده‌اند، شکل گرفته است. آنها آماده یک رویارویی احتمالی طولانی با آمریکا هستند و مصمم‌اند تا هرگونه ناآرامی داخلی را جلوگیری کنند. این امر فاصله زیادی با امیدهای اولیه دونالد ترامپ، رئیس‌جمهورi ایالات متحده، مبنی بر سرنگونی جمهوری اسلامی و ادعاهای بعدی او مبنی بر اینکه «تغییر رژیم» باعث آمدن مسئولانی سازش‌کارتر شده است، دارد. فیلیپ تورل از فرانسه ۲۴ در تحلیلی گفت که این جنگ تا کنون حدود ۱۱۰۰ دلار برای هر مالیات‌دهنده آمریکایی هزینه ‌داشته است.</p>
+                <div class='link'><a href='https://www.france24.com/fa/جنگ-ایران-به-شش-ماهگی-رسید-هزینه-این-درگیری-به-ازای-هر-مالیات‌دهنده-آمریکایی-۱۰۰۰-دلار-است' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲۰۲۶-۰۸-۲۹</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>پس از شش ماه جنگ بین ایالات متحده و ایران، درگیری هر دو طرف را در یک بن‌بست طولانی‌مدت تثبیت کرده است. بار مالی بر دوش مالیات‌دهندگان آمریکایی بیش از ۱٬۱۰۰ دلار برای هر نفر است، در حالی که رهبری ایران بر جناح تندرو تکیه می‌کند تا در برابر فشار مقاومت کند و از به‌روزی آمریکا برای تغییر رژیم یا سازش جلوگیری نماید. هزینه‌های جنگ و تحولات داخلی در حال تغییر، بحران در حال تکامل را شکل می‌دهد.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاد</h3>
+            پس از شش ماه از جنگ ایران و آمریکا، دولت ایران تحت رهبری فرماندهان نظامی و روحانیون متشدّد که با دادن امتیاز مخالفند، اداره می‌شود. ایالات متحده که ابتدا امیدوار به سرنگونی جمهوری اسلامی بود، اکنون با یک مناقشهٔ طولانی مواجه است. این جنگ تا کنون حدود ۱٬۱۰۰ دلار برای هر شهروند آمریکایی هزینه داشته و نشان‌دهندهٔ سطح بالای هزینه‌های نظامی و فشار اقتصادی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 سرتیتر</h3>
+            این جنگ احتمالاً ماه‌ها یا حتی سال‌ها به درازا بکشد، زیرا هر دو طرف در مواضع خود باقی خواهند ماند. ایران به مقاومت در برابر فشارهای ایالات متحده ادامه خواهد داد، در حالی که این کشور ممکن است بدون تغییر مستقیم رژیم، به دنبال راه‌هایی برای تضعیف آن باشد. انقلابات احتمالی می‌توانند هنگامی رخ دهند که ایران با ناآرامی‌های داخلی مواجه شود یا مذاکرات به آرامی از سر گرفته شوند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمان</h3>
+            ['اوایل ۲۰۲۶: جنگی بین ایالات متحده و ایران با تشدید تنش‌ها آغاز می‌شود.', 'نیمه دوم ۲۰۲۶: تلاش ایالات متحده برای ایجاد تغییر رژیم با شکست مواجه می‌شود؛ سخت‌گیران ایران به طور کامل کنترل را در دست می‌گیرند.', 'آگوست ۲۰۲۶: جنگ ششمین ماه خود را می‌گذراند و هزینه آن برای ایالات متحده ۱٬۱۰۰ دلار برای هر مودّع مالیاتی را در پی دارد.', '۳ تا ۶ ماه آینده: احتمال بسیار زیادی وجود دارد برای درگیری‌های نظامی بیشتر، تحریم‌های اقتصادی، یا عملیات‌های پنهانی، زیرا طرفین خود را برای نبردی طولانی آماده می‌کنند.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 چشم‌انداز استراتژیک</h3>
+            این درگیری احتمالاً به یک روند طولانی ‌مدت تبدیل خواهد شد، چرا که هیچ‌ یک از طرفین به‌ زودی تسلیم کامل نخواهد شد. رهبری ایران بقای رژیم را در اولویت قرار خواهد داد، در حالی که ایالات متحده ممکن است استراتژی خود را از تغییر رژیم به containment (مهار) یا مذاکرات تحت فشار تغییر دهد. این جنگ می‌تواند روابط ایران و ایالات متحده را برای decades (دهه‌ها) بازتعریف کند و احتمالاً پیمان‌های خاورمیانه‌ای را دگرگون سازد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋  پویایی‌های مناقشه</h3>
+            این درگیری شامل رویارویی‌های نظامی مستقیم، جنگ اقتصادی (تحریم‌ها) و عملیات‌های مخفی احتمالی است. شدت این درگیری همچنان بالاست، با اینکه هر دو طرف خساراتی را وارد می‌کنند اما از اقداماتی که ممکن است منجر به جنگی تمام‌عیار شود، اجتناب می‌کنند. خرابکاری، حملات پهپادی و نبردهای واسطه‌ای (مانند آنچه در یمن یا عراق در جریان است) احتمالاً همچنان ادامه دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این جنگ، سیاست‌های جهانی را دگرگون کرده، ناپایداری را در خاورمیانه تشدید بخشیده و رقابت‌های ژئوپلیتیکی را دامن زده است. این جنگ همچنین خطر سرریزهای گسترده‌تر درگیری‌ها از جمله حملات به محموله‌های نفتی یا جنگ سایبری را به دنبال دارد. نتیجه این جنگ می‌تواند امنیت انرژی، نفوذ ایالات متحده در منطقه و نقش ایران در سیاست جهانی را بازتعریف کند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 مشارکت بین‌المللی</h3>
+            بازیکنان کلیدی شامل ایالات متحده، ایران، متحدان منطقه‌ای (برای مثال، عربستان سعودی، اسرائیل) و قدرت‌های جهانی مانند چین و روسیه هستند که ممکن است به دنبال میانجیگری یا بهره‌برداری از بحران باشند. ایالات متحده از حمایت‌های گسترده داخلی و بین‌المللی برخوردار است، در حالی که ایران بر پروکسی‌های منطقه‌ای و آتش‌بس با برخی از کشورهای خلیج فارس متکی است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            قیمت‌های نفت به دلیل اختلال در عرضه و خطر ادامه ناپایداری در تنگه هرمز، یکی از مهم‌ترین مسیرهای حمل نفت، به شدت افزایش یافته است. قیمت‌ها همچنان بالا هستند چرا که نفت ایران عمدتاً در دسترس نیست و نگرانی از تشدید تنش‌ها بازارها را مختل می‌کند. این مسئله بر اقتصاد جهانی، به ویژه کشورهای وابسته به انرژی، تأثیر می‌گذارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات اصلی</h3>
+            جنگ ایران با ایالات متحده اکنون ریشه دوانده و پایان روشنی در افق دیده نمی‌شود. ایالات متحده مصمم به یک مبارزه طولانی است، در حالی که سخت‌گیران ایران از عقب‌نشینی امتناع می‌کنند. این جنگ پیامدهای اقتصادی عمده‌ای دارد: تا کنون، هر کدام از مؤدیان آمریکایی ۱۱۰۰ دلار پرداخته‌اند و قیمت نفت همچنان بی‌ثبات است. ثبات جهانی در معرض خطر است و پیامدهای آن می‌تواند شامل جنگ‌های سایبری، درگیری‌های نیابتی و ناآرامی‌های گسترده‌تر منطقه‌ای باشد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+             traduicc-none
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه‌ی اضافی</h3>
+            طولِ جنگ و هزینه‌های سنگینِ آن برای ایالات متحده، نشان می‌دهد که هر دو طرف، میزانِ تاب‌آوری طرف مقابل را دست‌کم گرفته بودند. سیاست داخلی در دو کشور ممکن است نقش فزاینده‌ای در شکل‌دهی به واکنش‌ها ایفا کند.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
