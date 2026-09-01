@@ -1,32 +1,112 @@
 [
   {
-    "original_title": "Oil prices climb as US, Iranian attacks stoke fears of escalation",
-    "title": "Oil prices climb as US, Iranian attacks stoke fears of escalation",
-    "original_summary": "After peaking at $94.40 a barrel on August 21, Brent has been trading in the range of $86-$91 since the MoU lapsed.",
-    "summary": "After peaking at $94.40 a barrel on August 21, Brent has been trading in the range of $86-$91 since the MoU lapsed.",
-    "source_name": "Al Jazeera (core)",
-    "published_at": "2026-09-01T06:07:39Z",
-    "link": "https://www.aljazeera.com/economy/2026/9/1/oil-prices-climb-as-us-iranian-attacks-stoke-fears-of-escalation?traffic_source=rss",
-    "domain": "Economy"
+    "original_title": "China or the U.S.? Two Meetings Offer Competing Showcases of Global Power.",
+    "title": "China or the U.S.? Two Meetings Offer Competing Showcases of Global Power.",
+    "original_summary": "As Xi Jinping gathered with the leaders of Russia and Iran, Europe challenged the Trump administration at the G20, offering a split-screen view of a changing world.",
+    "summary": "As Xi Jinping gathered with the leaders of Russia and Iran, Europe challenged the Trump administration at the G20, offering a split-screen view of a changing world.",
+    "source_name": "NYT (analysis)",
+    "published_at": "2026-09-01T13:30:10Z",
+    "link": "https://www.nytimes.com/2026/09/01/world/asia/g20-meeting-china-trump-bishkek.html",
+    "domain": "International Relations|US and Israeli Attack on Iran (2026)|United States Politics and Government|United States International Relations|BRICS Group|Bessent, Scott|Modi, Narendra|Putin, Vladimir V|Trump, Donald J|Xi Jinping|Asheville (NC)|Bishkek (Kyrgyzstan)"
   },
   {
-    "original_title": "Duolingo D-Day: Iranians question latest US sanctions targeting education",
-    "title": "Duolingo D-Day: Iranians question latest US sanctions targeting education",
-    "original_summary": "Many Iranians inside the country feel they are being unjustly erased from the international community.",
-    "summary": "Many Iranians inside the country feel they are being unjustly erased from the international community.",
+    "original_title": "U.S. Sanctions on Iran Cut Off Students From Tests Needed for Study Abroad",
+    "title": "U.S. Sanctions on Iran Cut Off Students From Tests Needed for Study Abroad",
+    "original_summary": "The latest measures have forced the cancellation of English proficiency and graduate exams, isolating many Iranians most eager to foster ties with the world.",
+    "summary": "The latest measures have forced the cancellation of English proficiency and graduate exams, isolating many Iranians most eager to foster ties with the world.",
+    "source_name": "NYT (analysis)",
+    "published_at": "2026-09-01T13:07:06Z",
+    "link": "https://www.nytimes.com/2026/09/01/world/middleeast/iran-study-abroad-sanctions.html",
+    "domain": "Iran|International Study and Teaching|Embargoes and Sanctions|Tests and Examinations|US and Israeli Attack on Iran (2026)|Educational Testing Service|Duolingo|Graduate Record Examination (GRE)"
+  },
+  {
+    "original_title": "SCO slams attacks, sanctions on Iran: Key takeaways from Bishkek summit",
+    "title": "SCO slams attacks, sanctions on Iran: Key takeaways from Bishkek summit",
+    "original_summary": "The SCO started in 1996 and accounts for 43 percent of the world’s population and 23 percent of the global economy.",
+    "summary": "The SCO started in 1996 and accounts for 43 percent of the world’s population and 23 percent of the global economy.",
     "source_name": "Al Jazeera (core)",
-    "published_at": "2026-09-01T07:25:54Z",
-    "link": "https://www.aljazeera.com/news/2026/9/1/duolingo-d-day-iranians-question-latest-us-sanctions-targeting-education?traffic_source=rss",
+    "published_at": "2026-09-01T13:32:33Z",
+    "link": "https://www.aljazeera.com/news/2026/9/1/sco-slams-attacks-sanctions-on-iran-key-takeaways-from-bishkek-summit?traffic_source=rss",
     "domain": "News"
   },
   {
-    "original_title": "Britons face ‘risk premium’ for energy as US-Israel war on Iran intensifies",
-    "title": "Britons face ‘risk premium’ for energy as US-Israel war on Iran intensifies",
-    "original_summary": "A price cap increase is on the way, the latest blow to people already struggling with rising costs.",
-    "summary": "A price cap increase is on the way, the latest blow to people already struggling with rising costs.",
+    "original_title": "Video: SCO summit leaders meet in aftermath of US war on Iran",
+    "title": "Video: SCO summit leaders meet in aftermath of US war on Iran",
+    "original_summary": "Leaders are meeting in Kyrgyzstan for the annual Shanghai Cooperation Organisation Summit.",
+    "summary": "Leaders are meeting in Kyrgyzstan for the annual Shanghai Cooperation Organisation Summit.",
     "source_name": "Al Jazeera (core)",
-    "published_at": "2026-09-01T08:14:07Z",
-    "link": "https://www.aljazeera.com/news/2026/9/1/uk-energy-price-rise-britons-face-risk-premium-for-supply-amid-iran-war?traffic_source=rss",
+    "published_at": "2026-09-01T13:27:39Z",
+    "link": "https://www.aljazeera.com/video/newsfeed/2026/9/1/video-sco-summit-leaders-meet-in-aftermath-of-us-war-on-iran?traffic_source=rss",
+    "domain": "Show Types"
+  },
+  {
+    "original_title": "Two Tankers Attacked on Midnight Run Through Hormuz",
+    "title": "Two Tankers Attacked on Midnight Run Through Hormuz",
+    "original_summary": "The attacks on vessels laden with Saudi crude showed the risks still plaguing the waterway.",
+    "summary": "The attacks on vessels laden with Saudi crude showed the risks still plaguing the waterway.",
+    "source_name": "WSJ (analysis)",
+    "published_at": "2026-09-01T13:41:00Z",
+    "link": "https://www.wsj.com/world/middle-east/two-tankers-attacked-on-midnight-run-through-hormuz-9957caaf?mod=rss_worldnews",
+    "domain": ""
+  },
+  {
+    "original_title": "Oil Prices Rise as Renewed U.S.-Iran Fighting Deepens Hormuz Supply Risks",
+    "title": "Oil Prices Rise as Renewed U.S.-Iran Fighting Deepens Hormuz Supply Risks",
+    "original_summary": "Renewed fighting revived concerns the conflict could become more prolonged and further disrupt oil flows through the Persian Gulf, just as supply risks are being compounded elsewhere.",
+    "summary": "Renewed fighting revived concerns the conflict could become more prolonged and further disrupt oil flows through the Persian Gulf, just as supply risks are being compounded elsewhere.",
+    "source_name": "WSJ (analysis)",
+    "published_at": "2026-09-01T12:57:00Z",
+    "link": "https://www.wsj.com/finance/commodities-futures/oil-prices-rise-as-renewed-u-s-iran-fighting-deepens-hormuz-supply-risks-3a35f63a?mod=rss_worldnews",
+    "domain": ""
+  },
+  {
+    "original_title": "Why China will not comply with US sanctions on Iran",
+    "title": "Why China will not comply with US sanctions on Iran",
+    "original_summary": "Beijing will not comply with US measures because it can and because it’s in its interest not to.",
+    "summary": "Beijing will not comply with US measures because it can and because it’s in its interest not to.",
+    "source_name": "Al Jazeera (core)",
+    "published_at": "2026-09-01T13:08:14Z",
+    "link": "https://www.aljazeera.com/opinions/2026/9/1/why-china-will-not-comply-with-us-sanctions-on-iran?traffic_source=rss",
+    "domain": "Opinions"
+  },
+  {
+    "original_title": "WFP Iran Country Brief, August 2026 (Reporting period: July 2026)",
+    "title": "WFP Iran Country Brief, August 2026 (Reporting period: July 2026)",
+    "original_summary": "\n                            <div class=\"tag country\">Country: Iran (Islamic Republic of)</div>\n                                      <div class=\"tag source\">Source: World Food Programme</div>\n                                                                              <p><img src=\"https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/ed/7c/ed7ce01d-b538-4954-ae3f-400ee30c0959.png\" alt></p>\n                        <p>Please refer to the attached file.</p>\n                        <h2>IN NUMBERS</h2>\n<p><strong>35,611</strong> people assisted in August <em>(51% female)</em></p>\n<p><strong>487.2 mt</strong> food distributed in June</p>\n<p><strong>USD 372,987</strong> cash transferred in June</p>\n<p><strong>USD 24</strong> required in the next six months (August 2026 – January 2027)</p>\n<h2>KEY HIGHLIGHTS</h2>\n<ul><li>Despite the escalation in the region, WFP remains steadfast in its commitment to the people it serves. The operation in Iran continues without disruption, with teams on the ground ensuring uninterrupted delivery of food and cash assistance to the most vulnerable refugees residing in settlements. WFP is also in close consultation with the Government to explore opportunities to scale up its operations.</li>\n<li>As part of the ongoing inclusion of 7,000 newly referred refugees, almost 3,000 beneficiaries have been added to the settlements since March 2026, with additional eligible individuals expected to be incorporated progressively in WFP assistance.</li>\n</ul><p><strong>SITUATION OVERVIEW</strong></p>\n<p>The Islamic Republic of Iran, an upper-middle income country of over 91 million people, is among the world’s largest refugee-hosting nations, sheltering around 1.7 million refugees of various documentation statuses according to UNHCR. According to the Government of Iran, upwards of 6.1 million reside in the country, including unregistered individuals, mainly from Afghanistan and Iraq, living in urban areas. With no viable return options, sustained assistance remains critical, particularly for over 35,000 highly vulnerable refugees living in 20 settlements nationwide.</p>\n<p>Recently, an additional 7,000 refugees were referred by settlement managers, by the Government of Iran, for WFP assistance. Further referrals from CAFIA are expected.</p>\n<p>WFP Iran’s Interim Country Strategic Plan (ICSP 20232027) supports over 35,000 food-insecure refugees through cash and in-kind food assistance, a refugee girls’ education cash incentive, and a school feeding initiative consisting of nutritious school snacks. Moreover, WFP continues to equip refugees with complementary livelihood skills aimed at supporting their resilience and preparedness for voluntary, sustainable repatriation to their country of origin once the situation is conducive.</p>\n<p>WFP has been operating in Iran since 1962, initially for its first emergency earthquake response until 1978, and subsequently reinitiating operations to address the refugee crisis from 1987 onwards.</p>\n<p>In light of the recent escalation in the region, WFP continues to monitor the situation and activated its emergency preparedness capacities to support the most vulnerable individuals with their emerging needs.</p>\n              \n      \n      ",
+    "summary": "<div class=\"tag country\">Country: Iran (Islamic Republic of)</div> <div class=\"tag source\">Source: World Food Programme</div> <p><img src=\"https://reliefweb.int/sites/default/files/styles/thumbnail/public/previews/ed/7c/ed7ce01d-b538-4954-ae3f-400ee30c0959.png\" alt></p> <p>Please refer to the attached file.</p> <h2>IN NUMBERS</h2> <p><strong>35,611</strong> people assisted in August <em>(51% female)</em></p> <p><strong>487.2 mt</strong> food distributed in June</p> <p><strong>USD 372,987</strong> cash transferred in June</p> <p><strong>USD 24</strong> required in the next six months (August 2026 – January 2027)</p> <h2>KEY HIGHLIGHTS</h2> <ul><li>Despite the escalation in the region, WFP remains steadfast in its commitment to the people it serves. The operation in Iran continues without disruption, with teams on the ground ensuring uninterrupted delivery of food and cash assistance to the most vulnerable refugees residing in settlements. WFP is also in close consultation with the Government to explore opportunities to scale up its operations.</li> <li>As part of the ongoing inclusion of 7,000 newly referred refugees, almost 3,000 beneficiaries have been added to the settlements since March 2026, with additional eligible individuals expected to be incorporated progressively in WFP assistance.</li> </ul><p><strong>SITUATION OVERVIEW</strong></p> <p>The Islamic Republic of Iran, an upper-middle income country of over 91 million people, is among the world’s largest refugee-hosting nations, sheltering around 1.7 million refugees of various documentation statuses according to UNHCR. According to the Government of Iran, upwards of 6.1 million reside in the country, including unregistered individuals, mainly from Afghanistan and Iraq, living in urban areas. With no viable return options, sustained assistance remains critical, particularly for over 35,000 highly vulnerable refugees living in 20 settlements nationwide.</p> <p>Recently, an additional 7,000 refugees were referred by settlement managers, by the Government of Iran, for WFP assistance. Further referrals from CAFIA are expected.</p> <p>WFP Iran’s Interim Country Strategic Plan (ICSP 20232027) supports over 35,000 food-insecure refugees through cash and in-kind food assistance, a refugee girls’ education cash incentive, and a school feeding initiative consisting of nutritious school snacks. Moreover, WFP continues to equip refugees with complementary livelihood skills aimed at supporting their resilience and preparedness for voluntary, sustainable repatriation to their country of origin once the situation is conducive.</p> <p>WFP has been operating in Iran since 1962, initially for its first emergency earthquake response until 1978, and subsequently reinitiating operations to address the refugee crisis from 1987 onwards.</p> <p>In light of the recent escalation in the region, WFP continues to monitor the situation and activated its emergency preparedness capacities to support the most vulnerable individuals with their emerging needs.</p>",
+    "source_name": "ReliefWeb (humanitarian)",
+    "published_at": "2026-09-01T12:11:22Z",
+    "link": "https://reliefweb.int/report/iran-islamic-republic/wfp-iran-country-brief-august-2026-reporting-period-july-2026",
+    "domain": "Iran (Islamic Republic of)|World Food Programme|Education|Food and Nutrition|Situation Report"
+  },
+  {
+    "original_title": "Iran urges US to honour commitments under MoU",
+    "title": "Iran urges US to honour commitments under MoU",
+    "original_summary": "Tehran calls for Washington to respect terms of MoU after attacks send tensions soaring in the Strait of Hormuz.",
+    "summary": "Tehran calls for Washington to respect terms of MoU after attacks send tensions soaring in the Strait of Hormuz.",
+    "source_name": "Al Jazeera (core)",
+    "published_at": "2026-09-01T13:01:22Z",
+    "link": "https://www.aljazeera.com/news/2026/9/1/iran-urges-us-to-honour-commitments-under-mou?traffic_source=rss",
     "domain": "News"
+  },
+  {
+    "original_title": "‘Hit them hard’: Does Trump have another ‘new’ Iran strategy, can it work?",
+    "title": "‘Hit them hard’: Does Trump have another ‘new’ Iran strategy, can it work?",
+    "original_summary": "Trump signals harsher response as US-Iran hostilities escalate, raising fears of prolonged conflict in the Gulf region.",
+    "summary": "Trump signals harsher response as US-Iran hostilities escalate, raising fears of prolonged conflict in the Gulf region.",
+    "source_name": "Al Jazeera (core)",
+    "published_at": "2026-09-01T11:38:14Z",
+    "link": "https://www.aljazeera.com/news/2026/9/1/hit-them-hard-does-trump-have-another-new-iran-strategy-can-it-work?traffic_source=rss",
+    "domain": "News"
+  },
+  {
+    "original_title": "Russia's G20 US invitation severely criticised by European countries",
+    "title": "Russia's G20 US invitation severely criticised by European countries",
+    "original_summary": "\nFinance ministers and central bank governors from the group of 20 major economies are meeting for two days in Asheville, North Carolina. With the United States holding the rotating G20 presidency, Washington is trying to rally partners towards greater economic pressure on Iran and find ways to boost growth. But an unexpected attendee drew fierce criticism.\n",
+    "summary": "Finance ministers and central bank governors from the group of 20 major economies are meeting for two days in Asheville, North Carolina. With the United States holding the rotating G20 presidency, Washington is trying to rally partners towards greater economic pressure on Iran and find ways to boost growth. But an unexpected attendee drew fierce criticism.",
+    "source_name": "France24 (regional)",
+    "published_at": "2026-09-01T13:48:34Z",
+    "link": "https://www.france24.com/en/russia-s-g20-us-invitation-severely-criticised-by-european-countries",
+    "domain": ""
   }
 ]
