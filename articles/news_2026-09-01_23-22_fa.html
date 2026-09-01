@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang='fa' dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>اخبار 2026-09-01 23:25</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --analysis-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --analysis-border: #4a5568;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .disclaimer-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        .news-list { list-style: none; padding: 0; margin: 0 0 40px 0; }
+        .news-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .news-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transition: background 0.2s;
+        }
+        .news-header:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #3182ce 100%);
+        }
+        .news-header::before {
+            content: '▶';
+            margin-left: 10px;
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        .news-item.open .news-header::before {
+            transform: rotate(90deg);
+        }
+        .index {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            font-size: 0.9em;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            flex: 1;
+        }
+        .news-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .news-item.open .news-content {
+            display: block;
+        }
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        .meta-item strong { color: var(--text); }
+        .summary {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        .link a {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .link a:hover { background: var(--primary); }
+        .analysis-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .analysis-header {
+            padding: 20px 25px;
+            background: var(--analysis-bg);
+            color: white;
+        }
+        .analysis-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .analysis-content { padding: 25px; }
+        .analysis-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: #ebf8ff;
+            border-radius: 10px;
+            border-right: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+        .analysis-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .analysis-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px 18px;
+            border: 1px solid var(--border);
+        }
+        .analysis-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .war-score {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .war-low { background: #c6f6d5; color: #276749; }
+        .war-medium { background: #fefcbf; color: #975a16; }
+        .war-high { background: #fed7d7; color: #c53030; }
+        @media (max-width: 600px) {
+            .news-header { padding: 12px 15px; }
+            .title { font-size: 1em; }
+            .analysis-header { padding: 15px 18px; }
+            .analysis-content { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>اخبار 2026-09-01 23:25</h1>
+    <div class='disclaimer'>
+        <div class='disclaimer-title'>⚠️ نکته مهم</div>
+        این محتوا به صورت خودکار از منابع خبری انتخابی جمع‌آوری شده و تحلیل نهایی توسط ماشین تولید بدون هیچ بررسی سیاسی یا تخصصی تولید شده است. برخی از منابع خبری ممکن است تاخیر داشته باشند، بنابراین همیشه زمان انتشار اصلی را بررسی کنید.
+    </div>
+    <ul class='news-list'>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>1</span>
+                <span class='title'>ایالات متحده به مواضع ایران حمله کرد در حالی که رسانه‌های دولتی از کشته شدن چهار نفر در یک مراسم عروسی خبر می‌دهند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> اخبار بی‌بی‌سی (هسته)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۱۰ ساعت ۲۱:۴۸</strong></span>
+                </div>
+                <p class='summary'>سازمان‌های خبری ایران اعلام کردند که حملات موشکی و پهپادی تلافی‌جویانه علیه اهداف آمریکا آغاز شده است.</p>
+                <div class='link'><a href='https://www.bbc.co.uk/news/articles/cj06q4ynpmjo?at_medium=RSS&at_campaign=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>2</span>
+                <span class='title'>ایران و آمریکا در تازه‌ترین درگیری برای کنترل تنگه هرمز به تبادل حملات پرداخته‌اند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> وال‌استریت ژورنال (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۶/۱۱ ساعت ۰۳:۳۹</strong></span>
+                </div>
+                <p class='summary'>رئیس‌جمهور ترامپ گفت این عملیات در واکنش به تلاش‌های ایران برای مین‌گذاری در تنگه و هدف قرار دادن نظامیان آمریکایی در خاورمیانه انجام شد.</p>
+                <div class='link'><a href='https://www.wsj.com/world/middle-east/iran-strikes-us-1d263f3f?mod=rss_worldnews' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>3</span>
+                <span class='title'>نیاز مبرم به دسترسی به سایت‌های ایرانی، آژانس بین‌المللی انرژی اتمی هشدار می‌دهد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (پایه)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۱۰ ساعت ۲۱:۲۸</strong></span>
+                </div>
+                <p class='summary'>آژانس بین‌المللی انرژی اتمی اعلام کرد که عدم دسترسی به اطلاعات و تأسیسات برای راستی‌آزمایی مواد هسته‌ای ایران از نگرانی‌های مربوط به گسترش تسلیحات هسته‌ای است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/news/2026/9/1/urgent-need-for-access-to-iranian-sites-cautions-un-nuclear-watchdog?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>4</span>
+                <span class='title'>رسانه‌های دولتی ایران از حملات متعدد آمریکا به این کشور خبر داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> الجزيرة (اساسی)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۱۱ ساعت ۲۰:۳۸:۴۳</strong></span>
+                </div>
+                <p class='summary'>تلویزیون دولتی ایران از انجام حملات متعدد در قلمرو ایران در روز سه‌شنبه خبر داده است.</p>
+                <div class='link'><a href='https://www.aljazeera.com/video/newsfeed/2026/9/1/iranian-state-media-announces-numerous-us-strikes-on-the-country?traffic_source=rss' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>5</span>
+                <span class='title'>آمریکا حملات نظامی جدیدی را در ایران انجام داد</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> واشنگتن پست (تجزیه و تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۱۰ ساعت ۲۱:۵۵</strong></span>
+                </div>
+                <p class='summary'>مقامات فرماندهی مرکزی آمریکا اعلام کردند که حملات آمریکا در پاسخ به حملات ناموفق ایران به کشتی‌های تجاری در تنگه هرمز و نظامیان آمریکایی در خاورمیانه بوده است.</p>
+                <div class='link'><a href='https://www.washingtonpost.com/national-security/2026/09/01/us-carries-out-new-military-strikes-iran/' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>6</span>
+                <span class='title'>چین یا ایالات متحده؟ دو نشست، نمایشگاه‌های رقابتی از قدرت جهانی ارائه دادند.</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۱۰ ۰۱:۲۷:۵۳</strong></span>
+                </div>
+                <p class='summary'>در حالی که شی جین پینگ با leaders of Russia و Iran دیدار کرد، اروپا در نشست جی۲۰ با دولت ترامپ **چالش طلبید** و تصویری دوتکه از در حال تغییر جهان ارائه داد.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/09/01/world/asia/g20-meeting-china-trump-bishkek.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+        <li class='news-item'>
+            <div class='news-header' onclick='this.parentElement.classList.toggle("open")'>
+                <span class='index'>7</span>
+                <span class='title'>برخی از متحدان در حال مخالفت با رویکرد اقتصادی ترامپ هستند</span>
+            </div>
+            <div class='news-content'>
+                <div class='meta'>
+                    <span class='meta-item'>📰 <strong>منبع:</strong> NYT (تحلیل)</span>
+                    <span class='meta-item'>📅 <strong>۱۴۰۵/۰۶/۱۱ ساعت ۲۲:۴۵:۵۷</strong></span>
+                </div>
+                <p class='summary'>در یک اجلاس که برای نمایش سیاست‌های اقتصادی رئیس‌جمهور ترامپ به‌عنوان مدل جهانی برگزار شده بود، اروپایی‌ها از تعرفه‌ها و جنگ با ایران شکایت داشتند.</p>
+                <div class='link'><a href='https://www.nytimes.com/2026/09/01/world/europe/g20-bessent-trump-allies.html' target='_blank'>لینک</a></div>
+            </div>
+        </li>
+    </ul>
+    <section class='analysis-section'>
+        <div class='analysis-header'>
+            <h2>🔍 تحلیل وضعیت ایران - ۲ شهریور ۱۴۰۵</h2>
+        </div>
+        <div class='analysis-content'>
+            <div class='analysis-summary'>ایالات متحده و ایران در حال درگیری نظامی مستقیم با یکدیگر هستند و تنش‌ها بر سر کنترل تنگه هرمز، فعالیت‌های هسته‌ای ایران و همچنین رقابت‌های گسترده‌تر منطقه‌ای برای قدرت‌افزایی افزایش یافته است. این منازعه می‌تواند منجر به بی‌ثباتی بیشتر در خاورمیانه شود، بر قیمت جهانی نفت تأثیر بگذارد و تغییرات در ائتلاف‌های استراتژیک میان قدرت‌های جهانی مانند ایالات متحده، چین، روسیه و اروپا را برجسته کند.</div>
+            <div class='analysis-grid'>
+        <div class="analysis-card">
+            <h3>📋 چه اتفاقی افتاده</h3>
+            آمریکا و ایران در واکنش به یکدیگر حملات نظامی تلافی‌جویانه‌ای را آغاز کرده‌اند. حملات آمریکا در پاسخ به تلاش‌های ایران برای مسدود کردن تنگهٔ هرمز (یک مسیر مهم حمل و نقل نفت) و حملاتی علیه نظامیان آمریکایی در خاورمیانه انجام شدند. رسانه‌های دولتی ایران گزارش می‌دهند که حملات آمریکا چهار نفر را در یک مراسم عروسی در ایران کشته‌اند. هر دو طرف یکدیگر را متهم به تهاجم می‌کنند و وضعیت به سرعت در حال تشدید است.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 کجا هدینگ</h3>
+            به احتمال زیاد در کوتاه مدت، درگیری ‌ها تشدید خواهد شد و ممکن است شاهد اعتصاب‌های بیشتر یا حتی رویارویی نظامی مستقیم باشیم. تلاش‌های دیپلماتیک نیز ممکن است با سخت‌گیری مواضع دو طرف، با چالش مواجه شود. ایالات متحده ممکن است برای تحریم‌های بین‌المللی قوی‌تر یا containment نظامی ایران فشار بیاورد، در حالی که ایران می‌تواند حملات نامتقارن خود (به عنوان مثال، جاسوسی، گروه‌های نیابتی) را در منطقه افزایش دهد. البته، توقف یا کاهش شدت درگیری‌ها محتمل است، اما بدون مداخله شخص ثالث، چندان محتمل به نظر نمی‌رسد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 خط زمانی</h3>
+            ['اوایل 2026: تنش‌ها افزایش می‌یابد زمانی که ایران تهدید به مسدود کردن تنگه هرمز در واکنش به تحریم‌های آمریکا و حضور نظامی این کشور می‌کند.', 'اوت 2026: ایران حملات به کشتی‌های تجاری در تنگه هرمز و اهداف پرسنل نظامی آمریکا در خاورمیانه را انجام می‌دهد.', 'اول سپتامبر 2026: آمریکا حملات تلافی‌جویانه به ایران را به دنبال حملات به کشتی‌های تجاری و پرسنل نظامی آغاز می‌کند. ایران از تلفات غیرنظامیان در یک عروسی گزارش می‌دهد و حملات تلافی‌جویانه خود علیه اهداف آمریکا را اعلام می‌کند.', 'اول تا دوم سپتامبر 2026: تبادل حملات بین ایران و آمریکا ادامه می‌یابد. آژانس بین‌المللی انرژی اتمی (IAEA) نگرانی‌های فوری درباره برنامه هسته‌ای ایران با اشاره به عدم دسترسی به سایت‌های ایران اعلام می‌کند. رهبران جهانی از جمله چین، روسیه و کشورهای اروپایی دیدگاه‌های رقیب در مورد قدرت جهانی را منعکس می‌کنند.', 'همچنان: متحدان آمریکا نگرانی‌هایی درباره رویکرد اقتصادی و نظامی ابراز می‌کنند، در حالی که ایران به دنبال حمایت از متحدان خود مانند روسیه و چین است.']
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دیدگاه راهبردی</h3>
+            جهت بلندمدت نزاع، حاکی از مبارزه‌ای طولانی برای چیرگی منطقه‌ای است. محتمل است که ایران به توسعه برنامه هسته‌ای و توانایی‌های نظامی نامتقارن خود ادامه دهد، در حالی که ایالات متحده تلاش خواهد کرد تا از طریق اقدامات نظامی، اقتصادی و دیپلماتیک، تاثیرگذاری ایران را خنثی سازد. این وضعیت خطر جذب بازیگران منطقه‌ای بیشتر (مانند عربستان سعودی، اسرائیل) و قدرت‌های جهانی (چین، روسیه) را دارد که احتمالاً منجر به درگیری گسترده‌تر یا حالت ایستادگی مشابه جنگ سرد در خاورمیانه خواهد شد. بدون فشار یا انگیزه‌های قابل توجه از سوی هر دوطرف، دستیابی به یک راه‌حل مذاکره‌ای به نظر دور از دسترس می‌آید.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 پویایی‌های درگیری</h3>
+            جدال کنونی شدید است و شامل حملات نظامى مستقيم ميان ايالات متحده و ايران مى‌شود که اين امر يک تشديد مهم نسبت به جنگ‌هاى قبلى به سبک نيابتى يا عمليات‌هاى مخفيانه به‌شمار مى‌رود. اين حملات بر اهداف راهبردي، از جمله سايت‌هاى نظامى و زيرساخت‌هاى مربوط به تنگه هرمز متمرکز شده‌اند. ماهيت اين درگيرى نشان مى‌دهد که هر دو طرف آماده‌اى هستند تا بيش از اين تشديد کنند؛ رويدادهايى همچون حمله به مراسم عروسى که باعث کشتار غيرنظاميان مى‌شود، ريسک واکنش‌هاى بيش‌تر يا خشم عمومى را افزايش مى‌دهد. اين مناقشه فعلا بيش‌تر به منطقه محدود است، اما پيامدهاى جهانى دارد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 تصویر بزرگ</h3>
+            این درگیری بخشی از یک مبارزه بزرگ‌تر برای کنترل و نفوذ در خاورمیانه است. تنگه هرمز یک گلوگاه حیاتی برای عرضه نفت جهانی است، بنابراین هرگونه اختلال در آنجا می‌تواند پیامدهای اقتصادی گسترده‌ای به دنبال داشته باشد. مسئله هسته‌ای لایه دیگری از تنش می‌افزاید، چرا که تلاش احتمالی ایران برای دستیابی به سلاح‌های هسته‌ای می‌تواند منجر به یک مسابقه تسلیحاتی منطقه‌ای یا انزوای بیشتر بین‌المللی شود. مبارزه قدرت گسترده‌تر بین ایالات متحده، چین و روسیه نیز در این درگیری خود را نشان می‌دهد، به طوری که متحدانی همچون اروپا و کشورهای حاشیه خلیج [فارس] در میانه این کشمکش گرفتار شده‌اند. جهان به دقت در حال تماشا است تا ببیند آیا این تشدید منجر به جنگ گسترده‌تری می‌شود یا اینکه فورسا تحولات دیپلماتیک تازه‌ای ایجاد خواهد کرد.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 دخالت بین‌المللی</h3>
+            چندین قدرت جهانی به دلایل مختلف در این موضوع دخیل هستند:<br>- **ایالات متحده**: تلاش برای حفظ نفوذ منطقه‌ای، محافظت از مسیرهای حمل و نقل نفت، و متوقف کردن جاه‌طلبی‌های هسته‌ای و فعالیت‌های نظامی ایران<br>- **ایران**: دفاع از حاکمیت خود، مقاومت در برابر فشار ایالات متحده، و تحکیم سلطه منطقه‌ای از طریق گروه‌های نیابتی و نیروهای نظامی خود<br>- **چین**: برگزاری ملاقاتی با روسیه و ایران به منظور نمایش یک ساختار قدرت جهانی جایگزین به جای نظم تحت رهبری ایالات متحده. چین همچنین ممکن است از منافع اقتصادی خود در ایران (مثلاً واردات نفت) محافظت کند<br>- **روسـيه**: حمایت از ایران به‌عنوان پادویی در برابر نفوذ ایالات متحده و احتمالاً کسب مزایای استراتژیک در خاورمیانه<br>- **اروپا**: به چالش کشیدن رویکرد ایالات متحده در نشست گروه ۲۰، احتمالاً به دلیل نگرانی‌هایی درباره تأثیرات اقتصادی (مثلاً قیمت نفت) و خطرات تشدید نظامی<br>- **کشورهای حاشیه خلیج فارس (مثلاً عربستان سعودی)**: احتمالاً گرفتار میان حمایت از ایالات متحده و مدیریت نگرانی‌های امنیتی خود درباره ایران<br>- **سازمان ملل متحد (آژانس بین‌المللی انرژی اتمی)**: هشدار در مورد برنامه هسته‌ای ایران و تأکید بر خطرات گسترش آن
+        </div>
+        <div class="analysis-card">
+            <h3>📋 قیمت نفت</h3>
+            این درگیری با توجه به عدم قطعیت پیرامون تنگه هرمز که حدود 20 درصد از عرضه نفت جهان را مدیریت می‌کند، تأثیر قابل‌توجهی بر قیمت نفت گذاشته است. در صورتی که درگیری منجر به اختلال در حمل و نقل از طریق تنگه شود یا نیروهای حامی ایران و آمریکا به زیرساخت‌های نفتی حمله کنند، ممکن است قیمت نفت به‌طور چشمگیری افزایش یابد. افزایش قیمت نفت به اقتصادهای جهانی از جمله کشورهای وابسته به انرژی ضربه وارد خواهد کرد و خطر بروز تورم یا رکود اقتصادی در برخی از مناطق را تشدید خواهد نمود. بازارها تا زمان تثبیت اوضاع احتمالاً همچنان نوسانی باقی خواهند ماند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 نکات کلیدی</h3>
+            دو کشور ایالات متحده و ایران هم‌اکنون درگیر حملات نظامی مستقیم هستند که از تنش‌های پیشین، تشدید قابل توجهی به شمار می‌آید. این درگیری ممکن است باعث اختلال در عرضه جهانی نفت شود و پیامدهای اقتصادی بالقوه‌ای در سراسر جهان داشته باشد. تعادل قدرت‌های جهانی در حال تغییر است به طوری که چین، روسیه و اروپا در مقابل یا در کنار ایالات متحده و ایران قرار دارند.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 عناصر شگفت‌انگیز</h3>
+            رسانه‌های دولتی ایران گزارش دادند که حملات آمریکا چهار نفر در یک مهمانی عروسی کشته شدند که می‌تواند تلفات غیرنظامی و خشم عمومی را تشدید کرده و احتمالاً باعث واکنش قوی‌تر یا درخواست‌های بیشتری برای حسابرسی شود.
+        </div>
+        <div class="analysis-card">
+            <h3>📋 زمینه اضافی</h3>
+            ایالات متحده و ایران برای سال‌ها در یک «جنگ سایه» بوده‌اند، با عملیات‌های پنهانی، حملات سایبری و درگیری‌های نیابتی. این مواجههٔ نظامی مستقیم مرحله‌ای جدید و خطرناک را رقم می‌زند. مسئله هسته‌ای همچنان حل‌نشده باقی مانده است، به طوری که آژانس بین‌المللی انرژی اتمی به دلیل عدم دسترسی به سایت‌ها قادر به تأیید انطباق ایران نیست. محیط ژئوپلیتیکی وسیع‌تر نیز در حال تغییر است، زیرا چین و روسیه ائتلافی جایگزین برای مقابله با نفوذ ایالات متحده تشکیل داده‌اند، همان‌طور که در جلسات آن‌ها با ایران مشهود است. متحدان ایالات متحده نیز با سیاست‌های اقتصادی ترامپ مخالفت می‌کنند، که می‌تواند روابط فراآتلانتیکی را بیشتر تحت فشار قرار دهد.
+        </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
